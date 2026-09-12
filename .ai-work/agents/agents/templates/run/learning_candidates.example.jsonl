@@ -1,0 +1,1 @@
+{"candidate_id":"LC-001","agent_instance_id":"<instance_id>","type":"retrieval_hint","status":"candidate","content":"<learning content + evidence>","source_run":"RUN-YYYYMMDD-HHMM-<short_task>","created_at":"<YYYY-MM-DD>"}

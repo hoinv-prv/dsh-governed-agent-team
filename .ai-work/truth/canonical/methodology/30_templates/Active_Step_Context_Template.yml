@@ -1,0 +1,25 @@
+artifact_type: active_step_context
+asc_id: ASC-<task_id>-<step_id>
+task_id:
+working_aip_ref:
+working_aip_version:
+active_step_id:
+active_step_title:
+# active_task_lens: the Task Lens label for this step (CR-AIWS-2026-05-030), copied from the
+# AIP's `## Selected Task Lens / Mode`. A HINT that shapes the reading-surface ordering
+# (preset register_priority/expansion_priority) — never a hard filter. Empty = No-Lens.
+active_task_lens:
+step_objective:
+step_guardrails: []
+step_inputs: []
+step_outputs_expected: []
+required_previous_outputs: []
+previous_step_results: []
+runtime_queue_blockers: []
+capture_inbox_refs: []
+wiki_lookup_refs: []
+source_verification_requirements: []
+known_limitations: []
+staleness_status: fresh
+staleness_reason:
+last_refreshed_at:

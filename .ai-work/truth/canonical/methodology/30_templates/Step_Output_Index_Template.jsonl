@@ -1,0 +1,1 @@
+{"output_id": "OUT-STEP-001-001", "result_type": "output", "working_aip_ref": "AIP-EXEC-001", "step_id": "STEP-001", "output_locator": "workspace/step_outputs/STEP-001/output.md", "discussion_trace_locator": "workspace/decision_traces/STEP-001/trace.yml", "review_status": "draft", "used_by_steps": ["STEP-002"], "used_by_final_output": false}

@@ -1,0 +1,22 @@
+discussion_trace_id: DISC-<step_id>-001
+related_output_id:
+working_aip_ref:
+step_id:
+discussion_trace_locator:
+discussion_summary:
+question_or_issue:
+options_considered: []
+ai_recommendations: []
+human_inputs: []
+decision_points: []
+rejected_options: []
+rationale:
+final_decision:
+accepted_assumptions: []
+limitations: []
+unresolved_points: []
+source_refs: []
+created_at:
+created_by:
+used_by_steps: []
+used_by_final_output: false

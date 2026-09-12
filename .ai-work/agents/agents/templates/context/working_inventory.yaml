@@ -1,0 +1,23 @@
+# working_inventory.yaml — file-level map of NON-wiki / not-yet-indexed FILES this task desk needs
+# (project drafts, working files, scratch artifacts chưa vào Wiki Source Index).
+# Canonical template — CR-AIWS-2026-08-049 (schema fold từ AP-CR-18; template tự đứng, không cần đọc doc khác).
+#
+# DESK-OWNED, blueprint-upgrade-IMMUNE (FR-AI-05 / CR-AIWS-2026-07-014 §9): blueprint update KHÔNG
+# bao giờ ghi đè file này. Ships EMPTY (no fabricated seed) — desk tự điền khi làm việc.
+#
+# Ba file context "reference" có vai trò TÁCH BIỆT — đừng trộn:
+#   wiki_references.yaml    — entry-level: wiki/index entries (ĐÃ trong Wiki Source Index)
+#   source_references.yaml  — area-level:  source AREAS (folders/domains) cần tham khảo
+#   working_inventory.yaml  — file-level:  FILE non-wiki cụ thể (drafts/working) desk cần
+#
+# Schema per entry:
+#   - path:   <đường dẫn file, project-root-relative>
+#     role:   <file này để làm gì đối với desk — một câu>
+#     status: draft | working
+#     shared: true | false     # file có dùng chung giữa nhiều agent/team không?
+#
+# Vệ sinh inventory:
+#   - File shared + stable → REGISTER vào Wiki Source Index (status: draft) thay vì copy raw path
+#     vào inventory của nhiều desk (tránh drift).
+#   - Đã registered → DROP khỏi working_inventory, tham chiếu bằng source_id qua wiki index.
+working_inventory: []

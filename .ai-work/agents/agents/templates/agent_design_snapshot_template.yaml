@@ -1,0 +1,57 @@
+# Agent Design Snapshot TEMPLATE — required for a CUSTOM no-Blueprint Agent Instance.
+# Schema: Detailed Design v0.2 §5A. YAML convention (OQ-B1, AIP-EXEC-108): use plain or literal (|)
+# scalars, NOT folded (>-), so this stays parseable by either a real YAML parser or the AIWS stdlib-subset.
+# Fill every REQUIRED field; the custom_instance_validation_checklist.md must pass before activation.
+
+creation_mode: custom_no_blueprint   # REQUIRED — must be exactly custom_no_blueprint
+blueprint_id: null                   # REQUIRED — must be null
+instance_id: <instance_id>           # REQUIRED — e.g. custom_wiki_advisor_agent__sample_project
+instance_name: <human-readable name>
+project_id: <project_id>
+owner: HUMAN
+status: active
+created_at: "<YYYY-MM-DD>"
+
+mission: |                           # REQUIRED — why this instance exists (one or more lines)
+  <mission line 1>
+
+responsibilities:                    # REQUIRED — what it does
+  - <responsibility>
+non_responsibilities:                # REQUIRED — what it must not do
+  - do NOT update Official Wiki
+  - do NOT run other agents automatically
+  - do NOT promote memory/tool/Blueprint without HUMAN review
+
+input_contract:                      # REQUIRED
+  required:
+    - <required input>
+  optional:
+    - <optional input>
+output_contract:                     # REQUIRED
+  required:
+    - <required output>
+  optional:
+    - <optional output>
+
+skills:
+  - <skill id or short description>
+tool_bindings: []                    # tool ids, or [] if none
+
+policies:                            # REQUIRED
+  memory_policy:
+    capture_learning_after_run: true
+    auto_confirm_memory: false
+    human_review_required: true
+  workspace_policy:
+    save_run_history: true
+    save_handoff_artifacts: true
+  review_policy:
+    require_human_review_for:
+      - memory_update
+      - tool_activation
+      - wiki_candidate
+      - blueprint_creation
+
+known_limitations:                   # RECOMMENDED
+  - This is a custom instance without a reusable Blueprint baseline.
+  - If reused repeatedly, create a Blueprint Creation Candidate (HUMAN review) — never automatic.

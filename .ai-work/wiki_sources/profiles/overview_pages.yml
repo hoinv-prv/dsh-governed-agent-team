@@ -1,0 +1,20 @@
+# overview_pages.yml — Source Interpretation Profile cho generated overview pages
+# (CR-AIWS-2026-07-010). Trang overview là PROJECTION của index/relations — generated,
+# KHÔNG hand-edit (lint: overview_hand_edit ERROR / overview_fingerprint_stale WARN).
+# Declare vocab để lint chấp nhận source_type (DP-912-6b — _allowed_source_types).
+
+profile_id: overview_pages
+source_type: overview_page
+knowledge_targets:
+  - navigation
+
+# Trang overview không bao giờ chunk (mỗi trang đã là surface đọc gọn).
+chunk_enabled: false
+
+# Không extract Source-Specific Hints (trang là listing; hints vô nghĩa).
+hints_depth: 0
+
+# Trang overview là PROJECTION do build_wiki_overview.py sinh — không mang quan hệ curated.
+# Không scaffold `## Related Sources` (CR-AIWS-2026-08-092 C2; cơ chế CR-AIWS-2026-06-043 B).
+related_sources:
+  emit_scaffold: false

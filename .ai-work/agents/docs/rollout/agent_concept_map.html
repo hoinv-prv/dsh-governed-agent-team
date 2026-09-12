@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIWS Agent — Bản đồ khái niệm</title>
+<style>
+  :root{
+    --bg:#F6F8FB; --ink:#0F172A; --muted:#64748B; --line:#E2E8F0;
+    --aip:#4338CA; --tw:#0F766E; --desk:#B45309; --agent:#9333EA; --model:#0369A1; --human:#334155;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1300px;margin:0 auto;padding:36px 24px 72px}
+  header.top{margin-bottom:34px}
+  h1{font-size:26px;margin:0 0 6px;letter-spacing:-.3px}
+  .sub{color:var(--muted);font-size:14px;margin:0}
+  h2{font-size:19px;margin:0 0 4px;letter-spacing:-.2px}
+  .sec{margin-top:48px}
+  .sec-note{color:var(--muted);font-size:13.5px;margin:0 0 18px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 18px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  svg{display:block;width:100%;height:auto}
+
+  .key{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 18px}
+  .key div{background:#fff;border:1px solid var(--line);border-left:3px solid var(--c);border-radius:10px;padding:9px 11px;font-size:12px;color:#1E293B}
+  .key b{display:block;color:var(--c);font-size:11.5px;letter-spacing:.3px;margin-bottom:2px}
+
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:12.4px}
+  th{background:#F1F5F9;text-align:left;padding:9px 12px;font-size:11.5px;letter-spacing:.4px;text-transform:uppercase;color:#475569;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:9px 12px;border-bottom:1px solid #F1F5F9;vertical-align:top;color:#1E293B}
+  tr:last-child td{border-bottom:none}
+  td.who{font-weight:650}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--c);margin-right:7px;vertical-align:1px}
+  tr.neg td{background:#FEF2F2}
+
+  .pipe{display:flex;align-items:stretch;gap:0;flex-wrap:nowrap}
+  .step{flex:1 1 0;min-width:0;background:#fff;border:1px solid var(--line);border-top:3px solid var(--c);border-radius:12px;padding:14px 14px 16px}
+  .step .lane{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--c);background:color-mix(in srgb,var(--c) 10%,#fff);border-radius:999px;padding:3px 9px;margin-bottom:8px}
+  .step h3{font-size:14.5px;margin:0 0 10px;letter-spacing:-.1px}
+  .step ul{margin:0;padding-left:16px}
+  .step li{font-size:12.4px;margin-bottom:7px;color:#1E293B}
+  .chev{flex:0 0 34px;display:flex;align-items:center;justify-content:center;color:#94A3B8;font-size:22px;font-weight:700}
+  code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.2px;background:#F1F5F9;padding:1px 5px;border-radius:4px;color:#0F172A;white-space:nowrap}
+  .no{color:#B91C1C;font-weight:650}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .mode{background:#fff;border:1px solid var(--line);border-left:4px solid var(--c);border-radius:12px;padding:16px 18px}
+  .mode h3{font-size:14.5px;margin:0 0 4px}
+  .mode .tag{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+  .mode p{font-size:12.8px;margin:8px 0 0;color:#1E293B}
+
+  .inv{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 22px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+  .inv div{font-size:12.8px;color:#1E293B;padding-left:20px;position:relative}
+  .inv div::before{content:"■";position:absolute;left:0;top:-1px;color:#94A3B8;font-size:10px}
+  footer{margin-top:44px;color:var(--muted);font-size:11.5px;border-top:1px solid var(--line);padding-top:14px}
+  @media (max-width:1000px){ .pipe{flex-wrap:wrap} .chev{display:none} .step{flex:1 1 100%;margin-bottom:12px} .two,.inv,.key{grid-template-columns:1fr} table{font-size:11.5px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>AIWS Agent — bản đồ khái niệm, vai trò &amp; kênh giao tiếp</h1>
+  <p class="sub">HUMAN giao việc cho <b>AI model</b> ở main process. Model tự làm, hoặc <b>spawn subagent</b> (Claude agent) khi HUMAN chỉ định / AIP mô tả. Subagent có <b>Task Desk</b> riêng, mọi output trung gian ra <b>Task Workspace</b>, và feedback của HUMAN cũng qua model để ghi vào desk.</p>
+</header>
+
+<!-- ============ DIAGRAM 1 ============ -->
+<section>
+  <h2>1. Sơ đồ tổng quan — đường đi của một việc</h2>
+
+  <div class="key">
+    <div style="--c:#0369A1"><b>AI MODEL — main process</b> Bên nhận việc từ HUMAN. Tự làm, hoặc spawn subagent.</div>
+    <div style="--c:#9333EA"><b>CLAUDE AGENT (subagent)</b> Được spawn để làm một task chuyên trách; có Task Desk riêng.</div>
+    <div style="--c:#4338CA"><b>AIP</b> Mô tả task theo STEP và chỉ định agent nào được spawn.</div>
+    <div style="--c:#B45309"><b>TASK DESK</b> Bàn riêng của subagent: process · skill · memory · context.</div>
+    <div style="--c:#0F766E"><b>TASK WORKSPACE</b> Nơi ghi output trung gian — dùng chung cho cả hai đường.</div>
+    <div style="--c:#334155"><b>HUMAN</b> Giao việc &amp; feedback cho AI model, quyết có spawn subagent hay không, gate mọi promotion.</div>
+  </div>
+
+  <div class="panel">
+  <svg viewBox="0 0 1252 1180" role="img" aria-label="Sơ đồ đường đi của một việc trong AIWS">
+    <defs>
+      <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+      </marker>
+      <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/>
+      </marker>
+    </defs>
+    <style>
+      .bx{fill:#fff;stroke-width:1.5}
+      .ttl{font:650 17px -apple-system,"Segoe UI",Roboto,sans-serif}
+      .ttl2{font:650 15.5px -apple-system,"Segoe UI",Roboto,sans-serif}
+      .bdg{font:600 11px -apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.4px}
+      .li{font:12.6px -apple-system,"Segoe UI",Roboto,sans-serif;fill:#1E293B}
+      .li2{font:13px -apple-system,"Segoe UI",Roboto,sans-serif;fill:#1E293B}
+      .mn{font:11.5px ui-monospace,Menlo,Consolas,monospace;fill:#475569}
+      .lbl{font:650 12px -apple-system,"Segoe UI",Roboto,sans-serif;fill:#334155}
+      .lbl2{font:11.5px -apple-system,"Segoe UI",Roboto,sans-serif;fill:#64748B}
+      .arw{stroke:#475569;stroke-width:2;fill:none}
+      .arwg{stroke:#94A3B8;stroke-width:1.6;fill:none;stroke-dasharray:6 4}
+    </style>
+
+    <!-- HUMAN -->
+    <rect x="465" y="20" width="280" height="48" rx="10" fill="#334155"/>
+    <text x="605" y="50" text-anchor="middle" font-size="14.5" font-weight="650" fill="#fff">HUMAN — BrSE / Champion / PO</text>
+
+    <path d="M605 68 V 134" class="arw" marker-end="url(#ah)"/>
+    <text x="620" y="96" class="lbl">① giao việc · ⑤ feedback</text>
+    <text x="620" y="112" class="lbl2">đều nói với AI MODEL</text>
+
+    <path d="M465 44 H 185 V 144" class="arw" marker-end="url(#ah)"/>
+    <text x="197" y="96" class="lbl">viết &amp; duyệt AIP</text>
+    <text x="197" y="112" class="lbl2">(Gate U1)</text>
+
+    <!-- AIP -->
+    <rect x="40" y="150" width="280" height="250" rx="12" class="bx" stroke="#4338CA"/>
+    <rect x="40" y="150" width="280" height="4" rx="2" fill="#4338CA"/>
+    <text x="60" y="186" class="ttl2" fill="#4338CA">AIP — AI Implementation Plan</text>
+    <text x="60" y="205" class="bdg" fill="#818CF8">KẾ HOẠCH CHO 1 CÔNG VIỆC</text>
+    <text x="60" y="234" class="li">Mô tả task theo từng STEP.</text>
+    <text x="60" y="258" class="li">Chỉ định agent nào được spawn:</text>
+    <text x="60" y="278" class="li">Assigned Agent · Difficulty · Kind.</text>
+    <text x="60" y="304" class="li">Expected Outputs · done criteria.</text>
+    <text x="60" y="330" class="li" fill="#B91C1C">Cố định khi chạy — không sửa giữa task.</text>
+    <text x="60" y="360" class="mn">.ai-work/aip/&lt;account&gt;/exec/</text>
+    <text x="60" y="378" class="mn">AIP-EXEC-nnn.md</text>
+
+    <path d="M320 270 H 396" class="arw" marker-end="url(#ah)"/>
+    <text x="358" y="244" text-anchor="middle" class="lbl">mô tả task</text>
+    <text x="358" y="260" text-anchor="middle" class="lbl2">+ agent nào</text>
+
+    <!-- AI MODEL / main process -->
+    <rect x="400" y="140" width="430" height="260" rx="12" class="bx" stroke="#0369A1" stroke-width="2.5"/>
+    <rect x="400" y="140" width="430" height="5" rx="2.5" fill="#0369A1"/>
+    <text x="422" y="178" class="ttl" fill="#0369A1">AI MODEL — main process</text>
+    <text x="422" y="198" class="bdg" fill="#0EA5E9">BÊN NHẬN VIỆC TỪ HUMAN — claude-opus-5 / sonnet / haiku…</text>
+    <text x="422" y="228" class="li2">HUMAN giao việc cho AI model, <tspan font-weight="650">không</tspan> giao thẳng cho agent.</text>
+    <text x="422" y="256" class="li2" font-weight="650">Hai đường xử lý một task:</text>
+    <text x="422" y="278" class="li2">① Tự làm ngay ở main process — <tspan class="mn">executor: main_session</tspan></text>
+    <text x="422" y="300" class="li2">② Spawn subagent — <tspan class="mn">executor: claude_subagent</tspan></text>
+    <text x="422" y="328" class="li2">Chọn đường nào: <tspan font-weight="650">do HUMAN chỉ định, hoặc AIP mô tả</tspan>.</text>
+    <text x="422" y="354" class="li2">Khi spawn: gửi dispatch brief, rồi VERIFY kết quả trả về</text>
+    <text x="422" y="374" class="li2">— không tự xử lại verdict của subagent.</text>
+
+    <!-- AI MODEL -> Task Desk : ghi feedback -->
+    <path d="M830 200 H 1230 V 434" class="arw" marker-end="url(#ah)"/>
+    <text x="1030" y="164" text-anchor="middle" class="lbl">⑤ AI model ghi feedback vào Task Desk</text>
+    <text x="1030" y="180" text-anchor="middle" class="lbl2">dạng candidate — chưa phải memory</text>
+
+    <!-- (1) tu lam -> workspace -->
+    <path d="M450 400 V 826" class="arw" marker-end="url(#ah)"/>
+    <text x="438" y="590" class="lbl" text-anchor="end">① tự làm ở main process</text>
+    <text x="438" y="606" class="lbl2" text-anchor="end">output vẫn ra Task Workspace</text>
+
+    <!-- (2) spawn -->
+    <path d="M650 400 V 486" class="arw" marker-end="url(#ah)"/>
+    <text x="665" y="430" class="lbl">② spawn subagent</text>
+    <text x="665" y="446" class="lbl2">theo chỉ định HUMAN / AIP</text>
+
+    <!-- CLAUDE AGENT -->
+    <rect x="470" y="490" width="360" height="280" rx="12" class="bx" stroke="#9333EA" stroke-width="2.5"/>
+    <rect x="470" y="490" width="360" height="5" rx="2.5" fill="#9333EA"/>
+    <text x="492" y="528" class="ttl" fill="#9333EA">CLAUDE AGENT (subagent)</text>
+    <text x="492" y="548" class="bdg" fill="#A855F7">ĐƯỢC SPAWN ĐỂ LÀM MỘT TASK CHUYÊN TRÁCH</text>
+    <text x="492" y="578" class="li">Main process spawn theo shim</text>
+    <text x="492" y="596" class="mn">.claude/agents/&lt;desk_id&gt;.md (sinh tự động)</text>
+    <text x="492" y="622" class="li">Cũng chạy trên AI model — nhưng có identity,</text>
+    <text x="492" y="640" class="li">Task Desk và ranh giới riêng.</text>
+    <text x="492" y="666" class="li">Đọc process · skill · memory · context từ desk.</text>
+    <text x="492" y="692" class="li">Ghi output trung gian ra Task Workspace.</text>
+    <text x="492" y="718" class="li">Trả về hand-off: summary + pointers.</text>
+    <text x="492" y="746" class="li" fill="#B91C1C">KHÔNG tự spawn agent khác.</text>
+
+    <!-- agent -> desk -->
+    <path d="M830 560 H 876" class="arw" marker-end="url(#ah)"/>
+    <text x="1030" y="412" text-anchor="middle" class="lbl">③ đọc process · skill · memory · context</text>
+    <text x="1030" y="428" text-anchor="middle" class="lbl2">subagent lấy năng lực từ desk của chính nó</text>
+
+    <!-- TASK DESK -->
+    <rect x="880" y="440" width="332" height="330" rx="12" class="bx" stroke="#B45309"/>
+    <rect x="880" y="440" width="332" height="4" rx="2" fill="#B45309"/>
+    <text x="900" y="478" class="ttl2" fill="#B45309">Task Desk — của riêng agent</text>
+    <text x="900" y="498" class="bdg" fill="#D97706">NƠI AGENT LẤY NĂNG LỰC &amp; TÍCH LUỸ</text>
+    <text x="900" y="526" class="li"><tspan class="mn">process/</tspan> — quy trình của agent</text>
+    <text x="900" y="546" class="li"><tspan class="mn">skill</tspan> · <tspan class="mn">tools/</tspan> — đồ nghề</text>
+    <text x="900" y="566" class="li"><tspan class="mn">memory/confirmed_memory.jsonl</tspan></text>
+    <text x="900" y="586" class="li"><tspan class="mn">context/</tspan> — wiki_references, lookup_intents</text>
+    <text x="900" y="606" class="li"><tspan class="mn">desk.yaml</tspan> — identity · capability · run_policy</text>
+
+    <rect x="896" y="626" width="300" height="130" rx="9" fill="#FFFBEB" stroke="#FCD34D"/>
+    <text x="912" y="650" class="li" font-weight="650" fill="#92400E">AI model ghi feedback vào đây:</text>
+    <text x="912" y="672" class="mn">training/candidate_queue.jsonl</text>
+    <text x="912" y="694" class="li">↓ HUMAN duyệt → <tspan class="mn">confirmed_memory</tspan></text>
+    <text x="912" y="714" class="li">    hoặc apply vào <tspan class="mn">process/</tspan> · skill</text>
+    <text x="912" y="740" class="li" fill="#B91C1C">Không bao giờ tự động.</text>
+
+    <!-- agent -> workspace -->
+    <path d="M650 770 V 826" class="arw" marker-end="url(#ah)"/>
+    <text x="665" y="790" class="lbl">④ ghi output trung gian</text>
+    <text x="665" y="806" class="lbl2">findings · draft · capture</text>
+
+    <!-- AIP -> workspace dashed -->
+    <path d="M185 400 V 900 H 244" class="arwg" marker-end="url(#ahg)"/>
+    <text x="200" y="700" class="lbl2">runtime_workspace (write-once):</text>
+    <text x="200" y="716" class="lbl2">AIP nào ⇒ Task Workspace nào</text>
+
+    <!-- TASK WORKSPACE -->
+    <rect x="250" y="830" width="700" height="230" rx="12" class="bx" stroke="#0F766E"/>
+    <rect x="250" y="830" width="700" height="4" rx="2" fill="#0F766E"/>
+    <text x="272" y="868" class="ttl2" fill="#0F766E">Task Workspace (AIP workspace)</text>
+    <text x="272" y="888" class="bdg" fill="#14B8A6">OUTPUT TRUNG GIAN &amp; DẤU VẾT CỦA TASK — DÙNG CHUNG CHO CẢ ĐƯỜNG ① VÀ ②</text>
+    <text x="272" y="918" class="li2">Main process tự làm hay subagent làm, output trung gian đều ghi về đây — không ghi vào Task Desk.</text>
+    <text x="272" y="946" class="li"><tspan class="mn">00_task_brief</tspan> · <tspan class="mn">00c_active_step_context</tspan> (ASC) · <tspan class="mn">04_findings</tspan> · <tspan class="mn">05_open_questions</tspan></text>
+    <text x="272" y="968" class="li"><tspan class="mn">07_output_draft</tspan> · <tspan class="mn">11_output_final</tspan> · <tspan class="mn">08_capture_inbox.jsonl</tspan> → Wiki candidate</text>
+    <text x="272" y="990" class="li"><tspan class="mn">runs/&lt;run_id&gt;/</tspan> — <tspan class="mn">run_state.yaml</tspan> · ARC · <tspan class="mn">output/</tspan> của từng run</text>
+    <text x="272" y="1018" class="mn">.ai-work/workspaces/&lt;account&gt;/&lt;task_id&gt;/</text>
+    <text x="272" y="1044" class="li" fill="#0F766E">Task xong thì workspace đóng lại — Task Desk thì sống tiếp.</text>
+
+    <!-- note strip -->
+    <rect x="40" y="1090" width="1172" height="72" rx="10" fill="#fff" stroke="#E2E8F0"/>
+    <text x="62" y="1118" class="li2"><tspan font-weight="650">Đọc nhanh:</tspan> HUMAN → ① giao việc cho AI MODEL (main process). Model ① tự làm, hoặc ② spawn CLAUDE AGENT — quyết định này do HUMAN chỉ định hoặc AIP mô tả, model không tự ý spawn.</text>
+    <text x="62" y="1144" class="li2">Subagent ③ đọc năng lực từ Task Desk riêng của nó · ④ ghi output trung gian ra Task Workspace · ⑤ HUMAN feedback cho model, model ghi vào Task Desk dạng candidate.</text>
+  </svg>
+  </div>
+</section>
+
+<!-- ============ ROLES ============ -->
+<section class="sec">
+  <h2>2. Phân vai — ai giữ gì, ai quyết gì</h2>
+  <p class="sec-note">Ba tác nhân thật sự "hành động" là HUMAN, AI model (main process) và subagent. AIP · Task Desk · Task Workspace là <b>dữ liệu</b>. Tooling là bên gác cổng, không suy luận.</p>
+  <table>
+    <thead>
+      <tr><th>Thành phần</th><th>Vai trò</th><th>Giữ state gì</th><th>Được quyết gì</th><th>Không được làm</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="who" style="--c:#334155"><span class="dot"></span>HUMAN</td>
+          <td>Chủ việc: giao việc &amp; feedback cho AI model, gate</td>
+          <td>Ý định &amp; tiêu chí nghiệm thu</td>
+          <td>Nghiệp vụ · xung đột source-of-truth · <b>có spawn subagent hay không</b> · mọi promotion</td>
+          <td>—</td></tr>
+      <tr><td class="who" style="--c:#0369A1"><span class="dot"></span>AI MODEL<br>main process</td>
+          <td>Nhận việc &amp; feedback từ HUMAN; tự làm hoặc spawn subagent; verify kết quả; <b>ghi feedback vào Task Desk</b></td>
+          <td>Context của phiên chính — không bền vững</td>
+          <td>Cách làm ở main process · relay quyết định của HUMAN cho subagent</td>
+          <td>Tự ý spawn khi chưa được chỉ định · tự chốt nghiệp vụ · ghi thẳng <code>confirmed_memory</code></td></tr>
+      <tr><td class="who" style="--c:#9333EA"><span class="dot"></span>CLAUDE AGENT<br>subagent</td>
+          <td>Làm một task chuyên trách theo desk của nó</td>
+          <td>Không giữ gì — stateless theo run</td>
+          <td>Cách làm, trong phạm vi process &amp; boundary của desk</td>
+          <td>Tự chốt nghiệp vụ · ghi thẳng memory · <b>spawn agent khác</b></td></tr>
+      <tr><td class="who" style="--c:#0F766E"><span class="dot"></span>Tooling<br><code>run_agent.py</code></td>
+          <td>Gate + gom bối cảnh (ARC) + scaffold run</td>
+          <td><code>run_state.yaml</code> · ARC · run folder</td>
+          <td>Cho chạy hay không — cơ học, xác định, không suy luận</td>
+          <td class="no">Gọi AI model · spawn agent · tự làm task</td></tr>
+      <tr><td class="who" style="--c:#4338CA"><span class="dot"></span>AIP</td>
+          <td>Nguồn task + chỉ định agent (dữ liệu)</td>
+          <td>STEP · <code>Assigned Agent</code> · Expected Outputs · done criteria</td>
+          <td>— không phải tác nhân</td>
+          <td>Bị sửa tay giữa lúc chạy</td></tr>
+      <tr><td class="who" style="--c:#B45309"><span class="dot"></span>Task Desk</td>
+          <td>Đồ nghề + trí nhớ của subagent (dữ liệu)</td>
+          <td><code>process/</code> · skill · <code>memory/</code> · <code>context/</code></td>
+          <td>— không phải tác nhân</td>
+          <td>Bị agent ghi thẳng vào <code>confirmed_memory</code></td></tr>
+      <tr><td class="who" style="--c:#0F766E"><span class="dot"></span>Task Workspace</td>
+          <td>Nơi làm &amp; dấu vết của task (dữ liệu)</td>
+          <td>Output trung gian · findings · capture · run state</td>
+          <td>— không phải tác nhân</td>
+          <td>Chứa thứ thuộc về desk (memory / process của agent)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ CHANNELS ============ -->
+<section class="sec">
+  <h2>3. Kênh giao tiếp — ai nói với ai, qua cái gì</h2>
+  <p class="sec-note">AIWS là <b>file-first</b>: trừ cặp HUMAN↔model và lệnh spawn, mọi giao tiếp còn lại đều đi qua file trong repo — đọc lại được, lint được, không có kênh ngầm.</p>
+  <table>
+    <thead>
+      <tr><th>Từ → Đến</th><th>Kênh</th><th>Tính chất</th><th>Gate / ràng buộc</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="who">HUMAN → AI MODEL</td>
+          <td>Prompt hội thoại, hoặc <code>/aiws-agent run start &lt;agent&gt; --aip … --step …</code></td>
+          <td>Mỗi việc do HUMAN bấm</td>
+          <td>Không auto-run, không chain</td></tr>
+      <tr><td class="who">AIP → AI MODEL</td>
+          <td>STEP + <code>Assigned Agent</code> · <code>Difficulty</code> · <code>Kind</code></td>
+          <td>Chỉ đọc</td>
+          <td>Dispatch eligibility · capability routing quyết được spawn hay không</td></tr>
+      <tr><td class="who" style="background:#F0F9FF">AI MODEL → CLAUDE AGENT</td>
+          <td>Spawn theo shim <code>.claude/agents/&lt;desk_id&gt;.md</code> + dispatch brief 3 block</td>
+          <td>Một chiều, mỗi run một lần</td>
+          <td><b>Chỉ spawn khi HUMAN chỉ định hoặc AIP mô tả</b></td></tr>
+      <tr><td class="who" style="background:#F0F9FF">CLAUDE AGENT → AI MODEL</td>
+          <td>Hand-off contract: summary + self-assessment + pointers</td>
+          <td>Một chiều, khi kết thúc run</td>
+          <td>Main <b>verify</b> bằng chứng, không re-judge verdict</td></tr>
+      <tr><td class="who">CLAUDE AGENT ⇄ CLAUDE AGENT</td>
+          <td>Mailbox <code>messages_out.jsonl</code> / <code>messages_in.jsonl</code>, main merge về <code>messages.jsonl</code></td>
+          <td>Bất đồng bộ qua file — không bus, không race</td>
+          <td><code>business_rule</code> / <code>sot_conflict</code> = HUMAN-only, main chỉ relay</td></tr>
+      <tr><td class="who">AGENT → Task Desk</td>
+          <td>Đọc <code>process/</code> · skill · <code>memory/</code> · <code>context/</code> theo scoped-load; ghi <code>learning_candidates.jsonl</code></td>
+          <td>Đọc nhiều, ghi <b>candidate</b></td>
+          <td>Không ghi thẳng <code>confirmed_memory.jsonl</code></td></tr>
+      <tr><td class="who">Main process / agent → Task Workspace</td>
+          <td><code>output/</code> · <code>04_findings</code> · <code>05_open_questions</code> · <code>08_capture_inbox.jsonl</code> · <code>run_state.yaml</code></td>
+          <td>Đọc + ghi trong phạm vi workspace</td>
+          <td>Boundary guard: không ghi ra ngoài</td></tr>
+      <tr><td class="who">HUMAN → AI MODEL</td>
+          <td>Feedback nói trong hội thoại, hoặc <code>/aiws-agent-feedback &lt;run&gt;</code></td>
+          <td><b>Cùng kênh với giao việc</b> — HUMAN không phải tự mở file desk</td>
+          <td>—</td></tr>
+      <tr><td class="who" style="background:#F0F9FF">AI MODEL → Task Desk</td>
+          <td>Ghi <code>training/feedback_log.jsonl</code> + <code>training/candidate_queue.jsonl</code></td>
+          <td>Ghi <b>candidate</b>, không phải memory</td>
+          <td><code>/aiws-agent-review-learning</code> + HUMAN duyệt mới vào <code>confirmed_memory</code> hoặc <code>process/</code> · skill</td></tr>
+      <tr><td class="who">Tooling → file</td>
+          <td>Dựng ARC, <code>run_state.yaml</code>, run folder</td>
+          <td>Cơ học, xác định</td>
+          <td>Boundary guard theo pack root + Task Workspace được allow-list</td></tr>
+      <tr class="neg"><td class="who no">Tooling → AI MODEL</td>
+          <td colspan="3" class="no">KHÔNG TỒN TẠI — <code>run_agent.py</code> không bao giờ gọi LLM. Nó chuẩn bị state rồi dừng; main process mới là bên gọi model và bên spawn.</td></tr>
+      <tr class="neg"><td class="who no">CLAUDE AGENT → spawn agent</td>
+          <td colspan="3" class="no">KHÔNG TỒN TẠI — tool <code>Agent</code> bị loại khỏi whitelist của shim. Chỉ main process được spawn, và chỉ khi được chỉ định.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ RUNTIME ============ -->
+<section class="sec">
+  <h2>4. Sơ đồ runtime — một việc đi qua các thành phần</h2>
+
+  <div class="pipe">
+    <div class="step" style="--c:#334155">
+      <span class="lane">① Giao việc</span>
+      <h3>HUMAN → AI MODEL</h3>
+      <ul>
+        <li>HUMAN nói với AI model ở main process — prompt hội thoại, hoặc lệnh <code>/aiws-agent run start &lt;agent&gt; --aip AIP-EXEC-142 --step STEP-03</code>.</li>
+        <li>Nếu việc đã được mô tả trong AIP: STEP khai <code>Assigned Agent</code> · <code>Difficulty</code> · <code>Kind</code>.</li>
+        <li>Không có auto-run — mỗi việc đều do HUMAN bấm.</li>
+      </ul>
+    </div>
+    <div class="chev">›</div>
+
+    <div class="step" style="--c:#0369A1">
+      <span class="lane">② Quyết đường xử lý</span>
+      <h3>AI MODEL — main process</h3>
+      <ul>
+        <li><b>Tự làm</b> (<code>main_session</code>) khi việc không được chỉ định giao cho agent nào.</li>
+        <li><b>Spawn subagent</b> (<code>claude_subagent</code>) khi HUMAN chỉ định, hoặc AIP mô tả — <b>không tự ý spawn</b>.</li>
+        <li>Trước khi spawn, tooling <code>run_agent.py</code> chạy gate: AIP <code>status: active</code> · Expected Outputs nằm trong Task Workspace · agent ∈ <code>Assigned Agent</code> · <code>complexity_ceiling ≥ Difficulty</code>.</li>
+        <li>Tooling dựng ARC (<code>00_active_run_context.md</code>) từ Task Desk của agent + nội dung task, rồi scaffold <code>&lt;TW&gt;/runs/&lt;run_id&gt;/</code>.</li>
+        <li><span class="no">✗</span> tooling không gọi model · <span class="no">✗</span> không spawn · <span class="no">✗</span> không tự làm task</li>
+      </ul>
+    </div>
+    <div class="chev">›</div>
+
+    <div class="step" style="--c:#9333EA">
+      <span class="lane">③④ Thực thi</span>
+      <h3>Main process hoặc subagent</h3>
+      <ul>
+        <li>Subagent đọc ARC + phần desk cần dùng (scoped-load: digest + hints, không đọc hết bàn).</li>
+        <li><b>Ghi output trung gian ra Task Workspace</b> — cả hai đường đều vậy: <code>output/</code>, <code>04_findings</code>, <code>05_open_questions</code>, <code>07_output_draft</code>, <code>08_capture_inbox.jsonl</code>; tick <code>progress</code>.</li>
+        <li>Bí giữa chừng → <code>messages_out.jsonl</code> (<code>kind: blocked</code>) → run thành <code>incomplete</code>, chờ HUMAN.</li>
+        <li><b>business_rule / sot_conflict = HUMAN-only.</b> Lệch rule đã khai → dừng và báo.</li>
+        <li>Xong → trả hand-off (summary + pointers); main process verify, không xử lại verdict.</li>
+      </ul>
+    </div>
+    <div class="chev">›</div>
+
+    <div class="step" style="--c:#B45309">
+      <span class="lane">⑤ Feedback &amp; học</span>
+      <h3>HUMAN → AI model → Task Desk</h3>
+      <ul>
+        <li><code>status: completed</code> → run đóng; <code>run_log.jsonl</code> ghi lại sự kiện.</li>
+        <li>HUMAN nói feedback <b>với AI model</b> (hội thoại hoặc <code>/aiws-agent-feedback</code>); <b>AI model ghi vào Task Desk</b>: <code>training/feedback_log.jsonl</code> + <code>candidate_queue.jsonl</code>.</li>
+        <li>HUMAN tự sửa tay file trong desk là ngoại lệ hiếm — không phải đường chuẩn.</li>
+        <li><code>/aiws-agent-review-learning</code> → HUMAN duyệt → hoặc vào <code>memory/confirmed_memory.jsonl</code>, hoặc <b>apply thẳng vào <code>process/</code> · skill</b>.</li>
+        <li>Capture chung dự án → <code>08_capture_inbox.jsonl</code> → Wiki candidate → HUMAN duyệt → Official Wiki.</li>
+        <li>Không auto-promotion ở bất kỳ lớp nào.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODES ============ -->
+<section class="sec">
+  <h2>5. Việc đến từ đâu ⇒ run nằm ở đâu</h2>
+  <div class="two">
+    <div class="mode" style="--c:#0F766E">
+      <span class="tag">Việc được mô tả trong AIP</span>
+      <h3>Run nằm trong Task Workspace</h3>
+      <p>Agent <code>aip_driven</code> + start có <code>--aip</code> → run <b>không</b> tạo workspace thứ hai. Nó materialize vào <code>&lt;TW&gt;/runs/&lt;run_id&gt;/</code>; desk chỉ giữ <code>run_index.jsonl</code> làm back-pointer.</p>
+      <p><b>Vì sao:</b> bỏ hẳn vấn đề "hai workspace phải theo dõi". Nhiều subagent có thể cùng làm trên một Task Workspace (mỗi lúc một run active).</p>
+    </div>
+    <div class="mode" style="--c:#B45309">
+      <span class="tag">HUMAN chỉ định trực tiếp, không qua AIP</span>
+      <h3>Run nằm trong desk</h3>
+      <p>Không có <code>--aip</code> → run-folder nằm ở <code>&lt;desk&gt;/workspace/active_runs/RUN-…</code>, xong thì chuyển sang <code>completed_runs/</code>.</p>
+      <p><b>Lưu ý:</b> đường này dành cho việc nhỏ. Việc đáng kể vẫn nên mô tả trong AIP để có kế hoạch và traceability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INVARIANTS ============ -->
+<section class="sec">
+  <h2>6. Bất biến cần nhớ</h2>
+  <div class="inv">
+    <div><b>HUMAN giao việc cho AI model ở main process</b>, không giao thẳng cho subagent. Subagent chỉ xuất hiện khi được spawn.</div>
+    <div><b>Spawn subagent phải do HUMAN chỉ định hoặc AIP mô tả.</b> Main process không tự ý quyết định lập một agent để làm hộ.</div>
+    <div><b>Task Desk là của riêng subagent.</b> Đồ nghề và trí nhớ, không phải nơi nhận việc.</div>
+    <div><b>Output trung gian luôn ra Task Workspace</b> — kể cả khi main process tự làm, không spawn ai cả.</div>
+    <div><b>Feedback cũng đi qua AI model.</b> HUMAN nói với model, model ghi vào Task Desk dạng candidate; HUMAN duyệt rồi mới thành memory hoặc sửa đổi process/skill.</div>
+    <div><b>Tooling không gọi model, subagent không spawn agent.</b> Chỉ main process được spawn, và chỉ khi được chỉ định.</div>
+  </div>
+</section>
+
+<footer>
+  Nguồn: <span class="mono">.ai-work/agents/docs/agent_runtime_design.md</span> · <span class="mono">.ai-work/agents/README.md</span> ·
+  <span class="mono">.ai-work/agents/skills/aiws-agent/SKILL.md</span> · <span class="mono">.ai-work/workspace_templates/task_workspace_template/</span> ·
+  cấu trúc desk thật: <span class="mono">.ai-work/agents/agents/task_desks/&lt;desk_id&gt;/</span> — topology theo hiệu chỉnh của HUMAN.
+</footer>
+
+</div>
+</body>
+</html>

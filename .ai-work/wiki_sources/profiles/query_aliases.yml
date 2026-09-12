@@ -1,0 +1,29 @@
+# query_aliases.yml — Project query alias table (CR-AIWS-2026-07-007 B2).
+# Phrase-level expansion at QUERY time: khi folded query chứa "<phrase>", các target tokens
+# được thêm vào query token set trước khi scoring (lookup_wiki_source.py / _common.expand_query_tokens).
+# Format mỗi dòng: "- <phrase> => <target tokens>" (phrase + targets đều được diacritic-fold tự động;
+# viết có dấu hay không dấu đều được). PROJECT-CUSTOMIZABLE — thêm alias khi phát hiện
+# language-variant miss (MP2, lookup_miss_patterns.md); capture retrieval_improvement là nguồn alias tốt.
+#
+# SEEDED 2026-07-07 từ 2 pure-VN cases FAIL của review 902 (T6.1, T6.4) — file KHÔNG ship rỗng
+# (bài học project_stopwords.yml rỗng mãi):
+
+aliases:
+  # T6.1 "viet basic design chuc nang thong bao nhac nho" → RD_NotificationReminder
+  - "thong bao => notification"
+  - "nhac nho => reminder"
+  - "chuc nang => function"
+  # T6.4 "quy tac dat ten tai lieu du an" → PROCESS_OVERVIEW (naming conventions)
+  - "quy tac => rules convention"
+  - "dat ten => naming"
+  - "tai lieu => document"
+  - "du an => project"
+  # Bổ sung tự nhiên cùng họ (VI→EN thuật ngữ dự án phổ biến):
+  - "man hinh => screen"
+  - "thiet ke => design"
+  - "yeu cau => requirement"
+  - "dat phong => booking"
+  - "phong hop => room meeting"
+  - "kiem thu => test"
+  - "phe duyet => approval"
+  - "dang nhap => login"

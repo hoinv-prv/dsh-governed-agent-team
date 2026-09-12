@@ -1,0 +1,17 @@
+{
+  "PROJECT": [
+    "VTI AI Work System",
+    "Project Alpha",
+    "AIWS"
+  ],
+  "CUSTOMER": [
+    "Vietcombank",
+    "Acme Corporation",
+    "Bank A"
+  ],
+  "SYSTEM": [
+    "SAP ERP",
+    "CRM Portal",
+    "Core Banking System"
+  ]
+}

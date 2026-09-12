@@ -1,0 +1,7 @@
+# Default tools — Test Case Review Agent
+# Review/advisory agent: NO default extraction/automation tools. The agent reads Wiki, source,
+# and the test cases and reasons over them. If a project needs a tool (e.g. a coverage/traceability
+# extractor), it is added at the INSTANCE level as a tool binding/candidate (Detailed Design v0.2
+# §16) and is HUMAN-gated — never a silent blueprint default.
+version: 1
+default_tools: []

@@ -1,0 +1,7 @@
+# Default tools — Detailed Design Review Agent
+# Review / advisory agent: NO default tools. Reviewing is reasoning over Wiki + source + checklist;
+# it does not require extraction tools. Any tool an instance needs is HUMAN-activated and bound at the
+# instance level (tools/tool_bindings.yaml), per Detailed Design v0.2 §16 + human_gate_policy
+# (tool activation is HUMAN-gated).
+version: 1
+default_tools: []

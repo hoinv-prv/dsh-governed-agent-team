@@ -1,0 +1,6 @@
+# Default tools — PM Agent
+# Planning / advisory PM agent: NO default tools. The PM Agent reasons over provided context and
+# produces proposals/reports; it does not extract, execute, run, or dispatch. Any tooling, if ever
+# needed, is HUMAN-activated per instance (human_gate_policy.tool_activation is not granted here).
+version: 1
+default_tools: []

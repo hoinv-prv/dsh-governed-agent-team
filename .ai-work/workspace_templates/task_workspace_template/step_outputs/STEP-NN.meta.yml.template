@@ -1,0 +1,12 @@
+output_id: OUT-0000-00-01
+result_type: output
+working_aip_ref: AIP-EXEC-0000
+step_id: STEP-00
+output_locator: 04_findings.md#STEP-00
+created_at: 2026-01-01T00:00:00
+review_status: draft
+verification_level: unverified
+source_refs: []
+notes: |
+  Author fills this when step completes. Required keys = lint_workspace.STEP_OUTPUT_META_REQUIRED
+  (CR-AIWS-2026-08-127 C6); set `verification_level:` to how source_refs were verified.

@@ -1,0 +1,9 @@
+# TEMPLATE — context/source_priority.yaml (Detailed Design v0.2 §1 instance context).
+# Ordering hint for which source areas to weigh first.
+priority_order:
+  - area: <docs/ or module>
+    rank: 1
+    reason: <why first>
+  - area: <src/ or module>
+    rank: 2
+    reason: <why next>

@@ -1,0 +1,7 @@
+---
+aiws_version: v1.2.1
+release_date: 2026-08-31
+---
+
+Stamped by build_aiws_install_package.py (CR-AIWS-2026-08-066). Read by
+compose_aiws_rules.py to version the AIWS block in each rule file.

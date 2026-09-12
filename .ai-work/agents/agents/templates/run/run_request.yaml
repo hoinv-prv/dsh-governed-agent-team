@@ -1,0 +1,10 @@
+# TEMPLATE — run_request.yaml (Detailed Design v0.2 §8.3). Plain/literal scalars only (OQ-B1).
+run_id: RUN-YYYYMMDD-HHMM-<short_task>
+agent_instance_id: <instance_id>
+requested_by: HUMAN
+requested_at: "<YYYY-MM-DD>"
+related_aip: null
+related_task_card: <TASK-CARD-ID or null>
+purpose: <one-line purpose>
+expected_outputs:
+  - <output artifact>

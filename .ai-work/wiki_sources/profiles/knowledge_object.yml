@@ -1,0 +1,57 @@
+profile_id: knowledge_object
+description: >
+  Shared profile for node_kind=object metas (Knowledge Objects): a logical entity
+  hand-authored like a source artifact (artifact_locator: __OBJECT__, no backing file).
+  The object subtype rides source_type (open-union, Knowledge_Object_Model_Spec DP2);
+  the values below are the ACTIVE object kinds (DP3 §3bis.1). CR-AIWS-2026-06-004.
+# Active object kinds (DP3 §3bis.1). business_rule is DEFERRED (CR-AIWS-2026-06-003);
+# re-activate by adding `- business_rule` here — DATA edit, no CR (open-union). Project
+# kinds extend with a `prj_`-prefixed value here, also no CR.
+source_types:
+  - function
+  - screen
+  - api
+  - batch
+  - table
+  - module
+  - concept
+  # ASP-COBOL preset object kinds (CR-AIWS-2026-08-026, DP-026-H). Namespaced on purpose: the
+  # builder's own defaults were `module` and `concept`, which are already taken above by the
+  # generic kinds — adopting them unprefixed would have made an ASP program-module node
+  # indistinguishable from any other module object in the graph.
+  # ON UPGRADE these do NOT arrive by themselves: `merge_wiki_source_profiles.py` appends only
+  # missing top-level KEYS, never new items into a list that already exists. An existing
+  # installation must add them to its runtime copy by hand — see the preset guide's upgrade note.
+  # asp_file   = a file ACCESSED but never defined (work file, print device, tape unit)
+  # asp_module = a program module reachable by CALL but with no source in the tree
+  # asp_system = an ASP system (a corpus root; resolution never crosses one)
+  # NOTE: keep these on their OWN lines. An inline `- value  # comment` is read by the
+  # YAML-subset parser as the value INCLUDING the comment text, so the kind silently
+  # never registers (measured while applying CR-AIWS-2026-08-026).
+  - asp_file
+  - asp_module
+  - asp_system
+  # `system_command` is NOT namespaced, unlike the three above, because the builder writes it as a
+  # LITERAL (syscmd.py) rather than reading it from config — a project cannot change it. Accepted as-is
+  # (it collides with nothing today and describes exactly what it is); the follow-up asked of the source
+  # project is to make it configurable like its three siblings, after which it can be namespaced.
+  - system_command
+knowledge_targets:
+  - object_identity
+  - object_relations
+# Object out-edges use the relation registers (Knowledge_Relationship Spec), NOT documentary
+# roles: representation (represented_by) + domain (x:calls / x:part_of / x:reads), navigation-only.
+# Hint only — objects are hand-authored (DP6), so the builder does not scaffold them.
+related_sources:
+  emit_scaffold: false
+  expected_roles:
+    - represented_by
+    - x:calls
+    - x:part_of
+
+# Active object kinds (DP3 §3bis.1). business_rule is DEFERRED (CR-AIWS-2026-06-003);
+# re-activate by adding `- business_rule` here — DATA edit, no CR (open-union). Project
+# kinds extend with a `prj_`-prefixed value here, also no CR.
+# CR-AIWS-2026-06-043 Change A: optional per-source-type lookup-key stopwords (project-generic terms
+# too broad for THIS source type). Empty = no effect. Project-wide terms → project_stopwords.yml.
+extra_stopwords: []

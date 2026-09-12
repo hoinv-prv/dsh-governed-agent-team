@@ -1,0 +1,158 @@
+# cobol-wiki pack — sample config
+#
+# Copy to `.ai-work/cobol_wiki.config.yml` in the target project and edit. Everything
+# project-specific lives here; the builder code stays generic.
+#
+# ─── AUTHORING RULES (not style preferences — the parser enforces them) ──────────────
+# The project is stdlib-only, so this file is read by the AIWS YAML-SUBSET parser, which
+# was measured on 2026-08-07 to have hard limits:
+#
+#   OK      nested block mappings; `[a, b]` at top level or in a plain nested mapping;
+#           list items whose fields are all scalars; true/false; regex kept verbatim.
+#   BROKEN  `{k: v}` flow mappings anywhere        -> silently become a plain string
+#           `[a, b]` inside a LIST ITEM            -> silently becomes a plain string
+#           a nested list inside a LIST ITEM       -> SILENTLY CORRUPTS the outer list
+#
+# So: inside a list item, multi-value fields are written as a COMMA-SEPARATED STRING.
+# `config.py` splits them, and refuses to run if it detects the corruption signature.
+#
+# Regex uses SINGLE backslashes — the parser does not process escapes.
+# ─────────────────────────────────────────────────────────────────────────────────────
+
+source_root: src                    # layout under it: {system}/{library}/{file}
+systems: [system_a, system_b]       # [] for a single-system project; NEVER resolved across
+source_type: asp_cobol_source        # DP-026-A. The engine default is the un-namespaced
+profile_id: asp_cobol_source         # `cobol_source` — declare, do not inherit.
+
+source_id:
+  prefix: SRC-PRJ
+  template: "{prefix}-{system}-{library}-{name}"
+  # Overrides are matched most-specific-first on the flat match_* keys below.
+  # Reference corpus needed (system, library, file_type) to reach 99.98% reproduction —
+  # (system, library) alone left 215 ids unreproducible.
+  overrides:
+    - match_system: system_a
+      match_library: LIB_MAIN
+      template: "{prefix}-{library}-{name}"
+    - match_system: system_a
+      match_library: LIB_CL
+      match_file_type: cl
+      template: "{prefix}-{system}-{library}-{name}"
+
+file_type:
+  # Extensions are only a hint.
+  by_extension:
+    COB: cobol
+    CB: cobol
+    CBL: cobol
+    CL: cl
+    PRC: cl
+    FDG: fdg
+    SMD: smd
+    MFG: mfg
+    DP1: dps
+    FFX: ffx
+    OVD: ovd
+    TXT: cobol
+  # Content sniff BEATS the extension. In the reference corpus every `.PRC` file was
+  # COBOL despite the extension table saying CL — 399/399 fixed by this one rule.
+  # `when_ext` is a comma-separated string: it sits inside a list item.
+  sniff:
+    - when_ext: PRC,TXT
+      pattern: '^\s*(IDENTIFICATION\s+DIVISION|PROGRAM-ID\.)'
+      type: cobol
+  # Some formats cannot be told apart by extension OR content (e.g. printout PDFs of
+  # different definition kinds, whose text extracts as mojibake). Declare those by hand;
+  # absent a map they keep the by_extension value and the builder records a caution.
+  explicit_map_file: config/explicit_file_types.csv
+
+handlers:                           # dotted paths — drop in your own dialect handler
+  # `cobol` reads a parse and needs the `cobol_parser` library on the import path.
+  # Where it cannot be installed, fall back to `cobol_wiki.handlers.cobol_regex`
+  # (text matching, no dependency — it invents references on keyword COPY forms
+  # and on sequence-numbered members; see that module's header).
+  cobol: cobol_wiki.handlers.cobol
+  cl: cobol_wiki.handlers.cl
+  fdg: cobol_wiki.handlers.fdg
+  smd: cobol_wiki.handlers.shallow
+  mfg: cobol_wiki.handlers.shallow
+  default: cobol_wiki.handlers.binary_stub   # `default`, not "*" — quotes survive as part of the key
+
+encoding:
+  # Order matters: a pure-ASCII file decodes under both, and the FIRST entry names it.
+  # Getting this backwards mislabelled 36% of the reference corpus.
+  try_order: [utf-8, shift_jis]
+  binary_if_nul_in_first: 4096
+
+extract:
+  # Reference corpus had edges generated from COMMENTED-OUT statements. Default off;
+  # turn on only to reproduce such a corpus deliberately.
+  include_commented_statements: false
+
+  # The business name lives in the HEADER COMMENT block, not in code. Rules are tried
+  # in order; first match wins. Regex rules capture group 1.
+  business_name:
+    - kind: regex
+      pattern: '^\s*\*?\s*REMARKS\.\s*(.+)$'
+    - kind: regex
+      pattern: '\bTITLE\b\s*[.:]?\s*[''"](.+?)[''"]'
+    - kind: regex
+      pattern: '\bTITLE\b\s*[.:]?\s+(.+?)\s*\*?$'
+    - kind: first_comment
+      within_lines: 14
+      skip_banner: true
+      skip_prefixes: SUB-PRO,OK,DATE,AUTHOR,HENKO,JOB,MFG,USER
+
+  # Device prefixes on `ASSIGN TO`. `name` is the replacement template applied to the
+  # match; `\0` keeps the whole token (used where the device is part of the identity).
+  file_assign:
+    - pattern: '^DA-(?:\d+-)?S-(.+)$'
+      name: '\1'
+      kind: disk
+    - pattern: '^MT-\d+-(.+)$'
+      name: '\0'
+      kind: tape
+
+# Second `calls` population: CL invoking system commands. In the reference corpus one
+# system recorded 2805 of these and the other zero, while both used the commands
+# heavily — so treat a missing half as a coverage gap, not as "not applicable".
+system_commands:
+  catalog: [DLTFILE, CRTFILE, CHGFILE, DLTOVRF, OVRPRTF, SORTD, CNVFILE, SETISF, OVRF]
+  node_id: "{prefix}-SYSCMD-{name}"
+  emit_caller_edges: true
+
+resolve:
+  scope: system                     # only valid value — two systems are independent
+  # `.LIB` in `CALL PGM-x.LIB` names the OBJECT library (where the program runs), not
+  # the source library (where the meta lives). Try it as a source library, then fall
+  # back to a name-only lookup in the CALLER's system. This single rule took `calls`
+  # recall from 99.3% to 100% on the reference corpus.
+  library_hint: object_library
+  # Role keys use an UNDERSCORE, never a colon: the parser splits each line on its first
+  # colon and quoting does not help, so `x:uses:` would be read as key `x`. `config.py`
+  # maps x_uses -> x:uses, x_accesses -> x:accesses.
+  type_constraints:
+    calls: [cobol, cl]              # a call never lands on a form/definition artifact
+    x_uses: [fdg, smd, cobol]
+  # With 2+ candidates left, drop the caller itself: a CL routinely invokes a COBOL
+  # program of the SAME name, and both are programs so the type constraint cannot
+  # separate them. Portable — no per-project priority list needed for that case.
+  exclude_self: true
+  library_priority: [LIB_MAIN, LIB_CL]   # last-resort tie-break; project-specific
+  on_ambiguous: cautions            # cautions | skip — never guess
+  on_unresolved: cautions           # callee with no meta (external program) -> caution
+
+# ── Object nodes (CR-AIWS-2026-08-026, DP-026-H) ──────────────────────────────────────
+# The engine's built-in defaults for these three are `prj_file` / `module` / `concept`.
+# `module` and `concept` are ALREADY TAKEN by AIWS's generic object kinds, so an ASP node
+# adopting them would be indistinguishable from any other module/concept object in the
+# graph. Declare the namespaced values — do not inherit the defaults.
+#
+# Keep every comment on its OWN line. The YAML-subset parser reads `key: value  # note`
+# with the note attached to the value, which is how a setting silently fails to apply.
+objects:
+  file_node_source_type: asp_file
+  module_source_type: asp_module
+  system_source_type: asp_system
+  # file_node_dir is NOT derived from source_type — renaming the types leaves it alone.
+  file_node_dir: _FILES

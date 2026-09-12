@@ -1,0 +1,49 @@
+# Agent Blueprint Registry — AI Agents Pack
+# Schema: Detailed Design v0.2 §2. Paths are RELATIVE to the pack root (product/agents/ canonical · .ai-work/agents/ installed — byte-identical mirror) — OQ-1 relative-path decision.
+# Required entry fields: blueprint_id, name, type, status, path, description.
+version: 1
+updated_at: "2026-06-21"
+blueprints:
+  - blueprint_id: aiws_wiki_meta_strategy_coordinator
+    name: Wiki Meta Strategy Coordinator
+    type: coordinator
+    status: active
+    path: agents/blueprints/aiws_wiki_meta_strategy_coordinator/
+    description: >-
+      Planning-only coordinator. Brainstorms with HUMAN and defines the Wiki/meta build
+      strategy + scope + source-area priority. Produces plan/strategy artifacts only;
+      does NOT run other agents and does NOT update Official Wiki.
+  - blueprint_id: aiws_pm_agent
+    name: PM Agent
+    type: project_management
+    status: active
+    path: agents/blueprints/aiws_pm_agent/
+    description: |
+      Planning / advisory project-management agent. Produces task breakdown, progress reports,
+      risk/issue/decision logs (+ optional re-plan options, prioritization). Proposes options and
+      surfaces HUMAN decision points; does NOT make final decisions, auto-run, orchestrate, or
+      dispatch other agents, and does NOT change the official plan/schedule or Official Wiki.
+      Wiki Consumer Agent (AP-DDR-01) — consumes Wiki/metadata; Wiki-first NOT Wiki-only.
+  - blueprint_id: aiws_detailed_design_review_agent
+    name: Detailed Design Review Agent
+    type: review
+    status: active
+    path: agents/blueprints/aiws_detailed_design_review_agent/
+    description: |
+      Review/advisory agent for Detailed Design documents. Reviews against Wiki (first, not only) +
+      source/reference docs + checklist to detect requirement/business-rule gaps, inconsistency,
+      ambiguity, status-transition/error-handling gaps, data-model, testability, and offshore-handoff
+      risk. Produces actionable findings only; does NOT approve, edit, update Official Wiki, or
+      auto-promote candidates (all HUMAN-gated).
+  - blueprint_id: aiws_testcase_review_agent
+    name: Test Case Review Agent
+    type: review
+    status: active
+    path: agents/blueprints/aiws_testcase_review_agent/
+    description: |
+      Review/advisory agent for the test-case lens. Reviews test case documents for requirement
+      coverage and quality (normal/abnormal/boundary, role/data-state/status-transition, error
+      handling, preconditions/test data, expected-result clarity, regression risk, requirement
+      traceability). Wiki-first NOT Wiki-only; reuses the shared _shared/review/ assets. Does NOT
+      approve test cases, auto-update the document/Wiki/memory, or execute tests; all promotion
+      is HUMAN-gated.

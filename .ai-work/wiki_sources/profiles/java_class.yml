@@ -1,0 +1,53 @@
+profile_id: java_class
+title: Java class/interface/enum/record profile
+source_type: java_source
+default_impact: medium
+knowledge_targets:
+  - java_type
+  - method
+  - call_site
+lookup_key_hints:
+  - package
+  - class
+  - interface
+  - enum
+  - record
+  - extends
+  - implements
+  - annotation
+  - method
+  - import
+section_hints:
+  - Java Facts
+  - Annotations
+  - Imports
+  - Methods
+  - Outbound Calls
+impact_rules:
+  - if: "contains:public "
+    severity: medium
+  - if: "contains:@RestController"
+    severity: high
+  - if: "contains:@Service"
+    severity: high
+  - if: "contains:@Repository"
+    severity: high
+  - if: "contains:@Mapper"
+    severity: high
+cautions:
+  - regex-based extraction; nested generics and multi-line signatures may be imprecise
+  - outbound_calls is heuristic (identifier.method() / new Type()); not a real AST call graph
+  - use meta for navigation; always verify structure against the .java artifact
+
+# ── Step-2 enrich (CR-AIWS-2026-06-048) — PROJECT-OWNED, optional. EXAMPLE ONLY (commented out). ──
+# Uncomment + edit in YOUR copy under .ai-work/wiki_sources/profiles/ to add project-specific signal
+# WITHOUT forking this canonical builder. Patterns are verbatim Python regex — SINGLE backslashes,
+# single-quoted. Single-token added keys still pass the lookup-key stopword filter. See README.
+# enrich:
+#   lookup_key_patterns:
+#     - '\b[MA]-\d{2}\b'              # e.g. function tags M-01 / A-02 -> extra lookup keys
+#   concept_keywords:
+#     Scheduled: ["batch job", "scheduled task"]   # @Scheduled present -> tag these concepts
+# For logic beyond declarative rules: add a project code-hook .ai-work/wiki_sources/enrich/java_source.py
+# exposing  def enrich(facts, src, ctx) -> dict  (returns extra_lookup_keys/extra_concepts/extra_edges/
+# extra_sections). Imported only if present; errors degrade to declarative-only (never break Step 1).

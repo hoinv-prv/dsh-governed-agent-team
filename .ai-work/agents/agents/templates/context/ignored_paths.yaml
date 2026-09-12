@@ -1,0 +1,10 @@
+# TEMPLATE — context/ignored_paths.yaml (Detailed Design v0.2 §7.3).
+ignored_paths:
+  - node_modules/
+  - vendor/
+  - dist/
+  - build/
+  - .git/
+  - tmp/
+notes:
+  - Ignore generated/cache/vendor folders unless explicitly required.

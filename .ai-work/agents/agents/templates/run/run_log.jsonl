@@ -1,0 +1,5 @@
+{"event":"started","timestamp":"<YYYY-MM-DDTHH:MM:SS+09:00>","run_id":"RUN-YYYYMMDD-HHMM-<short_task>"}
+{"event":"input_loaded","paths":["<path>"]}
+{"event":"tool_used","tool":"<tool_id>","output":"<artifact>"}
+{"event":"output_created","artifact":"output/<file>"}
+{"event":"completed","status":"needs_human_review"}

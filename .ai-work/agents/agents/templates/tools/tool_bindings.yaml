@@ -1,0 +1,14 @@
+# TEMPLATE — tools/tool_bindings.yaml (Detailed Design v0.2 §16).
+# active_tools = HUMAN-reviewed/active; candidate_tools = agent-local, require HUMAN review to promote.
+active_tools: []
+# Example active tool entry:
+#   - tool_id: extract_folder_tree
+#     location: tools/common/extract_folder_tree.py     # relative path
+#     status: active
+#     output_schema: folder_tree_schema_v1
+candidate_tools: []
+# Example candidate tool entry:
+#   - tool_id: extract_custom_batch_jobs
+#     location: agents/instances/<instance_id>/tools/local_tools/extract_custom_batch_jobs.py
+#     status: candidate
+#     review_required: true

@@ -1,0 +1,12 @@
+# Skill index — Wiki Meta Strategy Coordinator
+# Lists the reasoning skills this coordinator applies. MVP = prompt/spec-level skills (no code).
+version: 1
+skills:
+  - id: wiki_meta_goal_clarification
+    purpose: Clarify the HUMAN's Wiki/meta goal, scope boundaries, and success signal.
+  - id: source_area_identification
+    purpose: Identify which project source areas (docs/code/DB/API) are in scope and relevant.
+  - id: metadata_type_prioritization
+    purpose: Decide which metadata types to build and in what priority order.
+  - id: decision_point_definition
+    purpose: Define the HUMAN decision points / review gates along the meta-build flow.

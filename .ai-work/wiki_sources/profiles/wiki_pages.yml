@@ -1,0 +1,45 @@
+# wiki_pages.yml — Source Interpretation Profile cho curated synthesis pages
+# (CR-AIWS-2026-07-023). Trang do LLM viết trên deterministic base, HUMAN-gated
+# (2 gate). Declare vocab để lint chấp nhận source_type (_allowed_source_types).
+# KHÁC overview_pages: trang này HUMAN-editable sau Gate 2 (không GENERATED footer).
+
+profile_id: wiki_pages
+source_type: wiki_page
+description: Curated synthesis pages — LLM-authored, HUMAN-gated (CR-AIWS-2026-07-023 clause C)
+id_scheme: SRC-PAGE-<KIND>-<SYSTEM>
+
+# DP-4: page_kind enum + CUSTOM_ escape hatch (lint WARN khi kind lạ ngoài pattern).
+page_kinds:
+  - SYSTEM_OVERVIEW
+  - SYSTEM_ARCHITECTURE
+  - FUNCTION_LIST
+  - SCREEN_LIST
+  - TABLE_LIST
+  - BUSINESS_FLOW
+  - DIRECTORY_MAP
+  - INTENT_NAVIGATION
+  - READ_FIRST
+  - GLOSSARY
+custom_kind_pattern: "CUSTOM_[A-Z0-9_]+"
+
+knowledge_targets:
+  - domain
+  - navigation
+
+# authority: candidate trước Gate 2, curated_reference sau Gate 2 (DP-ratified 2026-07-11).
+authority_level_pre_gate: candidate
+authority_level_post_gate: curated_reference
+
+# DP-5: ngôn ngữ trang mặc định theo team (VN, giữ thuật ngữ gốc); override per-project
+# qua project_profile key `wiki_pages_language`.
+default_language: vi
+
+# Trang ngắn — không chunk.
+chunk_enabled: false
+hints_depth: 0
+
+# Trang generated bởi build-pages: quan hệ đã nằm trong nội dung trang, không scaffold
+# `## Related Sources` (CR-AIWS-2026-08-092 C2; cơ chế CR-AIWS-2026-06-043 B). Meta muốn khai
+# quan hệ thật vẫn thêm section bằng tay — refresh giữ section đã resolve (CR-017/CR-021).
+related_sources:
+  emit_scaffold: false

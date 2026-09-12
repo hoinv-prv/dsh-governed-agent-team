@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>aiws-doc-convert — hướng dẫn nhanh</title>
+<style>
+  :root{
+    --paper:#f5f7f6; --surface:#ffffff; --surface-2:#eef1ef;
+    --ink:#16211d; --ink-soft:#586460; --line:#e0e5e2;
+    --xberg:#0d7a63; --xberg-tint:#e7f4f0;
+    --docling:#a9622f; --docling-tint:#f6ece3;
+    --warn:#9a6a00;
+    --mono:ui-monospace,"SF Mono","Cascadia Code",Consolas,Menlo,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --maxw:900px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#0e1412; --surface:#151d1a; --surface-2:#1b2420;
+      --ink:#e9ede9; --ink-soft:#9bab9f; --line:#27322c;
+      --xberg:#37d0aa; --xberg-tint:#12241f;
+      --docling:#e0a468; --docling-tint:#241a12;
+      --warn:#e0b64d;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0e1412; --surface:#151d1a; --surface-2:#1b2420;
+    --ink:#e9ede9; --ink-soft:#9bab9f; --line:#27322c;
+    --xberg:#37d0aa; --xberg-tint:#12241f;
+    --docling:#e0a468; --docling-tint:#241a12; --warn:#e0b64d;
+  }
+  :root[data-theme="light"]{
+    --paper:#f5f7f6; --surface:#ffffff; --surface-2:#eef1ef;
+    --ink:#16211d; --ink-soft:#586460; --line:#e0e5e2;
+    --xberg:#0d7a63; --xberg-tint:#e7f4f0;
+    --docling:#a9622f; --docling-tint:#f6ece3; --warn:#9a6a00;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px 96px}
+
+  header.top{
+    position:sticky; top:0; z-index:5;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .top .wrap{padding-top:14px; padding-bottom:14px;
+    display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+  .brand{font-family:var(--mono); font-weight:600; font-size:15px; letter-spacing:-.2px}
+  .brand b{color:var(--xberg)}
+  .top .tag{color:var(--ink-soft); font-size:13px}
+  .top nav{margin-left:auto; display:flex; gap:18px; font-size:13px}
+  .top nav a{color:var(--ink-soft); text-decoration:none}
+  .top nav a:hover{color:var(--ink)}
+
+  .hero{padding:64px 0 40px}
+  .eyebrow{font-size:12px; text-transform:uppercase; letter-spacing:.16em;
+    color:var(--xberg); font-weight:600; margin:0 0 18px}
+  h1{font-size:clamp(30px,5vw,46px); line-height:1.08; letter-spacing:-.02em;
+    font-weight:800; margin:0 0 18px; text-wrap:balance; max-width:20ch}
+  .lede{font-size:19px; color:var(--ink-soft); max-width:62ch; margin:0}
+  .lede b{color:var(--ink); font-weight:600}
+
+  section{padding-top:52px}
+  h2{font-size:13px; text-transform:uppercase; letter-spacing:.14em;
+    color:var(--ink-soft); font-weight:600; margin:0 0 22px;
+    padding-bottom:10px; border-bottom:1px solid var(--line)}
+  h3{font-size:17px; margin:0 0 6px; letter-spacing:-.01em}
+
+  .flow{display:flex; gap:12px; flex-wrap:wrap}
+  .step{flex:1 1 210px; background:var(--surface); border:1px solid var(--line);
+    border-radius:12px; padding:18px 18px 16px}
+  .step .n{font-family:var(--mono); font-size:12px; color:var(--xberg); font-weight:600}
+  .step p{margin:6px 0 0; color:var(--ink-soft); font-size:14px}
+
+  .engines{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media (max-width:640px){.engines{grid-template-columns:1fr}}
+  .card{background:var(--surface); border:1px solid var(--line);
+    border-radius:14px; padding:22px; position:relative; overflow:hidden}
+  .card::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px}
+  .card.x::before{background:var(--xberg)}
+  .card.d::before{background:var(--docling)}
+  .card .badge{display:inline-block; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.08em; padding:3px 9px; border-radius:999px; margin-bottom:12px}
+  .card.x .badge{color:var(--xberg); background:var(--xberg-tint)}
+  .card.d .badge{color:var(--docling); background:var(--docling-tint)}
+  .card h3 .m{font-family:var(--mono); font-weight:700}
+  .card p{margin:8px 0 0; font-size:14px; color:var(--ink-soft)}
+  .card ul{margin:14px 0 0; padding:0; list-style:none; font-size:13.5px}
+  .card li{padding:5px 0 5px 22px; position:relative; color:var(--ink)}
+  .card li::before{content:""; position:absolute; left:2px; top:12px;
+    width:7px; height:7px; border-radius:2px}
+  .card.x li::before{background:var(--xberg)}
+  .card.d li::before{background:var(--docling)}
+
+  .tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:14px}
+  table{border-collapse:collapse; width:100%; min-width:560px; font-size:14px}
+  th,td{text-align:left; padding:13px 18px; border-bottom:1px solid var(--line); vertical-align:top}
+  thead th{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); font-weight:600}
+  th.attr{color:var(--ink-soft); font-weight:500; width:30%}
+  col.xcol{background:var(--xberg-tint)}
+  thead th.xh{color:var(--xberg)}
+  thead th.dh{color:var(--docling)}
+  tbody tr:last-child td{border-bottom:none}
+  td .m{font-family:var(--mono); font-size:13px}
+  .pick{font-size:11px; font-weight:700; color:var(--xberg); text-transform:uppercase; letter-spacing:.05em}
+
+  .types{display:flex; flex-wrap:wrap; gap:8px}
+  .chip{font-family:var(--mono); font-size:13px; padding:6px 12px; border-radius:8px;
+    background:var(--surface-2); border:1px solid var(--line); color:var(--ink)}
+
+  .anatomy{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:8px}
+  .anatomy .row{display:flex; gap:16px; padding:16px; border-radius:10px; align-items:flex-start}
+  .anatomy .row+.row{border-top:1px solid var(--line)}
+  .anatomy .key{font-family:var(--mono); font-size:12.5px; color:var(--xberg); font-weight:600;
+    min-width:120px; padding-top:2px}
+  .anatomy .val{font-size:14px; color:var(--ink-soft)}
+  .anatomy .val b{color:var(--ink); font-weight:600}
+
+  .note{display:flex; gap:12px; background:var(--surface-2); border:1px solid var(--line);
+    border-left:3px solid var(--warn); border-radius:10px; padding:14px 16px; font-size:14px; color:var(--ink-soft)}
+  .note b{color:var(--ink)}
+
+  pre{margin:0; background:var(--surface); border:1px solid var(--line);
+    border-radius:12px; padding:18px; overflow-x:auto}
+  code{font-family:var(--mono); font-size:13.5px; color:var(--ink)}
+  .cmt{color:var(--ink-soft)}
+  .kw{color:var(--xberg)}
+
+  .pipe{display:flex; align-items:stretch; gap:0; flex-wrap:nowrap; overflow-x:auto; padding-bottom:4px}
+  .stage{flex:1 0 138px; background:var(--surface); border:1px solid var(--line);
+    border-radius:12px; padding:14px 14px 12px}
+  .stage.opt{border-style:dashed}
+  .stage .si{font-family:var(--mono); font-size:11px; color:var(--xberg); font-weight:600;
+    text-transform:uppercase; letter-spacing:.05em}
+  .stage h4{margin:6px 0 4px; font-size:14.5px; letter-spacing:-.01em}
+  .stage h4 .opttag{font-weight:400; color:var(--ink-soft); font-size:12px}
+  .stage p{margin:0; font-size:12.5px; color:var(--ink-soft); line-height:1.45}
+  .pipe .arrow{flex:0 0 24px; display:flex; align-items:center; justify-content:center;
+    color:var(--ink-soft); font-size:17px}
+  @media (max-width:680px){
+    .pipe{flex-direction:column; overflow-x:visible}
+    .pipe .arrow{transform:rotate(90deg); height:20px; flex-basis:20px}
+  }
+  footer{margin-top:64px; padding-top:24px; border-top:1px solid var(--line);
+    color:var(--ink-soft); font-size:13px}
+  a{color:var(--xberg)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="brand">/<b>aiws-doc-convert</b></span>
+    <span class="tag">tài liệu → Markdown cho AI đọc</span>
+    <nav>
+      <a href="#engines">Engine</a>
+      <a href="#compare">So sánh</a>
+      <a href="#pipeline">Quy trình</a>
+      <a href="#output">Kết quả</a>
+      <a href="#use">Cách dùng</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="padding-top:56px">
+    <p class="eyebrow">Hướng dẫn nhanh</p>
+    <h1>Biến mọi tài liệu thành Markdown mà AI đọc được.</h1>
+    <p class="lede">Đưa vào file Excel, slide, PDF, sơ đồ hay ảnh — nhận về Markdown sạch, có cấu trúc.
+    Thông tin nằm trong phần <b>hình ảnh</b> (ô tô màu, lưu đồ, ảnh chụp màn hình) đều được giữ:
+    mỗi sheet / slide / trang có một ảnh kèm theo, phần văn bản trung thực, và một tóm tắt ngắn;
+    sơ đồ được chuyển thành <b>Mermaid</b>. Chọn engine một lần — <b>xberg</b> hoặc <b>docling</b> — và skill sẽ nhớ.</p>
+  </section>
+
+  <section id="how">
+    <h2>Cách hoạt động — hai giai đoạn</h2>
+    <div class="flow">
+      <div class="step">
+        <span class="n">Giai đoạn 1</span>
+        <h3>Trích xuất</h3>
+        <p>Cơ học, không dùng AI. Lấy ra văn bản, bảng, và ảnh của từng trang / slide / sheet. Nhanh và rẻ.</p>
+      </div>
+      <div class="step">
+        <span class="n">Giai đoạn 2 · tuỳ chọn</span>
+        <h3>Tăng cường</h3>
+        <p>AI đọc từng ảnh và viết tóm tắt — kèm Mermaid cho sơ đồ. Luôn hỏi trước (~5k token mỗi ảnh).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="engines">
+    <h2>Hai engine</h2>
+    <div class="engines">
+      <div class="card x">
+        <span class="badge">Khuyên dùng · mặc định</span>
+        <h3><span class="m">xberg</span></h3>
+        <p>Lớp mỏng bọc lõi Rust <b style="color:var(--ink)">kreuzberg</b>. Thiết kế cho tốc độ và
+        cài đặt nhẹ — không tải gì lúc chạy.</p>
+        <ul>
+          <li>~33 MB, không có model ML</li>
+          <li>Chạy offline hoàn toàn, ổn định</li>
+          <li>Kết quả theo từng đơn vị + Mermaid cho sơ đồ</li>
+          <li>Xử lý mọi định dạng bên dưới</li>
+        </ul>
+      </div>
+      <div class="card d">
+        <span class="badge">Thay thế</span>
+        <h3><span class="m">docling</span></h3>
+        <p>Bộ chuyển đổi của IBM Research, dùng model ML. Nặng hơn, nhưng mạnh khi trích
+        bảng dữ liệu thô đầy đủ.</p>
+        <ul>
+          <li>~1 GB (torch + model)</li>
+          <li>Tải model ở lần chạy đầu</li>
+          <li>Chỉ cài khi bạn chọn</li>
+          <li>Hợp với dữ liệu thô dày đặc</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare">
+    <h2>xberg vs docling — nhìn nhanh</h2>
+    <div class="tablewrap">
+      <table>
+        <colgroup><col><col class="xcol"><col></colgroup>
+        <thead>
+          <tr><th class="attr">&nbsp;</th><th class="xh">xberg <span class="pick">← bắt đầu ở đây</span></th><th class="dh">docling</th></tr>
+        </thead>
+        <tbody>
+          <tr><th class="attr">Dung lượng cài</th><td>~33 MB</td><td>~1 GB</td></tr>
+          <tr><th class="attr">Tải model</th><td>Không</td><td>Có — lần đầu, từ Hugging Face</td></tr>
+          <tr><th class="attr">Chạy offline</th><td>Luôn luôn</td><td>Sau khi tải model một lần</td></tr>
+          <tr><th class="attr">Tốc độ</th><td>Nhanh</td><td>Chậm hơn (suy luận model)</td></tr>
+          <tr><th class="attr">Kiểu kết quả</th><td>Theo đơn vị: ảnh + văn bản trung thực + tóm tắt; sơ đồ → Mermaid</td><td>Markdown đầy đủ; bảng rất tốt</td></tr>
+          <tr><th class="attr">Hợp nhất với</th><td>Nạp cho AI / RAG, việc nhanh, cài nhẹ</td><td>Trích dữ liệu thô đầy đủ</td></tr>
+          <tr><th class="attr">Giấy phép</th><td>Elastic-2.0 (kreuzberg)</td><td>MIT (IBM Research)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--ink-soft); font-size:14px; margin-top:14px">
+      Nguyên tắc chung: <b style="color:var(--ink)">dùng xberg trừ khi bạn thực sự cần bảng đầy đủ của docling.</b>
+      Cả hai chỉ trích xuất — skill này không dựng Markdown ngược lại thành file Office có định dạng.</p>
+  </section>
+
+  <section id="pipeline">
+    <h2>Quy trình — một file thành Markdown như thế nào</h2>
+    <div class="pipe">
+      <div class="stage"><span class="si">1 · vào</span><h4>File của bạn</h4><p>Bất kỳ định dạng nào bên dưới, mỗi lần một file.</p></div>
+      <div class="arrow">→</div>
+      <div class="stage"><span class="si">2 · định tuyến</span><h4>Nhận diện &amp; route</h4><p><span class="m" style="font-family:var(--mono);font-size:12px">ingest.py</span> đọc phần mở rộng, chỉ nạp handler tương ứng.</p></div>
+      <div class="arrow">→</div>
+      <div class="stage"><span class="si">3 · render</span><h4>Ảnh mỗi đơn vị</h4><p>Mỗi sheet / slide / trang → một PNG.</p></div>
+      <div class="arrow">→</div>
+      <div class="stage"><span class="si">4 · trích</span><h4>Văn bản trung thực</h4><p>Ô, gạch đầu dòng, bảng thật — giữ theo từng đơn vị.</p></div>
+      <div class="arrow">→</div>
+      <div class="stage opt"><span class="si">5 · tăng cường</span><h4>Tóm tắt AI <span class="opttag">· tuỳ chọn</span></h4><p>Tóm tắt + Mermaid cho sơ đồ.</p></div>
+      <div class="arrow">→</div>
+      <div class="stage"><span class="si">6 · ra</span><h4>Một thư mục</h4><p>Markdown có cấu trúc + tài nguyên.</p></div>
+    </div>
+
+    <p style="color:var(--ink-soft); font-size:14px; margin:22px 0 10px">Mọi lần chuyển đổi đều ra cùng một dạng:</p>
+    <pre><code>&lt;output&gt;/
+  <span class="kw">source.md</span>      <span class="cmt"># mỗi đơn vị một mục: ảnh + văn bản trích + tóm tắt</span>
+  <span class="kw">pages/</span>         <span class="cmt"># ảnh render đặt tên theo số: slide_01.png · page_01.png · sheet_01.png</span>
+  <span class="kw">figures/</span>       <span class="cmt"># logo / ảnh chụp nhúng được tách ra</span>
+  <span class="kw">manifest.json</span>  <span class="cmt"># số lượng · engine · cảnh báo · đường dẫn file gốc</span></code></pre>
+
+    <h3 style="margin-top:34px; font-size:15px">Từng định dạng xử lý ra sao</h3>
+    <div class="tablewrap" style="margin-top:14px">
+      <table>
+        <thead><tr><th class="attr">Định dạng</th><th>Ảnh từ</th><th>Văn bản từ</th><th>Điểm đáng chú ý</th></tr></thead>
+        <tbody>
+          <tr><td><span class="m">xlsx · xls</span></td><td>Excel → PDF → trang</td><td>giá trị ô</td><td>sheet lớn lấy mẫu + cảnh báo ⚠️</td></tr>
+          <tr><td><span class="m">pptx · ppt</span></td><td>PowerPoint, mỗi slide</td><td>python-pptx, bảng Markdown thật</td><td>.ppt cũ → chỉ render</td></tr>
+          <tr><td><span class="m">docx · doc</span></td><td>Word → PDF → trang</td><td>văn bản tài liệu</td><td>—</td></tr>
+          <tr><td><span class="m">pdf</span></td><td>mỗi trang</td><td>lớp văn bản nhúng</td><td>trang scan do AI đọc ở Giai đoạn 2</td></tr>
+          <tr><td><span class="m">png · jpg · …</span></td><td>chính file ảnh</td><td>AI đọc (Giai đoạn 2)</td><td>UI / ảnh chụp → tóm tắt, không dump OCR</td></tr>
+          <tr><td><span class="m">drawio</span></td><td>sơ đồ đã render</td><td>XML → Mermaid trực tiếp</td><td>lưu đồ thành Mermaid chỉnh sửa được</td></tr>
+          <tr><td><span class="m">svg</span></td><td>raster hoá</td><td>nhãn nhúng</td><td>—</td></tr>
+          <tr><td><span class="m">csv · txt · md · html · json · xml · yaml · eml</span></td><td>— (không render)</td><td>thẳng sang Markdown</td><td>định dạng văn bản đi thẳng</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--ink-soft); font-size:13px; margin-top:12px">
+      Đang hiển thị: quy trình <b style="color:var(--ink)">xberg</b> (mặc định). docling chạy quy trình dựa trên
+      model riêng nhưng xuất ra cùng dạng thư mục, nên cách dùng phía sau giống hệt.</p>
+  </section>
+
+  <section id="output">
+    <h2>Kết quả trông như thế nào</h2>
+    <p style="color:var(--ink-soft); font-size:15px; max-width:62ch; margin:0 0 18px">
+      Mỗi file một thư mục. Bên trong, <span class="m" style="font-family:var(--mono);font-size:13px">source.md</span>
+      chứa mỗi đơn vị một mục (sheet / slide / trang), mỗi mục gồm ba phần:</p>
+    <div class="anatomy">
+      <div class="row"><div class="key">🖼 Ảnh</div><div class="val">Ảnh PNG render của đơn vị — <b>bằng chứng gốc</b>, giữ lại cho những gì văn bản không thể hiện được.</div></div>
+      <div class="row"><div class="key">Văn bản trích</div><div class="val"><b>Văn bản trung thực</b> thực sự có trên đơn vị — ô, gạch đầu dòng, bảng Markdown thật. Không bịa thêm.</div></div>
+      <div class="row"><div class="key">Tóm tắt</div><div class="val">Tóm tắt ngắn gọn dễ hiểu (Giai đoạn 2). Lưu đồ còn kèm khối <b>```mermaid</b>.</div></div>
+    </div>
+    <div class="note" style="margin-top:16px">
+      <span>⚠️</span>
+      <div><b>Sheet dữ liệu lớn được lấy mẫu, không dump hết.</b> Sheet 20.000 dòng chỉ giữ một mẫu văn bản
+      + cảnh báo thay vì hàng trăm ảnh trang vô ích — và manifest luôn ghi lại đường dẫn file gốc nên không mất gì âm thầm.</div>
+    </div>
+  </section>
+
+  <section id="types">
+    <h2>Các định dạng xử lý được</h2>
+    <div class="types">
+      <span class="chip">xlsx</span><span class="chip">xls</span><span class="chip">pptx</span>
+      <span class="chip">ppt</span><span class="chip">docx</span><span class="chip">doc</span>
+      <span class="chip">pdf</span><span class="chip">png</span><span class="chip">jpg</span>
+      <span class="chip">tiff</span><span class="chip">bmp</span><span class="chip">gif</span>
+      <span class="chip">webp</span><span class="chip">drawio</span><span class="chip">svg</span>
+      <span class="chip">csv</span><span class="chip">txt</span><span class="chip">md</span>
+      <span class="chip">html</span><span class="chip">json</span><span class="chip">xml</span>
+      <span class="chip">yaml</span><span class="chip">eml</span>
+    </div>
+    <p style="color:var(--ink-soft); font-size:13.5px; margin-top:14px">
+      Render Office (xlsx / pptx / docx) dùng MS Office cài sẵn trên Windows; trên nền tảng khác các nhánh đó
+      tự giảm cấp nhẹ nhàng, còn nhánh text / pdf / ảnh vẫn chạy.</p>
+  </section>
+
+  <section id="use">
+    <h2>Cách dùng</h2>
+    <p style="color:var(--ink-soft); font-size:15px; max-width:62ch; margin:0 0 16px">
+      Chỉ cần nói bằng ngôn ngữ thường — không phải nhớ lệnh:</p>
+    <pre><code><span class="cmt"># bất kỳ câu nào dưới đây đều kích hoạt skill</span>
+<span class="kw">"chuyển đổi file này"</span>   <span class="kw">"trích xuất nội dung"</span>   <span class="kw">"nạp mấy tài liệu này"</span>
+<span class="kw">"biến cái này thành markdown"</span>   <span class="kw">"đọc tài liệu này cho AI"</span></code></pre>
+    <div class="flow" style="margin-top:18px">
+      <div class="step"><span class="n">lần đầu</span><p>Skill hỏi dùng engine nào — <b style="color:var(--ink)">xberg</b> hay docling — và nhớ lựa chọn của bạn.</p></div>
+      <div class="step"><span class="n">sau đó</span><p>Giai đoạn 1 trích xuất. Skill hỏi trước khi chạy Giai đoạn 2 tăng cường.</p></div>
+      <div class="step"><span class="n">đổi bất cứ lúc nào</span><p>Nói "dùng docling đi" (hoặc quay lại xberg) để đổi engine.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <b style="color:var(--ink)">Trung thực là trên hết.</b> Văn bản trích không bao giờ bị bỏ để lấy tóm tắt,
+    và ảnh gốc luôn được giữ làm nguồn chuẩn. Mermaid do AI vẽ là dạng để tìm kiếm; ảnh mới là bản ghi.
+    &nbsp;·&nbsp; <span class="m" style="font-family:var(--mono)">aiws-doc-convert-skill</span>
+  </footer>
+
+</div>
+</body>
+</html>

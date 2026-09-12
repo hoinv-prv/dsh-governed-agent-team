@@ -1,0 +1,56 @@
+# Skill index — Detailed Design Review Agent
+# Lists the reasoning skills this review agent applies. MVP = prompt/spec-level skills (no code).
+# Mapped from REVIEW_AGENT_BLUEPRINT_TEMPLATE.md §8 (common) + DETAILED_DESIGN_REVIEW_AGENT_EXAMPLE.md (document-specific).
+version: 1
+
+# Document-type-AGNOSTIC review skills (shared baseline; same set used by every review blueprint).
+common_skills:
+  - id: classify_document_type
+    purpose: Confirm the target document is a Detailed Design and identify its sub-type.
+  - id: select_review_mode
+    purpose: Choose review depth (quick / standard / deep) and any requested focus lens.
+  - id: create_review_plan
+    purpose: Write a short review plan (scope, references, checklist, expected output, limitations).
+  - id: identify_required_references
+    purpose: Determine which Wiki entries and source/reference documents the review needs.
+  - id: wiki_first_lookup
+    purpose: Read relevant Wiki entries first for grounding before opening source documents.
+  - id: source_reference_selection
+    purpose: Select and read the underlying source/reference docs that back important findings.
+  - id: completeness_review
+    purpose: Detect missing information against requirements, business rules, and the checklist.
+  - id: consistency_review
+    purpose: Detect contradictions within the document and against Wiki/source.
+  - id: ambiguity_review
+    purpose: Detect ambiguous or under-specified statements that block implementation/testing.
+  - id: conflict_detection
+    purpose: Detect and report conflicts between the document and Wiki/source (do not resolve silently).
+  - id: severity_classification
+    purpose: Assign Critical/Major/Minor/Suggestion by implementation/project risk.
+  - id: finding_table_generation
+    purpose: Produce actionable findings in the shared finding-table format with evidence and impact.
+  - id: learning_candidate_extraction
+    purpose: Propose learning candidates (status candidate) after the run.
+
+# Detailed-design-SPECIFIC review skills (this blueprint only).
+document_specific_skills:
+  - id: requirement_alignment_review
+    purpose: Check that related requirements are fully and correctly reflected in the design.
+  - id: business_rule_completeness_review
+    purpose: Check that business rules are complete, including exceptions and edge conditions.
+  - id: screen_api_db_consistency_review
+    purpose: Check that screen, API, and DB responsibilities and fields are mutually consistent.
+  - id: status_transition_review
+    purpose: Check that status transitions are fully defined (initial, valid, invalid, cancel, retry, rollback, terminal).
+  - id: input_validation_review
+    purpose: Check that input validation rules and validation messages are defined.
+  - id: exception_error_handling_review
+    purpose: Check that exception, error-handling, cancel/retry/rollback behaviors are defined where needed.
+  - id: data_lifecycle_review
+    purpose: Check that data create/update/delete timings and ownership are clear.
+  - id: permission_role_review
+    purpose: Check that role/permission rules are clear and consistent with requirements.
+  - id: batch_timing_dependency_review
+    purpose: Check that external interfaces, batch timing, and dependencies are clearly defined.
+  - id: implementation_handoff_readiness_review
+    purpose: Check that the document is sufficient for implementation and test-case creation (offshore-handoff ready).

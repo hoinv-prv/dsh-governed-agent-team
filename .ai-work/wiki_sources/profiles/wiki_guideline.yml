@@ -1,0 +1,41 @@
+profile_id: wiki_guideline
+title: Wiki Guideline Package profile
+source_type: wiki_guideline
+default_impact: medium
+knowledge_targets:
+  - reference
+  - pattern
+  - domain
+lookup_key_hints:
+  - Wiki
+  - Onboarding
+  - Playbook
+  - Checklist
+  - Guideline
+  - Source
+  - Truth
+  - Reference
+  - History
+  - Update
+  - Maintenance
+  - Rollout
+  - Working
+  - Legacy
+section_hints:
+  - Purpose
+  - Scope
+  - When to Use
+  - Checklist
+  - Steps
+  - Playbook
+  - Overview
+cautions:
+  - adopted as project-authoritative operational guidance; any change
+    goes through a version bump (v0_2+) to a side-by-side folder, not
+    in-place edit
+  - complements methodology v0.3 — does NOT override spec rules
+
+# CR-AIWS-2026-07-006 A4 (DP-912-1 nhịp 1): per-profile chunk opt-in — wiki_guidelines specs
+# >1000 lines/50KB build as parent + section metas (dogfood 2026-07-07: WIKI_META_INDEX_SPEC
+# → 45 children, self-test 784/784 PASS). Global default flip = follow-up A-1 (sau corpus thứ 2).
+chunk_enabled: true

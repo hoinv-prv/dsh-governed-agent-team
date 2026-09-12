@@ -1,0 +1,57 @@
+profile_id: asp_cobol_source
+title: ASP COBOL source profile (Fujitsu ASP — COBOL / control language / file definition)
+source_type: asp_cobol_source
+default_impact: medium
+# Scoped to Fujitsu ASP, NOT to COBOL in general (CR-AIWS-2026-08-026, DP-026-A). The dialect
+# lives in the config the builder reads, not in the engine: `.CB/.CL/.FDG/.SMD/.MFG/.DP1/.FFX/.OVD`
+# extensions, the `CALL PGM-X.LIB` object-library rule, and the ASP system-command catalog are all
+# ASP conventions. A different COBOL dialect gets its own preset (profile + config + route) on the
+# same engine — it does not reuse this one.
+knowledge_targets:
+  - program
+  - control_language_job
+  - file_definition
+  - file_access
+lookup_key_hints:
+  - program-id
+  - library
+  - system
+  - call
+  - copy
+  - assign
+  - select
+  - remarks
+  - title
+section_hints:
+  - COBOL Facts
+  - Calls
+  - Copybooks
+  - File Assignments
+  - Cautions
+impact_rules:
+  - if: "contains:CALL "
+    severity: medium
+  - if: "contains:MT-"
+    severity: high
+cautions:
+  - the library suffix on `CALL PGM-X.LIB` names the OBJECT library (where the program runs),
+    never the source library — resolution must not treat it as a system
+  - identity is the FILE name, not `PROGRAM-ID`; legacy sources disagree with themselves and
+    preferring the declaration collides two real files onto one id
+  - resolution is system-scoped and never crosses systems; a cross-system edge is meaningless
+    even where it would "fix" a miss
+  - relations come from a parse of the source (`cobol_parser`), not from text matching; where the
+    dependency-free `cobol_wiki.handlers.cobol_regex` fallback is configured instead, expect
+    references invented from keywords and from words inside string literals
+  - use meta for navigation; verify against the artifact before relying on a relation
+
+# ── Step-2 enrich (CR-AIWS-2026-06-048) — PROJECT-OWNED, optional. EXAMPLE ONLY (commented out). ──
+# Uncomment + edit in YOUR copy under .ai-work/wiki_sources/profiles/ to add project-specific signal
+# WITHOUT forking the canonical builder. Patterns are verbatim Python regex — SINGLE backslashes,
+# single-quoted. See product/wiki_source_profiles/README.md.
+# enrich:
+#   lookup_key_patterns:
+#     - '\bJOB-\d{4}\b'                   # site job numbers -> extra lookup keys
+#   concept_keywords:
+#     OVRPRTF: ["print override", "report routing"]
+extra_stopwords: []

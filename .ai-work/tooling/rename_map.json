@@ -1,0 +1,1887 @@
+{
+  "schema": "aiws_rename_map/v2",
+  "cr_id": "CR-AIWS-2026-07-058",
+  "cr_lineage": [
+    "CR-AIWS-2026-07-020",
+    "CR-AIWS-2026-07-025",
+    "CR-AIWS-2026-07-058"
+  ],
+  "generated_for": "aiws-<domain> consolidation (33 skills + commands -> 9 domain routers); chain-resolved over the CR-020 aiws-<domain>-<action> wave",
+  "dp_resolution": {
+    "A": "keep-semantic",
+    "B": "keep-tail",
+    "C": "rename-eval",
+    "D": "1-release",
+    "E": "no-settings.json",
+    "F": "v2.0"
+  },
+  "dp_resolution_025": {
+    "A": "rename aiws-lint-all -> aiws-lint",
+    "B": "v1.1.2",
+    "C": "exclude whole aiws-eval domain from install package"
+  },
+  "renames": [
+    {
+      "old": "create-aip",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-aip",
+      "skill": "aiws-aip",
+      "verb": "create",
+      "via": "aiws-aip-create",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "run-aip",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-aip",
+      "skill": "aiws-aip",
+      "verb": "run",
+      "via": "aiws-aip-run",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "init-workspace",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-aip",
+      "skill": "aiws-aip",
+      "verb": "init-workspace",
+      "via": "aiws-aip-init-workspace",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "point-step",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-aip",
+      "skill": "aiws-aip",
+      "verb": "point-step",
+      "via": "aiws-aip-point-step",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "build-active-step-context",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-aip",
+      "skill": "aiws-aip",
+      "verb": "build-step-context",
+      "via": "aiws-aip-build-step-context",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "lint-all",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-lint",
+      "skill": "aiws-lint",
+      "verb": "all",
+      "via": "aiws-lint-all",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "lookup-wiki-source",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "lookup",
+      "via": "aiws-wiki-lookup",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "build-wiki-source-meta",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "build-meta",
+      "via": "aiws-wiki-build-meta",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "refresh-wiki-source-meta",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "refresh-meta",
+      "via": "aiws-wiki-refresh-meta",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "register-wiki-source",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "register",
+      "via": "aiws-wiki-register",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "register-wiki-sources",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "register-batch",
+      "via": "aiws-wiki-register-batch",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "deregister-wiki-source",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "deregister",
+      "via": "aiws-wiki-deregister",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "refresh-wiki-source",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "refresh",
+      "via": "aiws-wiki-refresh",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "build-wiki-mapping-pattern",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "build-pattern",
+      "via": "aiws-wiki-build-pattern",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "refresh-wiki-mapping-pattern",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "refresh-pattern",
+      "via": "aiws-wiki-refresh-pattern",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "test-wiki-lookup",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "test-lookup",
+      "via": "aiws-wiki-test-lookup",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "add-local-knowledge",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "add-local-knowledge",
+      "via": "aiws-wiki-add-local-knowledge",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "build-wiki-overview",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "build-overview",
+      "via": "aiws-wiki-build-overview",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "init-project",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-pkg",
+      "skill": "aiws-pkg",
+      "verb": "install",
+      "via": "aiws-pkg-install",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "build-aiws-install-package",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-pkg",
+      "skill": "aiws-pkg",
+      "verb": "build",
+      "via": "aiws-pkg-build",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "update-aiws-package",
+      "kind": "skill",
+      "new": "aiws-pkg",
+      "skill": "aiws-pkg",
+      "verb": "upgrade",
+      "via": "aiws-pkg-upgrade",
+      "disposition": "deleted",
+      "note": "deprecation pointer (DP-920-D, 1 release) removed by CR-025 — clean-cut; no alias ships. Upgrade cleanup: temp-first HUMAN-confirmed deletion.",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "quick-install-aiws",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-pkg",
+      "skill": "aiws-pkg",
+      "verb": "quick-install",
+      "via": "aiws-pkg-quick-install",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "create-review-plan",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020",
+      "new": "aiws-review-plan",
+      "skill": "aiws-review-plan",
+      "verb": null,
+      "disposition": "renamed",
+      "trees": [
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "create-runtime-review-checklist",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020",
+      "new": "aiws-runtime-review-checklist",
+      "skill": "aiws-runtime-review-checklist",
+      "verb": null,
+      "disposition": "renamed",
+      "trees": [
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "docling-convert",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020",
+      "new": "aiws-util-docling-convert",
+      "skill": "aiws-util-docling-convert",
+      "verb": null,
+      "disposition": "renamed",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "mail-confirm",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020",
+      "new": "aiws-util-mail-confirm",
+      "skill": "aiws-util-mail-confirm",
+      "verb": null,
+      "disposition": "renamed",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "personal-notebook-write-lite",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020",
+      "new": "aiws-util-personal-notebook",
+      "skill": "aiws-util-personal-notebook",
+      "verb": null,
+      "disposition": "renamed",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "wiki-eval-generate",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-eval",
+      "skill": "aiws-eval",
+      "verb": "generate",
+      "via": "aiws-eval-generate",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "wiki-eval-answer",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-eval",
+      "skill": "aiws-eval",
+      "verb": "answer",
+      "via": "aiws-eval-answer",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "wiki-eval-reconcile",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-eval",
+      "skill": "aiws-eval",
+      "verb": "reconcile",
+      "via": "aiws-eval-reconcile",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "wiki-eval-meta",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-eval",
+      "skill": "aiws-eval",
+      "verb": "meta",
+      "via": "aiws-eval-meta",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "README-wiki-eval",
+      "kind": "skill",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-eval",
+      "skill": "aiws-eval",
+      "verb": null,
+      "via": "aiws-eval-readme",
+      "disposition": "merged",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "build-project-wiki",
+      "kind": "command",
+      "cr_id": "CR-AIWS-2026-07-020+CR-AIWS-2026-07-025",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "bootstrap",
+      "via": "aiws-wiki-bootstrap",
+      "disposition": "merged",
+      "trees": [
+        ".claude/commands",
+        "product/commands"
+      ]
+    },
+    {
+      "old": "aiws-aip-build-step-context",
+      "kind": "skill",
+      "new": "aiws-aip",
+      "skill": "aiws-aip",
+      "verb": "build-step-context",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-aip-create",
+      "kind": "skill",
+      "new": "aiws-aip",
+      "skill": "aiws-aip",
+      "verb": "create",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-aip-init-workspace",
+      "kind": "skill",
+      "new": "aiws-aip",
+      "skill": "aiws-aip",
+      "verb": "init-workspace",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-aip-point-step",
+      "kind": "skill",
+      "new": "aiws-aip",
+      "skill": "aiws-aip",
+      "verb": "point-step",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-aip-run",
+      "kind": "skill",
+      "new": "aiws-aip",
+      "skill": "aiws-aip",
+      "verb": "run",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-eval-answer",
+      "kind": "skill",
+      "new": "aiws-eval",
+      "skill": "aiws-eval",
+      "verb": "answer",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-eval-generate",
+      "kind": "skill",
+      "new": "aiws-eval",
+      "skill": "aiws-eval",
+      "verb": "generate",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-eval-meta",
+      "kind": "skill",
+      "new": "aiws-eval",
+      "skill": "aiws-eval",
+      "verb": "meta",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-eval-readme",
+      "kind": "skill",
+      "new": "aiws-eval",
+      "skill": "aiws-eval",
+      "verb": null,
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ],
+      "note": "content dissolved verbatim into the aiws-eval router intro (no operation file)"
+    },
+    {
+      "old": "aiws-eval-reconcile",
+      "kind": "skill",
+      "new": "aiws-eval",
+      "skill": "aiws-eval",
+      "verb": "reconcile",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-lint-all",
+      "kind": "skill",
+      "new": "aiws-lint",
+      "skill": "aiws-lint",
+      "verb": "all",
+      "disposition": "renamed",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-pkg-build",
+      "kind": "skill",
+      "new": "aiws-pkg",
+      "skill": "aiws-pkg",
+      "verb": "build",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-pkg-install",
+      "kind": "skill",
+      "new": "aiws-pkg",
+      "skill": "aiws-pkg",
+      "verb": "install",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-pkg-quick-install",
+      "kind": "skill",
+      "new": "aiws-pkg",
+      "skill": "aiws-pkg",
+      "verb": "quick-install",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-pkg-upgrade",
+      "kind": "skill",
+      "new": "aiws-pkg",
+      "skill": "aiws-pkg",
+      "verb": "upgrade",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-add-local-knowledge",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "add-local-knowledge",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-bootstrap",
+      "kind": "command",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "bootstrap",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        ".claude/commands",
+        "product/commands"
+      ]
+    },
+    {
+      "old": "aiws-wiki-build-meta",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "build-meta",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-build-overview",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "build-overview",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-build-pages",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "build-pages",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-build-pattern",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "build-pattern",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-deregister",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "deregister",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-lookup",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "lookup",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-refresh",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "refresh",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-refresh-meta",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "refresh-meta",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-refresh-pattern",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "refresh-pattern",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-register",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "register",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-register-batch",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "register-batch",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-wiki-test-lookup",
+      "kind": "skill",
+      "new": "aiws-wiki",
+      "skill": "aiws-wiki",
+      "verb": "test-lookup",
+      "disposition": "merged",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    },
+    {
+      "old": "aiws-util-docling-convert",
+      "kind": "skill",
+      "new": "aiws-doc-convert-skill",
+      "skill": "aiws-doc-convert-skill",
+      "verb": null,
+      "disposition": "replaced",
+      "cr_id": "CR-AIWS-2026-07-058",
+      "note": "docling->xberg default engine; extraction-only (reconstruction dropped); docling retained as alternate engine INSIDE the new skill (scripts/docling)",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": true
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": true
+        }
+      ]
+    }
+  ],
+  "shim_removals": [
+    {
+      "removed": ".claude/commands/aiws-agent.md",
+      "kind": "command_copy",
+      "skill": "aiws-agent",
+      "verb": null,
+      "cr_id": "CR-AIWS-2026-07-025",
+      "note": "byte-copy of the pack spec; authoritative spec stays pack-internal (dev: development/ai_agents/commands/, installed: .ai-work/agents/commands/)"
+    },
+    {
+      "removed": ".claude/commands/aiws-agent-create.md",
+      "kind": "command_copy",
+      "skill": "aiws-agent",
+      "verb": "create",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "note": "byte-copy of the pack spec; authoritative spec stays pack-internal (dev: development/ai_agents/commands/, installed: .ai-work/agents/commands/). SUPERSEDED (CR-AIWS-2026-08-019): path re-occupied by a GENERATED pointer-stub — a different artifact, not the old byte-copy; do NOT remove on upgrade.",
+      "superseded_by_cr": "CR-AIWS-2026-08-019"
+    },
+    {
+      "removed": ".claude/commands/aiws-agent-run.md",
+      "kind": "command_copy",
+      "skill": "aiws-agent",
+      "verb": "run",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "note": "byte-copy of the pack spec; authoritative spec stays pack-internal (dev: development/ai_agents/commands/, installed: .ai-work/agents/commands/). SUPERSEDED (CR-AIWS-2026-08-019): path re-occupied by a GENERATED pointer-stub — a different artifact, not the old byte-copy; do NOT remove on upgrade.",
+      "superseded_by_cr": "CR-AIWS-2026-08-019"
+    },
+    {
+      "removed": ".claude/commands/aiws-agent-feedback.md",
+      "kind": "command_copy",
+      "skill": "aiws-agent",
+      "verb": "feedback",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "note": "byte-copy of the pack spec; authoritative spec stays pack-internal (dev: development/ai_agents/commands/, installed: .ai-work/agents/commands/). SUPERSEDED (CR-AIWS-2026-08-019): path re-occupied by a GENERATED pointer-stub — a different artifact, not the old byte-copy; do NOT remove on upgrade.",
+      "superseded_by_cr": "CR-AIWS-2026-08-019"
+    },
+    {
+      "removed": ".claude/commands/aiws-agent-review-learning.md",
+      "kind": "command_copy",
+      "skill": "aiws-agent",
+      "verb": "review-learning",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "note": "byte-copy of the pack spec; authoritative spec stays pack-internal (dev: development/ai_agents/commands/, installed: .ai-work/agents/commands/). SUPERSEDED (CR-AIWS-2026-08-019): path re-occupied by a GENERATED pointer-stub — a different artifact, not the old byte-copy; do NOT remove on upgrade.",
+      "superseded_by_cr": "CR-AIWS-2026-08-019"
+    },
+    {
+      "removed": ".claude/commands/aiws-agent-upgrade.md",
+      "kind": "command_copy",
+      "skill": "aiws-agent",
+      "verb": "upgrade",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "note": "byte-copy of the pack spec; authoritative spec stays pack-internal (dev: development/ai_agents/commands/, installed: .ai-work/agents/commands/). SUPERSEDED (CR-AIWS-2026-08-019): path re-occupied by a GENERATED pointer-stub — a different artifact, not the old byte-copy; do NOT remove on upgrade.",
+      "superseded_by_cr": "CR-AIWS-2026-08-019"
+    },
+    {
+      "removed": ".claude/commands/aiws-agent-clone.md",
+      "kind": "command_copy",
+      "skill": "aiws-agent",
+      "verb": "clone",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "note": "byte-copy of the pack spec; authoritative spec stays pack-internal (dev: development/ai_agents/commands/, installed: .ai-work/agents/commands/). SUPERSEDED (CR-AIWS-2026-08-019): path re-occupied by a GENERATED pointer-stub — a different artifact, not the old byte-copy; do NOT remove on upgrade.",
+      "superseded_by_cr": "CR-AIWS-2026-08-019"
+    },
+    {
+      "removed": ".claude/commands/aiws-agent-rename.md",
+      "kind": "command_copy",
+      "skill": "aiws-agent",
+      "verb": "rename",
+      "cr_id": "CR-AIWS-2026-07-025",
+      "note": "byte-copy of the pack spec; authoritative spec stays pack-internal (dev: development/ai_agents/commands/, installed: .ai-work/agents/commands/). SUPERSEDED (CR-AIWS-2026-08-019): path re-occupied by a GENERATED pointer-stub — a different artifact, not the old byte-copy; do NOT remove on upgrade.",
+      "superseded_by_cr": "CR-AIWS-2026-08-019"
+    }
+  ],
+  "keep": [
+    "aiws-agent",
+    "aiws-agent-clone",
+    "aiws-agent-create",
+    "aiws-agent-feedback",
+    "aiws-agent-rename",
+    "aiws-agent-review-learning",
+    "aiws-agent-run",
+    "aiws-agent-upgrade",
+    "aiws-review-plan",
+    "aiws-runtime-review-checklist",
+    "aiws-doc-convert-skill",
+    "aiws-util-mail-confirm",
+    "aiws-util-personal-notebook"
+  ],
+  "drops": [
+    {
+      "name": "build-knowledge-object",
+      "kind": "drop",
+      "reason": "retired CR-AIWS-2026-05-005",
+      "trees": [
+        ".claude/skills",
+        "product/skills",
+        ".ai-work/procedural/skills",
+        "product/procedural/skills"
+      ]
+    },
+    {
+      "name": "refresh-knowledge-object",
+      "kind": "drop",
+      "reason": "retired CR-AIWS-2026-05-005",
+      "trees": [
+        ".claude/skills",
+        "product/skills",
+        ".ai-work/procedural/skills",
+        "product/procedural/skills"
+      ]
+    }
+  ],
+  "cleanups": [
+    {
+      "name": "convert-excel-to-md",
+      "kind": "cleanup",
+      "reason": "remnant folder (scripts only, no SKILL.md)",
+      "trees": [
+        {
+          "tree": ".claude/skills",
+          "has_SKILL_md": false,
+          "contents": [
+            "scripts"
+          ]
+        },
+        {
+          "tree": "product/skills",
+          "has_SKILL_md": false,
+          "contents": [
+            "scripts"
+          ]
+        },
+        {
+          "tree": ".ai-work/procedural/skills",
+          "has_SKILL_md": false,
+          "contents": [
+            "requirements.txt"
+          ]
+        },
+        {
+          "tree": "product/procedural/skills",
+          "has_SKILL_md": false,
+          "contents": [
+            "requirements.txt"
+          ]
+        }
+      ],
+      "status": "deleted_2026-07-11 (HUMAN authorized)"
+    }
+  ],
+  "notes": [
+    "trees[] records only mirrors that ACTUALLY contain the name at build time (per-skill enumeration, not assume-4).",
+    "build-wiki-overview: ship-gap — present in .claude/skills + both procedural trees but NOT product/skills (fix in apply: add to product/skills).",
+    "mail-confirm: present in .claude/skills + product/skills only (missing from both procedural trees).",
+    "aiws-agent: .claude/skills only (wired from product/agents at build) — KEEP.",
+    "update-aiws-package -> aiws-pkg-upgrade: keep OLD name as thin deprecation-pointer skill for 1 transition release (chicken-egg).",
+    "old names remain resolvable via this map for immutable zones (CRs/history/workspaces/releases) which are NOT rewritten.",
+    "v2 (CR-025): `new` = the FINAL surviving skill/folder; `skill`+`verb` locate the operation (`.ai-work/procedural/skills/<skill>/operations/<verb>.md`); disposition merged|renamed|deleted|dropped. Invocation form: `/aiws-<domain> <verb>`.",
+    "shim_removals are NOT denylist entries: aiws-agent verb specs keep their names pack-internal (development/ai_agents/commands/, installed .ai-work/agents/commands/); only the .claude/commands byte-copies were removed."
+  ],
+  "procedural_only": [
+    "aiws-agent-clone",
+    "aiws-agent-create",
+    "aiws-agent-feedback",
+    "aiws-agent-rename",
+    "aiws-agent-review-learning",
+    "aiws-agent-run",
+    "aiws-agent-upgrade"
+  ],
+  "procedural_only_note": "Skills in keep[] that intentionally have NO invocable surface: agent verb specs ship pack-internal (CR-AIWS-2026-07-025 / CR-AIWS-2026-07-031 T3); the router skill aiws-agent is the user-facing entry point. Guarded by lint rule skill_keep_without_surface (CR-AIWS-2026-07-044 T3)."
+}

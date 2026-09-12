@@ -1,0 +1,25 @@
+output_id: OUT-<step_id>-001
+result_type: output
+working_aip_ref:
+step_id:
+step_title:
+output_type:
+output_locator:
+decision_summary:
+conversation_refs: []
+discussion_trace_locator:
+created_at:
+created_by:
+input_refs: []
+source_refs: []
+used_by_steps: []
+used_by_final_output: false
+review_status: draft
+accepted_by:
+reviewed_by:
+limitation:
+promotion_candidate: false
+improvement_candidate: false
+runtime_queue_refs: []
+capture_inbox_refs: []
+rollback_hint:

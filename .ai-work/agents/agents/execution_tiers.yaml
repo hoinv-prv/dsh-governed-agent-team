@@ -1,0 +1,30 @@
+# execution_tiers.yaml — Execution-tier registry (CR-AIWS-2026-08-045; 2-layer, stateless)
+#
+# Layer 1 `tiers:`             — ABSTRACT capability tiers (provider-agnostic): autonomy policy only.
+# Layer 2 `provider_profiles:` — per-provider mapping tier → {model, effort}. MVP ships ONLY `claude`.
+#   Adding a provider (e.g. codex) = add a block here, NO schema change — and a profile is DATA,
+#   never an executor sanction (external executors stay CR-AIWS-2026-07-019 default-REJECT / §8D).
+# Changing a mapping = edit THIS file only (single point of update; no CR unless the schema changes).
+# Desks reference tier NAMES via capability.tiers_supported: {tier: ceiling} (desk-side ceilings).
+# Runs stamp tier + RESOLVED {provider, model, effort} (run_state/run_request — CR-045 C5).
+# Initial values per DP-045-4 (PO approved 2026-08-14); model ids verified against the current
+# Claude harness model registry 2026-08-14 (claude-sonnet-5 / claude-opus-5).
+schema_version: 1
+default_provider: claude
+
+tiers:
+  standard:
+    display_name: Standard
+    stop_threshold: normal              # dừng-hỏi ở ngưỡng confidence thông thường
+    scoped_load_depth: hints_only       # desk memory: digest + hints (AP-CR-26), không mở full
+  deep:
+    display_name: Deep
+    stop_threshold: tolerant            # chịu được mơ hồ cao hơn trước khi dừng-hỏi
+    scoped_load_depth: open_full_when_needed
+
+provider_profiles:
+  claude:
+    effort_vocab: [low, medium, high, xhigh, max]   # harness-observed 2026-08-14 (CR-045 §11.11)
+    map:
+      standard: { model: claude-sonnet-5, effort: medium }
+      deep: { model: claude-opus-5, effort: high }

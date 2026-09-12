@@ -1,0 +1,19 @@
+personal_notebook:
+  path: "./.aiws/personal_notebook"
+  default_write_policy: "human_confirmation_required"
+  allow_ai_auto_write: false
+  allow_auto_promotion: false
+  default_folder_layout:
+    readme: "README.md"
+    inbox: "inbox.md"
+    notes_dir: "notes"
+    archive_dir: "archive"
+  required_fields:
+    - status
+    - authority
+    - source
+    - intended_use
+    - review_needed
+  default_status: "idea"
+  default_authority: "personal"
+  sensitivity_policy: "confirm_before_saving_sensitive_or_confidential_content"

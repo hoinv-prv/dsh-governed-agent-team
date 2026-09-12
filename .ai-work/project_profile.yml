@@ -1,0 +1,51 @@
+# AIWS project profile — project-level config (committed).
+#
+# THIS FILE IS YOURS. AIWS only ever touches the block marked `AIWS:BEGIN project_profile` below;
+# anything you add outside it — keys, comments, notes to your future self — is never overwritten by an
+# install or an upgrade. Write in it freely. The comments explaining *why* a setting is what it is are
+# the most valuable thing in this file, and nothing AIWS does will delete them.
+#
+# Seeded by `aiws-pkg install` (and by `quick_install_aiws.py`). To fill it in or complete it later:
+#
+#     py .ai-work/tooling/project_profile.py check      # what is missing, and what is inconsistent
+#     py .ai-work/tooling/project_profile.py refresh    # show the additions (dry run)
+#     py .ai-work/tooling/project_profile.py refresh --apply
+#
+# `check` never guesses. If something is missing it prints the key, the reason it matters, and the
+# command to supply it, then exits non-zero — so it behaves the same in CI, in an agent run, and in
+# your terminal.
+#
+# CR-AIWS-2026-08-128.
+
+# AIWS:BEGIN project_profile v1
+# Keys AIWS manages. Everything OUTSIDE this block is yours and is never overwritten.
+
+# Which schema revision this file targets. Leave it alone; `refresh` bumps it.
+schema_version: 1
+
+# Does this project host MORE THAN ONE system/subsystem whose same-named functions have DIFFERENT
+# specs?  false (default) = single system: no scoping, no prompts, lookups unchanged.
+#
+# When true, `systems:` below MUST list the valid ids — that pair is what stops a lookup from silently
+# mixing two systems' specs. A `multi_system: true` with an empty list is not "permissive", it is an
+# error state, and the tools now refuse rather than accept anything.
+multi_system: false
+
+# The project's valid system ids, flat. REQUIRED when multi_system is true, ignored when it is false.
+# A meta's optional `system:` field must be one of these.
+#   systems:
+#     - billing
+#     - crm
+systems: []
+
+# Which of the ids above are SYNTHETIC (fixture / test corpora rather than a real system). Registering
+# a fixture under a real system id is what this list exists to prevent. Must be a subset of `systems`.
+synthetic_systems: []
+
+# Keep ONE index.jsonl instead of the dual-index layout. Leave false unless you know you want it —
+# the default suits every normal install.
+wiki_single_index: false
+# AIWS:END
+
+# ---------------------------------------------------------------------------
+# Your own project settings and notes can go below here. AIWS will not touch them.

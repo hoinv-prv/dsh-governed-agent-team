@@ -1,0 +1,5 @@
+# Default tools — Wiki Meta Strategy Coordinator
+# Planning-only coordinator: NO default extraction tools. Tools are introduced by metadata
+# sub-agents (Phase E) and the Metadata Tooling Agent (Phase F).
+version: 1
+default_tools: []

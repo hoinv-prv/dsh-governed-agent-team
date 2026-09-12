@@ -1,0 +1,15 @@
+# TEMPLATE — context/source_references.yaml (Detailed Design v0.2 §7.2).
+# sot_layer (optional, CR-AIWS-2026-07-012): classify each entry's Source-of-Truth layer for
+# review grounding — sot1 (behavior/spec authority) | sot2 (usage/empirical) |
+# target_direction (direction only, never overrides sot1) | reference_only (cross-check only).
+# Absent = unclassified (backward-compat). Semantics: _shared/review/process/source_trace_rule.md §6.
+source_documents:
+  - path: <docs folder>
+    type: <requirement_docs | basic_design_docs | ...>
+    priority: <high | medium | low>
+    sot_layer: <sot1 | sot2 | target_direction | reference_only>   # optional
+source_code:
+  - path: <src folder>
+    type: <application_source | db_migrations | ...>
+    priority: <high | medium | low>
+    sot_layer: <sot1 | sot2 | target_direction | reference_only>   # optional

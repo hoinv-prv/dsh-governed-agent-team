@@ -1,0 +1,32 @@
+{
+  "schema": "p2_rename_map v1 (CR-AIWS-2026-08-006 T3; khuon CR-AIWS-2026-07-020)",
+  "applied_at": "2026-08-05 (AIP-EXEC-993)",
+  "dual_read": true,
+  "renames": [
+    {
+      "old": "agents/instances/",
+      "new": "agents/task_desks/",
+      "kind": "folder (installed tree)"
+    },
+    {
+      "old": "instance.yaml",
+      "new": "desk.yaml",
+      "kind": "per-desk identity file"
+    },
+    {
+      "old": ".blueprint_snapshot/",
+      "new": ".atdb_snapshot/",
+      "kind": "per-desk reconcile baseline"
+    },
+    {
+      "old": "blueprint_improvement_candidate",
+      "new": "atdb_improvement_candidate",
+      "kind": "learning candidate type (alias — old records stay valid)"
+    }
+  ],
+  "unchanged_by_design": [
+    "YAML keys inside desk.yaml (instance_id, blueprint_ref, ...) — machine-key stability",
+    "CLI arg surface of run_agent.py (fuzzy instance token)",
+    "agents/blueprints/ folder name (ATDB is the concept name)"
+  ]
+}

@@ -1,0 +1,29 @@
+# Skill index — Test Case Review Agent
+# Lists the document-type-specific (coverage-axis) review skills this blueprint applies.
+# MVP = prompt/spec-level skills (no code). Common review skills (wiki-first lookup, severity
+# classification, finding-table generation, etc.) are defined once by the shared review process
+# (../../_shared/review/process/document_review_process.md) and are NOT re-listed here.
+version: 1
+skills:
+  - id: requirement_coverage_review
+    purpose: Check whether every in-scope requirement/feature is covered by at least one test case.
+  - id: normal_abnormal_case_balance_review
+    purpose: Check the balance of normal, abnormal, and error-path cases — not just happy paths.
+  - id: boundary_value_review
+    purpose: Check boundary / limit / off-by-one values are exercised on relevant inputs and ranges.
+  - id: role_permission_case_review
+    purpose: Check role / permission / authorization variations are covered where they affect behavior.
+  - id: data_state_variation_review
+    purpose: Check different data states (empty, single, many, stale, conflicting) are covered.
+  - id: status_transition_coverage_review
+    purpose: Check state-machine / status-transition paths (valid and invalid transitions) are covered.
+  - id: error_message_coverage_review
+    purpose: Check validation rules and error/exception messages are covered and asserted.
+  - id: precondition_test_data_review
+    purpose: Check preconditions and test data are explicit, sufficient, and reproducible.
+  - id: expected_result_clarity_review
+    purpose: Check expected results are specific, verifiable, and tied to an observable outcome.
+  - id: regression_risk_review
+    purpose: Identify areas at regression risk and check they are protected by test coverage.
+  - id: requirement_trace_review
+    purpose: Check requirement-to-test traceability — untraced requirements and orphan/duplicate cases.

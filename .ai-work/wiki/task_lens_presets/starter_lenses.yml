@@ -1,0 +1,114 @@
+# Task Lens presets — DEFAULT (shipped)
+#
+# CR-AIWS-2026-05-030 (Task Lens MVP). Canonical default = the 7 starter lenses of
+# Task_Lens_Spec_MVP §5, expressed as preset records.
+# CR-AIWS-2026-05-032 (refinement): added 2 authoring lenses (requirement_authoring +
+# design_authoring; net 9) + the relevant_reference_types field on authoring/review/
+# capture lenses. The lens is an ADDITIVE, non-exhaustive HINT (Task_Lens_Spec §F).
+#
+# INSTALL: aiws-pkg install / aiws-pkg upgrade copy this file to
+#   .ai-work/wiki/task_lens_presets/starter_lenses.yml
+# where it becomes PROJECT-CUSTOMIZABLE (edit/extend per project; add project or
+# custom/runtime lenses — Task_Lens_Spec §10). This default file is the canonical
+# source; do not hand-edit the installed project copy expecting it to flow back.
+#
+# SEMANTICS: presets are HINTS, not hard filters (Task_Lens_Spec §2/§3.3/§11). They
+# order/surface which document types to reference and how to expand — they never
+# exclude relevant knowledge or block expansion. No-Lens is always valid. The lens is
+# AI-inferred and HUMAN-adjustable. The §12 engine (scoring/orchestration/auto-select/
+# UI/telemetry) stays DEFERRED.
+#
+# SCHEMA (per preset):
+#   lens_id                   stable id (matches a §5 starter lens or a project lens)
+#   intent                    one line: the task intent this lens serves
+#   relevant_source_types     prioritised Artifact_Type_Taxonomy artifact_type values
+#                             (+ Knowledge-Object kinds, Knowledge_Object_Model_Spec §3bis:
+#                             function/screen/api/batch/table/module/concept)
+#                             — the SUBJECT docs read/produced
+#   relevant_reference_types  NON-EXHAUSTIVE hint list of process/standard artifact kinds
+#                             the lens should ALSO surface — the HOW-TO-DO-IT standards
+#                             (guideline / checklist / template / sop / methodology_spec /
+#                             naming_convention …). OPEN, project-extensible vocab; distinct
+#                             from relevant_source_types; both are HINTS (Task_Lens_Spec §F)
+#   register_priority         ordering over the 3 relation registers:
+#                             documentary | representation | domain
+#   expansion_priority        ordered relation roles to follow first (## Related Sources
+#                             role enum + domain x: roles + representation roles)
+#   no_lens_when              conditions under which No-Lens is preferable for this intent
+#
+# reference_type -> source_type BRIDGE (CR-033, non-binding — for lookup_wiki_source.py --source-type):
+#   *_template                                          -> process_template
+#   *_guideline / *_checklist / naming_convention / *_playbook -> process_guideline
+#   sop                                                 -> sop
+#   methodology_spec                                    -> methodology_spec
+# A convenience map for retrieval only; reference_type vocab stays OPEN (Task_Lens_Spec §B/§F).
+
+presets:
+  - lens_id: requirement_understanding
+    intent: Understand what is required — clarify scope, features, and acceptance criteria before design or build.
+    relevant_source_types: [requirement_definition, meeting_note, basic_design, function]
+    relevant_reference_types: [requirement_guideline]
+    register_priority: [documentary, representation, domain]
+    expansion_priority: [upstream_input, companion_requirement, represents, downstream_navigation]
+    no_lens_when: Intent spans many unrelated features, or the task is a quick lookup of one already-known requirement id.
+
+  - lens_id: requirement_authoring
+    intent: Author a requirements definition (RD) from meeting notes / raw requirements — produce a complete, standards-conformant RD.
+    relevant_source_types: [meeting_note, requirement_definition, basic_design, function]
+    relevant_reference_types: [requirement_template, requirement_guideline, sop, methodology_spec]
+    register_priority: [documentary, representation, domain]
+    expansion_priority: [upstream_input, companion_requirement, represents, downstream_navigation]
+    no_lens_when: Only refining one already-drafted requirement, or the authoring standard/template is already in hand.
+
+  - lens_id: design_review
+    intent: Review design — assess correctness, completeness, and consistency of design against requirements.
+    relevant_source_types: [basic_design, detail_design, screen_mockup, db_schema, api_manual, requirement_definition, function, screen, table, api]
+    relevant_reference_types: [design_review_checklist, design_guideline]
+    register_priority: [documentary, representation, domain]
+    expansion_priority: [companion_design, upstream_input, system_foundation, represents]
+    no_lens_when: Broad architectural exploration across many subsystems, or the target design doc is not yet identified.
+
+  - lens_id: design_authoring
+    intent: Author a design (BD / DD / screen design) from requirements — produce a complete, standards-conformant design doc.
+    relevant_source_types: [requirement_definition, basic_design, detail_design, screen_mockup, db_schema, api_manual, function, screen, table, api]
+    relevant_reference_types: [design_doc_template, design_guideline, naming_convention, methodology_spec]
+    register_priority: [documentary, representation, domain]
+    expansion_priority: [upstream_input, companion_design, system_foundation, represents]
+    no_lens_when: Broad architectural exploration with no target design doc yet, or only tweaking an existing design.
+
+  - lens_id: test_design
+    intent: Design or review tests — derive test cases from requirements and design; assess coverage.
+    relevant_source_types: [test_spec, unit_test_spec, requirement_definition, basic_design, detail_design, function, screen]
+    relevant_reference_types: [test_case_template, test_design_guideline, test_review_checklist]
+    register_priority: [documentary, representation, domain]
+    expansion_priority: [upstream_input, companion_design, tests, downstream_target]
+    no_lens_when: Exploratory test-strategy work with no specific feature or design doc in scope.
+
+  - lens_id: code_investigation
+    intent: Investigate implementation behavior — trace how a function / module / API / batch actually works.
+    relevant_source_types: [detail_design, api_manual, db_schema, function, module, api, table, batch]
+    register_priority: [domain, documentary, representation]
+    expansion_priority: [calls, reads, writes, part_of, companion_design]
+    no_lens_when: A high-level functional question answerable from requirement/design without tracing implementation.
+
+  - lens_id: knowledge_capture
+    intent: Capture or curate reusable knowledge — synthesize patterns, conventions, and decisions for the Knowledge Hub.
+    relevant_source_types: [methodology_spec, meeting_note, basic_design, requirement_definition, concept]
+    relevant_reference_types: [wiki_authoring_guideline, capture_playbook]
+    register_priority: [documentary, representation, domain]
+    expansion_priority: [related, companion_design, system_foundation, represents]
+    no_lens_when: No reusable / non-obvious knowledge is present; a one-off task with no curation value.
+
+  - lens_id: source_verification
+    intent: Verify exactness against raw/source — confirm a claim, value, or behavior against the authoritative source.
+    relevant_source_types: [requirement_definition, basic_design, detail_design, db_schema, api_manual, legacy_design, table, function]
+    register_priority: [representation, documentary, domain]
+    expansion_priority: [represents, represented_by, upstream_input, companion_design]
+    no_lens_when: No exactness / evidence / conflict / freshness concern — a hint-level answer suffices.
+
+  - lens_id: planning_wbs
+    intent: Plan work or build a WBS — decompose scope into steps/tasks, sequence them, and identify inputs per step.
+    relevant_source_types: [requirement_definition, basic_design, methodology_spec, meeting_note, function, module]
+    register_priority: [documentary, domain, representation]
+    expansion_priority: [upstream_input, downstream_navigation, part_of, system_foundation]
+    no_lens_when: Trivial single-step task, or planning is the human's and AI only executes.

@@ -1,0 +1,84 @@
+# Skill index — PM Agent
+# blueprint.yaml carries a FLAT skills list (pack schema §3); this index preserves the 7 PM
+# categories from the template (PM_Agent_Blueprint template_version v0.1). MVP = prompt/spec-level
+# skills (no code). Every skill is PLANNING/ADVISORY only — none decides, runs, or dispatches.
+version: 1
+skill_categories:
+  planning:
+    - id: clarify_goal_scope
+      purpose: Clarify project goal, scope boundaries, and success signal before breakdown.
+    - id: decompose_work
+      purpose: Decompose goal/request into manageable tasks.
+    - id: create_wbs
+      purpose: Organize tasks into a work-breakdown structure.
+    - id: identify_dependencies
+      purpose: Identify dependencies and ordering constraints between tasks.
+    - id: estimate_effort_roughly
+      purpose: Produce rough effort estimates (clearly marked as estimates, not commitments).
+  prioritization:
+    - id: prioritize_by_value_urgency_risk_dependency
+      purpose: Propose priority using value, urgency, risk, dependency, effort, confidence.
+    - id: identify_blocking_tasks
+      purpose: Detect tasks that block others / sit on the critical path.
+    - id: recommend_next_best_actions
+      purpose: Recommend the next best actions (proposal only; HUMAN decides).
+  progress_management:
+    - id: collect_status
+      purpose: Collect and normalize task status from updates, logs, and HUMAN input.
+    - id: compare_plan_vs_actual
+      purpose: Compare planned vs actual progress.
+    - id: detect_delay
+      purpose: Detect delay against plan, with stated evidence.
+    - id: detect_blockers
+      purpose: Detect blockers and unclear ownership.
+    - id: detect_scope_change
+      purpose: Detect scope change or drift.
+  schedule_replan:
+    - id: analyze_delay_impact
+      purpose: Analyze the schedule/dependency impact of a delay or change.
+    - id: propose_schedule_adjustment_options
+      purpose: Propose 2-3 schedule-adjustment OPTIONS (never an official change).
+    - id: identify_parallelizable_tasks
+      purpose: Identify tasks that can be parallelized or split.
+    - id: create_replan_proposal
+      purpose: Assemble a re-plan proposal with options, trade-offs, and a recommendation.
+  risk_issue_decision:
+    - id: identify_risks
+      purpose: Identify risks with probability/impact.
+    - id: classify_issues
+      purpose: Classify issue severity.
+    - id: propose_mitigation
+      purpose: Propose mitigation/actions for risks and issues.
+    - id: maintain_decision_log
+      purpose: Maintain the decision log (records HUMAN decisions; does not make them).
+    - id: maintain_action_item_log
+      purpose: Maintain the action-item / follow-up log.
+  reporting:
+    - id: summarize_progress
+      purpose: Summarize current progress concisely for the chosen audience.
+    - id: create_daily_status_report
+      purpose: Create a daily status report draft.
+    - id: create_weekly_status_report
+      purpose: Create a weekly status report draft.
+    - id: create_stakeholder_report
+      purpose: Create a stakeholder report DRAFT (HUMAN approves before sending).
+    - id: create_meeting_summary
+      purpose: Summarize meeting notes and extract action items.
+    - id: summarize_risks_issues_decisions
+      purpose: Summarize risks, issues, and decisions for a report.
+  problem_analysis:            # CR-AIWS-2026-07-013 — 5-why root cause (advisory; process: ../../_shared/common/problem_analysis_5why.md)
+    - id: analyze_problem_5why
+      purpose: Run the shared 5-why chain on an evidenced problem statement (branching allowed; every node fact-anchored or [inference]).
+    - id: identify_root_cause_candidates
+      purpose: Rank root-cause candidates by confidence with supporting/disconfirming evidence.
+    - id: propose_countermeasures
+      purpose: Propose >=2 countermeasure options with trade-offs mapped to root-cause candidates (HUMAN decides).
+  learning:
+    - id: extract_pm_lesson_candidate
+      purpose: Extract a PM lesson candidate (status candidate; HUMAN-gated).
+    - id: propose_process_improvement
+      purpose: Propose a PM process-improvement candidate.
+    - id: propose_memory_update
+      purpose: Propose a memory-update candidate (never auto-confirmed).
+    - id: propose_blueprint_improvement_candidate
+      purpose: Propose a blueprint-improvement candidate when a pattern recurs.

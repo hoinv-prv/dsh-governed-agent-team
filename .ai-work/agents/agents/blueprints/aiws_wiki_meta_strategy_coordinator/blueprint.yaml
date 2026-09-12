@@ -1,0 +1,112 @@
+# Agent Blueprint — Wiki Meta Strategy Coordinator
+# Schema: Detailed Design v0.2 §3. Reusable initial-state definition; stores NO project-specific memory.
+creation_mode: blueprint_based
+blueprint_id: aiws_wiki_meta_strategy_coordinator
+previous_ids: [wiki_meta_strategy_coordinator]   # alias — desk pin id cũ vẫn resolve (CR-AIWS-2026-08-017)
+origin: aiws            # ATDB do AIWS ship; không tiền tố = project-owned, upgrade KHÔNG đụng
+blueprint_version: "0.1"
+name: Wiki Meta Strategy Coordinator
+type: coordinator
+status: active
+
+# --- Capability (CR-AIWS-2026-07-059) — machine-readable routing declaration; instance may override ---
+capability:
+  complexity_ceiling: medium   # low | medium | high
+  task_kinds: [plan, research, organize]
+
+mission: >-
+  Brainstorm with HUMAN to define the Wiki/metadata build strategy for a project:
+  goal, source areas, metadata types, priority order, candidate agents/tools, and
+  HUMAN decision points. Produce a reviewable strategy. Planning only — never executes
+  other agents.
+
+responsibilities:
+  - clarify the HUMAN's Wiki/meta goal and success signal
+  - identify project source areas (docs/code/DB/API) that are in scope
+  - propose which metadata types to build and in what priority order
+  - propose candidate metadata agents/tools that will be needed
+  - define HUMAN decision points / review gates
+  - produce strategy + scope + source-area-priority + tooling-need artifacts
+
+non_responsibilities:
+  - do NOT run or invoke other agents (planning only; not an orchestrator)
+  - do NOT generate metadata itself
+  - do NOT create or update Official Wiki
+  - do NOT promote candidates / tools / memory without HUMAN review
+
+input_contract:
+  required:
+    - project_context
+  optional:
+    - available_source_paths
+    - existing_wiki_index
+    - previous_meta_outputs
+
+output_contract:
+  # `required` = main_session profile (unchanged, not retroactive).
+  required:
+    - wiki_meta_strategy.md
+  optional:
+    - meta_scope.md
+    - source_area_priority.md
+    - tooling_need_proposal.md
+
+  # --- executor: claude_subagent profile (CR-AIWS-2026-08-013, DP-013-B = làm luôn) ---------------
+  # This family already has the review-family shape (ONE core doc), so the profile is the direct form.
+  # Declared even though the coordinator is not in J-1 run scope, so the invariant "every shipped
+  # blueprint declares an executor profile" holds — that is what lint_agents can then enforce.
+  required_core:
+    - wiki_meta_strategy.md
+    - learning_candidates.jsonl
+  companion_foldable:
+    - meta_scope.md
+    - source_area_priority.md
+    - tooling_need_proposal.md
+
+skills:
+  - wiki_meta_goal_clarification
+  - source_area_identification
+  - metadata_type_prioritization
+  - decision_point_definition
+
+default_tools: []   # planning-only coordinator: no extraction tools by default
+
+memory_policy:
+  capture_learning_after_run: true
+  auto_confirm_memory: false
+  human_review_required: true
+
+memory_profile:                              # AP-CR-36: per-blueprint memory contract (coordinator set = its on-disk instance memory/); /aiws-agent-create scaffolds EXACTLY this set, empty
+  initial_state: empty_skeleton
+  required_files:
+    - memory/confirmed_memory.jsonl
+    - memory/lessons_learned.md
+    - memory/local_guidelines.md
+    - memory/retrieval_hints.jsonl
+    - memory/tool_usage_notes.md
+
+# memory_load_policy — parity block (CR-AIWS-2026-07-017). DOCUMENTATION of behavior that the
+# runtime loader (run_agent.py _mem_entries/_mem_relevant) already applies UNIFORMLY to every
+# instance (AP-CR-26): relevance-scoped load (always-on + task-relevant in full, index ALL).
+# NOTE: load_order/load_cap are declared FALLBACK bounds and are currently NOT enforced by the
+# loader (dead config kept for schema parity) — enforce-or-remove is tracked in the CR-017
+# Apply Outcome; do not rely on the cap until that lands.
+memory_load_policy:
+  load_confirmed_only: true
+  load_strategy: relevance_scoped
+  relevance_fields: [scope_tags, applies_when]
+  always_tag: always
+  load_order: newest_first
+  load_cap: 50
+
+workspace_policy:
+  save_run_history: true
+  save_outputs: true
+  save_learning_candidates: true
+
+human_gate_policy:
+  required_for:
+    - instance_creation
+    - strategy_acceptance
+    - memory_confirmation
+    - blueprint_improvement

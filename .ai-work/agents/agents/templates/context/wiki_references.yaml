@@ -1,0 +1,32 @@
+# TEMPLATE — context/wiki_references.yaml (Detailed Design v0.2 §7.1).
+# YAML convention (OQ-B1): plain/literal scalars, no folded (>-).
+wiki_index: <path to project wiki index, or null>   # canonical default once bound: .ai-work/wiki_sources/index.jsonl
+recommended_entries: []        # list of relevant existing wiki entry paths
+usage_rule: wiki_first_not_wiki_only
+source_verification_required_when:
+  - Wiki entry is stale or unverified
+  - source/code conflict is detected
+  - output will be used for an official deliverable
+
+# --- lookup_intents (ADDITIVE; CR-AIWS-AGENT-FRAMEWORK-002 (ratified canonical by CR-AIWS-2026-07-014 -> agent_runtime_design.md §9) D6) ---
+# Maps a process-named reference intent -> a structured index/source query. Instance-owned
+# (blueprint-upgrade-immune, like working_inventory.yaml). Resolver = .ai-work/tooling/lookup_wiki_source.py
+# -> returns POINTERS, not content (no auto-load). search_targets = REAL index source_type / reference_type.
+#   Task-Lens bridge (Task_Lens_Spec §B): *_guideline/*_checklist/*_playbook -> process_guideline ;
+#   *_template -> process_template ; sop -> sop. Subject docs use the bound project's own source_types.
+# Multi-system (rule #12): system_scoped:true -> pass --system <id>; ambiguous -> STOP, ask HUMAN.
+# Required: intent, search_targets, fallback. Optional: description, required_task_metadata, system_scoped.
+# fallback in: report_reference_gap | ask_human_if_required | continue_with_limitation.
+# Default empty; populated at create-time (AI-suggested candidates, HUMAN-gated). Example (commented):
+#   - intent: target_function_requirement
+#     description: "Requirement/spec for the function under review."
+#     search_targets: [<project requirement source_type>, <project design source_type>]
+#     required_task_metadata: [target_function]
+#     system_scoped: true
+#     fallback: report_reference_gap
+lookup_intents: []
+# First-read convention (CR-AIWS-2026-07-015): recommended_entries SHOULD include the per-system
+# generated overview pages matching this instance's system —
+#   SRC-OVERVIEW-WIKI_CONTENTS_OVERVIEW_<system>  +  SRC-OVERVIEW-WIKI_SEARCH_GUIDE_<system>
+# (+ SRC-OVERVIEW-QA_MEMORY_OVERVIEW when it ships — tracker A-6). GENERATED pages are projections:
+# NEVER hand-edit them (lint overview_hand_edit = ERROR); fix source metas/index or raise a capture.
