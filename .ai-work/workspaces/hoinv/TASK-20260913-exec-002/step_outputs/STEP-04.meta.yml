@@ -1,0 +1,10 @@
+output_id: OUT-002-04-01
+result_type: output
+working_aip_ref: AIP-EXEC-002
+step_id: STEP-04
+output_locator: 04_findings.md#STEP-04
+created_at: 2026-09-13T10:42:47
+review_status: draft
+verification_level: unverified
+source_refs: []
+notes: ""

@@ -1,0 +1,10 @@
+output_id: OUT-003-01-01
+result_type: output
+working_aip_ref: AIP-EXEC-003
+step_id: STEP-01
+output_locator: AGENTS.md
+created_at: 2026-09-13T10:16:15
+review_status: draft
+verification_level: unverified
+source_refs: []
+notes: ""

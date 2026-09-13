@@ -3,7 +3,7 @@
 
 - insert:
     - id: ui-agent-team
-      name: '@deepseek-ai/dsh-experimental-client-ui-agent-team'
+      name: '@vuhoi/gat-web'
       config:
         stallWarningMs: 180000
         refreshIntervalMs: 5000

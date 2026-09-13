@@ -1067,7 +1067,7 @@ describe('Team Remote API', () => {
       subject: 'Remote task',
       description: 'Created through the generated API',
       blockedBy: [],
-      writeScopes: ['packages/experimental/agent-team'],
+      writeScopes: ['packages/experimental/gat-core'],
     })
     expect(createdResult).toMatchObject({ ok: true, value: { revision: 1 } })
     if (!createdResult.ok) throw new Error('Remote task creation did not succeed')

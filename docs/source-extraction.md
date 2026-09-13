@@ -2,61 +2,46 @@
 
 ## Status
 
-**PARTIAL — source snapshot only. GAT is not installed.**
+The accepted Governed Agent Team implementation was extracted from the DSH golden-reference worktree, migrated to the private `@vuhoi/gat-*` namespace, and packaged as a checksum-pinned local installer payload. The compatibility authority is `compatibility/dsh-0.1.5-rc.2/manifest.json`.
 
-The standalone repository currently has no installer, no verified compatibility manifest, and no host patchset. Therefore this extraction must not be described as installed, independently buildable, compatible, safe, or release-ready.
-
-## Scope
-
-Tracked files were copied byte-for-byte from the accepted DeepSeek Harness golden-reference worktree:
+## Provenance
 
 - Source root: `/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1`
-- Branch: `feature/governed-agent-team-v1`
-- HEAD: `12fef7a7e01f6c3ba7ecab0929355659b3370435`
-- First compatibility target: DSH `0.1.5-rc.2` at `c291e7961a515f6d7af9304e7fd1d257929aef26`
+- Source branch: `feature/governed-agent-team-v1`
+- Source commit: `12fef7a7e01f6c3ba7ecab0929355659b3370435`
+- DSH compatibility target: `0.1.5-rc.2` at `c291e7961a515f6d7af9304e7fd1d257929aef26`
+- GAT version: `0.1.0`
 
-Package mapping:
+| Golden-reference package | Standalone source | Installed DSH destination |
+|---|---|---|
+| `packages/experimental/agent-team` | `packages/core` | `packages/experimental/gat-core` |
+| `packages/experimental/tool-agent-team` | `packages/tools` | `packages/experimental/gat-tools` |
+| `packages/experimental/client-ui-agent-team` | `packages/web` | `packages/experimental/gat-web` |
+| `packages/experimental/agent-team-profile` | `packages/profile` | `packages/experimental/gat-profile` |
+| `packages/experimental/agent-team-web-profile` | `packages/web-profile` | `packages/experimental/gat-web-profile` |
 
-| Golden-reference package | Standalone snapshot path |
-|---|---|
-| `packages/experimental/agent-team` | `packages/core` |
-| `packages/experimental/agent-team-profile` | `packages/profile` |
-| `packages/experimental/agent-team-web-profile` | `packages/web-profile` |
-| `packages/experimental/client-ui-agent-team` | `packages/web` |
-| `packages/experimental/tool-agent-team` | `packages/tools` |
+The package source contains 68 files. Three keyless assembled-Web verification files bring the install payload to 71 files. The manifest records every source path, destination path, byte count, mode, and SHA-256 value.
 
+## Deliberate transformations
 
-Copied package counts: `packages/core`: 29, `packages/tools`: 7, `packages/web`: 15, `packages/profile`: 9, `packages/web-profile`: 8. One accepted design document was also copied. Total copied files: **69**.
+Package manifests, package imports, local links, tests, and documentation use the `@vuhoi/gat-*` identities. Runtime Cordis row ids such as `agent-team` and `tool-agent-team`, locale namespaces, tool names, and durable Session event names remain unchanged because they are behavioral identifiers rather than npm identities.
 
-The canonical per-file SHA-256 and executable-mode inventory is `SOURCE_SNAPSHOT.json`.
+The installer adds nine host compatibility files. Two are the accepted golden-reference Session event and Cordis API catalog changes. Three select GAT in the Host and Client TypeScript aggregate programs and add explicit aliases for the non-DSH namespace. One switches the generated tool-catalog input from the original package names to GAT. One excludes the original packages from tsdown while GAT occupies the same runtime service keys. Original DSH experimental package source is not modified or removed.
 
-## Locator interpretation
+## Regeneration
 
-- `source.repository_root` is the immutable local golden-reference worktree used for this snapshot.
-- Every `entries[].source` path is Git-tracked at the recorded golden-reference HEAD.
-- Every `entries[].destination` path is relative to this standalone repository.
-- `package_aggregates` hashes sorted records in the form `relative_path\0mode\0bytes\0sha256\n`.
+From this repository:
 
-## Representation status
+```sh
+node scripts/generate-compatibility.mjs /home/hoinv/deepseek-harness
+```
 
-- Five GAT package trees: **complete byte-for-byte tracked-file snapshots**.
-- Standalone package identity/import migration: **not started**.
-- Standalone workspace/build wiring: **not started**.
-- DSH host compatibility patchset: **not extracted**.
-- Transactional installer: **missing**.
-- Installation/compatibility verification: **not run**.
-- Overall migration status: **partial**.
+The command reads the pinned commits, regenerates before/after host files, inventories the current payload, and rewrites the compatibility manifest. Any payload edit requires regeneration before installation; otherwise source validation fails closed.
 
-## Deferred work requiring a separate approved task
+`SOURCE_SNAPSHOT.json` is the concise provenance record. The compatibility manifest is the per-file installation authority.
 
-1. Rename package identities and internal dependencies to `@vuhoi/gat-*`.
-2. Add standalone workspace/build/test configuration and verify all copied tests.
-3. Classify cross-cutting changes relative to DSH base commit and create the exact versioned patchset.
-4. Create a fail-closed transactional installer and exact compatibility manifest.
-5. Verify dry-run, install, rollback, idempotency, replay, approval guard, composition, and Web smoke in an isolated DSH worktree.
+## Installation and rollback
 
-## Rollback / caution
+See the repository `README.md` for canonical dry-run, installation, verification, activation, and rollback commands. Rollback covers only installer-owned files and refuses to overwrite post-install edits. It does not delete AIWS records or the original experimental DSH packages.
 
-The source-copy rollback boundary is the five mapped package directories, `docs/golden-reference/2026-09-12-governed-agent-team-v1-design.md`, `docs/source-extraction.md`, and `SOURCE_SNAPSHOT.json`. Do not delete AIWS repository scaffolding or task evidence when rolling back this source snapshot.
-
-Vanilla DSH cannot be assumed to replay sessions containing required non-ignorable GAT events after uninstall. This remains a compatibility-design limitation until the versioned host patchset and installer are implemented and verified.
+DSH without the host event-type patch cannot be assumed to replay Sessions containing required GAT events. Roll back only when those Sessions are no longer needed by that checkout.

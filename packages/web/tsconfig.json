@@ -8,7 +8,7 @@
   "references": [
     { "path": "../../../vendor/cordis" },
     { "path": "../../../vendor/schemastery" },
-    { "path": "../agent-team" },
+    { "path": "../gat-core" },
     { "path": "../../api/remotes/tsconfig.client.json" },
     { "path": "../../api/session-controller/tsconfig.client.json" },
     { "path": "../../client/locale" },

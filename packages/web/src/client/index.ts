@@ -1,6 +1,6 @@
 /** Browser entry binding the generated Team Remote artifact to its Client UI. */
 
-import agentTeamsRemote from '@deepseek-ai/dsh-experimental-agent-team/remote'
+import agentTeamsRemote from '@vuhoi/gat-core/remote'
 import type { Context as ClientContext } from '@deepseek-ai/cordis'
 import { DEFAULT_CONFIG, mountAgentTeamUi, type Config as AgentTeamUiConfig } from './mount.ts'
 

@@ -3,13 +3,13 @@ description: "十个让模型创建、发消息与协调 teammate 的工具，�
 kind: "package-reference"
 ---
 
-# @deepseek-ai/dsh-experimental-tool-agent-team
+# @vuhoi/gat-tools
 
 [English](README.md) | 中文
 
 ## 概述
 
-本包让模型创建具名 teammate、向它们发送消息、查看可用状态、等待进展、中断卡住的工作，并通过共享任务板协调。每个团队成员都会获得相同的十个工具，以及在共享工作区协调的指引。当模型只应在你明确要求后运行团队时，选择本包。它会取代同名的旧版 subagent 控件，因此同时需要两者的组合必须禁用旧定义。本包以实验性名称公开发布，但不提供稳定性保证。
+本包让模型创建具名 teammate、向它们发送消息、查看可用状态、等待进展、中断卡住的工作，并通过共享任务板协调。每个团队成员都会获得相同的十个工具，以及在共享工作区协调的指引。当模型只应在你明确要求后运行团队时，选择本包。它会取代同名的旧版 subagent 控件，因此同时需要两者的组合必须禁用旧定义。这个私有 GAT 包不提供稳定性保证。
 
 ## 目录
 
@@ -25,7 +25,7 @@ kind: "package-reference"
 <a id="use-this-package"></a>
 ## 使用本包
 
-当模型应该通过工具运行一支团队时，在 `@deepseek-ai/dsh-experimental-agent-team` 之上挂载本包。挂载后，每个团队成员——Lead 与每个 teammate——都会获得相同的十个工具，外加一段说明自身角色与名字的策略段落。
+当模型应该通过工具运行一支团队时，在 `@vuhoi/gat-core` 之上挂载本包。挂载后，每个团队成员——Lead 与每个 teammate——都会获得相同的十个工具，外加一段说明自身角色与名字的策略段落。
 
 ### 何时选择
 
@@ -33,11 +33,11 @@ kind: "package-reference"
 
 ### 最小工作示例
 
-对现有组合的最小增量是 [agent-team README](../agent-team/README.zh.md#smallest-working-setup) 中的两包片段：持久会话存储、团队领域包与本包。插件公开五个设置：
+对现有组合的最小增量是 [agent-team README](../core/README.zh.md#smallest-working-setup) 中的两包片段：持久会话存储、团队领域包与本包。插件公开五个设置：
 
 ```yaml
 - id: tool-agent-team
-  name: '@deepseek-ai/dsh-experimental-tool-agent-team'
+  name: '@vuhoi/gat-tools'
   config:
     freshProvider: spawn
     forkProvider: fork
@@ -120,7 +120,7 @@ member scope 上的一个 `team:policy` 段落教每个成员自己的角色与�
 
 当包级约定不够用时阅读以下页面。它们从领域服务逐步进入精确 schema 与设计背后的决策。
 
-- [agent-team 包](../agent-team/README.zh.md)——这些工具背后的 `ctx.agentTeams` 领域服务。
+- [agent-team 包](../core/README.zh.md)——这些工具背后的 `ctx.agentTeams` 领域服务。
 - [Agent Teams 子系统](../../../docs/subsystems/agent-team.zh.md)——持久 Team 类型与服务 API。
 - [生成的工具目录](../../../docs/tool-catalog.zh.md#deepseek-aidsh-experimental-tool-agent-team)——模型接收的每个工具 schema。
 - [Agent Teams Agent Note](../../../.agents/notes/implemented/feature/2026-08-05-agent-teams.zh.md)——模型侧、scoping 与隔离决策。
@@ -154,7 +154,7 @@ Team 插件 generation、配置、member role／name 与 schema 不变时，前�
 - **提示词策略只负责协调，不负责 confinement**——它无法阻止 Bash 或外部进程写入重叠文件。
 - **不会自主创建 Team**——除非用户明确要求，普通任务不会触发 delegation。
 - **没有 Web 控制功能**——浏览器 roster 与任务板呈现不属于该运行时包。
-- **实验原型，无稳定性承诺**——本包公开发布，但孵化期间 schema 仍可自由变更。
+- **实验原型，无稳定性承诺**——本包为私有包，孵化期间 schema 仍可自由变更。
 
 <a id="dev-note"></a>
 ### 开发备注

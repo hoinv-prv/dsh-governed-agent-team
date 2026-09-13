@@ -1,14 +1,12 @@
 {
-  "name": "@deepseek-ai/dsh-experimental-tool-agent-team",
-  "description": "Scoped model-facing Agent Teams tools over ctx.agentTeams",
-  "version": "0.1.5-rc.2",
-  "publishConfig": {
-    "access": "public"
-  },
+  "name": "@vuhoi/gat-tools",
+  "description": "Governed Agent Team scoped model tools and execution preflight",
+  "version": "0.1.0",
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
-    "directory": "packages/experimental/tool-agent-team"
+    "url": "git+ssh://git@github.com/hoinv-prv/dsh-governed-agent-team.git",
+    "directory": "packages/tools"
   },
   "type": "module",
   "main": "lib/index.js",
@@ -34,7 +32,7 @@
     "@deepseek-ai/dsh-subagent": "workspace:^",
     "@deepseek-ai/dsh-session": "workspace:^",
     "@deepseek-ai/dsh-system-prompt": "workspace:^",
-    "@deepseek-ai/dsh-experimental-agent-team": "workspace:^",
+    "@vuhoi/gat-core": "^0.1.0",
     "@deepseek-ai/dsh-tools": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
@@ -52,7 +50,7 @@
     "@deepseek-ai/dsh-subagent-spawn-in-process": "workspace:^",
     "@deepseek-ai/dsh-tool-subagent-control": "workspace:^",
     "@deepseek-ai/dsh-system-prompt": "workspace:^",
-    "@deepseek-ai/dsh-experimental-agent-team": "workspace:^",
+    "@vuhoi/gat-core": "workspace:^",
     "@deepseek-ai/dsh-tools": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }

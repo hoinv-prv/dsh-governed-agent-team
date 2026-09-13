@@ -24,8 +24,8 @@ import * as SubagentSpawn from '@deepseek-ai/dsh-subagent-spawn-in-process'
 import { defineContentToolFixture } from '@deepseek-ai/dsh-tools'
 import { MockAdapter, textResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 import * as toolSubagent from '../../../subagent/tool-subagent/src/index.ts'
-import TeamService from '../../agent-team/src/index.ts'
-import * as toolTeam from '../../tool-agent-team/src/index.ts'
+import TeamService from '../../gat-core/src/index.ts'
+import * as toolTeam from '../../gat-tools/src/index.ts'
 
 const roots: string[] = []
 const contexts: Context[] = []
@@ -128,8 +128,8 @@ async function bootProfile(storageRoot: string, script: ConstructorParameters<ty
   const modules = new Map<string, unknown>([
     ['@test/profile-base-row', noop],
     ['@deepseek-ai/dsh-tool-subagent', toolSubagentConsumer],
-    ['@deepseek-ai/dsh-experimental-agent-team', TeamService],
-    ['@deepseek-ai/dsh-experimental-tool-agent-team', toolTeam],
+    ['@vuhoi/gat-core', TeamService],
+    ['@vuhoi/gat-tools', toolTeam],
   ])
   ctx.loader.internal = {
     version: 'v2',
@@ -161,7 +161,7 @@ async function bootProfile(storageRoot: string, script: ConstructorParameters<ty
 }
 
 describe('Agent Teams profile bundle', () => {
-  it('declares a public parseable layer with Team-owned controls', () => {
+  it('declares a private parseable layer with Team-owned controls', () => {
     const root = fileURLToPath(new URL('..', import.meta.url))
     const manifest = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8')) as {
       private?: boolean
@@ -169,12 +169,12 @@ describe('Agent Teams profile bundle', () => {
       dependencies?: Record<string, string>
       dsh?: { bundle?: { patch?: string } }
     }
-    expect(manifest.private).toBeUndefined()
-    expect(manifest.publishConfig?.access).toBe('public')
+    expect(manifest.private).toBe(true)
+    expect(manifest.publishConfig).toBeUndefined()
     expect(manifest.dsh?.bundle?.patch).toBe('./cordis.patch.yml')
     expect(manifest.dependencies).toMatchObject({
-      '@deepseek-ai/dsh-experimental-agent-team': 'workspace:^',
-      '@deepseek-ai/dsh-experimental-tool-agent-team': 'workspace:^',
+      '@vuhoi/gat-core': 'file:../gat-core',
+      '@vuhoi/gat-tools': 'file:../gat-tools',
     })
 
     const parsed = yaml.load(
@@ -194,11 +194,11 @@ describe('Agent Teams profile bundle', () => {
     expect(patches.find(patch => patch.id === 'tool-subagent-fork')?.config).toMatchObject({ backgroundMode: 'one-shot' })
     const inserted = patches.flatMap(patch => patch.insert ?? [])
     expect(inserted.find(entry => entry.id === 'agent-team')).toMatchObject({
-      name: '@deepseek-ai/dsh-experimental-agent-team',
+      name: '@vuhoi/gat-core',
       config: { maxMembers: 8 },
     })
     expect(inserted.find(entry => entry.id === 'tool-agent-team')).toMatchObject({
-      name: '@deepseek-ai/dsh-experimental-tool-agent-team',
+      name: '@vuhoi/gat-tools',
       config: {
         freshProvider: 'spawn',
         forkProvider: 'fork',

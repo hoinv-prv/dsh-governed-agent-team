@@ -12,15 +12,15 @@ const artifact = (path: string): string => join(root, path)
 const artifactUrl = (path: string): string => pathToFileURL(artifact(path)).href
 
 const requiredArtifacts = [
-  'packages/experimental/agent-team/lib/index.js',
-  'packages/experimental/agent-team/lib/typert.remote-client.js',
+  'packages/experimental/gat-core/lib/index.js',
+  'packages/experimental/gat-core/lib/typert.remote-client.js',
 ].every(path => existsSync(artifact(path)))
 
 describe.skipIf(!requiredArtifacts)('Agent Teams built LIB service', () => {
   it('loads the Host service and its generated browser contribution under plain Node', async () => {
     const urls = {
-      host: artifactUrl('packages/experimental/agent-team/lib/index.js'),
-      remote: artifactUrl('packages/experimental/agent-team/lib/typert.remote-client.js'),
+      host: artifactUrl('packages/experimental/gat-core/lib/index.js'),
+      remote: artifactUrl('packages/experimental/gat-core/lib/typert.remote-client.js'),
     }
     const script = `
       const host = await import(${JSON.stringify(urls.host)})
@@ -40,9 +40,11 @@ describe.skipIf(!requiredArtifacts)('Agent Teams built LIB service', () => {
     expect(output).toEqual({
       className: 'TeamService',
       methods: [
-        '@deepseek-ai/dsh-experimental-agent-team#agentTeams/createTask',
-        '@deepseek-ai/dsh-experimental-agent-team#agentTeams/updateTask',
-        '@deepseek-ai/dsh-experimental-agent-team#agentTeams/view',
+        '@vuhoi/gat-core#agentTeams/approvePlan',
+        '@vuhoi/gat-core#agentTeams/createTask',
+        '@vuhoi/gat-core#agentTeams/reportWork',
+        '@vuhoi/gat-core#agentTeams/updateTask',
+        '@vuhoi/gat-core#agentTeams/view',
       ],
     })
   })

@@ -1,14 +1,12 @@
 {
-  "name": "@deepseek-ai/dsh-experimental-agent-team-profile",
-  "description": "Experimental profile bundle enabling Agent Teams over dsh-base",
-  "version": "0.1.5-rc.2",
-  "publishConfig": {
-    "access": "public"
-  },
+  "name": "@vuhoi/gat-profile",
+  "description": "Governed Agent Team host profile layer over dsh-base",
+  "version": "0.1.0",
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
-    "directory": "packages/experimental/agent-team-profile"
+    "url": "git+ssh://git@github.com/hoinv-prv/dsh-governed-agent-team.git",
+    "directory": "packages/profile"
   },
   "type": "module",
   "main": "lib/index.js",
@@ -34,8 +32,8 @@
     }
   },
   "dependencies": {
-    "@deepseek-ai/dsh-experimental-agent-team": "workspace:^",
-    "@deepseek-ai/dsh-experimental-tool-agent-team": "workspace:^"
+    "@vuhoi/gat-core": "file:../gat-core",
+    "@vuhoi/gat-tools": "file:../gat-tools"
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "workspace:^"

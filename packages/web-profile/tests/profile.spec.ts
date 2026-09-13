@@ -8,7 +8,7 @@ import * as yaml from 'js-yaml'
 import { entryListSchema } from '@deepseek-ai/cordis-plugin-include'
 
 describe('Agent Teams Web profile bundle', () => {
-  it('declares a public parseable layer containing the Team UI', () => {
+  it('declares a private parseable layer containing the Team UI', () => {
     const root = fileURLToPath(new URL('..', import.meta.url))
     const manifest = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8')) as {
       private?: boolean
@@ -16,11 +16,12 @@ describe('Agent Teams Web profile bundle', () => {
       dependencies?: Record<string, string>
       dsh?: { bundle?: { patch?: string } }
     }
-    expect(manifest.private).toBeUndefined()
-    expect(manifest.publishConfig?.access).toBe('public')
+    expect(manifest.private).toBe(true)
+    expect(manifest.publishConfig).toBeUndefined()
     expect(manifest.dsh?.bundle?.patch).toBe('./cordis.patch.yml')
     expect(manifest.dependencies).toEqual({
-      '@deepseek-ai/dsh-experimental-client-ui-agent-team': 'workspace:^',
+      '@vuhoi/gat-core': 'file:../gat-core',
+      '@vuhoi/gat-web': 'file:../gat-web',
     })
 
     const parsed = yaml.load(
@@ -30,7 +31,7 @@ describe('Agent Teams Web profile bundle', () => {
     expect(parsed.flatMap(patch => patch.insert ?? [])).toEqual([
       {
         id: 'ui-agent-team',
-        name: '@deepseek-ai/dsh-experimental-client-ui-agent-team',
+        name: '@vuhoi/gat-web',
         config: { stallWarningMs: 180_000, refreshIntervalMs: 5_000 },
       },
     ])

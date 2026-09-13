@@ -3,13 +3,13 @@ description: "Ten tools that let the model create, message, and coordinate teamm
 kind: "package-reference"
 ---
 
-# @deepseek-ai/dsh-experimental-tool-agent-team
+# @vuhoi/gat-tools
 
 English | [中文](README.zh.md)
 
 ## Summary
 
-This package lets the model create named teammates, send them messages, inspect availability, wait for progress, interrupt stuck work, and coordinate through a shared task board. Every team member receives the same ten tools and guidance for coordinating in a shared workspace. Choose it when the model should operate a team only after you explicitly request one. It replaces legacy subagent controls with the same tool names, so compositions that need both must disable the legacy definitions. The package is published under its experimental name and provides no stability guarantee.
+This package lets the model create named teammates, send them messages, inspect availability, wait for progress, interrupt stuck work, and coordinate through a shared task board. Every team member receives the same ten tools and guidance for coordinating in a shared workspace. Choose it when the model should operate a team only after you explicitly request one. It replaces legacy subagent controls with the same tool names, so compositions that need both must disable the legacy definitions. The private GAT package provides no stability guarantee.
 
 ## Table of Contents
 
@@ -25,7 +25,7 @@ This package lets the model create named teammates, send them messages, inspect 
 <a id="use-this-package"></a>
 ## Use this package
 
-Add this package on top of `@deepseek-ai/dsh-experimental-agent-team` when the model should run a team through tools. Once mounted, every team member — the Lead and each teammate — gets the same ten tools plus a policy paragraph that states its own role and name.
+Add this package on top of `@vuhoi/gat-core` when the model should run a team through tools. Once mounted, every team member — the Lead and each teammate — gets the same ten tools plus a policy paragraph that states its own role and name.
 
 ### When to choose it
 
@@ -33,11 +33,11 @@ Choose it when the model should create and coordinate teammates by itself rather
 
 ### Smallest working example
 
-The smallest addition to an existing composition is the two-package fragment from the [agent-team README](../agent-team/README.md#smallest-working-setup): durable session storage, the team domain package, and this package. The plugin exposes five settings:
+The smallest addition to an existing composition is the two-package fragment from the [agent-team README](../core/README.md#smallest-working-setup): durable session storage, the team domain package, and this package. The plugin exposes five settings:
 
 ```yaml
 - id: tool-agent-team
-  name: '@deepseek-ai/dsh-experimental-tool-agent-team'
+  name: '@vuhoi/gat-tools'
   config:
     freshProvider: spawn
     forkProvider: fork
@@ -120,7 +120,7 @@ One `team:policy` section on the member scope teaches each member its role and t
 
 Read these pages when the package-level contract is not enough. They move from the domain service to the exact schemas and the decisions behind the design.
 
-- [agent-team package](../agent-team/README.md) — the `ctx.agentTeams` domain service behind these tools.
+- [agent-team package](../core/README.md) — the `ctx.agentTeams` domain service behind these tools.
 - [Agent Teams subsystem](../../../docs/subsystems/agent-team.md) — durable Team types and service API.
 - [Generated tool catalog](../../../docs/tool-catalog.md#deepseek-aidsh-experimental-tool-agent-team) — every tool schema the model receives.
 - [Agent Teams Agent Note](../../../.agents/notes/implemented/feature/2026-08-05-agent-teams.md) — model-facing, scoping, and isolation decisions.
@@ -154,7 +154,7 @@ These limits describe what the policy and tools cannot guarantee for a team. The
 - **Prompt policy is coordination, not confinement** — it cannot stop Bash or external processes from writing overlapping files.
 - **No autonomous team creation** — ordinary tasks do not trigger delegation unless the user explicitly requests it.
 - **No Web controls** — browser roster and task-board presentation is outside this runtime package.
-- **Experimental prototype with no stability promise** — the package is public, but its schemas can change freely while it incubates.
+- **Experimental prototype with no stability promise** — the package is private, and its schemas can change freely while it incubates.
 
 <a id="dev-note"></a>
 ### Dev Note

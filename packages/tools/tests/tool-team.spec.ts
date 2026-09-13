@@ -18,7 +18,7 @@ import { renderPrompt } from '@deepseek-ai/dsh-system-prompt'
 import * as ToolSubagentControl from '@deepseek-ai/dsh-tool-subagent-control'
 import { defineContentToolFixture } from '@deepseek-ai/dsh-tools'
 import { MockAdapter, textResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
-import TeamService from '../../agent-team/src/index.ts'
+import TeamService from '../../gat-core/src/index.ts'
 import * as toolTeam from '../src/index.ts'
 
 const SIGNAL = new AbortController().signal
@@ -197,7 +197,7 @@ describe('dsh-tool-team', () => {
     const reported = await execute(ctx, lead, 'report_team_status', {
       state: 'working',
       summary: 'Implementing the guarded tool surface',
-      files: ['packages/experimental/tool-agent-team/src/index.ts'],
+      files: ['packages/experimental/gat-tools/src/index.ts'],
     })
     expect(reported.isError).toBe(false)
     const value = JSON.parse(text(reported)) as Record<string, unknown>
@@ -208,7 +208,7 @@ describe('dsh-tool-team', () => {
       memberId: lead.id,
       state: 'working',
       summary: 'Implementing the guarded tool surface',
-      files: ['packages/experimental/tool-agent-team/src/index.ts'],
+      files: ['packages/experimental/gat-tools/src/index.ts'],
     })
     expect(typeof value.updatedAt).toBe('number')
 
@@ -392,6 +392,34 @@ describe('dsh-tool-team', () => {
     await waitNoAgent(ctx, readyIds[0]!)
     expect((await execute(ctx, lead, 'danger_write', {})).isError).toBe(false)
     expect(calls.count).toBe(3)
+  })
+
+  it('preserves ordinary downstream permission denial after Team execution opens', async () => {
+    const { ctx, lead } = await setup(['hang', 'hang'])
+    const calls = { count: 0 }
+    registerDanger(ctx, calls)
+    let ordinaryGuardCalls = 0
+    lead.ctx.tools.guard((exec) => {
+      if (exec.name !== 'danger_write') return undefined
+      ordinaryGuardCalls += 1
+      return 'ordinary permission denied'
+    })
+
+    await approveCurrentPlan(ctx, lead)
+    for (const index of [1, 2]) {
+      const spawned = await execute(ctx, lead, 'spawn_teammate', {
+        name: `permission-worker-${index}`,
+        description: 'permission-chain worker',
+        prompt: 'stay active',
+      })
+      await waitRunning(ctx, spawnedChildId(spawned))
+    }
+
+    const denied = await execute(ctx, lead, 'danger_write', {})
+    expect(denied.isError).toBe(true)
+    expect(text(denied)).toContain('ordinary permission denied')
+    expect(ordinaryGuardCalls).toBe(1)
+    expect(calls.count).toBe(0)
   })
 
   it('allows only structural task updates while restricted and re-closes after mutation', async () => {

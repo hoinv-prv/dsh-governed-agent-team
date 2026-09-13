@@ -12,10 +12,10 @@
       "path": "../../../vendor/cordis"
     },
     {
-      "path": "../agent-team"
+      "path": "../gat-core"
     },
     {
-      "path": "../tool-agent-team"
+      "path": "../gat-tools"
     }
   ]
 }

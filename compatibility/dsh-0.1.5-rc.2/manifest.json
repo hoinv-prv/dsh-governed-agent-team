@@ -1,0 +1,641 @@
+{
+  "schemaVersion": 1,
+  "id": "gat-0.1.0-dsh-0.1.5-rc.2-c291e796",
+  "gat": {
+    "version": "0.1.0",
+    "sourceRepository": "/home/hoinv/work/dsh-governed-agent-team",
+    "sourceCommit": "5f4e265e1d20dbf3d9cbf35c764ca0c22e47c2d7",
+    "acceptedGoldenCommit": "12fef7a7e01f6c3ba7ecab0929355659b3370435"
+  },
+  "installer": {
+    "name": "@vuhoi/governed-agent-team",
+    "version": "0.1.0"
+  },
+  "target": {
+    "repository": "deepseek-harness",
+    "version": "0.1.5-rc.2",
+    "commit": "c291e7961a515f6d7af9304e7fd1d257929aef26"
+  },
+  "installationRecord": ".gat/installation.json",
+  "installedPackages": [
+    "@vuhoi/gat-core",
+    "@vuhoi/gat-tools",
+    "@vuhoi/gat-web",
+    "@vuhoi/gat-profile",
+    "@vuhoi/gat-web-profile"
+  ],
+  "packageMappings": [
+    {
+      "source": "packages/core",
+      "destination": "packages/experimental/gat-core"
+    },
+    {
+      "source": "packages/tools",
+      "destination": "packages/experimental/gat-tools"
+    },
+    {
+      "source": "packages/web",
+      "destination": "packages/experimental/gat-web"
+    },
+    {
+      "source": "packages/profile",
+      "destination": "packages/experimental/gat-profile"
+    },
+    {
+      "source": "packages/web-profile",
+      "destination": "packages/experimental/gat-web-profile"
+    }
+  ],
+  "cleanupDirectories": [
+    "packages/experimental/gat-core",
+    "packages/experimental/gat-tools",
+    "packages/experimental/gat-web",
+    "packages/experimental/gat-profile",
+    "packages/experimental/gat-web-profile",
+    "apps/web/tests/snapshots/gat-agent-team-panel"
+  ],
+  "hostFiles": [
+    {
+      "path": "apps/web/tsconfig.json",
+      "mode": "0644",
+      "beforeSha256": "49772da8d61a02058c27efa5b41bffaf71aee7ba8852f74b10f7b9c8945cdaa6",
+      "afterSha256": "a5dfd07bd64e005ee21ccef9e97eda5393790d4b30eadad3a193e3c088b7c393"
+    },
+    {
+      "path": "packages/core/session/src/known-event-types.ts",
+      "mode": "0644",
+      "beforeSha256": "8d60e002f68a641745ec2416c7c594e7b8f95f08fab1200aaa6a637e365500ca",
+      "afterSha256": "cbd9b9508a6ea02cad2d07b561e6c86c6d9b6be6791430112eb6668c847312a5"
+    },
+    {
+      "path": "packages/extensions/tool-cordis/src/api-catalog.ts",
+      "mode": "0644",
+      "beforeSha256": "8923de03f6c724c2eafb805b13b066982cbc5b0d44e44a9af6356f23347bde49",
+      "afterSha256": "c0a03a341109e7054390529224a4436a3cfdc27d6b2b5664b4a32e61921c162f"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "mode": "0644",
+      "beforeSha256": "66d87ed26fe3205172560351e13fe4aa736b66c15a29f7dd873c629fc80906de",
+      "afterSha256": "38bc4178c409218ff784c913bba5bb1c7d9f15932aafb656a0714802207e95e9"
+    },
+    {
+      "path": "scripts/gen-tool-catalog.ts",
+      "mode": "0644",
+      "beforeSha256": "4b5c039c2e3b63bf5870838d9cc2f39d70852580f4db3e6ecfba5c0ae814b95a",
+      "afterSha256": "ec514c1552f2bf655f162ce1867bca6bc613d616bca049a18b0f89cfbf27a008"
+    },
+    {
+      "path": "tsdown.config.ts",
+      "mode": "0644",
+      "beforeSha256": "f5900cfc46ceebeda34d937136ee26d9f7990285a6089c09cdc270df29a003c1",
+      "afterSha256": "2d73c3865d14956da26b169923b669cba26091ec51886fe7e0190ff6a60f7f50"
+    },
+    {
+      "path": "tsconfig.base.json",
+      "mode": "0644",
+      "beforeSha256": "050f624648fa0ef40aab5f0885c314cb6b934498c7934b550c1a1432c292a279",
+      "afterSha256": "fe4ad7dbfac9e2a63d949c7cbaebd2408d5358995dc64c7417bf4e341fc3d0ec"
+    },
+    {
+      "path": "tsconfig.host.json",
+      "mode": "0644",
+      "beforeSha256": "f0a106d8613fba1fb030c3215c39610f16686312b8bf741bb63e13aedb9134f6",
+      "afterSha256": "9746376e2d824469270ee116f198338a2694fbb239fa3fd77aadbab8a0fa7629"
+    },
+    {
+      "path": "tsconfig.client.json",
+      "mode": "0644",
+      "beforeSha256": "4a3b7aec5228292aa1b5359f2da4570e896f54acca348b58001fdc6a8714cd28",
+      "afterSha256": "a00ac2d3dfa7c8e2327e5ed546aa23cc1b93711337595c68da5d5841f899a43e"
+    }
+  ],
+  "payloadFiles": [
+    {
+      "source": "verification/web/gat-agent-team-panel.e2e.ts",
+      "destination": "apps/web/tests/gat-agent-team-panel.e2e.ts",
+      "mode": "0600",
+      "sha256": "b504af387d23afe3598100295c0de774a0151df5ab1afa34b2aade0e4203173f",
+      "bytes": 5071
+    },
+    {
+      "source": "verification/web/gat-agent-team-panel.overlay.yml",
+      "destination": "apps/web/tests/gat-agent-team-panel.overlay.yml",
+      "mode": "0600",
+      "sha256": "92d4b9a19412694672eca926c586fad07d1aba65104d445da33100000a57454a",
+      "bytes": 1080
+    },
+    {
+      "source": "verification/web/task.expected.md",
+      "destination": "apps/web/tests/snapshots/gat-agent-team-panel/task.expected.md",
+      "mode": "0600",
+      "sha256": "96ac61fa0f16fd6aadec395c8842c4d714792d64e8d3571fb27e538f2182855f",
+      "bytes": 938
+    },
+    {
+      "source": "packages/core/package.json",
+      "destination": "packages/experimental/gat-core/package.json",
+      "mode": "0664",
+      "sha256": "525978f206bf9985b06eec1e78dff971091d468c1faf1491a866de54643387e3",
+      "bytes": 2838
+    },
+    {
+      "source": "packages/core/README.i18n.yaml",
+      "destination": "packages/experimental/gat-core/README.i18n.yaml",
+      "mode": "0664",
+      "sha256": "57e22c247df5b2c294575253bce86e0760231553178869f699d697d6abc72a60",
+      "bytes": 440
+    },
+    {
+      "source": "packages/core/README.md",
+      "destination": "packages/experimental/gat-core/README.md",
+      "mode": "0664",
+      "sha256": "60aea34c31d9ab1452635327c90b2bc3ad73d915e69484851315900f515fc561",
+      "bytes": 17295
+    },
+    {
+      "source": "packages/core/README.zh.md",
+      "destination": "packages/experimental/gat-core/README.zh.md",
+      "mode": "0664",
+      "sha256": "a3d2cdab6e2128062c6220c07684c8d38edddf722f2744cef61d5cfa47bc4ab9",
+      "bytes": 15968
+    },
+    {
+      "source": "packages/core/src/activity.ts",
+      "destination": "packages/experimental/gat-core/src/activity.ts",
+      "mode": "0664",
+      "sha256": "a35a8d322aea033ef7f2e1d8539026f6a49251b3c0252ee695d361066cbd4f08",
+      "bytes": 3247
+    },
+    {
+      "source": "packages/core/src/client.ts",
+      "destination": "packages/experimental/gat-core/src/client.ts",
+      "mode": "0664",
+      "sha256": "bedcec346d7e2b3a158ac23b29c971d2bc3ab41ac079962e7e4bab6554a3b78c",
+      "bytes": 477
+    },
+    {
+      "source": "packages/core/src/error.ts",
+      "destination": "packages/experimental/gat-core/src/error.ts",
+      "mode": "0664",
+      "sha256": "b9d14250f819c6cfd364c42cf2b4045674a1f7c88321f99e9a4a29b68419bea4",
+      "bytes": 804
+    },
+    {
+      "source": "packages/core/src/index.ts",
+      "destination": "packages/experimental/gat-core/src/index.ts",
+      "mode": "0664",
+      "sha256": "a8b5df7e22b22227d36f7b01474528519dd42f215d609b1ab47855bee348ba8b",
+      "bytes": 18255
+    },
+    {
+      "source": "packages/core/src/invariant.ts",
+      "destination": "packages/experimental/gat-core/src/invariant.ts",
+      "mode": "0664",
+      "sha256": "95667f2092b28b5e62a4bfcdd910a0e712ff1b71ce97bd20b79b1bab3be12753",
+      "bytes": 1587
+    },
+    {
+      "source": "packages/core/src/journal.ts",
+      "destination": "packages/experimental/gat-core/src/journal.ts",
+      "mode": "0664",
+      "sha256": "27f476c2fe46a979553868cf1612e7723b40d11a3452c750e12e670d317d9e1e",
+      "bytes": 2967
+    },
+    {
+      "source": "packages/core/src/lifecycle.ts",
+      "destination": "packages/experimental/gat-core/src/lifecycle.ts",
+      "mode": "0664",
+      "sha256": "a56df2d2c0d97dddab4bfd7c7824a8e63a8cd9b87aa430385175b6a88b626a62",
+      "bytes": 4722
+    },
+    {
+      "source": "packages/core/src/mailbox.ts",
+      "destination": "packages/experimental/gat-core/src/mailbox.ts",
+      "mode": "0664",
+      "sha256": "671d502e8f34444acd5818dc4c4e55f592e4ddfb3b69e7aaf8d12b3f5bf3cb51",
+      "bytes": 14302
+    },
+    {
+      "source": "packages/core/src/persisted.ts",
+      "destination": "packages/experimental/gat-core/src/persisted.ts",
+      "mode": "0664",
+      "sha256": "382fe7cab52e47100a798307300d649c506536d6bbe0ac89025e6c41abe4ec87",
+      "bytes": 1357
+    },
+    {
+      "source": "packages/core/src/projection.ts",
+      "destination": "packages/experimental/gat-core/src/projection.ts",
+      "mode": "0664",
+      "sha256": "b7042352c03a07d4dd0cb245ae612f4a3ce4d89b85412c2cd897129109f6ed17",
+      "bytes": 16994
+    },
+    {
+      "source": "packages/core/src/roster.ts",
+      "destination": "packages/experimental/gat-core/src/roster.ts",
+      "mode": "0664",
+      "sha256": "3b8c56f0ab0bd7d1ec395830229c39d18bd606be9c0ceaa2e2151ee8e104ed4e",
+      "bytes": 20112
+    },
+    {
+      "source": "packages/core/src/session-message.ts",
+      "destination": "packages/experimental/gat-core/src/session-message.ts",
+      "mode": "0664",
+      "sha256": "c74ef1d18667d0f221bafd726d8332e682778f06cf43b1ce13d174e5a843cf10",
+      "bytes": 1340
+    },
+    {
+      "source": "packages/core/src/task-board.ts",
+      "destination": "packages/experimental/gat-core/src/task-board.ts",
+      "mode": "0664",
+      "sha256": "93fc9d92cfe27b10805d09af234222defe8fad9bfb6a63cbf1d0621578b55179",
+      "bytes": 14239
+    },
+    {
+      "source": "packages/core/src/task-graph.ts",
+      "destination": "packages/experimental/gat-core/src/task-graph.ts",
+      "mode": "0664",
+      "sha256": "a726081289a2f7a848f69109a750db3ead0d95b88ab0adfdae0477f749b8f490",
+      "bytes": 2560
+    },
+    {
+      "source": "packages/core/src/types.ts",
+      "destination": "packages/experimental/gat-core/src/types.ts",
+      "mode": "0664",
+      "sha256": "4911d4dadbd17b027dadb6f62b0b8a743eaece4c59e5f7eda20da356f378766d",
+      "bytes": 9682
+    },
+    {
+      "source": "packages/core/src/validation.ts",
+      "destination": "packages/experimental/gat-core/src/validation.ts",
+      "mode": "0664",
+      "sha256": "eb0668e8096ce9ca294b7d787f974d27e896329bb0b4c547cb4d6bd7e42ee44b",
+      "bytes": 1396
+    },
+    {
+      "source": "packages/core/src/work-state.ts",
+      "destination": "packages/experimental/gat-core/src/work-state.ts",
+      "mode": "0664",
+      "sha256": "96d21eea191d689d331fcf5783ead39399a66b8c3b0f792c146f52d92ab89780",
+      "bytes": 3954
+    },
+    {
+      "source": "packages/core/tests/built-lib.e2e.ts",
+      "destination": "packages/experimental/gat-core/tests/built-lib.e2e.ts",
+      "mode": "0664",
+      "sha256": "184bc4074d6b9d786749030b9639a1ad4b0262c757db273c9e84e62647f2a4fb",
+      "bytes": 2546
+    },
+    {
+      "source": "packages/core/tests/invariant.spec.ts",
+      "destination": "packages/experimental/gat-core/tests/invariant.spec.ts",
+      "mode": "0664",
+      "sha256": "15905991fba1d95ef01e29459542d3f4eb13278978c78be126d0c48fd89291e2",
+      "bytes": 2621
+    },
+    {
+      "source": "packages/core/tests/persistence.spec.ts",
+      "destination": "packages/experimental/gat-core/tests/persistence.spec.ts",
+      "mode": "0664",
+      "sha256": "7232093e7409cae3e5c87fb88f2fe1eddfbfeb300ce37df48763765ed1b08501",
+      "bytes": 20683
+    },
+    {
+      "source": "packages/core/tests/projection-events.spec.ts",
+      "destination": "packages/experimental/gat-core/tests/projection-events.spec.ts",
+      "mode": "0664",
+      "sha256": "31daeae0a7bd0e911d0f07e1f036d85eec6c4c3c2bb079162db3bea6019281e7",
+      "bytes": 20191
+    },
+    {
+      "source": "packages/core/tests/team.spec.ts",
+      "destination": "packages/experimental/gat-core/tests/team.spec.ts",
+      "mode": "0664",
+      "sha256": "ef74752c99ba1811bb22196af195f331f55b666ff74a2da6bf2d2095d8ef51c9",
+      "bytes": 94826
+    },
+    {
+      "source": "packages/core/tests/test-session-query.ts",
+      "destination": "packages/experimental/gat-core/tests/test-session-query.ts",
+      "mode": "0664",
+      "sha256": "7ea5a954b40909339e2f0d2e8106aae4df5a6220035c465ec7c1ce7f407dc757",
+      "bytes": 2101
+    },
+    {
+      "source": "packages/core/tsconfig.json",
+      "destination": "packages/experimental/gat-core/tsconfig.json",
+      "mode": "0664",
+      "sha256": "81f24e8048ddabd55a3b3ccd2c9bb082d1b9298cf2bf914d58be26e36520e018",
+      "bytes": 688
+    },
+    {
+      "source": "packages/core/tsdown.config.ts",
+      "destination": "packages/experimental/gat-core/tsdown.config.ts",
+      "mode": "0664",
+      "sha256": "38329836c05c3470c93e7c03491bf385504118e5c3245a9eba8e1e43df5c1255",
+      "bytes": 535
+    },
+    {
+      "source": "packages/profile/cordis.patch.yml",
+      "destination": "packages/experimental/gat-profile/cordis.patch.yml",
+      "mode": "0664",
+      "sha256": "1e702c43b6e23d4ffe4ed923e044d56baacc87eb8d9c32874674c33c98967681",
+      "bytes": 1103
+    },
+    {
+      "source": "packages/profile/package.json",
+      "destination": "packages/experimental/gat-profile/package.json",
+      "mode": "0664",
+      "sha256": "e60eea495c50b0ca434d358833b84753918cdcbfa264d69073282546b444e6d5",
+      "bytes": 1126
+    },
+    {
+      "source": "packages/profile/README.i18n.yaml",
+      "destination": "packages/experimental/gat-profile/README.i18n.yaml",
+      "mode": "0664",
+      "sha256": "9f3a41443be295b2087019d2f0a58c8cee699bda8b12161f7e3864746aab1291",
+      "bytes": 443
+    },
+    {
+      "source": "packages/profile/README.md",
+      "destination": "packages/experimental/gat-profile/README.md",
+      "mode": "0664",
+      "sha256": "534d6c82d6b7afe5806f34c9571fe13fd9a796341f4e6f593a79d5f4269ac28a",
+      "bytes": 5117
+    },
+    {
+      "source": "packages/profile/README.zh.md",
+      "destination": "packages/experimental/gat-profile/README.zh.md",
+      "mode": "0664",
+      "sha256": "53d80e770135487a4a36781677e8c037c7fc759d11d313e36f698e048f3a56fb",
+      "bytes": 4876
+    },
+    {
+      "source": "packages/profile/src/index.ts",
+      "destination": "packages/experimental/gat-profile/src/index.ts",
+      "mode": "0664",
+      "sha256": "29c12b32b6ed5a81a0519f638b05e3f4b533948372719ed99a823c6038328dc2",
+      "bytes": 224
+    },
+    {
+      "source": "packages/profile/tests/fixtures/keyless-base.yml",
+      "destination": "packages/experimental/gat-profile/tests/fixtures/keyless-base.yml",
+      "mode": "0664",
+      "sha256": "ecd6310af636b83fe5f9cff82babd4d778b53696d9ad7d22210875602f5e2b06",
+      "bytes": 393
+    },
+    {
+      "source": "packages/profile/tests/profile.spec.ts",
+      "destination": "packages/experimental/gat-profile/tests/profile.spec.ts",
+      "mode": "0664",
+      "sha256": "3bdda099b6240b33d7fa0cc7a5b809e7b16c919f88cdf75bf4b59210755dedaf",
+      "bytes": 15219
+    },
+    {
+      "source": "packages/profile/tsconfig.json",
+      "destination": "packages/experimental/gat-profile/tsconfig.json",
+      "mode": "0664",
+      "sha256": "72830ce4949b7e2f4c7137c3d9e331b059dd2e0196417d555a1b47fdf622a245",
+      "bytes": 310
+    },
+    {
+      "source": "packages/tools/package.json",
+      "destination": "packages/experimental/gat-tools/package.json",
+      "mode": "0664",
+      "sha256": "607c4a7255bfe68e363688729b881ad3807457a1ac89b5bc6980324f66fb8ab6",
+      "bytes": 1929
+    },
+    {
+      "source": "packages/tools/README.i18n.yaml",
+      "destination": "packages/experimental/gat-tools/README.i18n.yaml",
+      "mode": "0664",
+      "sha256": "978f1bd0de2fa3edddfa07db1064a8915b0cd1d9a374a24f5ca0a708e96f9673",
+      "bytes": 441
+    },
+    {
+      "source": "packages/tools/README.md",
+      "destination": "packages/experimental/gat-tools/README.md",
+      "mode": "0664",
+      "sha256": "88389b1b512bf0ffbb16bc0e2c395b9879ee42916aa2425ec12560f2c8cc9700",
+      "bytes": 10215
+    },
+    {
+      "source": "packages/tools/README.zh.md",
+      "destination": "packages/experimental/gat-tools/README.zh.md",
+      "mode": "0664",
+      "sha256": "6a0ac584b661d74035b07b71560660ffba40e9a9083eb2da8d3f7c10e4e9c48c",
+      "bytes": 9498
+    },
+    {
+      "source": "packages/tools/src/index.ts",
+      "destination": "packages/experimental/gat-tools/src/index.ts",
+      "mode": "0664",
+      "sha256": "62926c442ae9ada08c6be328eda3aa85177c28ca72428a02e63a28529c46f183",
+      "bytes": 30591
+    },
+    {
+      "source": "packages/tools/tests/tool-team.spec.ts",
+      "destination": "packages/experimental/gat-tools/tests/tool-team.spec.ts",
+      "mode": "0664",
+      "sha256": "a8dd60aa15f14017129b69f6591d2f798fdbebaf465685e63ac0aabf94eab8c3",
+      "bytes": 49552
+    },
+    {
+      "source": "packages/tools/tsconfig.json",
+      "destination": "packages/experimental/gat-tools/tsconfig.json",
+      "mode": "0664",
+      "sha256": "8577f835d84f4e0911cda53fd7ff1a9cbc531951a37f93332cb51ab53180b70a",
+      "bytes": 521
+    },
+    {
+      "source": "packages/web-profile/cordis.patch.yml",
+      "destination": "packages/experimental/gat-web-profile/cordis.patch.yml",
+      "mode": "0664",
+      "sha256": "3b477314736c4c20d15d72c6ce2b771fa28f3edd19971fe950c2227c6f800bf4",
+      "bytes": 307
+    },
+    {
+      "source": "packages/web-profile/package.json",
+      "destination": "packages/experimental/gat-web-profile/package.json",
+      "mode": "0664",
+      "sha256": "20c66a6deb5e590e4fb60b7763f94e54e8778e07e7a39c923cae181469c223c0",
+      "bytes": 1115
+    },
+    {
+      "source": "packages/web-profile/README.i18n.yaml",
+      "destination": "packages/experimental/gat-web-profile/README.i18n.yaml",
+      "mode": "0664",
+      "sha256": "beca265159f327018bdaeede5c2d7a68c91845f15492797940b512c606a085ea",
+      "bytes": 447
+    },
+    {
+      "source": "packages/web-profile/README.md",
+      "destination": "packages/experimental/gat-web-profile/README.md",
+      "mode": "0664",
+      "sha256": "7de004c0b486051491ce0333b1a7c03b8cdfcb92431710897be2e430b2ea672f",
+      "bytes": 4573
+    },
+    {
+      "source": "packages/web-profile/README.zh.md",
+      "destination": "packages/experimental/gat-web-profile/README.zh.md",
+      "mode": "0664",
+      "sha256": "6dbb1d11d395eaf73b121c8947ecbc928b86df7d894f92aff66832d4558d03eb",
+      "bytes": 4368
+    },
+    {
+      "source": "packages/web-profile/src/index.ts",
+      "destination": "packages/experimental/gat-web-profile/src/index.ts",
+      "mode": "0664",
+      "sha256": "8d0c616a95db9384f5697a1da9c7288c4342d8240d62bd60ffb3501a8ef58b93",
+      "bytes": 85
+    },
+    {
+      "source": "packages/web-profile/tests/profile.spec.ts",
+      "destination": "packages/experimental/gat-web-profile/tests/profile.spec.ts",
+      "mode": "0664",
+      "sha256": "50889d3d5df9fa9477a3d5f5ffb7a509d13ddada62c5ec9a17458c7d0fe7e7f1",
+      "bytes": 1539
+    },
+    {
+      "source": "packages/web-profile/tsconfig.json",
+      "destination": "packages/experimental/gat-web-profile/tsconfig.json",
+      "mode": "0664",
+      "sha256": "90739a00530a4bc2f44a4e447e823dfb113bcd6ee0ee6748e9f48345f66c7a95",
+      "bytes": 209
+    },
+    {
+      "source": "packages/web/package.json",
+      "destination": "packages/experimental/gat-web/package.json",
+      "mode": "0664",
+      "sha256": "8320114137ad8ab240e7467d3545c7f3377fea7b922d90f1d776d1facc614fd5",
+      "bytes": 2946
+    },
+    {
+      "source": "packages/web/README.i18n.yaml",
+      "destination": "packages/experimental/gat-web/README.i18n.yaml",
+      "mode": "0664",
+      "sha256": "c670ac487fb954f07928cb69b602e56e3441796d52094b1d9f447947d6d687e3",
+      "bytes": 439
+    },
+    {
+      "source": "packages/web/README.md",
+      "destination": "packages/experimental/gat-web/README.md",
+      "mode": "0664",
+      "sha256": "52b963cd1a686bc88e218fd3a1de896fdb625d55f118defd676748b0b70c38c9",
+      "bytes": 5783
+    },
+    {
+      "source": "packages/web/README.zh.md",
+      "destination": "packages/experimental/gat-web/README.zh.md",
+      "mode": "0664",
+      "sha256": "c1e3bc9434caa54823d32493ef001b5154adf7fe6aeaeca4ea058d2368116774",
+      "bytes": 5500
+    },
+    {
+      "source": "packages/web/src/client/index.ts",
+      "destination": "packages/experimental/gat-web/src/client/index.ts",
+      "mode": "0664",
+      "sha256": "c62df96466421c75347c35a1bbdf935583be21a9b75c241597e268cfd6a4a9a4",
+      "bytes": 753
+    },
+    {
+      "source": "packages/web/src/client/locales.ts",
+      "destination": "packages/experimental/gat-web/src/client/locales.ts",
+      "mode": "0664",
+      "sha256": "933acda1036c89d3cfd5448092d43ff8b42c7322a785cc6c2b64dddb02b865ed",
+      "bytes": 4091
+    },
+    {
+      "source": "packages/web/src/client/mount.ts",
+      "destination": "packages/experimental/gat-web/src/client/mount.ts",
+      "mode": "0664",
+      "sha256": "7ca65ecd0cabd31599ea3b11d3a82c6338d394bf4c6b27fa00c014fce08ae12e",
+      "bytes": 5480
+    },
+    {
+      "source": "packages/web/src/client/TeamAction.module.css",
+      "destination": "packages/experimental/gat-web/src/client/TeamAction.module.css",
+      "mode": "0664",
+      "sha256": "7a3dbd6bebdaabfa13c503d01db233396ae4704f116a764a2cca19bd1e85f952",
+      "bytes": 4082
+    },
+    {
+      "source": "packages/web/src/client/TeamAction.tsx",
+      "destination": "packages/experimental/gat-web/src/client/TeamAction.tsx",
+      "mode": "0664",
+      "sha256": "645d0a0856965b9added5f2de22c160509a7a65337bcfb432d3d73c7072b037e",
+      "bytes": 22938
+    },
+    {
+      "source": "packages/web/src/css-modules.d.ts",
+      "destination": "packages/experimental/gat-web/src/css-modules.d.ts",
+      "mode": "0664",
+      "sha256": "e28410d74a0d763364c04fa690c2ca2202ad3019c74f8f5205e8dc6cba69c02f",
+      "bytes": 123
+    },
+    {
+      "source": "packages/web/src/index.ts",
+      "destination": "packages/experimental/gat-web/src/index.ts",
+      "mode": "0664",
+      "sha256": "1eff6fe14f46d1807a21f73ee698ecd73407b27c3d84edbaec9697bd56ce94df",
+      "bytes": 194
+    },
+    {
+      "source": "packages/web/tests/browser-plugin.client.spec.ts",
+      "destination": "packages/experimental/gat-web/tests/browser-plugin.client.spec.ts",
+      "mode": "0664",
+      "sha256": "600685e07a84adbcbc3e8d7307d1ca6f478527487a393e0bd114f8d6c9e9199a",
+      "bytes": 12910
+    },
+    {
+      "source": "packages/web/tests/team-action.client.spec.tsx",
+      "destination": "packages/experimental/gat-web/tests/team-action.client.spec.tsx",
+      "mode": "0664",
+      "sha256": "9237cf46cf3eecf8e3f55b7e2ec0212f1fed2576a0481a5f881bada0fc0e1481",
+      "bytes": 47593
+    },
+    {
+      "source": "packages/web/tsconfig.json",
+      "destination": "packages/experimental/gat-web/tsconfig.json",
+      "mode": "0664",
+      "sha256": "3a4009bcf6803fa6be54e4bbd71f486cd207e5c9ccedcd3a9e5515e420061444",
+      "bytes": 855
+    },
+    {
+      "source": "packages/web/tsdown.config.ts",
+      "destination": "packages/experimental/gat-web/tsdown.config.ts",
+      "mode": "0664",
+      "sha256": "f99eb1ceab31deb9709085d35cc4fc4c1d9b3b5891f66d6e1c2e17863718f914",
+      "bytes": 132
+    }
+  ],
+  "patchsetChecksum": "e3bf5ab3fa6c6117e5e5ab080c0ff5b93caf1750f1b5027be3a5303c4ae4ab38",
+  "payloadChecksum": "55f814daa2ecd3c88fbd4b92cd72f4401b8bd2f13424e006dca8b83e2cc672b5",
+  "allowedPaths": [
+    "packages/experimental/gat-core/",
+    "packages/experimental/gat-tools/",
+    "packages/experimental/gat-web/",
+    "packages/experimental/gat-profile/",
+    "packages/experimental/gat-web-profile/",
+    "apps/web/tests/gat-agent-team-panel.e2e.ts",
+    "apps/web/tests/gat-agent-team-panel.overlay.yml",
+    "apps/web/tests/snapshots/gat-agent-team-panel/task.expected.md",
+    "apps/web/tsconfig.json",
+    "packages/core/session/src/known-event-types.ts",
+    "packages/extensions/tool-cordis/src/api-catalog.ts",
+    "pnpm-lock.yaml",
+    "scripts/gen-tool-catalog.ts",
+    "tsdown.config.ts",
+    "tsconfig.base.json",
+    "tsconfig.host.json",
+    "tsconfig.client.json",
+    ".gat/installation.json"
+  ],
+  "commands": {
+    "dryRun": "node installer/index.mjs dry-run --target <DSH_WORKTREE>",
+    "install": "node installer/index.mjs install --target <DSH_WORKTREE>",
+    "status": "node installer/index.mjs status --target <DSH_WORKTREE>",
+    "rollback": "node installer/index.mjs rollback --target <DSH_WORKTREE>",
+    "verify": "node installer/verify.mjs --target <DSH_WORKTREE>"
+  }
+}

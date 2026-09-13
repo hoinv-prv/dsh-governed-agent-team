@@ -5,7 +5,7 @@ import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-libra
 import type { SessionId } from '@deepseek-ai/dsh-session/types'
 import type {
   TeamPlanApprovalResult, TeamTaskId, TeamTaskView as TeamTask, TeamView,
-} from '@deepseek-ai/dsh-experimental-agent-team/client'
+} from '@vuhoi/gat-core/client'
 import { makeTranslate, RemoteError } from '@deepseek-ai/dsh-client-test-runtime'
 import { zh as commonZh } from '@deepseek-ai/dsh-client-locale/src/locales/zh.ts'
 import {

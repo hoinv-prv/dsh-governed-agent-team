@@ -3,13 +3,13 @@ description: "Run a small team of named agents in one session: durable messages 
 kind: "package-reference"
 ---
 
-# @deepseek-ai/dsh-experimental-agent-team
+# @vuhoi/gat-core
 
 English | [中文](README.zh.md)
 
 ## Summary
 
-`dsh-experimental-agent-team` turns one coding session into a small working team: the session's agent becomes the Lead, creates named teammates for delegated work, exchanges durable messages with them, and tracks shared tasks on a common board. Messages and task state survive crashes, reloads, and interruptions, so a teammate that was offline receives its queued messages when it resumes. It provides no tools of its own — mount the sibling `dsh-experimental-tool-agent-team` so the model can create teammates, message them, and use the task board. It is published under its experimental name, carries no stability promise, and needs durable session storage to activate.
+`@vuhoi/gat-core` turns one coding session into a small working team: the session's agent becomes the Lead, creates named teammates for delegated work, exchanges durable messages with them, and tracks shared tasks on a common board. Messages and task state survive crashes, reloads, and interruptions, so a teammate that was offline receives its queued messages when it resumes. It provides no tools of its own — mount the sibling `@vuhoi/gat-tools` so the model can create teammates, message them, and use the task board. This private package carries no stability promise and needs durable session storage to activate.
 
 ## Table of Contents
 
@@ -25,7 +25,7 @@ English | [中文](README.zh.md)
 <a id="use-this-package"></a>
 ## Use this package
 
-Add this package to a composition when one agent should run a small team of named helpers in its own working directory, with messages and task state that survive crashes and restarts. It ships no tools of its own: mount it together with `@deepseek-ai/dsh-experimental-tool-agent-team` so the model can create teammates, message them, and use the task board.
+Add this package to a composition when one agent should run a small team of named helpers in its own working directory, with messages and task state that survive crashes and restarts. It ships no tools of its own: mount it together with `@vuhoi/gat-tools` so the model can create teammates, message them, and use the task board.
 
 ### When to choose it
 
@@ -40,8 +40,8 @@ The smallest addition to an existing composition is durable session storage plus
 ```yaml
 # smallest team setup — durable storage plus both Team packages
 - name: '@deepseek-ai/dsh-session-persistence-jsonl'
-- name: '@deepseek-ai/dsh-experimental-agent-team'
-- name: '@deepseek-ai/dsh-experimental-tool-agent-team'
+- name: '@vuhoi/gat-core'
+- name: '@vuhoi/gat-tools'
 ```
 
 With the tools installed, the model does the rest on request — for example, "create a teammate named reviewer to check the diff", then "send reviewer the change summary". All limits are optional and validated at startup:
@@ -165,7 +165,7 @@ Disposal closes admission, aborts and awaits admitted creation and mailbox-dispa
 Read these pages when the package-level contract is not enough. They move from the shared subsystem types to the tool surface and the decisions behind the design.
 
 - [Agent Teams subsystem](../../../docs/subsystems/agent-team.md) — durable Team types and the `ctx.agentTeams` service API.
-- [tool-agent-team package](../tool-agent-team/README.md) — the tools that let the model create, message, and coordinate teammates.
+- [tool-agent-team package](../tools/README.md) — the tools that let the model create, message, and coordinate teammates.
 - [Agent Teams Agent Note](../../../.agents/notes/implemented/feature/2026-08-05-agent-teams.md) — identity, mailbox, task, and shared-checkout decisions.
 - [Experimental package decision](../../../.agents/notes/implemented/architecture/2026-08-18-experimental-agent-teams-packages.md) — placement, publication, and dependency isolation.
 
@@ -187,7 +187,7 @@ Each delivered peer message is a user-role message. A short first text block nam
 
 #### Token effect
 
-Each peer delivery adds the sender prefix plus message content to the target history. Task and roster mutations add no model tokens; their model-facing representation belongs to `@deepseek-ai/dsh-experimental-tool-agent-team` results.
+Each peer delivery adds the sender prefix plus message content to the target history. Task and roster mutations add no model tokens; their model-facing representation belongs to `@vuhoi/gat-tools` results.
 
 #### KV Cache effect
 
@@ -200,7 +200,7 @@ Peer messages append after the target's reusable history prefix. Cold resume reu
 
 These limits describe what a team cannot do yet or what needs special operational care. They are current package constraints, not a comparison with other coordination mechanisms.
 
-- **Experimental prototype with no stability promise** — the package is public, but its contracts can change freely while it incubates.
+- **Experimental prototype with no stability promise** — the package is private, and its contracts can change freely while it incubates.
 - **One process and one shared checkout** — members share cwd and observe edits immediately; this package provides no worktree, remote member, merge, or filesystem lock.
 - **Advisory write scopes** — Bash, formatters, code generators, and direct external writers can bypass filesystem version checks; Leads must coordinate ownership and review the final diff.
 - **Flat immutable roster** — only the Lead creates direct teammates; there is no nested Team, rename, deletion, or name reuse.

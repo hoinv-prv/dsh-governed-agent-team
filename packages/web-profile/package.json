@@ -1,14 +1,12 @@
 {
-  "name": "@deepseek-ai/dsh-experimental-agent-team-web-profile",
-  "description": "Experimental Web profile layer for Agent Teams Remote and UI plugins",
-  "version": "0.1.5-rc.2",
-  "publishConfig": {
-    "access": "public"
-  },
+  "name": "@vuhoi/gat-web-profile",
+  "description": "Governed Agent Team Web profile layer",
+  "version": "0.1.0",
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
-    "directory": "packages/experimental/agent-team-web-profile"
+    "url": "git+ssh://git@github.com/hoinv-prv/dsh-governed-agent-team.git",
+    "directory": "packages/web-profile"
   },
   "type": "module",
   "main": "lib/index.js",
@@ -34,7 +32,8 @@
     }
   },
   "dependencies": {
-    "@deepseek-ai/dsh-experimental-client-ui-agent-team": "workspace:^"
+    "@vuhoi/gat-core": "file:../gat-core",
+    "@vuhoi/gat-web": "file:../gat-web"
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "workspace:^"

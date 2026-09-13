@@ -1,0 +1,13 @@
+{
+  "name": "@vuhoi/governed-agent-team",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "scripts": {
+    "generate:compatibility": "node scripts/generate-compatibility.mjs",
+    "test:installer": "node --test installer/tests/*.test.mjs"
+  }
+}

@@ -3,13 +3,13 @@ description: "在一个会话中运行一个小型具名 agent（智能体）团
 kind: "package-reference"
 ---
 
-# @deepseek-ai/dsh-experimental-agent-team
+# @vuhoi/gat-core
 
 [English](README.md) | 中文
 
 ## 概述
 
-`dsh-experimental-agent-team` 把一个编码会话变成一个小型工作团队：会话中的 agent 成为 Lead，创建具名 teammate 处理委派的工作，与它们交换持久消息，并在公共任务板上跟踪共享任务。消息与任务状态能挺过崩溃、reload 与中断，因此离线的 teammate 会在恢复后收到排队的消息。它本身不提供任何工具——请挂载兄弟包 `dsh-experimental-tool-agent-team`，让模型能够创建 teammate、给它们发消息并使用任务板。它以实验性名称公开发布、不承诺稳定性，并且需要持久会话存储才能激活。
+`@vuhoi/gat-core` 把一个编码会话变成一个小型工作团队：会话中的 agent 成为 Lead，创建具名 teammate 处理委派的工作，与它们交换持久消息，并在公共任务板上跟踪共享任务。消息与任务状态能挺过崩溃、reload 与中断，因此离线的 teammate 会在恢复后收到排队的消息。它本身不提供任何工具——请挂载兄弟包 `@vuhoi/gat-tools`，让模型能够创建 teammate、给它们发消息并使用任务板。这个私有包不承诺稳定性，并且需要持久会话存储才能激活。
 
 ## 目录
 
@@ -25,7 +25,7 @@ kind: "package-reference"
 <a id="use-this-package"></a>
 ## 使用本包
 
-当一个 agent 应该在自己的工作目录中运行一支小型具名助手团队、且消息与任务状态需要挺过崩溃与重启时，把本包加入组合。它本身不带工具：请与 `@deepseek-ai/dsh-experimental-tool-agent-team` 一起挂载，让模型能够创建 teammate、给它们发消息并使用任务板。
+当一个 agent 应该在自己的工作目录中运行一支小型具名助手团队、且消息与任务状态需要挺过崩溃与重启时，把本包加入组合。它本身不带工具：请与 `@vuhoi/gat-tools` 一起挂载，让模型能够创建 teammate、给它们发消息并使用任务板。
 
 ### 何时选择
 
@@ -40,8 +40,8 @@ kind: "package-reference"
 ```yaml
 # smallest team setup — durable storage plus both Team packages
 - name: '@deepseek-ai/dsh-session-persistence-jsonl'
-- name: '@deepseek-ai/dsh-experimental-agent-team'
-- name: '@deepseek-ai/dsh-experimental-tool-agent-team'
+- name: '@vuhoi/gat-core'
+- name: '@vuhoi/gat-tools'
 ```
 
 工具安装后，模型会按请求完成其余工作——例如先「创建一个名为 reviewer 的 teammate 检查 diff」，再「把变更摘要发给 reviewer」。所有限制都是可选的，并在启动时校验：
@@ -165,7 +165,7 @@ dispose 会关闭准入、中止并等待已获准的创建与 mailbox dispatch 
 当包级约定不够用时阅读以下页面。它们从共享子系统类型逐步进入工具表面与设计背后的决策。
 
 - [Agent Teams 子系统](../../../docs/subsystems/agent-team.zh.md)——持久 Team 类型与 `ctx.agentTeams` 服务 API。
-- [tool-agent-team 包](../tool-agent-team/README.zh.md)——让模型创建 teammate、向其发送消息并进行协调的工具。
+- [tool-agent-team 包](../tools/README.zh.md)——让模型创建 teammate、向其发送消息并进行协调的工具。
 - [Agent Teams Agent Note](../../../.agents/notes/implemented/feature/2026-08-05-agent-teams.zh.md)——身份、mailbox、任务与共享 checkout 决策。
 - [实验包决策](../../../.agents/notes/implemented/architecture/2026-08-18-experimental-agent-teams-packages.zh.md)——位置、公开发布与依赖隔离。
 
@@ -187,7 +187,7 @@ dispose 会关闭准入、中止并等待已获准的创建与 mailbox dispatch 
 
 #### Token 影响
 
-每次 peer 投递都会把发送者前缀与消息内容加入 target 历史。任务与 roster 变更不增加模型 token；其面向模型的呈现属于 `@deepseek-ai/dsh-experimental-tool-agent-team` 结果。
+每次 peer 投递都会把发送者前缀与消息内容加入 target 历史。任务与 roster 变更不增加模型 token；其面向模型的呈现属于 `@vuhoi/gat-tools` 结果。
 
 #### KV Cache 影响
 
@@ -200,7 +200,7 @@ Peer 消息追加在 target 可复用历史前缀之后。冷恢复会先复用�
 
 这些限制说明一支团队目前不能做什么、或哪些方面需要特别的运维关注。它们是当前包约束，不是与其他协作机制的对比。
 
-- **实验原型，无稳定性承诺**——本包公开发布，但孵化期间约定仍可自由变更。
+- **实验原型，无稳定性承诺**——本包为私有包，孵化期间约定仍可自由变更。
 - **单进程、共享 checkout**——成员共享 cwd，修改立即可见；本包不提供 worktree、远端成员、merge 或文件锁。
 - **write scope 仅作提示**——Bash、formatter、代码生成器与直接外部写入可以绕过文件版本检查；Lead 必须协调 owner 并检查最终 diff。
 - **扁平且不可变的 roster**——只有 Lead 可以创建直接 teammate；不支持嵌套 Team、重命名、删除或名字复用。

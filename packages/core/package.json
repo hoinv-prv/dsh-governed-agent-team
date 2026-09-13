@@ -1,14 +1,12 @@
 {
-  "name": "@deepseek-ai/dsh-experimental-agent-team",
-  "description": "Implicit-root Agent Teams roster, durable peer mailbox, and shared task DAG",
-  "version": "0.1.5-rc.2",
-  "publishConfig": {
-    "access": "public"
-  },
+  "name": "@vuhoi/gat-core",
+  "description": "Governed Agent Team durable roster, mailbox, task DAG, approval, and work state",
+  "version": "0.1.0",
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
-    "directory": "packages/experimental/agent-team"
+    "url": "git+ssh://git@github.com/hoinv-prv/dsh-governed-agent-team.git",
+    "directory": "packages/core"
   },
   "type": "module",
   "main": "lib/index.js",

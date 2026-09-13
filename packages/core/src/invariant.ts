@@ -9,7 +9,7 @@ import {
   type TeamProjectionState,
 } from './projection.ts'
 
-const PACKAGE_NAME = '@deepseek-ai/dsh-experimental-agent-team'
+const PACKAGE_NAME = '@vuhoi/gat-core'
 
 /** Cordis companion plugin name. */
 export const name = 'team-invariant'

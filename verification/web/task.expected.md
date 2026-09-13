@@ -1,0 +1,35 @@
+- button "Agent Team" [expanded]:
+  - img
+  - text: Agent Team
+- dialog "Agent Team":
+  - strong: Agent Team
+  - button "Refresh Team":
+    - img
+  - button "Close":
+    - img
+  - heading "Plan approval" [level=3]
+  - text: "Plan status: Draft Plan revision: 1"
+  - button "Approve current plan":
+    - img
+    - text: Approve current plan
+  - heading "Members" [level=3]
+  - 'button "lead Runtime status: Idle · Model: deepseek-v4-flash" [disabled]'
+  - text: No durable work reported
+  - heading "Shared tasks" [level=3]
+  - button "New task":
+    - img
+    - text: New task
+  - article:
+    - strong: Browser task
+    - text: Pending
+    - paragraph: Created through the assembled browser
+    - text: "task-1 Ready Write scopes: src/web Owner"
+    - combobox "Owner":
+      - option "Unowned" [selected]
+      - option "lead"
+    - button "Edit":
+      - img
+      - text: Edit
+    - button "Delete":
+      - img
+      - text: Delete

@@ -1,15 +1,15 @@
 ---
-description: "叠加在 dsh-base 上公开发布的实验性 Agent Teams profile 层，提供 Team-scoped 协作工具并保留一次性 delegation。"
+description: "叠加在 dsh-base 上的私有实验性 Agent Teams profile 层，提供 Team-scoped 协作工具并保留一次性 delegation。"
 kind: "package-bundle"
 ---
 
-# @deepseek-ai/dsh-experimental-agent-team-profile
+# @vuhoi/gat-profile
 
 [English](README.md) | 中文
 
 ## 概述
 
-`dsh-experimental-agent-team-profile` 是在 `@deepseek-ai/dsh-base` 之上启用 [Agent Teams](../agent-team/README.zh.md) 的公开实验性 profile 层。它的 patch 会插入 Team domain 与 Team-scoped 工具、禁用名称重叠的全局 continuable-child control，并保留普通的一次性 fresh 与 fork delegation 工具。必须将本包显式添加到已初始化的 profile；随附 profile 默认都不会启用它。
+`@vuhoi/gat-profile` 是在 `@deepseek-ai/dsh-base` 之上启用 [Agent Teams](../core/README.zh.md) 的私有实验性 profile 层。它的 patch 会插入 Team domain 与 Team-scoped 工具、禁用名称重叠的全局 continuable-child control，并保留普通的一次性 fresh 与 fork delegation 工具。必须将本包显式添加到已初始化的 profile；随附 profile 默认都不会启用它。
 
 ## 目录
 
@@ -30,11 +30,11 @@ kind: "package-bundle"
 将本包添加到已初始化的 profile，然后运行一个要求 Lead 委派工作的任务：
 
 ```sh
-dsh plugin --profile headless add @deepseek-ai/dsh-experimental-agent-team-profile
+dsh plugin --profile headless add @vuhoi/gat-profile
 dsh --profile headless "Use Agent Teams to split this task between two teammates, wait, and summarize."
 ```
 
-profile 必须已经包含 `@deepseek-ai/dsh-base`，本层会使用其中的 Subagent 服务与提供方配置行。执行 `dsh plugin --profile <name> remove @deepseek-ai/dsh-experimental-agent-team-profile` 移除本包时，bundle 也会从 profile 的有序层列表中移除。
+profile 必须已经包含 `@deepseek-ai/dsh-base`，本层会使用其中的 Subagent 服务与提供方配置行。执行 `dsh plugin --profile <name> remove @vuhoi/gat-profile` 移除本包时，bundle 也会从 profile 的有序层列表中移除。
 
 ### 获得的功能
 
@@ -66,8 +66,8 @@ Tool Team 行显式使用 `freshProvider: spawn`、`forkProvider: fork`、`minEx
 ## 进一步探索
 
 - [实验性包](../README.zh.md)——孵化状态与发布规则。
-- [Agent Teams service](../agent-team/README.zh.md)——持久 roster、消息与任务板行为。
-- [Agent Teams 工具](../tool-agent-team/README.zh.md)——Team-scoped 模型工具表层。
+- [Agent Teams service](../core/README.zh.md)——持久 roster、消息与任务板行为。
+- [Agent Teams 工具](../tools/README.zh.md)——Team-scoped 模型工具表层。
 - [Base bundle](../../bundle/base/README.zh.md)——本 patch 扩展的 profile 层。
 
 -----
@@ -79,11 +79,11 @@ Tool Team 行显式使用 `freshProvider: spawn`、`forkProvider: fork`、`minEx
 
 #### 模型会看到什么
 
-Team 策略与 schema 由 [`@deepseek-ai/dsh-experimental-tool-agent-team`](../tool-agent-team/README.zh.md) 所有。本 bundle 只改变 composition：Team-scoped `list_agents`、`send_message` 与 `interrupt_agent` 会替代已禁用的全局 continuable-child control。`subagent` 与 `subagent_fork` 仍作为一次性 delegation 工具可用，其子 agent 不会获得 continuable-child `report` 工具。
+Team 策略与 schema 由 [`@vuhoi/gat-tools`](../tools/README.zh.md) 所有。本 bundle 只改变 composition：Team-scoped `list_agents`、`send_message` 与 `interrupt_agent` 会替代已禁用的全局 continuable-child control。`subagent` 与 `subagent_fork` 仍作为一次性 delegation 工具可用，其子 agent 不会获得 continuable-child `report` 工具。
 
 #### Token 影响
 
-本 bundle 会加入 `@deepseek-ai/dsh-experimental-tool-agent-team` 描述的 Team 策略与工具 schema；它自身不增加提示词文本。
+本 bundle 会加入 `@vuhoi/gat-tools` 描述的 Team 策略与工具 schema；它自身不增加提示词文本。
 
 #### KV Cache 影响
 
@@ -93,7 +93,7 @@ Team 策略与 schema 由 [`@deepseek-ai/dsh-experimental-tool-agent-team`](../t
 
 <a id="known-limitations-and-deferred-work"></a>
 
-- **仅显式启用**——本包公开发布，但随附 CLI、Web、SDK、ACP 与 Python profile 都不会启用它。
+- **仅显式启用**——本包为私有包，随附 CLI、Web、SDK、ACP 与 Python profile 都不会启用它。
 - **共享 checkout**——所有 teammate 都观察同一个工作目录；本 bundle 不提供 worktree 隔离或文件系统锁。
 - **需要 base profile**——本 patch 依赖 `dsh-base` 提供的配置行 id 与 Subagent 提供方；它不是独立 profile。
 

@@ -1,0 +1,49 @@
+# Equivalent to the installed Governed Agent Team Host and Web profile layers.
+- id: tool-subagent-control
+  disabled: true
+
+- id: tool-subagent-list-agents
+  disabled: true
+
+- id: tool-subagent
+  config:
+    provider: spawn
+    toolName: subagent
+    backgroundMode: one-shot
+
+- id: tool-subagent-fork
+  config:
+    provider: fork
+    toolName: subagent_fork
+    backgroundMode: one-shot
+
+- insert:
+    - id: agent-team
+      name: '@vuhoi/gat-core'
+      config:
+        maxMembers: 8
+        maxTasks: 256
+        maxPendingMessagesPerMember: 64
+        maxMessageBytes: 65536
+        disposalTimeoutMs: 5000
+
+    - id: tool-agent-team
+      name: '@vuhoi/gat-tools'
+      config:
+        freshProvider: spawn
+        forkProvider: fork
+        minExecutionMembers: 2
+        maxExecutionMembers: 4
+        externalRestrictedTools:
+          - ask_user_question
+          - glob
+          - grep
+          - read
+          - read_image
+
+- insert:
+    - id: ui-agent-team
+      name: '@vuhoi/gat-web'
+      config:
+        stallWarningMs: 180000
+        refreshIntervalMs: 5000
