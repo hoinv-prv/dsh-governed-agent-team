@@ -1,0 +1,17 @@
+- id: tool-subagent-control
+  name: '@test/profile-base-row'
+
+- id: tool-subagent-list-agents
+  name: '@test/profile-base-row'
+
+- id: tool-subagent
+  name: '@deepseek-ai/dsh-tool-subagent'
+  config:
+    provider: legacy-spawn
+    backgroundMode: continuable
+
+- id: tool-subagent-fork
+  name: '@deepseek-ai/dsh-tool-subagent'
+  config:
+    provider: legacy-fork
+    backgroundMode: continuable

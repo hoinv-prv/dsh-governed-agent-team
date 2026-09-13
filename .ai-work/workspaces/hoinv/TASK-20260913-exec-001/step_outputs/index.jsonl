@@ -1,0 +1,2 @@
+{"output_id": "OUT-001-01-01", "source_id": "OUT-001-01-01", "source_type": "step_output", "step_id": "STEP-01", "status": "draft", "target_path": "04_findings.md#STEP-01", "created_at": "2026-09-13T09:28:27"}
+{"output_id": "OUT-001-02-01", "source_id": "OUT-001-02-01", "source_type": "step_output", "step_id": "STEP-02", "status": "draft", "target_path": "SOURCE_SNAPSHOT.json", "created_at": "2026-09-13T09:30:03"}
