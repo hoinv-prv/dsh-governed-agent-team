@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "name": "dsh-governed-agent-team",
+  "version": "0.1.0",
+  "release_date": "2026-09-13",
+  "source": {
+    "repository": "hoinv-prv/dsh-governed-agent-team",
+    "commit": null
+  },
+  "compatibility": {
+    "dsh": {
+      "policy": "tested-commits",
+      "tested_versions": [
+        "0.1.5-rc.2"
+      ],
+      "tested_commits": [
+        "c291e7961a515f6d7af9304e7fd1d257929aef26"
+      ],
+      "unsupported_commits": []
+    }
+  },
+  "installer": {
+    "schema_version": 1
+  }
+}

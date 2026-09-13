@@ -1,5 +1,5 @@
 import { execFileSync, spawnSync } from 'node:child_process'
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -8,6 +8,7 @@ import assert from 'node:assert/strict'
 
 const ROOT = fileURLToPath(new URL('../..', import.meta.url))
 const INSTALLER = join(ROOT, 'installer', 'index.mjs')
+const MANIFEST = JSON.parse(readFileSync(join(ROOT, 'compatibility', 'dsh-0.1.5-rc.2', 'manifest.json'), 'utf8'))
 const roots = []
 
 afterEach(() => {
@@ -26,6 +27,18 @@ function temporaryRepository(version = '0.1.5-rc.2') {
   return root
 }
 
+function compatibleTemporaryRepository() {
+  const root = temporaryRepository()
+  for (const file of MANIFEST.hostFiles) {
+    const destination = join(root, file.path)
+    mkdirSync(resolve(destination, '..'), { recursive: true })
+    copyFileSync(join(ROOT, 'compatibility', 'dsh-0.1.5-rc.2', 'patchset', 'before', file.path), destination)
+  }
+  execFileSync('git', ['add', '.'], { cwd: root })
+  execFileSync('git', ['commit', '--quiet', '-m', 'compatible fixture'], { cwd: root })
+  return root
+}
+
 describe('GAT installer CLI', () => {
   it('rejects an unknown operation without touching a target', () => {
     const result = spawnSync(process.execPath, [INSTALLER, 'unknown'], { encoding: 'utf8' })
@@ -33,14 +46,39 @@ describe('GAT installer CLI', () => {
     assert.match(result.stderr, /unknown or missing operation/u)
   })
 
-  it('rejects every unpinned DSH commit before installation writes', () => {
+  it('reports an unverified DSH commit without failing status', () => {
     const target = temporaryRepository()
-    const before = execFileSync('git', ['status', '--porcelain=v1', '--untracked-files=all'], { cwd: target, encoding: 'utf8' })
+    const result = spawnSync(process.execPath, [INSTALLER, 'status', '--target', target], { encoding: 'utf8' })
+    assert.equal(result.status, 0, result.stderr)
+    assert.equal(JSON.parse(result.stdout).dsh.compatibility, 'UNVERIFIED')
+  })
+
+  it('blocks an unverified DSH dry-run unless explicitly overridden', () => {
+    const target = temporaryRepository()
     const result = spawnSync(process.execPath, [INSTALLER, 'dry-run', '--target', target], { encoding: 'utf8' })
-    const after = execFileSync('git', ['status', '--porcelain=v1', '--untracked-files=all'], { cwd: target, encoding: 'utf8' })
+    assert.equal(result.status, 4)
+    assert.equal(JSON.parse(result.stdout).status, 'blocked')
+    assert.match(result.stdout, /allow-unverified-dsh/u)
+  })
+
+  it('allows unrelated dirty target paths only with the explicit override', () => {
+    const target = compatibleTemporaryRepository()
+    writeFileSync(join(target, 'unrelated.txt'), 'preserve me\n')
+    const blocked = spawnSync(process.execPath, [INSTALLER, 'dry-run', '--target', target, '--allow-unverified-dsh'], { encoding: 'utf8' })
+    assert.equal(blocked.status, 1)
+    assert.match(blocked.stderr, /target worktree is not pristine/u)
+    const allowed = spawnSync(process.execPath, [INSTALLER, 'dry-run', '--target', target, '--allow-unverified-dsh', '--allow-dirty-target'], { encoding: 'utf8' })
+    assert.equal(allowed.status, 0, allowed.stderr)
+    assert.equal(JSON.parse(allowed.stdout).status, 'ready')
+    assert.equal(readFileSync(join(target, 'unrelated.txt'), 'utf8'), 'preserve me\n')
+  })
+
+  it('never allows a dirty host preimage even with the dirty-target override', () => {
+    const target = compatibleTemporaryRepository()
+    writeFileSync(join(target, MANIFEST.hostFiles[0].path), 'changed\n')
+    const result = spawnSync(process.execPath, [INSTALLER, 'dry-run', '--target', target, '--allow-unverified-dsh', '--allow-dirty-target'], { encoding: 'utf8' })
     assert.equal(result.status, 1)
-    assert.match(result.stderr, /unsupported DSH commit/u)
-    assert.equal(after, before)
+    assert.match(result.stderr, /dirty target paths overlap installer-owned paths/u)
   })
 
   it('rejects a target path that is not the worktree root', () => {
