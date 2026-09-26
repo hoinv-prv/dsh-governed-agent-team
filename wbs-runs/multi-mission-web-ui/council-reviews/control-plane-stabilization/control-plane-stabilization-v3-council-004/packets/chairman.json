@@ -1,0 +1,17 @@
+{
+  "schema_version":1,
+  "review_id":"control-plane-stabilization-v3-council-004",
+  "role":"chairman",
+  "objective":"Disposition only the three normalized and parent-confirmed findings; apply deterministic verdict rules; do not invent findings or claim project authority.",
+  "decision_owner":{"kind":"human","id":"HUMAN-current-user"},
+  "artifact_manifest_sha256":"19fb90c391090e84ef9297e21e9d36fe0df6de9cfdd23fb898942405c0645305",
+  "reviewed_artifact":{"artifact_id":"design-v3","sha256":"8fc33a7d5a09ed5eb53d90d4b34ccfee0b58d061342bd561c5d986f793824bf2"},
+  "routing_facts":{"authority_lane":"valid on attempt 2","adversarial_lane":"valid empty","outside_view_lane":"valid empty advisory-only","internal_model_families":["deepseek-v41","openai-gpt5"],"adjudication_triggered":false,"restriction_mode":"prompt-only"},
+  "findings":[
+    {"finding_id":"r4auth002a2-f1","severity":"high","verification":"confirmed","claim":"Charge/boundary record is assigned to an unnamed owning charge operation with no existing attributable owner."},
+    {"finding_id":"r4auth002a2-f2","severity":"medium","verification":"confirmed","claim":"Repository precedence paraphrase collapses Wiki tiers and omits History."},
+    {"finding_id":"r4auth002a2-f3","severity":"medium","verification":"confirmed","claim":"Proposed AdmissionBundle schema has no named authority, validator or exact prepare command."}
+  ],
+  "verdict_rule":"Confirmed high/medium findings require needs_revision. Prompt-only and unknown-cost degradations independently cap any pass at pass_with_notes.",
+  "required_output":{"chairman":{"reviewer_id":"chairman4-001","invocation_id":"inv4-chair-001","participated_in_initial_review":false,"participated_in_external_review":false,"participated_in_adjudication":false},"verdict":"needs_revision","project_authority_claimed":false,"artifact_mutation_authorized":false}
+}

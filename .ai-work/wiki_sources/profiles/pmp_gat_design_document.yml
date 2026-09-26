@@ -1,0 +1,29 @@
+mapping_pattern_id: PMP-DSH-GAT-DESIGN-DOCUMENT-V1
+artifact_type: design_document
+project_format_label: gat_design_document_v1
+format_signature:
+  - Markdown document with an H1 title and a status or authority declaration near the start
+  - Contains a purpose, objective, background, or problem-statement section
+canonical_slots_used:
+  - summary
+  - knowledge_targets
+  - lookup_keys
+common_source_to_slot_mapping:
+  - source_pattern: Purpose | Objective | Background | Problem statement
+    canonical_slots:
+      - summary
+  - source_pattern: Architecture | Design | Security | Compatibility | Goals
+    canonical_slots:
+      - knowledge_targets
+      - lookup_keys
+project_customized_meta_fields:
+  - field: source_type
+    description: Project-specific GAT design document
+    example: gat_design_document
+reuse_confidence: medium
+exceptions:
+  - Status and section names vary across proposals, references, security gates, and advisory designs.
+  - Historical WBS revisions and evidence files remain out of scope.
+created_at: 2026-09-26
+confirmed_by: hoinv
+last_validated: 2026-09-26

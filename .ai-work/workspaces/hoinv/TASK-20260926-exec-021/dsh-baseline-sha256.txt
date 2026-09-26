@@ -1,0 +1,10 @@
+0cfe0909ddae23f1d84b3925d1d7b9acc94942e68c987ac92f0ef46831d2361c  /home/hoinv/deepseek-harness/packages/experimental/gat-core/src/types.ts
+04690dab05241ea961d93dcbdb73ddb0f2985f9c6686ffff23cf8b00dfe7c3e0  /home/hoinv/deepseek-harness/packages/experimental/gat-core/src/roster.ts
+776ce749939baf188b04dcec3ec24b0c1e12ec9960904948669872bee1601e39  /home/hoinv/deepseek-harness/packages/experimental/gat-tools/src/index.ts
+df161d29335b9ecb6da3444a72058de61da93e286c805c7b9184e2b7ad89deed  /home/hoinv/deepseek-harness/packages/experimental/gat-tools/src/team-config.ts
+a2b2b38caa88344528ca59a5cf4d68d59697d1d3e6b4069d20d19f60a8bccdf6  /home/hoinv/deepseek-harness/packages/experimental/gat-tools/tests/team-config.spec.ts
+ab001f645b76e035fe420a401f30eb1793cfde6684c7d31c219d39f1471b23df  /home/hoinv/deepseek-harness/packages/experimental/gat-tools/package.json
+07641b119f47f4e802bf9ddbfbdd12ccd7c6d22663e1d1f64a964fce07f19c7e  /home/hoinv/deepseek-harness/packages/experimental/gat-tools/tsconfig.json
+d3238c2a7b54173f78918b23023b2a2d2344113d247b82f5ee7c5176c874f2aa  /home/hoinv/deepseek-harness/packages/experimental/gat-profile/cordis.patch.yml
+cc4c357775bbf556b233d828a3d4d7cae4dd2101bb5036f89214cd744205d57c  /home/hoinv/deepseek-harness/packages/experimental/gat-web/src/client/mount.ts
+4d6f64c49db71fdb10fbf5b638262d12d5f9d60eb22fccf8514e4eab7f4c20a2  /home/hoinv/deepseek-harness/packages/experimental/gat-web/src/client/locales.ts

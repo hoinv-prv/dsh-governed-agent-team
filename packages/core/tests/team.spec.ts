@@ -6,7 +6,7 @@ import { Context } from '@deepseek-ai/cordis'
 import type { Agent } from '@deepseek-ai/dsh-agent'
 import AgentLoop from '@deepseek-ai/dsh-agent-loop'
 import { mountAgentLoopTestDependencies } from '@deepseek-ai/dsh-agent-loop-testkit'
-import { createUserMessage } from '@deepseek-ai/dsh-llm'
+import { ToolCallId, createToolResultMessage, createUserMessage } from '@deepseek-ai/dsh-llm'
 import { SessionLogOffset, SessionId, type Session, type SessionEvent } from '@deepseek-ai/dsh-session'
 import JsonlSessionPersistence from '@deepseek-ai/dsh-session-persistence-jsonl'
 import SubagentService from '@deepseek-ai/dsh-subagent'
@@ -14,8 +14,9 @@ import { deliverSubagentPrompt, type HostPromptDeliverer } from '@deepseek-ai/ds
 import * as SubagentFork from '@deepseek-ai/dsh-subagent-fork-in-process'
 import * as SubagentSpawn from '@deepseek-ai/dsh-subagent-spawn-in-process'
 import { MockAdapter, textResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
-import TeamService, { TeamError, TeamId, TeamMessageId, TeamTaskId } from '../src/index.ts'
+import TeamService, { TeamError, TeamId, TeamMessageId, TeamMissionId, TeamTaskId } from '../src/index.ts'
 import { TeamRuntimeLifecycle } from '../src/lifecycle.ts'
+import { approvedPlanTaskSubjects, parseApprovedPlanTasks } from '../src/approved-plan-import.ts'
 import { teamProjectionDefinition } from '../src/projection.ts'
 import type { TeamMemberSnapshot, TeamMessageSnapshot, TeamTaskSnapshot } from '../src/index.ts'
 import { TestSessionQuery } from './test-session-query.ts'
@@ -80,6 +81,40 @@ async function setup(
 
 function content(text: string) {
   return [{ type: 'text' as const, text }]
+}
+
+function approvedPlanEvents(callId: string, plan: string, isError = false): SessionEvent[] {
+  const id = ToolCallId(callId)
+  return [
+    {
+      type: 'tool/call',
+      data: { turn: 1, step: 1, callId: id, name: 'exit_plan_mode', arguments: JSON.stringify({ plan }) },
+    },
+    {
+      type: 'tool/result',
+      data: {
+        turn: 1,
+        step: 1,
+        message: createToolResultMessage({ callId: id, content: content('approved'), isError }),
+      },
+    },
+  ] as unknown as SessionEvent[]
+}
+
+async function appendApprovedPlan(lead: Agent, plan: string, isError = false): Promise<void> {
+  lead.session.append('turn/start', { turn: 1 })
+  lead.session.append('step/start', { turn: 1, step: 1 })
+  const callId = ToolCallId('approved-plan')
+  const call = lead.session.append('tool/call', {
+    turn: 1, step: 1, callId, name: 'exit_plan_mode', arguments: JSON.stringify({ plan }),
+  })
+  lead.session.append('tool/result', {
+    turn: 1,
+    step: 1,
+    message: createToolResultMessage({ callId, content: content('approved'), isError }),
+  }, { surfaceOp: 'append', sourceEventSeqs: [call.seq] })
+  lead.session.append('step/end', { turn: 1, step: 1 })
+  lead.session.append('turn/end', { turn: 1, reason: { kind: 'completed' } })
 }
 
 interface TeamServiceInternals {
@@ -876,6 +911,92 @@ describe('Team shared task DAG', () => {
 })
 
 describe('Team Remote API', () => {
+  it('keeps two missions and their approvals independently durable', async () => {
+    const { ctx, lead } = await setup(['hang'])
+    const alpha = await ctx.agentTeams.createMission(lead, {
+      title: 'Alpha mission',
+      objective: 'Deliver Alpha independently',
+      tasks: [{
+        id: TeamTaskId('alpha-task'), revision: 1, subject: 'Alpha task', description: 'Alpha task scope',
+        status: 'pending', blockedBy: [], writeScopes: [],
+      }],
+    })
+    const beta = await ctx.agentTeams.createMission(lead, {
+      title: 'Beta mission',
+      objective: 'Deliver Beta independently',
+      tasks: [{
+        id: TeamTaskId('beta-task'), revision: 1, subject: 'Beta task', description: 'Beta task scope',
+        status: 'pending', blockedBy: [], writeScopes: [],
+      }],
+    })
+
+    expect(ctx.agentTeams.listMissions(lead).map(mission => mission.id)).toEqual([alpha.id, beta.id])
+    expect(ctx.agentTeams.getMission(lead, alpha.id).plan.tasks.map(task => task.id)).toEqual([TeamTaskId('alpha-task')])
+    expect(ctx.agentTeams.getMission(lead, beta.id).plan.tasks.map(task => task.id)).toEqual([TeamTaskId('beta-task')])
+    await expect(ctx.agentTeams.approveMission(lead, { missionId: alpha.id, expectedRevision: alpha.revision }))
+      .resolves.toMatchObject({ id: alpha.id, revision: 2, status: 'approved', approval: { approvedRevision: 2 } })
+    expect(ctx.agentTeams.getMission(lead, beta.id)).toMatchObject({ revision: 1, status: 'draft' })
+
+    const started = await spawn(ctx, lead, 'mission-worker')
+    const worker = await waitRunning(ctx, started.member.id)
+    await expect(ctx.agentTeams.approveMission(worker, { missionId: beta.id, expectedRevision: beta.revision }))
+      .rejects.toMatchObject({ code: 'TEAM_LEAD_REQUIRED' })
+    await expect(ctx.agentTeams.remoteApproveMission(lead, { missionId: alpha.id, expectedRevision: alpha.revision }))
+      .resolves.toMatchObject({ ok: false, error: { code: 'team-mission-conflict' } })
+    expect(() => ctx.agentTeams.remoteGetMission(lead, TeamMissionId('missing'))).toThrow(/not found/)
+    expect(ctx.agentTeams.remoteListMissions(lead)).toHaveLength(2)
+    const populatedView = ctx.agentTeams.remoteView(lead)
+    expect(populatedView).toHaveProperty('missions')
+    expect(populatedView.missions).toEqual([
+      expect.objectContaining({ id: alpha.id, revision: 2, status: 'approved' }),
+      expect.objectContaining({ id: beta.id, revision: 1, status: 'draft' }),
+    ])
+    ctx.agentTeams.interrupt(lead, 'mission-worker')
+    await waitNoAgent(ctx, worker.id)
+  })
+
+  it('rejects malformed initial mission task plans before appending', async () => {
+    const { ctx, lead } = await setup([])
+    const missionTask = (overrides: Partial<TeamTaskSnapshot> = {}): TeamTaskSnapshot => ({
+      id: TeamTaskId('mission-task-1'),
+      revision: 1,
+      subject: 'Mission task',
+      description: 'Initial mission task',
+      status: 'pending',
+      blockedBy: [],
+      writeScopes: [],
+      ...overrides,
+    })
+    const first = missionTask()
+    const second = missionTask({
+      id: TeamTaskId('mission-task-2'),
+      blockedBy: [TeamTaskId('mission-task-1')],
+    })
+    const invalidPlans: readonly [string, unknown][] = [
+      ['malformed', {}],
+      ['duplicate ids', [first, missionTask()]],
+      ['cyclic dependencies', [
+        missionTask({ blockedBy: [TeamTaskId('mission-task-2')] }),
+        second,
+      ]],
+      ['missing dependency', [missionTask({ blockedBy: [TeamTaskId('missing-task')] })]],
+      ['invalid owner', [missionTask({ ownerId: SessionId('unknown-member') })]],
+      ['non-v1 revision', [missionTask({ revision: 2 })]],
+      ['non-pending initial status', [missionTask({ status: 'completed' })]],
+    ]
+
+    const before = lead.session.snapshotEvents().length
+    for (const [, tasks] of invalidPlans) {
+      await expect(ctx.agentTeams.createMission(lead, {
+        title: 'Invalid mission',
+        objective: 'This must not be committed to the durable mission log.',
+        tasks: tasks as readonly TeamTaskSnapshot[],
+      })).rejects.toMatchObject({ code: 'TEAM_INVALID_ARGUMENT' })
+    }
+    expect(lead.session.snapshotEvents()).toHaveLength(before)
+    expect(ctx.agentTeams.listMissions(lead)).toEqual([])
+  })
+
   it('reports caller-bound durable work with exact semantic and file contracts', async () => {
     const { ctx, lead } = await setup([])
     const created = await ctx.agentTeams.createTask(lead, { subject: 'Owned', description: 'work' })
@@ -1003,6 +1124,163 @@ describe('Team Remote API', () => {
     await child.dispose()
   })
 
+  it('requires the latest exit-plan call to have exactly one successful matching result', () => {
+    const older = approvedPlanEvents('older', '## Tasks\n- Old task')
+    const rejected = approvedPlanEvents('rejected', '## Tasks\n- Rejected task', true)
+    const latest = approvedPlanEvents('latest', '## Tasks\n- [ ] Keep task\n1. Numbered task\n* Bullet task\n## Notes\nnot parsed')
+    expect(approvedPlanTaskSubjects([...older, ...rejected, ...latest]))
+      .toEqual(['Keep task', 'Numbered task', 'Bullet task'])
+    expect(() => approvedPlanTaskSubjects([...older, ...rejected] as SessionEvent[]))
+      .toThrow(expect.objectContaining({ code: 'TEAM_PLAN_IMPORT_INVALID' }))
+    expect(() => approvedPlanTaskSubjects([...latest, latest[1]!] as SessionEvent[]))
+      .toThrow(expect.objectContaining({ code: 'TEAM_PLAN_IMPORT_INVALID' }))
+    expect(() => approvedPlanTaskSubjects([
+      ...older,
+      { type: 'tool/call', data: { turn: 2, step: 1, callId: ToolCallId('incomplete'), name: 'exit_plan_mode', arguments: '{}' } },
+    ] as SessionEvent[])).toThrow(expect.objectContaining({ code: 'TEAM_PLAN_IMPORT_INVALID' }))
+  })
+
+  it('normalizes every plan parsing validation failure to plan-import-invalid', () => {
+    expect(parseApprovedPlanTasks('## Tasks\n- [x] One\n\n## Other\n- ignored')).toEqual(['One'])
+    for (const invalid of [
+      '# Tasks\n- One',
+      '## Tasks\nparagraph',
+      '## Tasks\n- [ ]',
+      '## Tasks\n- [',
+      '## Tasks\n- [q] invalid marker',
+      '## Tasks\n-    ',
+      `## Tasks\n- ${'x'.repeat(201)}`,
+      '## Tasks\n### Nested\n- One',
+    ]) {
+      expect(() => parseApprovedPlanTasks(invalid)).toThrow(expect.objectContaining({
+        code: 'TEAM_PLAN_IMPORT_INVALID',
+      }))
+    }
+  })
+
+  it('imports, de-duplicates, and approves the exact post-import plan revision in one flush', async () => {
+    const { ctx, lead } = await setup([])
+    await appendApprovedPlan(lead, '## Tasks\n- Build API\n- build   api\n1. Build UI\n## Notes\n- ignored')
+    const before = lead.session.snapshotEvents().length
+
+    await expect(ctx.agentTeams.remoteImportApprovedPlan(lead)).resolves.toEqual({
+      ok: true,
+      value: { approvedRevision: 2 },
+    })
+    expect(ctx.agentTeams.remoteView(lead)).toMatchObject({
+      planRevision: 2,
+      planPhase: 'approved',
+      planApproval: { approvedRevision: 2 },
+      tasks: [
+        { subject: 'Build API', status: 'pending' },
+        { subject: 'Build UI', status: 'pending' },
+      ],
+    })
+    expect(lead.session.snapshotEvents().slice(before).map(event => event.type))
+      .toEqual(['team/task', 'team/task', 'team/plan-approved'])
+  })
+
+  it('approves a no-op import at the current unapproved revision and leaves failures unmutated', async () => {
+    const { ctx, lead } = await setup([], { maxTasks: 1 })
+    await ctx.agentTeams.createTask(lead, { subject: 'Existing task', description: 'already present' })
+    await appendApprovedPlan(lead, '## Tasks\n- existing   TASK')
+    await expect(ctx.agentTeams.importApprovedPlanAndApprove(lead)).resolves.toEqual({ approvedRevision: 1 })
+
+    const afterApproval = lead.session.snapshotEvents().length
+    await expect(ctx.agentTeams.importApprovedPlanAndApprove(lead)).rejects.toMatchObject({
+      code: 'TEAM_PLAN_STALE_REVISION',
+    })
+    expect(lead.session.snapshotEvents()).toHaveLength(afterApproval)
+
+    const { ctx: limitedCtx, lead: limitedLead } = await setup([], { maxTasks: 1 })
+    await limitedCtx.agentTeams.createTask(limitedLead, { subject: 'Existing task', description: 'already present' })
+    await appendApprovedPlan(limitedLead, '## Tasks\n- New task')
+    const beforeLimit = limitedLead.session.snapshotEvents().length
+    await expect(limitedCtx.agentTeams.remoteImportApprovedPlan(limitedLead)).resolves.toMatchObject({
+      ok: false,
+      error: { code: 'team-rejected' },
+    })
+    expect(limitedLead.session.snapshotEvents()).toHaveLength(beforeLimit)
+  })
+
+  it('fails closed for malformed source input, preflights, and non-Leads without a partial import', async () => {
+    const { ctx, lead } = await setup(['hang'])
+    const malformed = approvedPlanEvents('bad', '## Tasks\n- One')
+    const call = malformed[0]!
+    if (call.type !== 'tool/call') throw new Error('test fixture call missing')
+    lead.session.append('turn/start', { turn: 1 })
+    lead.session.append('step/start', { turn: 1, step: 1 })
+    lead.session.append('tool/call', { ...call.data, arguments: '{' })
+    const beforeMalformed = lead.session.snapshotEvents().length
+    await expect(ctx.agentTeams.remoteImportApprovedPlan(lead)).resolves.toMatchObject({
+      ok: false,
+      error: { code: 'team-plan-import-rejected' },
+    })
+    expect(lead.session.snapshotEvents()).toHaveLength(beforeMalformed)
+
+    const { ctx: checkedCtx, lead: checkedLead } = await setup([])
+    await appendApprovedPlan(checkedLead, '## Tasks\n- Checked task')
+    checkedCtx.agentTeams.registerApprovalPreflight(() => ['hold'])
+    const beforePreflight = checkedLead.session.snapshotEvents().length
+    await expect(checkedCtx.agentTeams.remoteImportApprovedPlan(checkedLead)).resolves.toMatchObject({
+      ok: false,
+      error: { code: 'team-preflight-rejected' },
+    })
+    expect(checkedLead.session.snapshotEvents()).toHaveLength(beforePreflight)
+
+    const { ctx: teamCtx, lead: teamLead } = await setup(['hang'])
+    const started = await spawn(teamCtx, teamLead, 'import-worker')
+    const worker = await waitRunning(teamCtx, started.member.id)
+    const beforeNonLead = teamLead.session.snapshotEvents().length
+    await expect(teamCtx.agentTeams.remoteImportApprovedPlan(worker)).resolves.toMatchObject({
+      ok: false,
+      error: { code: 'team-rejected' },
+    })
+    expect(teamLead.session.snapshotEvents()).toHaveLength(beforeNonLead)
+    teamCtx.agentTeams.interrupt(teamLead, 'import-worker')
+    await waitNoAgent(teamCtx, worker.id)
+  })
+
+  it('rejects a later incomplete or rejected plan call without importing the older plan', async () => {
+    const { ctx, lead } = await setup([])
+    await appendApprovedPlan(lead, '## Tasks\n- Older task')
+    lead.session.append('tool/call', {
+      turn: 2, step: 1, callId: ToolCallId('later-incomplete'), name: 'exit_plan_mode', arguments: '{}',
+    })
+    const beforeIncomplete = lead.session.snapshotEvents().length
+    await expect(ctx.agentTeams.remoteImportApprovedPlan(lead)).resolves.toMatchObject({
+      ok: false,
+      error: { code: 'team-plan-import-rejected' },
+    })
+    expect(lead.session.snapshotEvents()).toHaveLength(beforeIncomplete)
+    expect(ctx.agentTeams.remoteView(lead).tasks).toEqual([])
+
+    const { ctx: rejectedCtx, lead: rejectedLead } = await setup([])
+    await appendApprovedPlan(rejectedLead, '## Tasks\n- Older task')
+    await appendApprovedPlan(rejectedLead, '## Tasks\n- Rejected task', true)
+    const beforeRejected = rejectedLead.session.snapshotEvents().length
+    await expect(rejectedCtx.agentTeams.remoteImportApprovedPlan(rejectedLead)).resolves.toMatchObject({
+      ok: false,
+      error: { code: 'team-plan-import-rejected' },
+    })
+    expect(rejectedLead.session.snapshotEvents()).toHaveLength(beforeRejected)
+    expect(rejectedCtx.agentTeams.remoteView(rejectedLead).tasks).toEqual([])
+  })
+
+  it('maps empty and overlong imported task subjects to typed import rejections without mutation', async () => {
+    for (const plan of ['## Tasks\n- [ ]', `## Tasks\n- ${'x'.repeat(201)}`]) {
+      const { ctx, lead } = await setup([])
+      await appendApprovedPlan(lead, plan)
+      const before = lead.session.snapshotEvents().length
+      await expect(ctx.agentTeams.remoteImportApprovedPlan(lead)).resolves.toMatchObject({
+        ok: false,
+        error: { code: 'team-plan-import-rejected' },
+      })
+      expect(lead.session.snapshotEvents()).toHaveLength(before)
+      expect(ctx.agentTeams.remoteView(lead).tasks).toEqual([])
+    }
+  })
+
   it('approves only a Lead exact non-empty current plan revision and appends no invalid event', async () => {
     const { ctx, lead } = await setup(['hang'])
     const beforeEmpty = lead.session.snapshotEvents().length
@@ -1055,13 +1333,16 @@ describe('Team Remote API', () => {
   it('exports Team views and task mutations from the owning service', async () => {
     const { ctx, lead } = await setup([])
     expect(ctx.agentTeams.typertRemote).toMatchObject({ serviceKey: 'agentTeams', namespace: 'agentTeams' })
-    expect(ctx.agentTeams.remoteView(lead)).toEqual({
+    const emptyView = ctx.agentTeams.remoteView(lead)
+    expect(emptyView).toEqual({
+      enabled: false,
       planRevision: 0,
       planPhase: 'draft',
       work: [],
       members: [expect.objectContaining({ name: 'lead', role: 'lead', status: 'idle' })],
       tasks: [],
     })
+    expect(emptyView).not.toHaveProperty('missions')
 
     const createdResult = await ctx.agentTeams.remoteCreateTask(lead, {
       subject: 'Remote task',

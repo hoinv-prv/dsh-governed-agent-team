@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v39-council-042",
+  "reviewer_id": "reviewer42-authority-001",
+  "lane": "internal-authority",
+  "invocation_id": "inv42-auth-001",
+  "attempt": 1,
+  "status": "completed",
+  "artifact_manifest_sha256": "b81fcc93713d990797bdaac314693b6bf12a0d22adbd218e18728468ad447258",
+  "packet_sha256": "94e87762c88aacd01458b6a3c4b9c391a90046924b9ef95d29373c6cb65c95b0",
+  "findings": [
+    {
+      "finding_id": "AUTH42-F-001",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "CP-12 lists ADMISSION_ACCOUNTING_BLOCKED and CHARGED_ACCOUNTING_BLOCKED as current states but registers no outgoing edge for either: the bounded-reconciliation return to CHARGED_ACCOUNTING_PENDING/COMPLETION_INDEX_CLOSE_PENDING required by Section 14 and the terminal resource-exhausted transition are absent from the allowed_edges cell, whose registered exits all originate from CHARGED_ACCOUNTING_PENDING or COMPLETION_INDEX_CLOSE_PENDING.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "221, 197-198, 563-564"
+      },
+      "evidence_excerpt": "exact bounded reconciliation; any charged writer/accounting/APPLIED-completion failure uses `CHARGED_ACCOUNTING_PENDING→CHARGED_ACCOUNTING_BLOCKED`",
+      "impact": "Section 5.0.1 declares the CP-01..CP-16 registry the exhaustive normative edge index and states that an edge absent from it is forbidden, while Section 14 row 563 requires CHARGED_ACCOUNTING_BLOCKED to reconcile 'returning only to `CHARGED_ACCOUNTING_PENDING`/`COMPLETION_INDEX_CLOSE_PENDING`' and Section 5.0.1 rows 197-198 plus Section 14 row 564 require an exhaustion transition to FAILED_CHARGED_RESOURCE_EXHAUSTED from an unnamed source. A P3/P15 validator built from the CP-12 cell therefore cannot admit the recovery return it mandates, so a legitimately charged blocked attempt has no registered exit and an implementer must either leave the charge permanently fail-stopped or invent an unlisted edge, contrary to must-check items 4, 19 and 27.",
+      "recommended_action": "Add the outgoing reconciliation edges for ADMISSION_ACCOUNTING_BLOCKED and CHARGED_ACCOUNTING_BLOCKED (including the return to CHARGED_ACCOUNTING_PENDING/COMPLETION_INDEX_CLOSE_PENDING), name the source state of the terminal FAILED_CHARGED_RESOURCE_EXHAUSTED edge in the CP-12 allowed_edges cell, and mirror both in P3/P15 and fixtures.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-authority-001",
+        "invocation_id": "inv42-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.86
+    },
+    {
+      "finding_id": "AUTH42-F-002",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "evidence-basis",
+      "claim": "P14, the invariant named 'Bundle freshness/invalidation', never applies the Section 6 freshness_rule (approved UTC clock source, observed/expires bounds, prepared-sequence delta) and instead requires all current native states to equal the sealed bundle, so the mandated time-bounded predicate has no owning admission invariant and its permitted sequence delta contradicts P14's blanket equality requirement.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "319 and 395"
+      },
+      "evidence_excerpt": "current native sequence must be `>= prepared` and delta `<= maximum`, a fresh read from that exact clock source must be `>= observed_utc_unix_ns` and `< expires_at_utc_unix_ns`",
+      "impact": "P14 states that 'All current hashes/native states ... still equal the sealed bundle immediately before commit except two explicitly mutable append-only sources', while the sealed freshness_rule expressly tolerates a native-sequence advance up to maximum_sequence_delta and requires a fresh UTC clock read below expires_at_utc_unix_ns. A validator implementing P14 literally expires any in-delta bundle, whereas a validator that ignores the freshness_rule can admit a bundle past expiry; either way must-check item 13's time-bound proof is unowned and charge could proceed on stale evidence or be blocked spuriously.",
+      "recommended_action": "Have P14 explicitly evaluate the bundle freshness_rule (exact clock source id, observed/expires bounds, prepared-sequence delta, required source versions and authority generations) and reconcile its equality clause with maximum_sequence_delta, with clock-source, expired and in-delta fixtures.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-authority-001",
+        "invocation_id": "inv42-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.8
+    },
+    {
+      "finding_id": "AUTH42-F-003",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "internal-consistency",
+      "claim": "The Section 5.0.1 field-level mapping rule still requires the Section 14 coverage index to cover every allowed_edges value, while the Section 14 edge-registry coverage statement now covers only failure, blocked-state and recovery edges, so the run-041 AUTH41-F-002 correction was applied to Section 14 but not to the deterministic equality predicate it depends on.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "202 and 538"
+      },
+      "evidence_excerpt": "the Section 14 coverage index may reference one or more CP IDs without repeating their prose but must cover every `allowed_edges` value",
+      "impact": "Section 14 now states 'this Section 14 matrix covers every **failure, blocked-state and recovery** `allowed_edges` value, not ordinary success edges; ordinary success edges are covered by the CP registry/manifest and passing fixtures', which directly contradicts the Section 5.0.1 rule that the same coverage index must cover every allowed_edges value. A validator built from the Section 5.0.1 predicate demands Section 14 rows that Section 14 declares out of scope, so the stated deterministic mapping predicate is unsatisfiable and the coverage check is non-deterministic.",
+      "recommended_action": "Make the Section 5.0.1 mapping rule use the same failure/blocked/recovery coverage predicate as Section 14, or restore full allowed_edges coverage in Section 14, and name exactly one predicate as normative.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-authority-001",
+        "invocation_id": "inv42-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.84
+    },
+    {
+      "finding_id": "AUTH42-F-004",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "The CP-13 registry row declares the outgoing edge COMPLETION_INDEX_CLOSE_PENDING→INTERRUPTED_CHARGED while its current_states cell omits COMPLETION_INDEX_CLOSE_PENDING, so the P3 allowlist cannot repeat both cells exactly as the Section 5.0.1 field-level mapping rule requires.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "222"
+      },
+      "evidence_excerpt": "failed post-charge mutation/dispatch: `COMPLETION_INDEX_CLOSE_PENDING|ACTIVE|DISPATCHED→INTERRUPTED_CHARGED`",
+      "impact": "The source state of a declared interruption edge is owned by CP-12 and is absent from CP-13's declared state list. A P3 allowlist keyed by current_states therefore either cannot express the edge or must silently widen CP-13 beyond its registry row, defeating the one-owner and exact-mirror claim that run-041 AUTH40R-F-003/ADV40R-F-003 relied on.",
+      "recommended_action": "Either add COMPLETION_INDEX_CLOSE_PENDING to the CP-13 current_states cell and its P3/P15 mirrors, or move the interruption edge into the CP-12 row, and bind the corresponding fixture.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-authority-001",
+        "invocation_id": "inv42-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.72
+    },
+    {
+      "finding_id": "AUTH42-F-005",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "Section 5.4 requires changed bytes or authority found in ACCEPTANCE_VERIFICATION_PENDING or ACCEPTANCE_VERIFICATION_FAILED to enter ACCEPTANCE_PENDING for a fresh HUMAN decision, but CP-15 registers no such return edge and offers only identical-input reverification to ACCEPTANCE_VERIFYING.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "224 and 264"
+      },
+      "evidence_excerpt": "changed bytes/authority require `ACCEPTANCE_PENDING` and a fresh HUMAN decision",
+      "impact": "CP-15's allowed_edges cell names only 'identical-input reverification: ACCEPTANCE_VERIFICATION_PENDING|ACCEPTANCE_VERIFICATION_FAILED→ACCEPTANCE_VERIFYING' and registers no edge from those states to ACCEPTANCE_PENDING, while Section 5.4 and Section 14 row 571 require one for changed bytes/authority ('a new unaccepted edge and decision'). The exhaustive registry therefore cannot admit the unaccepted return the acceptance protocol mandates, leaving such a case permanently blocked or routed through an unlisted transition.",
+      "recommended_action": "Register ACCEPTANCE_VERIFICATION_PENDING|ACCEPTANCE_VERIFICATION_FAILED→ACCEPTANCE_PENDING in CP-15 and its P3/P15/fixture mirrors, or state explicitly which already-registered edge performs the required unaccepted return.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-authority-001",
+        "invocation_id": "inv42-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.74
+    }
+  ],
+  "rejected_candidates": []
+}

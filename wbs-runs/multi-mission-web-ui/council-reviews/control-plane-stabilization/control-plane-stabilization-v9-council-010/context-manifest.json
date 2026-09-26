@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v9-council-010",
+  "packets": [
+    {
+      "lane": "internal-authority",
+      "packet_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v9-council-010/packets/internal-authority.json",
+      "packet_sha256": "ff4fb8479fe0fafb8c748d1899541efc9b1cb636835aecc59714b09ed2223a5a",
+      "packet_size_bytes": 292549,
+      "artifact_ids": [
+        "design-v9"
+      ],
+      "sot_ids": [
+        "sot-repo-rules",
+        "sot-aiws-architecture",
+        "sot-runtime-review",
+        "sot-gat-proposal",
+        "sot-failure-evidence",
+        "sot-council-contract",
+        "sot-council-routing"
+      ],
+      "context_categories": [
+        "objective",
+        "must-check",
+        "authority"
+      ],
+      "omitted_categories": [
+        "peer-findings",
+        "external-advice"
+      ],
+      "peer_findings_included": false
+    },
+    {
+      "lane": "internal-adversarial",
+      "packet_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v9-council-010/packets/internal-adversarial.json",
+      "packet_sha256": "ab0e0a20331d1d5fdf1025d4e8023e4a955b51dc270a45ef25bdbabd0e9ce6a5",
+      "packet_size_bytes": 292557,
+      "artifact_ids": [
+        "design-v9"
+      ],
+      "sot_ids": [
+        "sot-repo-rules",
+        "sot-aiws-architecture",
+        "sot-runtime-review",
+        "sot-gat-proposal",
+        "sot-failure-evidence",
+        "sot-council-contract",
+        "sot-council-routing"
+      ],
+      "context_categories": [
+        "objective",
+        "must-check",
+        "authority"
+      ],
+      "omitted_categories": [
+        "peer-findings",
+        "external-advice"
+      ],
+      "peer_findings_included": false
+    },
+    {
+      "lane": "external-outside-view",
+      "packet_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v9-council-010/packets/external-outside-view.json",
+      "packet_sha256": "6834eba263f3b91170c051d43398704710df5a412481e9e5582cf0913b8c4215",
+      "packet_size_bytes": 73975,
+      "artifact_ids": [
+        "sanitized-design-v9"
+      ],
+      "sot_ids": [],
+      "context_categories": [
+        "objective",
+        "audience",
+        "public-constraints"
+      ],
+      "omitted_categories": [
+        "internal-history",
+        "peer-findings",
+        "private-sot"
+      ],
+      "peer_findings_included": false
+    }
+  ]
+}

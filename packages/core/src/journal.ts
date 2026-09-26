@@ -9,10 +9,15 @@ type AppendTeamEvent = <T extends TeamEventType>(type: T, data: SessionEventMap[
 type MutableTeamEventType =
   | 'team/member'
   | 'team/task'
+  | 'team/mission'
   | 'team/plan-approved'
   | 'team/work'
   | 'team/message/queued'
   | 'team/message/delivered'
+
+type PendingTeamEvent = {
+  [T in MutableTeamEventType]: { readonly type: T; readonly data: SessionEventMap[T] }
+}[MutableTeamEventType]
 
 /** Owns per-Lead transaction order and committed Team event publication. */
 export class TeamJournal {
@@ -68,11 +73,21 @@ export class TeamJournal {
     type: T,
     data: SessionEventMap[T],
   ): Promise<void> {
+    await this.appendManyAndFlush(root, [{ type, data }] as unknown as PendingTeamEvent[])
+  }
+
+  /**
+   * Append several already-validated Team events, then checkpoint them in one
+   * flush and publish only after that flush succeeds. Callers must make all
+   * validation decisions before this method so an invalid batch never appends
+   * any prefix.
+   */
+  async appendManyAndFlush(root: Agent, events: readonly PendingTeamEvent[]): Promise<void> {
     // Team events never enter the conversation surface. This narrower local
     // capability removes Session.append's conditional surface argument while
     // preserving the event-key/payload correlation.
     const append = root.session.append.bind(root.session) as unknown as AppendTeamEvent
-    append(type, data)
+    for (const event of events) append(event.type, event.data)
     await this.ctx.sessions.flush(root.session)
     this.onCommit(root)
   }

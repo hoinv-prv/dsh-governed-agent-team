@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v10-council-011",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "fd6d4f5ff82cffce798c48e813a38086555bae85905672a481e7c9ada85ada56"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "01a93e8ccbad9128149cbd370fb14c691a751f12626a786d125636ac363d077c"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "12831c17699f15202e74d62540bf9e98da65105b4f6292b51c2966dfa3df8b98"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "45f382bfffa975272b6355f917aaaf41f7386b1aa1142396438e71eee5ce1913"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "cc1ccfe0c4117ba8ce0c6c4b7f61bb7bb7bea01582edadcb82f7b63499cbfe6f"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "46a2f624dabbba12afb928e49095772fa9898e4b20df9d0e28b83c96d250fd6c"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "8af6e4aadf8ca81839118b1b65a9dedff7294c200317badd60748fe42a12e1a2"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "4bcc6ca6b854caf90ae42d41f55a837afe927812ae32dab389ec97125ed1608d"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "b065dc86a29d3c14f0165e72dbd9176779dd54dedd68687815e4749d12a4fc63"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "0ec023233678de061296b4dc779b1762952427244774566c3f24bbb1788f9402"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve all five confirmed findings and re-review exact revised bytes before any WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer11-adversarial-f001",
+      "effective_severity": "high",
+      "claim": "P13 checks that a WBS approval record names a HUMAN actor but does not require that actor's identity to equal the mission's designated decision owner or resolve through an authorized delegation chain.",
+      "artifact_id": "design-v10",
+      "locator": {
+        "kind": "line",
+        "value": "271"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed WBS decision-owner/delegation binding gap."
+    },
+    {
+      "finding_id": "reviewer11-adversarial-f002",
+      "effective_severity": "high",
+      "claim": "The charge protocol requires `execution.json` to carry a boundary receipt but never identifies an allowed field mapping in the pinned `dsh-wbs-execution/1` contract or a separately authorized versioned contract extension.",
+      "artifact_id": "design-v10",
+      "locator": {
+        "kind": "line",
+        "value": "162"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed missing execution-contract mapping or authorized extension for the boundary receipt."
+    },
+    {
+      "finding_id": "reviewer11-adversarial-f003",
+      "effective_severity": "high",
+      "claim": "The new uncharged administrative resource ledger has no declared schema, single write owner, validator, or reconciliation source that can prove every bootstrap invocation and effect was recorded.",
+      "artifact_id": "design-v10",
+      "locator": {
+        "kind": "line",
+        "value": "251"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed missing administrative-ledger contract and deterministic reconciliation."
+    },
+    {
+      "finding_id": "reviewer11-authority-002-f1",
+      "effective_severity": "medium",
+      "claim": "The Section 5 state machine makes MIGRATION_BLOCKED a reachable state on restore mismatch, but neither Section 5, Section 9.1 nor Section 9.2 declares an owner, exit transition, required HUMAN decision record or recovery evidence for it, so the frozen-ledger failure path has no governed recovery authority.",
+      "artifact_id": "design-v10",
+      "locator": {
+        "kind": "line",
+        "value": "117"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed MIGRATION_BLOCKED recovery-authority gap."
+    },
+    {
+      "finding_id": "reviewer11-authority-002-f2",
+      "effective_severity": "medium",
+      "claim": "P14 requires all current hashes and native states to equal the sealed bundle immediately before commit, while Section 6.2 requires the charge boundary to accept an append-only extension of the sealed invalidation index; once a legitimate append changes the index raw-byte sha256, item count and last sequence, the two statements cannot both hold literally.",
+      "artifact_id": "design-v10",
+      "locator": {
+        "kind": "line",
+        "value": "272"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed P14 versus invalidation-index freshness inconsistency."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "The accepted authority, recovery, ledger-contract and consistency gaps remain until revision."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

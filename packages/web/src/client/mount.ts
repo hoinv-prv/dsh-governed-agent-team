@@ -49,9 +49,24 @@ export const Config: Schema<Partial<Config>, Config> = Schema.object({
   refreshIntervalMs: Schema.natural().min(1).max(Number.MAX_SAFE_INTEGER).default(DEFAULT_CONFIG.refreshIntervalMs),
 })
 
+interface NavigableSessions {
+  binding(sessionId: SessionId): {
+    session: { getSnapshot(): { subagent?: { address?: { parentSessionId: SessionId } } } }
+  } | undefined
+  refreshSubagents(sessionId: SessionId): Promise<unknown>
+  list: { getSnapshot(): { current?: SessionId } }
+  openSubagent(address: {
+    parentSessionId: SessionId
+    childSessionId: SessionId
+    mode: 'continuable'
+  }): void
+}
+
 function registerUi(ctx: ClientContext, config: Config): void {
   ctx.effect(() => ctx.locale.register(NS, { zh, en }), 'client-ui-agent-team: dictionaries')
-  const sessions = ctx.sessions
+  // The stable conversation client contributes these navigation methods through
+  // a type-only plugin augmentation that can be absent from focused builds.
+  const sessions = ctx.sessions as typeof ctx.sessions & NavigableSessions
   const leadSessionId = (sessionId: SessionId): SessionId => {
     const address = sessions.binding(sessionId)?.session.getSnapshot().subagent?.address
     return address?.parentSessionId ?? sessionId
@@ -61,8 +76,23 @@ function registerUi(ctx: ClientContext, config: Config): void {
     async load(sessionId): Promise<TeamActionResult<TeamView>> {
       return await ctx.remote.agentTeams.view(leadSessionId(sessionId))
     },
-    async approvePlan(sessionId, input) {
-      return await ctx.remote.agentTeams.approvePlan(leadSessionId(sessionId), input)
+    async enable(sessionId) {
+      return await ctx.remote.agentTeams.enable(leadSessionId(sessionId))
+    },
+    async listMissions(sessionId) {
+      return await ctx.remote.agentTeams.listMissions(leadSessionId(sessionId))
+    },
+    async getMission(sessionId, missionId) {
+      return await ctx.remote.agentTeams.getMission(leadSessionId(sessionId), missionId)
+    },
+    async createMission(sessionId, input) {
+      return await ctx.remote.agentTeams.createMission(leadSessionId(sessionId), input)
+    },
+    async approveMission(sessionId, input) {
+      return await ctx.remote.agentTeams.approveMission(leadSessionId(sessionId), input)
+    },
+    async importApprovedPlan(sessionId) {
+      return await ctx.remote.agentTeams.importApprovedPlan(leadSessionId(sessionId))
     },
     async createTask(sessionId, input): Promise<TeamTaskActionResult> {
       return await ctx.remote.agentTeams.createTask(leadSessionId(sessionId), input)
@@ -100,7 +130,12 @@ function registerUi(ctx: ClientContext, config: Config): void {
       locale: NS,
       inject: () => ({
         load: actions.load,
-        approvePlan: actions.approvePlan,
+        enable: actions.enable,
+        listMissions: actions.listMissions,
+        getMission: actions.getMission,
+        createMission: actions.createMission,
+        approveMission: actions.approveMission,
+        importApprovedPlan: actions.importApprovedPlan,
         createTask: actions.createTask,
         updateTask: actions.updateTask,
         openTeammate: actions.openTeammate,

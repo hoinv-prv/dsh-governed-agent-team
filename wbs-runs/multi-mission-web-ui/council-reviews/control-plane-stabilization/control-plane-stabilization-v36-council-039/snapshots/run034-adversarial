@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v34-council-034",
+  "reviewer_id": "reviewer34-adversarial-002",
+  "lane": "internal-adversarial",
+  "invocation_id": "inv34-adv-002",
+  "attempt": 2,
+  "status": "completed",
+  "artifact_manifest_sha256": "313f67b253f517f04d397c6be1ed7c80538f096c9b24d1c3347a96f41047cc6f",
+  "packet_sha256": "e37979fbb3dbdc7c064b236c6826c6a6ffcc0bc6198c950949480c45725f4572",
+  "findings": [
+    {
+      "finding_id": "ADV34R-F-001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "The normative state machine does not define a permitted terminal, retry, or closure edge after FAILED_CHARGED.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v34",
+      "locator": {
+        "kind": "line",
+        "value": "159-160"
+      },
+      "evidence_excerpt": "VERIFYING ──fail──> FAILED_CHARGED",
+      "impact": "A failed charged attempt can be stranded with no normative transition to close it or to use the stated remaining retry policy; an implementer could invent an undeclared retry or reuse path, undermining charged-attempt accounting and state closure.",
+      "recommended_action": "Add FAILED_CHARGED to the closed terminal registry, or specify an exact same-attempt closure and separately authorized new-attempt retry edge with owner, accounting, verifier, and fixture requirements; mirror it in P3, P15, and the failure matrix.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer34-adversarial-002",
+        "invocation_id": "inv34-adv-002",
+        "attempt": 2
+      },
+      "confidence": 0.98
+    }
+  ],
+  "rejected_candidates": []
+}

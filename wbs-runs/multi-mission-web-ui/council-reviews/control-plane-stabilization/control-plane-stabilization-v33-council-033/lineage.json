@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v33-council-033",
+  "predecessor_review_id": "control-plane-stabilization-v31-council-032",
+  "predecessor_report_sha256": "05c811a167ae92fe6897104d3ef1ff81410b113a65a8b137a1948b989feb1f26",
+  "changed_artifacts": [
+    {
+      "artifact_id": "design-v33",
+      "prior_sha256": "ee631001e863be02fd4f3fcc122bac19f2054906e8f5d62d0420806fe330935a",
+      "current_sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0",
+      "changed_ranges": [
+        "full artifact revision v31 to v33; includes v32 council corrections and complete v32 consistency-audit remediation"
+      ]
+    }
+  ],
+  "lane_decisions": [
+    {
+      "lane": "internal-authority",
+      "prior_packet_sha256": "a8b9f6f8b7f34c7438508d04459f4a47052be08fea22353d33bf9f2e203ec5ba",
+      "current_packet_sha256": "7cff41ed691fea8db5b7c8eacc2c922bd08b144b4e70430f311d99159df9b711",
+      "packet_hash_equal": false,
+      "affected": true,
+      "impact_boundary_evidence": "Reviewed design bytes, objective, must-check set, immutable failure-model evidence and consistency-audit context changed.",
+      "action": "rerun"
+    },
+    {
+      "lane": "internal-adversarial",
+      "prior_packet_sha256": "9c7bd410c37990639a077b5b434135ca80ea626370cda013e3d2dcb185a627d2",
+      "current_packet_sha256": "e0666f01645dab85314ae8db930d8fe8d6fed0fe4aad798dc55138d04279f188",
+      "packet_hash_equal": false,
+      "affected": true,
+      "impact_boundary_evidence": "Reviewed design bytes, objective, must-check set, immutable failure-model evidence and consistency-audit context changed.",
+      "action": "rerun"
+    },
+    {
+      "lane": "external-outside-view",
+      "prior_packet_sha256": "3d966d0e1a682b87afc0aca03d7fb36fdc023864d3f37d89b5d96a2d5eb7f860",
+      "current_packet_sha256": "c74da8fbd6560dfbe85878ba0620096bf5496b537f5bbe63eb244ef608345890",
+      "packet_hash_equal": false,
+      "affected": true,
+      "impact_boundary_evidence": "Reviewed design bytes, objective, must-check set, immutable failure-model evidence and consistency-audit context changed.",
+      "action": "rerun"
+    }
+  ]
+}

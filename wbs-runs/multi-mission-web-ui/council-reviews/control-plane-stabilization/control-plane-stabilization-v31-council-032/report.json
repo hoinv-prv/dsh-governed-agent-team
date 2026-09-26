@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v31-council-032",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "b43f49f98aef2782b264b5a9326768299f027d2f9dfafa2deff585a6eec3ddfe"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "2975b9a6d9b8c65a804d489e1f6fa528375147f0c80f59d773285df703335e3f"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "683dcfcada048ca5de9242c3feb7a8e0cfe92343e7d0d765b380f0c084b6e981"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "717424325ed94e7788e535723ee84c0d98f87e877d5a27adf5f08e1b6517f50b"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "b1b0454f988f9b3aa3cced9b8e3a0a3c8382f5c6a387961ce0ef005aab195b0a"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "0e0fddc83dd5e339ac6ca3b896c0bec242ade3054018ea6b2b930e6a0c5b4114"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "ed376bcfcc79e88a4946ce4e3aedaa35110855e56c5e77f35e0322e1c273f08e"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "6fb5860f8b50bdd33567637dc2bb2e408ff94627ccf009dde8dd564accb99fb4"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "8d829bcf9cef868af1a3b1ab7d4638e1f07c8917c2e69194e4e36a3ca86046c8"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "5498b0a7d75055ea291fd03720dd05fb68c74ede79fe1178e20952f46c2217d0"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve four confirmed findings and include immutable basis explicitly in next packet.",
+  "findings": [
+    {
+      "finding_id": "AUTH32-F-001",
+      "effective_severity": "critical",
+      "claim": "The root-cause and design-basis pin cannot be reproduced from the pinned bytes: line 29 names the immutable run-002 snapshot `snapshots/failure-model` with SHA-256 434f1613751d8a2b5b8813936404e4567e698ea4ace88ed74863e2a56e4d8b86, while the dispatched source_of_truth `failure-model` artifact and its snapshot carry SHA-256 fda41fa9e8de24f6f567c60cfa8ea58b82cba41886230692a6a7f77b0c95d253, and no 434f snapshot is included in the packet.",
+      "artifact_id": "design-v31",
+      "locator": {
+        "kind": "line",
+        "value": "29"
+      },
+      "verification_status": "refuted",
+      "verification_id": "verify-refuted",
+      "chairman_disposition": "reject",
+      "disposition_reason": "Refuted as critical: exact 434f basis exists and was previously verified; improve future packet/path clarity."
+    },
+    {
+      "finding_id": "AUTH32-F-002",
+      "effective_severity": "high",
+      "claim": "Every admission predicate is produced by the same coordinator actor whose charge it gates, and the design sets no independent observer/witness requirement for the bypass it concedes, so declared procedural fail-closed governance rests on self-attestation.",
+      "artifact_id": "design-v31",
+      "locator": {
+        "kind": "line",
+        "value": "203"
+      },
+      "verification_status": "refuted",
+      "verification_id": "verify-refuted",
+      "chairman_disposition": "reject",
+      "disposition_reason": "Refuted: external predicates exist and a non-authorable witness exceeds procedural scope."
+    },
+    {
+      "finding_id": "AUTH32-F-003",
+      "effective_severity": "medium",
+      "claim": "The design declares that authority and precedence follow the pinned repository rule, but never hash-pins the repository rule or AIWS architecture bytes into the admission bundle or P5 re-hash set, leaving its own authority basis outside the verified evidence chain.",
+      "artifact_id": "design-v31",
+      "locator": {
+        "kind": "line",
+        "value": "106"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed rule and architecture hashes are omitted from P5."
+    },
+    {
+      "finding_id": "reviewer32-adversarial-001-f001",
+      "effective_severity": "high",
+      "claim": "The claimed acyclic intent construction is internally undefined: PlannedIntentBodyCommitment includes the deterministic intent path before the final intent hash/path is derived, while ExecutionTransitionIntent is required to be content-addressed.",
+      "artifact_id": "design-v31",
+      "locator": {
+        "kind": "line",
+        "value": "192-193,369"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed logical ID/path conflation."
+    },
+    {
+      "finding_id": "reviewer32-adversarial-001-f002",
+      "effective_severity": "high",
+      "claim": "P3 does not admit the charged completion-corruption recovery that Section 9.1 requires: that recovery makes a CompletionCorruptionTombstone the next P3 source even though P3's closed exceptional-link list omits such a record and every next intent otherwise requires a completion-chain head.",
+      "artifact_id": "design-v31",
+      "locator": {
+        "kind": "line",
+        "value": "316,369-373"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed charged corruption chain-head gap."
+    },
+    {
+      "finding_id": "reviewer32-adversarial-001-f003",
+      "effective_severity": "high",
+      "claim": "The post-charge exhaustion branch has no executable accounting transition: reservation R and its retry IDs are immutable and no-refund with all usage constrained to A <= R, yet exhaustion is said to be recoverable by a fresh HUMAN ceiling/recovery decision without defining a new allocation or how it binds the already-open intent.",
+      "artifact_id": "design-v31",
+      "locator": {
+        "kind": "line",
+        "value": "294,300-306"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed post-charge allocation gap."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Authority-basis, commitment, lineage and recovery accounting remain incomplete."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

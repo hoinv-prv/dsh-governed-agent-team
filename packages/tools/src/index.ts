@@ -5,7 +5,7 @@ import z from '@deepseek-ai/schemastery'
 import type { Agent } from '@deepseek-ai/dsh-agent'
 import type {} from '@deepseek-ai/dsh-subagent'
 import { scopesOverlap, TeamTaskId } from '@vuhoi/gat-core'
-import type { TeamMemberView, TeamView } from '@vuhoi/gat-core'
+import type { TeamEnableResult, TeamMemberView, TeamView } from '@vuhoi/gat-core'
 import { defineTool } from '@deepseek-ai/dsh-tools'
 import type { InferValue, ValueSchemaSpec } from '@deepseek-ai/dsh-tools'
 
@@ -33,12 +33,14 @@ export const Config: z<Config> = z.object({
   freshProvider: z.string().default('spawn'),
   forkProvider: z.string().default('fork'),
   externalRestrictedTools: z.array(z.string().min(1)).default([]),
-  minExecutionMembers: z.natural().min(1).max(Number.MAX_SAFE_INTEGER).default(2),
+  minExecutionMembers: z.natural().min(0).max(Number.MAX_SAFE_INTEGER).default(0),
   maxExecutionMembers: z.natural().min(1).max(Number.MAX_SAFE_INTEGER).default(4),
 })
 
 /** Model-facing collaboration guidance shared by Lead and teammates. */
 const POLICY = `Agent Teams is available in this session, but create teammates only when the user explicitly asks to use Agent Teams or teammates.
+
+Once Agent Team is enabled, do not use subagent, subagent_fork, workflow, Ralph, or any other external sub-agent delegation path. Delegate only to members of the current Team. If the Team lacks a required skill or capability, ask the HUMAN to approve adding a suitable member; after approval, create that member with spawn_teammate, then assign the task to that member.
 
 The Team Lead and all teammates share the same working directory and filesystem. Edits are immediately visible to every member. Split write work into disjoint scopes, record expected write scopes on shared tasks, and use task dependencies when work must be ordered. Write-scope overlap is advisory, not a lock.
 
@@ -57,6 +59,7 @@ const OWN_RESTRICTED_TOOLS = new Set([
 ])
 const RESTRICTED_REPORT_STATES = new Set(['blocked', 'review_required'])
 const STRUCTURAL_TASK_ACTIONS = new Set(['edit', 'set_dependencies', 'delete'])
+const EXTERNAL_SUBAGENT_TOOLS = new Set(['subagent', 'subagent_fork', 'workflow', 'ralph'])
 const NO_ACTIVE_PEER_MESSAGE = 'No other Team member is running or provisioning. wait_agent cannot make progress or wake inactive teammates. Re-list with list_agents and team_task_list, then use send_message to wake each required inactive teammate before waiting again.'
 
 /** Count durable teammate rows without treating runtime idleness as removal. */
@@ -74,6 +77,13 @@ function approvalFailure(view: TeamView): string | undefined {
     return `approved revision ${view.planApproval.approvedRevision} is stale for current revision ${view.planRevision}`
   }
   return undefined
+}
+
+/** Describe the current execution threshold without inventing a teammate requirement for Lead-only Teams. */
+function executionRequirement(config: Required<Config>): string {
+  return config.minExecutionMembers === 0
+    ? 'an exact current Team plan approved by HUMAN; zero durable teammates are permitted'
+    : `an exact current Team plan approved by HUMAN and at least ${config.minExecutionMembers} durable active teammates`
 }
 
 /** Read the canonical Team view and convert projection failures into one stable denial. */
@@ -323,6 +333,11 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
     register(scoped.tools.guard((exec) => {
       const current = guardedTeamView(ctx, agent)
       if (typeof current === 'string') return `Team execution denied: ${current}`
+      if (EXTERNAL_SUBAGENT_TOOLS.has(exec.name)) {
+        if (!current.enabled) return undefined
+        return `External sub-agent delegation denied for tool "${exec.name}": Agent Team is enabled for this session. Use an existing Team member. If the required skill or capability is missing, ask the HUMAN to approve adding a member, create it with spawn_teammate, then assign the task to that member.`
+      }
+
       const evaluation = readiness(current, agent, ctx, config)
       const active = evaluation.durableCount
 
@@ -348,7 +363,7 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
       if (ownAdmission === true || externalRestrictedTools.has(exec.name)) return undefined
       if (typeof ownAdmission === 'string') return ownAdmission
       const condition = evaluation.mandatoryDiagnostics[0]
-        ?? `Team execution requires at least ${config.minExecutionMembers} durable active teammates; found ${active}`
+        ?? `Team execution requires ${executionRequirement(config)}; found ${active} durable active teammate(s)`
       return `Team execution denied for tool "${exec.name}": ${condition}`
     }))
 
@@ -357,13 +372,13 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
       order: scoped.systemPrompt.getSectionOrder('TEAM_POLICY'),
       text: () => {
         const membership = ctx.agentTeams.membership(agent)
-        return `${POLICY}\n\nExecution requires at least ${config.minExecutionMembers} durable active teammates, and the durable teammate cap is ${config.maxExecutionMembers}.\n\nYour Team role is ${membership.role}; your Team name is ${membership.name}; Team id is ${membership.id}.`
+        return `${POLICY}\n\nExecution requires ${executionRequirement(config)}, and the durable teammate cap is ${config.maxExecutionMembers}.\n\nYour Team role is ${membership.role}; your Team name is ${membership.name}; Team id is ${membership.id}.`
       },
     }))
 
     register(scoped.tools.register(defineTool({
       name: 'spawn_teammate',
-      description: 'Create one named, durable teammate. Only the Team Lead may call this tool.',
+      description: 'Create one named, durable teammate. Only the Team Lead may call this tool. For a missing skill or capability, obtain explicit HUMAN approval before adding the member, then assign work to that member.',
       parameters: {
         name: { type: 'string', required: true, description: 'Unique lower-kebab-case teammate name.' },
         description: { type: 'string', required: true, description: 'Short description of the delegated responsibility.' },
@@ -607,7 +622,7 @@ export function apply(ctx: Context, config: Config = {}): void {
   const resolved: Required<Config> = {
     freshProvider: config.freshProvider ?? 'spawn',
     forkProvider: config.forkProvider ?? 'fork',
-    minExecutionMembers: config.minExecutionMembers ?? 2,
+    minExecutionMembers: config.minExecutionMembers ?? 0,
     maxExecutionMembers: config.maxExecutionMembers ?? 4,
     externalRestrictedTools: [...new Set((config.externalRestrictedTools ?? []).map((tool, index) => {
       if (typeof tool !== 'string' || tool.length === 0) {
@@ -616,10 +631,11 @@ export function apply(ctx: Context, config: Config = {}): void {
       return tool
     }))].sort(),
   }
-  for (const key of ['minExecutionMembers', 'maxExecutionMembers'] as const) {
-    if (!Number.isSafeInteger(resolved[key]) || resolved[key] < 1) {
-      throw new TypeError(`${key} must be a positive safe integer`)
-    }
+  if (!Number.isSafeInteger(resolved.minExecutionMembers) || resolved.minExecutionMembers < 0) {
+    throw new TypeError('minExecutionMembers must be a non-negative safe integer')
+  }
+  if (!Number.isSafeInteger(resolved.maxExecutionMembers) || resolved.maxExecutionMembers < 1) {
+    throw new TypeError('maxExecutionMembers must be a positive safe integer')
   }
   if (resolved.maxExecutionMembers < resolved.minExecutionMembers) {
     throw new RangeError('maxExecutionMembers must be greater than or equal to minExecutionMembers')
@@ -632,6 +648,44 @@ export function apply(ctx: Context, config: Config = {}): void {
     if (installed.has(agent) || ctx.agentTeams.tryMembership(agent) === undefined) return
     installed.set(agent, install(agent, ctx, resolved))
   }
+  const enabling = new Map<string, Promise<TeamEnableResult>>()
+  ctx.effect(() => ctx.agentTeams.registerInitializer((lead, signal) => {
+    const current = ctx.agentTeams.remoteView(lead)
+    if (current.enabled) {
+      return Promise.resolve({
+        enabled: true,
+        alreadyEnabled: true,
+        source: 'existing',
+        diagnostics: [],
+        members: current.members.filter(member => member.role === 'teammate'),
+      })
+    }
+    const active = enabling.get(lead.id)
+    if (active !== undefined) return active
+    const operation = (async (): Promise<TeamEnableResult> => {
+      const definitions = [
+        ['advisor', 'Advises the Lead when requested.', 'Give evidence-based options and risks.'],
+        ['dev', 'Handles implementation tasks.', 'Implement assigned tasks and report verification evidence.'],
+      ] as const
+      const members = []
+      for (const [name, description, prompt] of definitions) {
+        const spawned = await ctx.agentTeams.spawnTeammate(lead, {
+          name,
+          description,
+          prompt: [{ type: 'text', text: prompt }],
+          context: 'fresh',
+          provider: resolved.freshProvider,
+          signal,
+        })
+        members.push(spawned.member)
+      }
+      maybeInstall(lead)
+      return { enabled: true, alreadyEnabled: false, source: 'built-in-default', diagnostics: [], members }
+    })()
+    enabling.set(lead.id, operation)
+    void operation.finally(() => { enabling.delete(lead.id) }).catch(() => undefined)
+    return operation
+  }), 'tool-team.initializer()')
   for (const agent of ctx.agents.list()) maybeInstall(agent)
   ctx.on('agent/created', ({ agent }) => { maybeInstall(agent) })
   ctx.on('agent/disposed', ({ agent }) => {

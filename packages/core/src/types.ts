@@ -16,6 +16,14 @@ export function TeamId(id: SessionId | string): TeamId {
   return id as TeamId
 }
 
+/** Stable identifier for one durable mission in a Team. */
+export type TeamMissionId = Branded<'TeamMissionId'>
+
+/** Brand a validated Team-local mission id. */
+export function TeamMissionId(id: string): TeamMissionId {
+  return id as TeamMissionId
+}
+
 /** Stable identifier for one task in a Team. */
 export type TeamTaskId = Branded<'TeamTaskId'>
 
@@ -96,6 +104,57 @@ export interface TeamTaskView {
   readonly writeScopeWarnings: string[]
 }
 
+/** Durable lifecycle of one independently governed Team mission. */
+export type TeamMissionStatus = 'draft' | 'approved' | 'active' | 'completed'
+
+/** Immutable task-set plan owned by exactly one Team mission. */
+export interface TeamMissionPlanSnapshot {
+  readonly tasks: readonly TeamTaskSnapshot[]
+}
+
+/** Durable HUMAN approval of one exact mission revision. */
+export interface TeamMissionApprovalSnapshot {
+  readonly approvedRevision: number
+}
+
+/** Whole durable mission value; every mutation increments {@link revision}. */
+export interface TeamMissionSnapshot {
+  readonly id: TeamMissionId
+  readonly revision: number
+  readonly title: string
+  readonly objective: string
+  readonly status: TeamMissionStatus
+  readonly plan: TeamMissionPlanSnapshot
+  readonly approval?: TeamMissionApprovalSnapshot
+}
+
+/** Detached mission record returned to Team callers. */
+export interface TeamMissionView extends TeamMissionSnapshot {}
+
+/** Input for creating one independently governed Team mission. */
+export interface CreateTeamMissionRequest {
+  readonly title: string
+  readonly objective: string
+  readonly tasks?: readonly TeamTaskSnapshot[]
+}
+
+/** Compare-and-set request for HUMAN approval of one mission revision. */
+export interface ApproveTeamMissionRequest {
+  readonly missionId: TeamMissionId
+  readonly expectedRevision: number
+}
+
+/** Browser mission mutation result with stale revisions kept distinct. */
+export type TeamMissionMutationResult =
+  | { readonly ok: true; readonly value: TeamMissionView }
+  | {
+    readonly ok: false
+    readonly error: {
+      readonly code: 'team-mission-conflict' | 'team-rejected'
+      readonly message: string
+    }
+  }
+
 /** Durable HUMAN approval of one exact structural plan revision. */
 export interface TeamPlanApprovalSnapshot {
   readonly approvedRevision: number
@@ -116,6 +175,17 @@ export type TeamPlanApprovalResult =
     readonly ok: false
     readonly error: {
       readonly code: 'team-plan-conflict' | 'team-preflight-rejected' | 'team-rejected'
+      readonly message: string
+    }
+  }
+
+/** Browser result for the single-action import of an approved DSH plan followed by approval. */
+export type ImportApprovedTeamPlanResult =
+  | { readonly ok: true; readonly value: TeamPlanApprovalSnapshot }
+  | {
+    readonly ok: false
+    readonly error: {
+      readonly code: 'team-plan-conflict' | 'team-plan-import-rejected' | 'team-preflight-rejected' | 'team-rejected'
       readonly message: string
     }
   }
@@ -160,9 +230,12 @@ export type TeamWorkMutationResult =
 
 /** Point-in-time roster and task-board projection returned to browser clients. */
 export interface TeamView {
+  /** Whether this session has opted into Agent Team execution. */
+  readonly enabled: boolean
   readonly planRevision: number
   readonly planPhase: TeamPlanPhase
   readonly planApproval?: TeamPlanApprovalSnapshot
+  readonly missions?: readonly TeamMissionView[]
   readonly work: readonly TeamWorkView[]
   readonly members: TeamMemberView[]
   readonly tasks: TeamTaskView[]
@@ -219,6 +292,15 @@ export interface SpawnTeammateRequest {
 /** Result after one teammate reaches a durable active or failed edge. */
 export interface SpawnTeammateResult {
   readonly member: TeamMemberView
+}
+
+/** Result of enabling and provisioning a Team for one Session. */
+export interface TeamEnableResult {
+  readonly enabled: true
+  readonly alreadyEnabled: boolean
+  readonly source: 'built-in-default' | 'existing'
+  readonly diagnostics: string[]
+  readonly members: TeamMemberView[]
 }
 
 /** Input for one durable peer message. */
@@ -287,6 +369,8 @@ declare module '@deepseek-ai/dsh-session/types' {
     'team/member': { version: 2; teamId: TeamId; member: TeamMemberSnapshot }
     /** Whole shared-task value, stored only in the Team Lead Session. */
     'team/task': { version: 2; teamId: TeamId; task: TeamTaskSnapshot }
+    /** Whole independently governed mission value, stored only in the Team Lead Session. */
+    'team/mission': { version: 2; teamId: TeamId; mission: TeamMissionSnapshot }
     /** HUMAN approval of one exact structural plan revision. */
     'team/plan-approved': { version: 2; teamId: TeamId; approval: TeamPlanApprovalSnapshot }
     /** Latest durable work state reported by one exact Team member. */

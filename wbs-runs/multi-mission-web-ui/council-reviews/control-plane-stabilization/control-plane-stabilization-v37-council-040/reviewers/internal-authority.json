@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v37-council-040",
+  "reviewer_id": "reviewer40-authority-002",
+  "lane": "internal-authority",
+  "invocation_id": "inv40-auth-002",
+  "attempt": 2,
+  "status": "completed",
+  "artifact_manifest_sha256": "62b3723c2b01dc3f772f57de983453c5b69c962a7d4b4daa99e5142ce975596b",
+  "packet_sha256": "909e0be1fb61b06d5c4372da3858c20adc740de7130047799e463fc32bd140ed",
+  "findings": [
+    {
+      "finding_id": "AUTH40R-F-001",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "CP-14, the closed registry row that owns `REVIEWING` and `REVIEW_PENDING`, does not register the review-pending round trip required by the Section 5 diagram and Section 12: `REVIEWING→REVIEW_PENDING` on a provider/transport/schema failure and `REVIEW_PENDING→REVIEWING` after a bound route is restored or a validated `ReviewRouteAuthorizationAmendment` assigns an unused original retry slot on the identical packet.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v37",
+      "locator": {
+        "kind": "line",
+        "value": "223 and 162-164 and 564"
+      },
+      "evidence_excerpt": "REVIEWING ──transport fail──> REVIEW_PENDING (same attempt)",
+      "impact": "CP-14's sole permitted edge cell names only the `REVIEWING→AWAITING_HUMAN_ACCEPTANCE` PASS edge, the `REVIEWING→REVISION_REQUIRED_CHARGED` material-finding edge and `REVIEWING|REVIEW_PENDING→REVIEW_UNAVAILABLE_CHARGED`; because Section 5.0.1 declares CP-01…CP-16 the exhaustive normative index and forbids an edge absent from it, and because every review-state ledger write must follow the Section 9.1 registered-edge protocol, the charged `REVIEW_PENDING` state has neither a registered entry edge nor a registered recovery edge, so the P3 allowlist, the P15 capability/fixture cell, the Section 14 coverage index and the fixture set cannot be built one-to-one without inventing an unlisted edge.",
+      "recommended_action": "Add `REVIEWING→REVIEW_PENDING` and `REVIEW_PENDING→REVIEWING` (identical-packet bounded re-probe/fallback or validated `ReviewRouteAuthorizationAmendment`) to CP-14's sole permitted edge cell and mirror both edges in the P3 allowlist, the P15 manifest row, the Section 14 coverage index and a fixture.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer40-authority-002",
+        "invocation_id": "inv40-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.85
+    },
+    {
+      "finding_id": "AUTH40R-F-002",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "CP-15, the closed registry row that owns the acceptance states, registers no edge from `ACCEPTANCE_PENDING` back to `AWAITING_HUMAN_ACCEPTANCE`, although Section 5.4 requires a fresh/superseding HUMAN owner/delegation and accept-or-reject decision to return to `AWAITING_HUMAN_ACCEPTANCE` for projection and the Section 5 diagram shows `ACCEPTANCE_PENDING──fresh HUMAN chain/decision──> AWAITING_HUMAN_ACCEPTANCE`; CP-15 instead states that a fresh HUMAN decision returns conflict/pending to `ACCEPTANCE_PENDING`, while the normative composed transition table requires the acceptance-authority-conflict row to reach `AWAITING_HUMAN_ACCEPTANCE`.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v37",
+      "locator": {
+        "kind": "line",
+        "value": "224 and 168 and 200 and 262"
+      },
+      "evidence_excerpt": "A fresh/superseding HUMAN owner/delegation and accept-or-reject decision revalidated under P16 returns to `AWAITING_HUMAN_ACCEPTANCE` for projection",
+      "impact": "The acceptance subgraph cannot be closed: the only normative return from the pending/conflict branch into the projection state is absent from CP-15, and CP-15 names a different target (`ACCEPTANCE_PENDING`) than the composed transition table (`AWAITING_HUMAN_ACCEPTANCE`), so the deterministic one-to-one P3/P15/coverage/fixture mapping predicate cannot be satisfied and a charged attempt whose acceptance authority was stale, revoked or conflicted cannot be shown to re-enter projection without an undeclared edge; this is a residue of the pinned consistency-audit finding CS-05, which required exact return edges and matrix dispositions.",
+      "recommended_action": "Add the `ACCEPTANCE_PENDING→AWAITING_HUMAN_ACCEPTANCE` fresh-decision return edge to CP-15, and make the acceptance-authority-conflict return target identical in CP-15, the composed transition table row, Section 5.4, the P3 allowlist, the P15 manifest row and the fixture set.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer40-authority-002",
+        "invocation_id": "inv40-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.8
+    },
+    {
+      "finding_id": "AUTH40R-F-003",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "No CP-01…CP-16 row registers an entry edge into `INTERRUPTED_CHARGED`, although Section 5.2 step 8 requires a failed post-charge mutation or dispatch to mark the same attempt `INTERRUPTED_CHARGED` through a Section 9.1 transition receipt, Section 14 carries a `Crash after charge but before dispatch / INTERRUPTED_CHARGED` row, and the Section 5 diagram shows the state entered from the `COMPLETION_INDEX_CLOSE_PENDING` fork.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v37",
+      "locator": {
+        "kind": "line",
+        "value": "153 and 221-222 and 248 and 556"
+      },
+      "evidence_excerpt": "use a Section 9.1 transition receipt to mark the same attempt `INTERRUPTED_CHARGED` or `FAILED_CHARGED`",
+      "impact": "`INTERRUPTED_CHARGED` is listed as a CP-13 current state, but CP-13 enumerates only its `interrupted_to_dispatched`/`interrupted_to_failed` exits and CP-12 enumerates only `COMPLETION_INDEX_CLOSE_PENDING→ACTIVE/DISPATCHED` and the resource-exhausted edge, so the charge-preserving entry edge required by Section 5.2 and Section 14 is forbidden by the exhaustive registry rule; the P3 allowlist and P15 manifest cannot cover the mutation, leaving a charged attempt either stranded with no registered state or transitioned through an undeclared edge.",
+      "recommended_action": "Register the entry edge into `INTERRUPTED_CHARGED` in the owning CP row (for example `COMPLETION_INDEX_CLOSE_PENDING→INTERRUPTED_CHARGED` and/or `ACTIVE|DISPATCHED→INTERRUPTED_CHARGED` for a failed post-charge mutation/dispatch), with its Section 9.1 intent/completion pair and P15 fixture, and mirror it in the P3 allowlist, the P15 manifest row and the Section 14 coverage index.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer40-authority-002",
+        "invocation_id": "inv40-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.78
+    },
+    {
+      "finding_id": "AUTH40R-F-004",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "evidence-basis",
+      "claim": "Section 15.1's closure matrix does not correspond to the preserved run-039 reviewer envelopes that the packet pins: it cites the run-039 attempt-1 authority IDs `AUTH39-F-001`…`AUTH39-F-008` and attempt-1 outside-view IDs `EXT39-O-001`…`EXT39-O-005`, whose defining envelopes are not in the packet, while the pinned `run039-authority-current` and `run039-outside-current` envelopes carry `AUTH39R-F-001`…`AUTH39R-F-008` and `EXT39R-O-001`…`EXT39R-O-009` and four of those preserved observations (`EXT39R-O-005`, `EXT39R-O-007`, `EXT39R-O-008`, `EXT39R-O-009`) have no closure row at all.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v37",
+      "locator": {
+        "kind": "line",
+        "value": "620-666"
+      },
+      "evidence_excerpt": "AUTH39-F-002, AUTH39R-F-003, EXT39-O-001/EXT39R-O-002",
+      "impact": "The design states it was corrected from schema-valid run-039 authority/outside-view evidence, but the matrix's run-039 mappings cannot be checked against any pinned bytes for the attempt-1 IDs it cites and silently omit four preserved attempt-2 outside observations, so a later handoff cannot prove those prior observations were dispositioned; this is the same traceability failure mode that the pinned findings AUTH39R-F-008 and EXT39R-O-003 raised in run-039.",
+      "recommended_action": "Re-derive the Section 15.1 run-039 rows only from the envelopes actually preserved in the packet (`AUTH39R-F-*`, `EXT39R-O-*`), add an explicit closure-or-refutation row for every preserved observation including `EXT39R-O-005`, `EXT39R-O-007`, `EXT39R-O-008` and `EXT39R-O-009`, and remove or hash-bind any attempt-1 ID whose defining bytes are unavailable.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer40-authority-002",
+        "invocation_id": "inv40-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.8
+    },
+    {
+      "finding_id": "AUTH40R-F-005",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "evidence-basis",
+      "claim": "Section 15.1's preamble hash-binds only the consistency-audit (`6e91a5bc…7cfbef`) and the run-034 basis, yet its rows claim closure of run-033 (`ADV33-*`, `AUTH33-*`, `EXT33R-*`), run-038 (`AUTH38-*`, `EXT38-*`, `ADV38-*`) and run-039 (`AUTH39*`, `EXT39*`) findings whose defining ledgers/envelopes are not hash-bound anywhere in the design, while the same preamble states that absence or mismatch of any exact byte makes its closure claims not-verifiable.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v37",
+      "locator": {
+        "kind": "line",
+        "value": "620-666"
+      },
+      "evidence_excerpt": "absence or mismatch of any exact byte makes its closure claims not-verifiable",
+      "impact": "The closure claims for three prior review runs rest on unpinned bytes, so a later handoff or deterministic validator cannot re-hash the defining evidence and prove the claimed corrections; legitimate substitution or drift of those prior artifacts would be undetectable, weakening the Section 16 entry gate that requires every material prior finding to be confirmed, refuted or dispositioned.",
+      "recommended_action": "Extend the Section 15.1 basis paragraph to path-and-SHA-256 bind the run-033 ledger and verifier, the run-038 authority/adversarial/outside envelopes and the run-039 authority/outside envelopes (or explicitly declare each set immaterial with a recorded disposition), so that every cited prior finding resolves to exact pinned bytes.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer40-authority-002",
+        "invocation_id": "inv40-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.72
+    },
+    {
+      "finding_id": "AUTH40R-F-006",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "evidence-basis",
+      "claim": "P5 states that the admission cycle re-hashes the run-002 failure-model snapshot but identifies it only by the abbreviated digest `434f1613…d8b86`, contrary to the Section 5.1.1 serialization profile that requires digests to be 64 lowercase ASCII hexadecimal characters, so the P5 evidence basis is not byte-exact and the Section 15.1 row claiming closure of the abbreviated-identifier observation `EXT39R-O-003` is incomplete.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v37",
+      "locator": {
+        "kind": "line",
+        "value": "235 and 382 and 660"
+      },
+      "evidence_excerpt": "It also re-hashes the run-002 failure-model snapshot `434f1613…d8b86`",
+      "impact": "An implementer validating P5 cannot resolve an exact 64-hex digest from the predicate text; the full hash appears only in Section 2's prose, so a validator built literally from the P5 row has no exact value to re-hash, and the matrix's claim that all abbreviated basis identifiers were replaced with full-hex values is not demonstrable.",
+      "recommended_action": "Replace `434f1613…d8b86` with the full 64-hex failure-model digest already stated in Section 2 and confirm that no other abbreviated digest or locator remains in the v37 bytes.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer40-authority-002",
+        "invocation_id": "inv40-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.8
+    },
+    {
+      "finding_id": "AUTH40R-F-007",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "ownership",
+      "claim": "The `TransitionCapabilityManifest` — the normative P3/P15 mirror that gates `READY` — has no declared owner or write operation for generations after generation 0: Section 5.0.1 assigns generation-0 creation to bootstrap and requires a fresh HUMAN-accepted next generation for a design revision, but unlike `AcceptedDesignRegistry` (Section 6.1 item (i): bootstrap owns generation 0, the coordinator owns later append) and `TransitionIntentRootManifest` (item (j): the coordinator alone creates the next generation) it names no actor or create-once append operation for subsequent generations and is absent from the Section 6.1 (a)–(j) bootstrap item list.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v37",
+      "locator": {
+        "kind": "line",
+        "value": "206 and 227 and 332 and 334"
+      },
+      "evidence_excerpt": "A new design revision requires a fresh HUMAN-accepted next generation; no implicit resolver or in-place rewrite exists.",
+      "impact": "The manifest controls whether P3/P15 may report readiness, so an unowned or unbound generation-append path can permit a new manifest generation to be written without a declared owner, operation, administrative authorization/outcome pair or recovery rule; the P15 resolver re-hashes only bytes/schema/validator/acceptance and cannot detect an unauthorized writer, and the Section 16 handoff has no named operation to bind.",
+      "recommended_action": "Add the TransitionCapabilityManifest to the Section 6.1 bootstrap item list with its canonical path, closed schema/validator, generation-0 bytes, HUMAN acceptance hash, named create-once append owner/operation for later generations, administrative authorization/outcome binding and failure/recovery rule, and require it in the Section 16 handoff.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer40-authority-002",
+        "invocation_id": "inv40-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.7
+    }
+  ],
+  "rejected_candidates": []
+}

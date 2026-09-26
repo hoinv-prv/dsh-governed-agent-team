@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v36-council-039",
+  "reviewer_id": "reviewer39-authority-002",
+  "lane": "internal-authority",
+  "invocation_id": "inv39-auth-002",
+  "attempt": 2,
+  "status": "completed",
+  "artifact_manifest_sha256": "b3105bf5f8b796b481aafc49bb664cb207f0036df58b9b994e67e116a9572e17",
+  "packet_sha256": "e4c20cf266b8d37023237c3fb045d3fd4769d971ee3e0bf6a74de506ff27c8ba",
+  "findings": [
+    {
+      "finding_id": "AUTH39R-F-001",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "The closed CP-14 registry row enumerates only the material-finding and unavailable-route outcomes of a bounded review and names no entry edge into `AWAITING_HUMAN_ACCEPTANCE`, although the Section 5 state diagram and Section 12 require a validator-backed `ReviewClosureReceipt` PASS (`pass`/`pass_with_notes`) to transition `REVIEWING→AWAITING_HUMAN_ACCEPTANCE`.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "223 and 502"
+      },
+      "evidence_excerpt": "identical-packet bounded review or authorized amendment; material finding enters `REVISION_REQUIRED_CHARGED` under CP-13; unavailable route enters terminal `REVIEW_UNAVAILABLE_CHARGED` under CP-16",
+      "impact": "Every charged attempt that receives a passing review must cross from `REVIEWING` to `AWAITING_HUMAN_ACCEPTANCE`, but the CP-14 row that owns `REVIEWING` lists no such edge and CP-15 owns `AWAITING_HUMAN_ACCEPTANCE` only as a current state whose permitted edge is Section 5.4 acceptance processing. Because Section 5.0.1 declares CP-01…CP-16 the exhaustive normative state/edge index (an edge absent from it is forbidden) and requires the P15 manifest to repeat each row's `allowed_edges` one-to-one, the only normative edge into the acceptance boundary is unregistered: the P3 allowlist, P15 cell and a passing fixture cannot be materialized without inventing an unlisted edge.",
+      "recommended_action": "Add `REVIEWING→AWAITING_HUMAN_ACCEPTANCE` with its validator-backed `ReviewClosureReceipt` PASS condition to CP-14's sole permitted edge/outcome cell, cross-reference it from CP-15, and mirror the identical edge in the P3 allowlist, P15 manifest cell and a passing fixture, or register the PASS outcome as an explicitly named CP-14 sub-edge.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-authority-002",
+        "invocation_id": "inv39-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.85
+    },
+    {
+      "finding_id": "AUTH39R-F-002",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "The closed CP-13 registry row enumerates only interruption, failure, terminal-close and new-attempt edges and omits the ordinary success edges `ACTIVE|DISPATCHED→VERIFYING` and `VERIFYING→REVIEWING` that the Section 5 diagram and the Section 9.1 uniform mutation list require.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "222 and 159-161"
+      },
+      "evidence_excerpt": "exact `interrupted_to_dispatched` / `interrupted_to_failed` same-attempt edges; verification/review failure closes the current attempt immutably",
+      "impact": "An attempt that dispatches successfully and then passes verification must move `ACTIVE`/`DISPATCHED`→`VERIFYING`→`REVIEWING`, but the owning row names only failure, close and interrupt edges while Section 5.0.1 forbids an edge absent from the registry and requires the P3 allowlist and P15 manifest to repeat the row exactly. A builder therefore cannot register, mirror or fixture the normal post-dispatch success path, and the only permitted outcomes the registry gives for a dispatched attempt are interruption or failure.",
+      "recommended_action": "Add the ordinary success edges `ACTIVE|DISPATCHED→VERIFYING` and `VERIFYING→REVIEWING`, with their Section 9.1 transition-pair rule, P3 rule, P15 manifest cell, Section 14 coverage reference and passing fixture, to CP-13's sole permitted edge/outcome column.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-authority-002",
+        "invocation_id": "inv39-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.82
+    },
+    {
+      "finding_id": "AUTH39R-F-003",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "`AcceptedDesignRegistry` is a mandatory per-admission-cycle control surface in P5 and in `AdmissionBundle.design_basis`, but the design declares no owner, canonical path, schema/validator bytes, create-once append-only write operation, first-generation creating decision or HUMAN design-acceptance authority for it.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "375 and 302"
+      },
+      "evidence_excerpt": "Every admission cycle resolves the create-once append-only `AcceptedDesignRegistry`, requires its latest monotone generation and sole `current=true` entry, and re-hashes that entry's HUMAN acceptance, design path and raw design bytes",
+      "impact": "P5 and `design_basis` make admission depend on a registry generation, its schema and a HUMAN acceptance hash that no section creates, validates, stores, owns or recovers; the Section 6.1 bootstrap capability list and the Section 16 entry criteria enumerate AdmissionBundle/Invalidation and administrative-ledger schemas without it. The mandatory design-basis control surface therefore has no declared owner or evidence-production path, so the Section 16 WBS-build entry criteria cannot be satisfied from pinned bytes and a builder must invent the registry contract, its generation-0 creation and the accepting HUMAN decision.",
+      "recommended_action": "Declare the `AcceptedDesignRegistry` canonical path, JSON schema and validator hashes, single coordinator-owned create-once append-only write operation, generation-0 creating HUMAN decision, current-entry fields (design path, raw design SHA-256, HUMAN acceptance hash, authority-basis hashes, generation/sequence), the P5/P14 resolution-and-comparison rule that rejects an older still-accepted generation, and its failure/recovery state, binding all of them into Section 6.1 and Section 16.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-authority-002",
+        "invocation_id": "inv39-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.78
+    },
+    {
+      "finding_id": "AUTH39R-F-004",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "CP-01 owns `ADMIN_LEDGER_GENESIS` and enumerates only its exits while CP-10 permits `FROZEN→PREPARING` as the only `FROZEN` edge, so the entry edge `FROZEN→ADMIN_LEDGER_GENESIS` shown in the Section 5 diagram is absent from the exhaustive registry and Section 16 lists no `ADMIN_LEDGER_GENESIS` HUMAN decision among its pre-WBS prerequisites.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "210 and 219"
+      },
+      "evidence_excerpt": "accepted exact bytes → `FROZEN`; failure → `ADMIN_LEDGER_GENESIS_BLOCKED`",
+      "impact": "The first mandatory pre-WBS control action cannot lawfully enter its state: the registry that declares an unlisted edge forbidden contains no `FROZEN→ADMIN_LEDGER_GENESIS` edge, CP-10 restricts `FROZEN` to the prepare edge through effect 5.1(a), and Section 16 requires migration and bootstrap decisions but no genesis authorization or decision record. The Section 6.3 genesis prerequisite is thus unreachable through the registered state/edge index and unciteable in the WBS-build entry criteria without inventing an edge.",
+      "recommended_action": "Add `FROZEN→ADMIN_LEDGER_GENESIS` with its exact HUMAN genesis authorization and no-mission-ledger effect to CP-01, mirror the identical cell in the P3 allowlist, P15 manifest and fixture class, and add the attributable HUMAN genesis decision record to Section 16 ahead of the migration and bootstrap prerequisites.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-authority-002",
+        "invocation_id": "inv39-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.72
+    },
+    {
+      "finding_id": "AUTH39R-F-005",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "CP-10 lists `NOT_READY` as a current state but enumerates no exit edge for it, while the Section 5 diagram shows `NOT_READY` re-prepare and Section 5.2 step 3 routes drifted candidates to `EXPIRED`/`NOT_READY` before re-prepare, so the declared uncharged re-prepare path is not registered.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "219 and 128"
+      },
+      "evidence_excerpt": "`FROZEN→PREPARING` only through effect 5.1(a); invalidation/expiry requires uncharged `EXPIRED→FROZEN` preserving the expired bundle/seal/invalidation evidence, then a fresh effect 5.1(a)",
+      "impact": "A candidate that fails any pre-charge check enters `NOT_READY`, but no registry row permits leaving it; because the registry is exhaustive and prose may refine but never add an unnamed edge, the uncharged re-prepare loop that Section 5.2 and the diagram describe cannot be mirrored into the P3 allowlist, P15 manifest or fixture without inventing the edge. The same class of gap was corrected for `EXPIRED` by adding `EXPIRED→FROZEN` but not for `NOT_READY`, so the fail-closed abort path has no registered recovery transition.",
+      "recommended_action": "Add the explicit uncharged `NOT_READY→PREPARING` edge (or `NOT_READY→FROZEN` followed by a fresh effect 5.1(a)) with its zero-charge/zero-open condition to CP-10 and mirror the identical cell in the P3 allowlist, P15 manifest, Section 14 coverage index and fixture class.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-authority-002",
+        "invocation_id": "inv39-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.7
+    },
+    {
+      "finding_id": "AUTH39R-F-006",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "ownership",
+      "claim": "P3 requires one-to-one reconciliation against the canonical intent-root scan and Section 9.1 requires a deterministic new `TransitionIntentRootManifest` generation for intent-corruption recovery, but no section declares that manifest's owner, canonical path, generation-0 creation, field schema, validator or accepting HUMAN decision.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "422 and 373"
+      },
+      "evidence_excerpt": "P3 scans the canonical intent-root manifest and index",
+      "impact": "A control surface on which every zero-open determination and every intent-corruption recovery depends has no declared owner, initial generation, path, schema/validator or accepting decision, so P3's reconciliation cannot be reproduced from pinned evidence and a builder must invent the generation-0 manifest and its authority. Section 6.1(h) names only an `intent-root-manifest-supersession` schema and Section 16 names the `TransitionIntentIndex`/`P3_IN_FLIGHT` validator, leaving the manifest lineage without a declared capability, acceptance rule or fixture.",
+      "recommended_action": "Bind `TransitionIntentRootManifest` generation-0 creation, canonical path, schema and validator hashes, owner, write operation and accepting HUMAN decision into the Section 6.1 bootstrap capabilities and Section 16 entry criteria, and state how its generation and acceptance are re-hashed during ordinary admission and corruption recovery.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-authority-002",
+        "invocation_id": "inv39-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.7
+    },
+    {
+      "finding_id": "AUTH39R-F-007",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "requirement-coverage",
+      "claim": "Section 6.1(h) requires the one-time bootstrap to approve a `repair` schema and Section 9.1 admits `repair` as an `execution.json` mutation kind, but no CP-01…CP-16 row, state/edge, exceptional record, P3 rule or P15 manifest cell defines a repair object or transition.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "329 and 428"
+      },
+      "evidence_excerpt": "administrative-authorization-outcome-pair/repair schemas",
+      "impact": "A bootstrap deliverable and a normative ledger mutation kind have no registered owner, allowed effect, state edge, accounting pair or fixture. Either the approved repair schema is unusable because no state it may write exists, or implementing it would create an edge the registry forbids; the Section 16 handoff manifest cell for that capability cannot be filled from the reviewed bytes without inventing a state, edge or record.",
+      "recommended_action": "Remove the residual `repair` tokens, or name the exact registered recovery record and edge that replace them (`DIVERGENT_UNKNOWN_WRITE`, `UNKNOWN_APPLIED_NO_RECEIPT`, provenance-terminal recovery, index-generation supersession) and bind their schemas, P3/P15 rule, accounting pair and fixture.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-authority-002",
+        "invocation_id": "inv39-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.72
+    },
+    {
+      "finding_id": "AUTH39R-F-008",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "evidence-basis",
+      "claim": "The Section 15.1 closure matrix maps the pinned consistency audit's CS/CH/CA/BA identifiers to v36 locators but never names or hash-binds the consistency-audit artifact that defines them, and it carries no disposition for the outside observation EXT38-O-004 that raised this traceability gap.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "617 and 613"
+      },
+      "evidence_excerpt": "| CS-01, CS-02, CS-03, CS-04, CS-05, CS-06, CS-08, CS-09 | §5.0.1 CP-01…CP-16 and §14 coverage index | state/edge inventory, source/candidate/divergent and blocked-state fixtures |",
+      "impact": "The must-check requires every CS-01…CS-09, CH-01…CH-03, CA-01 and BA-01…BA-04 finding in the pinned consistency audit to be demonstrably closed, but the reviewed design never cites that audit's canonical path or raw SHA-256 and gives no disposition for EXT38-O-004, which raised exactly this unverifiable-referent gap. Closure of those identifiers therefore rests on an unpinned referent, while the matrix preamble hash-binds only the three run-034 artifacts.",
+      "recommended_action": "Add the pinned v32 consistency-audit canonical path and raw SHA-256 to the Section 15.1 preamble and bind each CS/CH/CA/BA row to it (or supply a deterministic finding-to-locator-to-fixture diff), and record EXT38-O-004 with either an exact correction locator or an explicit not-verifiable disposition.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-authority-002",
+        "invocation_id": "inv39-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.75
+    }
+  ],
+  "rejected_candidates": []
+}

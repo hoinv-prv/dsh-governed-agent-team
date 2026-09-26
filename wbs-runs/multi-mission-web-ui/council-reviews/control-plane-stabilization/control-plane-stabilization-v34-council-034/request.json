@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "request_id": "CR-CTRL-STAB-V34-034",
+  "review_id": "control-plane-stabilization-v34-council-034",
+  "requested_by": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "report_to": {
+    "kind": "path",
+    "target": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization"
+  },
+  "write_authority": {
+    "kind": "caller-grant",
+    "granted_by": "HUMAN-current-user via explicit council-review authorization and confirmed AIP-EXEC-009 scope",
+    "scope": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization"
+  },
+  "mode": [
+    "design",
+    "governance"
+  ],
+  "objective": "Determine whether exact control-plane-stabilization-design.v34.md closes all verified run-033 findings and preflight-discovered registry deadlocks without introducing new charge, recovery, authority, accounting, hash-order, or state-closure defects. Review exact pinned bytes only; do not build or execute a WBS.",
+  "risk": "high",
+  "downstream_impact": "high",
+  "artifacts": [
+    {
+      "artifact_id": "design-v34",
+      "path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/control-plane-stabilization-design.v34.md",
+      "required": true,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 630
+        }
+      ]
+    },
+    {
+      "artifact_id": "sanitized-design-v34",
+      "path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/control-plane-stabilization-design.v34.md",
+      "required": true,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 630
+        }
+      ]
+    },
+    {
+      "artifact_id": "repo-rules",
+      "path": "/home/hoinv/work/dsh-governed-agent-team/AGENTS.md",
+      "required": true,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 134
+        }
+      ]
+    },
+    {
+      "artifact_id": "aiws-architecture",
+      "path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/truth/canonical/methodology/10_design/Architecture_Design_MVP.md",
+      "required": true,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 28,
+          "end_line": 220
+        },
+        {
+          "start_line": 320,
+          "end_line": 430
+        }
+      ]
+    },
+    {
+      "artifact_id": "runtime-review-method",
+      "path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/truth/canonical/methodology/20_specs/Runtime_Review_Methodology_MVP.md",
+      "required": true,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 20,
+          "end_line": 108
+        },
+        {
+          "start_line": 133,
+          "end_line": 146
+        }
+      ]
+    },
+    {
+      "artifact_id": "gat-proposal",
+      "path": "/home/hoinv/work/dsh-governed-agent-team/docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+      "required": true,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 13,
+          "end_line": 64
+        },
+        {
+          "start_line": 92,
+          "end_line": 205
+        }
+      ]
+    },
+    {
+      "artifact_id": "failure-model",
+      "path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v1-council-002/snapshots/failure-model",
+      "required": true,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 102
+        }
+      ]
+    },
+    {
+      "artifact_id": "consistency-audit-v32",
+      "path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/control-plane-stabilization-consistency-audit.v32.md",
+      "required": true,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 51
+        }
+      ]
+    },
+    {
+      "artifact_id": "council-contract",
+      "path": "/home/hoinv/.dsh/skills/dsh-council-review/references/contracts.md",
+      "required": true,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 13,
+          "end_line": 107
+        }
+      ]
+    },
+    {
+      "artifact_id": "council-routing",
+      "path": "/home/hoinv/.dsh/skills/dsh-council-review/references/risk-and-routing.md",
+      "required": true,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 45
+        }
+      ]
+    },
+    {
+      "artifact_id": "run033-ledger",
+      "path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v33-council-033/ledger.json",
+      "required": true,
+      "media_type": "application/json",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 603
+        }
+      ]
+    },
+    {
+      "artifact_id": "run033-verifier",
+      "path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v33-council-033/verifier/manifest.json",
+      "required": true,
+      "media_type": "application/json",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 103
+        }
+      ]
+    }
+  ],
+  "sources_of_truth": [
+    {
+      "sot_id": "sot-repo-rules",
+      "authority": "repo-rule",
+      "artifact_id": "repo-rules",
+      "locator": {
+        "kind": "section",
+        "value": "AI Work System — core rules"
+      }
+    },
+    {
+      "sot_id": "sot-aiws-architecture",
+      "authority": "architecture",
+      "artifact_id": "aiws-architecture",
+      "locator": {
+        "kind": "section",
+        "value": "Actor model; architecture principles; component responsibilities; gate and governance architecture"
+      }
+    },
+    {
+      "sot_id": "sot-runtime-review",
+      "authority": "architecture",
+      "artifact_id": "runtime-review-method",
+      "locator": {
+        "kind": "section",
+        "value": "Core stance; reproducibility layers; leg rubric; ensemble; measurement discipline"
+      }
+    },
+    {
+      "sot_id": "sot-gat-proposal",
+      "authority": "architecture",
+      "artifact_id": "gat-proposal",
+      "locator": {
+        "kind": "section",
+        "value": "Decision Status; Core Principles; Domain Model and Invariants"
+      }
+    },
+    {
+      "sot_id": "sot-failure-evidence",
+      "authority": "primary-source",
+      "artifact_id": "failure-model",
+      "locator": {
+        "kind": "section",
+        "value": "Failure model; confirmed findings; hypotheses"
+      }
+    },
+    {
+      "sot_id": "sot-council-contract",
+      "authority": "other",
+      "artifact_id": "council-contract",
+      "locator": {
+        "kind": "section",
+        "value": "Version 1 contracts"
+      }
+    },
+    {
+      "sot_id": "sot-council-routing",
+      "authority": "other",
+      "artifact_id": "council-routing",
+      "locator": {
+        "kind": "section",
+        "value": "Risk, routing, budget, and verdict rules"
+      }
+    },
+    {
+      "sot_id": "sot-consistency-audit",
+      "authority": "primary-source",
+      "artifact_id": "consistency-audit-v32",
+      "locator": {
+        "kind": "section",
+        "value": "Findings; Cross-cutting correction plan; Remediation verification"
+      }
+    },
+    {
+      "sot_id": "sot-run033-ledger",
+      "authority": "primary-source",
+      "artifact_id": "run033-ledger",
+      "locator": {
+        "kind": "json-pointer",
+        "value": "/findings"
+      }
+    },
+    {
+      "sot_id": "sot-run033-verifier",
+      "authority": "primary-source",
+      "artifact_id": "run033-verifier",
+      "locator": {
+        "kind": "json-pointer",
+        "value": "/records"
+      }
+    }
+  ],
+  "must_check": [
+    "Root cause is separated from contributing conditions and symptoms and is supported by pinned evidence.",
+    "Admission prevents known unreadiness before charge without claiming impossible rollback after charge.",
+    "The design does not invent a scheduler, daemon, custom WBS runner, approval mechanism, or DSH capability.",
+    "Every control surface has one owner, exact evidence, fail state, and recovery path.",
+    "Schema validation and semantic command-to-deliverable closure are both required.",
+    "Generated AIP/ASC artifacts can only transition through declared owning commands.",
+    "Ledger migration is backup-first, lossless, deterministic, reversible, strict-validator-gated, and does not change acceptance.",
+    "Reviewer route availability, fallback and call-budget reservation distinguish provider capacity from a valid adverse verdict.",
+    "Goal, Team, coordinator, active work and execution ledger state cannot contradict at admission.",
+    "Budget policy exposes rather than hides control/recovery contingency.",
+    "HUMAN authority remains explicit for WBS approval, ceiling/reallocation, deviations, acceptance and activation.",
+    "Negative paths cover drift, sandbox loss, reviewer loss, partial commit, crash after charge, ledger conflict and zero slack.",
+    "The AdmissionBundle is proof-only, time-bounded and explicitly procedural; it neither grants execution authority nor claims non-bypassable enforcement or removal of the external-state TOCTOU race.",
+    "The design gives exact entry criteria for a later WBS build and keeps current execution frozen.",
+    "One-time strict-ledger migration and AdmissionBundle schema/validator/prepare bootstrap occur under separate HUMAN authority before WBS build, avoiding P3/P15 circularity without hiding a charged attempt.",
+    "The coordinator-owned version-guarded ledger write has explicit abort/no-write semantics and does not claim a non-bypassable native hook.",
+    "Any ambiguity that could permit charge or acceptance must be a material finding, not a note.",
+    "Every CS-01 through CS-09, CH-01 through CH-03, CA-01, and BA-01 through BA-04 finding in the pinned consistency audit is demonstrably closed in v33.",
+    "The normative composed transition table, P3 allowlist, P15 capability set, Section 9.1 lineage, failure matrix, fixtures, and WBS handoff manifest have no contradictory or missing state edge.",
+    "The candidate-template/body-commitment projection is byte-complete and acyclic, and bundle, seal, intent, completion, index, administrative ledger, and root journal hash domains are unambiguous.",
+    "RootControlJournal units and administrative/reservation/recovery units cannot double-debit, escape a ceiling, refill, recurse indefinitely, or create a recovery path rejected by its own prefix rule.",
+    "PostChargeRecoveryAllocation requires both ceilings, has closed D/B recurrence and only terminal reconciliation; it cannot restore READY, dispatch, accept, reuse, or create an attempt.",
+    "The AdmissionBundle binds the latest council-passed HUMAN-accepted design by out-of-band raw-byte hash and cannot admit against superseded v32 bytes.",
+    "Charged completion corruption has exactly one terminal outcome; manifest/index supersession is only an intermediate evidence-preserving effect.",
+    "The exact immutable 434f failure-model snapshot and v32 consistency audit are present in the packet; mutable workspace history is not substituted.",
+    "Every run-033 confirmed finding maps to an exact v34 correction; refuted findings are not reintroduced.",
+    "CP-01 through CP-16 explicitly permit FROZEN→PREPARING and READY→COMMITTING→CHARGED_ACCOUNTING_PENDING and cover every named blocked/terminal state.",
+    "Root ceiling recurrence charges U_root_j and O_root_j exactly once; no attempt-unit omission or double debit remains.",
+    "Chairman output must use the exact contracts.md shape; no rationale field, numeric confidence, top-level reviewer fields, or object-valued residual risks."
+  ],
+  "out_of_scope": [
+    "Building, selecting, executing or accepting a WBS.",
+    "Modifying current mission ledgers, AIP-004, product source or accepted artifacts.",
+    "Executing the accepted conformance baseline.",
+    "Accessing DSH beyond the separately HUMAN-authorized read-only council helper.",
+    "Network, package manager, dependency install, merge, deploy or activation.",
+    "Choosing the HUMAN budget decision on their behalf."
+  ],
+  "allowed_verification": {
+    "read_paths": [
+      "/home/hoinv/work/dsh-governed-agent-team",
+      "/home/hoinv/.dsh/skills/dsh-council-review"
+    ],
+    "commands": [],
+    "network": false
+  },
+  "routing": {
+    "minimum_internal_lanes": 2,
+    "require_model_diversity": true,
+    "require_external_lane": true,
+    "chairman_must_be_separate": true
+  },
+  "budget": {
+    "maximum_model_calls": 8,
+    "maximum_retries_per_lane": 1
+  },
+  "output_root": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization"
+}

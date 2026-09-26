@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v12-council-013",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "F-001",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "P16 permits an alternate task acceptance owner named by any non-revoked HUMAN authority decision, without requiring that decision to originate from the designated mission decision owner or a hash-pinned delegation chain from that owner, unlike P13 and the Section 16 WBS-build entry criteria.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v12",
+      "locator": {
+        "kind": "line",
+        "value": "281"
+      },
+      "evidence_excerpt": "an alternate with `actor.kind = human` explicitly named by a separate non-revoked HUMAN authority decision ID/raw hash and exact task/scope",
+      "impact": "A HUMAN record outside the mission decision owner chain can satisfy the P16 charge-time invariant and later grant acceptance, so acceptance can be produced without the designated owner authority even though Section 16 requires an owner-rooted chain that P16 does not enforce at admission.",
+      "recommended_action": "Bind every alternate acceptor in P16 and Section 5.4 to the designated mission decision owner through a complete hash-pinned non-revoked HUMAN delegation chain with exact task/scope, matching P13, and re-verify that chain at P14 and at the acceptance boundary.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer13-authority-001",
+        "invocation_id": "inv13-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.85,
+      "source_candidate_ids": [
+        "F-001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "F-002",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "P15 enumerates approved argv hashes for validator, prepare, bundle-seal, invalidation, admin-ledger-append and charge-preimage-seal, but omits the AIP pointer/ASC `run_aip.py step|resume` transition that Section 5.1(a) declares as one of the four pre-charge writes separately approved under P15.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v12",
+      "locator": {
+        "kind": "line",
+        "value": "280"
+      },
+      "evidence_excerpt": "their validator/prepare/bundle-seal/invalidation/admin-ledger-append/charge-preimage-seal argv hashes",
+      "impact": "The FROZEN-to-PREPARING AIP pointer/ASC write can occur without the pinned HUMAN-approved argv/tool hash that P15 requires for the other three pre-charge writes, so that generated-AIP/ASC control write is not bound to the P15 approved-capability set.",
+      "recommended_action": "Add the exact AIP pointer/ASC `run_aip.py step|resume` argv/tool hash and its bounded pointer/ASC/Workspace effect to the P15 and `bootstrap_authority` approved-capability enumeration, or drop the assertion that write (a) is separately approved under P15.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer13-authority-001",
+        "invocation_id": "inv13-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.8,
+      "source_candidate_ids": [
+        "F-002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "F-003",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "coverage",
+      "claim": "Section 12.5 and the admission state machine direct a charged attempt whose reviewer route is lost into REVIEW_PENDING, but neither the state machine nor the Section 14 recovery matrix declares an owner, escalation, exit or closure disposition for REVIEW_PENDING.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v12",
+      "locator": {
+        "kind": "line",
+        "value": "378"
+      },
+      "evidence_excerpt": "If no eligible route remains, enter `REVIEW_PENDING`; never substitute an unbound placeholder packet.",
+      "impact": "Reviewer loss after charge leaves a charged attempt without a declared recovery or terminal disposition, so the mission cannot deterministically resolve the attempt, and the must-check reviewer-loss negative path is incomplete.",
+      "recommended_action": "Declare the REVIEW_PENDING owner, bounded re-probe/retry rule, route-restoration exit, HUMAN escalation and terminal disposition in the state machine, Section 12 and Section 14.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer13-authority-001",
+        "invocation_id": "inv13-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.8,
+      "source_candidate_ids": [
+        "F-003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer13-adversarial-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "ledger-lineage-closure",
+      "claim": "P3 defines lineage for charge successors and POST_CHARGE_REPAIR but omits the ordinary post-charge execution.json status, outcome, review, and acceptance writes that the design itself authorizes.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v12",
+      "locator": {
+        "kind": "line",
+        "value": "268"
+      },
+      "evidence_excerpt": "allowing only the Section 5.2 hash-complete `POST_CHARGE_REPAIR` exceptional link that preserves the same attempt/charge",
+      "impact": "After a normal charged attempt changes outcome or acceptance state, the next admission must either reject the ledger as non-append divergence or silently admit an unproved lineage exception, defeating multi-attempt closure.",
+      "recommended_action": "Define source, candidate, persisted hashes and receipts for every authorized execution.json transition and make P3 accept only that complete chain, or isolate an append-only event history with a deterministically rebuilt current projection.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer13-adversarial-001",
+        "invocation_id": "inv13-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.97,
+      "source_candidate_ids": [
+        "reviewer13-adversarial-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer13-adversarial-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "migration-contract-selection",
+      "claim": "The migration protocol hard-codes dsh-wbs-execution/1 as its target even though P15 permits a different versioned execution-contract extension when v1 lacks the required charge, bundle, seal, and lineage representation.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v12",
+      "locator": {
+        "kind": "line",
+        "value": "323"
+      },
+      "evidence_excerpt": "2. Pin the authoritative target `dsh-wbs-execution/1` contract/tool version.",
+      "impact": "If existing v1 pointers cannot be proven, option (b) has no declared one-time migration target; the flow either migrates twice, deadlocks bootstrap against migration, or invents fields in v1.",
+      "recommended_action": "Make migration step 2 consume the HUMAN-approved P15 representation decision and pin either proven v1 pointers plus fixture or the exact extension contract, validator, and migration bytes before any transformation.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer13-adversarial-001",
+        "invocation_id": "inv13-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.95,
+      "source_candidate_ids": [
+        "reviewer13-adversarial-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer13-adversarial-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "aip-transition-closure",
+      "claim": "The closed pre-charge write set permits only run_aip step or resume, while the artifact-ownership policy also permits start, leaving a fresh Working AIP without one unambiguous admission state and effect rule.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v12",
+      "locator": {
+        "kind": "line",
+        "value": "157"
+      },
+      "evidence_excerpt": "the exact AIP-declared `python3 .ai-work/tooling/run_aip.py step|resume ...` transition",
+      "impact": "A successor execution needing first-time AIP initialization must either perform an undeclared pre-charge control write or remain NOT_READY; treating the broader Section 10 command set as authority breaks the four-effect closure.",
+      "recommended_action": "Either add start to the P15-authorized FROZEN-to-PREPARING effect with the same path, hash, sequence, epoch, and no-charge receipt limits, or require proof that the AIP was already started before FROZEN and remove start from the admission command set.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer13-adversarial-001",
+        "invocation_id": "inv13-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.94,
+      "source_candidate_ids": [
+        "reviewer13-adversarial-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

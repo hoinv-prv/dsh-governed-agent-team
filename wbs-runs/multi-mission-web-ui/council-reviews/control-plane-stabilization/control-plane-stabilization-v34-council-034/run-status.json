@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v34-council-034",
+  "state": "failed",
+  "stage": "review",
+  "failure": {
+    "code": "schema_invalid",
+    "stage": "review",
+    "subject": "external-outside-view",
+    "message": "Required outside-view lane remained schema-invalid after its sole retry: non-null governance_class on design-mode observations. Formal consequence insufficient_evidence; no normalize, Chairman, or render allowed.",
+    "retryable": false,
+    "invocation_id": "inv34-ext-002"
+  },
+  "updated_sequence": 2
+}

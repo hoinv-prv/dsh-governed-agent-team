@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v38-council-041",
+  "executor": "parent-orchestrator",
+  "artifact_manifest_sha256": "f94f521fc6cb9a42eb40052cd64668a066d207dd3337d6b4491da59a216699ed",
+  "records": [
+    {
+      "verification_id": "verify41-confirmed",
+      "finding_ids": [
+        "ADV41-F-001",
+        "ADV41-F-002",
+        "ADV41-F-003",
+        "ADV41-F-004",
+        "AUTH41-F-001",
+        "AUTH41-F-002",
+        "AUTH41-F-003",
+        "AUTH41-F-004",
+        "EXT41-O-001",
+        "EXT41-O-002",
+        "EXT41-O-003",
+        "EXT41-O-004",
+        "EXT41-O-005",
+        "EXT41-O-006",
+        "EXT41-O-007",
+        "EXT41-O-008",
+        "EXT41-O-009",
+        "EXT41-O-010"
+      ],
+      "method": "read",
+      "command_id": null,
+      "argv": null,
+      "cwd": null,
+      "timeout_seconds": null,
+      "authorized_by_request": true,
+      "status": "confirmed",
+      "exit_code": null,
+      "output_excerpt": "Exact read of immutable design-v38 confirms all normalized observations at their cited locators. Internal findings establish missing CP-12 charged-blocked entry edges, missing genesis prerequisite, missing review-receipt/design equality, incomplete blocked-state destinations, evidence-basis and coverage/ownership/freshness gaps. Outside observations confirm the cited ambiguity/duplication/ordering/fixture issues. These are design defects or advisory scope disclosures; verification makes no correction to reviewed bytes.",
+      "reason": "Exact read of immutable design-v38 confirms all normalized observations at their cited locators. Internal findings establish missing CP-12 charged-blocked entry edges, missing genesis prerequisite, missing review-receipt/design equality, incomplete blocked-state destinations, evidence-basis and coverage/ownership/freshness gaps. Outside observations confirm the cited ambiguity/duplication/ordering/fixture issues. These are design defects or advisory scope disclosures; verification makes no correction to reviewed bytes.",
+      "artifact_hashes_before": [
+        {
+          "artifact_id": "design-v38",
+          "sha256": "a210c3d58208fa6145c06f2dcf975b0c966dbb0ad2957bec44614e698d9d2ede"
+        },
+        {
+          "artifact_id": "sanitized-design-v38",
+          "sha256": "a210c3d58208fa6145c06f2dcf975b0c966dbb0ad2957bec44614e698d9d2ede"
+        }
+      ],
+      "artifact_hashes_after": [
+        {
+          "artifact_id": "design-v38",
+          "sha256": "a210c3d58208fa6145c06f2dcf975b0c966dbb0ad2957bec44614e698d9d2ede"
+        },
+        {
+          "artifact_id": "sanitized-design-v38",
+          "sha256": "a210c3d58208fa6145c06f2dcf975b0c966dbb0ad2957bec44614e698d9d2ede"
+        }
+      ],
+      "result_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v38-council-041/verifier/verify41-confirmed.json",
+      "raw_output_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v38-council-041/verifier/raw/verify41-confirmed.txt",
+      "raw_output_sha256": "5b1b145de7802aa18e53e33c467bccd0ed6ad5be594182a01ea6df76a81962ea",
+      "raw_output_size_bytes": 525
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v27-council-028",
+  "reviewer_id": "reviewer28-authority-001",
+  "lane": "internal-authority",
+  "invocation_id": "inv28-auth-001",
+  "attempt": 1,
+  "status": "completed",
+  "artifact_manifest_sha256": "30b000824ceaf1e4e06f0904ca69303ee437e714198b61b36c1f841a14b2655f",
+  "packet_sha256": "c6e5921a66724a002a97545aa4778f129ab027504f846cc4ddcfae55f7162547",
+  "findings": [],
+  "rejected_candidates": []
+}

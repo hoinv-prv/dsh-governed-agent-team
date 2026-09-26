@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v21-council-022",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer22-adversarial-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "bootstrap-genesis",
+      "claim": "The administrative-accounting bootstrap has no governed genesis: BOOTSTRAP_MAINTENANCE is required to deliver the AdministrativeResourceLedger contract, validator, initialized record, and append capability, but those same artifacts must already validate before maintenance and cannot be created in it.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v21",
+      "locator": {
+        "kind": "line",
+        "value": "270, 282-284"
+      },
+      "evidence_excerpt": "The contract, initial zero-use record, append capability and passing boundary fixtures must already validate before maintenance; they cannot be self-created or retroactively backfilled inside the state.",
+      "impact": "If the artifacts are absent, bootstrap and migration cannot start; if they are created outside the state, their writes, calls, cost, and verification evade the design's single-ledger accounting and exact-authority evidence, so P15 and WBS-build entry depend on an ungoverned prerequisite.",
+      "recommended_action": "Define one explicit HUMAN-authorized genesis operation with exact allowed paths and effects, a bounded resource allowance, immutable implementation and input hashes, independent verification, and an accepted genesis receipt that seeds the ledger; remove the requirement that bootstrap both consume and create the same prerequisite.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer22-adversarial-001",
+        "invocation_id": "inv22-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98,
+      "source_candidate_ids": [
+        "reviewer22-adversarial-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer22-adversarial-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "partial-commit-recovery",
+      "claim": "The divergent-ledger crash branch has no executable recovery: when current execution.json equals neither the intent source nor candidate, v21 directs the same terminal branch whose recovery link requires verified candidate equality and whose next intent starts from the candidate.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v21",
+      "locator": {
+        "kind": "line",
+        "value": "353"
+      },
+      "evidence_excerpt": "If ledger bytes equal neither source nor candidate, validation differs, or an existing record at either path has different bytes, enter TRANSITION_RECOVERY_BLOCKED; preserve attempt/charge/decision semantics and require the exact fresh HUMAN recovery decision and terminal branch above—never migration, receipt synthesis or return to active execution.",
+      "impact": "A partial or corrupt guarded write followed by a crash cannot establish candidate equality, cannot start the prescribed candidate-to-terminal transition, and is forbidden migration; the mission ledger can therefore remain permanently blocked despite fresh HUMAN recovery authority, defeating the required partial-commit recovery path.",
+      "recommended_action": "Add a distinct version-guarded divergent-current recovery edge from the exact observed current hash and version to a strict-valid terminal FAILED_CHARGED_PROVENANCE_UNKNOWN candidate, preserving the attempt and charge and requiring immutable evidence, HUMAN authority, administrative accounting, independent verification and review, and an explicit P3 exceptional lineage; otherwise declare the condition terminal without claiming the existing branch recovers it.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer22-adversarial-001",
+        "invocation_id": "inv22-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.99,
+      "source_candidate_ids": [
+        "reviewer22-adversarial-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer22-adversarial-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "root-cause-evidence",
+      "claim": "The assertion that the admission gate would have detected every observed control failure before charge is unsupported for reviewer or sandbox availability that may be lost after a successful observation; v21 itself states that provider capacity is not reserved and that external-state TOCTOU remains.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v21",
+      "locator": {
+        "kind": "section",
+        "value": "§1 line 23; §2.2 lines 42-44; §5.3 lines 199-201; §12 lines 410-425"
+      },
+      "evidence_excerpt": "The evidence shows that such a gate would have detected each observed control failure before charge",
+      "impact": "The overbroad counterfactual overstates support for RC-SYSTEM-01 and can make a later WBS treat availability snapshots as preventive proof for failures they cannot predict, rather than preserve those failures as disclosed charged residual paths.",
+      "recommended_action": "Limit the counterfactual to unreadiness shown to have existed and been observable at the charge boundary; separate post-observation provider, sandbox, or other external-state loss into the charged REVIEW_PENDING or INTERRUPTED residual paths and revise the coverage table accordingly.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer22-adversarial-001",
+        "invocation_id": "inv22-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.94,
+      "source_candidate_ids": [
+        "reviewer22-adversarial-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

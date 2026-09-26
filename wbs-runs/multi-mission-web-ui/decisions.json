@@ -1,0 +1,710 @@
+{
+  "format": "dsh-wbs-decisions/1",
+  "mission_id": "multi-mission-web-ui",
+  "decisions": [
+    {
+      "id": "decision-execution-001",
+      "kind": "execution",
+      "revision": 1,
+      "plan_sha256": "582c4aab13d2813e368a2e0ed233a2a05dc34d4071a98603d7d6a2cf20d0b68e",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Hãy thực hiện mission này nhé",
+      "source_ref": "direct-human-message-in-current-session",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v1.json",
+          "sha256": "582c4aab13d2813e368a2e0ed233a2a05dc34d4071a98603d7d6a2cf20d0b68e"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-002",
+      "kind": "revision",
+      "revision": 2,
+      "plan_sha256": "55955a3b3964413d151a13e2790e9464677fa0adc08c867fb4194f3166010959",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve và tiếp tục thực thi (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v2",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v2.json",
+          "sha256": "55955a3b3964413d151a13e2790e9464677fa0adc08c867fb4194f3166010959"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-003",
+      "kind": "revision",
+      "revision": 3,
+      "plan_sha256": "347823ac39155a82709b08650041bbfdc2d5398bd7d7e63406409ace1801f589",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v3",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v3.json",
+          "sha256": "347823ac39155a82709b08650041bbfdc2d5398bd7d7e63406409ace1801f589"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-004",
+      "kind": "revision",
+      "revision": 4,
+      "plan_sha256": "3bfee29f8e6ecc673813f1922ea9857e66cf716979e36f220027c4dd6e6ffd3b",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v4",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v4.json",
+          "sha256": "3bfee29f8e6ecc673813f1922ea9857e66cf716979e36f220027c4dd6e6ffd3b"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-005",
+      "kind": "revision",
+      "revision": 5,
+      "plan_sha256": "00c5a7c85d9fab819a0de790b93c759a6545ed3e3cac35ddbc2e51259289c30c",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v5",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v5.json",
+          "sha256": "00c5a7c85d9fab819a0de790b93c759a6545ed3e3cac35ddbc2e51259289c30c"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-006",
+      "kind": "revision",
+      "revision": 6,
+      "plan_sha256": "a484fdda4d896f3430c7501b5bbc2c8cbf4b9166d0f2ead3d2133ea0ebe59add",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v6",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v6.json",
+          "sha256": "a484fdda4d896f3430c7501b5bbc2c8cbf4b9166d0f2ead3d2133ea0ebe59add"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-007",
+      "kind": "revision",
+      "revision": 7,
+      "plan_sha256": "80e69bac7c66e1bce2833aacae13f5f8417e6e5b4ce35a31d052b9de39ffc04f",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v7",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v7.json",
+          "sha256": "80e69bac7c66e1bce2833aacae13f5f8417e6e5b4ce35a31d052b9de39ffc04f"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-008",
+      "kind": "revision",
+      "revision": 8,
+      "plan_sha256": "f6267a214279d655284268d7a8cc6f571a8ac52cc53062097e63a11e7f6b9955",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve recovery và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v8",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v8.json",
+          "sha256": "f6267a214279d655284268d7a8cc6f571a8ac52cc53062097e63a11e7f6b9955"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-009",
+      "kind": "revision",
+      "revision": 9,
+      "plan_sha256": "382df5570471f84d28e95b0df66ac13102e4db00d6004552c1cdfe6988c66fff",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve bounded repairs và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v9",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v9.json",
+          "sha256": "382df5570471f84d28e95b0df66ac13102e4db00d6004552c1cdfe6988c66fff"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-010",
+      "kind": "revision",
+      "revision": 10,
+      "plan_sha256": "e3c58c2ee53b3ed8bc26401f95a9fbb1047f036abaff7c15c00beb4d78c700b6",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve final fixture repair (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v10",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v10.json",
+          "sha256": "e3c58c2ee53b3ed8bc26401f95a9fbb1047f036abaff7c15c00beb4d78c700b6"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-011",
+      "kind": "revision",
+      "revision": 11,
+      "plan_sha256": "93e605b4ebd7558fd39f8c8f14d73e70c03d10953314a53abdae8e32791e90dd",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve compile repair và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v11",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v11.json",
+          "sha256": "93e605b4ebd7558fd39f8c8f14d73e70c03d10953314a53abdae8e32791e90dd"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-012",
+      "kind": "revision",
+      "revision": 12,
+      "plan_sha256": "5be249f76b2b73266c8b0bb17d648a86b93cc7af65aeaffeb797cde45d8b365d",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve và thực thi v12 (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v12",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v12.json",
+          "sha256": "5be249f76b2b73266c8b0bb17d648a86b93cc7af65aeaffeb797cde45d8b365d"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-013",
+      "kind": "revision",
+      "revision": 13,
+      "plan_sha256": "96aabf505c4334f0554204adf40bdd8093a0743de00839cde5a22bbea0a8539f",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v13 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v13",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v13.json",
+          "sha256": "96aabf505c4334f0554204adf40bdd8093a0743de00839cde5a22bbea0a8539f"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-014",
+      "kind": "revision",
+      "revision": 14,
+      "plan_sha256": "187186a10b622159d9568023fa0a185d6257a3bde4bb6a5fc9c5a7c48878b60e",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v14 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v14",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v14.json",
+          "sha256": "187186a10b622159d9568023fa0a185d6257a3bde4bb6a5fc9c5a7c48878b60e"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-015",
+      "kind": "revision",
+      "revision": 15,
+      "plan_sha256": "a6eb5baedafabb7098016fc45a7656421847cc5fea462a076a3568de66ed290b",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v15 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v15",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v15.json",
+          "sha256": "a6eb5baedafabb7098016fc45a7656421847cc5fea462a076a3568de66ed290b"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-016",
+      "kind": "revision",
+      "revision": 16,
+      "plan_sha256": "a9a8a95d9ccc22662b33d331edf7da37175cd49f18a9eeda2fe96675f7ba1247",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve repair v16 (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v16",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v16.json",
+          "sha256": "a9a8a95d9ccc22662b33d331edf7da37175cd49f18a9eeda2fe96675f7ba1247"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-017",
+      "kind": "revision",
+      "revision": 17,
+      "plan_sha256": "c7a802e9ba92c1220d378605ed301ffd553f9b48f196d2f63656f9bb2c2ec96b",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v17 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v17",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v17.json",
+          "sha256": "c7a802e9ba92c1220d378605ed301ffd553f9b48f196d2f63656f9bb2c2ec96b"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-018",
+      "kind": "revision",
+      "revision": 18,
+      "plan_sha256": "728c1910d910ad8ffc94e38352c437513e987d69e95f77449dbc4cce82cc0b88",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v18 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v18",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v18.json",
+          "sha256": "728c1910d910ad8ffc94e38352c437513e987d69e95f77449dbc4cce82cc0b88"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-threat-vector-018",
+      "kind": "artifact_acceptance",
+      "revision": 18,
+      "plan_sha256": "728c1910d910ad8ffc94e38352c437513e987d69e95f77449dbc4cce82cc0b88",
+      "task_id": "threat-model-gate",
+      "attempt_id": "attempt-gat-threat-003",
+      "decision": "accept",
+      "verbatim_response": "Accept exact hashes và mở coding (Recommended)",
+      "source_ref": "ask_user_question:accept-threat-vector-hashes-v18",
+      "artifact_hashes": [
+        {
+          "path": "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+          "sha256": "f590ceec949e43a50cc6ea857c919ffbf16736e7757648d3e84c48702cad41da"
+        },
+        {
+          "path": "docs/conformance/gat-conservative-mvp-v1.json",
+          "sha256": "2250aa8bd50e08efd4e4e876e8d9ac4309d3aea8c1af424de04a817aa507b87c"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-019",
+      "kind": "revision",
+      "revision": 19,
+      "plan_sha256": "95d9cfac0c4b08539490769af7c8d7653d3e2855f38a40d7069feda9824aac0b",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v19 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v19",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v19.json",
+          "sha256": "95d9cfac0c4b08539490769af7c8d7653d3e2855f38a40d7069feda9824aac0b"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-020",
+      "kind": "revision",
+      "revision": 20,
+      "plan_sha256": "239f40e8c4fa8cbba7bf919e8af10e249eb4dbe627bbc06ec207a6f12e15289c",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v20 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v20",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v20.json",
+          "sha256": "239f40e8c4fa8cbba7bf919e8af10e249eb4dbe627bbc06ec207a6f12e15289c"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-021",
+      "kind": "revision",
+      "revision": 21,
+      "plan_sha256": "113c041b61324d124cf36429d25852cbf6e78ee923548a87faf1609d0e857a03",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v21 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v21",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v21.json",
+          "sha256": "113c041b61324d124cf36429d25852cbf6e78ee923548a87faf1609d0e857a03"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-022",
+      "kind": "revision",
+      "revision": 22,
+      "plan_sha256": "f6d7e37d882c96982feea06e766b26c5a4b0d29aca05bf119ebfa007f8be7c8a",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v22 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v22",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v22.json",
+          "sha256": "f6d7e37d882c96982feea06e766b26c5a4b0d29aca05bf119ebfa007f8be7c8a"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/tooling/remove-memory-attempt1-tests.mjs",
+          "sha256": "b9a119fda1732ac853d433aab8c2cd9398ecc9c3951c3ace7c9c87da048c0281"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-023",
+      "kind": "revision",
+      "revision": 23,
+      "plan_sha256": "c919b6efd5c4792eb32ef9ee8b06d98da00c042d03e9d0c89c52af388e3f70bb",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve exact v23 (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v23",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v23.json",
+          "sha256": "c919b6efd5c4792eb32ef9ee8b06d98da00c042d03e9d0c89c52af388e3f70bb"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/review.v23.md",
+          "sha256": "dba57eb62f6c414d2780c95fe60ecc18b0b5b70483ef7ceb6beef989261643fb"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-024",
+      "kind": "revision",
+      "revision": 24,
+      "plan_sha256": "af07afcc1e0d45467632c58715a12f1d8969fbdb38dedb101b27c606091891fb",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve exact v24 (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v24",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v24.json",
+          "sha256": "af07afcc1e0d45467632c58715a12f1d8969fbdb38dedb101b27c606091891fb"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-incident-dsh-read-001",
+      "kind": "incident_disposition",
+      "revision": 25,
+      "plan_sha256": "01f4d1af08d25092743b5c29cc489ef9781fef3969cbf0e2f4fa6fdd49f443ac",
+      "task_id": "governance-replan",
+      "attempt_id": null,
+      "decision": "accept",
+      "verbatim_response": "ACCEPT incident + approve exact v25 (Recommended)",
+      "source_ref": "ask_user_question:incident-and-v25-decision",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/incident-dsh-read-boundary-001.md",
+          "sha256": "33756f87bebb8d71e6920d289980c69ee9f521595a375d8fb27fac2e92b64c24"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-025",
+      "kind": "revision",
+      "revision": 25,
+      "plan_sha256": "01f4d1af08d25092743b5c29cc489ef9781fef3969cbf0e2f4fa6fdd49f443ac",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "ACCEPT incident + approve exact v25 (Recommended)",
+      "source_ref": "ask_user_question:incident-and-v25-decision",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v25.json",
+          "sha256": "01f4d1af08d25092743b5c29cc489ef9781fef3969cbf0e2f4fa6fdd49f443ac"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/review.v25.md",
+          "sha256": "96495a713da9cb1eaa68ade1c7b8f2c6a6de2966935fb49890c4f57cc6cfcf84"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-026",
+      "kind": "revision",
+      "revision": 26,
+      "plan_sha256": "5e8ea1f4bcb91ee95c55039e7759e8ce55e50fa70bbccbae107292f9c1780311",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve exact v26 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v26",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v26.json",
+          "sha256": "5e8ea1f4bcb91ee95c55039e7759e8ce55e50fa70bbccbae107292f9c1780311"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/review.v26.md",
+          "sha256": "6d520ff033af4dd7994cf85c1654280fe94a73383f6fc1c8f7844e17c141daf7"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-027",
+      "kind": "revision",
+      "revision": 27,
+      "plan_sha256": "467fa111ef6c17337be2ebdc7d029362ed07a1ba8a4a7b7aed49dec2671c98ca",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve exact v27 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v27",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v27.json",
+          "sha256": "467fa111ef6c17337be2ebdc7d029362ed07a1ba8a4a7b7aed49dec2671c98ca"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/review.v27.md",
+          "sha256": "92355e07723e17a2eae8a16f9e0307b4dd8950ff00743bda0f67cf5478f7166f"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-028",
+      "kind": "revision",
+      "revision": 28,
+      "plan_sha256": "ee5310a7a01035a7948b36936f9a957776649bd02892b1a6aa0319e549913839",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve exact v28 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-wbs-v28",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v28.json",
+          "sha256": "ee5310a7a01035a7948b36936f9a957776649bd02892b1a6aa0319e549913839"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/review.v28.md",
+          "sha256": "40280d17c77e0cc47f55c98f4eec648905fb5cf966af3c18249343303c4e72fc"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-029",
+      "kind": "revision",
+      "revision": 29,
+      "plan_sha256": "dc7041284f578ec1336d61a470c72a560e652b3ae4a8c6545f953387dd6b9473",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve exact v29 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve_v29",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v29.json",
+          "sha256": "dc7041284f578ec1336d61a470c72a560e652b3ae4a8c6545f953387dd6b9473"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/review.v29.md",
+          "sha256": "9cfb19997f5acf17a8c1b358007d29b32b6bcfe5a70101437ad477a476e29185"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-pause-root-cause-001",
+      "kind": "execution_pause",
+      "revision": 29,
+      "plan_sha256": "dc7041284f578ec1336d61a470c72a560e652b3ae4a8c6545f953387dd6b9473",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "pause",
+      "verbatim_response": "Hãy tạm dừng rồi phân tích nguyên nhân (root cause) nhé. Sau đó đề xuất phương án giải quyết để hoàn thành được wbs",
+      "source_ref": "user-direct:pause-and-root-cause-analysis",
+      "artifact_hashes": [],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-031",
+      "kind": "revision",
+      "revision": 31,
+      "plan_sha256": "872248ffc2b352e869535a6a12d0145c4c69cea9b4cd35e5e5c0f92bbc58c78d",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve exact v31 và resume (Recommended)",
+      "source_ref": "ask_user_question:approve_v31",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v31.json",
+          "sha256": "872248ffc2b352e869535a6a12d0145c4c69cea9b4cd35e5e5c0f92bbc58c78d"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/review.v31.md",
+          "sha256": "3cf60cd598b4a8cd39bcf5bd509a3c979f3a23e80e8d81df6a8bb83bca202f9f"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-task-governance-replan-031-attempt64",
+      "kind": "task_acceptance",
+      "revision": 31,
+      "plan_sha256": "872248ffc2b352e869535a6a12d0145c4c69cea9b4cd35e5e5c0f92bbc58c78d",
+      "task_id": "governance-replan",
+      "attempt_id": "attempt-governance-replan-015",
+      "decision": "approve",
+      "verbatim_response": "ACCEPT attempt 64 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:accept-governance-replan-attempt64",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-governance-replan-015/verification.md",
+          "sha256": "a7e09af8ede4241d36c3bfeed3897a7898d21aeb0a219603ae58f01750d99fac"
+        },
+        {
+          "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+          "sha256": "cf6a82cfc85bd63f52d11a82f792f98487d3d158dc3cf56d12113c6d598229b9"
+        },
+        {
+          "path": ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/00c_active_step_context.md",
+          "sha256": "cb3dc62f7615291220eb19ff7f1fe9c34b6612c14a99e7bf582236deaeda2331"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-pause-replan-031-attempt65",
+      "kind": "pause",
+      "revision": 31,
+      "plan_sha256": "872248ffc2b352e869535a6a12d0145c4c69cea9b4cd35e5e5c0f92bbc58c78d",
+      "task_id": "conformance-contract-matrix",
+      "attempt_id": "attempt-gat-contract-matrix-001",
+      "decision": "pause",
+      "verbatim_response": "Hãy check lại plan, điều chỉnh rồi tạo wbs version mới trước khi tiếp tục.",
+      "source_ref": "current-human-message:check-adjust-create-new-wbs-before-continuing",
+      "artifact_hashes": [],
+      "observed_at": null
+    },
+    {
+      "id": "decision-helper-readonly-v32",
+      "kind": "execution",
+      "revision": 32,
+      "plan_sha256": "e035073bfb1c103602c9cfc350dbc7e087d3e4c2a4856cb968abaea5686f6fb0",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Cho phép helper read-only một lần (Recommended)",
+      "source_ref": "ask_user_question:authorize-official-wbs-helper-v32",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v32.json",
+          "sha256": "e035073bfb1c103602c9cfc350dbc7e087d3e4c2a4856cb968abaea5686f6fb0"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-032",
+      "kind": "revision",
+      "revision": 32,
+      "plan_sha256": "e035073bfb1c103602c9cfc350dbc7e087d3e4c2a4856cb968abaea5686f6fb0",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve exact v32 và chủ động hoàn thành (Recommended)",
+      "source_ref": "ask_user_question:approve-exact-wbs-v32",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v32.json",
+          "sha256": "e035073bfb1c103602c9cfc350dbc7e087d3e4c2a4856cb968abaea5686f6fb0"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/review.v32.md",
+          "sha256": "cba5c34dd32766d64202740e491251de1a6d6cb1a30884762eebdc8e39f1ae11"
+        }
+      ],
+      "observed_at": null
+    }
+  ]
+}

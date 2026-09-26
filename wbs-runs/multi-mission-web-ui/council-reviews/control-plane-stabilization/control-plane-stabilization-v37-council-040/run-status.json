@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v37-council-040",
+  "state": "failed",
+  "stage": "review",
+  "failure": {
+    "code": "external_lane_unavailable",
+    "stage": "review",
+    "subject": "external-outside-view",
+    "message": "Required outside-view sole retry is schema-invalid: observations with mode governance used null governance_class, which is permitted only for design mode. Retry allowance exhausted. Authority and adversarial retries are schema-valid, but no complete council evidence set or Chairman verdict is permitted; formal consequence insufficient_evidence.",
+    "retryable": false,
+    "invocation_id": "inv40-ext-002"
+  },
+  "updated_sequence": 1
+}

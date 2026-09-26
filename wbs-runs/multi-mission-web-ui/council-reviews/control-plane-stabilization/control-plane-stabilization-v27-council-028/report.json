@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v27-council-028",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "4be475b1919947751f012b4acceacfebb7a27a82d4122249596991f705da06a5"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "30b000824ceaf1e4e06f0904ca69303ee437e714198b61b36c1f841a14b2655f"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "036db6189cd5572f2eb64e3d5ec8ecef7fbd8edf539a5db615a245a32e4f61d3"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "2bab92be687e174fb04fdeaacd83c59c65b41d4504d52df26452979b87732e80"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "4e0d6298eeec69d6442efe7e50d3f36dd31b02454ecc5c98f2b60a0e96f43484"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "f0eecc77ac76e90b6f413225d5aec8dcce524b677817d4834ecd71d28dc3fe3d"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "826f4acb290ad688c699ce934e3d52ae77fcd428300b9dd0bc2a3bbfb47d991a"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "06d1f4be9c89b7ccf587ffa36893acf7d7dcf3a680e1d3f4fa0506ccdfa6bd38"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "9d0a50bbb740077166482f04871b34bae819c5176fef15538eccac743042bbfa"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "c4108321f2c3d6c227b9209969e79b03b878698484d2310638cc0ef74e7a038f"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve all three findings and re-review exact revised bytes before WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer28-adversarial-001-f001",
+      "effective_severity": "high",
+      "claim": "The administrative-ledger append protocol has no durable post-invocation outcome even though its own contract requires the append receipt to bind actual success or failure and after-ledger hashes: the candidate and both RootControlJournal records are finalized before the ledger invocation, and the later APPLIED/NOT_APPLIED observation is not persisted.",
+      "artifact_id": "design-v27",
+      "locator": {
+        "kind": "line",
+        "value": "294-296"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed administrative append observation lacks a durable root-journal outcome."
+    },
+    {
+      "finding_id": "reviewer28-adversarial-001-f002",
+      "effective_severity": "high",
+      "claim": "The AdministrativeResourceLedger does not define deterministic arithmetic between the full no-refund AdmissionResourceReservation debit and the later per-operation actual-usage entries, so the required cumulative usage and remaining-ceiling values can either double-count the same work or omit actual use from the global ceiling.",
+      "artifact_id": "design-v27",
+      "locator": {
+        "kind": "line",
+        "value": "294, 300"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed reservation versus actual-usage arithmetic is undefined."
+    },
+    {
+      "finding_id": "reviewer28-adversarial-001-f003",
+      "effective_severity": "medium",
+      "claim": "The migration protocol never defines an ordered successful commit that version-guard writes the accepted candidate to the canonical ledger and then re-reads, hash-checks, and strict-validates the persisted bytes before entering FROZEN(new base); step 7 says write before candidate validation, while the exit criterion binds only HUMAN acceptance of the candidate hash.",
+      "artifact_id": "design-v27",
+      "locator": {
+        "kind": "line",
+        "value": "361, 377-388"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed migration commit validation/acceptance ordering is incomplete."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Append outcome evidence, budget arithmetic and migration commit closure remain incomplete."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

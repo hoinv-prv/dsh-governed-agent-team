@@ -1,0 +1,7 @@
+Parent read-only verification against immutable design-v8 snapshot SHA-256 8d783fac0e002d0bc72d75114ce04ecc07efea2c7a9ec94b538a69268002d0fa.
+
+Confirmed reviewer9-adversarial-f001: P16 and the acceptance ownership text permit a HUMAN-authorized alternate without requiring actor kind HUMAN, conflicting with the stated HUMAN-only acceptance boundary.
+Confirmed reviewer9-adversarial-f002: P11/Section 12 require exact review packet hashes before the implementation output and verifier evidence needed to construct final packet bytes exist.
+Confirmed reviewer9-adversarial-f003: MIGRATION_MAINTENANCE has administrative accounting but no mandatory separate Working AIP, canonical Task Workspace, runtime-evidence location or governed lint/closure requirement.
+
+No command verification was authorized or executed. All findings are specification-presence/consistency checks.

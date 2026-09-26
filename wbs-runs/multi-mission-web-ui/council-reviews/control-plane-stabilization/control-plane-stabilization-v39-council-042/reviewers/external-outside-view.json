@@ -1,0 +1,359 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v39-council-042",
+  "reviewer_id": "reviewer42-outside-001",
+  "lane": "external-outside-view",
+  "invocation_id": "inv42-ext-001",
+  "attempt": 1,
+  "status": "completed",
+  "artifact_manifest_sha256": "b81fcc93713d990797bdaac314693b6bf12a0d22adbd218e18728468ad447258",
+  "packet_sha256": "51fcdf45f51ff1b13250ff3c0402d336e4c1f725cace3df915bc16b49a503a82",
+  "authority": "advisory-only",
+  "participates_in_voting": false,
+  "decision_weight": "none",
+  "observations": [
+    {
+      "observation_id": "EXT42-O-001",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "state-model",
+      "claim": "The state `FROZEN` is declared as a current state by four distinct CP rows (CP-01 line 210, CP-03 line 212, CP-05 line 214, CP-10 line 219), so `current_states` sets are not disjoint and a cp_id-keyed allowlist cannot repeat them one-to-one as the Section 5.0.1 mapping predicate requires.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "210-219"
+      },
+      "evidence_excerpt": "ordinary `FROZEN`, `PREPARING`, `NOT_READY`, `READY`, `EXPIRED`, or charge-edge `COMMITTING`",
+      "impact": "The deterministic CP-id/P3 mirror cannot be generated without a choice: FROZEN has four candidate cp_id owners whose outgoing edges differ materially (genesis, migration, bootstrap prerequisites, ordinary prepare), so a generated allowlist may either duplicate the state or drop edges, weakening the closed state/edge registry claimed at line 206.",
+      "recommended_action": "Assign FROZEN's outgoing edges to exactly one CP row or add an explicit disjoint precondition key so each cp_id exposes a unique `current_states` set that the P3 allowlist can repeat exactly.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-outside-001",
+        "invocation_id": "inv42-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "observation_id": "EXT42-O-002",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "state-model",
+      "claim": "CP-06's current-condition and permitted-edge cells are prose rather than closed state tokens, unlike CP-01..CP-05 and CP-07..CP-16 which use backticked state names.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "215"
+      },
+      "evidence_excerpt": "root-authorized admin append source-equal",
+      "impact": "CP-06 is one of the sixteen required manifest rows, but its `current_states` cell has no literal state token and its permitted-outcome cell names a conditional pair (`ADMISSION_ACCOUNTING_BLOCKED` before charge or a charged pending/blocked state after charge), so the per-cp_id equality predicate and the Section 14 coverage diff cannot be computed deterministically for CP-06.",
+      "recommended_action": "Replace the CP-06 prose condition with named state/condition tokens and name the exact permitted edge(s) or edge table so the row mirrors byte-for-byte into the P3 allowlist and manifest.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-outside-001",
+        "invocation_id": "inv42-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "observation_id": "EXT42-O-003",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "state-model",
+      "claim": "Section 14 authorizes release from `CHARGED_ACCOUNTING_BLOCKED` back to `CHARGED_ACCOUNTING_PENDING`/`COMPLETION_INDEX_CLOSE_PENDING`, but CP-12 at line 221, which owns `CHARGED_ACCOUNTING_BLOCKED`, declares no such outgoing edges; line 227 states an edge absent from the registry is forbidden and a failure row cannot authorize an edge absent from its CP entry.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "563"
+      },
+      "evidence_excerpt": "returning only to `CHARGED_ACCOUNTING_PENDING`/`COMPLETION_INDEX_CLOSE_PENDING`",
+      "impact": "A charged-accounting recovery path can be implemented straight from Section 14 while P3/P15 accept only registered edges; the two normative sections disagree, so the recovery is either unreachable (blocked-state deadlock) or admitted as an unregistered charged-recovery edge with no CP-12-defined receipt condition.",
+      "recommended_action": "Either register the `CHARGED_ACCOUNTING_BLOCKED` recovery edges inside CP-12 with their exact conditions and required reconciliation receipt, or amend the Section 14 row so release occurs only through the already-registered `PostChargeRecoveryAllocation` terminal path.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-outside-001",
+        "invocation_id": "inv42-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "observation_id": "EXT42-O-004",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "state-model",
+      "claim": "CP-13 declares the outgoing edge `COMPLETION_INDEX_CLOSE_PENDING→INTERRUPTED_CHARGED`, but `COMPLETION_INDEX_CLOSE_PENDING` is declared as a current state only by CP-12, so that single state's `allowed_edges` are split across two cp_id rows.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "222"
+      },
+      "evidence_excerpt": "`COMPLETION_INDEX_CLOSE_PENDING|ACTIVE|DISPATCHED→INTERRUPTED_CHARGED`",
+      "impact": "The cp_id-keyed P3 allowlist cannot repeat both rows exactly: a mirror generated from CP-12 omits the interruption edge, while one generated from CP-13 introduces an edge whose source state is owned by another cp_id, so the manifest diff for must_check item 19 is not closed.",
+      "recommended_action": "Declare this edge in exactly one CP row (CP-12, the owner of the source state, or an explicit ownership transfer) and have the other row reference it by edge ID without restating the source state.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-outside-001",
+        "invocation_id": "inv42-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "observation_id": "EXT42-O-005",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "state-model",
+      "claim": "The registry and the commit protocol write state sets with both `|` and `/` (`ACTIVE|DISPATCHED` at line 222 versus `ACTIVE/DISPATCHED` at line 221; `EXPIRED`/`NOT_READY` at line 243), so the closed state inventory and the abort destination are not mechanically enumerable.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "221"
+      },
+      "evidence_excerpt": "`COMPLETION_INDEX_CLOSE_PENDING→ACTIVE/DISPATCHED`",
+      "impact": "A validator or WBS builder cannot decide whether ACTIVE and DISPATCHED are one state or two, nor which single uncharged state results from the Section 5.2 step-3 abort, which obstructs fixture generation and the \"no missing state edge\" manifest gate even though CP-10 separately assigns READY→EXPIRED and PREPARING→NOT_READY.",
+      "recommended_action": "Use one alternation token throughout, enumerate ACTIVE and DISPATCHED as distinct registered states, and replace the `EXPIRED`/`NOT_READY` pair in Section 5.2 step 3 with the single CP-10 edge selected by the observed condition.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-outside-001",
+        "invocation_id": "inv42-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "observation_id": "EXT42-O-006",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "state-model",
+      "claim": "Within CP-12 the states `ADMISSION_ACCOUNTING_BLOCKED` and `CHARGED_ACCOUNTING_BLOCKED` are listed as current states but no outgoing edge to a named resolution state is declared, whereas the other blocked states (CP-02, CP-04, CP-07/CP-08) each name explicit recovery or close edges.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "221"
+      },
+      "evidence_excerpt": "`ADMISSION_ACCOUNTING_BLOCKED`, `CHARGED_ACCOUNTING_PENDING`, `CHARGED_ACCOUNTING_BLOCKED`, or `COMPLETION_INDEX_CLOSE_PENDING`",
+      "impact": "Under the line 227 rule that an edge absent from the registry is forbidden, a successfully reconciled accounting block cannot legally leave the blocked state; the bounded reconciliation described in Section 6.3 and Section 14 therefore has no representable transition, so a charged or pre-charge attempt could remain permanently blocked.",
+      "recommended_action": "Register the exact reconciliation-success exit edges for both blocked states, including the named reconciliation receipt and zero-open P3 proof, or state explicitly that they are fail-stop terminal states.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-outside-001",
+        "invocation_id": "inv42-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.75
+    },
+    {
+      "observation_id": "EXT42-O-007",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "hash-domain",
+      "claim": "Closed hash-preimage domains are given for the charge intent/body (line 245), the final intent (line 246) and the administrative ledger entry (line 358), but not for `ExecutionTransitionCompletion`, the `TransitionIntentIndex` CLOSE entry, or `TransitionIntentRootManifest` generations; the OPEN entry is defined only by prose inputs with no self-reference exclusion.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "246"
+      },
+      "evidence_excerpt": "Derive the exact OPEN entry/new index hash/sequence only from `logical_intent_id`, final hash/path and prior index.",
+      "impact": "The requirement that completion/index/administrative hash domains be unambiguous and acyclic cannot be mechanically proven: unlike `entry_body`/`entry_hash`, no field-exclusion rule rules out a completion or index record hashing a later object through an included domain, and the next-intent `previous_completion_hash` link has no defined preimage.",
+      "recommended_action": "Add closed JCS preimage definitions plus explicit self-reference exclusions for the completion record, the index OPEN/CLOSE entries and each root-manifest generation, each with a byte-exact acyclicity fixture.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-outside-001",
+        "invocation_id": "inv42-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.75
+    },
+    {
+      "observation_id": "EXT42-O-008",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "evidence-binding",
+      "claim": "Section 16 requires the WBS-build handoff manifest to name every normative state/edge and every ordinary or exceptional record, while Section 5.0.1 fixes that manifest to exactly one row per CP ID with a cp_id-keyed field set that has no record-identity field.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "719"
+      },
+      "evidence_excerpt": "For every normative state/edge and ordinary or exceptional record",
+      "impact": "The two normative descriptions of the same manifest cannot both hold for one schema: either the manifest exceeds one row per CP ID, or records such as corruption tombstones, `RECOVERY_CLOSE`, `UNKNOWN_APPLIED_NO_RECEIPT` and `PostChargeRecoveryAllocation` cannot be named individually, so the accepted-manifest equality test and the missing-cell drafting gate are not mechanically decidable.",
+      "recommended_action": "Publish one row schema and cardinality (for example cp_id rows plus a separate exceptional-record table, or add a record_id key) and make Sections 5.0.1, 6.1(j) and 16 cite the identical schema.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-outside-001",
+        "invocation_id": "inv42-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.75
+    },
+    {
+      "observation_id": "EXT42-O-009",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "textual-consistency",
+      "claim": "Section 5.0.1 asserts that Section 16 requires the accepted `TransitionCapabilityManifest` exact raw hash and one complete row per CP-01..CP-16, but the Section 16 manifest bullet at line 719 neither names `TransitionCapabilityManifest` nor states an accepted-manifest raw-hash or one-row-per-CP-ID requirement.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "227"
+      },
+      "evidence_excerpt": "Section 16 requires the accepted `TransitionCapabilityManifest` exact raw hash and one complete row per CP-01…CP-16.",
+      "impact": "The cross-reference overstates Section 16, so the entry gate this sentence is meant to establish is not actually normative there; a WBS-build handoff could omit the accepted manifest raw hash while appearing to satisfy Section 16.",
+      "recommended_action": "Add the accepted-manifest exact-raw-hash and complete-CP-row requirements to Section 16, or delete the claim from Section 5.0.1 so the two sections agree.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-outside-001",
+        "invocation_id": "inv42-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "observation_id": "EXT42-O-010",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "evidence-binding",
+      "claim": "The immutable `AdmissionBundle` template fixes the field `state: READY`, while Section 6.1 states that READY is legal only after the complete canonical bundle bytes and validator receipt are durably stored, re-read equal and retrievable.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "321"
+      },
+      "evidence_excerpt": "state: READY",
+      "impact": "Because the bundle is create-once and its bytes are hashed at prepare time, a prepared-but-unsealed or failed-seal bundle can carry `state: READY`; the design does not state whether that field is a claim, a target, or the authoritative readiness determination, nor which component validates it against the AdmissionBundleSeal, leaving a readiness signal whose producer is ambiguous.",
+      "recommended_action": "Specify the producer and validation rule for the bundle `state` field (for example a non-authoritative declared target validated only against the seal) and forbid inferring readiness from bundle bytes without the seal sidecar.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-outside-001",
+        "invocation_id": "inv42-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.65
+    }
+  ],
+  "advisory_hypotheses": [
+    {
+      "advisory_id": "EXT42-A-001",
+      "claim": "The Section 15.1 matrix may not demonstrate closure of all 18 run-041 findings, because the outside view can verify only the design-side rows and not the referenced run-041 evidence bytes.",
+      "basis": "The outside-view packet supplies sanitized design bytes plus objective, audience and public constraints only; private Source of Truth and peer findings are declared omitted, so the 18 run-041 IDs can be counted and mapped but not independently re-hashed.",
+      "missing_project_sot": [
+        "run-041 ledger.json and verifier/manifest.json raw bytes",
+        "run-041 reviewer envelopes, chairman.json and report.json raw bytes"
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Re-hash the seven run-041 artifacts named at line 624, then diff the confirmed run-041 finding IDs against the 18 rows of the Section 15.1 matrix and persist the result as verifier records."
+    },
+    {
+      "advisory_id": "EXT42-A-002",
+      "claim": "A WBS-build implementer may mechanically generate the TransitionCapabilityManifest from the prose CP table and produce divergent current_states/allowed_edges for CP-06 and for the CP-12/CP-13 shared state.",
+      "basis": "Outside-view reading of the CP registry, whose rows mix closed tokens with prose conditions and whose states are owned by more than one cp_id.",
+      "missing_project_sot": [
+        "TransitionCapabilityManifest closed schema and validator",
+        "HUMAN-accepted generation-0 manifest bytes and fixture"
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Generate the manifest mechanically from the CP registry and diff every cell against the HUMAN-accepted generation-0 manifest fixture, recording any cell that cannot be derived deterministically."
+    },
+    {
+      "advisory_id": "EXT42-A-003",
+      "claim": "Downstream WBS authors may read the admission gate as preventing bypass if the Section 5.3 procedural-only and TOCTOU disclosure is not copied into the handoff, because the disclosure sits outside the normative CP registry.",
+      "basis": "Outside-view reading of where the residual-enforcement disclosure appears relative to the registry and handoff requirements.",
+      "missing_project_sot": [
+        "HUMAN-facing WBS approval packet template",
+        "WBS-build handoff manifest bytes"
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Check the HUMAN-facing approval packet and handoff manifest for an explicit, hash-bound copy of the Section 5.3 procedural-only/TOCTOU disclosure and confirm it is enumerated as a required handoff cell."
+    }
+  ],
+  "context_attestation": {
+    "artifact_ids_received": [
+      "sanitized-design-v39"
+    ],
+    "context_categories_received": [
+      "objective",
+      "audience",
+      "public-constraints"
+    ],
+    "packet_sha256_received": "51fcdf45f51ff1b13250ff3c0402d336e4c1f725cace3df915bc16b49a503a82"
+  },
+  "rejected_candidates": [
+    {
+      "candidate_id": "EXT42-R-001",
+      "reason": "Candidate claim that Section 5.1 enumerates only five pre-charge effects while asserting six was rejected on byte-exact reading of line 231, which enumerates (a) through (f)."
+    },
+    {
+      "candidate_id": "EXT42-R-002",
+      "reason": "Candidate claim that Section 15.1 contains truncated or non-64-hex evidence hashes was rejected: a full scan found exactly 25 64-hex tokens and no ellipsis-truncated digest."
+    },
+    {
+      "candidate_id": "EXT42-R-003",
+      "reason": "Candidate claim that Section 15.1 duplicates prior finding IDs was rejected: all 101 extracted prior IDs are unique, and exactly the 18 run-041 IDs (AUTH41-F-001..004, ADV41-F-001..004, EXT41-O-001..010) are mapped."
+    }
+  ]
+}

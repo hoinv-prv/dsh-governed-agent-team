@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v12-council-013",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "1956d1f1f9fe8b71e62d0363dd5d466ddd423866fa0b28108c028562def9b646"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "38ce14524765503c80887ad07413cdd3e6d9034f57eac6057c1b31929eacb35e"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "14c91120eae02ac398f41221380c51e4804faa1998d7dc9a8f204a072401a658"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "7b36b5e589b63ac53335fe810c85d97d083f5e06618a557929bce830e392a6fb"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "25cd9a9c47ab39bc5fe5f581e7b575f7ae78edf13e35ab33bab55e7c34a0dc47"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "7a585629a8e9f0255e65debca84f91e583ad22ce91587824e9a0213f5a5b86c9"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "c5e139617bc575301035cfba5527e4130c21bcf3b39cf6679deb2d01a27efe81"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "cbcf39072aebc30839ca0352ebd1aa1a37d86ec2366f00ba80606e3110aa6624"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "5f7e9caaf8c9c46fa0a3aa10af23adf3aeb9c71a062c15bbaab604cbfddc9c6b"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "c15c1fac0a27f374af0236b5d71c8b447f4114436a3d9aeb5534f9b427c53d81"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve all six confirmed findings and re-review exact revised bytes before any WBS build.",
+  "findings": [
+    {
+      "finding_id": "F-001",
+      "effective_severity": "high",
+      "claim": "P16 permits an alternate task acceptance owner named by any non-revoked HUMAN authority decision, without requiring that decision to originate from the designated mission decision owner or a hash-pinned delegation chain from that owner, unlike P13 and the Section 16 WBS-build entry criteria.",
+      "artifact_id": "design-v12",
+      "locator": {
+        "kind": "line",
+        "value": "281"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed alternate-acceptor decision-owner delegation-chain gap."
+    },
+    {
+      "finding_id": "F-002",
+      "effective_severity": "medium",
+      "claim": "P15 enumerates approved argv hashes for validator, prepare, bundle-seal, invalidation, admin-ledger-append and charge-preimage-seal, but omits the AIP pointer/ASC `run_aip.py step|resume` transition that Section 5.1(a) declares as one of the four pre-charge writes separately approved under P15.",
+      "artifact_id": "design-v12",
+      "locator": {
+        "kind": "line",
+        "value": "280"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed P15 omission of governed run_aip command/effect."
+    },
+    {
+      "finding_id": "F-003",
+      "effective_severity": "medium",
+      "claim": "Section 12.5 and the admission state machine direct a charged attempt whose reviewer route is lost into REVIEW_PENDING, but neither the state machine nor the Section 14 recovery matrix declares an owner, escalation, exit or closure disposition for REVIEW_PENDING.",
+      "artifact_id": "design-v12",
+      "locator": {
+        "kind": "line",
+        "value": "378"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed REVIEW_PENDING recovery and terminal-closure gap."
+    },
+    {
+      "finding_id": "reviewer13-adversarial-f001",
+      "effective_severity": "high",
+      "claim": "P3 defines lineage for charge successors and POST_CHARGE_REPAIR but omits the ordinary post-charge execution.json status, outcome, review, and acceptance writes that the design itself authorizes.",
+      "artifact_id": "design-v12",
+      "locator": {
+        "kind": "line",
+        "value": "268"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed incomplete ordinary post-charge execution-ledger lineage."
+    },
+    {
+      "finding_id": "reviewer13-adversarial-f002",
+      "effective_severity": "medium",
+      "claim": "The migration protocol hard-codes dsh-wbs-execution/1 as its target even though P15 permits a different versioned execution-contract extension when v1 lacks the required charge, bundle, seal, and lineage representation.",
+      "artifact_id": "design-v12",
+      "locator": {
+        "kind": "line",
+        "value": "323"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed migration target inconsistency with P15 representation selection."
+    },
+    {
+      "finding_id": "reviewer13-adversarial-f003",
+      "effective_severity": "medium",
+      "claim": "The closed pre-charge write set permits only run_aip step or resume, while the artifact-ownership policy also permits start, leaving a fresh Working AIP without one unambiguous admission state and effect rule.",
+      "artifact_id": "design-v12",
+      "locator": {
+        "kind": "line",
+        "value": "157"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed run_aip start omission from the closed pre-charge command set."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "The accepted authority, review-recovery, command and ledger-lineage gaps remain until revision."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

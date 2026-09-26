@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v17-council-018",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer18-adversarial-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "charge-boundary-freshness",
+      "claim": "The last equality check before the charge write covers only the execution-ledger source and named native sequences, not every P14 input re-hashed into the immediately preceding boundary receipt.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v17",
+      "locator": {
+        "kind": "line",
+        "value": "179"
+      },
+      "evidence_excerpt": "Immediately before the guarded write, re-read the source hash/version and all boundary-bound native invalidation/authority/revocation/Goal/Team/capability sequences and require exact equality to the receipt",
+      "impact": "A WBS, dependency, design/source, AIP/ASC, or budget input can change after the boundary receipt but before the ledger write without triggering the specified final comparison, so an attempt can be charged against stale admission evidence outside the disclosed post-comparison TOCTOU window.",
+      "recommended_action": "Require the guarded writer to re-hash or revalidate every P14/P1-P16 input, or one aggregate identity covering all of them, immediately before the write; abort with no ledger write on any mismatch and bind the complete check set into the write receipt.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer18-adversarial-001",
+        "invocation_id": "inv18-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98,
+      "source_candidate_ids": [
+        "reviewer18-adversarial-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer18-adversarial-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "transition-provenance",
+      "claim": "The ordinary APPLIED completion rule does not require or reference the GuardedWriteReceipt that is mandatory only for candidate-equal recovery finalization.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v17",
+      "locator": {
+        "kind": "line",
+        "value": "333-335"
+      },
+      "evidence_excerpt": "A create-once `ExecutionTransitionCompletion` binds the intent plus observed persisted hash and validator results as `APPLIED`",
+      "impact": "Exact candidate bytes written manually or through an unguarded path can be strict-validated and given an APPLIED completion, after which P3 can treat the lineage as valid without persisted proof that the authorized writer executed the version, boundary, and authority checks; this can legitimize a stale charge or acceptance projection.",
+      "recommended_action": "Make one hash-bound GuardedWriteReceipt from the exact P15-bound writer mandatory for every APPLIED completion and P3 lineage link, not only recovery finalization, and reject absent or mismatched receipt references.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer18-adversarial-001",
+        "invocation_id": "inv18-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.96,
+      "source_candidate_ids": [
+        "reviewer18-adversarial-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer18-adversarial-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "precharge-effect-closure",
+      "claim": "A source-equal charge restart must persist a NOT_APPLIED completion even though the exhaustive Section 5.1 pre-charge write set does not include an ExecutionTransitionCompletion write.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v17",
+      "locator": {
+        "kind": "line",
+        "value": "168,335"
+      },
+      "evidence_excerpt": "A **charge-edge** source-equal restart never writes the old candidate: it create-once closes the old intent `NOT_APPLIED`",
+      "impact": "After a crash before charge, the coordinator must either perform a durable pre-charge effect prohibited by the critical rule or cannot close the intent and re-prepare; treating the completion as implicitly allowed breaks the declared closed effect set and its evidence/accounting boundary.",
+      "recommended_action": "Add create-once NOT_APPLIED completion persistence as an explicit narrow uncharged pre-charge exception with exact owner, path, argv/effect, validation, accounting, and no-attempt/no-ledger-mutation invariants, or redesign restart so no extra pre-charge write is required.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer18-adversarial-001",
+        "invocation_id": "inv18-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.99,
+      "source_candidate_ids": [
+        "reviewer18-adversarial-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "candidate_id": "reviewer18-authority-001-r1",
+      "reason": "Section 5.2 step 7 permits task mutation and dispatch after persisted-byte equality and strict PASS without naming the create-once APPLIED `ExecutionTransitionCompletion` that Section 9.1 makes a precondition of dispatchability, so the two dispatch gates differ; rejected as non-material because the charge write itself still requires fresh Section 5.2 step 1-2 P14/P7-P12 PASS, P3 accepts only a complete intent/completion chain and blocks the following charge, an un-finalizable APPLIED preserves the charge in TRANSITION_RECOVERY_BLOCKED, and no reading permits an unready charge, a charge reuse or an acceptance.",
+      "source_lane": "internal-authority"
+    },
+    {
+      "candidate_id": "reviewer18-authority-001-r2",
+      "reason": "Section 6.3 allocates the cumulative AdministrativeResourceLedger ceiling only across bootstrap, migration, post-charge ledger repair, acceptance-projection repair, review recovery and transition-intent finalization/recovery, while ordinary uncharged pre-charge admission work (prepare, bundle seal, boundary observation, capability preflight, reviewer discovery) and the Section 16 uncharged admission proof are assigned to neither that ledger nor the P12 charge ceiling; rejected as non-material because this work is uncharged, consumes no mission attempt and cannot itself permit a charge or an acceptance, and P12 plus the ledger allocations cover the charged attempt, mandatory downstream minima and recovery contingency.",
+      "source_lane": "internal-authority"
+    },
+    {
+      "candidate_id": "reviewer18-authority-001-r3",
+      "reason": "Section 6.1 calls the charge 'one version-guarded `execution.json` update using the runtime's native guarded file write/edit operation' while Section 7 P15 and Section 16 require the P15-bound guarded writer and immutable write-result receipt to be bootstrapped with exact argv/effects; rejected as non-material because the packet's failure-model evidence records the accepted assignment of this class of existing version-guarded native ledger write/edit with explicit no-write abort semantics, Section 5.3 disclaims any non-bypassable native hook, and P15 fails to `NOT_READY` when the guarded writer is absent or unproven, so no unsupported capability can permit a charge.",
+      "source_lane": "internal-authority"
+    }
+  ]
+}

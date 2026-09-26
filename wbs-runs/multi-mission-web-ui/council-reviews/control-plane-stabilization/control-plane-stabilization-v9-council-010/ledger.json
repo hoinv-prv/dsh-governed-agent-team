@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v9-council-010",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer10-adversarial-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "bootstrap-attempt-accounting",
+      "claim": "BOOTSTRAP_MAINTENANCE has contradictory attempt-accounting semantics: Section 5.1 forbids it from allocating a mission attempt, while Section 6.3 presents mission-attempt charging as the alternative to an explicitly authorized uncharged administrative exception.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v9",
+      "locator": {
+        "kind": "line",
+        "value": "153,251"
+      },
+      "evidence_excerpt": "If the HUMAN chooses uncharged administrative accounting rather than mission-attempt charging, that exception and its bounded ceiling must be explicit; the coordinator cannot choose or hide it.",
+      "impact": "An implementation can treat bootstrap as mission-charged before P15 and normal admission exist, or as uncharged maintenance, so the design does not deterministically prevent an unauthorized or hidden attempt charge and does not fully break the bootstrap circularity.",
+      "recommended_action": "Remove the mission-attempt-charging alternative for BOOTSTRAP_MAINTENANCE; require an exact HUMAN-authorized administrative resource ledger and ceiling, and mechanically attest zero mission-attempt allocation and zero mission charge in bootstrap receipts and WBS-build entry evidence.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer10-adversarial-001",
+        "invocation_id": "inv10-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.99,
+      "source_candidate_ids": [
+        "reviewer10-adversarial-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer10-authority-001-f1",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "v9 states that BOOTSTRAP_MAINTENANCE may not allocate a mission attempt, yet it also treats mission-attempt charging as the default bootstrap accounting mode and uncharged administrative accounting as the exception, so a bootstrap attempt charge could be taken or concealed outside the counted mission-attempt ledger.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v9",
+      "locator": {
+        "kind": "line",
+        "value": "251"
+      },
+      "evidence_excerpt": "If the HUMAN chooses uncharged administrative accounting rather than mission-attempt charging, that exception and its bounded ceiling must be explicit; the coordinator cannot choose or hide it.",
+      "impact": "The accounting mode for the bootstrap work that must precede WBS admission is ambiguous against Section 5.1 (line 153: BOOTSTRAP_MAINTENANCE \"may [not] allocate a mission attempt\") and P15/entry criteria (lines 273, 445: \"administrative or attempt/resource accounting\"), so P12 ceiling/contingency arithmetic and the charged-attempt record for bootstrap are not deterministic and a charged attempt could be hidden, which must-check 15 expressly forbids.",
+      "recommended_action": "Remove the mission-attempt charging option for BOOTSTRAP_MAINTENANCE or specify exactly where such a charge is recorded, validated and counted against the HUMAN-bound ceiling, and make the accounting mode single-valued and consistent with Section 5.1.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer10-authority-001",
+        "invocation_id": "inv10-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.82,
+      "source_candidate_ids": [
+        "reviewer10-authority-001-f1"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

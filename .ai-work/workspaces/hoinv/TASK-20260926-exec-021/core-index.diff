@@ -1,0 +1,196 @@
+diff --git a/packages/core/src/index.ts b/home/hoinv/deepseek-harness/packages/experimental/gat-core/src/index.ts
+index 2c0beb2..20dc691 100644
+--- a/packages/core/src/index.ts
++++ b/home/hoinv/deepseek-harness/packages/experimental/gat-core/src/index.ts
+@@ -5,7 +5,6 @@ import z from '@deepseek-ai/schemastery'
+ import type { Agent } from '@deepseek-ai/dsh-agent'
+ import type {} from '@deepseek-ai/dsh-session-persistence'
+ import { Remote, TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol'
+-import { approvedPlanTaskSubjects } from './approved-plan-import.ts'
+ import { TeamActivity } from './activity.ts'
+ import { errorMessage, TeamError } from './error.ts'
+ import { TeamJournal } from './journal.ts'
+@@ -13,7 +12,6 @@ import { TeamRuntimeLifecycle } from './lifecycle.ts'
+ import { TeamMailbox } from './mailbox.ts'
+ import { TeamMissionBoard } from './mission-board.ts'
+ import { teamProjectionDefinition } from './projection.ts'
+-import type { TeamState } from './projection.ts'
+ import { TeamRoster } from './roster.ts'
+ import type { TeamMembership } from './roster.ts'
+ import { TeamTaskBoard } from './task-board.ts'
+@@ -24,7 +22,6 @@ import type {
+   ApproveTeamPlanRequest,
+   Config,
+   CreateTeamMissionRequest,
+-  ImportApprovedTeamPlanResult,
+   CreateTeamTaskRequest,
+   ReportTeamWorkRequest,
+   SendTeamMessageRequest,
+@@ -170,7 +167,7 @@ export class TeamService extends TypertRemoteService {
+   /**
+    * Create one named, continuable direct child of the Team Lead.
+    * @param caller - exact live Lead Agent.
+-   * @param request - immutable name, description, prompt, context mode, provider, and cancellation.
++   * @param request - immutable identity, prompt, context mode, continuation provider, optional Agent route, and cancellation.
+    * @returns the active roster row.
+    */
+   async spawnTeammate(caller: Agent, request: SpawnTeammateRequest): Promise<SpawnTeammateResult> {
+@@ -293,63 +290,6 @@ export class TeamService extends TypertRemoteService {
+     })
+   }
+ 
+-  /**
+-   * Import the latest successful HUMAN-approved DSH plan and approve its exact
+-   * post-import revision in one serialized Lead-log batch.
+-   */
+-  async importApprovedPlanAndApprove(caller: Agent): Promise<TeamPlanApprovalSnapshot> {
+-    return await this.lifecycle.admitMutation(async () => {
+-      const membership = this.roster.membership(caller)
+-      if (membership.role !== 'lead') {
+-        throw new TeamError('only the Team Lead can approve a plan', 'TEAM_LEAD_REQUIRED')
+-      }
+-      return await this.journal.transact(membership.root.id, async () => {
+-        const state = this.journal.state(membership.root)
+-        const subjects = approvedPlanTaskSubjects(membership.root.session.snapshotEvents())
+-        const imported = this.tasks.prepareApprovedPlanImport(state, subjects)
+-        const postRevision = state.planRevision + imported.length
+-        if (!Number.isSafeInteger(postRevision)) {
+-          throw new TeamError('Team plan revision space exhausted', 'TEAM_PLAN_IMPORT_INVALID')
+-        }
+-        const postState: TeamState = {
+-          ...state,
+-          planRevision: postRevision,
+-          planPhase: imported.length === 0 ? state.planPhase : 'draft',
+-          tasks: [...state.tasks, ...imported],
+-        }
+-        if (!postState.tasks.some(task => task.status !== 'deleted')) {
+-          throw new TeamError('an empty Team plan cannot be approved', 'TEAM_PLAN_EMPTY')
+-        }
+-        if (state.planApproval !== undefined && postRevision <= state.planApproval.approvedRevision) {
+-          throw new TeamError(
+-            `stale Team plan revision ${postRevision}; current revision is ${state.planRevision}`,
+-            'TEAM_PLAN_STALE_REVISION',
+-          )
+-        }
+-        const diagnostics = [...this.approvalPreflights]
+-          .flatMap(preflight => [...preflight(caller, this.teamView(membership, postState))])
+-        if (diagnostics.length > 0) {
+-          throw new TeamError(
+-            `Team plan preflight failed: ${diagnostics.join('; ')}`,
+-            'TEAM_PLAN_PREFLIGHT_FAILED',
+-          )
+-        }
+-        const approval = { approvedRevision: postRevision } satisfies TeamPlanApprovalSnapshot
+-        await this.journal.appendManyAndFlush(membership.root, [
+-          ...imported.map(task => ({
+-            type: 'team/task' as const,
+-            data: { version: 2 as const, teamId: TeamId(membership.root.id), task },
+-          })),
+-          {
+-            type: 'team/plan-approved' as const,
+-            data: { version: 2 as const, teamId: TeamId(membership.root.id), approval },
+-          },
+-        ])
+-        return approval
+-      })
+-    })
+-  }
+-
+   /**
+    * Register one live capability-envelope check at the HUMAN approval boundary.
+    * @param preflight - synchronous check over the exact caller and current Team view.
+@@ -360,7 +300,11 @@ export class TeamService extends TypertRemoteService {
+     return () => { this.approvalPreflights.delete(preflight) }
+   }
+ 
+-  /** Register the host initializer used by the session-scoped Enable action. */
++  /**
++   * Register the single host initializer used by the GUI opt-in action.
++   * @param initializer - workspace-config loader and teammate provisioner.
++   * @returns disposer that removes this initializer.
++   */
+   registerInitializer(initializer: (lead: Agent, signal: AbortSignal) => Promise<TeamEnableResult>): () => void {
+     if (this.initializers.size > 0) throw new Error('an Agent Team initializer is already registered')
+     this.initializers.add(initializer)
+@@ -372,7 +316,9 @@ export class TeamService extends TypertRemoteService {
+     const membership = this.roster.membership(caller)
+     if (membership.role !== 'lead') throw new TeamError('only the Team Lead can enable Agent Team', 'TEAM_LEAD_REQUIRED')
+     const existing = this.roster.list(membership).filter(member => member.role === 'teammate')
+-    if (existing.length > 0) return { enabled: true, alreadyEnabled: true, source: 'existing', diagnostics: [], members: existing }
++    if (existing.length > 0) {
++      return { enabled: true, alreadyEnabled: true, source: 'existing', diagnostics: [], members: existing }
++    }
+     const [initializer] = this.initializers
+     if (initializer === undefined) throw new TeamError('Agent Team initializer is unavailable', 'TEAM_INVALID_CONFIG')
+     return await this.lifecycle.admitMutation(async () => await initializer(membership.root, signal))
+@@ -421,8 +367,15 @@ export class TeamService extends TypertRemoteService {
+     return this.roster.tryMembership(agent)
+   }
+ 
+-  /** Build a Team view from either committed or fully prepared transactional state. */
+-  private teamView(membership: TeamMembership, state: TeamState): TeamView {
++  /**
++   * Read the current roster and non-deleted task board through the generated Remote API.
++   * @param agent - exact live Team member used as the authority credential.
++   * @returns detached current roster and task views.
++   */
++  @Remote('view')
++  remoteView(agent: Agent): TeamView {
++    const membership = this.roster.membership(agent)
++    const state = this.journal.state(membership.root)
+     return {
+       enabled: state.members.length > 0,
+       planRevision: state.planRevision,
+@@ -431,21 +384,10 @@ export class TeamService extends TypertRemoteService {
+       ...state.missions.length === 0 ? {} : { missions: this.missions.list(membership) },
+       work: state.work.map(item => ({ ...item, files: [...item.files] })),
+       members: this.roster.list(membership),
+-      tasks: this.tasks.views(membership.root, state),
++      tasks: this.tasks.list(membership),
+     }
+   }
+ 
+-  /**
+-   * Read the current roster and non-deleted task board through the generated Remote API.
+-   * @param agent - exact live Team member used as the authority credential.
+-   * @returns detached current roster and task views.
+-   */
+-  @Remote('view')
+-  remoteView(agent: Agent): TeamView {
+-    const membership = this.roster.membership(agent)
+-    return this.teamView(membership, this.journal.state(membership.root))
+-  }
+-
+   /** Enable and provision this Lead Session's Agent Team through the generated Web Remote API. */
+   @Remote('enable')
+   remoteEnable(agent: Agent, signal: AbortSignal): Promise<TeamEnableResult> {
+@@ -524,29 +466,6 @@ export class TeamService extends TypertRemoteService {
+     }
+   }
+ 
+-  /** Import the latest approved DSH plan and approve it through one Web Remote action. */
+-  @Remote('importApprovedPlan')
+-  async remoteImportApprovedPlan(agent: Agent): Promise<ImportApprovedTeamPlanResult> {
+-    try {
+-      return { ok: true, value: await this.importApprovedPlanAndApprove(agent) }
+-    } catch (error) {
+-      if (!(error instanceof TeamError)) throw error
+-      return {
+-        ok: false,
+-        error: {
+-          code: error.code === 'TEAM_PLAN_STALE_REVISION'
+-            ? 'team-plan-conflict'
+-            : error.code === 'TEAM_PLAN_IMPORT_INVALID'
+-              ? 'team-plan-import-rejected'
+-              : error.code === 'TEAM_PLAN_PREFLIGHT_FAILED'
+-                ? 'team-preflight-rejected'
+-                : 'team-rejected',
+-          message: error.message,
+-        },
+-      }
+-    }
+-  }
+-
+   /**
+    * Report caller-bound member work through the generated Web Remote API.
+    * @param agent - exact live Team member reporting current work.

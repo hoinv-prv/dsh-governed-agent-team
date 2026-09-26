@@ -1,0 +1,4 @@
+Parent read-only verification against immutable design-v23 SHA-256 d90a263c331457b372f3e32750947feffa2a2a63b259320f45b75683a37cc59b.
+Confirmed reviewer24-adversarial-001-f001: genesis does not account for staged-input authoring/review lineage.
+Confirmed reviewer24-adversarial-001-f002: genesis lacks a dedicated AIP/Workspace and allowance for their transitions/lint.
+Confirmed reviewer24-adversarial-001-f003: administrative append and separate receipt have no crash-safe idempotent protocol.

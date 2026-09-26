@@ -6,6 +6,8 @@ category overview pages under .ai-work/wiki/overview/ — so AI (and HUMAN) can 
 the wiki contains and HOW to search it, without drifting hand-maintained lists.
 
 Default-on pages (DP-912-6c): contents (#1) · search (#3) · health (#5).
+Opt-in page (CR-AIWS-2026-09-003 C1): `nav` — pass `--pages nav`. It is deliberately not
+default-on so an existing install does not silently gain a page on its next refresh.
 Every page carries a GENERATED footer (fingerprint + body-hash + timestamp):
   - hand-editing a generated page  → lint ERROR  `overview_hand_edit`
   - index changed but page not regenerated → lint WARN `overview_fingerprint_stale`
@@ -26,11 +28,14 @@ Usage:
     py .ai-work/tooling/build_wiki_overview.py --all-systems          # every system + common
     py .ai-work/tooling/build_wiki_overview.py --system demo --pages contents,health
     py .ai-work/tooling/build_wiki_overview.py --system aiws --no-register   # emit only
+    py .ai-work/tooling/build_wiki_overview.py --system aiws --pages nav     # navigation page (opt-in)
 """
 from __future__ import annotations
 
 import argparse
+import collections
 import datetime
+import json
 import re
 import subprocess
 import sys
@@ -56,6 +61,9 @@ PAGE_TITLES = {
     "contents": "WIKI_CONTENTS_OVERVIEW",
     "search": "WIKI_SEARCH_GUIDE",
     "health": "WIKI_HEALTH",
+    # CR-AIWS-2026-09-003 C1. OPT-IN (DP-003-A): deliberately NOT in PAGES_DEFAULT, so an
+    # existing install does not start emitting + registering a new page on its next refresh.
+    "nav": "WIKI_NAV",
 }
 
 
@@ -215,10 +223,368 @@ def _page_health(recs: list[dict], relations_raw: str, sys_label: str, fp: str) 
     return _finish_page(lines, fp)
 
 
+# ============================================================================
+# Page kind `nav` (CR-AIWS-2026-09-003 C1) — the navigation page.
+#
+# WHY it exists: a "find me the reference docs for task X" run cost 11.3 LLM turns measured over
+# 16 clean subagent contexts (AIP-EXEC-1156). Roughly half of those turns were spent LOCATING
+# things, not reading them. A page that names every registered source with its path, and that
+# states its own coverage, lets the agent answer "where is it / is it there at all" in ONE read.
+# Measured: demo 11.0 -> 4.9 turns; aiws 12.0 -> 7.8 with the 2-level tree.
+#
+# WHY three shapes: one shape does not fit three corpora. The shape is picked from the corpus, and
+# the thresholds are constants HERE (never inline) so tuning them needs no code archaeology.
+# ============================================================================
+
+# Shape thresholds (CR-AIWS-2026-09-003 §6: constants at the top, not scattered in the code).
+NAV_RICH_MAX = 80          # RICH needs an F-code convention AND a corpus this small
+NAV_FLAT_MAX = 60          # <= this, with no F-code convention -> one flat page
+NAV_SPLIT_OVER = 40        # a tree branch holding more than this is a split candidate
+NAV_BRANCH_CHAR_BUDGET = 8000   # ... and so is one estimated wider than this
+
+_NAV_NOTE = ("Trang này là **FALLBACK**, không phải bước đầu: `lookup_wiki_source.py` vẫn đi "
+             "TRƯỚC. Chỉ dùng trang này khi lookup ra 0 kết quả / kết quả không khớp / match "
+             "fragile — hoặc khi câu hỏi cần LIỆT KÊ ĐỦ. Khi dùng thì **`grep` trang, đừng `cat`** "
+             "(grep rẻ hơn ~75%). Path lấy từ wiki index — KHÔNG cần `ls` kiểm tra tồn tại. Trang "
+             "là ĐỊNH TUYẾN, không phải bằng chứng — mở artifact khi cần nội dung thật, và đọc "
+             "ĐOẠN chứ đừng `cat` cả file.")
+
+_FCODE_RE = re.compile(
+    r'^(F\d{2,3})\s+(.+?)\s+(requirement definition|basic design|detail design)\s*$', re.I)
+_DOC_COLS = [("requirement_definition", "RD"), ("basic_design", "BD"), ("detail_design", "DD")]
+_STANDARD_TYPES = ("process_template", "process_guideline")
+
+
+class NavCoverageError(RuntimeError):
+    """A nav page failed to place every source of its system.
+
+    This is fatal ON PURPOSE and is NOT an `assert` (asserts vanish under `python -O`). The page
+    tells its reader "a document that is not named here is NOT in the registered wiki", and
+    `operations/lookup.md` lets an agent STOP on that answer instead of escalating to a raw search.
+    A page that silently dropped entries would make that sentence a lie, which is worse than no
+    page at all.
+    """
+
+
+def _nav_tops(recs: list[dict]) -> list[dict]:
+    """The entries a nav page lists: real documents only.
+
+    Chunk children are excerpts of a parent that is listed already (37 duplicate rows for ONE spec
+    in the first PoC run), and overview pages are the navigation layer itself.
+    """
+    return [r for r in recs
+            if not _is_chunk_child(r) and r.get("source_type") != OVERVIEW_SOURCE_TYPE]
+
+
+def _nav_short(t: str | None, n: int) -> str:
+    t = re.sub(r"\s+", " ", t or "").strip()
+    return t if len(t) <= n else t[: n - 1].rstrip() + "…"
+
+
+def _nav_fcode(r: dict) -> tuple[str, str] | None:
+    for k in r.get("lookup_keys") or []:
+        m = _FCODE_RE.match(k)
+        if m:
+            return m.group(1).upper(), m.group(2)
+    return None
+
+
+def _nav_detect_fcode(tops: list[dict]) -> bool:
+    """RICH (function × doc-type) is worth it only when the corpus really follows an F-code naming
+    convention across several functions and doc types. Hard-coding that shape for every corpus did
+    not generalize — it was measured on three corpora and fit exactly one."""
+    rows: dict[str, set] = {}
+    for r in tops:
+        if r.get("source_type") in dict(_DOC_COLS):
+            fk = _nav_fcode(r)
+            if fk:
+                rows.setdefault(fk[0], set()).add(r["source_type"])
+    return len(rows) >= 3 and sum(1 for v in rows.values() if len(v) >= 2) >= 2
+
+
+def _nav_relations(relations_raw: str) -> list[dict]:
+    edges = []
+    for line in relations_raw.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            edges.append(json.loads(line))
+        except json.JSONDecodeError:
+            continue
+    return edges
+
+
+def _nav_segs(r: dict) -> list[str]:
+    """Directory segments used to group an entry. Object nodes carry no real path."""
+    loc = r.get("artifact_locator") or ""
+    if loc.startswith("__"):
+        return ["(object nodes)", r.get("source_type", "")]
+    return loc.split("/")[:-1] or ["(project root)"]
+
+
+def _nav_est_chars(items: list[dict]) -> int:
+    """Estimated rendered width of a branch. Splitting by ENTRY COUNT alone was measured to leave
+    branches at 11.1k and 19.8k chars, because path+summary length varies wildly."""
+    return sum(len(r.get("source_id", "")) + len(r.get("artifact_locator", ""))
+               + len(r.get("summary_short") or "") + 20 for r in items)
+
+
+def _nav_coverage(recs: list[dict], tops: list[dict], sys_label: str) -> str:
+    """The coverage sentence. `operations/lookup.md` lets an agent conclude "not on this page =
+    not in the registered wiki" and stop there, so the page has to state precisely what N/N counts.
+    Saying "227/227 registered
+    sources" while the index holds 266 entries for that system would be false: 36 of them are
+    chunk EXCERPTS of documents listed here, and 3 are overview pages (this navigation layer).
+    Both are folded on purpose; the sentence says so rather than hiding the arithmetic.
+    """
+    chunks = sum(1 for r in recs if _is_chunk_child(r))
+    pages = sum(1 for r in recs if r.get("source_type") == OVERVIEW_SOURCE_TYPE)
+    folded = []
+    if chunks:
+        folded.append(f"{chunks} chunk con đã gộp về tài liệu mẹ")
+    if pages:
+        folded.append(f"{pages} trang overview/nav")
+    tail = (" (" + "; ".join(folded) + " — không liệt kê riêng)") if folded else ""
+    return (f"Phủ **{len(tops)}/{len(tops)}** tài liệu đã đăng ký của system {sys_label}"
+            f"{tail}. Một tài liệu không có tên ở trang này = **KHÔNG có trong wiki đã đăng ký**.")
+
+
+def _page_nav_rich(recs: list[dict], tops: list[dict], sys_label: str,
+                   relations_raw: str, fp: str) -> str:
+    """Small corpus WITH an F-code convention: function × doc-type table + foundation docs +
+    reference standards + a relation-type graph summary + the coverage gaps."""
+    rows: dict[str, dict] = {}
+    fname: dict[str, str] = {}
+    found: dict[str, list] = {}
+    used: set = set()
+    for r in tops:
+        st = r.get("source_type")
+        fk = _nav_fcode(r) if st in dict(_DOC_COLS) else None
+        if fk:
+            rows.setdefault(fk[0], {})[st] = r
+            fname[fk[0]] = fk[1]
+            used.add(r["source_id"])
+        else:
+            found.setdefault(st, []).append(r)
+
+    def common_dir(st):
+        ds = {r["artifact_locator"].rsplit("/", 1)[0]
+              for row in rows.values() for t, r in row.items()
+              if t == st and not r["artifact_locator"].startswith("__")}
+        return ds.pop() + "/" if len(ds) == 1 else ""
+    dirs = {st: common_dir(st) for st, _ in _DOC_COLS}
+
+    def cell(r, st):
+        if not r:
+            return "— (chưa có)"
+        p = r["artifact_locator"]
+        if p.startswith("__"):
+            return f"`{r['source_id']}`"
+        d = dirs[st]
+        return f"`{r['source_id']}` · {p[len(d):] if d and p.startswith(d) else p}"
+
+    L = [f"# Wiki Navigation — {sys_label}", "", f"> {_NAV_NOTE}", ""]
+    L.append("## 1. Tree — function × loại tài liệu")
+    dirline = " · ".join(f"{lab} = `{dirs[st]}`" for st, lab in _DOC_COLS if dirs[st])
+    if dirline:
+        L += [dirline, ""]
+    L.append("| F | Function | " + " | ".join(lab for _, lab in _DOC_COLS) + " |")
+    L.append("|---|---|" + "---|" * len(_DOC_COLS))
+    for f in sorted(rows):
+        L.append(f"| {f} | {fname[f]} | "
+                 + " | ".join(cell(rows[f].get(st), st) for st, _ in _DOC_COLS) + " |")
+    L.append("")
+
+    L.append("## 2. Tài liệu nền — dùng chung, không gắn một function cụ thể")
+    for st, _ in _DOC_COLS:
+        for r in found.pop(st, []):
+            used.add(r["source_id"])
+            L.append(f"- **{r['source_type']}** `{r['source_id']}` · {r['artifact_locator']} — "
+                     f"{_nav_short(r.get('summary_short'), 110)}")
+    L.append("")
+
+    L.append("## 3. Chuẩn tham chiếu — template · guideline · checklist")
+    for st in _STANDARD_TYPES:
+        for r in sorted(found.pop(st, []), key=lambda r: r["source_id"]):
+            used.add(r["source_id"])
+            L.append(f"- `{r['source_id']}` ({r['source_type']}) · {r['artifact_locator']} — "
+                     f"{_nav_short(r.get('summary_short'), 120)}")
+    L.append("")
+
+    L.append("## 4. Graph — loại quan hệ đã khai trong wiki (giữa các tài liệu ở mục 1)")
+    id_to_fdoc = {r["source_id"]: (f, st) for f, row in rows.items() for st, r in row.items()}
+    pat: dict = {}
+    cross = 0
+    for e in _nav_relations(relations_raw):
+        s_, t_ = e.get("source_ref"), e.get("target_ref")
+        if s_ not in id_to_fdoc or t_ not in id_to_fdoc:
+            continue
+        fs, ss = id_to_fdoc[s_]
+        ft, st_ = id_to_fdoc[t_]
+        if fs != ft:
+            cross += 1
+        key = (dict(_DOC_COLS)[ss], e.get("relationship_type"), dict(_DOC_COLS)[st_])
+        pat[key] = pat.get(key, 0) + 1
+    for (a, rel, b), n in sorted(pat.items(), key=lambda kv: -kv[1]):
+        L.append(f"- {a} —`{rel}`→ {b}  ×{n}")
+    L.append(f"- **Edge chéo giữa hai function khác nhau: {cross}.**"
+             + (" Wiki KHÔNG khai quan hệ giữa các function khác nhau — quan hệ đó (nếu có) chỉ "
+                "nằm trong thân tài liệu." if cross == 0 else ""))
+    L.append("")
+
+    L.append("## 5. Còn lại trong wiki (chưa xếp vào mục 1–3, KHÔNG phải mọi thứ đều liên quan)")
+    rest = sorted((r for st, lst in found.items() for r in lst), key=lambda r: r["source_id"])
+    for r in rest[:60]:
+        L.append(f"- `{r['source_id']}` ({r['source_type']}) · {r['artifact_locator']} — "
+                 f"{_nav_short(r.get('summary_short'), 90)}")
+    if len(rest) > 60:
+        L.append(f"- … +{len(rest) - 60} nguồn khác (loại: "
+                 + ", ".join(sorted({r['source_type'] for r in rest[60:]})) + ")")
+    for r in rest:
+        used.add(r["source_id"])
+    L.append("")
+
+    missing_f = {st: [f for f in sorted(rows) if st not in rows[f]] for st, _ in _DOC_COLS}
+    L.append("## 6. KHÔNG có trong wiki")
+    for st, lab in _DOC_COLS:
+        if missing_f[st]:
+            L.append(f"- {lab} chưa có cho: {', '.join(missing_f[st])}.")
+    left = [r["source_id"] for r in tops if r["source_id"] not in used]
+    if left:
+        raise NavCoverageError("nav(rich): entries not placed: " + ", ".join(left))
+    L.append("- " + _nav_coverage(recs, tops, sys_label)
+             + " Mục 1, 2, 3 và 5 cộng lại là toàn bộ danh sách đó.")
+    L.append("")
+    return _finish_page(L, fp)
+
+
+def _page_nav_flat(recs: list[dict], tops: list[dict], sys_label: str, fp: str) -> str:
+    """Small/medium corpus WITHOUT an F-code convention: group by directory (or object-node type),
+    one section per group, a path on every line."""
+    groups: dict[str, list] = {}
+    for r in tops:
+        groups.setdefault("/".join(_nav_segs(r)), []).append(r)
+    L = [f"# Wiki Navigation — {sys_label}", "", f"> {_NAV_NOTE}", "",
+         _nav_coverage(recs, tops, sys_label), ""]
+    placed = 0
+    for key in sorted(groups):
+        items = sorted(groups[key], key=lambda r: (r["artifact_locator"], r["source_id"]))
+        types = ", ".join(f"{t}×{n}" for t, n in
+                          collections.Counter(r["source_type"] for r in items).most_common())
+        L.append(f"## `{key}` — {len(items)} source ({types})")
+        for r in items:
+            L.append(f"- `{r['source_id']}` · {r['artifact_locator']} — "
+                     f"{_nav_short(r.get('summary_short'), 130)}")
+        L.append("")
+        placed += len(items)
+    if placed != len(tops):
+        raise NavCoverageError(f"nav(flat): placed {placed} of {len(tops)}")
+    return _finish_page(L, fp)
+
+
+def _page_nav_tree(recs: list[dict], tops: list[dict], sys_label: str,
+                   suffix: str, fp: str) -> list[tuple[str, str]]:
+    """Large corpus: a 2-level tree — root sitemap (names only, per branch) + one branch page per
+    group. Branch size is capped by an ESTIMATED CHAR BUDGET, not by entry count."""
+
+    def group(items, depth):
+        g = collections.defaultdict(list)
+        for r in items:
+            g["/".join(_nav_segs(r)[:depth])].append(r)
+        return g
+
+    branches: dict[str, list] = {}
+
+    def place(items, depth):
+        for key, its in group(items, depth).items():
+            deeper = any(len(_nav_segs(r)) > depth for r in its)
+            over = len(its) > NAV_SPLIT_OVER or _nav_est_chars(its) > NAV_BRANCH_CHAR_BUDGET
+            if over and deeper and depth < 6:
+                place(its, depth + 1)
+            else:
+                branches.setdefault(key, []).extend(its)
+    place(tops, 2)
+
+    # Fold the tiny branches together so the root sitemap does not become a list of 1-item pages.
+    small = [k for k, v in branches.items() if len(v) < 5]
+    merged: dict[str, list] = collections.defaultdict(list)
+    for k in small:
+        merged[k.split("/")[0] + "/(nhánh nhỏ gộp)"].extend(branches.pop(k))
+    for k in [k for k, v in merged.items() if len(v) < 5]:
+        merged["(khác)/(nhánh nhỏ gộp)"].extend(merged.pop(k))
+    branches.update(merged)
+
+    def sub_chunks(items):
+        """A directory-FLAT branch (61 specs in one folder) cannot be split further by depth —
+        every entry has the same prefix. Fall back to alphabetical slices sized to the budget."""
+        if _nav_est_chars(items) <= NAV_BRANCH_CHAR_BUDGET or len(items) <= 5:
+            return [items]
+        per = max(5, int(len(items) * NAV_BRANCH_CHAR_BUDGET / max(1, _nav_est_chars(items))))
+        return [items[j:j + per] for j in range(0, len(items), per)]
+
+    nav_name = PAGE_TITLES["nav"]
+    out: list[tuple[str, str]] = []
+    R = [f"# Wiki Navigation Tree — {sys_label} (ROOT)", "", f"> {_NAV_NOTE}",
+         f"> Cây 2 tầng. {_nav_coverage(recs, tops, sys_label)}", ""]
+    total = 0
+    for i, (key, items) in enumerate(sorted(branches.items()), 1):
+        items = sorted(items, key=lambda r: (r["artifact_locator"], r["source_id"]))
+        chunks = sub_chunks(items)
+        fns = [f"{nav_name}{suffix}_{i:02d}{chr(97 + c) if len(chunks) > 1 else ''}.md"
+               for c in range(len(chunks))]
+        types = ", ".join(f"{t}×{n}" for t, n in
+                          collections.Counter(r["source_type"] for r in items).most_common())
+        links = (", ".join(f"[{c + 1}]({fn})" for c, fn in enumerate(fns))
+                 if len(chunks) > 1 else f"[{fns[0]}]({fns[0]})")
+        R.append(f"## {i:02d}. `{key}` — {len(items)} source → {links}")
+        R.append(f"_{types}_" + (f" — chia {len(chunks)} trang vì vượt ngân sách ký tự một trang"
+                                 if len(chunks) > 1 else ""))
+        names = (r["title"] if r["artifact_locator"].startswith("__")
+                 else r["artifact_locator"].rsplit("/", 1)[-1].removesuffix(".md") for r in items)
+        R.append(" · ".join(names))
+        R.append("")
+        for c, (chunk, fn) in enumerate(zip(chunks, fns)):
+            part = f" (phần {c + 1}/{len(chunks)})" if len(chunks) > 1 else ""
+            B = [f"# Wiki Navigation — {sys_label} · nhánh {i:02d}{part}: `{key}` "
+                 f"({len(chunk)}/{len(items)} source)", "",
+                 f"> Trang nhánh của [{nav_name}{suffix}.md]({nav_name}{suffix}.md). {_NAV_NOTE}", ""]
+            for r in chunk:
+                B.append(f"- `{r['source_id']}` · {r['artifact_locator']} — "
+                         f"{_nav_short(r.get('summary_short'), 140)}")
+            out.append((fn, _finish_page(B, fp)))
+        total += len(items)
+    if total != len(tops):
+        raise NavCoverageError(f"nav(tree): placed {total} of {len(tops)}")
+    out.insert(0, (f"{nav_name}{suffix}.md", _finish_page(R, fp)))
+    return out
+
+
+def _page_nav(recs: list[dict], sys_label: str, relations_raw: str,
+              suffix: str, fp: str) -> list[tuple[str, str]]:
+    """Pick a shape for this system's corpus. Returns [(filename, text), ...]; index 0 is ALWAYS
+    the entry page (the one that gets registered — CR-AIWS-2026-09-003 DP-003-B = root only)."""
+    nav_name = PAGE_TITLES["nav"]
+    tops = _nav_tops(recs)
+    if not tops:
+        return [(f"{nav_name}{suffix}.md", _finish_page(
+            [f"# Wiki Navigation — {sys_label}", "", f"> {_NAV_NOTE}", "",
+             "(no sources registered)"], fp))]
+    if _nav_detect_fcode(tops) and len(tops) <= NAV_RICH_MAX:
+        return [(f"{nav_name}{suffix}.md",
+                 _page_nav_rich(recs, tops, sys_label, relations_raw, fp))]
+    if len(tops) <= NAV_FLAT_MAX:
+        return [(f"{nav_name}{suffix}.md", _page_nav_flat(recs, tops, sys_label, fp))]
+    return _page_nav_tree(recs, tops, sys_label, suffix, fp)
+
+
 def main() -> int:
     p = argparse.ArgumentParser(description="Build wiki overview pages (CR-AIWS-2026-07-010)")
     p.add_argument("--pages", default=PAGES_DEFAULT,
-                   help=f"Comma-list: contents,search,health (default: {PAGES_DEFAULT})")
+                   help=f"Comma-list: contents,search,health,nav (default: {PAGES_DEFAULT}). "
+                        "`nav` is OPT-IN (CR-AIWS-2026-09-003): a navigation page that names every "
+                        "registered source with its path and states its own coverage. It picks its "
+                        "shape from the corpus and may emit a ROOT page plus branch pages.")
     p.add_argument("--system", default=None, metavar="ID")
     p.add_argument("--all-systems", dest="all_systems", action="store_true", default=False)
     p.add_argument("--out-dir", default=None)
@@ -266,26 +632,52 @@ def main() -> int:
         suffix = f"_{system}" if system else ""
         sflag = f"--system {system}" if system else ""
         for page in pages:
+            # A page kind yields [(filename, text), ...]. Only `nav` uses more than one file, and
+            # for it index 0 is the ROOT (see _page_nav) — the entry the reader starts from.
             if page == "contents":
-                text = _page_contents(recs, sys_label, fp)
+                files = [(f"{PAGE_TITLES[page]}{suffix}.md", _page_contents(recs, sys_label, fp))]
             elif page == "search":
-                text = _page_search(recs, sys_label, sflag, lenses, fp)
+                files = [(f"{PAGE_TITLES[page]}{suffix}.md",
+                          _page_search(recs, sys_label, sflag, lenses, fp))]
             elif page == "health":
-                text = _page_health(recs, relations_raw, sys_label, fp)
+                files = [(f"{PAGE_TITLES[page]}{suffix}.md",
+                          _page_health(recs, relations_raw, sys_label, fp))]
+            elif page == "nav":
+                files = _page_nav(recs, sys_label, relations_raw, suffix, fp)
             else:
                 print(f"warn: unknown page '{page}' — skipped "
                       "(narrative pages are HUMAN-gated, not emitted here)", file=sys.stderr)
                 continue
-            fpath = out_dir / f"{PAGE_TITLES[page]}{suffix}.md"
-            write_text(fpath, text)
-            emitted.append((fpath, page, system))
-            print(f"overview page: {fpath}")
+            for n, (fname, text) in enumerate(files):
+                fpath = out_dir / fname
+                write_text(fpath, text)
+                # DP-003-B = (a): register the ROOT only. Registering every branch would add ~19
+                # entries to a 262-entry index (+7.3%) — inflating the very thing this CR shrinks
+                # — and `sid` below is unique per (page, system), so N branches would collide on
+                # ONE source_id and overwrite each other. Accepted debt: branch pages are outside
+                # `_lint_overview_page`, which only walks REGISTERED metas (CAP-1157-01).
+                if n == 0:
+                    emitted.append((fpath, page, system))
+                print(f"overview page: {fpath}" + ("" if n == 0 else "   (branch, not registered)"))
 
     if ns.register and emitted:
         meta_dir = wiki_sources / "meta" / "overview"
         meta_dir.mkdir(parents=True, exist_ok=True)
         for fpath, page, system in emitted:
             sid = f"SRC-OVERVIEW-{page.upper()}" + (f"-{system.upper()}" if system else "")
+            # CR-AIWS-2026-09-003: the nav ROOT of a tree-shaped corpus is a sitemap, so the
+            # auto-extractor's "first prose line" lands on a branch's type tally ("_process_
+            # guideline×2_") and lint fires `meta_summary_degenerate` the moment the page is
+            # registered. State what the page IS instead of letting a heuristic guess.
+            nav_summary = (
+                f"Trang điều hướng wiki của system {system or 'project'}: liệt kê mọi tài liệu đã "
+                "đăng ký kèm artifact path và tự khai độ phủ. Dùng làm FALLBACK khi "
+                "lookup_wiki_source.py không đủ, không phải bước đầu tiên "
+                "(aiws-wiki/operations/lookup.md, CR-AIWS-2026-09-004); khi dùng thì grep trang "
+                "chứ đừng cat. Một tài liệu không có tên ở đây = không có trong wiki đã đăng ký "
+                "của system đó — kết luận hợp lệ, dừng lại. Corpus lớn thì đây là trang GỐC, các "
+                "trang nhánh WIKI_NAV*_NN*.md link từ đây và KHÔNG được đăng ký riêng."
+            ) if page == "nav" else ""
             cmd = [sys.executable, str(builder),
                    "--artifact", str(fpath), "--source-id", sid,
                    "--source-type", OVERVIEW_SOURCE_TYPE,
@@ -310,6 +702,8 @@ def main() -> int:
                    + f",{PAGE_TITLES[page].replace('_', ' ').lower()} overview page"
                    + (f" {system}" if system else ""),
                    ]
+            if nav_summary:
+                cmd += ["--summary", nav_summary]
             if system:
                 cmd += ["--system", system]
             elif cfg.get("multi_system"):

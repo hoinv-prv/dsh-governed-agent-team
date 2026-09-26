@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v15-council-016",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "cafbe5352bfd7a81a01b2fd7e476256194e91a96b14982ba6d625cd104bd2250"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "41bf823619d53b3aa91ad42888d2329013a46c03a94a43dbf237bbec66566bc6"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "c2539654b4b1534c9d3ff3895a1642c1fbf9bb7eeb43f6f591fd27d4666b85c7"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "77b3b9b4f2aa58a62d3f101f1474176d4263dd05c1cb1702852c16baf1e0f089"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "b9b6152d59e3bfee3fda19a11ce6eacab613dec9e7a1243e1299c731b1eece9a"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "ae7ac4f14d322f26b0c7f6ffaa93b5f9c8b33558171571c530176ac997efed1f"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "2ade70cca0b84f2c3ecd3fbaddc81c7bc550620cdaa254ebed2bc12e7cac649f"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "21e6ad83556ffeffa05c868aab6a8b697aef3998d868863de89b29e40b71f75b"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "866e013029ac9aa74575288a88157fb85c6100c3e6b59a36c941b973b47c7e36"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "e88a689ccbf30ef984cb83479c25e15a35a0885be3e88c484309922209306ffc"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve all three findings and re-review exact revised bytes before WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer16-adversarial-f001",
+      "effective_severity": "high",
+      "claim": "The source-equal restart branch is not explicitly bound to the charge branch's fresh P14, authority, invalidation, and live-capability revalidation, so it can be read to authorize a delayed charge write from execution-ledger source equality alone.",
+      "artifact_id": "design-v15",
+      "locator": {
+        "kind": "line",
+        "value": "334"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed stale charge-edge restart may bypass fresh boundary re-observation."
+    },
+    {
+      "finding_id": "reviewer16-adversarial-f002",
+      "effective_severity": "high",
+      "claim": "The final acceptance or rejection projection is permitted by an earlier verifier receipt without an explicit write-boundary recheck of live P16 authority and revocation or of the decision-bound output and review bytes.",
+      "artifact_id": "design-v15",
+      "locator": {
+        "kind": "line",
+        "value": "197"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed final acceptance write lacks immediate current authority/evidence revalidation."
+    },
+    {
+      "finding_id": "reviewer16-authority-001-f1",
+      "effective_severity": "medium",
+      "claim": "Section 7 P3 and Section 16 require the charge gate's ledger-lineage evidence to be a gap-free `ExecutionTransitionReceipt` hash/sequence chain and a `ExecutionTransitionReceipt` schema/validator, but no artifact of that name is defined anywhere in v15; Section 9.1 defines only `ExecutionTransitionIntent` plus `ExecutionTransitionCompletion`, so the exact evidence artifact P3 must verify is undefined.",
+      "artifact_id": "design-v15",
+      "locator": {
+        "kind": "line",
+        "value": "283"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed obsolete transition receipt terminology conflicts with the defined intent/completion pair."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Restart-boundary freshness and lineage naming remain incomplete until revision."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

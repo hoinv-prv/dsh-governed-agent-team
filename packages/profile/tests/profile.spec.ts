@@ -214,16 +214,27 @@ describe('Agent Teams profile bundle', () => {
     roots.push(storageRoot)
     const sessionId = SessionId('governed-profile-smoke')
     const first = await bootProfile(storageRoot, [
-      'hang',
-      'hang',
       textResponse('spawn one-shot result'),
       textResponse('fork one-shot result'),
+      'hang',
+      'hang',
     ])
     const leadHandle = await first.agents.create({
       sessionId,
       agentOptions: { provider: 'mock', model: 'mock' },
     })
     const lead = leadHandle.agent
+    const soloFresh = await execute(first, lead, 'subagent', {
+      description: 'solo fresh one shot', prompt: 'return the scripted fresh result',
+    })
+    expect(soloFresh.isError).toBe(false)
+    expect(text(soloFresh)).toBe('spawn one-shot result')
+    const soloFork = await execute(first, lead, 'subagent_fork', {
+      description: 'solo fork one shot', prompt: 'return the scripted fork result',
+    })
+    expect(soloFork.isError).toBe(false)
+    expect(text(soloFork)).toBe('fork one-shot result')
+
     const dangerCalls = { count: 0 }
     first.tools.register(defineContentToolFixture({
       name: 'danger_write',
@@ -279,6 +290,7 @@ describe('Agent Teams profile bundle', () => {
     const draftView = first.agentTeams.remoteView(lead)
     expect(draftView.planApproval).toBeUndefined()
     expect(draftView).toEqual({
+      enabled: false,
       planRevision: 1,
       planPhase: 'draft',
       work: [],
@@ -311,14 +323,15 @@ describe('Agent Teams profile bundle', () => {
     const freshDelegation = await execute(first, lead, 'subagent', {
       description: 'fresh one shot', prompt: 'return the scripted fresh result',
     })
-    if (freshDelegation.isError) throw new Error(text(freshDelegation))
-    expect(text(freshDelegation)).toBe('spawn one-shot result')
+    expect(freshDelegation.isError).toBe(true)
+    expect(text(freshDelegation)).toContain('Agent Team is enabled for this session')
+    expect(text(freshDelegation)).toContain('ask the HUMAN to approve adding a member')
     const forkDelegation = await execute(first, lead, 'subagent_fork', {
       description: 'fork one shot', prompt: 'return the scripted fork result',
     })
-    if (forkDelegation.isError) throw new Error(text(forkDelegation))
-    expect(text(forkDelegation)).toBe('fork one-shot result')
-    expect(starts.mock.calls.map(([provider]) => provider)).toEqual(['spawn', 'fork'])
+    expect(forkDelegation.isError).toBe(true)
+    expect(text(forkDelegation)).toContain('Agent Team is enabled for this session')
+    expect(starts).not.toHaveBeenCalled()
 
     expect((await execute(first, lead, 'danger_write', {})).isError).toBe(false)
     expect(dangerCalls.count).toBe(1)

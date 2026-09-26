@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v35-council-037",
+  "budget_reserved": {
+    "maximum_model_calls": 8,
+    "initial_lane_calls": 3,
+    "retry_allowance": 3,
+    "reserved_chairman": 1,
+    "reserved_adjudicator": 1,
+    "worst_case_required": 8
+  },
+  "chairman_invocation_id": "inv37-chair-001",
+  "participants": [
+    {
+      "invocation_id": "inv37-auth-001",
+      "lane": "internal-authority",
+      "role": "internal-reviewer",
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "route_family": "deepseek-v4",
+      "attempt": 1,
+      "packet_sha256": "6e50348e9d02623de453442001b7ad467db9cca29c51fe29e3d8bb5ab6559253",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "failed",
+      "failure_code": "ledger_integrity_failed"
+    },
+    {
+      "invocation_id": "inv37-adv-001",
+      "lane": "internal-adversarial",
+      "role": "internal-reviewer",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-luna",
+      "route_family": "openai-gpt-5.6",
+      "attempt": 1,
+      "packet_sha256": "ab4b68ba3b8efddab4601237359826707b602c74ab81195ba3367fc2fde2001a",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "failed",
+      "failure_code": "ledger_integrity_failed"
+    },
+    {
+      "invocation_id": "inv37-ext-001",
+      "lane": "external-outside-view",
+      "role": "outside-view",
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "route_family": "deepseek-v4",
+      "attempt": 1,
+      "packet_sha256": "e4b4a9aa2cf3d8d86ab9e2097cfc32fe9aae84dd6a38faffa4c086438119acf6",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "failed",
+      "failure_code": "ledger_integrity_failed"
+    },
+    {
+      "invocation_id": "inv37-adj-001",
+      "lane": "adjudication",
+      "role": "adjudicator",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-sol",
+      "route_family": "openai-gpt-5.6",
+      "attempt": 1,
+      "packet_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "reserved",
+      "failure_code": null
+    },
+    {
+      "invocation_id": "inv37-chair-001",
+      "lane": "chairman",
+      "role": "chairman",
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "route_family": "deepseek-v4",
+      "attempt": 1,
+      "packet_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "reserved",
+      "failure_code": null
+    }
+  ]
+}

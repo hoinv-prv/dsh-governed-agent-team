@@ -40,8 +40,14 @@ describe.skipIf(!requiredArtifacts)('Agent Teams built LIB service', () => {
     expect(output).toEqual({
       className: 'TeamService',
       methods: [
+        '@vuhoi/gat-core#agentTeams/approveMission',
         '@vuhoi/gat-core#agentTeams/approvePlan',
+        '@vuhoi/gat-core#agentTeams/createMission',
         '@vuhoi/gat-core#agentTeams/createTask',
+        '@vuhoi/gat-core#agentTeams/enable',
+        '@vuhoi/gat-core#agentTeams/getMission',
+        '@vuhoi/gat-core#agentTeams/importApprovedPlan',
+        '@vuhoi/gat-core#agentTeams/listMissions',
         '@vuhoi/gat-core#agentTeams/reportWork',
         '@vuhoi/gat-core#agentTeams/updateTask',
         '@vuhoi/gat-core#agentTeams/view',

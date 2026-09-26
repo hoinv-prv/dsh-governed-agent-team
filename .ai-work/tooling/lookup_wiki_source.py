@@ -199,32 +199,41 @@ def _runtime_entry(score: int, rec: dict) -> dict:
     }
 
 
-def _print_raw_fallback_hint(query: str) -> None:
+def _print_raw_fallback_hint(query: str, hints: bool = False) -> None:
+    """The 0-result block.
+
+    CR-AIWS-2026-09-003 C4 rewrote it for TWO reasons. (1) It was teaching the wrong rule: the old
+    text read "Raw fallback required: … then Glob/Grep" and "Do NOT report 'not found' without
+    completing steps 1-3", which instructs an agent to do exactly what rule #13 / CR-AIWS-2026-06-052
+    forbid without an authorization source. Raw search is authorization-gated; "not found in the
+    registered index" is a LEGAL answer. (2) It was 18 lines on every empty lookup. The capture
+    funnel it carried (CR-AIWS-2026-08-075 C6) is not lost - it moved behind `--hints`, and the
+    short block points there.
+    """
     print("─" * 60)
-    print("Hint — Not in index. Raw fallback required:")
-    print(f"  1. Retry    : --mode tokens (if this was lexical)")
-    print(f"  1b. Catalog : --mode catalog (đọc-chọn từ slim catalog đã filter — CR-2026-07-007 B6)")
-    print(f"  2. Raw search: check document_search_guidelines.md for artifact dirs,")
-    print(f"                 then Glob/Grep '{query}' in those directories")
-    print(f"  3. If no guidelines: ask HUMAN for artifact directory locations,")
-    print(f"                 then promote to document_search_guidelines.md")
-    print(f"  4. If found  : register source with /aiws-wiki build-meta")
-    print(f"  ❌ Do NOT report 'not found' without completing steps 1–3")
-    print()
-    print("If artifact is reusable (template / process doc / shared spec / guideline):")
-    # CR-AIWS-2026-08-075 C6 — this hint is the INPUT FUNNEL for the `[PENDING]` lines that
-    # run_aip.py sweeps into captures. It used to name only `[retrieval_gap]`, which is a Capture
-    # FLAG and not a legal capture `type` — so authors copied it into `type=` and every swept record
-    # came out labelled a retrieval gap regardless of what it was. Name the flag and the type
-    # separately, and show the type that actually belongs on a lookup miss.
-    print(f"  → Mark in AIP input table : Capture flag = [retrieval_gap]")
-    print(f"  → Add entry to AIP section: ## Pre-flight Pending Captures")
-    print(f'     - [PENDING] type="wiki_meta_update_candidate" '
-          f'candidate_kind="retrieval_improvement" artifact="<name>" '
-          f'lookup_query="<query>" reason="<why it is reusable>"')
-    print(f"     (`retrieval_gap` is the FLAG, not a `type=` value — `type=` takes a capture type;")
-    print(f"      a different trigger uses its own type, see wiki_candidate_capture_playbook.md)")
-    print(f"  → After task              : register via /aiws-wiki register")
+    print("Not in index (registered scope). Next: `--mode tokens`, then `--mode catalog` "
+          "(read-and-pick from the filtered slim catalog).")
+    print("Raw (un-registered) search is AUTHORIZATION-GATED (rule #13): it needs "
+          "`--authorized human|aip|agent_rule`. Without one, STOP and ask HUMAN — do not Glob/Grep "
+          "on your own. “Not in the registered wiki” is a valid answer.")
+    print("Artifact turns out reusable? Register it via /aiws-wiki build-meta. "
+          "Capture recipe for the AIP table: re-run with `--hints`.")
+    if hints:
+        print("─" * 60)
+        print("If artifact is reusable (template / process doc / shared spec / guideline):")
+        # CR-AIWS-2026-08-075 C6 - this hint is the INPUT FUNNEL for the `[PENDING]` lines that
+        # run_aip.py sweeps into captures. It used to name only `[retrieval_gap]`, which is a Capture
+        # FLAG and not a legal capture `type` - so authors copied it into `type=` and every swept
+        # record came out labelled a retrieval gap regardless of what it was. Name the flag and the
+        # type separately, and show the type that actually belongs on a lookup miss.
+        print("  → Mark in AIP input table : Capture flag = [retrieval_gap]")
+        print("  → Add entry to AIP section: ## Pre-flight Pending Captures")
+        print('     - [PENDING] type="wiki_meta_update_candidate" '
+              'candidate_kind="retrieval_improvement" artifact="<name>" '
+              f'lookup_query="{query}" reason="<why it is reusable>"')
+        print("     (`retrieval_gap` is the FLAG, not a `type=` value — `type=` takes a capture type;")
+        print("      a different trigger uses its own type, see wiki_candidate_capture_playbook.md)")
+        print("  → After task              : register via /aiws-wiki register")
     print("─" * 60)
 
 
@@ -268,6 +277,11 @@ def main() -> int:
     p.add_argument("--full", "--no-slim", dest="slim", action="store_false",
                    help="Verbose multi-line records per result (summary / authority / "
                         "representation fields inline). Opt out of the default slim output.")
+    p.add_argument("--hints", action="store_true", default=False,
+                   help="Print the boilerplate guidance lines (runtime-boundary note, catalog "
+                        "enumeration hint, full capture recipe on 0 results). CR-AIWS-2026-09-003 C4: "
+                        "off by default - they repeat verbatim on every call and cost tokens in the "
+                        "common case where the caller already knows them.")
     p.add_argument("--include-inactive", action="store_true", default=False,
                    help="Include superseded sources at full score (default: penalized at 0.2x)")
     p.add_argument("--source-type", action="append", default=None, metavar="TYPE",
@@ -474,10 +488,11 @@ def main() -> int:
             payload["matches"] = results
             print(json.dumps(payload, ensure_ascii=False, indent=2))
     else:
-        print("Note: aiws-wiki lookup returns candidate source routes; open source artifact for evidence.")
+        if ns.hints:
+            print("Note: aiws-wiki lookup returns candidate source routes; open source artifact for evidence.")
         if not scored and not raw_results:
             print("(no matches)")
-            _print_raw_fallback_hint(ns.query)
+            _print_raw_fallback_hint(ns.query, ns.hints)
         elif not scored:
             print("(no registered matches — see unregistered raw candidates below)")
         # CR-AIWS-2026-07-006 A3: group-by-parent — a chunk child (has section_lines) whose PARENT
@@ -500,15 +515,23 @@ def main() -> int:
             _status_tag = " [SUPERSEDED]" if item.get("status") == "superseded" else ""
             if ns.slim:
                 _rep = item.get("source_representation_status", "")
-                _rep_tag = f" [rep:{_rep}]" if _rep in {"partial", "needs_review", "failed", "unknown"} else ""
+                # CR-AIWS-2026-09-003 C4: `unknown` is the DEFAULT for an unset field, not a
+                # signal - it was printed on 14/14 lines of a measured run and told the reader
+                # nothing. The three real cautions stay.
+                _rep_tag = f" [rep:{_rep}]" if _rep in {"partial", "needs_review", "failed"} else ""
                 _sec_tag = ""
                 _sl = (item.get("index_entry") or {}).get("section_lines", "")
                 if _sl:
                     _sec_tag = f" [lines {_sl}]"
+                # CR-AIWS-2026-09-003 C4: no `meta=` on the slim line. It was 30.3% of the
+                # characters of a 14-result run and was used to open a file 0 times in 16
+                # measured runs - the meta-first flow reads metas by ID
+                # (`wiki_meta.py --view <source_id>`), which is on the line already.
+                # `--full` still prints `meta:`, and the JSON payload still carries
+                # `meta_locator` (a test battery parses it).
                 print(f"{_indent}[{item['score']:>3}] {item.get('source_id', '')}{_status_tag}{_rep_tag}{_sec_tag}  "
                       f"{item.get('title', '')} | {item.get('source_type', '')} | "
-                      f"artifact={item.get('artifact_locator', '')} | "
-                      f"meta={item.get('meta_locator', '')}")
+                      f"artifact={item.get('artifact_locator', '')}")
                 continue
             print(f"[{item['score']:>3}] {item.get('source_id', '')}{_status_tag}  {item.get('title', '')}")
             _summary = (item.get("summary_short") or "").strip().lstrip("> ").strip()
@@ -539,7 +562,7 @@ def main() -> int:
             print(f"… {total_matches - len(results)} more match(es) not shown "
                   f"(showing {len(results)} of {total_matches}). To page: raise --limit, or re-run "
                   f"with --excludes set to the source_ids already shown above. Continuing is your call.")
-        if scored:
+        if scored and ns.hints:
             print("Enumerate one kind: --mode catalog --source-type <type> --slim  "
                   "(e.g. function | table | process_guideline; multi-system: add --system <id>)")
         if raw_results:

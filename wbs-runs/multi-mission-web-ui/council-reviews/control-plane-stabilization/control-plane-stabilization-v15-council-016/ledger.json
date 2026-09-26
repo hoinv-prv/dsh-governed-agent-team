@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v15-council-016",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer16-adversarial-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "charge-recovery-freshness",
+      "claim": "The source-equal restart branch is not explicitly bound to the charge branch's fresh P14, authority, invalidation, and live-capability revalidation, so it can be read to authorize a delayed charge write from execution-ledger source equality alone.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v15",
+      "locator": {
+        "kind": "line",
+        "value": "334"
+      },
+      "evidence_excerpt": "If ledger bytes still equal the pinned source, it either performs the one guarded write or create-once closes the intent `NOT_APPLIED` without changing ledger semantics",
+      "impact": "After a crash or delay following charge-intent persistence, unchanged ledger bytes can coexist with revoked WBS authority, a new invalidation, Goal/Team drift, or lost capabilities; the restart path can then allocate and charge despite known unreadiness and expands the acknowledged boundary race into an unbounded stale-intent window.",
+      "recommended_action": "For a charge-edge source-equal restart, require the restart operation to rerun full Section 5.2 steps 1–2 and 5 at the actual retry write boundary, including P14, the current invalidation index, authority and revocation, P7–P12, and source version. On any drift or unavailable observation, write no ledger bytes, close `NOT_APPLIED`, append invalidation when authorized, and require re-prepare.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer16-adversarial-001",
+        "invocation_id": "inv16-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.97,
+      "source_candidate_ids": [
+        "reviewer16-adversarial-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer16-adversarial-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "acceptance-boundary-freshness",
+      "claim": "The final acceptance or rejection projection is permitted by an earlier verifier receipt without an explicit write-boundary recheck of live P16 authority and revocation or of the decision-bound output and review bytes.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v15",
+      "locator": {
+        "kind": "line",
+        "value": "197"
+      },
+      "evidence_excerpt": "`confirmed` produces a bound verification receipt and permits a second pre-intended guarded transition to exactly `ACCEPTED` or `REJECTED_CHARGED`",
+      "impact": "A decision or delegation can be revoked or superseded, or bound output/review evidence can drift, after verification but before the second write; the ledger can then change acceptance state using stale authority or stale evidence.",
+      "recommended_action": "Immediately before every final acceptance/rejection write, including a source-equal intent restart, re-hash all decision-bound output, verifier, review-closure, authority, delegation, and revocation inputs and revalidate P16 against the current source version. Any drift or unavailable observation must perform no final write and return to `ACCEPTANCE_PENDING` or `ACCEPTANCE_VERIFICATION_PENDING` as applicable.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer16-adversarial-001",
+        "invocation_id": "inv16-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98,
+      "source_candidate_ids": [
+        "reviewer16-adversarial-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer16-authority-001-f1",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "internal-consistency",
+      "claim": "Section 7 P3 and Section 16 require the charge gate's ledger-lineage evidence to be a gap-free `ExecutionTransitionReceipt` hash/sequence chain and a `ExecutionTransitionReceipt` schema/validator, but no artifact of that name is defined anywhere in v15; Section 9.1 defines only `ExecutionTransitionIntent` plus `ExecutionTransitionCompletion`, so the exact evidence artifact P3 must verify is undefined.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v15",
+      "locator": {
+        "kind": "line",
+        "value": "283"
+      },
+      "evidence_excerpt": "the complete gap-free Section 9.1 `ExecutionTransitionReceipt` hash/sequence chain covering every charge and ordinary status/outcome/review/acceptance write",
+      "impact": "P3 is the admission invariant that must prove gap-free ledger lineage before every charge, yet the artifact it names is undefined; a WBS closure matrix or bootstrap could declare a `ExecutionTransitionReceipt` schema other than the Section 9.1 `ExecutionTransitionIntent`+`ExecutionTransitionCompletion` pair (for example the superseded post-write-only receipt), letting P3 pass without the pre-write intent evidence required by run-015 f003 and exposing the charge path to an unproven or partial-commit lineage, while Section 16's entry criterion cannot be satisfied literally.",
+      "recommended_action": "Rename every `ExecutionTransitionReceipt` reference (Section 7 P3 line 283, Section 5.2 step 8 line 181, Section 10 line 367, Section 14 line 445, Section 16 line 489) to the Section 9.1 `ExecutionTransitionIntent`/`ExecutionTransitionCompletion` pair, or define `ExecutionTransitionReceipt` exactly once as that pair and require its schema/validator in Sections 6.1(h) and 16.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer16-authority-001",
+        "invocation_id": "inv16-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.78,
+      "source_candidate_ids": [
+        "reviewer16-authority-001-f1"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "candidate_id": "reviewer16-authority-001-r1",
+      "reason": "Section 7.1 orders WBS candidate drafting after reviewed design closure and HUMAN drafting authority, while Section 16 conditions drafting on completed migration and bootstrap; the orderings differ, but drafting is uncharged and grants no selection, approval, admission or attempt authority and admission still fails closed at P3/P15, so no reading permits charge, reuse, acceptance change, undeclared effects or non-HUMAN authority; not material.",
+      "source_lane": "internal-authority"
+    }
+  ]
+}

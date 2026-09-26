@@ -1,0 +1,327 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v37-council-040",
+  "reviewer_id": "reviewer40-outside-002",
+  "lane": "external-outside-view",
+  "invocation_id": "inv40-ext-002",
+  "attempt": 2,
+  "status": "completed",
+  "artifact_manifest_sha256": "62b3723c2b01dc3f772f57de983453c5b69c962a7d4b4daa99e5142ce975596b",
+  "packet_sha256": "701bf09015eee5a95924c6a8b5495777127659e2316a89c4bfffb73dac6a0ccd",
+  "authority": "advisory-only",
+  "participates_in_voting": false,
+  "decision_weight": "none",
+  "observations": [
+    {
+      "observation_id": "EXT40R-O-001",
+      "source_lane": "external-outside-view",
+      "mode": "governance",
+      "category": "authority",
+      "claim": "The artifact declares itself advisory and inactive and states that council review does not approve the design or authorize execution.",
+      "classification": "fact",
+      "severity": "info",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v37",
+      "locator": { "kind": "line", "value": "4" },
+      "evidence_excerpt": "Advisory corrected design; inactive; not WBS or execution authority",
+      "impact": "An outside reader can distinguish review evidence from approval; the advisory boundary is explicit rather than implied.",
+      "recommended_action": "Retain the explicit advisory/inactive status line on every later revision.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer40-outside-002",
+        "invocation_id": "inv40-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.97
+    },
+    {
+      "observation_id": "EXT40R-O-002",
+      "source_lane": "external-outside-view",
+      "mode": "governance",
+      "category": "enforcement",
+      "claim": "The design explicitly limits its claim to procedural fail-closed governance and does not claim hard runtime enforcement.",
+      "classification": "fact",
+      "severity": "info",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v37",
+      "locator": { "kind": "line", "value": "254-258" },
+      "evidence_excerpt": "this design claims **procedural fail-closed governance**, not hard runtime enforcement",
+      "impact": "The central enforcement limitation is disclosed next to the residual-race discussion rather than being left for a reader to infer.",
+      "recommended_action": "Keep this disclosure adjacent to the charge-boundary definition in any later revision.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer40-outside-002",
+        "invocation_id": "inv40-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "observation_id": "EXT40R-O-003",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "specification-completeness",
+      "claim": "The AdmissionBundle is declared a not-yet-activated contract whose contract, validator, storage and seal references are unresolved placeholders, so the stated CP-to-P3/P15 equality predicate cannot be discharged from this artifact alone.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v37",
+      "locator": { "kind": "line", "value": "274-281" },
+      "evidence_excerpt": "contract_status: proposed-design-contract-not-yet-activated",
+      "impact": "Section 5.0.1 calls field-level CP/P3/P15 equality a deterministic predicate and Section 16 requires a closed capability manifest, but the schema, validator and manifest bytes do not exist in this artifact; two implementers could satisfy the prose with divergent field sets.",
+      "recommended_action": "Publish the closed schema/validator bytes or a byte-exact manifest fixture before any WBS handoff relies on the equality predicate as testable.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer40-outside-002",
+        "invocation_id": "inv40-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.8
+    },
+    {
+      "observation_id": "EXT40R-O-004",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "verifiability",
+      "claim": "Administrative and post-charge recovery budget arithmetic is specified only as symbolic prose with no worked numeric values in this artifact.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v37",
+      "locator": { "kind": "line", "value": "362-364" },
+      "evidence_excerpt": "Let `C` be the HUMAN administrative ceiling, `G` global committed units before a reservation",
+      "impact": "The no-double-debit, no-refill and both-ceiling-exhaustion claims cannot be independently recomputed by an outside reader from these bytes; they remain assertions supported only by fixtures that this artifact does not contain.",
+      "recommended_action": "Add one worked numeric fixture per recurrence (interleaved debit, UNKNOWN outcome, global and root exhaustion) with explicit values and expected remaining ceilings.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer40-outside-002",
+        "invocation_id": "inv40-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.75
+    },
+    {
+      "observation_id": "EXT40R-O-005",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "context-scope",
+      "claim": "The inactive design embeds current-mission facts such as a selected WBS revision and attempt numbers inside normative-design prose.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v37",
+      "locator": { "kind": "line", "value": "402" },
+      "evidence_excerpt": "the currently selected **WBS revision 32** (not this design's revision) has no slack",
+      "impact": "An outside reader may mistake historical mission state for the design's own state, even though Sections 1 and 2 label those facts as prior symptoms and this design as inactive.",
+      "recommended_action": "Tag embedded mission-state references with their immutable snapshot locator or relocate them to the pinned-evidence section.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer40-outside-002",
+        "invocation_id": "inv40-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.85
+    },
+    {
+      "observation_id": "EXT40R-O-006",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "traceability",
+      "claim": "Section 15 enumerates required council challenge scenarios without mapping them to CP IDs or named fixtures.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v37",
+      "locator": { "kind": "line", "value": "572-614" },
+      "evidence_excerpt": "Council must challenge at least these scenarios:",
+      "impact": "CP-level coverage is mapped in Sections 5.0.1 and 14, but scenario-level coverage of the 39 listed cases cannot be mechanically traced, so an unexercised scenario could pass unnoticed.",
+      "recommended_action": "Add a scenario-to-CP-to-fixture table so every Section 15 item has a named evidence target.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer40-outside-002",
+        "invocation_id": "inv40-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.72
+    },
+    {
+      "observation_id": "EXT40R-O-007",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "evidence-integrity",
+      "claim": "The attempt-ID digest preimage is defined over a deduplicated source array, so duplicate attempt IDs already present in the source ledger would be normalized before hashing.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v37",
+      "locator": { "kind": "line", "value": "245" },
+      "evidence_excerpt": "Define `source_attempt_ids` as the duplicate-free array of UTF-8 attempt-ID strings in source-ledger order",
+      "impact": "A duplicate-source defect may not surface at the digest layer because the preimage is taken over the normalized array; detection then depends entirely on the separate P3 strict-ledger check.",
+      "recommended_action": "Define `source_attempt_ids` as the exact raw source array, or require explicit `NOT_READY` when the raw array is not already duplicate-free.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer40-outside-002",
+        "invocation_id": "inv40-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.65
+    },
+    {
+      "observation_id": "EXT40R-O-008",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "planning-completeness",
+      "claim": "WBS-build entry depends on a large set of generation-0 registries, an execution-contract decision and genesis/bootstrap/migration work whose per-item effort and acceptance evidence are required but not sized in this artifact.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v37",
+      "locator": { "kind": "line", "value": "668-687" },
+      "evidence_excerpt": "Missing manifest cells block drafting.",
+      "impact": "The finite administrative ceiling bounds calls and effects, not the amount of prerequisite engineering; a HUMAN could approve the handoff while underestimating the cost of reaching a passing manifest.",
+      "recommended_action": "Attach a bootstrap/prerequisite deliverable inventory with one acceptance-evidence item and a ceiling estimate per deliverable before WBS drafting is authorized.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer40-outside-002",
+        "invocation_id": "inv40-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.7
+    },
+    {
+      "observation_id": "EXT40R-O-009",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "specification-completeness",
+      "claim": "Bundle freshness is carried as an unbound placeholder while admission treats missing or ambiguous freshness as failure.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v37",
+      "locator": { "kind": "line", "value": "319" },
+      "evidence_excerpt": "freshness_rule: <explicit expiry/drift predicate>",
+      "impact": "The exact expiry/drift predicate that decides READY versus EXPIRED is deferred to separately bootstrapped bytes, so identical prose could yield different admission outcomes across implementations.",
+      "recommended_action": "Bind the freshness predicate to an exact closed schema field and a named fixture before the bundle contract is accepted.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer40-outside-002",
+        "invocation_id": "inv40-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.7
+    },
+    {
+      "observation_id": "EXT40R-O-010",
+      "source_lane": "external-outside-view",
+      "mode": "governance",
+      "category": "authority",
+      "claim": "The design requires the acceptance owner to be a HUMAN actor and forbids non-HUMAN delegates.",
+      "classification": "fact",
+      "severity": "info",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v37",
+      "locator": { "kind": "line", "value": "262" },
+      "evidence_excerpt": "The acceptance owner must be `actor.kind = human`",
+      "impact": "Confirms that acceptance, approval and activation remain HUMAN decisions that no reviewer, coordinator or model output can originate.",
+      "recommended_action": "Retain the explicit `actor.kind = human` requirement and the owner-rooted delegation-chain check.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer40-outside-002",
+        "invocation_id": "inv40-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "observation_id": "EXT40R-O-011",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "operability",
+      "claim": "The registry forbids every state or edge not named in CP-01 through CP-16, but the artifact does not describe how a previously unnamed real-world condition is dispositioned.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v37",
+      "locator": { "kind": "line", "value": "182" },
+      "evidence_excerpt": "An edge absent from that registry is forbidden.",
+      "impact": "Operators facing a genuinely novel condition have no stated fail-closed disposition path, which creates pressure to improvise or to reinterpret prose as a new edge.",
+      "recommended_action": "State explicitly that an unnamed condition is `NOT_READY` and may only be resolved by a fresh HUMAN-authorized registry revision, never by local improvisation.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer40-outside-002",
+        "invocation_id": "inv40-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.6
+    }
+  ],
+  "advisory_hypotheses": [
+    {
+      "advisory_id": "EXT40R-A-001",
+      "claim": "An outside reader may read the CP registry and state diagram as hard runtime prevention because the procedural-only disclosure sits in Section 5.3 rather than beside the registry.",
+      "basis": "Sections 5.0.1 and 5 present the registry as exhaustive normative control before Section 5.3 limits the claim.",
+      "missing_project_sot": ["Reader-comprehension testing with non-authors"],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Walk the registry and diagram past a reader who has not seen Section 5.3 and record the enforcement claim they infer."
+    },
+    {
+      "advisory_id": "EXT40R-A-002",
+      "claim": "A natively capable delegated writer could still commit a charge outside the coordinator path without detection, because the design records topology observation rather than capability denial.",
+      "basis": "Section 5.3 and invariant P8 disclose bypass by a capable writer and describe observation plus a procedural role restriction only.",
+      "missing_project_sot": ["Native enumeration of every writer able to mutate the execution ledger"],
+      "confidence": "high",
+      "decision_weight": "none",
+      "suggested_validation": "Enumerate native writers and charge-capable entry points from the pinned repository and runtime evidence, then test each against the procedural gate."
+    },
+    {
+      "advisory_id": "EXT40R-A-003",
+      "claim": "The prerequisite bootstrap program may cost materially more than the mission-specific contingency the design reserves, since its deliverables are enumerated but not estimated.",
+      "basis": "Section 16 lists generation-0 registries, an execution-contract decision, administrative-ledger genesis, migration and bootstrap while Section 6.3 bounds only calls and effects.",
+      "missing_project_sot": ["Bootstrap effort and call-ceiling estimate"],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Size each Section 16 prerequisite and compare the total against the HUMAN-declared administrative ceiling."
+    },
+    {
+      "advisory_id": "EXT40R-A-004",
+      "claim": "This outside-view packet carried must-check and out-of-scope fields while the declared received context categories were only objective, audience and public constraints.",
+      "basis": "The packet's context_categories list three categories, yet it also embeds the internal must-check and out_of_scope arrays.",
+      "missing_project_sot": ["Council packet-construction policy for the outside-view lane"],
+      "confidence": "low",
+      "decision_weight": "none",
+      "suggested_validation": "Compare this packet's field set against the outside-view packet policy and confirm whether a questions category should be declared or the internal checklist omitted."
+    }
+  ],
+  "context_attestation": {
+    "artifact_ids_received": ["sanitized-design-v37"],
+    "context_categories_received": ["objective", "audience", "public-constraints"],
+    "packet_sha256_received": "701bf09015eee5a95924c6a8b5495777127659e2316a89c4bfffb73dac6a0ccd"
+  },
+  "rejected_candidates": [
+    {
+      "candidate_id": "EXT40R-R-001",
+      "reason": "Candidate claim that CP-16 wrongly declares ACCEPTED terminal while CP-15 permits ACCEPTED to enter ACCEPTANCE_AUTHORITY_CONFLICT was rejected: CP-16 itself qualifies the row as terminal except for that explicit conflict edge, so the two rows agree."
+    },
+    {
+      "candidate_id": "EXT40R-R-002",
+      "reason": "Candidate claim that the design invents a scheduler, daemon or custom runner was rejected: Section 3.2 explicitly lists those as non-goals and no such component is defined in the artifact."
+    },
+    {
+      "candidate_id": "EXT40R-R-003",
+      "reason": "Candidate claim that PostChargeRecoveryAllocation can restore READY or dispatch was rejected: the recovery paragraph states it can never make a bundle READY again, and the only terminal target is the named resource-exhausted state."
+    },
+    {
+      "candidate_id": "EXT40R-R-004",
+      "reason": "Candidate claim that bundle_sha256 is embedded in its own hashed bytes was rejected: the identity paragraph states the full-file hash is intentionally outside the hashed bytes and forbids a self-referential hash field."
+    },
+    {
+      "candidate_id": "EXT40R-R-005",
+      "reason": "Candidate claim that a charge can occur without HUMAN WBS approval was rejected: the charge edge requires a valid exact HUMAN WBS approval and P13 requires a non-revoked HUMAN authority record."
+    },
+    {
+      "candidate_id": "EXT40R-R-006",
+      "reason": "Candidate claim that the design claims non-bypassable native enforcement was rejected: both Section 1 and Section 5.3 disclaim hard enforcement and name the residual bypass and TOCTOU risks."
+    }
+  ]
+}

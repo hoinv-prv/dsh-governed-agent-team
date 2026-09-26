@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v35-council-036",
+  "state": "failed",
+  "stage": "dispatch",
+  "failure": {
+    "code": "ledger_integrity_failed",
+    "stage": "dispatch",
+    "subject": "schema-wrapper-workflow",
+    "message": "All three schema-wrapper workflow agents returned null without per-invocation typed failure evidence in the currently loaded pre-patch runtime. Retry eligibility cannot be established; no envelopes may be inferred or repaired.",
+    "retryable": false,
+    "invocation_id": null
+  },
+  "updated_sequence": 2
+}

@@ -1,0 +1,832 @@
+{
+  "review_id": "control-plane-stabilization-v33-council-033",
+  "objective": "Synthesize only existing verified finding IDs. Confirmed high/medium require needs_revision; refuted findings cannot drive verdict. No new finding IDs.",
+  "artifact_manifest_sha256": "36d966746e222aa5dd30ae6937646c0c3f13b7e33e620527fdce54e2ff13c8da",
+  "ledger": {
+    "schema_version": 1,
+    "review_id": "control-plane-stabilization-v33-council-033",
+    "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+    "findings": [
+      {
+        "finding_id": "ADV33-F-001",
+        "source_lane": "internal-adversarial",
+        "mode": "design",
+        "category": "accounting",
+        "claim": "The RootControlJournal ceiling recurrence omits the per-attempt root debit required by Section 6.3: the append protocol debits one attempt plus worst-case overhead from the finite administrative_recovery allocation, but the only Section 7.1 root recurrence subtracts \u03a3O_root_j, where O_root_j is defined as root append overhead and root records have no root-attempt-unit field. Root attempts are therefore undercounted (or ambiguously folded into overhead), so repeated failed/UNKNOWN administrative attempts are not mechanically bounded by C_root.",
+        "classification": "fact",
+        "severity": "high",
+        "governance_class": null,
+        "artifact_id": "design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "332"
+        },
+        "evidence_excerpt": "Root units are debited only from `C_root`; administrative/operation units only from `C`. ... each root append appears in exactly one `O_root_j` and decrements `root_remaining_units := C_root - \u03a3O_root_j`.",
+        "impact": "Administrative append/recovery can exceed the HUMAN-bound root ceiling while still appearing reconciled, breaking the no-double-debit/ceiling invariant and making post-charge fail-stop accounting and P3/P15 admission evidence unsound.",
+        "recommended_action": "Define explicit root operation-unit and overhead fields and a recurrence that debits each root authorization/commit/outcome/recovery append exactly once under C_root; state whether overhead includes the attempt unit, then synchronize P3/P15, matrix, handoff, and arithmetic fixtures.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-adversarial-001",
+          "invocation_id": "inv33-adversarial-001",
+          "attempt": 1
+        },
+        "confidence": 0.99,
+        "source_candidate_ids": [
+          "ADV33-F-001"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "finding_id": "ADV33-F-002",
+        "source_lane": "internal-adversarial",
+        "mode": "design",
+        "category": "state-closure",
+        "claim": "The design introduces administrative recovery states `RESTORED_BLOCKED` and terminal `ADMIN_LEDGER_UNRECOVERABLE`, but they are not represented as edges/states in the normative composed transition table, nor explicitly admitted by the P3 allowlist or P15 capability manifest; the failure matrix has only a generic administrative-append row. Thus the administrative failure path is not mechanically closed across state, P3, P15, and matrix, leaving terminal disposition/re-entry rules dependent on prose rather than a single checkable contract.",
+        "classification": "fact",
+        "severity": "medium",
+        "governance_class": null,
+        "artifact_id": "design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "328"
+        },
+        "evidence_excerpt": "`RESTORED_BLOCKED` cannot resume until the restored ledger appends a recovery-lineage entry carrying all failed/UNKNOWN debits; terminal `ADMIN_LEDGER_UNRECOVERABLE`.",
+        "impact": "A validator or handoff implementer can omit, misclassify, or incorrectly reopen these administrative terminal/recovery states; this risks recovery deadlock or an unbound path back toward admission after ledger evidence is unrecoverable.",
+        "recommended_action": "Add explicit administrative genesis/append/recovery terminal rows to the normative state table and failure matrix, name their P3/P15 acceptance/rejection rules and exact owner/effects, and add passing/failing fixtures plus handoff manifest cells.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-adversarial-001",
+          "invocation_id": "inv33-adversarial-001",
+          "attempt": 1
+        },
+        "confidence": 0.94,
+        "source_candidate_ids": [
+          "ADV33-F-002"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "finding_id": "AUTH33-F-01",
+        "source_lane": "internal-authority",
+        "mode": "governance",
+        "category": "authority",
+        "claim": "Section 6.1(h) still names the superseded revision as the author of its own approval set, so the requirement to approve the AdmissionBundle capability schemas is attributed to v32 bytes rather than to this v33 artifact.",
+        "classification": "fact",
+        "severity": "medium",
+        "governance_class": "textual-defect",
+        "artifact_id": "design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "304"
+        },
+        "evidence_excerpt": "Until those real paths/hashes/commands exist and pass, admission is `NOT_READY`; v32 does not invent them or claim P1/P2 mechanical validation.",
+        "impact": "A reader, WBS task or bootstrap decision can bind the non-invented-capability claim and the design-basis acceptance to the superseded v32 bytes while this artifact remains the reviewed design, which is the same superseded-bytes exposure that the adjudicated remediation required the bundle design_basis binding to prevent.",
+        "recommended_action": "Replace the stale revision label with the current design's own revision identifier (or a revision-neutral phrase) before freezing the artifact.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-authority-001",
+          "invocation_id": "inv33-authority-001",
+          "attempt": 1
+        },
+        "confidence": 0.9,
+        "source_candidate_ids": [
+          "AUTH33-F-01"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "finding_id": "AUTH33-F-02",
+        "source_lane": "internal-authority",
+        "mode": "design",
+        "category": "internal-consistency",
+        "claim": "The composed transition table that declares an omitted state or edge forbidden is itself incomplete: it contains only fifteen rows covering intent, completion, accounting and acceptance-verification conditions, and has no state column entry or edge for the document's other normative states.",
+        "classification": "inference",
+        "severity": "medium",
+        "governance_class": null,
+        "artifact_id": "design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "182"
+        },
+        "evidence_excerpt": "The diagram above is summary-only. This table plus Sections 5.1\u20139.1 is normative; an omitted state/edge is forbidden.",
+        "impact": "States such as MIGRATION_BLOCKED, ADMIN_LEDGER_GENESIS_BLOCKED, ADMIN_LEDGER_APPEND_UNKNOWN_BLOCKED, RESTORED_BLOCKED, REVIEW_PENDING, BOOTSTRAP_MAINTENANCE, ACCEPTANCE_VERIFICATION_FAILED and ACCEPTANCE_AUTHORITY_CONFLICT are reachable in the diagram and the failure matrix but never appear as the current state of a permitted edge, so the P3 allowlist, P15 capability set and fixture set cannot be proven closed against this table without inventing the missing rows.",
+        "recommended_action": "Add the missing state rows and edges to the normative composed transition table, or state exactly which states are governed outside it.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-authority-001",
+          "invocation_id": "inv33-authority-001",
+          "attempt": 1
+        },
+        "confidence": 0.75,
+        "source_candidate_ids": [
+          "AUTH33-F-02"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "finding_id": "AUTH33-F-03",
+        "source_lane": "internal-authority",
+        "mode": "governance",
+        "category": "authority",
+        "claim": "The document requires every transition-table row to appear identically in the P3 allowlist and the P15 capability manifest, but neither set is stated anywhere in the artifact, so no builder or auditor can verify the required cross-surface identity.",
+        "classification": "fact",
+        "severity": "medium",
+        "governance_class": "textual-defect",
+        "artifact_id": "design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "202"
+        },
+        "evidence_excerpt": "Every row must appear identically in the P3 allowlist, P15 capability manifest, failure matrix and fixtures.",
+        "impact": "The mandatory closure evidence for every normative edge (P3 admission rule and P15 capability entry) has no pinned content in the reviewed bytes; the requirement is satisfied only by assertion, and any later list can be claimed compliant without a checked reference.",
+        "recommended_action": "State the P3 allowlist and P15 capability manifest contents in the artifact, or bind them to exact pinned bytes and hashes in the bootstrap requirement.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-authority-001",
+          "invocation_id": "inv33-authority-001",
+          "attempt": 1
+        },
+        "confidence": 0.85,
+        "source_candidate_ids": [
+          "AUTH33-F-03"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "finding_id": "AUTH33-F-04",
+        "source_lane": "internal-authority",
+        "mode": "design",
+        "category": "requirement-coverage",
+        "claim": "The bootstrap capability enumeration for the intent-corruption recovery path omits the tombstone and intent-root-manifest supersession schemas that the same path and the WBS-build handoff manifest require, so the bootstrap capability set is not closed.",
+        "classification": "inference",
+        "severity": "medium",
+        "governance_class": null,
+        "artifact_id": "design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "304"
+        },
+        "evidence_excerpt": "immutable transition-intent/completion/guarded-write-receipt/unknown-provenance-recovery/intent-corruption-tombstone/intent-root-manifest-supersession/uncharged-completion-corruption-tombstone/uncharged-not-applied-corruption-recovery/completion-corruption-tombstone/charged-completion-corruption-recovery/post-charge-recovery-allocation/index-generation-supersession/administrative-root-authorization+candidate-commit+attempt-outcome+recovery/administrative-authorization-outcome-pair/repair schemas",
+        "impact": "The handoff manifest requires a canonical path, schema hash, validator, argv/effect, accounting pair and P3/P15 rule for every corruption-tombstone and supersession record, so a builder cannot complete that manifest from the approved bootstrap capability set without adding unnamed authority.",
+        "recommended_action": "Add every record type required by P3/P15 and the handoff manifest, including the intent tombstone and intent-root-manifest supersession schemas, to the bootstrap enumeration.",
+        "verification": {
+          "status": "refuted",
+          "verification_id": "verify33-refuted"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-authority-001",
+          "invocation_id": "inv33-authority-001",
+          "attempt": 1
+        },
+        "confidence": 0.7,
+        "source_candidate_ids": [
+          "AUTH33-F-04"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "finding_id": "AUTH33-F-05",
+        "source_lane": "internal-authority",
+        "mode": "design",
+        "category": "internal-consistency",
+        "claim": "The acyclic commitment rule is stated with a mutually inconsistent derivation order: the committed body includes logical_intent_id, yet the text computes the body commitment that projects that body before deriving the id, and the intent_body_domain it hashes is never defined.",
+        "classification": "inference",
+        "severity": "medium",
+        "governance_class": null,
+        "artifact_id": "design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "220"
+        },
+        "evidence_excerpt": "**Preliminary boundary construction with acyclic commitment:** first compute `PlannedIntentBodyCommitment = SHA256(canonical-json(intent_body_domain))`. First derive `logical_intent_id = SHA256(JCS([mission_id, plan_hash, source_hash, source_version, previous_head_hash, previous_head_sequence, edge, attempt_id, idempotency_key]))`.",
+        "impact": "A byte-exact implementation of the design's own acyclic construction fixture can either hash an undefined domain or close a cycle, so the guarantee that no member hashes a later object through an included domain is not yet mechanically checkable from the reviewed bytes.",
+        "recommended_action": "Reverse the two steps so the identity derivation precedes the body commitment, define the intent_body_domain projection exactly, and state the closed construction of the final intent bytes.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-authority-001",
+          "invocation_id": "inv33-authority-001",
+          "attempt": 1
+        },
+        "confidence": 0.7,
+        "source_candidate_ids": [
+          "AUTH33-F-05"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "source_lane": "external-outside-view",
+        "mode": "design",
+        "category": "traceability",
+        "claim": "The reviewed bytes invoke the v32 pre-council consistency audit but contain no audit finding identifier (CS-01..CS-09, CH-01..CH-03, CA-01, BA-01..BA-04) and no per-finding closure mapping, so the required demonstration that each pinned audit finding is closed in v33 cannot be checked from the reviewed artifact.",
+        "classification": "fact",
+        "severity": "medium",
+        "governance_class": null,
+        "artifact_id": "sanitized-design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "8"
+        },
+        "evidence_excerpt": "Corrected after the v32 pre-council consistency audit; requires deterministic audit checks",
+        "impact": "A mandatory closure property is asserted only implicitly; any 'closed' conclusion would rest on an artifact not present in this lane.",
+        "recommended_action": "Require a per-finding closure table mapping every pinned audit finding ID to an exact v33 section/line locator and, where applicable, its validator or fixture, before a closure claim is relied on.",
+        "verification": {
+          "status": "refuted",
+          "verification_id": "verify33-refuted"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-outside-002",
+          "invocation_id": "inv33-outside-002",
+          "attempt": 2
+        },
+        "confidence": 0.9,
+        "finding_id": "EXT33R-O-001",
+        "source_candidate_ids": [
+          "EXT33R-O-001"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "source_lane": "external-outside-view",
+        "mode": "design",
+        "category": "evidence-basis",
+        "claim": "The design's root-cause evidence basis is an external snapshot path plus hash, while this lane's pinned bytes contain only the sanitized design; the failure-model bytes and the v32 audit are therefore unavailable for re-derivation in this review.",
+        "classification": "fact",
+        "severity": "medium",
+        "governance_class": null,
+        "artifact_id": "sanitized-design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "29"
+        },
+        "evidence_excerpt": "The evidence-bound failure model used for v32 is the immutable snapshot",
+        "impact": "Root-cause and counterfactual claims in Section 2 cannot be independently recomputed from the reviewed bytes, so their evidentiary weight is a function of an unpinned read.",
+        "recommended_action": "Supply the referenced snapshot/audit bytes with this lane, or record the context reduction explicitly as a degradation and cap any evidence-dependent conclusion accordingly.",
+        "verification": {
+          "status": "refuted",
+          "verification_id": "verify33-refuted"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-outside-002",
+          "invocation_id": "inv33-outside-002",
+          "attempt": 2
+        },
+        "confidence": 0.85,
+        "finding_id": "EXT33R-O-002",
+        "source_candidate_ids": [
+          "EXT33R-O-002"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "source_lane": "external-outside-view",
+        "mode": "design",
+        "category": "accounting",
+        "claim": "The charge-preimage candidate persisted before the ledger write commits an allocated_attempt_id inside attempt_invariants, while Section 5.1 states that none of the six pre-charge control effects may allocate an attempt.",
+        "classification": "inference",
+        "severity": "medium",
+        "governance_class": null,
+        "artifact_id": "sanitized-design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "220"
+        },
+        "evidence_excerpt": "attempt_invariants` as the closed JCS object `{source_attempt_ids_sha256,source_attempt_count,source_attempts_charged,allocated_attempt_id",
+        "impact": "The boundary between persisting a candidate attempt ID and allocating an attempt is not pinned; the pre-charge allowlist and the charge-intent construction can be read as mutually inconsistent.",
+        "recommended_action": "State explicitly that a pre-charge intent may carry only a candidate attempt ID that becomes allocated solely by the version-guarded ledger write, and align Section 5.1 with Section 5.2 steps 4-6.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-outside-002",
+          "invocation_id": "inv33-outside-002",
+          "attempt": 2
+        },
+        "confidence": 0.7,
+        "finding_id": "EXT33R-O-003",
+        "source_candidate_ids": [
+          "EXT33R-O-003"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "source_lane": "external-outside-view",
+        "mode": "design",
+        "category": "state-machine",
+        "claim": "The normative composed transition table does not name several states that Sections 9.1 and 14 define (for example INTENT_INDEX_OPEN_PENDING, UNCHARGED_COMPLETION_CORRUPT_BLOCKED, COMPLETION_CORRUPT_BLOCKED, ADMIN_LEDGER_APPEND_UNKNOWN_BLOCKED), so state/edge completeness is owned by three sections rather than one enumerable table.",
+        "classification": "fact",
+        "severity": "low",
+        "governance_class": null,
+        "artifact_id": "sanitized-design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "182-200"
+        },
+        "evidence_excerpt": "This table plus Sections 5.1\u20139.1 is normative; an omitted state/edge is forbidden.",
+        "impact": "A reviewer or validator cannot decide 'no missing state edge' from the table alone; reconciliation across Sections 5.0.1, 9.1 and 14 is required and may differ on entry/exit conditions.",
+        "recommended_action": "Publish one canonical machine-checkable state/edge enumeration and have the composed table, failure matrix and fixture manifest reference it by ID.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-outside-002",
+          "invocation_id": "inv33-outside-002",
+          "attempt": 2
+        },
+        "confidence": 0.8,
+        "finding_id": "EXT33R-O-004",
+        "source_candidate_ids": [
+          "EXT33R-O-004"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "source_lane": "external-outside-view",
+        "mode": "design",
+        "category": "hash-domain",
+        "claim": "The logical intent ID preimage uses previous_head_hash and previous_head_sequence, terms that appear nowhere else in the design, while Sections 9.1 and 5.2 use previous_completion_hash/previous_completion_sequence and 'closed-chain head'.",
+        "classification": "fact",
+        "severity": "low",
+        "governance_class": null,
+        "artifact_id": "sanitized-design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "220"
+        },
+        "evidence_excerpt": "previous_head_hash, previous_head_sequence",
+        "impact": "An implementer cannot determine from the text which persisted value feeds the deterministic logical intent ID, which weakens the claimed byte-exact reproducibility of intent hashes and OPEN entries.",
+        "recommended_action": "Declare one canonical name for the chain-head pair, define it once in the hash-domain profile (Section 5.1.1), and replace the aliases.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-outside-002",
+          "invocation_id": "inv33-outside-002",
+          "attempt": 2
+        },
+        "confidence": 0.75,
+        "finding_id": "EXT33R-O-005",
+        "source_candidate_ids": [
+          "EXT33R-O-005"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "source_lane": "external-outside-view",
+        "mode": "design",
+        "category": "ordering",
+        "claim": "Section 6.3 requires the AdmissionResourceReservation append (effect 5.1(f)) to be the first admission-cycle operation, but Section 5.1 also places the AIP/ASC start transition (effect 5.1(a)) on the FROZEN to PREPARING edge without stating whether that effect precedes the reservation or is metered by it.",
+        "classification": "inference",
+        "severity": "low",
+        "governance_class": null,
+        "artifact_id": "sanitized-design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "330"
+        },
+        "evidence_excerpt": "Before any ordinary admission-cycle call/effect, effect 5.1(f) appends one immutable `AdmissionResourceReservation` as the first operation.",
+        "impact": "A pre-PREPARING AIP/ASC effect may be read as either unmetered relative to the administrative ceiling or double-charged, which bears on the no-hidden-cost and no-double-debit properties.",
+        "recommended_action": "State the exact total order of effects (a) through (f) and name the ledger allocation that prices the FROZEN-to-PREPARING AIP transition.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-outside-002",
+          "invocation_id": "inv33-outside-002",
+          "attempt": 2
+        },
+        "confidence": 0.6,
+        "finding_id": "EXT33R-O-006",
+        "source_candidate_ids": [
+          "EXT33R-O-006"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "source_lane": "external-outside-view",
+        "mode": "design",
+        "category": "verification-plan",
+        "claim": "Section 16 requires a closed transition-capability manifest whose missing cells block drafting, but the reviewed bytes contain no such manifest or fixture inventory, so fixture completeness for every declared state and edge cannot be checked in this review.",
+        "classification": "fact",
+        "severity": "low",
+        "governance_class": null,
+        "artifact_id": "sanitized-design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "594"
+        },
+        "evidence_excerpt": "Missing manifest cells block drafting.",
+        "impact": "The design's central completeness claim is deferred to an artifact produced after this review; absent it, the transition table and failure matrix cannot be shown to be fixture-backed.",
+        "recommended_action": "Require the manifest and its passing-fixture references as a reviewable artifact at the next gate, and treat its absence as verification-not-verifiable rather than a satisfied must-check.",
+        "verification": {
+          "status": "refuted",
+          "verification_id": "verify33-refuted"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-outside-002",
+          "invocation_id": "inv33-outside-002",
+          "attempt": 2
+        },
+        "confidence": 0.8,
+        "finding_id": "EXT33R-O-007",
+        "source_candidate_ids": [
+          "EXT33R-O-007"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "source_lane": "external-outside-view",
+        "mode": "design",
+        "category": "authority",
+        "claim": "The design explicitly limits its enforcement claim to procedural fail-closed governance and discloses both the delegated-writer bypass and the external-state TOCTOU residual rather than claiming non-bypassable enforcement.",
+        "classification": "fact",
+        "severity": "info",
+        "governance_class": null,
+        "artifact_id": "sanitized-design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "231-233"
+        },
+        "evidence_excerpt": "Therefore this design claims **procedural fail-closed governance**, not hard runtime enforcement.",
+        "impact": "Readers and the HUMAN decision owner can distinguish a procedural coordinator gate from native prevention, which is the property Section 16 requires to be disclosed in the approval packet.",
+        "recommended_action": "Retain this wording unchanged and confirm the same disclosure is present verbatim in the WBS approval packet.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-outside-002",
+          "invocation_id": "inv33-outside-002",
+          "attempt": 2
+        },
+        "confidence": 0.95,
+        "finding_id": "EXT33R-O-008",
+        "source_candidate_ids": [
+          "EXT33R-O-008"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "source_lane": "external-outside-view",
+        "mode": "design",
+        "category": "authority",
+        "claim": "Authority over the attempt ceiling, reallocation and the contingency reserve is retained by the HUMAN decision owner, with council output explicitly excluded from setting the operative amount.",
+        "classification": "fact",
+        "severity": "info",
+        "governance_class": null,
+        "artifact_id": "sanitized-design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "370"
+        },
+        "evidence_excerpt": "Only the HUMAN decision owner may select or change the operative amount; council output is advisory and cannot set it.",
+        "impact": "The advisory boundary is explicit, so no council or model output can be misread as a ceiling or contingency decision.",
+        "recommended_action": "Retain; verify that the later WBS approval record binds the exact selected revision/hash to the HUMAN ceiling decision.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-outside-002",
+          "invocation_id": "inv33-outside-002",
+          "attempt": 2
+        },
+        "confidence": 0.9,
+        "finding_id": "EXT33R-O-009",
+        "source_candidate_ids": [
+          "EXT33R-O-009"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      },
+      {
+        "source_lane": "external-outside-view",
+        "mode": "design",
+        "category": "authority",
+        "claim": "Section 5's diagram routes a HUMAN-accepted ledger genesis to FROZEN and requires a separate exact HUMAN bootstrap authorization to enter BOOTSTRAP_MAINTENANCE, while Section 6.3 states that the genesis final acceptance itself authorizes BOOTSTRAP_MAINTENANCE.",
+        "classification": "inference",
+        "severity": "low",
+        "governance_class": null,
+        "artifact_id": "sanitized-design-v33",
+        "locator": {
+          "kind": "line",
+          "value": "320"
+        },
+        "evidence_excerpt": "makes sequence zero usable and authorizes `BOOTSTRAP_MAINTENANCE`",
+        "impact": "Whether genesis acceptance alone admits maintenance work, or must pass back through FROZEN first, is not pinned; a reader could treat one decision as sufficient where the diagram requires two.",
+        "recommended_action": "State the single authoritative edge from ADMIN_LEDGER_GENESIS into BOOTSTRAP_MAINTENANCE and reconcile the diagram, Section 6.3 and the transition table.",
+        "verification": {
+          "status": "confirmed",
+          "verification_id": "verify33-confirmed"
+        },
+        "provenance": {
+          "reviewer_id": "reviewer33-outside-002",
+          "invocation_id": "inv33-outside-002",
+          "attempt": 2
+        },
+        "confidence": 0.55,
+        "finding_id": "EXT33R-O-010",
+        "source_candidate_ids": [
+          "EXT33R-O-010"
+        ],
+        "normalization": {
+          "disposition": "accepted",
+          "reason": "Structurally valid atomic finding."
+        }
+      }
+    ],
+    "rejected_candidates": []
+  },
+  "verifier": {
+    "schema_version": 1,
+    "review_id": "control-plane-stabilization-v33-council-033",
+    "executor": "parent-orchestrator",
+    "artifact_manifest_sha256": "36d966746e222aa5dd30ae6937646c0c3f13b7e33e620527fdce54e2ff13c8da",
+    "records": [
+      {
+        "verification_id": "verify33-confirmed",
+        "finding_ids": [
+          "ADV33-F-001",
+          "ADV33-F-002",
+          "AUTH33-F-01",
+          "AUTH33-F-02",
+          "AUTH33-F-03",
+          "AUTH33-F-05",
+          "EXT33R-O-003",
+          "EXT33R-O-004",
+          "EXT33R-O-005",
+          "EXT33R-O-006",
+          "EXT33R-O-008",
+          "EXT33R-O-009",
+          "EXT33R-O-010"
+        ],
+        "method": "read",
+        "command_id": null,
+        "argv": null,
+        "cwd": null,
+        "timeout_seconds": null,
+        "authorized_by_request": true,
+        "status": "confirmed",
+        "exit_code": null,
+        "output_excerpt": "Exact read confirms: root recurrence omits distinct attempt units; administrative and review/genesis states are absent from the closed table; stale v32 text remains; P3/P15 per-edge mirrors are not enumerated; logical-id/body ordering is reversed; candidate allocation naming, chain-head aliases, reservation/AIP order and genesis/bootstrap edge remain ambiguous. Positive authority/TOCTOU statements are also exact.",
+        "reason": "Exact read confirms: root recurrence omits distinct attempt units; administrative and review/genesis states are absent from the closed table; stale v32 text remains; P3/P15 per-edge mirrors are not enumerated; logical-id/body ordering is reversed; candidate allocation naming, chain-head aliases, reservation/AIP order and genesis/bootstrap edge remain ambiguous. Positive authority/TOCTOU statements are also exact.",
+        "artifact_hashes_before": [
+          {
+            "artifact_id": "design-v33",
+            "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+          },
+          {
+            "artifact_id": "sanitized-design-v33",
+            "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+          }
+        ],
+        "artifact_hashes_after": [
+          {
+            "artifact_id": "design-v33",
+            "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+          },
+          {
+            "artifact_id": "sanitized-design-v33",
+            "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+          }
+        ],
+        "result_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v33-council-033/verifier/verify33-confirmed.json",
+        "raw_output_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v33-council-033/verifier/raw/verify33-confirmed.txt",
+        "raw_output_sha256": "34a957abaf1396bd0338c094f139ec78c5e55981c28a48fb3407aeaafe8750b2",
+        "raw_output_size_bytes": 417
+      },
+      {
+        "verification_id": "verify33-refuted",
+        "finding_ids": [
+          "AUTH33-F-04",
+          "EXT33R-O-001",
+          "EXT33R-O-002",
+          "EXT33R-O-007"
+        ],
+        "method": "read",
+        "command_id": null,
+        "argv": null,
+        "cwd": null,
+        "timeout_seconds": null,
+        "authorized_by_request": true,
+        "status": "refuted",
+        "exit_code": null,
+        "output_excerpt": "AUTH33-F-04 evidence itself enumerates intent-corruption-tombstone and intent-root-manifest-supersession. EXT33R-O-001/O-002 are consequences of the required sanitized outside-view context reduction; the internal packets contain pinned audit and failure-model bytes. EXT33R-O-007 describes a future build-entry artifact that the design correctly requires before drafting, not an artifact required to exist during this design review.",
+        "reason": "AUTH33-F-04 evidence itself enumerates intent-corruption-tombstone and intent-root-manifest-supersession. EXT33R-O-001/O-002 are consequences of the required sanitized outside-view context reduction; the internal packets contain pinned audit and failure-model bytes. EXT33R-O-007 describes a future build-entry artifact that the design correctly requires before drafting, not an artifact required to exist during this design review.",
+        "artifact_hashes_before": [
+          {
+            "artifact_id": "design-v33",
+            "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+          },
+          {
+            "artifact_id": "sanitized-design-v33",
+            "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+          }
+        ],
+        "artifact_hashes_after": [
+          {
+            "artifact_id": "design-v33",
+            "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+          },
+          {
+            "artifact_id": "sanitized-design-v33",
+            "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+          }
+        ],
+        "result_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v33-council-033/verifier/verify33-refuted.json",
+        "raw_output_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v33-council-033/verifier/raw/verify33-refuted.txt",
+        "raw_output_sha256": "34538e2e4f2cb25d400446c2fc2b80089998f140af226e83c7f20e16a87300bf",
+        "raw_output_size_bytes": 433
+      }
+    ]
+  },
+  "adjudication": {
+    "schema_version": 1,
+    "review_id": "control-plane-stabilization-v33-council-033",
+    "triggered": false,
+    "trigger_reasons": [],
+    "invocation_id": null,
+    "disputed_finding_ids": [],
+    "dispositions": [],
+    "preserved_dissent": []
+  },
+  "external_advisory": {
+    "schema_version": 1,
+    "review_id": "control-plane-stabilization-v33-council-033",
+    "observations": [],
+    "advisory_hypotheses": [
+      {
+        "advisory_id": "EXT33R-A-001",
+        "claim": "If the existing dsh-wbs-execution/1 contract is validated strictly, representation (a) may have no proven slot for the mandated /charge_boundary_preflight_sha256 pointer, which would make the charge preimage unconstructible without inventing a field.",
+        "basis": "Section 5.2 step 4 enumerates representation (a) as covering attempt allocation, cumulative charge, bundle hash, seal hash, boundary-receipt hash, lineage and attempt ID, while step 5 requires the candidate tree to contain exactly the selected execution-contract pointer /charge_boundary_preflight_sha256.",
+        "missing_project_sot": [
+          "The exact pinned dsh-wbs-execution/1 schema bytes, validator implementation and strict-validator fixtures."
+        ],
+        "confidence": "medium",
+        "decision_weight": "none",
+        "suggested_validation": "Load the pinned schema and validator, build the candidate tree with the preflight pointer present, and run the strict validator; if it rejects the field, record P15 NOT_READY or restrict the decision to representation (b)."
+      },
+      {
+        "advisory_id": "EXT33R-A-002",
+        "claim": "The version-guarded execution.json write may rely on a native guarded write/edit primitive whose compare-and-set semantics are not established as an existing DSH capability.",
+        "basis": "Section 6.1 states the coordinator owns the first durable charge through one version-guarded execution.json update using the runtime's native guarded file write/edit operation and that a stale-version conflict aborts, but no pinned capability manifest is present in the reviewed bytes.",
+        "missing_project_sot": [
+          "The pinned DSH tool/capability manifest and version that documents the guarded write operation's version-check and abort semantics."
+        ],
+        "confidence": "medium",
+        "decision_weight": "none",
+        "suggested_validation": "Inspect the pinned DSH capability manifest and exercise a stale-version write to prove abort/no-write, then bind the exact tool identity/hash in P15; otherwise record the capability as unproven."
+      },
+      {
+        "advisory_id": "EXT33R-A-003",
+        "claim": "The pinned v32 consistency audit may contain the CS/CH/CA/BA findings and their closure evidence in an artifact supplied to another lane rather than to this one.",
+        "basis": "The design references the v32 pre-council consistency audit but this lane's context omits internal-history and peer-findings, and no audit identifier appears in the reviewed bytes.",
+        "missing_project_sot": [
+          "The pinned v32 pre-council consistency-audit bytes and any per-finding closure table maintained outside the design."
+        ],
+        "confidence": "medium",
+        "decision_weight": "none",
+        "suggested_validation": "Obtain the pinned audit and check each finding ID against a specific v33 locator; if any finding lacks a v33 locator, report it as an open closure item rather than accepting the Section 2 narrative."
+      },
+      {
+        "advisory_id": "EXT33R-A-004",
+        "claim": "If implementers reuse the pre-reservation symbol G instead of the persisted running committed total, a reservation following a PostChargeRecoveryAllocation could be admitted on a stale ceiling and permit an overrun.",
+        "basis": "Section 6.3 defines G as global committed units before a reservation while also persisting global_committed_units, and the recovery formula is written as global_committed_units := G+R+D; the text does not restate that a later reservation reads the persisted value as its G.",
+        "missing_project_sot": [
+          "The authoritative AdministrativeResourceLedger schema/validator and its budget-arithmetic fixtures."
+        ],
+        "confidence": "low",
+        "decision_weight": "none",
+        "suggested_validation": "Implement the stated formulas literally and run the described fixtures plus a second reservation after a recovery allocation, checking that global_remaining_units never goes negative and that debits reconcile."
+      }
+    ],
+    "promoted_observation_ids": [
+      "EXT33R-O-001",
+      "EXT33R-O-002",
+      "EXT33R-O-003",
+      "EXT33R-O-004",
+      "EXT33R-O-005",
+      "EXT33R-O-006",
+      "EXT33R-O-007",
+      "EXT33R-O-008",
+      "EXT33R-O-009",
+      "EXT33R-O-010"
+    ]
+  },
+  "degradations": {
+    "schema_version": 1,
+    "review_id": "control-plane-stabilization-v33-council-033",
+    "degradations": [
+      {
+        "degradation_id": "DEG33-001",
+        "kind": "prompt_only_read_only",
+        "affected_lane": "internal-authority",
+        "detail": "Read-only restrictions were prompt-only.",
+        "verdict_consequence": "pass_with_notes_at_best"
+      },
+      {
+        "degradation_id": "DEG33-002",
+        "kind": "prompt_only_read_only",
+        "affected_lane": "internal-adversarial",
+        "detail": "Read-only restrictions were prompt-only.",
+        "verdict_consequence": "pass_with_notes_at_best"
+      },
+      {
+        "degradation_id": "DEG33-003",
+        "kind": "prompt_only_read_only",
+        "affected_lane": "external-outside-view",
+        "detail": "Read-only restrictions were prompt-only.",
+        "verdict_consequence": "pass_with_notes_at_best"
+      },
+      {
+        "degradation_id": "DEG33-004",
+        "kind": "unknown_cost",
+        "affected_lane": "all",
+        "detail": "Duration, token and cost telemetry unavailable.",
+        "verdict_consequence": "pass_with_notes_at_best"
+      }
+    ]
+  },
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "output_contract": "Return only chairman.json contract object; disposition every accepted ledger finding; refuted findings reject, confirmed positive info may note, confirmed defects accept; verdict rules exact.",
+  "typed_retry_correction": {
+    "prior_failure": "schema_invalid",
+    "required_changes": [
+      "Use reason, never rationale, in each finding disposition.",
+      "confidence must be one of low|medium|high, not numeric.",
+      "unreviewed_observations must be objects {observation_id,claim,recommended_lane}; advisory hypotheses may be left as residual risks and need not be promoted as unreviewed observations."
+    ],
+    "invocation_id": "inv33-chairman-002"
+  }
+}

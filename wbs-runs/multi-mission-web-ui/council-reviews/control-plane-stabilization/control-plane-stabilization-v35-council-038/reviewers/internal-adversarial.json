@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v35-council-038",
+  "reviewer_id": "reviewer38-adversarial-001",
+  "lane": "internal-adversarial",
+  "invocation_id": "inv38-adv-001",
+  "attempt": 1,
+  "status": "completed",
+  "artifact_manifest_sha256": "328a9e72938ac6f51f2336d2883f25dfd5ec5207bc4e45e70b43d1a773ae8188",
+  "packet_sha256": "e1316d637340417c59a1ab9f4aa3606c3969bf42ecd2b0791c62c500a614bdc8",
+  "findings": [
+    {
+      "finding_id": "ADV38-F-001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "The closed CP-05 registry includes MIGRATION_MAINTENANCE but defines only its failure edge to MIGRATION_RECOVERY and the accepted-base edge from MIGRATION_RECOVERY to FROZEN; it does not define the successful MIGRATION_MAINTENANCE-to-FROZEN edge shown by the state diagram and required by the migration procedure.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "214"
+      },
+      "evidence_excerpt": "operation failure: `MIGRATION_MAINTENANCE→MIGRATION_RECOVERY`; ... verified/reviewed HUMAN-accepted base: `MIGRATION_RECOVERY→FROZEN`",
+      "impact": "A successful migration performed directly from MIGRATION_MAINTENANCE has no registry-authorized completion edge, so P3/P15 and the failure matrix cannot close the required return to FROZEN without inventing an unlisted transition or incorrectly routing success through recovery.",
+      "recommended_action": "Add the successful MIGRATION_MAINTENANCE→FROZEN(new base) edge, with its acceptance and lineage requirements, to CP-05 and mirror it in P3, P15, the failure matrix, handoff manifest, and fixtures.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-adversarial-001",
+        "invocation_id": "inv38-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.97
+    },
+    {
+      "finding_id": "ADV38-F-002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "The design makes index CLOSE without a record, unmatched non-corrupt IDs, and index-only disagreement enter TRANSITION_RECOVERY_BLOCKED, but supplies no sole next edge or recovery contract for that generic blocked case; the later explicit exits cover only missing writer receipt and divergent/partial current bytes.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "424"
+      },
+      "evidence_excerpt": "index CLOSE without a record, unmatched non-corrupt IDs, or an index-only disagreement is `TRANSITION_RECOVERY_BLOCKED`",
+      "impact": "A charged or in-flight transition can be stranded with an unmatched index state and no named owner-authorized recovery, terminal disposition, or bounded accounting path; an implementation must either invent recovery behavior or risk reopening/ignoring an open intent.",
+      "recommended_action": "Define one explicit recovery/terminal edge for every generic TRANSITION_RECOVERY_BLOCKED cause, including authority, records, accounting, P3/P15 rule, and fixtures; do not leave index-only disagreement on an unclosed generic sink.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-adversarial-001",
+        "invocation_id": "inv38-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.93
+    },
+    {
+      "finding_id": "ADV38-F-003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "hash-domain",
+      "claim": "The claimed byte-exact intent construction does not define the byte preimages for source_attempt_ids_sha256 or candidate_attempt_ids_sha256, nor the canonical ordering rule for the administrative_ids arrays; JCS alone does not determine those nested digest inputs or array order.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "245"
+      },
+      "evidence_excerpt": "Define `attempt_invariants` as the closed JCS object `{source_attempt_ids_sha256,source_attempt_count,source_attempts_charged,candidate_attempt_id,candidate_attempt_ids_sha256,candidate_attempt_count,candidate_attempts_charged}` and `administrative_ids` as the complete ordered JCS arrays",
+      "impact": "Independent implementations can produce different logical_intent_id or PlannedIntentBodyCommitment values while conforming to the stated profile, preventing deterministic OPEN/intent matching and weakening the claimed hash-domain closure.",
+      "recommended_action": "Specify each nested digest's exact JCS/UTF-8 preimage, type and empty-case encoding, and define the deterministic key/order and duplicate policy for every administrative ID array; add a byte-exact fixture covering these fields.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-adversarial-001",
+        "invocation_id": "inv38-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.88
+    }
+  ],
+  "rejected_candidates": []
+}

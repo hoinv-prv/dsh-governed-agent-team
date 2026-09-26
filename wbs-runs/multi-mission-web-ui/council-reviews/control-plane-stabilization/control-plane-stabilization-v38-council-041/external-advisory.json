@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v38-council-041",
+  "observations": [],
+  "advisory_hypotheses": [
+    {
+      "advisory_id": "EXT41-A-001",
+      "claim": "The run-033 authority finding AUTH33-F-04, and the run-040 authority findings AUTH40R-F-004 and AUTH40R-F-005, may be unclosed rather than intentionally absent.",
+      "basis": "Section 15.1 rows contain AUTH33-F-01/-02/-03/-05 and AUTH40R-F-001/-002/-003/-006/-007, leaving gaps inside both ID ranges without any stated refutation.",
+      "missing_project_sot": [
+        "run-033 consistency audit basis 6e91a5bc3d333b052469d4f381e5805a53c7ecc4eb8ba11e5c0dfe64157cfbef",
+        "run-040 internal authority lane record"
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Run the required finding-ID completeness diff over the pinned audit and run-040 lane records, and record for each gap whether the finding was refuted or omitted."
+    },
+    {
+      "advisory_id": "EXT41-A-002",
+      "claim": "Run-033 outside-view observation EXT33R-O-007 and run-040 outside observations EXT40R-O-005/-006/-008/-010 may be unclosed rather than dispositioned.",
+      "basis": "Section 15.1 lists EXT33R-O-003/-004/-005/-006/-008/-009/-010 and EXT40R-O-004/-007/-009/-011, with gaps inside both ranges and no adjacent refutation record.",
+      "missing_project_sot": [
+        "run-033 outside-view lane record",
+        "run-040 outside-view lane record"
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Diff the complete outside-view observation ID sets of runs 033 and 040 against Section 15.1 and record each gap as refuted, promoted or omitted."
+    },
+    {
+      "advisory_id": "EXT41-A-003",
+      "claim": "Whether every schema-valid run-040 internal finding is closed by v38 cannot be judged from the outside-view packet, because peer findings are omitted by contract.",
+      "basis": "The dispatched packet carries one sanitized artifact, no Sources of Truth and omits the internal-history and peer-findings categories, so no run-040 finding set is available to this lane.",
+      "missing_project_sot": [
+        "run-040 internal-adversarial and internal-authority finding sets"
+      ],
+      "confidence": "high",
+      "decision_weight": "none",
+      "suggested_validation": "Have the parent map each run-040 internal finding ID to an exact Section 15.1 row or a recorded refutation, then bind that map into verification evidence."
+    },
+    {
+      "advisory_id": "EXT41-A-004",
+      "claim": "The v38 review-state sentence declaring the run-040 outside envelope schema-invalid may drop a formal lane on an unverified process assertion.",
+      "basis": "Line 8 asserts the run-040 outside envelope is schema-invalid and supplies no formal lane, but the design bytes contain no validator output or envelope bytes supporting that assertion.",
+      "missing_project_sot": [
+        "run-040 outside-view envelope bytes",
+        "pinned council schema-validation result for that envelope"
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Re-validate the run-040 outside envelope with the pinned council validator and persist the result before treating its content as non-authoritative."
+    }
+  ],
+  "promoted_observation_ids": [
+    "EXT41-O-001",
+    "EXT41-O-002",
+    "EXT41-O-003",
+    "EXT41-O-004",
+    "EXT41-O-005",
+    "EXT41-O-006",
+    "EXT41-O-007",
+    "EXT41-O-008",
+    "EXT41-O-009",
+    "EXT41-O-010"
+  ]
+}

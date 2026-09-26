@@ -1,0 +1,11 @@
+Parent read-only verification against immutable design-v12 SHA-256 cb0e725df26dba0fede61ec616f85344528654eb02658fa8ac9890410878bde7.
+
+Confirmed all six normalized findings:
+- F-001: P16 does not root alternate acceptor delegation in the designated mission decision owner.
+- F-002: P15 omits the exact run_aip start/resume/step argv/tool/effect it governs.
+- F-003: REVIEW_PENDING has no owner, bounded recovery/escalation, or terminal disposition.
+- adversarial-f001: P3 lineage omits ordinary post-charge execution-ledger status/outcome/review/acceptance writes.
+- adversarial-f002: migration step 2 hard-codes v1 instead of consuming the P15 representation decision.
+- adversarial-f003: pre-charge closure permits step/resume but Section 10 also allows start.
+
+No command verification was authorized or executed; these are exact specification-presence/consistency checks.

@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v16-council-017",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer17-adversarial-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "transition-recovery",
+      "claim": "A candidate-equal restart may finalize an APPLIED transition from candidate equality and strict validation alone, without durable proof that the edge-specific live authority/readiness checks and authorized guarded writer produced those bytes.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v16",
+      "locator": {
+        "kind": "line",
+        "value": "334"
+      },
+      "evidence_excerpt": "if bytes equal the candidate, it deterministically re-runs strict validation and create-once finalizes the identical APPLIED completion",
+      "impact": "A candidate written after authority or readiness drift, or by another natively capable writer, can be laundered into a complete transition lineage and then support later charge, dispatch, or acceptance decisions.",
+      "recommended_action": "Permit candidate-equal APPLIED finalization only when a preexisting immutable guarded-write receipt proves the exact writer, edge-specific boundary checks, authority state, source version, candidate hash, and write result; otherwise enter transition-recovery-blocked and do not create APPLIED.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer17-adversarial-001",
+        "invocation_id": "inv17-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.99,
+      "source_candidate_ids": [
+        "reviewer17-adversarial-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer17-adversarial-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "charge-boundary-evidence",
+      "claim": "The source-equal charge restart requires a new boundary receipt but reuses an immutable intent whose exact candidate bytes/hash were pinned before that new observation; the design defines no way to bind the new receipt into the unchanged candidate ledger bytes.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v16",
+      "locator": {
+        "kind": "line",
+        "value": "334"
+      },
+      "evidence_excerpt": "P7–P12 live capabilities/Goal/Team/reviewer/budget state and the new boundary receipt",
+      "impact": "The restart must either write a candidate bound to stale boundary evidence or alter the pinned candidate and break intent/hash identity, so the claimed fresh fail-closed charge boundary is not mechanically realizable.",
+      "recommended_action": "On every source-equal charge restart, close the old intent NOT_APPLIED and create a fresh candidate and intent that bind the new boundary receipt before any guarded write; otherwise specify and validate an exact representation that incorporates fresh receipt bytes without changing the pinned candidate hash.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer17-adversarial-001",
+        "invocation_id": "inv17-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98,
+      "source_candidate_ids": [
+        "reviewer17-adversarial-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer17-adversarial-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "precharge-evidence-effects",
+      "claim": "The closed four-effect pre-charge write set contains no operation that can persist the fresh path-and-hash receipt artifacts required for live P7–P11 and P14 evidence before the AdmissionBundle is sealed, while prepare is explicitly read-only.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v16",
+      "locator": {
+        "kind": "line",
+        "value": "168"
+      },
+      "evidence_excerpt": "the only pre-charge writes are four coordinator-owned, uncharged control/evidence effects separately approved under P15",
+      "impact": "A conforming implementation cannot produce a valid READY bundle from fresh evidence; an implementation that writes those receipts anyway uses undeclared effects, while reuse of old paths permits stale or replayed readiness evidence.",
+      "recommended_action": "Either embed every fresh canonical receipt and its raw evidence inside the bytes written by the approved bundle seal, or add one explicit create-once evidence-pack operation with owner, schema, paths, bounded effects, accounting, validation, and crash recovery, then include it in P15 and the pre-charge write invariant.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer17-adversarial-001",
+        "invocation_id": "inv17-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.96,
+      "source_candidate_ids": [
+        "reviewer17-adversarial-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v33-council-033",
+  "verification_id": "verify33-refuted",
+  "finding_ids": [
+    "AUTH33-F-04",
+    "EXT33R-O-001",
+    "EXT33R-O-002",
+    "EXT33R-O-007"
+  ],
+  "method": "read",
+  "command_id": null,
+  "argv": null,
+  "cwd": null,
+  "timeout_seconds": null,
+  "authorized_by_request": true,
+  "status": "refuted",
+  "exit_code": null,
+  "output_excerpt": "AUTH33-F-04 evidence itself enumerates intent-corruption-tombstone and intent-root-manifest-supersession. EXT33R-O-001/O-002 are consequences of the required sanitized outside-view context reduction; the internal packets contain pinned audit and failure-model bytes. EXT33R-O-007 describes a future build-entry artifact that the design correctly requires before drafting, not an artifact required to exist during this design review.",
+  "reason": "AUTH33-F-04 evidence itself enumerates intent-corruption-tombstone and intent-root-manifest-supersession. EXT33R-O-001/O-002 are consequences of the required sanitized outside-view context reduction; the internal packets contain pinned audit and failure-model bytes. EXT33R-O-007 describes a future build-entry artifact that the design correctly requires before drafting, not an artifact required to exist during this design review.",
+  "artifact_hashes_before": [
+    {
+      "artifact_id": "design-v33",
+      "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+    },
+    {
+      "artifact_id": "sanitized-design-v33",
+      "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+    }
+  ],
+  "artifact_hashes_after": [
+    {
+      "artifact_id": "design-v33",
+      "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+    },
+    {
+      "artifact_id": "sanitized-design-v33",
+      "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+    }
+  ],
+  "result_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v33-council-033/verifier/verify33-refuted.json",
+  "raw_output_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v33-council-033/verifier/raw/verify33-refuted.txt",
+  "raw_output_sha256": "34538e2e4f2cb25d400446c2fc2b80089998f140af226e83c7f20e16a87300bf",
+  "raw_output_size_bytes": 433,
+  "started_at": null,
+  "duration_ms": null
+}

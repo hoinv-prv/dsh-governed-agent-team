@@ -83,18 +83,15 @@ describe('web e2e: Governed Agent Team panel', () => {
     await scaffold?.close()
   })
 
-  it('loads the roster and creates one shared task through generated Remote', async () => {
+  it('loads the current mission and members without task controls', async () => {
     onTestFailed(() => saveFailureShot(page, 'web-e2e-gat-agent-team-panel'))
     const action = page.locator('[data-team-action]')
     await action.getByRole('button', { name: /Agent Team/iu }).click()
-    await action.getByText('No shared tasks yet').waitFor()
+    await action.getByRole('heading', { name: 'Mission detail' }).waitFor()
+    await action.getByRole('heading', { name: 'Members' }).waitFor()
     await action.getByText('lead').waitFor()
-    await action.getByRole('button', { name: 'New task' }).click()
-    await action.getByPlaceholder('Task subject').fill('Browser task')
-    await action.getByPlaceholder('Task description').fill('Created through the assembled browser')
-    await action.getByPlaceholder(/Write scopes/iu).fill('src/web')
-    await action.getByRole('button', { name: 'Save' }).click()
-    await action.getByText('Browser task').waitFor()
+    expect(await action.getByRole('heading', { name: 'Shared tasks' }).count()).toBe(0)
+    expect(await action.getByRole('button', { name: 'New task' }).count()).toBe(0)
     const snapshot = await captureStableAria(page, '[data-team-action]', scaffold.workspaceCwd)
     await compareOrRefreshGolden(PANEL_EXPECTED, snapshot, MODE)
     expect(tripwire.pageErrors).toEqual([])

@@ -45,6 +45,18 @@ synthetic_systems: []
 # Keep ONE index.jsonl instead of the dual-index layout. Leave false unless you know you want it —
 # the default suits every normal install.
 wiki_single_index: false
+
+# Which Standard Pack this project follows — the THIRD version layer, after AIWS itself and the pack
+# (Standard_Pack_Contract_Spec_MVP §9). `null` = no pack installed, which is the normal state.
+#
+# DO NOT WRITE IT BY HAND. `install_standard_pack.py` writes it when it copies a pack in, as:
+#   standard_pack:
+#     id: vti_standard_pack
+#     version: 0.1.0
+# The pin is a statement about what was actually copied into `.ai-work/standard_pack/`; typing a
+# version here does not install one, it only makes the file disagree with the tree. Upgrading a pack
+# is always an explicit human action (§9.1) — nothing pulls a newer pack on its own.
+standard_pack: null
 # AIWS:END
 
 # ---------------------------------------------------------------------------

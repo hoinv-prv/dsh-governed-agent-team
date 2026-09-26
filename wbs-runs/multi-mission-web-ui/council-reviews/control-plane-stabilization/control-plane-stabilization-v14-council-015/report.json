@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v14-council-015",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "85412c9338a8eac9a31c70fa6cafa1c526c16c400fe65046eb5a53fc73a3aa9f"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "c93131768841bd58c46ff463b8ff5675bdf9613586933e0d3541fa100541c7ba"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "5fb51e78c72f09442cdc0e565fb7205188354d736887bd6dcbd824cbd01807ac"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "eb2c16cf78cf14c708cc7c207ed14ebfe96ca2c6028cc1cfea7e339f1ed48619"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "a6a2fa2433b2d2030cfc03b67471241817656b73facc43cedfcad0fcbf6f04d4"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "a7079b896938e61e57cfb4637f4495b354591448db1d7436124f21561a1fc540"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "2ea90e4b9f0e917678f9c38244960846ab39cc7ddfd665e8d504734aa73eee62"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "dc44fd94598a2a1dad2658ae5907fb449293814af8725eec84bfcacd78079598"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "3044472f94fba78f86763cf803e2ada4fb707c5eacf5e2ecdf60db178816253d"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "e4dd72d372455cc195be772aaeef3507ab3c9a7f7d42bb2188a58e61af0e7385"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve all three confirmed high findings and re-review exact revised bytes before any WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer15-adversarial-f001",
+      "effective_severity": "high",
+      "claim": "The acceptance transition treats an undefined valid review as sufficient and does not require a deterministic receipt proving completion of every requirement in the bound review policy.",
+      "artifact_id": "design-v14",
+      "locator": {
+        "kind": "line",
+        "value": "192"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed missing policy-complete validator-backed review-closure receipt."
+    },
+    {
+      "finding_id": "reviewer15-adversarial-f002",
+      "effective_severity": "high",
+      "claim": "The acceptance projection is durably written before independent projection verification, but no unaccepted state or transition is defined for a verifier result other than confirmation.",
+      "artifact_id": "design-v14",
+      "locator": {
+        "kind": "line",
+        "value": "194"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed acceptance becomes canonical before independent verification closure."
+    },
+    {
+      "finding_id": "reviewer15-adversarial-f003",
+      "effective_severity": "high",
+      "claim": "ExecutionTransitionReceipt is finalized only after the canonical ledger write, leaving an unclosed crash or receipt-write failure window in which the ledger changed but the mandatory gap-free receipt lineage does not exist.",
+      "artifact_id": "design-v14",
+      "locator": {
+        "kind": "line",
+        "value": "329"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed post-write transition receipt crash and receipt-write failure gap."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Review closure, acceptance projection and receipt-lineage crash recovery remain incomplete until revision."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

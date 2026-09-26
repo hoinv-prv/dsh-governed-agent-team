@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v10-council-011",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer11-adversarial-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "authority-binding",
+      "claim": "P13 checks that a WBS approval record names a HUMAN actor but does not require that actor's identity to equal the mission's designated decision owner or resolve through an authorized delegation chain.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v10",
+      "locator": {
+        "kind": "line",
+        "value": "271"
+      },
+      "evidence_excerpt": "Bundle `wbs_authority` receipt names exact HUMAN decision record ID/raw hash, actor, non-revoked scope, current WBS revision/hash and allowed effects",
+      "impact": "A decision record from a HUMAN who lacks mission decision-owner authority could satisfy P13 and permit COMMITTING and the first charged ledger mutation.",
+      "recommended_action": "Add the designated decision-owner identity and authority source to `wbs_authority`, and make P13/P14 require actor-ID equality or a fully validated delegation chain from that owner before charge.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer11-adversarial-001",
+        "invocation_id": "inv11-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98,
+      "source_candidate_ids": [
+        "reviewer11-adversarial-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer11-adversarial-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "charge-commit-contract",
+      "claim": "The charge protocol requires `execution.json` to carry a boundary receipt but never identifies an allowed field mapping in the pinned `dsh-wbs-execution/1` contract or a separately authorized versioned contract extension.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v10",
+      "locator": {
+        "kind": "line",
+        "value": "162"
+      },
+      "evidence_excerpt": "Deterministically construct the exact candidate `execution.json` bytes containing one attempt allocation, boundary receipt and cumulative charge.",
+      "impact": "The official strict validator may reject the mandatory candidate, while adding undeclared fields would invent ledger capability; either path leaves no demonstrated compliant charge transaction.",
+      "recommended_action": "Bind exact existing JSON pointers and provide a strict-validator-passing fixture for the boundary/bundle/seal references, or require a separate HUMAN-authorized versioned execution-contract migration before WBS build.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer11-adversarial-001",
+        "invocation_id": "inv11-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.96,
+      "source_candidate_ids": [
+        "reviewer11-adversarial-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer11-adversarial-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "bootstrap-accounting-evidence",
+      "claim": "The new uncharged administrative resource ledger has no declared schema, single write owner, validator, or reconciliation source that can prove every bootstrap invocation and effect was recorded.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v10",
+      "locator": {
+        "kind": "line",
+        "value": "251"
+      },
+      "evidence_excerpt": "one canonical **uncharged administrative resource ledger**, its resource/model-call ceiling",
+      "impact": "P15 can rely on an incomplete self-reported ledger and still claim zero hidden bootstrap cost, allowing bootstrap work beyond the HUMAN-bound accounting evidence before later charge admission.",
+      "recommended_action": "Define and HUMAN-bind the ledger schema/path, sole writer and append/guard operation, attributable invocation/effect receipts, deterministic reconciliation rules, and fail-closed validator before BOOTSTRAP_MAINTENANCE starts.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer11-adversarial-001",
+        "invocation_id": "inv11-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.97,
+      "source_candidate_ids": [
+        "reviewer11-adversarial-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer11-authority-002-f1",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "The Section 5 state machine makes MIGRATION_BLOCKED a reachable state on restore mismatch, but neither Section 5, Section 9.1 nor Section 9.2 declares an owner, exit transition, required HUMAN decision record or recovery evidence for it, so the frozen-ledger failure path has no governed recovery authority.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v10",
+      "locator": {
+        "kind": "line",
+        "value": "117"
+      },
+      "evidence_excerpt": "restore mismatch──> MIGRATION_BLOCKED",
+      "impact": "After a restore that does not reproduce the immutable backup, the ledger stays frozen with no declared way to leave MIGRATION_BLOCKED; Section 9.2 step 11 only states that the mismatch 'freezes the ledger and escalates to the HUMAN'. Because Section 10 invalidates manual or undeclared ledger edits, the recovery authority is undefined precisely where it must be explicit, and an improvised repair is the only apparent path back to a charge-capable ledger.",
+      "recommended_action": "Declare the MIGRATION_BLOCKED exit contract (owner, required attributable HUMAN decision record, evidence, allowed effects and return states) and add the corresponding edge to the Section 5 state machine and a row to the Section 14 recovery matrix.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer11-authority-002",
+        "invocation_id": "inv11-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.72,
+      "source_candidate_ids": [
+        "reviewer11-authority-002-f1"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer11-authority-002-f2",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "internal-consistency",
+      "claim": "P14 requires all current hashes and native states to equal the sealed bundle immediately before commit, while Section 6.2 requires the charge boundary to accept an append-only extension of the sealed invalidation index; once a legitimate append changes the index raw-byte sha256, item count and last sequence, the two statements cannot both hold literally.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v10",
+      "locator": {
+        "kind": "line",
+        "value": "272"
+      },
+      "evidence_excerpt": "All current hashes/native states, including atomic P13/P15/P16 decision receipts, ledger↔goal equality, ledger lineage and revocation/scope state, still equal the sealed bundle immediately before commit",
+      "impact": "The invariant that gates charge is ambiguous. A literal reading of P14 expires a candidate after any unrelated invalidation append, blocking otherwise valid charges; a permissive reading creates an undocumented exception inside a fail-closed invariant. Section 5.2 step 1 qualifies the comparison by each receipt's sealed freshness rule, but the P14 invariant-table text states no exception for the deliberately append-only invalidation index, so charge-boundary behaviour depends on which text is treated as authoritative.",
+      "recommended_action": "Restate P14 so the invalidation index is compared under its sealed freshness rule (append-only prefix extension, reject truncation/replacement/path/owner/sequence mismatch, block when any extension names the bundle hash) rather than raw-hash equality, and record that exception explicitly in the Section 7 invariant table.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer11-authority-002",
+        "invocation_id": "inv11-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.74,
+      "source_candidate_ids": [
+        "reviewer11-authority-002-f2"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

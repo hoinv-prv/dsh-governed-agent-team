@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v3-council-004",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "d694611892e3bc68b9a7471725317a2e1d7c3ef7a72c775df3c6a770de1a2191"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "19fb90c391090e84ef9297e21e9d36fe0df6de9cfdd23fb898942405c0645305"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "0b8e7300dd2c39d8b641d0338c2c025ccbde65ac23dd8fbd28a441ee82dcf127"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "a6e6b33ff0118d02764855111e31b8fb00beec46e78484c36401d34833d7368a"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "98c583bbc6573aaaf9deef83e97b7113511b63827957e0e4d842efe02857b8d3"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "e463b4079745d62143c9b9993c9609135d0fc5e9655d8477b075b5de15be8179"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "6423ceb842810e77a4d61b88a51a7828f2be5ff51ee6ec22e2ecea512e0a1211"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "092550c830821bb22b5cf449813213fa419a762178061dad2e1ec615f7f2a94a"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "3807194e8b8f9d3781f36c7035cbd34738e5c2bc4e875e04f8e7d57ce432e4a1"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "e60f7d092edaf9e4d9dc6713718648b1895d6bc31ada8e9342b4100c9a6f061d"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Revise the artifact to name an attributable owner for the charge operation, restore the complete repository-precedence hierarchy including distinct Wiki tiers and History, and define the AdmissionBundle authority, validator, and exact prepare command; submit the corrected artifact through a new review run.",
+  "findings": [
+    {
+      "finding_id": "r4auth002a2-f1",
+      "effective_severity": "high",
+      "claim": "The design mandates that every mutable mission-control artifact have exactly one declared owner and write mechanism, yet the charge/boundary record - the sole mandatory pre-charge write - is assigned to 'the owning charge operation', an operation the design elsewhere states is not identified by any pinned Source of Truth; the mandatory pre-charge control surface therefore has no existing owner, and closing it requires inventing the capability the design forbids.",
+      "artifact_id": "design-v3",
+      "locator": {
+        "kind": "section",
+        "value": "10. Generated and mutable mission-control ownership policy"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-authority-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "The parent-confirmed high-severity finding establishes that the charge/boundary record has no existing attributable owner for the owning charge operation."
+    },
+    {
+      "finding_id": "r4auth002a2-f2",
+      "effective_severity": "medium",
+      "claim": "The design claims to follow repository precedence but collapses the pinned content hierarchy Project Wiki, Local Wiki, Common Wiki and History into one post-skills 'Wiki' tier and drops History entirely, so precedence for wiki-tier or History conflicts is undeclared while the design asserts the pinned order governs.",
+      "artifact_id": "design-v3",
+      "locator": {
+        "kind": "section",
+        "value": "4. Responsibility boundaries"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-authority-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "The parent-confirmed medium-severity finding establishes that the repository-precedence paraphrase collapses Wiki tiers and omits History."
+    },
+    {
+      "finding_id": "r4auth002a2-f3",
+      "effective_severity": "medium",
+      "claim": "The design introduces the new persisted contract identifier 'gat-admission-bundle/1' with new fields and delegates the bundle to a 'read-only prepare operation', but names no owning schema authority, validator or exact command, so the schema-validation half of the required dual validation has no declared owner and the P1/P2 evidence cannot cite a validatable contract.",
+      "artifact_id": "design-v3",
+      "locator": {
+        "kind": "section",
+        "value": "6. Immutable AdmissionBundle"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-authority-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "The parent-confirmed medium-severity finding establishes that the proposed AdmissionBundle schema lacks a named authority, validator, and exact prepare command."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "The charge/boundary record remains without an attributable owning charge-operation owner until revision.",
+    "Repository precedence remains incomplete while Wiki tiers are collapsed and History is omitted.",
+    "AdmissionBundle preparation remains underspecified without a named authority, validator, and exact command.",
+    "Prompt-only restriction mode limits assurance that reviewer restrictions were enforced."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

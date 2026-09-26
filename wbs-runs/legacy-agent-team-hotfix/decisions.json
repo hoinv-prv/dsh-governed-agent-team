@@ -1,0 +1,123 @@
+{
+  "format": "dsh-wbs-decisions/1",
+  "mission_id": "legacy-agent-team-hotfix",
+  "decisions": [
+    {
+      "id": "decision-execution-001",
+      "kind": "execution",
+      "revision": 1,
+      "plan_sha256": "95abfac1e7d78df05daee7bd5cb825d679579fd160416cbdea23fe607c3a2f93",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve và thực thi (Recommended)",
+      "source_ref": "ask_user_question:approve-legacy-hotfix-v1",
+      "artifact_hashes": [
+        {"path": "wbs-runs/legacy-agent-team-hotfix/wbs.v1.json", "sha256": "95abfac1e7d78df05daee7bd5cb825d679579fd160416cbdea23fe607c3a2f93"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-002",
+      "kind": "revision",
+      "revision": 2,
+      "plan_sha256": "733c8ae628f1076b49499b4bb10017fd9b8cde0013071bf89067636d0683f5d5",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v2 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-legacy-hotfix-v2",
+      "artifact_hashes": [
+        {"path": "wbs-runs/legacy-agent-team-hotfix/wbs.v2.json", "sha256": "733c8ae628f1076b49499b4bb10017fd9b8cde0013071bf89067636d0683f5d5"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-003",
+      "kind": "revision",
+      "revision": 3,
+      "plan_sha256": "62b39c67c0597e4851519ce91867d68a18395fcc460556299f000e00ce5b7b27",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v3 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-legacy-hotfix-v3",
+      "artifact_hashes": [{"path": "wbs-runs/legacy-agent-team-hotfix/wbs.v3.json", "sha256": "62b39c67c0597e4851519ce91867d68a18395fcc460556299f000e00ce5b7b27"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-004",
+      "kind": "revision",
+      "revision": 4,
+      "plan_sha256": "6998784540c089965201296def7960802ad75691264a6920f60450184892f92e",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v4 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-legacy-hotfix-v4",
+      "artifact_hashes": [{"path": "wbs-runs/legacy-agent-team-hotfix/wbs.v4.json", "sha256": "6998784540c089965201296def7960802ad75691264a6920f60450184892f92e"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-005",
+      "kind": "revision",
+      "revision": 5,
+      "plan_sha256": "45154051e1a231a175ce9a1eeee0e9af15ae582a232e31ab01a3207d3574b189",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v5 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-legacy-hotfix-v5",
+      "artifact_hashes": [{"path": "wbs-runs/legacy-agent-team-hotfix/wbs.v5.json", "sha256": "45154051e1a231a175ce9a1eeee0e9af15ae582a232e31ab01a3207d3574b189"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-006",
+      "kind": "revision",
+      "revision": 6,
+      "plan_sha256": "07a175111b15d1e79874c4a6f874bab8fb9365e803584f9f3492328669e12bf9",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v6 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-legacy-hotfix-v6",
+      "artifact_hashes": [{"path": "wbs-runs/legacy-agent-team-hotfix/wbs.v6.json", "sha256": "07a175111b15d1e79874c4a6f874bab8fb9365e803584f9f3492328669e12bf9"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-007",
+      "kind": "revision",
+      "revision": 7,
+      "plan_sha256": "67dc8367df9a0b66770c3faa81b9c7a3795e9217c93edb98c50db355ef36000c",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v7 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-legacy-hotfix-v7",
+      "artifact_hashes": [{"path": "wbs-runs/legacy-agent-team-hotfix/wbs.v7.json", "sha256": "67dc8367df9a0b66770c3faa81b9c7a3795e9217c93edb98c50db355ef36000c"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-008",
+      "kind": "revision",
+      "revision": 8,
+      "plan_sha256": "bd90415f5a4c6d268b9326a86088bee26e24856349a3908ee5d0bbe6b9c9a288",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v8 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question:approve-legacy-hotfix-v8-retry",
+      "artifact_hashes": [{"path": "wbs-runs/legacy-agent-team-hotfix/wbs.v8.json", "sha256": "bd90415f5a4c6d268b9326a86088bee26e24856349a3908ee5d0bbe6b9c9a288"}],
+      "observed_at": null
+    },
+    {
+      "id":"decision-revision-009","kind":"revision","revision":9,"plan_sha256":"79ea97523df2124db54b05eb82bdf6ef2de0244543fe71fb121d53dc87848b71","task_id":null,"attempt_id":null,"decision":"approve","verbatim_response":"Approve v9 và tiếp tục (Recommended)","source_ref":"ask_user_question:approve-legacy-hotfix-v9","artifact_hashes":[{"path":"wbs-runs/legacy-agent-team-hotfix/wbs.v9.json","sha256":"79ea97523df2124db54b05eb82bdf6ef2de0244543fe71fb121d53dc87848b71"}],"observed_at":null
+    },
+    {
+      "id":"decision-final-001","kind":"final","revision":9,"plan_sha256":"79ea97523df2124db54b05eb82bdf6ef2de0244543fe71fb121d53dc87848b71","task_id":"final-review","attempt_id":"attempt-final-review-002","decision":"hold","verbatim_response":"Tạm giữ","source_ref":"ask_user_question:accept-final-hotfix-v9","artifact_hashes":[{"path":"wbs-runs/legacy-agent-team-hotfix/final-report.md","sha256":"13d8181d93430a514bcfb7c73d6bbae6ae2d61b753d029b5a4aad45a4a9c8b90"}],"observed_at":null
+    },
+    {
+      "id":"decision-final-002","kind":"final","revision":9,"plan_sha256":"79ea97523df2124db54b05eb82bdf6ef2de0244543fe71fb121d53dc87848b71","task_id":"final-review","attempt_id":"attempt-final-review-002","decision":"accept","verbatim_response":"Tôi approve đóng mission này","source_ref":"chat:user-final-acceptance","artifact_hashes":[{"path":"wbs-runs/legacy-agent-team-hotfix/final-report.md","sha256":"13d8181d93430a514bcfb7c73d6bbae6ae2d61b753d029b5a4aad45a4a9c8b90"}],"observed_at":null
+    }
+  ]
+}

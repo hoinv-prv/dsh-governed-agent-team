@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v30-council-031",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "0f093aac12bc430c2b88f5ffc8a328a599630a6f42f40ea978838b064c7b02ed"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "1a373fbee57f326bfb33e1e3928f9521c58571689bb035a076d2d30c9b3ba896"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "0b4499eb71c1dfe65268c68a5360dbd08c24595d92b69b277b0db44b1dc98699"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "673185782bc0aa4e594f000a802247a4d6df9fbcd3c24e6d3b8b85f9ca0747ad"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "d50ef805bb2812a5e1251ee52e1ce10143ce462a0126a05ec6f7111ed464338c"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "b02af7a81dbb9577ce5a146b6343385ed53d14791edbdc12cfd59d2ce337412f"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "b56fea9d542840e6ec60fa7cf03f171f109bef397cc9245f229bd8df1783218c"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "b7bfef6d227ed9d757b6d39e9ccab885ae80ebfd863a4e212152f4baadf127e9"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "5cffd3f3a3b6a5991788df45b3c36f75dea3496d2b13bbccb55fc7b85a3956b2"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "c53a832bbd1de257a236e2701dbd6d3e263ce20a1018ad15bddb35d1fab7fdbb"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve all findings and re-review exact revised bytes before WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer31-adversarial-002-f001",
+      "effective_severity": "high",
+      "claim": "The charge-preflight commitment graph is self-referential: the preflight binds the planned intent hash and exact OPEN entry, the final candidate embeds the preflight hash, and the intent pins the candidate bytes/hash; no excluded hash domain or staged commitment breaks that cycle.",
+      "artifact_id": "design-v30",
+      "locator": {
+        "kind": "line",
+        "value": "192-193, 219, 369"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed charge commitment graph is self-referential."
+    },
+    {
+      "finding_id": "reviewer31-adversarial-002-f002",
+      "effective_severity": "high",
+      "claim": "v30 says acceptance projection has no special repair states and that divergent projection bytes can only terminate as FAILED_CHARGED_PROVENANCE_UNKNOWN, but the state machine, bootstrap requirements, P15, WBS-entry criteria, and failure matrix still authorize ACCEPTANCE_PROJECTION_REPAIR paths that can reach ACCEPTED or REJECTED_CHARGED.",
+      "artifact_id": "design-v30",
+      "locator": {
+        "kind": "line",
+        "value": "174-177, 215, 276, 294, 328, 494, 548"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed stale acceptance-repair paths conflict with uniform recovery."
+    },
+    {
+      "finding_id": "reviewer31-adversarial-002-f003",
+      "effective_severity": "high",
+      "claim": "The new UNCHARGED_COMPLETION_CORRUPT_BLOCKED recovery is not admitted by the closed P3 lineage grammar: P3 says it allows only the two charged exceptional links, while the new branch says a tombstone and RECOVERY_CLOSE are accepted and return to FROZEN without defining the replacement completion-chain head and sequence required by the next intent.",
+      "artifact_id": "design-v30",
+      "locator": {
+        "kind": "line",
+        "value": "316, 369-373"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed zero-charge exceptional recovery lacks chain-head semantics."
+    },
+    {
+      "finding_id": "reviewer31-authority-001-f001",
+      "effective_severity": "high",
+      "claim": "Section 5's state machine (lines 174-177) and the Section 14 matrix (line 494) retain a reachable ACCEPTANCE_PROJECTION_REPAIR_* path whose successful repair reaches ACCEPTED/REJECTED_CHARGED, contradicting Section 5.4 line 215, which states that no such states exist and that a partial, strict-invalid or divergent acceptance projection may reach only FAILED_CHARGED_PROVENANCE_UNKNOWN, never ACCEPTED or REJECTED_CHARGED.",
+      "artifact_id": "design-v30",
+      "locator": {
+        "kind": "line",
+        "value": "174-177"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed retained acceptance-repair authority path contradicts Section 5.4."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Commitment and lineage grammar remain incomplete."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

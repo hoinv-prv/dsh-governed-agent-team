@@ -1,0 +1,9 @@
+Parent read-only verification against immutable design-v6 snapshot SHA-256 914e3cf0cb246b64b1ce945c332969c478ccbbcfbc2ca82782e057e63c5c47ac.
+
+Confirmed reviewer7-authority-f001: alternate acceptance authority is stated procedurally but absent from the bundle receipts and admission invariants.
+Confirmed reviewer7-authority-f002: there is no same-epoch predicate/receipt requiring execution ledger active/paused state to equal runtime goal state.
+Confirmed r7adv-f01: prepare is called read-only yet owns bundle production; pre-charge writes permit only invalidation, leaving no declared durable canonical sealed-bundle persistence/recovery path.
+Confirmed r7adv-f02: failed-migration restore reruns an expected-failing strict validator but lacks persisted raw hash/version equality proof to the immutable backup.
+Confirmed r7adv-f03: the migration-base equality rule is not scoped to pre-charge lineage and conflicts literally with later authorized attempt/charge append operations.
+
+No command verification was authorized or executed. All findings are specification-presence/consistency checks.

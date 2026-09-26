@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v35-council-038",
+  "state": "failed",
+  "stage": "review",
+  "failure": {
+    "code": "ledger_integrity_failed",
+    "stage": "review",
+    "subject": "all-required-review-lanes",
+    "message": "Parent terminally fail-closed before background completion notifications arrived and then dispatched unnecessary retries. All three initial envelopes later arrived schema-valid, but failed is terminal and this run cannot be reopened or produce an official verdict. Valid late evidence may inform a corrected artifact only; a fresh run is required.",
+    "retryable": false,
+    "invocation_id": null
+  },
+  "updated_sequence": 2
+}

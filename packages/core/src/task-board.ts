@@ -2,6 +2,7 @@
 
 import type { Agent } from '@deepseek-ai/dsh-agent'
 import type { TeamMembership } from './roster.ts'
+import { normalizedTaskSubject } from './approved-plan-import.ts'
 import { TeamError } from './error.ts'
 import type { TeamJournal } from './journal.ts'
 import type { TeamState } from './projection.ts'
@@ -118,10 +119,64 @@ export class TeamTaskBoard {
    */
   list(membership: TeamMembership): TeamTaskView[] {
     const { root } = membership
-    const state = this.journal.state(root)
+    return this.views(root, this.journal.state(root))
+  }
+
+  /** Build detached views for a prepared state that has not yet been appended. */
+  views(root: Agent, state: TeamState): TeamTaskView[] {
     return state.tasks
       .filter(task => task.status !== 'deleted')
       .map(task => this.taskView(root, state, task))
+  }
+
+  /**
+   * Fully validate and prepare missing tasks for one approved-plan import.
+   * This performs no append, allowing its caller to atomically batch tasks with
+   * the plan-approval event after all preflights have passed.
+   */
+  prepareApprovedPlanImport(state: TeamState, subjects: readonly string[]): TeamTaskSnapshot[] {
+    const knownSubjects = new Set(state.tasks
+      .filter(task => task.status !== 'deleted')
+      .map(task => normalizedTaskSubject(task.subject)))
+    const pendingSubjects: string[] = []
+    for (const rawSubject of subjects) {
+      const subject = requiredText(rawSubject.normalize('NFKC').replace(/\s+/gu, ' '), 'task subject', 200)
+      const normalized = normalizedTaskSubject(subject)
+      if (knownSubjects.has(normalized)) continue
+      knownSubjects.add(normalized)
+      pendingSubjects.push(subject)
+    }
+
+    const active = state.tasks.filter(task => task.status !== 'deleted').length
+    if (active + pendingSubjects.length > this.maxTasks) {
+      throw new TeamError(`Team task limit ${this.maxTasks} reached`, 'TEAM_TASK_LIMIT')
+    }
+
+    const ids = new Set(state.tasks.map(task => task.id))
+    let nextNumber = state.nextTaskNumber
+    const prepared: TeamTaskSnapshot[] = []
+    for (const subject of pendingSubjects) {
+      if (!Number.isSafeInteger(nextNumber) || nextNumber < 1) {
+        throw new TeamError('Team task id space exhausted', 'TEAM_TASK_LIMIT')
+      }
+      const id = TeamTaskId(`task-${nextNumber}`)
+      if (ids.has(id)) throw new TeamError('Team task id space exhausted', 'TEAM_TASK_LIMIT')
+      ids.add(id)
+      prepared.push({
+        id,
+        revision: 1,
+        subject,
+        description: 'Imported from approved plan.',
+        status: 'pending',
+        blockedBy: [],
+        writeScopes: [],
+      })
+      if (nextNumber === Number.MAX_SAFE_INTEGER && pendingSubjects.length > prepared.length) {
+        throw new TeamError('Team task id space exhausted', 'TEAM_TASK_LIMIT')
+      }
+      nextNumber += 1
+    }
+    return prepared
   }
 
   /**

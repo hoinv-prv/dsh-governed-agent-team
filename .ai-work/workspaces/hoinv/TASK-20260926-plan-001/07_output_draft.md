@@ -1,0 +1,13 @@
+# Output Draft
+
+## Draft Outline
+- ...
+
+## Main Content Draft
+- ...
+
+## Pending Gaps
+- ...
+
+## Notes for Finalization
+- ...

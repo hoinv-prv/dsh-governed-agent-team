@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v14-council-015",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer15-adversarial-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "review-closure",
+      "claim": "The acceptance transition treats an undefined valid review as sufficient and does not require a deterministic receipt proving completion of every requirement in the bound review policy.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v14",
+      "locator": {
+        "kind": "line",
+        "value": "192"
+      },
+      "evidence_excerpt": "A valid review never implies acceptance. It moves the charged attempt only to `AWAITING_HUMAN_ACCEPTANCE`.",
+      "impact": "A single schema-valid lane result could be treated as review completion and presented for HUMAN acceptance while policy-mandated lanes, diversity, adjudication, or Chairman closure remain unresolved.",
+      "recommended_action": "Define a validator-backed review-closure receipt bound to the final packet and policy that proves every policy-required lane, diversity rule, retry disposition, adjudication gate, Chairman separation, and verdict; permit the transition only on its PASS.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer15-adversarial-001",
+        "invocation_id": "inv15-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.96,
+      "source_candidate_ids": [
+        "reviewer15-adversarial-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer15-adversarial-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "acceptance-projection",
+      "claim": "The acceptance projection is durably written before independent projection verification, but no unaccepted state or transition is defined for a verifier result other than confirmation.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v14",
+      "locator": {
+        "kind": "line",
+        "value": "194"
+      },
+      "evidence_excerpt": "after writing, it re-hashes and strictly validates persisted bytes. An independent verifier confirms decision/hash projection.",
+      "impact": "The canonical ledger can expose `ACCEPTED` before independent projection closure, or become stranded when verification is unavailable, refuted, or inconclusive, allowing premature dependency acceptance or an undefined recovery path.",
+      "recommended_action": "Persist only an unaccepted `ACCEPTANCE_VERIFYING` candidate; after confirmed projection verification, use a separate guarded receipt-linked transition to `ACCEPTED` or `REJECTED_CHARGED`, and route every non-confirmed result to an explicit non-accepted recovery state.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer15-adversarial-001",
+        "invocation_id": "inv15-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.97,
+      "source_candidate_ids": [
+        "reviewer15-adversarial-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer15-adversarial-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "transition-lineage-recovery",
+      "claim": "ExecutionTransitionReceipt is finalized only after the canonical ledger write, leaving an unclosed crash or receipt-write failure window in which the ledger changed but the mandatory gap-free receipt lineage does not exist.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v14",
+      "locator": {
+        "kind": "line",
+        "value": "329"
+      },
+      "evidence_excerpt": "The immutable receipt then binds candidate/persisted hashes and results.",
+      "impact": "A charge, status, review, or acceptance mutation can become permanently unlinked; P3 then rejects it and subsequent resume or close transitions lack a valid predecessor receipt, stranding a charged attempt or acceptance projection.",
+      "recommended_action": "Make the charge preimage seal, and an equivalent immutable intent for every later transition, bind the candidate and receipt sequence before the ledger write; define an exact idempotent restart operation that finalizes or closes the receipt without changing attempt, charge, or decision semantics, including receipt-write failure.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer15-adversarial-001",
+        "invocation_id": "inv15-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.99,
+      "source_candidate_ids": [
+        "reviewer15-adversarial-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "candidate_id": "reviewer15-authority-001-r1",
+      "reason": "Section 15 verification list duplicates item numbers 18 and 19 (lines 461-464) while the four scenarios themselves are distinct and all present; an editorial index defect that cannot permit charge, lose a charge, change acceptance, grant undeclared effects or confer authority; not material.",
+      "source_lane": "internal-authority"
+    },
+    {
+      "candidate_id": "reviewer15-authority-001-r2",
+      "reason": "Section 2/P5 pin the immutable run-002 failure-model snapshot at 434f1613... while the packet's failure-model snapshot bytes hash to 31c015c8980374030738f1a96aa20e9e251334f199700e268453c7d6b9787815; the pinned snapshot's own run-003 note (line 128) explains that the different working-source artifact is the mutable Workspace copy, P5 re-hashes the cited immutable snapshot through a declared read-only command, and any mismatch fails closed to NOT_READY; not material.",
+      "source_lane": "internal-authority"
+    },
+    {
+      "candidate_id": "reviewer15-authority-001-r3",
+      "reason": "Section 5.2 step 7 and Section 5.4 fund post-charge repair and acceptance-projection repair from the Section 6.3 administrative ledger while Section 6.3 defines state-specific allocations only for BOOTSTRAP_MAINTENANCE and MIGRATION_MAINTENANCE, and P3 names only the Section 5.2 POST_CHARGE_REPAIR exceptional lineage link; every reading fails closed (blocked state or NOT_READY), repairs consume no attempt and cannot alter the HUMAN accept/reject action, so the ambiguity does not permit charge, reuse a charge, change acceptance, grant undeclared effects or confer authority; not material.",
+      "source_lane": "internal-authority"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v33-council-033",
+  "degradations": [
+    {
+      "degradation_id": "DEG33-001",
+      "kind": "prompt_only_read_only",
+      "affected_lane": "internal-authority",
+      "detail": "Read-only restrictions were prompt-only.",
+      "verdict_consequence": "pass_with_notes_at_best"
+    },
+    {
+      "degradation_id": "DEG33-002",
+      "kind": "prompt_only_read_only",
+      "affected_lane": "internal-adversarial",
+      "detail": "Read-only restrictions were prompt-only.",
+      "verdict_consequence": "pass_with_notes_at_best"
+    },
+    {
+      "degradation_id": "DEG33-003",
+      "kind": "prompt_only_read_only",
+      "affected_lane": "external-outside-view",
+      "detail": "Read-only restrictions were prompt-only.",
+      "verdict_consequence": "pass_with_notes_at_best"
+    },
+    {
+      "degradation_id": "DEG33-004",
+      "kind": "unknown_cost",
+      "affected_lane": "all",
+      "detail": "Duration, token and cost telemetry unavailable.",
+      "verdict_consequence": "pass_with_notes_at_best"
+    }
+  ]
+}

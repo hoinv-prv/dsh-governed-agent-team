@@ -8,6 +8,7 @@ import type { ProjectionDefinition } from '@deepseek-ai/dsh-session-projection'
 import type {
   TeamId,
   TeamMemberSnapshot,
+  TeamMissionSnapshot,
   TeamMessageId,
   TeamMessageSnapshot,
   TeamPlanApprovalSnapshot,
@@ -18,9 +19,11 @@ import type {
 } from './types.ts'
 import {
   TeamId as toTeamId,
+  TeamMissionId as toTeamMissionId,
   TeamMessageId as toTeamMessageId,
   TeamTaskId as toTeamTaskId,
 } from './types.ts'
+import { assertInitialMissionTaskPlan } from './mission-plan.ts'
 import { assertTaskGraphCandidate } from './task-graph.ts'
 import { isStructuralTaskMutation } from './task-board.ts'
 import { writeScope } from './validation.ts'
@@ -34,6 +37,7 @@ const teamTaskIdSchema = z.string().min(1).refine((value) => {
   const match = numericTaskIdPattern.exec(value)
   return match === null || Number.isSafeInteger(Number(match[1]))
 }, { message: 'numeric task id suffix must be a safe integer' }).transform(value => toTeamTaskId(value))
+const teamMissionIdSchema = z.string().min(1).transform(value => toTeamMissionId(value))
 const teamMessageIdSchema = z.string().min(1).transform(value => toTeamMessageId(value))
 
 const coreContentBlockTypes = new Set(['text', 'reasoning', 'image', 'tool-call', 'tool-result'])
@@ -91,6 +95,20 @@ const teamTaskSnapshotSchema = z.object({
   writeScopes: z.array(z.string()),
 }).strict() as z.ZodType<TeamTaskSnapshot>
 
+const teamMissionSnapshotSchema = z.object({
+  id: teamMissionIdSchema,
+  revision: positiveSafeInteger,
+  title: z.string().min(1),
+  objective: z.string().min(1),
+  status: z.enum(['draft', 'approved', 'active', 'completed']),
+  plan: z.object({ tasks: z.array(teamTaskSnapshotSchema) }).strict(),
+  approval: z.object({ approvedRevision: positiveSafeInteger }).strict().optional(),
+}).strict().superRefine((mission, ctx) => {
+  if ((mission.status === 'approved') !== (mission.approval?.approvedRevision === mission.revision)) {
+    ctx.addIssue({ code: 'custom', message: 'mission status must be approved exactly when approval matches revision' })
+  }
+}) as z.ZodType<TeamMissionSnapshot>
+
 const teamMessageSnapshotSchema = z.object({
   id: teamMessageIdSchema,
   senderId: sessionIdSchema,
@@ -115,6 +133,12 @@ const teamTaskEventSchema = z.object({
   teamId: teamIdSchema,
   task: teamTaskSnapshotSchema,
 }).strict() as z.ZodType<SessionEventMap['team/task']>
+
+const teamMissionEventSchema = z.object({
+  version: z.literal(2),
+  teamId: teamIdSchema,
+  mission: teamMissionSnapshotSchema,
+}).strict() as z.ZodType<SessionEventMap['team/mission']>
 
 const teamPlanApprovedEventSchema = z.object({
   version: z.literal(2),
@@ -172,6 +196,7 @@ export interface TeamState {
   planApproval?: TeamPlanApprovalSnapshot
   readonly work: TeamWorkView[]
   readonly members: TeamMemberSnapshot[]
+  readonly missions: TeamMissionSnapshot[]
   readonly tasks: TeamTaskSnapshot[]
   readonly messages: TeamMessageSnapshot[]
   readonly delivered: TeamMessageId[]
@@ -190,6 +215,7 @@ export function emptyTeamState(rootId: SessionId): TeamProjectionState {
     planPhase: 'draft',
     work: [],
     members: [],
+    missions: [],
     tasks: [],
     messages: [],
     delivered: [],
@@ -215,6 +241,7 @@ const teamProjectionEntrySchema = z.object({
   planApproval: z.object({ approvedRevision: nonNegativeSafeInteger }).strict().optional(),
   work: z.array(teamWorkViewSchema),
   members: z.array(teamMemberSnapshotSchema),
+  missions: z.array(teamMissionSnapshotSchema),
   tasks: z.array(teamTaskSnapshotSchema),
   messages: z.array(teamMessageSnapshotSchema),
   delivered: z.array(teamMessageIdSchema),
@@ -236,6 +263,7 @@ const teamProjectionEntrySchema = z.object({
 export type TeamEventType =
   | 'team/member'
   | 'team/task'
+  | 'team/mission'
   | 'team/plan-approved'
   | 'team/work'
   | 'team/message/queued'
@@ -252,6 +280,7 @@ type TeamSessionEvent = SessionEvent<TeamEventType>
 export function isTeamEvent(event: SessionEvent): event is TeamSessionEvent {
   return event.type === 'team/member'
     || event.type === 'team/task'
+    || event.type === 'team/mission'
     || event.type === 'team/plan-approved'
     || event.type === 'team/work'
     || event.type === 'team/message/queued'
@@ -274,6 +303,8 @@ function parseCurrentTeamEvent(event: TeamSessionEvent): TeamSessionEvent {
       return { ...event, data: parsePersisted(event.type, teamMemberEventSchema, event.data) }
     case 'team/task':
       return { ...event, data: parsePersisted(event.type, teamTaskEventSchema, event.data) }
+    case 'team/mission':
+      return { ...event, data: parsePersisted(event.type, teamMissionEventSchema, event.data) }
     case 'team/plan-approved':
       return { ...event, data: parsePersisted(event.type, teamPlanApprovedEventSchema, event.data) }
     case 'team/work':
@@ -326,6 +357,22 @@ function applyCurrentTeamEvent(state: TeamState, event: TeamSessionEvent): void 
       }
       if (index < 0) state.members.push(member)
       else state.members[index] = member
+      break
+    }
+    case 'team/mission': {
+      const mission = event.data.mission
+      assertInitialMissionTaskPlan(mission.plan.tasks)
+      const index = state.missions.findIndex(candidate => candidate.id === mission.id)
+      const prior = state.missions[index]
+      if (prior === undefined) {
+        if (mission.revision !== 1 || mission.status !== 'draft' || mission.approval !== undefined) {
+          throw new Error(`team mission "${mission.id}" must begin as unapproved revision 1 draft`)
+        }
+      } else if (mission.revision !== prior.revision + 1) {
+        throw new Error(`team mission "${mission.id}" revision is not contiguous`)
+      }
+      if (index < 0) state.missions.push(mission)
+      else state.missions[index] = mission
       break
     }
     case 'team/task': {
@@ -421,7 +468,7 @@ function applyCurrentTeamEvent(state: TeamState, event: TeamSessionEvent): void 
 /** Host-only Team projection selected by the projected Session identity. */
 export const teamProjectionDefinition = {
   key: 'agentTeam',
-  stateVersion: 5,
+  stateVersion: 6,
   stateSchema: teamProjectionEntrySchema,
   init: header => emptyTeamState(header.id),
   apply: (state, event) => {

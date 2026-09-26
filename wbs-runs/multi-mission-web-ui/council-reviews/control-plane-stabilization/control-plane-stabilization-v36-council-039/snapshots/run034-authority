@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v34-council-034",
+  "reviewer_id": "reviewer34-authority-001",
+  "lane": "internal-authority",
+  "invocation_id": "inv34-auth-001",
+  "attempt": 1,
+  "status": "completed",
+  "artifact_manifest_sha256": "313f67b253f517f04d397c6be1ed7c80538f096c9b24d1c3347a96f41047cc6f",
+  "packet_sha256": "74b172b5c99beb6115de6e22535eedf4cc904541a535a0a58316a10ca6f46ec1",
+  "findings": [
+    {
+      "finding_id": "AUTH34-F-001",
+      "source_lane": "internal-authority",
+      "mode": "governance",
+      "category": "internal-consistency",
+      "claim": "The closed CP-01..CP-16 registry gives `REVIEW_UNAVAILABLE_CHARGED` two incompatible owners: CP-14 lists it as a current state whose sole permitted next edge/outcome is a transition, while CP-16 lists the identical state as terminal with no re-entry.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": "textual-defect",
+      "artifact_id": "design-v34",
+      "locator": {
+        "kind": "line",
+        "value": "223-225"
+      },
+      "evidence_excerpt": "CP-14 row: | CP-14 | `REVIEWING`, `REVIEW_PENDING`, `REVISION_REQUIRED_CHARGED`, or `REVIEW_UNAVAILABLE_CHARGED` | identical-packet bounded review, authorized amendment, revision-required or terminal unavailable | ordinary transition pair | review closure/route amendment | || CP-16 row: | CP-16 | `ACCEPTED`, `REJECTED_CHARGED`, `FAILED_CHARGED_PROVENANCE_UNKNOWN`, `FAILED_CHARGED_COMPLETION_CORRUPT`, `FAILED_CHARGED_RESOURCE_EXHAUSTED`, or `REVIEW_UNAVAILABLE_CHARGED` | terminal except explicit acceptance-authority conflict makes ACCEPTED non-usable and requires CP-15 fresh decision | exact...",
+      "impact": "Section 5 declares that the registry is the exhaustive normative state/edge index and that an edge absent from it is forbidden, and Section 16 requires one complete manifest row per CP-01..CP-16 with a P3/P15 acceptance rule; because the same state is simultaneously resumable under CP-14 and terminal under CP-16, the sole permitted edge for the review-unavailable terminal declared in Section 12 and in the Section 5 diagram cannot be decided mechanically, so a manifest, validator or fixture can be built against either reading without contradiction.",
+      "recommended_action": "Remove `REVIEW_UNAVAILABLE_CHARGED` from the CP-14 current-state column and make CP-16 its sole owner, expressing CP-14 only as the edge that enters it, or rename the CP-14 entry so no identifier is governed by two rows.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer34-authority-001",
+        "invocation_id": "inv34-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.72
+    },
+    {
+      "finding_id": "AUTH34-F-002",
+      "source_lane": "internal-authority",
+      "mode": "governance",
+      "category": "requirement-coverage",
+      "claim": "The registry that declares every unlisted edge forbidden is itself non-exhaustive: the named edges `interrupted_to_dispatched` and `interrupted_to_failed` and the exceptional records `UNKNOWN_APPLIED_NO_RECEIPT` and `DIVERGENT_UNKNOWN_WRITE` appear in the normative protocol and in the Section 16 handoff roster but in no CP-01..CP-16 row.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": "textual-defect",
+      "artifact_id": "design-v34",
+      "locator": {
+        "kind": "line",
+        "value": "227"
+      },
+      "evidence_excerpt": "L227: Section 14 rows carry these Edge IDs, and the Section 16 manifest must contain one complete row per CP-01…CP-16. No later bootstrap or WBS may infer an unlisted state, edge or capability. || L250: `INTERRUPTED_CHARGED` is procedurally owned by the coordinator but authorizes no dispatch by itself. A fresh attributable HUMAN interruption-disposition record must bind the same attempt/charge, bundle/seal/boundary hashes, interruption evidence, exact r... || L622: - WBS-build handoff contains a closed transition-capability manifest. For every normative state/edge and ordinary or exceptional record—including intent/completion corruption tombstones, root/index supersession, `RECOVERY_CLOSE`, `UnchargedNotAppliedCorruptionRecovery`, `ChargedCompletionCorru...",
+      "impact": "Section 227 states that no later bootstrap or WBS may infer an unlisted state, edge or capability, while Section 16 requires manifest rows for these unlisted records and Section 5.2 requires the interrupted edges for the sole authorized same-attempt resume of a charged attempt; a compliant builder therefore cannot satisfy the handoff manifest without violating the registry prohibition, and Section 16's own rule that missing manifest cells block drafting makes the required closure unsatisfiable.",
+      "recommended_action": "Add the named interrupted-disposition edges and the `UNKNOWN_APPLIED_NO_RECEIPT` / `DIVERGENT_UNKNOWN_WRITE` recovery records to the owning CP-13/CP-16 rows with their P3/P15 rule, or amend the registry sentence so these identifiers are enumerated as sub-edges instead of treated as unlisted.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer34-authority-001",
+        "invocation_id": "inv34-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.8
+    },
+    {
+      "finding_id": "AUTH34-F-003",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "requirement-coverage",
+      "claim": "The successor of the run-033 finding that the P3 allowlist and P15 capability manifest were unstated is still not closed: the design now requires every composed-table and registry row to appear identically in those two sets, but neither set's content is enumerated or hash-bound in the reviewed bytes, so the identity it mandates has no verifiable referent at this gate.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v34",
+      "locator": {
+        "kind": "line",
+        "value": "202-206"
+      },
+      "evidence_excerpt": "L202: Every row must appear identically in the P3 allowlist, P15 capability manifest, failure matrix and fixtures. || L206: The following IDs are the closed enumeration; prose may refine but never add an unnamed edge. P3 accepts ordinary readiness only at zero-open `FROZEN`/`READY` chain heads and the exceptional records explicitly named below. P15 must bind the exact schema,... || L622: - WBS-build handoff contains a closed transition-capability manifest. For every normative state/edge and ordinary or exceptional record—including intent/completion corruption tombstones, root/index supersession, `RECOVERY_CLOSE`, `UnchargedNotAppliedCorruptionRecovery`, `ChargedCompletionCorru...",
+      "impact": "The registry's P3/P15 column supplies capability class names and defers every schema/validator/argv/accounting/fixture cell to a manifest that Section 16 produces only after council pass, so admission's NOT_READY-on-missing-cell condition and the required cross-surface identity cannot be checked against pinned design bytes; any later allowlist or manifest can claim compliance with the reviewed design without a checked reference.",
+      "recommended_action": "Enumerate the P3 allowlist and P15 capability manifest per CP ID in the artifact, or bind their exact bytes and hashes to the admission and handoff requirement so the identity claim is checkable before charge.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer34-authority-001",
+        "invocation_id": "inv34-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.6
+    }
+  ],
+  "rejected_candidates": []
+}

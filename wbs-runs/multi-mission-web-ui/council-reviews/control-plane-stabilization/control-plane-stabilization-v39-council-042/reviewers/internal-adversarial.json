@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v39-council-042",
+  "reviewer_id": "reviewer42-adversarial-001",
+  "lane": "internal-adversarial",
+  "invocation_id": "inv42-adv-001",
+  "attempt": 1,
+  "status": "completed",
+  "artifact_manifest_sha256": "b81fcc93713d990797bdaac314693b6bf12a0d22adbd218e18728468ad447258",
+  "packet_sha256": "1618ad9226de29a5fd988f7b640950f70f0484b8f9b90e135bef70ef928e91b6",
+  "findings": [
+    {
+      "finding_id": "ADV42-F-001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "The closed CP-12 registry does not define an explicit allowed recovery edge or destination out of CHARGED_ACCOUNTING_BLOCKED after bounded reconciliation, and it likewise does not define the destination out of ADMISSION_ACCOUNTING_BLOCKED; the phrase exact bounded reconciliation is not a closed state transition.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "221"
+      },
+      "evidence_excerpt": "`ADMISSION_ACCOUNTING_BLOCKED`, `CHARGED_ACCOUNTING_PENDING`, `CHARGED_ACCOUNTING_BLOCKED`, or `COMPLETION_INDEX_CLOSE_PENDING` | exact bounded reconciliation; any charged writer/accounting/APPLIED-completion failure uses `CHARGED_ACCOUNTING_PENDING→CHARGED_ACCOUNTING_BLOCKED`",
+      "impact": "An implementation cannot determine the sole post-reconciliation destination or authorization for a blocked accounting state and may invent a return to pending, dispatch, or terminal handling; that leaves the claimed exhaustive CP/P3/P15 closure unable to prevent an accounting bypass or indefinite charged state.",
+      "recommended_action": "Add explicit CP-12 allowed edges and destinations for pre-charge and charged accounting-blocked recovery, including remaining-allocation, exhaustion, failure, and terminal-reconciliation cases, then bind each edge to Section 14 coverage, P3/P15 rules, authorization pairs, and fixtures.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-adversarial-001",
+        "invocation_id": "inv42-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98
+    },
+    {
+      "finding_id": "ADV42-F-002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "accounting-recovery",
+      "claim": "PostChargeRecoveryAllocation is specified as permitting only a guarded same-attempt transition to FAILED_CHARGED_RESOURCE_EXHAUSTED, while Section 9.1 requires candidate-equal missing-receipt and charged-completion-corruption recoveries to terminate at FAILED_CHARGED_PROVENANCE_UNKNOWN and FAILED_CHARGED_COMPLETION_CORRUPT; the design provides no explicit allocation/authorization path for those required terminals when the original reservation is exhausted.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v39",
+      "locator": {
+        "kind": "line",
+        "value": "372"
+      },
+      "evidence_excerpt": "The allocation can authorize only outcome observation, exceptional recovery completion/CLOSE and a guarded same-attempt transition to `FAILED_CHARGED_RESOURCE_EXHAUSTED`; it cannot complete the original success path, dispatch or accept.",
+      "impact": "A charged attempt with no remaining reservation units can enter the Section 9.1 provenance or completion-corruption blocked states but has no declared funded terminal path, forcing either permanent blockage or an undeclared allocation/transition and undermining exact terminal closure and charge accounting.",
+      "recommended_action": "Explicitly include the provenance-unknown and charged-completion-corrupt terminal recoveries in the closed PostChargeRecoveryAllocation effect set, with both-ceiling checks, D/B recurrence, HUMAN authority, exact pair IDs, P3/P15 edges, and fixtures; or define an equally closed alternative without permitting READY, dispatch, acceptance, reuse, or a new attempt.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer42-adversarial-001",
+        "invocation_id": "inv42-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.96
+    }
+  ],
+  "rejected_candidates": []
+}

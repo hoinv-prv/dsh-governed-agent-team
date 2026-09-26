@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v11-council-012",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "0cc99421fc175232a83b6cd2b11d0663cefcd73eec500d92019e10bad1f43953"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "02a598a716894d455424f5aa759f09cacd19823ff72739fe42ba5ee0fce604c1"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "7eb47f575ee969a3eb6f8edfd642b6a9e4d6da0027a24aeb43c3eb91fe728bf1"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "c2e1f2dede611e3185284cb3044502bed6ba0d26ee3b033a388aa027b29fe6c1"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "0c7495b6f66366ef27291d193a97001e34f614869e5394aa8c078b975308396d"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "844f538b29555c181c40aeb488aeaf5aed3e19b4153db1fa2684e32d1764c32c"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "5771ded3c45bff017692ad79a913e5a364b78802e07cab697eef3eed81f95bbe"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "82da508b30311447b6435a2b0a4fd66221353572c8076a400805cc0038e48cdb"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "827417f139394b9b9e9e00b63f62bb48384feae502f18b2c7f72b08432c0e22c"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "a0a09bebe5ae2bac63c6c6dceda3394e1e283ac7bbca2a2cb982d80166e06b7d"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve all five confirmed findings and re-review exact revised bytes before any WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer11-authority-001-f1",
+      "effective_severity": "medium",
+      "claim": "Section 5.1 closes the set of pre-charge writes to two evidence effects, but P6 makes a fresh ASC produced by a declared run_aip transition a mandatory pre-charge predicate and Section 10 assigns that AIP-pointer/ASC write to run_aip.py, so the mandatory P6 transition has no admitted pre-charge owner, state or allowed effect.",
+      "artifact_id": "design-v11",
+      "locator": {
+        "kind": "line",
+        "value": "157"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed missing pre-charge ownership/effect for required AIP pointer and ASC transition."
+    },
+    {
+      "finding_id": "reviewer11-authority-001-f2",
+      "effective_severity": "medium",
+      "claim": "The Section 5.2 commit procedure re-observes only live P7-P11 predicates and re-hashes bundle inputs, while P14 additionally requires live re-verification of P13/P15/P16 non-revocation and scope and of the migration-authority receipt, so the documented charge gate never names re-checking revocation.",
+      "artifact_id": "design-v11",
+      "locator": {
+        "kind": "line",
+        "value": "164"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed missing explicit full P14 live authority/revocation revalidation in commit steps."
+    },
+    {
+      "finding_id": "reviewer12-adversarial-f001",
+      "effective_severity": "high",
+      "claim": "The post-charge invalid-ledger branch names a HUMAN-authorized repair but defines no repair state, source backup, durable candidate/receipt, allowed-effect operation, validator, or lineage rule that can admit the repaired bytes under P3.",
+      "artifact_id": "design-v11",
+      "locator": {
+        "kind": "line",
+        "value": "169"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed undefined post-charge invalid-ledger repair state and lineage contract."
+    },
+    {
+      "finding_id": "reviewer12-adversarial-f002",
+      "effective_severity": "high",
+      "claim": "The AdministrativeResourceLedger does not define how its own guarded append invocation is accounted without creating another append invocation that must itself be accounted.",
+      "artifact_id": "design-v11",
+      "locator": {
+        "kind": "line",
+        "value": "258"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed recursive administrative-ledger append-accounting gap."
+    },
+    {
+      "finding_id": "reviewer12-adversarial-f003",
+      "effective_severity": "high",
+      "claim": "A migrated base produced through MIGRATION_RECOVERY is not required to carry the fresh recovery authorization into migration_authority; first-charge admission re-hashes only the original migration decision.",
+      "artifact_id": "design-v11",
+      "locator": {
+        "kind": "line",
+        "value": "315"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed missing ordered recovery-authority lineage in first-charge revalidation."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "The accepted control-write, revocation, post-charge repair, metering and recovery-lineage gaps remain until revision."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

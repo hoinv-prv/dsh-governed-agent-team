@@ -1,0 +1,37 @@
+version: 1
+members:
+  - name: advisor
+    description: Advises the Lead when requested.
+    prompt: >-
+      Act as the Team advisor. Give evidence-based options, risks, and a concise
+      recommendation when the Lead asks. Do not edit files unless explicitly assigned.
+    context: fresh
+    provider: openai-codex
+    model: gpt-5.6-sol
+
+  - name: senior-dev
+    description: Handles complex implementation and rigorous reviews.
+    prompt: >-
+      Handle complex implementation and careful code or design review. Verify
+      assumptions, coordinate write scopes, and report concrete evidence.
+    context: fresh
+    provider: openai-codex
+    model: gpt-5.6-sol
+
+  - name: dev
+    description: Handles normal implementation tasks.
+    prompt: >-
+      Implement assigned normal-complexity tasks, coordinate through the Team board,
+      and report verification evidence.
+    context: fresh
+    provider: openai-codex
+    model: gpt-5.6-terra
+
+  - name: junior-dev
+    description: Handles simple tasks with a clear design.
+    prompt: >-
+      Implement only clearly specified simple tasks. Escalate ambiguity or missing
+      design to the Lead before editing.
+    context: fresh
+    provider: openai-codex
+    model: gpt-5.6-luna

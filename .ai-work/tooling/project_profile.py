@@ -26,6 +26,14 @@ TWO CONTRACTS THIS TOOL WILL NOT BREAK.
    is closed. So `check` and `refresh` print exactly what is missing, name the command that supplies it,
    and exit non-zero — the same halt-and-ask contract `lookup_wiki_source.py` uses for `--system`.
 
+THE `standard_pack` KEY (Standard_Pack_Contract_Spec_MVP §9). The schema now carries the project's
+pack pin — `standard_pack: {id, version}`, the third version layer after AIWS and the pack itself. It
+is **optional**, and `check` does not ask for it: most projects install no Standard Pack, and a
+required key would report every one of them INCOMPLETE for a feature they do not use. `refresh` seeds
+it as `null` ("no pack installed"); the value is written, as a two-key block inside the same
+`AIWS:BEGIN` region, by `install_standard_pack.py` — never by hand and never by guessing, because the
+pin is a statement about what was actually copied into the tree.
+
 `set-mode` is deliberately NOT a verb here: `switch_system_mode.py` keeps it. That tool is in
 PAYLOAD_EXCLUDES and two tests assert the exclusion, so folding it into this (shipped) tool would have
 been a silent ship-set change.
@@ -41,6 +49,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import (  # noqa: E402
+    _profile_scalar,
     PROJECT_PROFILE_SCHEMA,
     PROJECT_PROFILE_SCHEMA_VERSION,
     ProjectProfileUnreadable,
@@ -188,7 +197,9 @@ def cmd_refresh(ns) -> int:
     if not ns.apply:
         print(f"DRY RUN — {dest} would gain, inside the AIWS:BEGIN block:")
         for k, v in additions.items():
-            print(f"  + {k}: {'true' if v is True else 'false' if v is False else v}")
+            # rendered by the SAME function that writes it, so the dry run cannot promise a line
+            # different from the one --apply produces (`None` -> `null`, not the literal `None`)
+            print(f"  + {k}: {_profile_scalar(v)}")
         print("\nNothing outside that block is touched — your keys and comments are left exactly as "
               "they are.\nRe-run with --apply to write.")
         return 0

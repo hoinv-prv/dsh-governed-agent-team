@@ -94,6 +94,23 @@ Lý do cổng nằm ở đây chứ không chỉ là một cảnh báo: một AI
    3. **Inputs = inference ∪ lens** (never lens-only). Resolve via Flow step 0, fill into `## Required Wiki Inputs` + `## References to Read First`.
       - **Resolving reference standards** (guideline/checklist/template/SOP): query the index by the standard's NAME keywords ("requirement template", "design review checklist"), not the reference_type label; they usually live in `product/wiki_guidelines/`, the AIP templates dir (`TEMPLATE_DIR` — see Step 5), `.ai-work/procedural/`, or carry `source_type` `process_guideline`/`process_template`/`sop` (use `lookup_wiki_source.py --source-type`). Bridge: `*_template→process_template`, `*_guideline/*_checklist/naming_convention/*_playbook→process_guideline`, `sop→sop` (`Task_Lens_Spec` §B). Not findable → Deferred lookup + append a `retrieval_gap` capture.
    4. **Deferred lookups:** for anything unresolved, record `doc + lens` under `## Selected Task Lens / Mode` for aiws-aip run to resolve. No-Lens ⇒ infer fully, skip presets, leave empty. Ref: `Task_Lens_Spec_MVP` §C/§F.
+4c. **[STANDARD PACK — task khớp một `task_id` thì HỎI PACK, đừng đoán]** (CR-AIWS-2026-09-001)
+   Dự án có `.ai-work/standard_pack/` và yêu cầu của người dùng khớp một bước quy trình trong đó (ví dụ
+   "tạo DD từ BD đã duyệt" → `DD-CREATE`) → chạy **trước khi chọn template**:
+   `py .ai-work/tooling/resolve_task.py <task_id>` (thêm `--format json` khi cần máy đọc).
+   - Nó trả **binding hiệu lực** của task: `assets` (process · template · checklist · guideline · rule),
+     `aip.template`, `skills`, `roles`, `human_gate` — đã áp override của dự án
+     (`.ai-work/project_process/task_catalog.override.yml`) và **in kèm nguồn** `project` hay `pack`
+     (thứ tự SoT: project > pack). Dùng kết quả đó làm `## Required Wiki Inputs` /
+     `## References to Read First` / `Recommended Skills` của step, thay vì tự suy ra khuôn nào hợp.
+   - `aip.mode: mandatory` ⇒ AIP **bắt buộc**, và `aip.template` là template phải instantiate (Step 5:
+     truyền PATH của nó qua `--template`). Task `generate_artifact`/`update_artifact` mà thiếu binding
+     đó là pack hỏng — báo chủ pack, đừng tự chọn EXEC cho xong.
+   - `human_gate.required: true` ⇒ Done Criteria phải nêu **checker** (một role trong
+     `common/roles.yml`), không phải "đã self-check".
+   - Không có pack, `task_id` không phân giải được, hay task của người dùng không khớp bước nào →
+     **bỏ qua mục này**, không chặn flow, và tuyệt đối **không bịa `task_id`**.
+
 5. **Read template and draft**
    **`TEMPLATE_DIR` (install-portable, CR-AIWS-2026-06-050):** for each template file, read `.ai-work/aip/templates/<file>` if it exists, else `product/aip_templates/<file>` (downstream installs ship only `.ai-work/`; the source repo has both). Template reads below are `TEMPLATE_DIR`-relative.
    **`--template <id|path>` (optional; agent-agnostic):** if the args carry `--template`, instantiate THAT template instead of the default menu. **ID** = case-insensitive basename via alias table (under `TEMPLATE_DIR`): `EXEC→AIP_EXEC_TEMPLATE.md` · `PLAN→AIP_PLAN_TEMPLATE.md` · `LOCAL→AIP_LOCAL_TEMPLATE.md` · `APPLY_CR→AIP_EXEC_APPLY_CR_TEMPLATE.md`. **Review templates (DD/BD…) là PROJECT-LOCAL — AIWS KHÔNG ship** (CR-AIWS-2026-07-033 T5, DP-033-2=b): project tự tạo template review của mình trong `TEMPLATE_DIR` và gọi bằng **PATH** (hoặc basename file thật) — alias cho template không ship đã bị gỡ để hết quảng-cáo-file-không-tồn-tại. **PATH** = a value containing `/` or ending `.md`, resolved from project root. **If the resolved template does not exist → STOP and ASK the HUMAN; NEVER silently fall back to EXEC.** Derive `allocate_aip_id --kind` from it: PLAN→`plan`, LOCAL→`local`, all EXEC variants (incl. APPLY_CR và mọi review template project-local)→`exec`. (aiws-aip create does NOT read `instance.yaml` / agent state — whoever calls supplies `--template`.)

@@ -1,0 +1,41 @@
+profile_id: gat_design_document
+title: GAT design-document profile
+source_type: gat_design_document
+default_impact: medium
+knowledge_targets:
+  - architecture
+  - behavior
+  - design_decision
+  - implementation_guidance
+  - risk_control
+lookup_key_hints:
+  - Governed Agent Team
+  - GAT
+  - DSH
+  - architecture
+  - design
+  - implementation
+  - governance
+  - lifecycle
+  - memory
+  - security
+section_hints:
+  - Purpose
+  - Authority
+  - Overview
+  - Architecture
+  - Design
+  - Scope
+  - Risks
+  - Security
+summary_extraction:
+  target_sections:
+    - Purpose
+    - Purpose and authority
+    - Overview
+    - Summary
+    - Scope
+  max_chars: 500
+chunk_enabled: false
+related_sources:
+  emit_scaffold: false

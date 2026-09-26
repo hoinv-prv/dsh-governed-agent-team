@@ -1,0 +1,2 @@
+Parent read-only verification against immutable design-v30 SHA-256 745972be0cddb29aa1a735484fbc004014c5a590136c1f2162ac17c0ef7bbbb9.
+Confirmed all four normalized findings: one self-referential charge commitment; two independently reported retained acceptance-repair contradictions; and missing zero-charge exceptional chain-head semantics.

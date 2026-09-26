@@ -1,0 +1,4 @@
+Parent read-only verification against immutable design-v26 SHA-256 241bf7315bf160edf422c3cba9fb37974ab61a0249bc3029b82043586feee7a5.
+Confirmed reviewer27-adversarial-001-f001: genesis activities lack pre-effect root authorization/outcome pairs.
+Confirmed reviewer27-adversarial-001-f002: route amendment authority is not explicitly owner-rooted.
+Confirmed reviewer27-adversarial-001-f003: route amendment can exceed immutable retry/call ceilings without a versioned policy or finite aggregate cap.

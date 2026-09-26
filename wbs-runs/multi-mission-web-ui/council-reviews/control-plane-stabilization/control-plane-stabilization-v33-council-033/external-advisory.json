@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v33-council-033",
+  "observations": [],
+  "advisory_hypotheses": [
+    {
+      "advisory_id": "EXT33R-A-001",
+      "claim": "If the existing dsh-wbs-execution/1 contract is validated strictly, representation (a) may have no proven slot for the mandated /charge_boundary_preflight_sha256 pointer, which would make the charge preimage unconstructible without inventing a field.",
+      "basis": "Section 5.2 step 4 enumerates representation (a) as covering attempt allocation, cumulative charge, bundle hash, seal hash, boundary-receipt hash, lineage and attempt ID, while step 5 requires the candidate tree to contain exactly the selected execution-contract pointer /charge_boundary_preflight_sha256.",
+      "missing_project_sot": [
+        "The exact pinned dsh-wbs-execution/1 schema bytes, validator implementation and strict-validator fixtures."
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Load the pinned schema and validator, build the candidate tree with the preflight pointer present, and run the strict validator; if it rejects the field, record P15 NOT_READY or restrict the decision to representation (b)."
+    },
+    {
+      "advisory_id": "EXT33R-A-002",
+      "claim": "The version-guarded execution.json write may rely on a native guarded write/edit primitive whose compare-and-set semantics are not established as an existing DSH capability.",
+      "basis": "Section 6.1 states the coordinator owns the first durable charge through one version-guarded execution.json update using the runtime's native guarded file write/edit operation and that a stale-version conflict aborts, but no pinned capability manifest is present in the reviewed bytes.",
+      "missing_project_sot": [
+        "The pinned DSH tool/capability manifest and version that documents the guarded write operation's version-check and abort semantics."
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Inspect the pinned DSH capability manifest and exercise a stale-version write to prove abort/no-write, then bind the exact tool identity/hash in P15; otherwise record the capability as unproven."
+    },
+    {
+      "advisory_id": "EXT33R-A-003",
+      "claim": "The pinned v32 consistency audit may contain the CS/CH/CA/BA findings and their closure evidence in an artifact supplied to another lane rather than to this one.",
+      "basis": "The design references the v32 pre-council consistency audit but this lane's context omits internal-history and peer-findings, and no audit identifier appears in the reviewed bytes.",
+      "missing_project_sot": [
+        "The pinned v32 pre-council consistency-audit bytes and any per-finding closure table maintained outside the design."
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Obtain the pinned audit and check each finding ID against a specific v33 locator; if any finding lacks a v33 locator, report it as an open closure item rather than accepting the Section 2 narrative."
+    },
+    {
+      "advisory_id": "EXT33R-A-004",
+      "claim": "If implementers reuse the pre-reservation symbol G instead of the persisted running committed total, a reservation following a PostChargeRecoveryAllocation could be admitted on a stale ceiling and permit an overrun.",
+      "basis": "Section 6.3 defines G as global committed units before a reservation while also persisting global_committed_units, and the recovery formula is written as global_committed_units := G+R+D; the text does not restate that a later reservation reads the persisted value as its G.",
+      "missing_project_sot": [
+        "The authoritative AdministrativeResourceLedger schema/validator and its budget-arithmetic fixtures."
+      ],
+      "confidence": "low",
+      "decision_weight": "none",
+      "suggested_validation": "Implement the stated formulas literally and run the described fixtures plus a second reservation after a recovery allocation, checking that global_remaining_units never goes negative and that debits reconcile."
+    }
+  ],
+  "promoted_observation_ids": [
+    "EXT33R-O-001",
+    "EXT33R-O-002",
+    "EXT33R-O-003",
+    "EXT33R-O-004",
+    "EXT33R-O-005",
+    "EXT33R-O-006",
+    "EXT33R-O-007",
+    "EXT33R-O-008",
+    "EXT33R-O-009",
+    "EXT33R-O-010"
+  ]
+}

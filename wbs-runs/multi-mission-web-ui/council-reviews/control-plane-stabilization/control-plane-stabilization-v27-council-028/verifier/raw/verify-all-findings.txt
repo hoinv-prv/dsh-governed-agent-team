@@ -1,0 +1,4 @@
+Parent read-only verification against immutable design-v27 SHA-256 91efea2fdfa24878be89961d571ce3ba0d6cef35ec4b755afc824a4a6584aaae.
+Confirmed reviewer28-adversarial-001-f001: administrative append observation lacks a durable RootControlJournal outcome.
+Confirmed reviewer28-adversarial-001-f002: reservation debit versus per-operation usage arithmetic is undefined.
+Confirmed reviewer28-adversarial-001-f003: migration steps do not define validate/select/write/re-read/verify/final-accept ordering.

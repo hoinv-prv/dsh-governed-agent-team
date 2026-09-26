@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v1-council-002",
+  "degradations": [
+    {"degradation_id":"DEG2-001","kind":"prompt_only_read_only","affected_lane":"internal-authority","detail":"No preconfigured tool-filter/persona instance was available; read-only restrictions were prompt-only.","verdict_consequence":"pass_with_notes_at_best"},
+    {"degradation_id":"DEG2-002","kind":"prompt_only_read_only","affected_lane":"internal-adversarial","detail":"No preconfigured tool-filter/persona instance was available; read-only restrictions were prompt-only.","verdict_consequence":"pass_with_notes_at_best"},
+    {"degradation_id":"DEG2-003","kind":"prompt_only_read_only","affected_lane":"external-outside-view","detail":"No preconfigured tool-filter/persona instance was available; read-only restrictions were prompt-only.","verdict_consequence":"pass_with_notes_at_best"},
+    {"degradation_id":"DEG2-004","kind":"unknown_cost","affected_lane":"all","detail":"Provider adapters did not return duration, token, or cost telemetry for the model calls.","verdict_consequence":"pass_with_notes_at_best"}
+  ]
+}

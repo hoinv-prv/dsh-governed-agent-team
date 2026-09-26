@@ -1,0 +1,3 @@
+Parent read-only verification against immutable design-v22 SHA-256 4b6ba3166c18f86dd332a30b19855ecc453e48710e5db5847c7dfa4a0e541a16.
+Confirmed reviewer23-adversarial-f001: acceptance projection has no atomic authority/revocation guard and overstates no-write guarantee.
+Confirmed reviewer23-adversarial-f002: one-call genesis allowance cannot cover distinct writer and independent post-write verifier.

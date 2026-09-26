@@ -1,0 +1,1 @@
+AUTH32-F-001 inconclusive as critical. The run-032 packet omitted the immutable 434f snapshot, but that exact snapshot exists in prior immutable council artifacts and was previously verified. Packet completeness/path specificity should be corrected, but the claimed operational critical impact is not established.

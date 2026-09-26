@@ -1,0 +1,45 @@
+# Risk, routing, budget, and verdict rules
+
+Record risk, downstream impact, exact routes, capabilities, limits, failures, and degradations before relying on reviewer output. Fresh calls establish context independence; only distinct provider/model families establish model diversity.
+
+## Initial panel
+
+| Risk | Internal lanes | Diversity | Adjudication |
+|---|---:|---|---|
+| `low` | 2 | Same-route degraded mode allowed and disclosed | Material conflict |
+| `medium` | 2 | Distinct routes preferred | Verdict-changing conflict |
+| `high` | 2 | Distinct eligible routes required | Every high or critical disagreement |
+| `critical` | 2 | Distinct eligible routes required | Mandatory, plus human escalation |
+
+Low downstream impact makes the outside-view lane optional. Medium impact recommends it when assumptions are material. High or critical impact requires it. The Chairman is always a separate invocation and must not have served as an initial, outside-view, or adjudication participant.
+
+Inspect live providers and models before dispatch. Supply provider and model together. Record route family, advertised persona/tool-filter capability, and actual restriction mode. DSH model-facing `subagent` calls do not accept per-call persona or tool filters; enforced lane restriction requires a preconfigured tool instance. Prompt wording alone is `prompt-only` degradation, not a sandbox.
+
+## Call accounting
+
+One attempted model invocation consumes one call, including a schema-invalid result, timeout, provider error, adjudicator, and Chairman. Let `initial_lanes` include every internal lane and any outside-view lane that will be dispatched, whether required or optional. Before the first call, calculate `worst_case_required = initial_lanes + one adjudicator + one Chairman + (initial_lanes × maximum_retries_per_lane)`. Reserve that full worst case even when adjudication is conditional, because any conflict gate may make it mandatory after first passes. Critical risk uses the same slot as its unconditionally mandatory adjudicator. Reject the request when `maximum_model_calls` cannot cover `worst_case_required`; never spend the adjudicator or Chairman reservation on a retry. Release the adjudicator reservation only after conflict evaluation persists `triggered: false`. Record reserved, attempted, released, and remaining counts and each invocation in telemetry.
+
+Retry a lane at most `maximum_retries_per_lane`, and only for `provider_unavailable`, `quota_exhausted`, `timeout`, or `schema_invalid`. Keep every original. Do not retry a valid output to seek a different conclusion. An unavailable mandatory call produces `insufficient_evidence` unless a confirmed critical violation already requires `blocked`.
+
+## Outside-view policy
+
+Give the outside-view reviewer a sanitized immutable packet, objective, intended audience, public constraints, explicit questions, and a declaration of supplied and omitted context. Do not include internal history, private Source-of-Truth material, peer findings, or a request for verdict. Sanitization produces exact bytes, a SHA-256 hash, and a redaction map from every retained locator to its source; if safe deterministic sanitization is unavailable, fail the required lane.
+
+An exact locator-backed observation may become a candidate finding only after ordinary scope and verification checks. Predictions, conventions, alternate frames, and stakeholder expectations remain advisory hypotheses with `decision_weight: "none"`. A context-attestation mismatch degrades isolation and is machine-readable; it does not by itself refute a separately verified observation.
+
+## Conflict gates
+
+Adjudicate when reviewers disagree on a high or critical issue; severity differs by at least two levels and could change disposition; verification refutes a claim but alternate evidence remains; deduplication could hide minority high-risk evidence; disagreement changes `pass` versus `needs_revision`; prompt-injection indicators appear; or an irreversible consequence is proposed with incomplete evidence. Critical reviews always adjudicate. Preserve unresolved dissent. The adjudicator receives only existing disputed IDs and cannot add findings.
+
+## Evidence consequences
+
+Refuted findings remain audit-visible and cannot drive the verdict. A confirmed medium or high finding requires `needs_revision`; a confirmed critical finding or hard authority violation requires `blocked`. Confirmed low or informational findings permit at most `pass_with_notes`.
+
+A material medium, high, or critical finding that is `inconclusive` or `not_verifiable` prevents `pass` and `pass_with_notes`: use `insufficient_evidence` when evidence or authorization is unavailable, or `needs_revision` when the artifact itself omitted evidence it was required to provide. Low or informational inconclusive items must appear as residual risk and permit at most `pass_with_notes`. Missing required diversity, outside view, verification, artifact, dispatch provenance, Chairman separation, or immutable identity requires `insufficient_evidence` unless a confirmed critical issue already requires `blocked`.
+
+`pass` means all required lanes and evidence exist and no confirmed material finding remains. `pass_with_notes` means only low/informational findings or explicit non-blocking residual risk remain. `needs_revision` means a confirmed medium/high defect or artifact-owned evidence omission requires correction. `blocked` means a confirmed critical or hard authority violation exists. `insufficient_evidence` means the council cannot establish a reliable conclusion. Verdict severity is not majority voting; pinned authority and deterministic evidence prevail.
+
+## Post-correction lineage
+
+A new run may carry a lane forward only when `lineage.json` records the predecessor review ID and report hash, old and new packet hashes, exact equality, changed artifact IDs/ranges, impact-boundary evidence, and the decision for every lane. `carried_forward` requires byte-identical packet hashes and `affected: false`; all other lanes rerun. The new report names lineage and preserves the predecessor unchanged.
+

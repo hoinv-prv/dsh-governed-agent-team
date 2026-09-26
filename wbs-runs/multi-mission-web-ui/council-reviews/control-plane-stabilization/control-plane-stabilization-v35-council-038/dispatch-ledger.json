@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v35-council-038",
+  "budget_reserved": {
+    "maximum_model_calls": 8,
+    "initial_lane_calls": 3,
+    "retry_allowance": 3,
+    "reserved_chairman": 1,
+    "reserved_adjudicator": 1,
+    "worst_case_required": 8
+  },
+  "chairman_invocation_id": "inv38-chair-001",
+  "participants": [
+    {
+      "invocation_id": "inv38-auth-001",
+      "lane": "internal-authority",
+      "role": "internal-reviewer",
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "route_family": "deepseek-v4",
+      "attempt": 1,
+      "packet_sha256": "8f35aa8e2bf5afacbbdf68ddcf23c038968b2d8052163193573e24581c54a6a3",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "completed",
+      "failure_code": null
+    },
+    {
+      "invocation_id": "inv38-adv-001",
+      "lane": "internal-adversarial",
+      "role": "internal-reviewer",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-luna",
+      "route_family": "openai-gpt-5.6",
+      "attempt": 1,
+      "packet_sha256": "e1316d637340417c59a1ab9f4aa3606c3969bf42ecd2b0791c62c500a614bdc8",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "completed",
+      "failure_code": null
+    },
+    {
+      "invocation_id": "inv38-ext-001",
+      "lane": "external-outside-view",
+      "role": "outside-view",
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "route_family": "deepseek-v4",
+      "attempt": 1,
+      "packet_sha256": "7c217f980aa348371815e3be151e6c469caa25c70e733705f21f543cbbf1d72d",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "completed",
+      "failure_code": null
+    },
+    {
+      "invocation_id": "inv38-adj-001",
+      "lane": "adjudication",
+      "role": "adjudicator",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-sol",
+      "route_family": "openai-gpt-5.6",
+      "attempt": 1,
+      "packet_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "reserved",
+      "failure_code": null
+    },
+    {
+      "invocation_id": "inv38-chair-001",
+      "lane": "chairman",
+      "role": "chairman",
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "route_family": "deepseek-v4",
+      "attempt": 1,
+      "packet_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "reserved",
+      "failure_code": null
+    },
+    {
+      "invocation_id": "inv38-auth-002",
+      "lane": "internal-authority",
+      "role": "internal-reviewer",
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "route_family": "deepseek-v4",
+      "attempt": 2,
+      "packet_sha256": "8f35aa8e2bf5afacbbdf68ddcf23c038968b2d8052163193573e24581c54a6a3",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "failed",
+      "failure_code": "provider_unavailable"
+    },
+    {
+      "invocation_id": "inv38-adv-002",
+      "lane": "internal-adversarial",
+      "role": "internal-reviewer",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-luna",
+      "route_family": "openai-gpt-5.6",
+      "attempt": 2,
+      "packet_sha256": "e1316d637340417c59a1ab9f4aa3606c3969bf42ecd2b0791c62c500a614bdc8",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "failed",
+      "failure_code": "provider_unavailable"
+    },
+    {
+      "invocation_id": "inv38-ext-002",
+      "lane": "external-outside-view",
+      "role": "outside-view",
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "route_family": "deepseek-v4",
+      "attempt": 2,
+      "packet_sha256": "7c217f980aa348371815e3be151e6c469caa25c70e733705f21f543cbbf1d72d",
+      "restriction_mode": "prompt-only",
+      "capabilities": {
+        "persona": false,
+        "tool_filter": false,
+        "output_schema": false
+      },
+      "status": "failed",
+      "failure_code": "provider_unavailable"
+    }
+  ]
+}

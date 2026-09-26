@@ -1,0 +1,10 @@
+Parent read-only verification against immutable design-v5 snapshot SHA-256 72277a8fae125305266a48c5de5122e145a7c72cd12fd949f19b7d40ed8a7aec.
+
+Confirmed r6auth001a1-f1: Section 5.1's blanket no-mutable-control rule lacks a named exception and exact operation contract for the required uncharged AdmissionInvalidation append.
+Confirmed r6auth001a1-f2: Sections 7.1 and 16 mutually require a HUMAN decision bound to a successor WBS hash before the draft bytes needed to produce that hash may be built.
+Confirmed r6auth001a1-f3: P8 uses unconditional 'cannot charge' wording although Section 5.3 limits enforcement to procedural controls and discloses no native non-bypassable hook.
+Confirmed r6adv001-f1: the AdmissionBundle sample does not carry atomic P13/P15 decision receipts identifying decision record, actor, scope and bound hashes/effects.
+Confirmed r6adv001-f2: commit semantics lack deterministic construction plus strict validation of exact candidate execution.json bytes before durable charge, and lack persisted-byte strict validation before dispatch.
+Confirmed r6adv001-f3: P11 binds only distinct fallback invocation identity, not a provider/model/route-family substitution matrix preserving mandatory high-risk internal diversity.
+
+No command verification was authorized or executed. All findings are specification-presence checks.

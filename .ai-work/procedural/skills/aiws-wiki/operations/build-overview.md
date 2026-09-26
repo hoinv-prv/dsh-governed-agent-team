@@ -7,7 +7,16 @@
 Trang overview = PROJECTION của `index.jsonl`(+`index.aiws.jsonl`) + `relations.jsonl` → AI/HUMAN biết wiki chứa gì + tìm thế nào, không drift tay.
 
 ## Tool
-`py .ai-work/tooling/build_wiki_overview.py --system <id> | --all-systems [--pages contents,search,health] [--no-register]`
+`py .ai-work/tooling/build_wiki_overview.py --system <id> | --all-systems [--pages contents,search,health,nav] [--no-register]`
+
+**`nav` là OPT-IN** (CR-AIWS-2026-09-003) — KHÔNG nằm trong default `contents,search,health`; phải
+gọi `--pages nav` rõ ràng. Trang nav liệt kê mọi tài liệu đã đăng ký kèm path và tự khai độ phủ,
+để agent trả lời "có hay không / ở đâu" một cách **kết luận được** khi lookup trượt.
+`operations/lookup.md` dùng nó làm **FALLBACK**, không phải bước đầu tiên (CR-AIWS-2026-09-004):
+tra theo từ khoá vẫn đi trước, trang nav chỉ vào cuộc khi lookup ra 0 kết quả / kết quả không khớp
+/ match fragile — hoặc khi câu hỏi cần LIỆT KÊ ĐỦ. Và khi vào cuộc thì **`grep`** trang nav, đừng
+`cat` nó (đo được −75% ký tự). Tự chọn hình dạng theo corpus; corpus lớn sinh **một trang GỐC +
+nhiều trang nhánh** — chỉ trang gốc được đăng ký làm wiki source (DP-003-B).
 
 ## Khi nào chạy
 - Sau mỗi index/relations rebuild (maintenance chain: rebuild relations → **regenerate overview** → final index rebuild — tool tự làm bước cuối). Bỏ qua → lint WARN `overview_fingerprint_stale`.

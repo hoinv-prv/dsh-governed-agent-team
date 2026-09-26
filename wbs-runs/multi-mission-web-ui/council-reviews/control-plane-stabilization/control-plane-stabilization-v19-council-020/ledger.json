@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v19-council-020",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer20-adversarial-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "transition-lineage-atomicity",
+      "claim": "The intent/completion journal has no fail-closed split-write protocol: it persists content-addressed intent/completion records and mutates a separate TransitionIntentIndex while simultaneously disclaiming cross-file atomicity.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v19",
+      "locator": {
+        "kind": "line",
+        "value": "172-180;335-339"
+      },
+      "evidence_excerpt": "Create-once intent sealing atomically appends exactly that ID as the sole open record and enters `TRANSITION_IN_FLIGHT`.",
+      "impact": "A crash can leave an orphan intent or a still-open index after a completion. The former is invisible to ordinary P3; the latter can coexist with APPLIED bytes. Without an explicit gate requiring both artifacts to close, a charge can be stranded or dispatch can proceed from an incompletely closed journal.",
+      "recommended_action": "Replace the atomicity assertion with an ordered, version-guarded journal protocol for intent/open and completion/close; define both split states and exact idempotent recovery; enumerate index writes in the Section 5.1/P15 effect set; and require zero-open ordinary P3 before dispatch or dependency use.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer20-adversarial-001",
+        "invocation_id": "inv20-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98,
+      "source_candidate_ids": [
+        "reviewer20-adversarial-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer20-adversarial-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "resource-accounting-commit-order",
+      "claim": "The required actual-usage append occurs after each admission operation, but the design does not make the guarded writer's and APPLIED-completion's accounting entries prerequisites for APPLIED closure or dispatch.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v19",
+      "locator": {
+        "kind": "line",
+        "value": "168;274-276;337-339"
+      },
+      "evidence_excerpt": "Every subsequent admission operation immediately appends one actual-usage entry referencing only that reservation",
+      "impact": "A crash after `execution.json` or an APPLIED completion is persisted but before its usage append leaves charged or dispatchable evidence with a missing administrative-ledger entry. Pre-write reconciliation cannot detect its own later accounting failure, so effect/cost closure can be incomplete and recovery state is ambiguous.",
+      "recommended_action": "Bind deterministic usage-entry IDs to the intent, GuardedWriteReceipt, and completion; add an explicit charged accounting-pending state; prohibit APPLIED closure and dispatch until the exact usage entry and append receipt validate; and define HUMAN-bounded recovery that preserves the charge.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer20-adversarial-001",
+        "invocation_id": "inv20-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.97,
+      "source_candidate_ids": [
+        "reviewer20-adversarial-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

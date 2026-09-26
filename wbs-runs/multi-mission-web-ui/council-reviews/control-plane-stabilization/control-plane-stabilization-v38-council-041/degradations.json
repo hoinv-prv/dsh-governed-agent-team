@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v38-council-041",
+  "degradations": [
+    {
+      "degradation_id": "DEG41-PROMPT-INTERNAL_AUTHORITY",
+      "kind": "prompt_only_read_only",
+      "affected_lane": "internal-authority",
+      "detail": "Persona/tool/output restrictions were conveyed by prompt; no preconfigured enforcement instance was available.",
+      "verdict_consequence": "pass_with_notes_at_best"
+    },
+    {
+      "degradation_id": "DEG41-PROMPT-INTERNAL_ADVERSARIAL",
+      "kind": "prompt_only_read_only",
+      "affected_lane": "internal-adversarial",
+      "detail": "Persona/tool/output restrictions were conveyed by prompt; no preconfigured enforcement instance was available.",
+      "verdict_consequence": "pass_with_notes_at_best"
+    },
+    {
+      "degradation_id": "DEG41-PROMPT-EXTERNAL_OUTSIDE_VIEW",
+      "kind": "prompt_only_read_only",
+      "affected_lane": "external-outside-view",
+      "detail": "Persona/tool/output restrictions were conveyed by prompt; no preconfigured enforcement instance was available.",
+      "verdict_consequence": "pass_with_notes_at_best"
+    },
+    {
+      "degradation_id": "DEG41-PROMPT-CHAIRMAN",
+      "kind": "prompt_only_read_only",
+      "affected_lane": "chairman",
+      "detail": "Persona/tool/output restrictions were conveyed by prompt; no preconfigured enforcement instance was available.",
+      "verdict_consequence": "pass_with_notes_at_best"
+    },
+    {
+      "degradation_id": "DEG41-EXT-CONTEXT",
+      "kind": "external_context_reduction",
+      "affected_lane": "external-outside-view",
+      "detail": "Required outside lane received only the sanitized design and declared public context, without peer findings or private Sources of Truth.",
+      "verdict_consequence": "none"
+    },
+    {
+      "degradation_id": "DEG41-UNKNOWN-COST",
+      "kind": "unknown_cost",
+      "affected_lane": "all",
+      "detail": "Provider adapters did not report token or monetary cost telemetry for the four completed calls.",
+      "verdict_consequence": "none"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+Parent read-only verification against immutable design-v11 SHA-256 ed4910113cf96c27b7b3a01640026a29340a45d5060529c331e821810de3662c.
+
+Confirmed all five normalized findings:
+- authority-f1: required run_aip ASC/pointer transition is omitted from the closed pre-charge write set.
+- authority-f2: commit steps do not explicitly execute complete live P14 authority/revocation revalidation.
+- adversarial-f001: post-charge invalid-ledger repair lacks a governed repair state/contract and P3 lineage rule.
+- adversarial-f002: administrative-ledger append accounting recursively requires accounting its own append operation.
+- adversarial-f003: migration authority does not carry the ordered recovery decisions/receipts/final acceptance lineage into first-charge revalidation.
+
+No command verification was authorized or executed; these are exact specification-presence/consistency checks.

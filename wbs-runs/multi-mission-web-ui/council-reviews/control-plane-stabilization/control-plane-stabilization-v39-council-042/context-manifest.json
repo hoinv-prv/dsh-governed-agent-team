@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v39-council-042",
+  "packets": [
+    {
+      "lane": "internal-authority",
+      "packet_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v39-council-042/packets/internal-authority.json",
+      "packet_sha256": "94e87762c88aacd01458b6a3c4b9c391a90046924b9ef95d29373c6cb65c95b0",
+      "packet_size_bytes": 859554,
+      "artifact_ids": [
+        "design-v39",
+        "run034-dispatch",
+        "run034-authority",
+        "run034-adversarial",
+        "run038-authority",
+        "run038-adversarial",
+        "run038-outside",
+        "run039-status",
+        "run039-ledger",
+        "run039-authority-current",
+        "run039-adversarial-current",
+        "run039-outside-current",
+        "run040-status",
+        "run040-authority",
+        "run040-adversarial",
+        "run040-outside-invalid",
+        "run041-report",
+        "run041-authority",
+        "run041-adversarial",
+        "run041-outside",
+        "run041-ledger",
+        "run041-verifier",
+        "run041-chairman"
+      ],
+      "sot_ids": [
+        "sot-repo-rules",
+        "sot-aiws-architecture",
+        "sot-runtime-review",
+        "sot-gat-proposal",
+        "sot-failure-evidence",
+        "sot-council-contract",
+        "sot-council-routing",
+        "sot-consistency-audit",
+        "sot-run033-ledger",
+        "sot-run033-verifier"
+      ],
+      "context_categories": [
+        "objective",
+        "must-check",
+        "authority"
+      ],
+      "omitted_categories": [
+        "peer-findings",
+        "external-advice"
+      ],
+      "peer_findings_included": false
+    },
+    {
+      "lane": "internal-adversarial",
+      "packet_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v39-council-042/packets/internal-adversarial.json",
+      "packet_sha256": "1618ad9226de29a5fd988f7b640950f70f0484b8f9b90e135bef70ef928e91b6",
+      "packet_size_bytes": 859562,
+      "artifact_ids": [
+        "design-v39",
+        "run034-dispatch",
+        "run034-authority",
+        "run034-adversarial",
+        "run038-authority",
+        "run038-adversarial",
+        "run038-outside",
+        "run039-status",
+        "run039-ledger",
+        "run039-authority-current",
+        "run039-adversarial-current",
+        "run039-outside-current",
+        "run040-status",
+        "run040-authority",
+        "run040-adversarial",
+        "run040-outside-invalid",
+        "run041-report",
+        "run041-authority",
+        "run041-adversarial",
+        "run041-outside",
+        "run041-ledger",
+        "run041-verifier",
+        "run041-chairman"
+      ],
+      "sot_ids": [
+        "sot-repo-rules",
+        "sot-aiws-architecture",
+        "sot-runtime-review",
+        "sot-gat-proposal",
+        "sot-failure-evidence",
+        "sot-council-contract",
+        "sot-council-routing",
+        "sot-consistency-audit",
+        "sot-run033-ledger",
+        "sot-run033-verifier"
+      ],
+      "context_categories": [
+        "objective",
+        "must-check",
+        "authority"
+      ],
+      "omitted_categories": [
+        "peer-findings",
+        "external-advice"
+      ],
+      "peer_findings_included": false
+    },
+    {
+      "lane": "external-outside-view",
+      "packet_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v39-council-042/packets/external-outside-view.json",
+      "packet_sha256": "51fcdf45f51ff1b13250ff3c0402d336e4c1f725cace3df915bc16b49a503a82",
+      "packet_size_bytes": 235623,
+      "artifact_ids": [
+        "sanitized-design-v39"
+      ],
+      "sot_ids": [],
+      "context_categories": [
+        "objective",
+        "audience",
+        "public-constraints"
+      ],
+      "omitted_categories": [
+        "internal-history",
+        "peer-findings",
+        "private-sot"
+      ],
+      "peer_findings_included": false
+    }
+  ]
+}

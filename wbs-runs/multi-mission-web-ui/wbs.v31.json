@@ -1,0 +1,2106 @@
+{
+  "format": "dsh-wbs/1",
+  "mission_id": "multi-mission-web-ui",
+  "revision": 31,
+  "objective": "Complete the dependency-free standalone coding and focused-test phase within the HUMAN-raised cumulative budget of 80 attempts through design-gated control-state and conformance recovery, freeze an independently reviewed implementation hash, and prepare an exact executable conformance handoff without accessing DSH or executing the accepted vector baseline.",
+  "mission_root": "wbs-runs/multi-mission-web-ui",
+  "scope": {
+    "read_paths": [
+      "AGENTS.md",
+      "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+      "docs/security",
+      "docs/conformance",
+      "package.json",
+      "packages/gat",
+      "wbs-runs/multi-mission-web-ui",
+      ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+      ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui",
+      ".ai-work/tooling",
+      ".ai-work/procedural",
+      ".ai-work/truth"
+    ],
+    "write_paths": [
+      "docs/security",
+      "docs/conformance",
+      "packages/gat",
+      "wbs-runs/multi-mission-web-ui",
+      ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+      ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+    ],
+    "resource_keys": [
+      "aiws-aip-runtime",
+      "gat-governance",
+      "gat-memory",
+      "gat-package",
+      "gat-policy",
+      "gat-wrapper",
+      "gat-conformance",
+      "gat-control-state",
+      "gat-conformance-contracts",
+      "gat-conformance-handlers"
+    ],
+    "effects": [
+      "read",
+      "write",
+      "execute"
+    ],
+    "allowed_commands": [
+      {
+        "argv": [
+          "python3",
+          ".ai-work/tooling/lint_aip.py",
+          "--path",
+          ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md"
+        ],
+        "cwd": ".",
+        "timeout_ms": 30000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "python3",
+          ".ai-work/tooling/run_aip.py",
+          "status",
+          "AIP-EXEC-004"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "python3",
+          ".ai-work/tooling/run_aip.py",
+          "step",
+          "AIP-EXEC-004",
+          "--step",
+          "STEP-06"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "sha256sum",
+          "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+          "docs/conformance/gat-conservative-mvp-v1.json"
+        ],
+        "cwd": ".",
+        "timeout_ms": 30000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "wbs-runs/multi-mission-web-ui/tooling/verify-gat-vector-shape.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 30000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "python3",
+          ".ai-work/tooling/run_aip.py",
+          "step",
+          "AIP-EXEC-004",
+          "--step",
+          "STEP-07"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "python3",
+          ".ai-work/tooling/run_aip.py",
+          "step",
+          "AIP-EXEC-004",
+          "--step",
+          "STEP-08"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "wbs-runs/multi-mission-web-ui/tooling/remove-memory-attempt1-tests.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 30000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "python3",
+          ".ai-work/tooling/run_aip.py",
+          "step",
+          "AIP-EXEC-004",
+          "--step",
+          "STEP-09"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "python3",
+          ".ai-work/tooling/run_aip.py",
+          "step",
+          "AIP-EXEC-004",
+          "--step",
+          "STEP-10"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "python3",
+          ".ai-work/tooling/run_aip.py",
+          "step",
+          "AIP-EXEC-004",
+          "--step",
+          "STEP-11"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "packages/gat/tests/governance.test.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "packages/gat/tests/policy-selector.test.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "packages/gat/tests/partition-store.test.mjs",
+          "packages/gat/tests/transaction-audit.test.mjs",
+          "packages/gat/tests/lifecycle-privacy.test.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 180000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "packages/gat/tests/wrapper-admission.test.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "packages/gat/tests/conformance-runner.test.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 180000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "packages/gat/scripts/build.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "packages/gat/tests/governance.test.mjs",
+          "packages/gat/tests/control-state.test.mjs",
+          "packages/gat/tests/policy-selector.test.mjs",
+          "packages/gat/tests/partition-store.test.mjs",
+          "packages/gat/tests/transaction-audit.test.mjs",
+          "packages/gat/tests/lifecycle-privacy.test.mjs",
+          "packages/gat/tests/wrapper-admission.test.mjs",
+          "packages/gat/tests/conformance-contract-matrix.test.mjs",
+          "packages/gat/tests/conformance-handlers.test.mjs",
+          "packages/gat/tests/conformance-runner.test.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 300000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "packages/gat/tests/built-package.test.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "packages/gat/scripts/freeze.mjs",
+          "--output",
+          "wbs-runs/multi-mission-web-ui/implementation-freeze.json",
+          "--handoff",
+          "wbs-runs/multi-mission-web-ui/conformance-handoff.md"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "python3",
+          ".ai-work/tooling/lint_all.py",
+          "--scope",
+          "task",
+          "--workspace",
+          ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui",
+          "--aip",
+          ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "packages/gat/tests/build-determinism.test.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "packages/gat/tests/control-state.test.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "packages/gat/tests/conformance-contract-matrix.test.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 120000,
+        "expected_exit_code": 0
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "packages/gat/tests/conformance-handlers.test.mjs"
+        ],
+        "cwd": ".",
+        "timeout_ms": 180000,
+        "expected_exit_code": 0
+      }
+    ]
+  },
+  "non_goals": [
+    "Do not access, install into, patch, build, restart, or modify any DSH checkout or live Web profile.",
+    "Do not install or resolve npm/pnpm dependencies, read an external package store, use ambient DSH executables, or use network access.",
+    "Do not execute or claim the proposal section-18 conformance command until the frozen implementation hash is inserted literally into a separately reviewed WBS command ending at .artifacts/gat-conformance/<implementation-hash>/.",
+    "Do not claim conformance, DSH integration, proposal approval, activation, or production readiness from focused standalone tests.",
+    "Do not implement broad Web UI, semantic/vector retrieval, caches, mission-shared memory, promotion, distributed 2PC, or MissionMembership.",
+    "Do not close AIP-EXEC-004 at this phase; leave it explicitly awaiting the reviewed conformance WBS."
+  ],
+  "requirements": [
+    {
+      "id": "revision-reconciliation",
+      "acceptance": "Preserve all 63 charges/evidence and exact v29 approval plus paused state; select exact reviewed/HUMAN-approved v31 before attempt64. The 80-attempt ceiling never resets history."
+    },
+    {
+      "id": "control-conformance-state",
+      "description": "Missing governance-adjacent execution state transitions are real package operations before conformance reduction.",
+      "acceptance": "Independently accepted control-state source/declarations/tests cover Workspace binding, supersession, activation denial, promotion denial and explicit degradation without modifying accepted governance dependencies."
+    },
+    {
+      "id": "threat-vector-gate",
+      "acceptance": "Before coding, an independent Security reviewer and HUMAN accept exact hashes for the proposal-required threat model and a baseline containing every unique section-18.1 GAT-* vector; HOLD or missing coverage blocks code."
+    },
+    {
+      "id": "execution-governance",
+      "acceptance": "Dependency-free ESM contracts model ProjectScope, principal-bound Desk, fixed Task/AIP/Workspace identity, readiness evidence, exact Team-plan approval, and conditional Mission approval without DSH imports or enforcement overclaims."
+    },
+    {
+      "id": "authorization-isolation",
+      "acceptance": "A deny-first PDP binds full immutable evidence to one physical selector, enforces account/workspace containment and response non-disclosure, has no decision/result cache, and produces zero backend calls for denied/stale requests."
+    },
+    {
+      "id": "record-memory",
+      "acceptance": "Records/history enforce tenant IDs, source_refs, hashes, classification/redaction, retention/expiry, confidence/status/revision/idempotency and SoT-reference semantics; partitioned substring/get/write/revise/tombstone never broad-read post-filters."
+    },
+    {
+      "id": "audit-lifecycle",
+      "acceptance": "Dependency-free code implements canonical audit chaining, monotonic append, anchor-before-publish, audit.read and sink failures, crash recovery, holds/purge, backup/restore non-resurrection, and zero committed/visible mutation on audit failure."
+    },
+    {
+      "id": "wrapper-admission",
+      "acceptance": "Only wrapper operations accept Agent data; selectors are out of band, raw MCP tool names are hidden and denied before PDP/MCP/backend access, unavailable capabilities fail closed, and returned references are provenance-labelled/untrusted."
+    },
+    {
+      "id": "standalone-package",
+      "acceptance": "A zero-dependency @deepseek-ai/dsh-gat ESM package has explicit exports/files, reproducible local Node-only build, focused source tests, and clean-process built import smoke without npm install, DSH, or ambient package tools."
+    },
+    {
+      "id": "implementation-freeze",
+      "acceptance": "A deterministic manifest hashes proposal, threat model, vector baseline, package manifest, every source/test/build script and built export; independent review confirms the hash and a handoff contains the exact future conformance evidence path with the literal hash."
+    },
+    {
+      "id": "aiws-phase-handoff",
+      "acceptance": "Every task records evidence in the fixed Workspace, final capture/open-point sweep and scoped lint pass, HUMAN accepts the exact phase report/freeze, and AIP remains active only as awaiting a separately approved conformance WBS."
+    },
+    {
+      "id": "conformance-contract-matrix",
+      "description": "Every accepted vector family is mapped to real package operations, observation reducers, absence probes and evidence producers before implementation.",
+      "acceptance": "Independently reviewed exact static matrix/preflight contract passes without dispatching the accepted baseline."
+    },
+    {
+      "id": "conformance-handlers-reducers",
+      "description": "Closed package handlers and reducers derive outcomes/evidence exclusively from real package observations.",
+      "acceptance": "Independently reviewed handler/reducer tests prove trust separation and exact family coverage."
+    },
+    {
+      "id": "conformance-runner-assembly",
+      "description": "Strict terminal comparator, stable manifest and atomic raw-evidence CLI assemble accepted handler inputs.",
+      "acceptance": "Independently reviewed synthetic runner suite passes while accepted baseline remains unexecuted."
+    }
+  ],
+  "sources": [
+    {
+      "path": "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+      "sha256": "dc47dc96949ea0c83d779d3dec11e30fbefb0bd738c4fb4898e6367313bd60ee"
+    },
+    {
+      "path": "package.json",
+      "sha256": "c8e950ef68d0aca1c106b9f84cfe5b5d48a3e0d798d4540587ceb0f7af98c1b9"
+    },
+    {
+      "path": "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+      "sha256": "f590ceec949e43a50cc6ea857c919ffbf16736e7757648d3e84c48702cad41da"
+    },
+    {
+      "path": "docs/conformance/gat-conservative-mvp-v1.json",
+      "sha256": "2250aa8bd50e08efd4e4e876e8d9ac4309d3aea8c1af424de04a817aa507b87c"
+    },
+    {
+      "path": "wbs-runs/multi-mission-web-ui/tooling/verify-gat-vector-shape.mjs",
+      "sha256": "35c05e89d008dcf3845bd1c2cf136aa2d9b7c2eda10248abefdec317fa854f8a"
+    },
+    {
+      "path": "wbs-runs/multi-mission-web-ui/tooling/remove-memory-attempt1-tests.mjs",
+      "sha256": "b9a119fda1732ac853d433aab8c2cd9398ecc9c3951c3ace7c9c87da048c0281"
+    },
+    {
+      "path": "wbs-runs/multi-mission-web-ui/execution.json",
+      "sha256": "ce07bf1848759308fdbe58d134b4d2333fdf3962bf18ba9fc1edf400b6669c38"
+    },
+    {
+      "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+      "sha256": "ed54b6b8b7eb9c95cb78eadb90c003311f28ce31a615e671f03cbdf8a65cd917"
+    },
+    {
+      "path": "wbs-runs/multi-mission-web-ui/incident-dsh-read-boundary-001.md",
+      "sha256": "33756f87bebb8d71e6920d289980c69ee9f521595a375d8fb27fac2e92b64c24"
+    },
+    {
+      "path": "wbs-runs/multi-mission-web-ui/blocker-attempt-cap-001.md",
+      "sha256": "6f3b2e3410f0ecb619c9e73bb455496e72ec9988e284ac912706fa027cc0ec16"
+    },
+    {
+      "path": "wbs-runs/multi-mission-web-ui/evidence/standalone-integration/attempt-gat-final-implementation-001/review.md",
+      "sha256": "7872d9e969ee6170dc724d61346cecd4b70646281ebe38ad031f2d0f483b362a"
+    },
+    {
+      "path": "wbs-runs/multi-mission-web-ui/evidence/wrapper-reconciliation/attempt-gat-wrapper-reconcile-001/review.md",
+      "sha256": "1cfbe0afafea6195ae24ba710f50fef14774175bb6fb4331158cb0806d291f1b"
+    },
+    {
+      "path": "wbs-runs/multi-mission-web-ui/evidence/conformance-runner-recovery/attempt-gat-runner-recovery-002/review.md",
+      "sha256": "679a843ef10df20cc97f228a743e2c3ce8c8ebae75e8918d3d3c1aebbf1cf6ee"
+    },
+    {
+      "path": "wbs-runs/multi-mission-web-ui/runner-architecture-gap.md",
+      "sha256": "dc3c07f4de3bb73ef9c31b7b0a76cdcaee86368d0c39122656d96c27d876979c"
+    },
+    {
+      "path": "wbs-runs/multi-mission-web-ui/wbs.v30.json",
+      "sha256": "9237ed6f7fc3e7a727521433fafb6e6a6659255f523d587e83835707f54142dc"
+    },
+    {
+      "path": "wbs-runs/multi-mission-web-ui/review.v30.md",
+      "sha256": "9fa0c4ac3d5107daedae2ee5f9f7a8122c1986a82ea55497d445600223d15686"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "governance-replan",
+      "title": "Repair and verify the fixed AIWS re-plan",
+      "kind": "artifact",
+      "requirements": [
+        "revision-reconciliation",
+        "aiws-phase-handoff"
+      ],
+      "deliverable": "Preserve all 63 charges/evidence and select exact HUMAN-approved v31. Allocate attempts 64–80 only as: selection 1, conformance contract matrix up to 2, control state up to 3, handlers/reducers up to 5, runner assembly up to 2, integration up to 2, freeze up to 2.",
+      "inputs": [
+        "AGENTS.md",
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "wbs-runs/multi-mission-web-ui/wbs.v30.json",
+        "wbs-runs/multi-mission-web-ui/decisions.json",
+        "wbs-runs/multi-mission-web-ui/execution.json",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui",
+        "wbs-runs/multi-mission-web-ui/incident-dsh-read-boundary-001.md"
+      ],
+      "depends_on": [],
+      "soft_after": [],
+      "priority": 100,
+      "read_paths": [
+        "AGENTS.md",
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "wbs-runs/multi-mission-web-ui",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui",
+        ".ai-work/tooling",
+        ".ai-work/procedural",
+        ".ai-work/truth"
+      ],
+      "write_paths": [
+        "wbs-runs/multi-mission-web-ui/execution.json",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "resource_keys": [
+        "aiws-aip-runtime"
+      ],
+      "effects": [
+        "read",
+        "write",
+        "execute"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/lint_aip.py",
+            "--path",
+            ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md"
+          ],
+          "cwd": ".",
+          "timeout_ms": 30000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/run_aip.py",
+            "status",
+            "AIP-EXEC-004"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "python3",
+              ".ai-work/tooling/lint_aip.py",
+              "--path",
+              ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md"
+            ],
+            "cwd": ".",
+            "timeout_ms": 30000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "python3",
+              ".ai-work/tooling/run_aip.py",
+              "status",
+              "AIP-EXEC-004"
+            ],
+            "cwd": ".",
+            "timeout_ms": 120000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "manual",
+          "reviewer": "human decision owner and mission coordinator",
+          "evidence": [
+            "Confirm mission is paused/quiescent; preserve all 63 charges/evidence, accepted bytes, rejected runner architectures, and pending-unapproved v30 without recovery or relabeling.",
+            "Inspect incident-dsh-read-boundary-001.md and confirm the preserved HUMAN ACCEPT disposition for the exact read-only/no-output symlink-resolved access into `/home/hoinv/deepseek-harness`; any mismatch or missing evidence forbids v31 selection and product work."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "human"
+      },
+      "acceptance": {
+        "owner": "coordinator",
+        "criteria": [
+          "Ledger, selected hash, AIP, fixed Workspace and quiescence evidence agree; lint/status pass; no product work started."
+        ]
+      },
+      "stop_conditions": [
+        "Missing exact v31 approval, non-ACCEPT incident disposition, lost charge/evidence, possible writer, DSH access, or Workspace drift stops execution."
+      ],
+      "max_attempts": 15,
+      "effort_minutes": 45
+    },
+    {
+      "id": "threat-model-gate",
+      "title": "Approve threat model and full vector baseline",
+      "kind": "artifact",
+      "requirements": [
+        "threat-vector-gate"
+      ],
+      "deliverable": "GAT_CONSERVATIVE_MVP_THREAT_MODEL.md and gat-conservative-mvp-v1.json retain all accepted coverage while changing only four reviewed semantics: INJECTION reason null; EXPIRY derived active/searchable to expired/non-returnable eligibility with timestamp/audit evidence and no invented persisted enum; CLASS per-case reject/ACTION_NOT_ALLOWED versus redact-allow/null with zero raw persistence; DEGRADE explicit optional-memory degradation versus SECURITY_SERVICE_UNAVAILABLE cases. Exact hash/shape checks, independent Security review, and explicit HUMAN hash acceptance precede every package write.",
+      "inputs": [
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "depends_on": [
+        "governance-replan"
+      ],
+      "soft_after": [],
+      "priority": 95,
+      "read_paths": [
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "docs/security",
+        "docs/conformance",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/tooling",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "write_paths": [
+        "docs/security",
+        "docs/conformance",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "resource_keys": [
+        "aiws-aip-runtime"
+      ],
+      "effects": [
+        "read",
+        "write",
+        "execute"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/run_aip.py",
+            "step",
+            "AIP-EXEC-004",
+            "--step",
+            "STEP-06"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "sha256sum",
+            "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+            "docs/conformance/gat-conservative-mvp-v1.json"
+          ],
+          "cwd": ".",
+          "timeout_ms": 30000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "wbs-runs/multi-mission-web-ui/tooling/verify-gat-vector-shape.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 30000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "sha256sum",
+              "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+              "docs/conformance/gat-conservative-mvp-v1.json"
+            ],
+            "cwd": ".",
+            "timeout_ms": 30000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "wbs-runs/multi-mission-web-ui/tooling/verify-gat-vector-shape.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 30000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "manual",
+          "reviewer": "independent security reviewer",
+          "evidence": [
+            "Confirm `.current_step.json` and `00c_active_step_context.md` bind AIP-EXEC-004 STEP-06 before opening the threat/vector inputs.",
+            "Map assets, actors, tenant/principal/account/workspace confusion, injection, revocation, partition/raw-tool bypass, timing/count/ranking leakage, record/privacy/lifecycle, audit/sinks/rollback, backup/restore and DSH drift to controls, exact vectors, residual risk, owner and activation disposition.",
+            "Prove every unique section-18.1 GAT-* ID has preconditions, input, expected result/reason, side-effect counters and evidence requirements; distinguish executable-later status without claiming conformance."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "independent"
+      },
+      "acceptance": {
+        "owner": "human",
+        "criteria": [
+          "Independent review proves only the four enumerated vector corrections changed, exact pinned/extension sets and all other semantics remain intact, verifier exits 0, and HUMAN accepts exact threat/vector hashes before code; HOLD/REJECT/missing vector blocks all dependent tasks."
+        ]
+      },
+      "stop_conditions": [
+        "Any candidate edit outside the four enumerated corrections, missing vector, unresolved critical threat, review change request, failed hash/shape command, or absent HUMAN acceptance stops execution."
+      ],
+      "max_attempts": 3,
+      "effort_minutes": 180
+    },
+    {
+      "id": "package-scaffold",
+      "title": "Create a zero-dependency Node package scaffold",
+      "kind": "artifact",
+      "requirements": [
+        "standalone-package"
+      ],
+      "deliverable": "packages/gat package.json, source/built exports, declaration surfaces, build.mjs, freeze.mjs, and the owned built-package.test.mjs smoke define a zero-dependency ESM package using only Node built-ins; the exact test:conformance interface is declared as unexecuted test tooling and no conformance/product capability is claimed in this phase.",
+      "inputs": [
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+        "docs/conformance/gat-conservative-mvp-v1.json"
+      ],
+      "depends_on": [
+        "threat-model-gate"
+      ],
+      "soft_after": [],
+      "priority": 90,
+      "read_paths": [
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "docs/security",
+        "docs/conformance",
+        "packages/gat",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/tooling",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "write_paths": [
+        "packages/gat",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "resource_keys": [
+        "gat-package",
+        "aiws-aip-runtime"
+      ],
+      "effects": [
+        "read",
+        "write",
+        "execute"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/run_aip.py",
+            "step",
+            "AIP-EXEC-004",
+            "--step",
+            "STEP-07"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "manual",
+          "reviewer": "independent package reviewer",
+          "evidence": [
+            "Confirm the fixed Workspace ASC binds STEP-07 before package writes.",
+            "Inspect zero dependencies, exports/files, ESM/declaration layout, deterministic build/freeze algorithms, path containment and absence of DSH/pnpm/toolchain assumptions and clear distinction between an unexecuted test CLI and a product capability/conformance claim."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "independent"
+      },
+      "acceptance": {
+        "owner": "coordinator",
+        "criteria": [
+          "Scaffold uses Node built-ins only and later slices can write disjoint source/test paths without manifest mutation."
+        ]
+      },
+      "stop_conditions": [
+        "Any external dependency, DSH path/import, install command, product capability claim, or inability to define the exact unexecuted test CLI before implementation stops execution."
+      ],
+      "max_attempts": 2,
+      "effort_minutes": 90
+    },
+    {
+      "id": "governance-contracts",
+      "title": "Implement governance contracts and focused tests",
+      "kind": "artifact",
+      "requirements": [
+        "execution-governance",
+        "standalone-package"
+      ],
+      "deliverable": "governance ESM modules/declarations and node:test cases retain accepted ProjectScope/Desk/execution/readiness/Team-plan hash contracts and correct only the conditional Mission adapter contract: accept native Mission id/current numeric revision/status plus adapter-computed snapshot hash and approval approvedRevision plus adapter-computed approval snapshot hash; require approvedRevision equal current Mission revision and acceptable status; preserve GAT↔native mapping identity/revision; return NATIVE_MISSION_APPROVAL_STALE for absent/stale/mismatch; make no DSH admission claim.",
+      "inputs": [
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+        "docs/conformance/gat-conservative-mvp-v1.json",
+        "packages/gat/package.json"
+      ],
+      "depends_on": [
+        "package-scaffold"
+      ],
+      "soft_after": [],
+      "priority": 85,
+      "read_paths": [
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "docs/security",
+        "docs/conformance",
+        "packages/gat",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/tooling",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "write_paths": [
+        "packages/gat/src/governance",
+        "packages/gat/types/governance",
+        "packages/gat/tests/governance.test.mjs",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "resource_keys": [
+        "gat-governance",
+        "aiws-aip-runtime"
+      ],
+      "effects": [
+        "read",
+        "write",
+        "execute"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/run_aip.py",
+            "step",
+            "AIP-EXEC-004",
+            "--step",
+            "STEP-08"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "packages/gat/tests/governance.test.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "--test",
+              "packages/gat/tests/governance.test.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 120000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "manual",
+          "reviewer": "independent governance reviewer",
+          "evidence": [
+            "Confirm the fixed Workspace ASC binds STEP-08 before source writes.",
+            "Inspect fixed Workspace, readiness-oracle, exact Team-plan, conditional Mission and hash bindings against accepted threat/vectors; confirm only Node built-ins and no duplicate classifier/overclaim."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "independent"
+      },
+      "acceptance": {
+        "owner": "coordinator",
+        "criteria": [
+          "Focused valid/missing/stale/conflict cases pass; independent review confirms the distinct normalized native Mission contract uses only id/revision/status plus adapter hashes/approvedRevision, retains all previously corrected governance contracts, and makes no DSH dependency or admission claim."
+        ]
+      },
+      "stop_conditions": [
+        "Any governance edit outside the distinct Mission normalization correction, DSH/external import, invented native Mission field, admission-enforcement claim, or replacement Workspace requirement stops execution."
+      ],
+      "max_attempts": 3,
+      "effort_minutes": 180
+    },
+    {
+      "id": "partitioned-memory",
+      "title": "Implement memory, audit, lifecycle, and privacy tests",
+      "kind": "artifact",
+      "requirements": [
+        "record-memory",
+        "audit-lifecycle",
+        "standalone-package"
+      ],
+      "deliverable": "Redesigned memory ESM modules/declarations plus exactly the three authorized node:test files cover the complete record schema and `(tenant, principal, project_scope, scope_kind, scope_owner_key)` physical selector; revision/tombstone and normalized ordered/capped/cited retrieval; partitioned domain-separated audit with GENESIS, redaction, CAS, authorized audit.read, emergency denial sink and anchor high-water; prepared→local commit→anchor→publish recovery at every crash boundary; derived expiry, audited holds, tombstone-first HUMAN-authorized fenced purge/manifests; restart and backup reconciliation that prevent resurrection. The remaining retries must additionally require every MemoryRecord authority to be `reference_only` while retaining content only as explicitly untrusted/delimited reference; require exactly empty source_refs for direct_note and nonempty source_refs for derived origins; route credential, prohibited-personal-data, retention, and source-ref validation denials through primary/emergency audit with ACTION_NOT_ALLOWED or the exact validation reason and zero raw persistence; make tenant/epoch GENESIS scope-neutral and bind audit.read authority to tenant, principal, project_scope, scope_kind, and scope_owner_key; and replay original results/idempotency for every anchored suffix operation including get, search, audit.read, and denial. The two unauthorized attempt-1 test files are already removed with hashes preserved in evidence.",
+      "inputs": [
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+        "docs/conformance/gat-conservative-mvp-v1.json",
+        "packages/gat/package.json",
+        "wbs-runs/multi-mission-web-ui/tooling/remove-memory-attempt1-tests.mjs"
+      ],
+      "depends_on": [
+        "governance-contracts"
+      ],
+      "soft_after": [],
+      "priority": 84,
+      "read_paths": [
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "docs/security",
+        "docs/conformance",
+        "packages/gat",
+        "wbs-runs/multi-mission-web-ui/tooling/remove-memory-attempt1-tests.mjs",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "write_paths": [
+        "packages/gat/src/memory",
+        "packages/gat/types/memory",
+        "packages/gat/tests/partition-store.test.mjs",
+        "packages/gat/tests/transaction-audit.test.mjs",
+        "packages/gat/tests/lifecycle-privacy.test.mjs",
+        "packages/gat/tests/memory.test.mjs",
+        "packages/gat/tests/audit-recovery.test.mjs",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/wbs-v20/partitioned-memory"
+      ],
+      "resource_keys": [
+        "gat-memory"
+      ],
+      "effects": [
+        "read",
+        "write",
+        "execute"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "node",
+            "wbs-runs/multi-mission-web-ui/tooling/remove-memory-attempt1-tests.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 30000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "packages/gat/tests/partition-store.test.mjs",
+            "packages/gat/tests/transaction-audit.test.mjs",
+            "packages/gat/tests/lifecycle-privacy.test.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 180000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "--test",
+              "packages/gat/tests/partition-store.test.mjs",
+              "packages/gat/tests/transaction-audit.test.mjs",
+              "packages/gat/tests/lifecycle-privacy.test.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 180000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "manual",
+          "reviewer": "independent storage reviewer",
+          "evidence": [
+            "Confirm the fixed Workspace ASC remains bound to STEP-08 throughout the serialized memory slice and review.",
+            "Inspect reference_only retained-but-untrusted/delimited content, exact direct_note empty source_refs, derived nonempty source_refs, and audited validation denials; confirm credentials and prohibited personal data each deny/ACTION_NOT_ALLOWED with zero raw persistence and deterministic redactables allow/null with redacted-only persistence bound to policy hash/revision; inspect scope-neutral tenant GENESIS, five-field audit.read authority, every-operation suffix result/idempotency replay, retention, physical isolation, deterministic order, chain/anchor/sinks, every crash boundary, hold/purge, and restore non-resurrection."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "independent"
+      },
+      "acceptance": {
+        "owner": "coordinator",
+        "criteria": [
+          "Tests prove no broad post-filter, prepared/aborted invisibility, one idempotent result, zero visible mutation on audit failure, lifecycle authority and restart/restore safety."
+        ]
+      },
+      "stop_conditions": [
+        "Any remaining authoritative MemoryRecord mode, rejected or trusted/undelimited reference-only content, nonempty direct_note source_refs, empty derived source_refs, unaudited validation denial, scope-bearing tenant GENESIS, audit.read authority missing any five selector fields, suffix operation lacking original result/idempotency, non-normative GENESIS/audit partition/high-water, unauthenticated signature, crash-after-durable-effect rollback, hash-only non-reproducible audit event, any credential or prohibited-personal-data non-denial/non-ACTION_NOT_ALLOWED/raw persistence, any deterministically-redactable-data result other than allow/null/redacted-only persistence bound to classification-policy hash and redaction revision, non-purge suffix domain replay gap, broad-read authorization, distributed 2PC, audit-visible partial state, non-exact test command, or external dependency stops execution."
+      ],
+      "max_attempts": 9,
+      "effort_minutes": 240
+    },
+    {
+      "id": "policy-terminal-recovery",
+      "title": "Repair and accept terminal-consistent policy admission",
+      "kind": "artifact",
+      "requirements": [
+        "execution-governance",
+        "authorization-isolation"
+      ],
+      "deliverable": "A transactional admission contract and adversarial node:test suite prove bounded preparation/commit behavior, atomic no-effect-on-throw semantics, identical timed denial behavior, matching terminal audit, and zero selector/backend effect for every denied result.",
+      "inputs": [
+        "packages/gat/src/policy/index.mjs",
+        "packages/gat/types/policy/index.d.ts",
+        "packages/gat/tests/policy-selector.test.mjs",
+        "wbs-runs/multi-mission-web-ui/evidence/standalone-integration/attempt-gat-final-implementation-001/review.md"
+      ],
+      "depends_on": [
+        "governance-contracts",
+        "partitioned-memory"
+      ],
+      "soft_after": [],
+      "priority": 50,
+      "read_paths": [
+        "packages/gat/src/policy",
+        "packages/gat/types/policy",
+        "packages/gat/tests/policy-selector.test.mjs",
+        "packages/gat/src/governance",
+        "wbs-runs/multi-mission-web-ui",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "write_paths": [
+        "packages/gat/src/policy",
+        "packages/gat/types/policy",
+        "packages/gat/tests/policy-selector.test.mjs",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "resource_keys": [
+        "gat-policy",
+        "aiws-aip-runtime"
+      ],
+      "effects": [
+        "read",
+        "write",
+        "execute"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/run_aip.py",
+            "step",
+            "AIP-EXEC-004",
+            "--step",
+            "STEP-09"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "packages/gat/tests/policy-selector.test.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "--test",
+              "packages/gat/tests/policy-selector.test.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 120000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "manual",
+          "reviewer": "independent authorization reviewer",
+          "evidence": [
+            "Confirm the fixed Workspace ASC binds STEP-09 before policy writes.",
+            "Inspect selector/evidence fields, rules/hashes, path containment, revocation, timing/count/ranking non-disclosure, spy counters and absence of cache/post-filter logic.",
+            "Confirm classification/resource/action/correlation/decision/time are exact in the signed selector, logical and canonical path containment both reject aliases/escape, and deficient padding or slow audit/selector callbacks cannot release an allow outside the full response envelope."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "independent"
+      },
+      "acceptance": {
+        "owner": "coordinator",
+        "criteria": [
+          "Exact policy-selector node:test passes on the reviewed bytes.",
+          "Every slow, throwing, or failure-signalling prepare/commit path is bounded and fail closed under an explicit atomic no-effect-on-failure contract; terminal audit matches the public disposition and every deny has zero selector/backend effect.",
+          "Fresh immutable snapshots, canonical containment, full evidence equality, deny-first rules and exactly one HMAC selector with resource/action/classification/correlation/decision/time/Team/Mission/account/workspace bindings remain enforced.",
+          "Independent authorization review passes without relying on downstream wrapper, runner, integration or freeze results."
+        ]
+      },
+      "stop_conditions": [
+        "Any deny-after-committed-allow, post-effect timeout conversion, timing-distinguishable deny preparation, unspecified partial-commit failure, selector/backend effect on a denied result, non-exact test command, DSH access, or external dependency stops execution."
+      ],
+      "max_attempts": 3,
+      "effort_minutes": 540
+    },
+    {
+      "id": "wrapper-reconciliation",
+      "title": "Reconcile and accept wrapper-only admission",
+      "kind": "artifact",
+      "requirements": [
+        "wrapper-admission",
+        "authorization-isolation"
+      ],
+      "deliverable": "Replace blacklist admission with exact action-specific recursive data schemas and wrapper-owned authority construction; preserve HMAC replay bindings/private capability/reference-only results; normalize throwing denial observers and malformed policy results to generic zero-downstream denials.",
+      "inputs": [
+        "packages/gat/src/adapter/index.mjs",
+        "packages/gat/types/adapter/index.d.ts",
+        "packages/gat/tests/wrapper-admission.test.mjs",
+        "wbs-runs/multi-mission-web-ui/evidence/wrapper-reconciliation/attempt-gat-wrapper-reconcile-001/review.md"
+      ],
+      "depends_on": [
+        "policy-terminal-recovery"
+      ],
+      "soft_after": [],
+      "priority": 50,
+      "read_paths": [
+        "packages/gat/src/adapter",
+        "packages/gat/types/adapter",
+        "packages/gat/tests/wrapper-admission.test.mjs",
+        "packages/gat/src/policy",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "write_paths": [
+        "packages/gat/src/adapter",
+        "packages/gat/types/adapter",
+        "packages/gat/tests/wrapper-admission.test.mjs",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "resource_keys": [
+        "gat-wrapper",
+        "gat-policy",
+        "aiws-aip-runtime"
+      ],
+      "effects": [
+        "read",
+        "write",
+        "execute"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/run_aip.py",
+            "step",
+            "AIP-EXEC-004",
+            "--step",
+            "STEP-09"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "packages/gat/tests/wrapper-admission.test.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "--test",
+              "packages/gat/tests/wrapper-admission.test.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 120000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "manual",
+          "reviewer": "independent adapter reviewer",
+          "evidence": [
+            "Confirm the fixed Workspace ASC remains bound to STEP-09 throughout the wrapper slice and review.",
+            "Inspect schemas, trusted context, raw dual guard, private capability, reference provenance/injection handling and zero PDP/MCP/backend spy counts on raw/denied requests."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "independent"
+      },
+      "acceptance": {
+        "owner": "coordinator",
+        "criteria": [
+          "Exact wrapper-admission node:test passes on reviewed accepted-policy/adapter/type bytes.",
+          "Each wrapper action accepts only its explicit recursive data schema; every authority/owner/binding/actor/run/classification/retention/selector/capability field and case/underscore alias is rejected before PDP/MCP/backend, while the wrapper constructs all authority out of band.",
+          "Raw denial observers, policy/verifier exceptions and malformed allow shapes fail closed without escape; every denied outcome has zero MCP/backend and required pre-PDP cases have zero PDP.",
+          "Allowed calls reauthorize once, verify full HMAC replay/physical bindings, use one private capability, and return provenance-labelled reference-only untrusted data; independent adapter review passes."
+        ]
+      },
+      "stop_conditions": [
+        "Blacklist-based argument admission, unknown/nested field forwarding, any Agent authority alias, exception escape, malformed allow dereference, selector replay, visible/accepted raw tool, MCP/backend call before complete admission, trusted rendering, DSH access, or external dependency stops execution."
+      ],
+      "max_attempts": 3,
+      "effort_minutes": 270
+    },
+    {
+      "id": "control-state-reconciliation",
+      "title": "Implement and independently accept missing control state machines",
+      "kind": "artifact",
+      "requirements": [
+        "execution-governance",
+        "standalone-package",
+        "authorization-isolation"
+      ],
+      "deliverable": "A new package-owned control module and declarations/tests implement write-once Workspace binding, explicit supersession, inactive activation gate, disabled promotion, and explicit optional-memory degradation as real deterministic state transitions consumed by conformance handlers; accepted governance/policy/memory/wrapper files remain read-only.",
+      "inputs": [
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+        "docs/conformance/gat-conservative-mvp-v1.json",
+        "packages/gat/src/governance/index.mjs",
+        "packages/gat/src/index.mjs",
+        "packages/gat/types/governance/index.d.ts",
+        "wbs-runs/multi-mission-web-ui/runner-architecture-gap.md",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        "wbs-runs/multi-mission-web-ui/conformance-contract-matrix.json",
+        "wbs-runs/multi-mission-web-ui/conformance-contract-matrix.md",
+        "packages/gat/tests/conformance-contract-matrix.test.mjs"
+      ],
+      "depends_on": [
+        "conformance-contract-matrix"
+      ],
+      "soft_after": [],
+      "priority": 75,
+      "read_paths": [
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "docs/security",
+        "docs/conformance",
+        "packages/gat/src/governance",
+        "packages/gat/src/index.mjs",
+        "packages/gat/types/governance",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/tooling",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui",
+        "wbs-runs/multi-mission-web-ui/conformance-contract-matrix.json",
+        "wbs-runs/multi-mission-web-ui/conformance-contract-matrix.md",
+        "packages/gat/tests/conformance-contract-matrix.test.mjs"
+      ],
+      "write_paths": [
+        "packages/gat/src/control",
+        "packages/gat/types/control",
+        "packages/gat/tests/control-state.test.mjs",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "resource_keys": [
+        "gat-control-state"
+      ],
+      "effects": [
+        "write package-owned control source/declarations and focused Node tests only",
+        "append runtime evidence in fixed AIWS Workspace only",
+        "do not alter accepted governance/policy/memory/wrapper bytes or package manifest"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/run_aip.py",
+            "step",
+            "AIP-EXEC-004",
+            "--step",
+            "STEP-10"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "packages/gat/tests/control-state.test.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "--test",
+              "packages/gat/tests/control-state.test.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 120000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "manual",
+          "reviewer": "independent control-state reviewer",
+          "evidence": [
+            "Confirm every transition is a real package operation with closed input schema, immutable output/evidence and deny-before-effect behavior.",
+            "Confirm write-once Workspace rejects rebinding; supersession creates distinct identity/provenance; activation remains inactive without exact separate HUMAN manifest; promotion is disabled; optional-memory degradation is explicit and never substitutes SoT.",
+            "Confirm accepted governance/policy/memory/wrapper hashes remain unchanged."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "independent"
+      },
+      "acceptance": {
+        "owner": "coordinator",
+        "criteria": [
+          "Exact focused node:test passes with behavior assertions for each missing vector family and before/after zero-effect checks on denials.",
+          "Source/declarations align and expose only package-owned deterministic state operations; no fixture or caller can assert outcomes.",
+          "Independent control-state review passes while all accepted dependencies remain byte-identical."
+        ]
+      },
+      "stop_conditions": [
+        "Simulation-only result labels, caller-provided outcome/evidence, mutable accepted dependency, activation, DSH access, baseline execution, network/package manager or external dependency stops execution."
+      ],
+      "max_attempts": 3,
+      "effort_minutes": 540
+    },
+    {
+      "id": "conformance-handlers-reducers",
+      "title": "Implement and independently accept closed handlers, probes, and reducers",
+      "kind": "artifact",
+      "requirements": [
+        "conformance-contract-matrix",
+        "control-conformance-state",
+        "authorization-isolation",
+        "record-memory"
+      ],
+      "deliverable": "Package-owned closed handler registry, setup-only fixture schemas, append-only observation ledger, absence/evidence probes and symbolic reducers implement exactly the accepted contract matrix over real governance/control/policy/wrapper/memory APIs; no handler sees expected declarations.",
+      "inputs": [
+        "wbs-runs/multi-mission-web-ui/conformance-contract-matrix.json",
+        "wbs-runs/multi-mission-web-ui/conformance-contract-matrix.md",
+        "packages/gat/src/control/index.mjs",
+        "packages/gat/types/control/index.d.ts",
+        "packages/gat/src/governance/index.mjs",
+        "packages/gat/src/memory/index.mjs",
+        "packages/gat/src/policy/index.mjs",
+        "packages/gat/src/adapter/index.mjs",
+        "packages/gat/src/conformance/scenario.mjs",
+        "packages/gat/types/conformance/scenario.d.ts"
+      ],
+      "depends_on": [
+        "control-state-reconciliation"
+      ],
+      "soft_after": [],
+      "priority": 65,
+      "read_paths": [
+        "wbs-runs/multi-mission-web-ui/conformance-contract-matrix.json",
+        "wbs-runs/multi-mission-web-ui/conformance-contract-matrix.md",
+        "packages/gat/src/control",
+        "packages/gat/types/control",
+        "packages/gat/src/governance",
+        "packages/gat/src/memory",
+        "packages/gat/src/policy",
+        "packages/gat/src/adapter",
+        "packages/gat/src/conformance",
+        "packages/gat/types/conformance",
+        "packages/gat/tests/conformance-contract-matrix.test.mjs",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/tooling",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "write_paths": [
+        "packages/gat/src/conformance/handlers",
+        "packages/gat/src/conformance/probes",
+        "packages/gat/src/conformance/reducers",
+        "packages/gat/src/conformance/fixtures.mjs",
+        "packages/gat/types/conformance/handlers",
+        "packages/gat/types/conformance/probes",
+        "packages/gat/types/conformance/reducers",
+        "packages/gat/types/conformance/fixtures.d.ts",
+        "packages/gat/tests/conformance-handlers.test.mjs",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "resource_keys": [
+        "gat-conformance-handlers",
+        "gat-conformance",
+        "aiws-aip-runtime"
+      ],
+      "effects": [
+        "write only closed conformance handlers/probes/reducers/fixture schema and focused tests",
+        "do not modify accepted governance/policy/memory/wrapper bytes or execute accepted baseline"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/run_aip.py",
+            "step",
+            "AIP-EXEC-004",
+            "--step",
+            "STEP-10"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "packages/gat/tests/conformance-handlers.test.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 180000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "--test",
+              "packages/gat/tests/conformance-handlers.test.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 180000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "manual",
+          "reviewer": "independent handler/reducer reviewer",
+          "evidence": [
+            "Verify setup fixtures recursively reject truth/assertion/binding/evidence/counter fields and handlers receive only id+operation projection.",
+            "Trace representative and mutation tests through actual package APIs, direct probes and reducer-owned symbolic predicates; unrelated calls and expected copying must fail.",
+            "Verify exact matrix coverage and direct MCP/private-capability/authority/audit probe evidence."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "independent"
+      },
+      "acceptance": {
+        "owner": "coordinator",
+        "criteria": [
+          "Focused synthetic tests cover every handler/reducer/probe family and adversarial trust-boundary mutations without loading the accepted baseline.",
+          "Static registry exactly matches the accepted matrix, has no wildcard/reflection/dynamic code, and unsupported observations fail closed.",
+          "All output bindings/counters/evidence are observation-derived and independently reviewed."
+        ]
+      },
+      "stop_conditions": [
+        "Expected declaration reaches handler/producer, fixture supplies truth, missing family, synthetic result without real API observation, baseline execution or boundary violation stops execution."
+      ],
+      "max_attempts": 5,
+      "effort_minutes": 900
+    },
+    {
+      "id": "conformance-runner-assembly",
+      "title": "Assemble and independently accept the executable conformance runner",
+      "kind": "artifact",
+      "requirements": [
+        "conformance-contract-matrix",
+        "conformance-handlers-reducers",
+        "control-conformance-state"
+      ],
+      "deliverable": "Strict index/runtime/CLI and aligned declarations preflight exact registry/probe/evidence coverage, compare observation-derived actuals only at the terminal comparator, atomically emit raw evidence, and bind/re-hash a stable package-relative complete implementation manifest; accepted baseline remains unexecuted.",
+      "inputs": [
+        "wbs-runs/multi-mission-web-ui/conformance-contract-matrix.json",
+        "packages/gat/src/conformance/index.mjs",
+        "packages/gat/src/conformance/cli.mjs",
+        "packages/gat/src/conformance/runtime.mjs",
+        "packages/gat/src/conformance/scenario.mjs",
+        "packages/gat/src/conformance/handlers",
+        "packages/gat/src/conformance/probes",
+        "packages/gat/src/conformance/reducers",
+        "packages/gat/types/conformance",
+        "packages/gat/tests/conformance-handlers.test.mjs",
+        "packages/gat/package.json"
+      ],
+      "depends_on": [
+        "conformance-handlers-reducers"
+      ],
+      "soft_after": [],
+      "priority": 55,
+      "read_paths": [
+        "wbs-runs/multi-mission-web-ui/conformance-contract-matrix.json",
+        "packages/gat",
+        "docs/conformance",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/tooling",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "write_paths": [
+        "packages/gat/src/conformance/index.mjs",
+        "packages/gat/src/conformance/cli.mjs",
+        "packages/gat/src/conformance/runtime.mjs",
+        "packages/gat/src/conformance/scenario.mjs",
+        "packages/gat/types/conformance",
+        "packages/gat/tests/conformance-runner.test.mjs",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "resource_keys": [
+        "gat-conformance",
+        "gat-package",
+        "aiws-aip-runtime"
+      ],
+      "effects": [
+        "write runner assembly/declarations/synthetic tests and Workspace evidence only",
+        "read package manifest but do not modify it or execute accepted baseline"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/run_aip.py",
+            "step",
+            "AIP-EXEC-004",
+            "--step",
+            "STEP-10"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "packages/gat/tests/conformance-runner.test.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 180000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "--test",
+              "packages/gat/tests/conformance-runner.test.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 180000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "manual",
+          "reviewer": "independent conformance assembly reviewer",
+          "evidence": [
+            "Confirm preflight occurs before dispatch and comparator alone receives expected/absence/evidence declarations.",
+            "Verify stable relative-path complete implementation manifest, pre/post rehash, atomic raw evidence and literal/canonical path bindings.",
+            "Confirm real-loader to CLI synthetic behavior and accepted baseline non-execution."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "independent"
+      },
+      "acceptance": {
+        "owner": "coordinator",
+        "criteria": [
+          "Exact synthetic assembly suite passes after accepted handler/reducer inputs.",
+          "Preflight, terminal comparison, atomic evidence, stable complete manifest and declarations independently pass.",
+          "Later exact accepted-baseline command needs no package/source mutation, but remains unexecuted."
+        ]
+      },
+      "stop_conditions": [
+        "Skipped preflight, handler expected access, incomplete/absolute manifest root, non-atomic evidence, source drift, baseline execution or boundary violation stops execution."
+      ],
+      "max_attempts": 2,
+      "effort_minutes": 360
+    },
+    {
+      "id": "conformance-contract-matrix",
+      "title": "Freeze and independently accept the conformance contract matrix",
+      "kind": "analysis",
+      "requirements": [
+        "threat-vector-gate",
+        "execution-governance",
+        "authorization-isolation",
+        "control-conformance-state"
+      ],
+      "deliverable": "conformance-contract-matrix.json/md and its focused test enumerate every accepted vector ID and operation family, exact real package API/control prerequisites, handler, observation reducer, symbolic predicate, absence probe and evidence producer without executing a vector.",
+      "inputs": [
+        "docs/conformance/gat-conservative-mvp-v1.json",
+        "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+        "packages/gat/src/governance/index.mjs",
+        "packages/gat/src/memory/index.mjs",
+        "packages/gat/src/policy/index.mjs",
+        "packages/gat/src/adapter/index.mjs",
+        "packages/gat/src/index.mjs",
+        "wbs-runs/multi-mission-web-ui/runner-architecture-gap.md"
+      ],
+      "depends_on": [
+        "wrapper-reconciliation"
+      ],
+      "soft_after": [],
+      "priority": 80,
+      "read_paths": [
+        "docs/conformance",
+        "docs/security",
+        "packages/gat/src/governance",
+        "packages/gat/src/memory",
+        "packages/gat/src/policy",
+        "packages/gat/src/adapter",
+        "packages/gat/src/index.mjs",
+        "wbs-runs/multi-mission-web-ui",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/tooling",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "write_paths": [
+        "wbs-runs/multi-mission-web-ui/conformance-contract-matrix.json",
+        "wbs-runs/multi-mission-web-ui/conformance-contract-matrix.md",
+        "packages/gat/tests/conformance-contract-matrix.test.mjs",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "resource_keys": [
+        "gat-conformance-contracts",
+        "aiws-aip-runtime"
+      ],
+      "effects": [
+        "write matrix/report/focused matrix test and Workspace evidence only",
+        "read accepted baseline shape but do not dispatch or execute any vector"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/run_aip.py",
+            "step",
+            "AIP-EXEC-004",
+            "--step",
+            "STEP-10"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "packages/gat/tests/conformance-contract-matrix.test.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "--test",
+              "packages/gat/tests/conformance-contract-matrix.test.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 120000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "manual",
+          "reviewer": "independent conformance architecture reviewer",
+          "evidence": [
+            "Confirm exact 51-ID coverage and one closed handler/reducer/probe/evidence mapping per vector with no wildcard or expected-value access.",
+            "Confirm each family maps to a real current package API or an explicit required control-state API; unsupported gaps block downstream implementation.",
+            "Confirm the accepted baseline was parsed only as static contract data and never dispatched/executed."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "independent"
+      },
+      "acceptance": {
+        "owner": "coordinator",
+        "criteria": [
+          "Focused matrix test proves exact ID/operation coverage, no duplicates/wildcards, all required absence/evidence tokens have named producers, and every dependency is a real package or planned control API.",
+          "Trust boundary explicitly prevents handlers/reducers/producers from receiving vector.expected, required_absence or required_evidence.",
+          "Independent architecture review passes before any control or runner source mutation."
+        ]
+      },
+      "stop_conditions": [
+        "Missing family/API/probe/producer, fixture truth field, expected access, generic wildcard, baseline execution, DSH/network/package manager or product write stops execution."
+      ],
+      "max_attempts": 2,
+      "effort_minutes": 360
+    },
+    {
+      "id": "standalone-integration",
+      "title": "Integrate and independently accept standalone package bytes",
+      "kind": "artifact",
+      "requirements": [
+        "standalone-package",
+        "execution-governance",
+        "authorization-isolation",
+        "record-memory",
+        "audit-lifecycle",
+        "wrapper-admission",
+        "control-conformance-state",
+        "conformance-runner-assembly"
+      ],
+      "deliverable": "integration-standalone.md binds accepted governance/control/policy/memory/wrapper/handler/reducer/runner bytes to the exact complete Node suite, deterministic build, behavior-level clean built-package smoke and independent package review, with accepted-baseline and DSH operations explicitly unperformed.",
+      "inputs": [
+        "packages/gat",
+        "wbs-runs/multi-mission-web-ui/evidence/standalone-integration/attempt-gat-final-implementation-001/review.md",
+        "packages/gat/src/control/index.mjs",
+        "packages/gat/types/control/index.d.ts",
+        "packages/gat/tests/control-state.test.mjs",
+        "packages/gat/tests/conformance-contract-matrix.test.mjs",
+        "packages/gat/tests/conformance-handlers.test.mjs"
+      ],
+      "depends_on": [
+        "policy-terminal-recovery",
+        "wrapper-reconciliation",
+        "partitioned-memory",
+        "control-state-reconciliation",
+        "conformance-runner-assembly"
+      ],
+      "soft_after": [],
+      "priority": 50,
+      "read_paths": [
+        "packages/gat",
+        "wbs-runs/multi-mission-web-ui",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "write_paths": [
+        "packages/gat/lib",
+        "packages/gat/tests/built-package.test.mjs",
+        "wbs-runs/multi-mission-web-ui/integration-standalone.md",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui",
+        "packages/gat/tests/build-determinism.test.mjs"
+      ],
+      "resource_keys": [
+        "gat-governance",
+        "gat-memory",
+        "gat-policy",
+        "gat-wrapper",
+        "gat-conformance",
+        "gat-package",
+        "aiws-aip-runtime"
+      ],
+      "effects": [
+        "read",
+        "write",
+        "execute"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/run_aip.py",
+            "step",
+            "AIP-EXEC-004",
+            "--step",
+            "STEP-11"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "packages/gat/tests/governance.test.mjs",
+            "packages/gat/tests/control-state.test.mjs",
+            "packages/gat/tests/policy-selector.test.mjs",
+            "packages/gat/tests/partition-store.test.mjs",
+            "packages/gat/tests/transaction-audit.test.mjs",
+            "packages/gat/tests/lifecycle-privacy.test.mjs",
+            "packages/gat/tests/wrapper-admission.test.mjs",
+            "packages/gat/tests/conformance-contract-matrix.test.mjs",
+            "packages/gat/tests/conformance-handlers.test.mjs",
+            "packages/gat/tests/conformance-runner.test.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 300000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "packages/gat/scripts/build.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "packages/gat/tests/built-package.test.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "packages/gat/tests/build-determinism.test.mjs"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "--test",
+              "packages/gat/tests/governance.test.mjs",
+              "packages/gat/tests/control-state.test.mjs",
+              "packages/gat/tests/policy-selector.test.mjs",
+              "packages/gat/tests/partition-store.test.mjs",
+              "packages/gat/tests/transaction-audit.test.mjs",
+              "packages/gat/tests/lifecycle-privacy.test.mjs",
+              "packages/gat/tests/wrapper-admission.test.mjs",
+              "packages/gat/tests/conformance-contract-matrix.test.mjs",
+              "packages/gat/tests/conformance-handlers.test.mjs",
+              "packages/gat/tests/conformance-runner.test.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 300000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "packages/gat/scripts/build.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 120000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "--test",
+              "packages/gat/tests/built-package.test.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 120000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "--test",
+              "packages/gat/tests/build-determinism.test.mjs"
+            ],
+            "cwd": ".",
+            "timeout_ms": 120000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "manual",
+          "reviewer": "independent integration reviewer",
+          "evidence": [
+            "Confirm the fixed Workspace ASC binds STEP-11 before integration/build/freeze work.",
+            "Inspect package exports/declarations/build determinism, all focused output and hashes; prove zero dependency/install/DSH/network effect and reject any conformance/activation claim."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "independent"
+      },
+      "acceptance": {
+        "owner": "coordinator",
+        "criteria": [
+          "The exact combined ten-file source suite passes on accepted governance/control/policy/memory/wrapper/handler/runner bytes.",
+          "The exact build, behavior-level clean built-package smoke, and deterministic two-build byte-comparison test all pass on identical reviewed source bytes.",
+          "Package exports/declarations and source/lib bytes align, use Node built-ins only, and require no install/network/external dependency.",
+          "Independent integration review passes and evidence explicitly records accepted-baseline conformance and all DSH install/build/runtime/activation as unperformed."
+        ]
+      },
+      "stop_conditions": [
+        "Any focused failure, source/lib mismatch, missing behavior-level built smoke, external dependency/install/network/DSH effect, accepted-baseline execution or unsupported conformance/activation claim stops execution."
+      ],
+      "max_attempts": 2,
+      "effort_minutes": 360
+    },
+    {
+      "id": "implementation-freeze",
+      "title": "Freeze and accept the standalone coding phase",
+      "kind": "conclusion",
+      "requirements": [
+        "implementation-freeze",
+        "conformance-runner-freeze",
+        "aiws-phase-handoff",
+        "threat-vector-gate",
+        "standalone-package"
+      ],
+      "deliverable": "implementation-freeze.json, conformance-handoff.md and final-report-standalone-phase.md bind the deterministic implementation hash, exact future .artifacts conformance path/command requirement, accepted threat/vector hashes, task evidence and deferred DSH/install gates; scoped AIWS lint passes and HUMAN accepts this phase while AIP remains awaiting re-plan.",
+      "inputs": [
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+        "docs/conformance/gat-conservative-mvp-v1.json",
+        "packages/gat",
+        "wbs-runs/multi-mission-web-ui/integration-standalone.md",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "depends_on": [
+        "standalone-integration"
+      ],
+      "soft_after": [],
+      "priority": 30,
+      "read_paths": [
+        "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+        "docs/security",
+        "docs/conformance",
+        "packages/gat",
+        "wbs-runs/multi-mission-web-ui",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui",
+        ".ai-work/tooling",
+        ".ai-work/procedural",
+        ".ai-work/truth"
+      ],
+      "write_paths": [
+        "wbs-runs/multi-mission-web-ui/implementation-freeze.json",
+        "wbs-runs/multi-mission-web-ui/conformance-handoff.md",
+        "wbs-runs/multi-mission-web-ui/final-report-standalone-phase.md",
+        ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+        ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui"
+      ],
+      "resource_keys": [
+        "aiws-aip-runtime",
+        "gat-package"
+      ],
+      "effects": [
+        "read",
+        "write",
+        "execute"
+      ],
+      "allowed_commands": [
+        {
+          "argv": [
+            "node",
+            "packages/gat/scripts/freeze.mjs",
+            "--output",
+            "wbs-runs/multi-mission-web-ui/implementation-freeze.json",
+            "--handoff",
+            "wbs-runs/multi-mission-web-ui/conformance-handoff.md"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            ".ai-work/tooling/lint_all.py",
+            "--scope",
+            "task",
+            "--workspace",
+            ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui",
+            "--aip",
+            ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md"
+          ],
+          "cwd": ".",
+          "timeout_ms": 120000,
+          "expected_exit_code": 0
+        }
+      ],
+      "verification": [
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "node",
+              "packages/gat/scripts/freeze.mjs",
+              "--output",
+              "wbs-runs/multi-mission-web-ui/implementation-freeze.json",
+              "--handoff",
+              "wbs-runs/multi-mission-web-ui/conformance-handoff.md"
+            ],
+            "cwd": ".",
+            "timeout_ms": 120000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "command",
+          "command": {
+            "argv": [
+              "python3",
+              ".ai-work/tooling/lint_all.py",
+              "--scope",
+              "task",
+              "--workspace",
+              ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui",
+              "--aip",
+              ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md"
+            ],
+            "cwd": ".",
+            "timeout_ms": 120000,
+            "expected_exit_code": 0
+          }
+        },
+        {
+          "kind": "manual",
+          "reviewer": "independent final reviewer",
+          "evidence": [
+            "Confirm the fixed Workspace ASC remains bound to STEP-11 throughout integration freeze and final review.",
+            "Recompute the manifest/hash; inspect report against task reviews/tests; verify conformance-handoff contains the literal frozen hash in the exact proposal path and no conformance/DSH/install claim; confirm captures/open points are dispositioned and AIP remains explicitly awaiting reviewed conformance WBS."
+          ]
+        }
+      ],
+      "review": {
+        "required": true,
+        "owner": "independent"
+      },
+      "acceptance": {
+        "owner": "human",
+        "criteria": [
+          "HUMAN accepts the exact independently reviewed phase report/freeze and authorizes only preparation of a new conformance WBS; no DSH install or activation authority is granted."
+        ]
+      },
+      "stop_conditions": [
+        "Hash mismatch, missing evidence, unresolved captures/open points, lint failure, review changes, HUMAN HOLD/REJECT, or accidental AIP close stops acceptance."
+      ],
+      "max_attempts": 2,
+      "effort_minutes": 180
+    }
+  ],
+  "integration_task": "standalone-integration",
+  "final_task": "implementation-freeze",
+  "limits": {
+    "max_parallel": 2,
+    "max_total_attempts": 80,
+    "max_total_effort_minutes": 8705
+  }
+}

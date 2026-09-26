@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v30-council-031",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer31-adversarial-002-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "commitment-constructibility",
+      "claim": "The charge-preflight commitment graph is self-referential: the preflight binds the planned intent hash and exact OPEN entry, the final candidate embeds the preflight hash, and the intent pins the candidate bytes/hash; no excluded hash domain or staged commitment breaks that cycle.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v30",
+      "locator": {
+        "kind": "line",
+        "value": "192-193, 219, 369"
+      },
+      "evidence_excerpt": "It binds the zero-open `TransitionIntentIndex` prior raw hash/sequence plus exactly one deterministic planned intent ID/path/hash and the exact predicted one-OPEN entry bytes/new hash/sequence",
+      "impact": "The specified preflight, candidate, intent, and OPEN bytes cannot be deterministically constructed and hash-pinned as written. Admission therefore cannot satisfy P15, or an implementation must omit a required binding and could charge against an intent not covered by the claimed exact boundary.",
+      "recommended_action": "Define one explicit acyclic commitment order and hash domain—for example, a preflight-bound intent body commitment that excludes candidate/preflight-dependent fields—then specify how the final intent and OPEN entry derive from it and require a byte-exact construction fixture.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer31-adversarial-002",
+        "invocation_id": "inv31-adv-002",
+        "attempt": 2
+      },
+      "confidence": 0.99,
+      "source_candidate_ids": [
+        "reviewer31-adversarial-002-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer31-adversarial-002-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "acceptance-recovery-consistency",
+      "claim": "v30 says acceptance projection has no special repair states and that divergent projection bytes can only terminate as FAILED_CHARGED_PROVENANCE_UNKNOWN, but the state machine, bootstrap requirements, P15, WBS-entry criteria, and failure matrix still authorize ACCEPTANCE_PROJECTION_REPAIR paths that can reach ACCEPTED or REJECTED_CHARGED.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v30",
+      "locator": {
+        "kind": "line",
+        "value": "174-177, 215, 276, 294, 328, 494, 548"
+      },
+      "evidence_excerpt": "first/final projection mismatch──> ACCEPTANCE_PROJECTION_REPAIR_REQUIRED",
+      "impact": "Two incompatible recovery policies exist for the same failed acceptance write. An implementation following the retained repair path can convert mismatched projection bytes into a final acceptance or rejection even though the corrected rule requires terminal provenance-unknown failure, directly changing acceptance semantics.",
+      "recommended_action": "Remove every acceptance-projection-repair state, allocation, capability, and entry-criteria reference; replace the state-machine and failure-matrix branches with the uniform source/candidate/divergent protocol, and add a fixture proving partial or divergent acceptance bytes can never reach ACCEPTED or REJECTED_CHARGED.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer31-adversarial-002",
+        "invocation_id": "inv31-adv-002",
+        "attempt": 2
+      },
+      "confidence": 1,
+      "source_candidate_ids": [
+        "reviewer31-adversarial-002-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer31-adversarial-002-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "uncharged-completion-lineage",
+      "claim": "The new UNCHARGED_COMPLETION_CORRUPT_BLOCKED recovery is not admitted by the closed P3 lineage grammar: P3 says it allows only the two charged exceptional links, while the new branch says a tombstone and RECOVERY_CLOSE are accepted and return to FROZEN without defining the replacement completion-chain head and sequence required by the next intent.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v30",
+      "locator": {
+        "kind": "line",
+        "value": "316, 369-373"
+      },
+      "evidence_excerpt": "P3/P15 accept only the fully verified tombstone/index-generation lineage and return to FROZEN/re-prepare, never APPLIED or dispatch.",
+      "impact": "A strict P3 validator must reject the claimed recovery and strand admission; a permissive validator must introduce an undeclared gap/reset in the intent-completion chain, allowing a later charge despite known incomplete lineage.",
+      "recommended_action": "Define a single explicit zero-charge exceptional lineage record with predecessor/head hash, sequence, source-equality and zero-attempt invariants; add it to every P3 allowlist and next-intent linkage rule, and provide corrupt-completion recovery fixtures that prove both zero-open index closure and gap-free lineage.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer31-adversarial-002",
+        "invocation_id": "inv31-adv-002",
+        "attempt": 2
+      },
+      "confidence": 0.99,
+      "source_candidate_ids": [
+        "reviewer31-adversarial-002-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer31-authority-001-f001",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "Section 5's state machine (lines 174-177) and the Section 14 matrix (line 494) retain a reachable ACCEPTANCE_PROJECTION_REPAIR_* path whose successful repair reaches ACCEPTED/REJECTED_CHARGED, contradicting Section 5.4 line 215, which states that no such states exist and that a partial, strict-invalid or divergent acceptance projection may reach only FAILED_CHARGED_PROVENANCE_UNKNOWN, never ACCEPTED or REJECTED_CHARGED.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v30",
+      "locator": {
+        "kind": "line",
+        "value": "174-177"
+      },
+      "evidence_excerpt": "bound repair succeeds──> original ACCEPTED/REJECTED_CHARGED target",
+      "impact": "A partially persisted, strict-invalid or divergent acceptance projection could follow the retained repair branch into ACCEPTED/REJECTED_CHARGED outside the uniform Section 9.1 source/candidate/divergent recovery, bypassing its second-phase independent verification and strict-validator requirement, so invalid persisted bytes could change acceptance; Section 6.1(h), P15 (line 328) and the Section 16 entry criteria (line 548) still bind the removed acceptance-projection-repair operation.",
+      "recommended_action": "Delete the ACCEPTANCE_PROJECTION_REPAIR_REQUIRED/BLOCKED edges at lines 174-177 and the Section 14 repair-to-target row, and route every acceptance-projection mismatch through the uniform Section 9.1 source/candidate/divergent recovery to FAILED_CHARGED_PROVENANCE_UNKNOWN.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer31-authority-001",
+        "invocation_id": "inv31-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.95,
+      "source_candidate_ids": [
+        "reviewer31-authority-001-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

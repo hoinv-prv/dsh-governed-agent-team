@@ -1,0 +1,369 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v38-council-041",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "c7ea6f8d406b63178b2e46a60eaef85d443edff4bf5df6a6c6d1916437ec9e23"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "f94f521fc6cb9a42eb40052cd64668a066d207dd3337d6b4491da59a216699ed"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "5e94562106367ad0b9633d81e5f8c3912e7e3e93826fbfe9df69a64fc33f70ce"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "048e8fdff7dbb691611c7bfc37b330d45f1927d8f05a5f22d00cc9e6c75a94ca"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "bfe8c983eb5c9b350abdf412ac1d0002784f78aee2a404669a5e793baeadae91"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "f1235ee6f57098fc306f7c5602b9e61a3f7f7372a3f19b68b5440020e51831f5"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "ba41615cca66968310743d501a0349e708474a7dd00d9664fe9ad4eaa0bef81d"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "0f29e9a164e3fc447f83365a30bf7711a9054cedbd7ed7db804130e2d5316d7a"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "b07c6be183440dff40123e0f128885d0b13b8af81accfb7874e40f8627621b9e"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "bfee8cf6ba17236c08c34c745c17d3942cf4754a4e83b5e302953a4f8f992b25"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Keep v38 frozen and correct it in a new design revision before any WBS build: register the CP-12 charged-accounting failure edges and the missing CP-02/CP-04 blocked-state destinations; make accepted genesis plus its receipt a CP-05 precondition and resolve the migration/bootstrap representation-decision circularity; add the review-receipt-to-selected-design hash equality and the TransitionCapabilityManifest design_sha256 equality to P5/P14/P15; add Section 14 coverage rows and single-owner attribution for the duplicated and unowned edges; define one clock domain for expires_at_utc; bind canonical path plus raw SHA-256 for every Section 15.1 basis artifact including the run-040 authority and adversarial envelopes; deduplicate the EXT39R-O-006 row, remove the stale v36 token, state the precedence between NOT_READY and UNCHARGED_COMPLETION_CORRUPT_BLOCKED, add the post-charge D/B worked fixture, and disclose the full pre-WBS bootstrap inventory and authority in the HUMAN approval packet; then rerun the affected lanes on the new revision.",
+  "findings": [
+    {
+      "finding_id": "ADV41-F-001",
+      "effective_severity": "high",
+      "claim": "The exhaustive CP-12 registry omits the failure edges from CHARGED_ACCOUNTING_PENDING or COMPLETION_INDEX_CLOSE_PENDING into CHARGED_ACCOUNTING_BLOCKED, even though the state machine and accounting protocol require those edges when a charged writer, completion, index-close, or accounting append fails.",
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "143-148, 221, 372"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Accepted ledger finding AUTH41/ADV41-F-001 is confirmed by verifier verify41-confirmed; CP-12's exhaustive allowed_edges cell omits every charged failure edge into CHARGED_ACCOUNTING_BLOCKED at design-v38 lines 143-148, 221, 372, so a legitimately charged accounting failure has no registered owner transition."
+    },
+    {
+      "finding_id": "ADV41-F-002",
+      "effective_severity": "high",
+      "claim": "CP-05 permits FROZEN legacy-ledger migration without stating that an accepted ADMIN_LEDGER_GENESIS and AdministrativeLedgerGenesisReceipt already exist, contradicting the separate prerequisite that migration must occur only after genesis and its canonical administrative ledger are accepted.",
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "214, 348-356"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at design-v38 lines 214 and 348-356: CP-05 admits FROZEN to MIGRATION_MAINTENANCE without naming accepted ADMIN_LEDGER_GENESIS and its receipt as preconditions, contradicting the stated genesis-before-migration prerequisite."
+    },
+    {
+      "finding_id": "ADV41-F-003",
+      "effective_severity": "high",
+      "claim": "The AcceptedDesignRegistry generation schema and AdmissionBundle design_basis do not require an equality binding between the selected current design_raw_sha256 and the artifact/design hash covered by the council ReviewClosureReceipt, so re-hashing both does not prove that the latest HUMAN-accepted design is the council-passed design.",
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "303, 332, 386, 513"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at design-v38 lines 303, 332, 386 and 513: no predicate equates the registry's selected design_raw_sha256 with the design hash covered by the council ReviewClosureReceipt, so re-hashing proves only individual validity, not that the accepted design is the council-passed revision."
+    },
+    {
+      "finding_id": "ADV41-F-004",
+      "effective_severity": "medium",
+      "claim": "CP-02 and CP-04 do not enumerate the destinations of their required HUMAN recovery edges, although the state machine requires ADMIN_LEDGER_GENESIS_BLOCKED→ADMIN_LEDGER_GENESIS and BOOTSTRAP_BLOCKED→BOOTSTRAP_MAINTENANCE or a no-effect close to FROZEN.",
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "113-124, 211-213"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at design-v38 lines 113-124 and 211-213: CP-02 and CP-04 declare HUMAN recovery edges without their destinations, so restore/complete and remain-blocked outcomes cannot be deterministically distinguished by P3/P15 or fixtures."
+    },
+    {
+      "finding_id": "AUTH41-F-001",
+      "effective_severity": "high",
+      "claim": "The Section 15.1 exact-basis list binds the consistency audit, the run-033 ledger/verifier, run-034 dispatch/authority/adversarial, run-038 authority/adversarial/outside and preserved run-039 current authority/adversarial/outside, but never raw-byte binds the run-040 authority or run-040 adversarial envelope whose findings the same matrix claims to correct, so the run-040 closure rows cannot satisfy the matrix's own 'Absence or mismatch makes the corresponding closure claim not-verifiable' rule.",
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "8 and 624 and 672-680"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at design-v38 lines 8, 624 and 672-680: the Section 15.1 exact-basis list never raw-byte binds the run-040 authority and run-040 adversarial envelopes whose finding IDs rows 672-680 claim to close, so those closure rows are not independently reproducible."
+    },
+    {
+      "finding_id": "AUTH41-F-002",
+      "effective_severity": "medium",
+      "claim": "Section 5.0.1 requires the Section 14 coverage index to cover every `allowed_edges` value of the CP-01..CP-16 registry, but the Section 14 failure matrix has no row for the charged-accounting success edge `CHARGED_ACCOUNTING_PENDING→COMPLETION_INDEX_CLOSE_PENDING` (CP-12), the review-return edge `REVIEW_PENDING→REVIEWING` (CP-14), or the CP-15 return edges `ACCEPTANCE_PENDING|ACCEPTANCE_AUTHORITY_CONFLICT→AWAITING_HUMAN_ACCEPTANCE` and `ACCEPTANCE_VERIFICATION_PENDING|ACCEPTANCE_VERIFICATION_FAILED→ACCEPTANCE_VERIFYING`, so the claimed coverage is incomplete.",
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "202 and 221-224 and 540-574"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at design-v38 lines 202 and 221-224 and 540-574: the Section 14 coverage index omits the CP-12 charged-accounting success edge, the CP-14 REVIEW_PENDING-to-REVIEWING return, and the CP-15 return edges while Section 5.0.1 requires coverage of every allowed_edges value."
+    },
+    {
+      "finding_id": "AUTH41-F-003",
+      "effective_severity": "medium",
+      "claim": "CP-16's row declares its sole permitted edge as the terminal completion-chain head while also stating that an explicit acceptance-authority conflict makes `ACCEPTED` non-usable, but it does not register the outgoing `ACCEPTED→ACCEPTANCE_AUTHORITY_CONFLICT` edge, which CP-15 already lists among its allowed edges, so the transition out of a conflicted `ACCEPTED` has no owner row whose `allowed_edges` cell contains it.",
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "224-225"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at design-v38 lines 224-225: CP-16 declares itself the sole owner row for the terminal completion-chain head yet does not register ACCEPTED-to-ACCEPTANCE_AUTHORITY_CONFLICT while CP-15 lists it, violating the one-owner-per-edge rule."
+    },
+    {
+      "finding_id": "AUTH41-F-004",
+      "effective_severity": "low",
+      "claim": "The `TransitionCapabilityManifest` header binds a `design_sha256` field, but neither the `AdmissionBundle.transition_capability_manifest` reference nor P5/P14/P15 requires that field to equal the current `AcceptedDesignRegistry` generation's design hash, so a manifest generation authored for an earlier design revision can still be admitted as `READY`.",
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "206 and 281 and 386"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at design-v38 lines 206, 281 and 386: TransitionCapabilityManifest.design_sha256 is never required to equal the resolved AcceptedDesignRegistry generation or AdmissionBundle.design_basis hash at P5/P14/P15, so a manifest authored for an earlier revision can be admitted as READY."
+    },
+    {
+      "finding_id": "EXT41-O-001",
+      "effective_severity": "medium",
+      "claim": "The closed freshness_rule compares a monotonic-clock reading against the wall-clock field `expires_at_utc`, so the mandated time comparison has no single defined clock domain.",
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "319"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at sanitized-design-v38 line 319: the closed freshness_rule compares a monotonic-clock reading against the wall-clock expires_at_utc field, leaving the comparison without a single defined clock domain and making freshness validation non-deterministic."
+    },
+    {
+      "finding_id": "EXT41-O-002",
+      "effective_severity": "low",
+      "claim": "Section 14's normative edge-registry coverage statement maps failures to CP-03 through CP-16 but maps no failure row to CP-01 or CP-02, the genesis and genesis-blocked states.",
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "538"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at sanitized-design-v38 line 538: the Section 14 normative coverage statement maps failures only to CP-03 through CP-16, leaving the CP-01/CP-02 genesis states without a failure-matrix anchor despite genesis-failure scenarios elsewhere."
+    },
+    {
+      "finding_id": "EXT41-O-003",
+      "effective_severity": "low",
+      "claim": "Section 15.1 lists the prior finding ID EXT39R-O-006 twice, in two rows that name different v38 correction locators and different required fixtures.",
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "667, 671"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at sanitized-design-v38 lines 667 and 671: prior finding ID EXT39R-O-006 appears in two rows with different v38 correction locators and fixtures, so the required finding-ID completeness diff can double-count or leave the closing correction ambiguous."
+    },
+    {
+      "finding_id": "EXT41-O-004",
+      "effective_severity": "medium",
+      "claim": "Section 9.2 step 2 requires migration to consume an execution-representation decision that P15 and Section 6.1 item (g) produce inside bootstrap, while CP-03 permits BOOTSTRAP_MAINTENANCE only after an accepted migrated base exists.",
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "451"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at sanitized-design-v38 line 451: Section 9.2 step 2 makes migration consume an execution-representation decision that P15 and Section 6.1 item (g) produce inside bootstrap while CP-03 requires an accepted migrated base first, creating the circular dependency the design claims to avoid."
+    },
+    {
+      "finding_id": "EXT41-O-005",
+      "effective_severity": "low",
+      "claim": "A differing or partial pre-charge NOT_APPLIED completion is assigned to `NOT_READY` in Section 5.1(e) and to `UNCHARGED_COMPLETION_CORRUPT_BLOCKED` in Section 9.1 and CP-11.",
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "231"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at sanitized-design-v38 line 231: a differing or partial pre-charge NOT_APPLIED completion is owned by NOT_READY in Section 5.1(e) and by UNCHARGED_COMPLETION_CORRUPT_BLOCKED in Section 9.1/CP-11, giving one observed condition two owning states and no precedence rule."
+    },
+    {
+      "finding_id": "EXT41-O-006",
+      "effective_severity": "low",
+      "claim": "Section 15.1 pins its basis artifacts by SHA-256 only and declares absence or mismatch non-verifiable, yet the design gives no canonical path for the consistency audit and run-033/034/038/039 basis records it requires to be re-hashed.",
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "624"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at sanitized-design-v38 line 624: Section 15.1 pins its basis artifacts by SHA-256 only with no canonical path, so the required audit re-hash, stale-revision scan and finding-completeness diff cannot be reproduced from the design bytes alone."
+    },
+    {
+      "finding_id": "EXT41-O-007",
+      "effective_severity": "low",
+      "claim": "The edge `REVIEWING→REVISION_REQUIRED_CHARGED` is declared in both the CP-13 and CP-14 registry rows.",
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "222-223"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at sanitized-design-v38 lines 222-223: edge REVIEWING-to-REVISION_REQUIRED_CHARGED is declared in both the CP-13 and CP-14 rows, so P3 allowlist and P15 fixture ownership for that edge are ambiguous."
+    },
+    {
+      "finding_id": "EXT41-O-008",
+      "effective_severity": "low",
+      "claim": "The v38 closure matrix row for AUTH38-F-003 and AUTH38-F-004 names an 'explicit v36 locator contract' as its correction locator, retaining an older revision token within the v38 design bytes.",
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "649"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at sanitized-design-v38 line 649: the closure row for AUTH38-F-003 and AUTH38-F-004 names an explicit v36 locator contract, a stale-revision token the matrix's own stale-token scan would flag."
+    },
+    {
+      "finding_id": "EXT41-O-009",
+      "effective_severity": "info",
+      "claim": "Section 6.1 enumerates eleven bootstrap artifacts and operations (items (a) through (k)) that must be authored, validated, reviewed and HUMAN-accepted before a WBS is built, while the AdmissionBundle section describes the mechanism as 'not a new runtime service'.",
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "330-336"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at sanitized-design-v38 lines 330-336: Section 6.1 lists eleven bootstrap artifacts and operations required before WBS build while the AdmissionBundle is described as not a new runtime service, so the HUMAN-facing approval packet can underestimate pre-WBS control-plane scope."
+    },
+    {
+      "finding_id": "EXT41-O-010",
+      "effective_severity": "low",
+      "claim": "Section 6.3 supplies a worked integer fixture for the pre-charge reservation and root recurrence but gives no worked integer example for the post-charge D/B recovery recurrence.",
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "368"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify41-confirmed",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed at sanitized-design-v38 line 368: Section 6.3 gives a worked integer fixture for the pre-charge reservation and root recurrence but none for the post-charge D/B recovery recurrence, leaving BA-02/BA-03/BA-04 exhaustion and UNKNOWN-usage checks without an in-design numeric anchor."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": [
+      {
+        "advisory_id": "EXT41-A-001",
+        "claim": "The run-033 authority finding AUTH33-F-04, and the run-040 authority findings AUTH40R-F-004 and AUTH40R-F-005, may be unclosed rather than intentionally absent.",
+        "basis": "Section 15.1 rows contain AUTH33-F-01/-02/-03/-05 and AUTH40R-F-001/-002/-003/-006/-007, leaving gaps inside both ID ranges without any stated refutation.",
+        "missing_project_sot": [
+          "run-033 consistency audit basis 6e91a5bc3d333b052469d4f381e5805a53c7ecc4eb8ba11e5c0dfe64157cfbef",
+          "run-040 internal authority lane record"
+        ],
+        "confidence": "medium",
+        "decision_weight": "none",
+        "suggested_validation": "Run the required finding-ID completeness diff over the pinned audit and run-040 lane records, and record for each gap whether the finding was refuted or omitted."
+      },
+      {
+        "advisory_id": "EXT41-A-002",
+        "claim": "Run-033 outside-view observation EXT33R-O-007 and run-040 outside observations EXT40R-O-005/-006/-008/-010 may be unclosed rather than dispositioned.",
+        "basis": "Section 15.1 lists EXT33R-O-003/-004/-005/-006/-008/-009/-010 and EXT40R-O-004/-007/-009/-011, with gaps inside both ranges and no adjacent refutation record.",
+        "missing_project_sot": [
+          "run-033 outside-view lane record",
+          "run-040 outside-view lane record"
+        ],
+        "confidence": "medium",
+        "decision_weight": "none",
+        "suggested_validation": "Diff the complete outside-view observation ID sets of runs 033 and 040 against Section 15.1 and record each gap as refuted, promoted or omitted."
+      },
+      {
+        "advisory_id": "EXT41-A-003",
+        "claim": "Whether every schema-valid run-040 internal finding is closed by v38 cannot be judged from the outside-view packet, because peer findings are omitted by contract.",
+        "basis": "The dispatched packet carries one sanitized artifact, no Sources of Truth and omits the internal-history and peer-findings categories, so no run-040 finding set is available to this lane.",
+        "missing_project_sot": [
+          "run-040 internal-adversarial and internal-authority finding sets"
+        ],
+        "confidence": "high",
+        "decision_weight": "none",
+        "suggested_validation": "Have the parent map each run-040 internal finding ID to an exact Section 15.1 row or a recorded refutation, then bind that map into verification evidence."
+      },
+      {
+        "advisory_id": "EXT41-A-004",
+        "claim": "The v38 review-state sentence declaring the run-040 outside envelope schema-invalid may drop a formal lane on an unverified process assertion.",
+        "basis": "Line 8 asserts the run-040 outside envelope is schema-invalid and supplies no formal lane, but the design bytes contain no validator output or envelope bytes supporting that assertion.",
+        "missing_project_sot": [
+          "run-040 outside-view envelope bytes",
+          "pinned council schema-validation result for that envelope"
+        ],
+        "confidence": "medium",
+        "decision_weight": "none",
+        "suggested_validation": "Re-validate the run-040 outside envelope with the pinned council validator and persist the result before treating its content as non-authoritative."
+      }
+    ]
+  },
+  "residual_risks": [
+    "Every lane ran with restriction_mode prompt-only and no persona or tool filter, so lane read-only isolation was prompt-declared rather than sandbox-enforced and cannot be independently proven from the records.",
+    "Ten outside-view observations were promoted and accepted without adjudication, and the outside lane received only the sanitized design with no Sources of Truth, so its scope judgements rest on the design bytes alone.",
+    "Adjudication was not triggered and no conflict gate was evaluated in a persisted adjudication record, so any latent high-severity disagreement between lanes remains unexamined.",
+    "The claim that the run-040 outside-view envelope is schema-invalid remains a process assertion recorded in the design header; it was not re-validated in this run and could have dropped a formal lane.",
+    "AcceptedDesignRegistry and AdmissionBundle binding gaps (ADV41-F-003, AUTH41-F-004) mean a future corrected revision could still admit a superseded design or manifest if the equality predicates are added without adversarial fixtures.",
+    "No executable validator, schema or fixture was run for this design-only review; all confirmation is read-based, so arithmetic and recurrence claims remain unexercised by execution."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

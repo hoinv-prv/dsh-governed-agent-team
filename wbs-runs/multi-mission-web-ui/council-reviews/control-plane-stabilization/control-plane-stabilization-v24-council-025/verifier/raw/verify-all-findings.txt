@@ -1,0 +1,4 @@
+Parent read-only verification against immutable design-v24 SHA-256 769f0e2e42a73b5b15dcfe2e75e55ef4f5670c9ec08f0ca9f3baa5f0698dbac9.
+Confirmed reviewer25-adversarial-001-f001: source-equal retry can account one receipt for multiple attempted appends.
+Confirmed reviewer25-adversarial-001-f002: divergent/unreadable administrative-ledger recovery has no executable out-of-ledger recovery envelope.
+Confirmed reviewer25-adversarial-001-f003: differing/partial completion bytes have no terminal recovery/tombstone branch.

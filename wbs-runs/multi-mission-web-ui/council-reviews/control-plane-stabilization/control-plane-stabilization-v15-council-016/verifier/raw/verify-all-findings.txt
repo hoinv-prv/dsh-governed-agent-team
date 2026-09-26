@@ -1,0 +1,4 @@
+Parent read-only verification against immutable design-v15 SHA-256 59a126d9a8dc6bb19bb07651d290b5c9a06e1a20e074bfd6d745d33d978afd37.
+Confirmed reviewer16-authority-001-f1: legacy ExecutionTransitionReceipt references conflict with defined Intent/Completion pair.
+Confirmed reviewer16-adversarial-f001: charge-edge source-equal restart lacks mandatory fresh full charge-boundary re-observation.
+Confirmed reviewer16-adversarial-f002: final acceptance/rejection write lacks immediate re-hash and current P16/revocation revalidation.

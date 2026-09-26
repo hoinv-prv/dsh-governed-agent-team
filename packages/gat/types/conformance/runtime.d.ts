@@ -1,0 +1,7 @@
+import type{ConformanceDispatch,ExecutionEvidence,JsonObject}from'./index.d.ts';
+export interface ExecutionPacket{readonly format:'gat-conformance-execution-packet/1';readonly bindings:Readonly<{proposal_sha256:string;implementation_sha256:string;environment_fixture_sha256:string}>;readonly vectors:Readonly<{pathLiteral:string;sha256:string;count:number}>;readonly evidencePathLiteral:string;readonly exactCommand:string;readonly runtime:Readonly<{fixturePathLiteral:string;fixtureSha256:string;bridgeSha256:string}>}
+export interface LoadedExecutionPacket{readonly packet:ExecutionPacket;readonly packetPathLiteral:string;readonly packetPathCanonical:string;readonly packetSha256:string}
+export interface RuntimeEvidence extends Omit<ExecutionEvidence,'packetPathLiteral'|'packetPathCanonical'|'packetSha256'>{}
+export declare function computePackageImplementationEvidence(options?:{readBinary?:(path:string)=>Promise<Uint8Array>;canonicalize?:(path:string)=>Promise<string>}):Promise<Readonly<{sha256:string;files:ReadonlyArray<Readonly<{canonicalPath:string;sha256:string}>>}>>;
+export declare function loadExecutionPacket(options?:{environment?:Record<string,string|undefined>;readBinary?:(path:string)=>Promise<Uint8Array>}):Promise<LoadedExecutionPacket>;
+export declare function loadPackageDispatcher(options:{executionPacket:ExecutionPacket;readBinary?:(path:string)=>Promise<Uint8Array>;canonicalize?:(path:string)=>Promise<string>}):Promise<Readonly<{dispatch:ConformanceDispatch;runtimeEvidence:RuntimeEvidence}>>;

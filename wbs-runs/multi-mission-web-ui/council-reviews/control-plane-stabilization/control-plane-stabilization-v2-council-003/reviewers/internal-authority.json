@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v2-council-003",
+  "reviewer_id": "reviewer3-authority-002",
+  "lane": "internal-authority",
+  "invocation_id": "inv3-auth-002",
+  "attempt": 2,
+  "status": "failed",
+  "failure_code": "provider_unavailable",
+  "artifact_manifest_sha256": "9f5c0d53bb3b88301c85996db07132c90d7d2e5aecafdd25991d17d2d5666cad",
+  "packet_sha256": "3ae904b7354dd7ae0078de6a435a2cf017caf69ff00fecafc91f7ef249051bde",
+  "findings": [],
+  "rejected_candidates": []
+}

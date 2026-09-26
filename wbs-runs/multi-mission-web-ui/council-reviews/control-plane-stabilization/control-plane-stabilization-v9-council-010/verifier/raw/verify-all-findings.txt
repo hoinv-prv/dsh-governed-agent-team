@@ -1,0 +1,5 @@
+Parent read-only verification against immutable design-v9 snapshot SHA-256 0834a95f87797a9401eb23d755af9fb171f528d217b6e84d2994e2de7b05bfce.
+
+Confirmed reviewer10-authority-001-f1 and overlapping reviewer10-adversarial-f001: Section 5.1 forbids BOOTSTRAP_MAINTENANCE from allocating a mission attempt, while Section 6.3 and P15/entry wording still offers administrative or mission-attempt/resource accounting and describes uncharged accounting as a HUMAN-chosen exception. The accounting mode is contradictory and non-deterministic.
+
+No command verification was authorized or executed. Findings are specification-consistency checks.

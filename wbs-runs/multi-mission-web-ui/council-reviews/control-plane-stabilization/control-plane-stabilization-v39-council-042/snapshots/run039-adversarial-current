@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v36-council-039",
+  "reviewer_id": "reviewer39-adversarial-001",
+  "lane": "internal-adversarial",
+  "invocation_id": "inv39-adv-001",
+  "attempt": 1,
+  "status": "completed",
+  "artifact_manifest_sha256": "b3105bf5f8b796b481aafc49bb664cb207f0036df58b9b994e67e116a9572e17",
+  "packet_sha256": "6b8495583a8ed6665dbdc8e6566811c8bd42fbdc1a942417a492e765ae4ac6ce",
+  "findings": [
+    {
+      "finding_id": "ADV39-F-001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "closure-accounting",
+      "claim": "The v36 Section 15.1 closure matrix does not map the confirmed run-033 findings EXT33R-O-008 and EXT33R-O-009 to an exact v34 correction.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "623-628"
+      },
+      "evidence_excerpt": "| ADV33-F-001 | §6.3 root recurrence | per-attempt plus overhead debit fixture |",
+      "impact": "The run-033 verifier snapshot marks EXT33R-O-008 and EXT33R-O-009 confirmed, but neither ID appears in the v36 closure rows, so a later handoff cannot prove these confirmed authority and TOCTOU disclosure properties were retained rather than dropped.",
+      "recommended_action": "Add explicit EXT33R-O-008 and EXT33R-O-009 closure rows, or an exact hash-bound retained-without-correction mapping, with verifier evidence.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-adversarial-001",
+        "invocation_id": "inv39-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98
+    },
+    {
+      "finding_id": "ADV39-F-002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "authority-ownership",
+      "claim": "The AcceptedDesignRegistry introduced by v36 has no declared canonical schema, validator, append operation, owner, accounting authorization/outcome binding, or recovery contract.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "302-329"
+      },
+      "evidence_excerpt": "design_basis: <canonical AcceptedDesignRegistry path+raw sha256+monotone generation, selected current entry ID/path/raw design sha256/HUMAN acceptance hash, plus immutable run-002 failure-model snapshot path+sha256>",
+      "impact": "P5 cannot be mechanically enforced against a superseded-design choice: without a pinned registry contract and owning version-guarded operation, an implementation can invent or select the current entry and undermine rejection of stale design bytes.",
+      "recommended_action": "Bootstrap-pin the registry contract/schema and validator, canonical path and version-guarded append argv/effect, sole owner, administrative accounting pairs, HUMAN authority and recovery/supersession rules; bind their hashes in P15 and the bundle.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-adversarial-001",
+        "invocation_id": "inv39-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "finding_id": "ADV39-F-003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "authority-hash-domain",
+      "claim": "The AdmissionBundle design_basis schema does not bind the repository-rule and AIWS-architecture hashes or a council ReviewClosureReceipt, although P5 claims those authority bases are re-hashed and v36 requires a latest council-passed HUMAN-accepted design.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "302,375,649-650"
+      },
+      "evidence_excerpt": "design_basis: <canonical AcceptedDesignRegistry path+raw sha256+monotone generation, selected current entry ID/path/raw design sha256/HUMAN acceptance hash, plus immutable run-002 failure-model snapshot path+sha256>",
+      "impact": "A current=true HUMAN-accepted registry entry lacking a council-pass receipt or bound authority-baseline hashes could satisfy the stated design_basis equality, allowing a non-council-passed or mismatched authority baseline to pass the design-basis gate.",
+      "recommended_action": "Add council ReviewClosureReceipt/verdict and repository-rule/AIWS-architecture baseline raw hashes to the registry entry and AdmissionBundle design_basis; require validator equality and reject entries missing those bindings.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-adversarial-001",
+        "invocation_id": "inv39-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.88
+    },
+    {
+      "finding_id": "ADV39-F-004",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "The closed CP-13 registry does not enumerate the normal status and outcome edges for its listed ACTIVE, DISPATCHED, VERIFYING, FAILED_CHARGED, and REVISION_REQUIRED_CHARGED states.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "222"
+      },
+      "evidence_excerpt": "CP-13 | `ACTIVE`, `DISPATCHED`, `INTERRUPTED_CHARGED`, `VERIFYING`, `FAILED_CHARGED`, or `REVISION_REQUIRED_CHARGED` | exact `interrupted_to_dispatched` / `interrupted_to_failed` same-attempt edges; verification/review failure closes the current attempt immutably; only a fresh HUMAN `new_attempt_after_failure` decision ... permits `FAILED_CHARGED|REVISION_REQUIRED_CHARGED→FROZEN`",
+      "impact": "The registry is declared exhaustive and forbids edges absent from it, yet it provides no exact registered edge for ordinary ACTIVE/DISPATCHED progression into verification or for successful verification/review outcomes and their resulting states. A builder must infer these charge-preserving transitions, leaving normal execution state closure and its P3/P15 capability and fixture requirements non-deterministic.",
+      "recommended_action": "Enumerate every CP-13 ordinary edge and outcome explicitly, including ACTIVE/DISPATCHED/VERIFYING progression, successful and failed verification/review outcomes, and current-attempt closure, with exact P3 lineage, P15 capability/accounting pairs, owners, and fixtures mirrored in the failure matrix and handoff manifest.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-adversarial-001",
+        "invocation_id": "inv39-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "finding_id": "ADV39-F-005",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "hash-domain",
+      "claim": "The logical_intent_id derivation depends on an undefined idempotency_key and an unspecified candidate_attempt_id derivation, so the claimed byte-exact intent identity is not reproducible.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "245,285,428"
+      },
+      "evidence_excerpt": "logical_intent_id = SHA256(JCS([mission_id, plan_hash, source_hash, source_version, previous_completion_hash, previous_completion_sequence, edge, candidate_attempt_id, idempotency_key]))",
+      "impact": "Independent implementations cannot reproduce the logical intent, OPEN matching, or the acyclic commitment from the reviewed bytes; an implementer may invent non-equivalent identifiers, creating retry/collision ambiguity that undermines no-double-charge and chain closure.",
+      "recommended_action": "Define exact canonical derivation or caller-provided fields for candidate_attempt_id and idempotency_key, including JCS/UTF-8 encoding, source, type, uniqueness and empty-value rules; bind both in the candidate/bundle and add a byte-exact fixture.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-adversarial-001",
+        "invocation_id": "inv39-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "finding_id": "ADV39-F-006",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "manifest-authority-hash",
+      "claim": "The accepted TransitionCapabilityManifest is not bound to a canonical path, raw hash, generation, or resolver in the AdmissionBundle and bootstrap/P15 authority contract.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "206,302,385,658"
+      },
+      "evidence_excerpt": "Before any WBS build, bootstrap must materialize a canonical `TransitionCapabilityManifest` with exactly one row per CP ID and fields `{cp_id,current_states,allowed_edges,p3_rule_ids,p15_schema_hashes,validator_hashes,argv_hashes,effect,owner,accounting_pair_ids,fixture_hashes}`; HUMAN acceptance pins its raw SHA-256.",
+      "impact": "P15 has no deterministic referent for which accepted manifest to re-hash: an alternate or stale manifest can be supplied while other bundle capability fields remain self-consistent, preventing independent closure of P3/P15 identity and state-edge coverage.",
+      "recommended_action": "Add a canonical manifest registry/path, raw SHA-256 and generation, HUMAN acceptance and version-guarded resolver to the bundle/bootstrap authority; require P3/P15 exact resolver and equality checks with accounting, recovery and fixtures.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-adversarial-001",
+        "invocation_id": "inv39-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.78
+    },
+    {
+      "finding_id": "ADV39-F-007",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "authority-freshness",
+      "claim": "P14 does not explicitly re-resolve the AcceptedDesignRegistry latest current generation at the charge boundary, so a newly accepted design can supersede the bundle's selected design after seal while the selected bytes still hash-match.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "375,384"
+      },
+      "evidence_excerpt": "Every admission cycle resolves the create-once append-only `AcceptedDesignRegistry`, requires its latest monotone generation and sole `current=true` entry, and re-hashes that entry's HUMAN acceptance, design path and raw design bytes.",
+      "impact": "A bundle sealed against an older accepted generation can remain byte/hash-equal to its pinned inputs even after a newer current design is accepted; without a boundary latest-generation check, the charge can admit against superseded design bytes, violating the latest-design binding.",
+      "recommended_action": "At P14 and the guarded charge boundary, re-resolve the canonical registry current pointer/generation and require exact equality to the bundle's latest generation and design hash, or expire the bundle on any superseding current append; add a boundary supersession fixture.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-adversarial-001",
+        "invocation_id": "inv39-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.94
+    }
+  ],
+  "rejected_candidates": []
+}

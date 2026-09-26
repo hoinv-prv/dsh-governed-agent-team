@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v5-council-006",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "r6adv001-f1",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "authority-evidence-binding",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v5",
+      "locator": {
+        "kind": "line",
+        "value": "170-208;240-242"
+      },
+      "evidence_excerpt": "An attributable HUMAN decision record ID and raw-byte SHA-256 bind the exact bundle/invalidation contract hashes",
+      "claim": "The AdmissionBundle contract has no field or receipt for P13's exact HUMAN WBS decision or P15's HUMAN bootstrap decision ID and raw hash; prepared_from.decisions_sha256 binds only an undifferentiated artifact hash, so a sealed READY bundle cannot itself identify the authority records those invariants require.",
+      "impact": "The later schema or prepare implementation can ambiguously treat a decisions-file hash as sufficient authority, allowing stale, revoked, or wrong-scope approval to survive sealing or replay and reach charge.",
+      "recommended_action": "Add mandatory P13 and P15 receipts containing the decision record ID, raw-byte hash, actor, scope, bound WBS and effects, and bound contract and command hashes; include those receipts in P14 boundary re-verification and fail closed on absence, ambiguity, revocation, or drift.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer6-adversarial-001",
+        "invocation_id": "inv6-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98,
+      "source_candidate_ids": [
+        "r6adv001-f1"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "r6adv001-f2",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "ledger-commit-integrity",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v5",
+      "locator": {
+        "kind": "line",
+        "value": "146-158;226-242"
+      },
+      "evidence_excerpt": "Append one attempt allocation, boundary receipt and cumulative charge in a single version-guarded `execution.json` update as the first durable mission mutation.",
+      "claim": "P3 validates only the pre-commit execution.json, while the commit protocol writes structurally new attempt, boundary, and charge data without requiring strict validation of the exact post-write candidate bytes before the charge or a strict PASS before dispatch.",
+      "impact": "The first durable charged mutation can create an execution ledger rejected by the official strict validator, recreating the charged-then-discover-invalid loop that the design is intended to eliminate; the charge is then irrecoverable by design.",
+      "recommended_action": "Deterministically construct and hash the exact candidate execution.json bytes, validate them under the pinned strict contract before any durable write, version-guard the write against the validated source hash, and re-hash and strictly validate the persisted bytes before dispatch; any pre-write mismatch must abort uncharged.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer6-adversarial-001",
+        "invocation_id": "inv6-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.99,
+      "source_candidate_ids": [
+        "r6adv001-f2"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "r6adv001-f3",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "review-fallback-diversity",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v5",
+      "locator": {
+        "kind": "line",
+        "value": "325-337"
+      },
+      "evidence_excerpt": "Inspect live routes for the primary reviewer and one fallback with distinct invocation identity; record availability as a snapshot, not a provider-capacity reservation.",
+      "claim": "The fallback rule requires only a distinct invocation identity and does not require the fallback's provider/model route family to preserve the two-family diversity required for high-risk review when either primary lane is lost.",
+      "impact": "P11 can pass with a fallback that is known to be ineligible after substitution; a post-charge primary-route loss can then strand review, or an identity-only interpretation can permit acceptance from a panel that violates mandatory diversity.",
+      "recommended_action": "Bind provider, model, route family, and eligible replacement role for every primary and fallback, and validate a substitution matrix proving that each allowed single-route fallback preserves mandatory diversity; otherwise make admission NOT_READY.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer6-adversarial-001",
+        "invocation_id": "inv6-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.97,
+      "source_candidate_ids": [
+        "r6adv001-f3"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "r6auth001a1-f1",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "internal-consistency",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v5",
+      "locator": {
+        "kind": "section",
+        "value": "5.1 Critical rule"
+      },
+      "evidence_excerpt": "No mutable mission control and no attempt charge is procedurally allowed in `FROZEN`, `PREPARING`, `NOT_READY`, `READY`, or `EXPIRED`.",
+      "claim": "Section 5.1 forbids every mutable mission-control write in NOT_READY, READY and EXPIRED, but the mandatory abort path in Section 5.2 step 3 requires the coordinator to append an AdmissionInvalidation record in exactly those states, and Section 10 lists AdmissionInvalidation among generated or mutable mission-control artifacts owned by the coordinator through an approved append operation; no exception, owning command or receipt is declared for that write.",
+      "impact": "The fail-closed abort path is internally contradictory: either the required uncharged invalidation evidence cannot be written and the gate cannot complete its own recovery, or the coordinator performs a control-plane write in a state where Section 5.1 declares all mutable mission-control writes procedurally forbidden, leaving the authority and effect scope of the one path that must stay provably uncharged ambiguous.",
+      "recommended_action": "Add an explicit exception in Section 5.1 naming the single permitted uncharged AdmissionInvalidation append, and declare its owning command/effect, canonical path, freshness/hash receipt, fail state and recovery in Sections 6.2 and 10 and in the P14 abort disposition.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer6-authority-001",
+        "invocation_id": "inv6-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.72,
+      "source_candidate_ids": [
+        "r6auth001a1-f1"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "r6auth001a1-f2",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority-binding",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v5",
+      "locator": {
+        "kind": "section",
+        "value": "7.1 Mission-specific contingency rule"
+      },
+      "evidence_excerpt": "no successor WBS may be built or admitted until the HUMAN records a ceiling/reallocation and contingency decision bound to that successor's exact WBS revision and SHA-256",
+      "claim": "Section 7.1 requires the HUMAN ceiling/reallocation and contingency decision to be bound to the successor WBS's exact revision and SHA-256 before that WBS may be built or admitted, while Section 16 makes the HUMAN selection of that same ceiling/contingency policy a precondition for building the WBS; because the revision and hash exist only after the WBS bytes are authored and the design states no ordering or provisional-binding rule, the two entry gates are mutually blocking.",
+      "impact": "The WBS-build entry gate is unsatisfiable as written: the mission remains frozen, or the HUMAN must bind budget and attempt-ceiling authority to a revision and hash that cannot yet be computed, making the P12/P13 authority binding unverifiable at the exact point that authorizes the future attempt ceiling.",
+      "recommended_action": "State the order explicitly: an uncharged WBS draft may be authored and hashed, the HUMAN ceiling/reallocation and contingency decision then binds that exact revision and SHA-256, and only then may the WBS be approved/admitted; align the Section 16 bullet with the Section 7.1 wording.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer6-authority-001",
+        "invocation_id": "inv6-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.7,
+      "source_candidate_ids": [
+        "r6auth001a1-f2"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "r6auth001a1-f3",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "enforcement-boundary",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v5",
+      "locator": {
+        "kind": "section",
+        "value": "7 Admission invariants and evidence — P8 Coordinator identity/quiescence snapshot"
+      },
+      "evidence_excerpt": "a delegated subagent can perform only a bounded worker role and cannot charge",
+      "claim": "P8 asserts as an admission invariant that a delegated subagent cannot charge, but Section 5.3 concedes that no pinned Source of Truth identifies a non-bypassable native charge entry point and claims only procedural fail-closed governance; the design names no existing guard that denies the version-guarded execution.json charge write to a delegated writer, so P8 records an unconditional capability denial that its own topology observation does not establish.",
+      "impact": "P8 can PASS on a coordinator/quiescence snapshot while a delegated agent holding the same native file-write capability can still perform the charge write, so an actor the design declares unable to charge can commit a charge that is neither the coordinator's declared boundary write nor covered by the P14/P15 receipts.",
+      "recommended_action": "Reword P8 as an observed-topology predicate (no delegated-coordinator topology observed at the receipt epoch, every enumerated mission writer stopped/settled) and state that the denial is procedural only; bind any residual delegated-writer bypass into the Section 5.3 and Section 16 residual-risk disclosure instead of an unconditional cannot-charge invariant.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer6-authority-001",
+        "invocation_id": "inv6-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.66,
+      "source_candidate_ids": [
+        "r6auth001a1-f3"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

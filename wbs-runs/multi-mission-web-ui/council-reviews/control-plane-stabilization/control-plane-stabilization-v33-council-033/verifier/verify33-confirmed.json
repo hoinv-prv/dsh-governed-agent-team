@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v33-council-033",
+  "verification_id": "verify33-confirmed",
+  "finding_ids": [
+    "ADV33-F-001",
+    "ADV33-F-002",
+    "AUTH33-F-01",
+    "AUTH33-F-02",
+    "AUTH33-F-03",
+    "AUTH33-F-05",
+    "EXT33R-O-003",
+    "EXT33R-O-004",
+    "EXT33R-O-005",
+    "EXT33R-O-006",
+    "EXT33R-O-008",
+    "EXT33R-O-009",
+    "EXT33R-O-010"
+  ],
+  "method": "read",
+  "command_id": null,
+  "argv": null,
+  "cwd": null,
+  "timeout_seconds": null,
+  "authorized_by_request": true,
+  "status": "confirmed",
+  "exit_code": null,
+  "output_excerpt": "Exact read confirms: root recurrence omits distinct attempt units; administrative and review/genesis states are absent from the closed table; stale v32 text remains; P3/P15 per-edge mirrors are not enumerated; logical-id/body ordering is reversed; candidate allocation naming, chain-head aliases, reservation/AIP order and genesis/bootstrap edge remain ambiguous. Positive authority/TOCTOU statements are also exact.",
+  "reason": "Exact read confirms: root recurrence omits distinct attempt units; administrative and review/genesis states are absent from the closed table; stale v32 text remains; P3/P15 per-edge mirrors are not enumerated; logical-id/body ordering is reversed; candidate allocation naming, chain-head aliases, reservation/AIP order and genesis/bootstrap edge remain ambiguous. Positive authority/TOCTOU statements are also exact.",
+  "artifact_hashes_before": [
+    {
+      "artifact_id": "design-v33",
+      "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+    },
+    {
+      "artifact_id": "sanitized-design-v33",
+      "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+    }
+  ],
+  "artifact_hashes_after": [
+    {
+      "artifact_id": "design-v33",
+      "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+    },
+    {
+      "artifact_id": "sanitized-design-v33",
+      "sha256": "5be0d828832881233260fb809574095b50725d3f88418df2988b3ad7eda19bf0"
+    }
+  ],
+  "result_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v33-council-033/verifier/verify33-confirmed.json",
+  "raw_output_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v33-council-033/verifier/raw/verify33-confirmed.txt",
+  "raw_output_sha256": "34a957abaf1396bd0338c094f139ec78c5e55981c28a48fb3407aeaafe8750b2",
+  "raw_output_size_bytes": 417,
+  "started_at": null,
+  "duration_ms": null
+}

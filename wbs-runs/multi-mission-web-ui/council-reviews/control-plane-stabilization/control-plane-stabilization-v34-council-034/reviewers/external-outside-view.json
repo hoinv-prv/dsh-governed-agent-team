@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v34-council-034",
+  "reviewer_id": "reviewer34-outside-002",
+  "lane": "external-outside-view",
+  "invocation_id": "inv34-ext-002",
+  "attempt": 2,
+  "status": "completed",
+  "artifact_manifest_sha256": "313f67b253f517f04d397c6be1ed7c80538f096c9b24d1c3347a96f41047cc6f",
+  "packet_sha256": "e7b7dd3e11fefb16fd2eb7e88ff0c82e7b6269770d9ba96bc4891e4752c9ea06",
+  "authority": "advisory-only",
+  "participates_in_voting": false,
+  "decision_weight": "none",
+  "observations": [
+    {
+      "observation_id": "EXT34R-O-001",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "traceability",
+      "claim": "The reviewed bytes assert that v34 was corrected after run-033 verified findings but never enumerate those findings, never give a per-finding correction mapping, and never name the pinned consistency-audit indicators; the dispatched outside-view packet carries only the single artifact sanitized-design-v34, so the mandated demonstration that every run-033 confirmed finding is closed and every refuted finding is not reintroduced cannot be performed in this lane from the reviewed bytes.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": "textual-defect",
+      "artifact_id": "sanitized-design-v34",
+      "locator": {
+        "kind": "line",
+        "value": "8"
+      },
+      "evidence_excerpt": "Review state: Corrected after run-033 verified findings; requires a fresh immutable high-risk council run before WBS build | (line 29) SHA-256 `434f1613751d8a2b5b8813936404e4567e698ea4ace88ed74863e2a56e4d8b86` | (line 616) every material council finding is confirmed/refuted/dispositioned",
+      "impact": "A required closure property is only asserted. Because the packet declares artifact_ids [sanitized-design-v34] and context_categories [objective, audience, public-constraints] with no source-of-truth entries, no supplied identifier can be traced to a run-033 finding ID, a CS-01..CS-09/CH-01..CH-03/CA-01/BA-01..BA-04 audit row, or a v34 correction locator, so a closure conclusion would rest on records absent from this lane.",
+      "recommended_action": "Carry a per-finding closure table (prior finding ID -> exact v34 section/line locator -> validator or fixture, plus explicit refuted-finding dispositions) inside the reviewed design, or dispatch the outside-view lane with the pinned run-033 ledger and consistency-audit snapshots and bind their IDs to that table.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer34-outside-002",
+        "invocation_id": "inv34-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.88
+    },
+    {
+      "observation_id": "EXT34R-O-002",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "evidence-binding",
+      "claim": "The self-binding of the reviewed design is one-sided: the design-basis receipt names the latest council-passed HUMAN-accepted design by path plus out-of-band SHA-256, but the P5 admission re-hash list covers the current design, the run-002 failure-model snapshot, AGENTS.md and the AIWS architecture only, and it scopes that re-hash to stabilization/WBS-build admission, so no admission-cycle predicate requires the sealed AdmissionBundle to re-hash and equality-check the exact design basis bytes it bound.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": "conditional-activation-risk",
+      "artifact_id": "sanitized-design-v34",
+      "locator": {
+        "kind": "line",
+        "value": "302, 375"
+      },
+      "evidence_excerpt": "(302) design_basis: <latest council-passed HUMAN-accepted design path + out-of-band SHA256(raw design bytes), plus immutable run-002 failure-model snapshot path+sha256> | (375) stabilization/WBS-build admission also re-hashes the current design and run-002 failure-model snapshot `434f1613\u2026d8b86` through the declared read-only hashing command",
+      "impact": "A successor WBS can be admitted, and later drafted, while the accepted design basis at that path is substituted by different bytes at a moment when the P5 re-hash scope does not require re-reading it, and the accepted-design hash never appears in the P14 mutable-source exception list as a hash that must stay equal. The approval chain would then bind a review that verified bytes different from the bytes the charge boundary cites.",
+      "recommended_action": "Add the council-passed HUMAN-accepted design basis bytes/hash to the P5/P14 mandatory re-hash and equality set for every admission cycle, and require the AdmissionBundle to reject admission when the design-basis path resolves to bytes other than the hash recorded at review closure.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer34-outside-002",
+        "invocation_id": "inv34-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.7
+    },
+    {
+      "observation_id": "EXT34R-O-003",
+      "source_lane": "external-outside-view",
+      "mode": "governance",
+      "category": "requirement-coverage",
+      "claim": "The reviewed bytes make the REVIEW closure receipt validator-bound and require it to prove every policy-required lane and gate complete, but they never name or hash the council record contract that owns the reviewer envelopes and the Chairman output shape, so the exact-shape requirement (no rationale field, no numeric confidence, no top-level reviewer fields, string-valued residual risks) has no locator, hash or validator name inside the artifact under review.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": "textual-defect",
+      "artifact_id": "sanitized-design-v34",
+      "locator": {
+        "kind": "line",
+        "value": "500"
+      },
+      "evidence_excerpt": "A review is complete only when a deterministic validator emits an immutable `ReviewClosureReceipt` PASS bound to the exact final review packet/hash, artifact manifest, HUMAN-approved review-policy bytes/hash, expected and actual lane/invocation/result hashes, schema-validation results ... separate Chairman identity/nonparticipation/result hash, final verdict and remaining budget.",
+      "impact": "The gate that decides whether the control-plane review itself passed is defined only by a referenced policy whose bytes are not pinned in this artifact. A builder or validator can therefore satisfy Section 12 while emitting or accepting a Chairman record whose shape contradicts the versioned council contract, and no locator in the reviewed bytes detects it.",
+      "recommended_action": "Cite the exact council record contract path and raw-byte SHA-256 as a HUMAN-approved review-policy input in Section 12 and in the ReviewClosureReceipt binding, or restate the exact Chairman/reviewer output shape directly in the design.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer34-outside-002",
+        "invocation_id": "inv34-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.78
+    },
+    {
+      "observation_id": "EXT34R-O-004",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "requirement-coverage",
+      "claim": "The capability receipt vocabulary available|denied|unavailable|not_probed and the rule that not_probed is not PASS are stated only in the Section 11 capability discussion; the P7 invariant requires the required effect backend to be observed available and P14 re-observes live P7 predicates, so no admission predicate or drift rule turns a never-probed command or backend into an explicit NOT_READY at the charge boundary.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": "textual-defect",
+      "artifact_id": "sanitized-design-v34",
+      "locator": {
+        "kind": "line",
+        "value": "377, 482"
+      },
+      "evidence_excerpt": "(377) P7 Command authorization/capability | Exact argv appears in the pinned root/task allowed-command union whose hash is recorded; argv/cwd paths resolve; required effect backend is observed available; prohibited effects remain denied | `NOT_READY` | (482) A capability receipt must distinguish `available`, `denied`, `unavailable`, and `not_probed`. `not_probed` is not PASS.",
+      "impact": "A capability whose probe was never executed can be represented without any failing predicate under P7, and P14 has no equality or drift rule for a capability that was not probed, so an unprobed backend reaches READY carrying evidence that is not PASS. The observable failure mode is fail-open evidence recording with a fail-closed outcome gate, which is exactly the pre-charge ambiguity the design elsewhere treats as material.",
+      "recommended_action": "Extend the P7/P14 invariant rows to require an explicit available status per required capability and to make not_probed, unavailable or a missing capability receipt an unconditional NOT_READY with no fallback.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer34-outside-002",
+        "invocation_id": "inv34-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.62
+    },
+    {
+      "observation_id": "EXT34R-O-005",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "internal-consistency",
+      "claim": "The uniform post-migration transition protocol is stated without a migration carve-out: every permitted post-migration execution.json mutation must use the two-record intent/guarded-writer/completion protocol with pre-bound administrative authorization/outcome pairs and P3 pair reconciliation, while Section 9.1 and the migration protocol describe migration as an uncharged HUMAN-authorized maintenance write with its own single version-guarded operation and restore path that must assert no attempt allocation, no bundle seal and no charge.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": "textual-defect",
+      "artifact_id": "sanitized-design-v34",
+      "locator": {
+        "kind": "line",
+        "value": "426, 446"
+      },
+      "evidence_excerpt": "(426) Every permitted post-migration `execution.json` mutation\u2014charge/allocation, active/dispatched, interrupted/failed, verification outcome, review pending/result, revision-required, acceptance-pending/verifying/reject/accept, and repair\u2014uses one uniform two-record protocol. | (446) Perform exactly one version-guarded canonical write from the pinned source; immediately re-read canonical bytes and require raw byte-for-byte/hash/size equality to the selected candidate plus strict validator PASS. | (420) no AdmissionBundle sealed/consumed",
+      "impact": "The P3 validator that is supposed to reconcile every mutation against intent/completion pairs cannot decide whether the one authorized migration write must itself be represented as an ExecutionTransitionIntent with a guarded-writer receipt and closed administrative pairs, or must instead be excluded because migration forbids charge/attempt/bundle effects. Two builders can produce mutually incompatible but individually compliant migration implementations.",
+      "recommended_action": "Scope the uniformity sentence to post-migration ordinary and recovery edges and state an explicit migration/genesis carve-out naming the owning receipt, lineage record and P3 acceptance rule for the one pre-base migration write.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer34-outside-002",
+        "invocation_id": "inv34-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.66
+    }
+  ],
+  "advisory_hypotheses": [
+    {
+      "advisory_id": "EXT34R-A-001",
+      "claim": "If the v34 AdmissionBundle is loaded through the default strict unknown-field validator, the field names draft-only status values (contract_status: proposed-design-contract-not-yet-activated) and placeholder token values may be rejected, which would make the bundle NOT_READY even after the HUMAN bootstrap.",
+      "basis": "Section 6 requires the bundle to be a proposed design contract with contract_status: proposed-design-contract-not-yet-activated, and Sections 6.1 and 16 require a HUMAN-authorized contract plus a deterministic strict validator whose argv is bound in P15 before WBS build.",
+      "missing_project_sot": [
+        "The exact approved AdmissionBundle schema bytes, the strict-validator implementation, and its valid/invalid fixtures."
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Materialize the approved schema and validator under the bootstrap authority, then load a bundle carrying the current placeholder-shaped fields and confirm whether the validator accepts, rejects, or normalizes them; record the result as a P15 NOT_READY or a contract correction."
+    },
+    {
+      "advisory_id": "EXT34R-A-002",
+      "claim": "The run-033 findings may have been closed by wording that also introduced a directly contradictory rule elsewhere in v34, and that contradiction cannot be seen from the design bytes alone.",
+      "basis": "The reviewed bytes assert closure of run-033 verified findings at line 8 without enumerating them, while the packet supplies only sanitized-design-v34 and no prior ledger, verifier manifest or consistency-audit snapshot.",
+      "missing_project_sot": [
+        "The frozen run-033 ledger, the run-033 verifier manifest, and the v32 consistency-audit snapshot bytes."
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Re-run one lane with the run-033 ledger and verifier snapshots plus the pinned design in the same packet and check each confirmed finding against an exact v34 locator, not against design prose."
+    },
+    {
+      "advisory_id": "EXT34R-A-003",
+      "claim": "The administrative-ledger accounting recurrence may not close under real bootstrap call budgets because the design prices each root append separately while reserving a single finite root recovery ceiling, and the minimum viable seed ceiling is never derived.",
+      "basis": "Section 6.3 prices each root authorization, candidate-commit and outcome append as its own (U_root_j + O_root_j) debit against C_root, requires sufficient pre-existing root capacity for an allocation's authorization/commit/outcome at line 359, and forbids refunds; no inequality is stated that a genesis, migration and post-charge recovery sequence must satisfy.",
+      "missing_project_sot": [
+        "The approved AdministrativeResourceLedger contract bytes, the finite C_root seed value, and the per-operation unit prices."
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Instantiate the arithmetic with the approved ceiling and prices, enumerate every required root append for genesis plus one migration plus one post-charge recovery, and prove the sum stays within C_root or record a ceiling correction."
+    },
+    {
+      "advisory_id": "EXT34R-A-004",
+      "claim": "The phase-one construction fixture may be unable to satisfy the acyclic body-commitment chain and the phase-two pre-charge NOT_APPLIED corruption recovery simultaneously because the recovery record is required to become the monotone completion-chain head while the corruption tombstone and RECOVERY_CLOSE must also reference the prior valid head.",
+      "basis": "Section 5.2 step 5 fixes the body commitment domain to exclude later objects, Section 9.1 requires the UnchargedNotAppliedCorruptionRecovery record to bind sequence = prior+1 and to be the new head, and the composed table requires the dependent RECOVERY_CLOSE to reference its hash.",
+      "missing_project_sot": [
+        "The approved TransitionIntentIndex, ExecutionTransitionCompletion, tombstone and recovery-record schemas plus their validators and fixtures."
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Build the fixture chain (prior head -> corrupt NOT_APPLIED completion -> tombstone -> recovery CLOSE -> recovery record -> next intent) and run the index/completion validators to confirm one sequencing rule accepts it without weakening the acyclic derivation fixture."
+    },
+    {
+      "advisory_id": "EXT34R-A-005",
+      "claim": "Chairman separation and outside-view weighting may be understated in the design: contracts require the Chairman to have participated in no initial, external or adjudication review, while v34 only requires a separate Chairman identity, nonparticipation and a result hash.",
+      "basis": "Section 12 requires a separate Chairman identity/nonparticipation/result hash for the ReviewClosureReceipt, and the routing requirement makes a sanitized outside-view lane advisory-only with no decision weight and no voting participation.",
+      "missing_project_sot": [
+        "The exact council record contract bytes and the routing policy bytes that fix Chairman separation and outside-view decision weight."
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Validate a synthesized closure receipt and Chairman record against the council contract and routing policy, and confirm every separation and advisory-weight predicate is mechanically present."
+    },
+    {
+      "advisory_id": "EXT34R-A-006",
+      "claim": "The mission-specific contingency may remain arithmetically unclosed because the operative reserve is explicitly only a recommendation and the currently selected WBS revision is stated to have no slack.",
+      "basis": "Section 7.1 recommends two reserve attempts, states that only the HUMAN decision owner may choose the operative amount, and states that the currently selected WBS revision 32 has no slack; P12 only requires the charge ceiling to cover the selected attempt plus mandatory downstream minima and the reserve.",
+      "missing_project_sot": [
+        "The current WBS revision 32 ceiling/reallocation records and the attempt-accounting arithmetic of the future candidate revision."
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Have the HUMAN record the operative contingency and ceiling against an exact drafted candidate revision, then recompute P12 closure with the selected attempt and both mandatory minima."
+    },
+    {
+      "advisory_id": "EXT34R-A-007",
+      "claim": "Bootstrap and genesis may be persistently underfunded because their model/tool calls are forbidden from charging the mission-attempt ledger and the design does not state whether the administrative ceiling is sized to cover authoring, review, lint, staging, finalization and closure verification as one finite envelope.",
+      "basis": "Sections 6.3, 16 and the entry criteria require every bootstrap work item and effect to be accounted to the single cumulative administrative ledger with a fixed append-overhead reserve and no hidden work inside the successor WBS.",
+      "missing_project_sot": [
+        "The bootstrap decision record with its cumulative administrative ceiling and the measured call/effect inventory for schema, validator and operation authoring."
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Before the bootstrap decision, produce the full work/effect inventory with worst-case units and verify the declared ceiling covers it, or record the bounded overrun path."
+    },
+    {
+      "advisory_id": "EXT34R-A-008",
+      "claim": "The P14 root-prefix equality rule may be unsatisfiable for a bundle whose sealed prefix is taken after the reservation append but before the guarded-writer authorization, because later ordinary writes extend the journal that the sealed prefix pins.",
+      "basis": "Section 6.3 seals P15 only after the reservation and its root authorization/candidate-commit pair are closed, then requires the final writer to reconcile the current journal against the sealed prefix and the reservation; Section 6.3 also forbids comparing a sealed current-root hash for literal equality after permitted growth.",
+      "missing_project_sot": [
+        "The approved RootControlJournal schema and the P15 reservation/prefix binding rules with a real multi-append sequence."
+      ],
+      "confidence": "low",
+      "decision_weight": "none",
+      "suggested_validation": "Simulate the append sequence from reservation through guarded writer, index CLOSE and outcome, and check the sealed prefix plus allowed-extension predicate accepts every required entry with no gap or unrelated entry."
+    },
+    {
+      "advisory_id": "EXT34R-A-009",
+      "claim": "The design may not be implementable without a named native read capability for the admission predicates that observe Team, goal and worker state, because Section 11 requires every admitted command to appear in the pinned union and the design names no such read command.",
+      "basis": "Section 13 requires one snapshot proving coordinator, active_work, run_state and goal state agreement, P8/P9/P10 require native Team/goal listings, and Section 3.2 forbids DSH checkout access while the packet's out_of_scope forbids DSH access beyond the authorized read-only council helper.",
+      "missing_project_sot": [
+        "The exact native read command/argv and its inclusion in the pinned root or task allowed-command union, plus the capability receipt schema for that read."
+      ],
+      "confidence": "low",
+      "decision_weight": "none",
+      "suggested_validation": "Probe the permitted native read surface outside mission execution, record its exact argv and union membership, and confirm each P8/P9/P10 predicate can be produced as bindable evidence or is declared unavailable."
+    }
+  ],
+  "context_attestation": {
+    "artifact_ids_received": [
+      "sanitized-design-v34"
+    ],
+    "context_categories_received": [
+      "objective",
+      "audience",
+      "public-constraints"
+    ],
+    "packet_sha256_received": "e7b7dd3e11fefb16fd2eb7e88ff0c82e7b6269770d9ba96bc4891e4752c9ea06"
+  },
+  "rejected_candidates": []
+}

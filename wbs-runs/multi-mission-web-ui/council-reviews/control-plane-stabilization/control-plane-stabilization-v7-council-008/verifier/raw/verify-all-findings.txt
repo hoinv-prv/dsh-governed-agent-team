@@ -1,0 +1,7 @@
+Parent read-only verification against immutable design-v7 snapshot SHA-256 458ac9ec853258c0a47de3ce57bfa7251d2424cc3b454b11fff29ddad1f63a10.
+
+Confirmed r8auth001a1-f1 and reviewer8-adversarial-f001: the lifecycle REVIEWING→ACCEPTED transition has no explicit awaiting-HUMAN state, current acceptance decision bound to exact outputs, reject/recovery branch, or declared acceptance write owner/effect.
+Confirmed reviewer8-adversarial-f002: Section 5.1's exhaustive pre-charge write list omits the separately authorized uncharged migration ledger mutation required by Section 9.
+Confirmed reviewer8-adversarial-f003: the mandatory bootstrap implementation action lacks an explicit Working AIP/Workspace, administrative or attempt/resource accounting, model-call ceiling, bounded writes, review and HUMAN acceptance contract.
+
+No command verification was authorized or executed. All findings are specification-presence/consistency checks.

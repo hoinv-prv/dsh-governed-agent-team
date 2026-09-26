@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v35-council-038",
+  "reviewer_id": "reviewer38-outside-001",
+  "lane": "external-outside-view",
+  "invocation_id": "inv38-ext-001",
+  "attempt": 1,
+  "status": "completed",
+  "artifact_manifest_sha256": "328a9e72938ac6f51f2336d2883f25dfd5ec5207bc4e45e70b43d1a773ae8188",
+  "packet_sha256": "7c217f980aa348371815e3be151e6c469caa25c70e733705f21f543cbbf1d72d",
+  "authority": "advisory-only",
+  "participates_in_voting": false,
+  "decision_weight": "none",
+  "observations": [
+    {
+      "observation_id": "EXT38-O-001",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "ownership",
+      "claim": "`COMPLETION_INDEX_CLOSE_PENDING` is listed as a current condition in both the CP-11 and CP-12 registry rows, and each row states a different sole permitted treatment of that same state, so a `TransitionCapabilityManifest` with exactly one `current_states`/`allowed_edges` row per CP ID cannot derive one unambiguous owner or one sole permitted edge for this state.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "220-221"
+      },
+      "evidence_excerpt": "`ADMISSION_ACCOUNTING_BLOCKED`, `CHARGED_ACCOUNTING_PENDING`, `CHARGED_ACCOUNTING_BLOCKED`, or `COMPLETION_INDEX_CLOSE_PENDING` | exact bounded reconciliation",
+      "impact": "A validator or coordinator deriving the P15 manifest from the registry can treat the same persisted state as CP-11 corruption recovery or as CP-12 bounded reconciliation, which contradicts the stated single-owner rule and the rule that an edge absent from the registry is forbidden.",
+      "recommended_action": "Assign `COMPLETION_INDEX_CLOSE_PENDING` to exactly one CP ID, or declare an explicit deterministic precedence between CP-11 and CP-12 for that state in the registry and in the manifest schema.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-outside-001",
+        "invocation_id": "inv38-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.8
+    },
+    {
+      "observation_id": "EXT38-O-002",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "design",
+      "claim": "The CP-05 allowed-edge set for `MIGRATION_BLOCKED` names only fresh HUMAN recovery to `MIGRATION_RECOVERY`, while the Section 5 diagram and Section 9.1 also define a HUMAN abandon disposition that records `MIGRATION_BLOCKED` as terminal frozen; because the registry is declared exhaustive and orders that an edge absent from it is forbidden, that abandon disposition has no registered edge, P3 rule, P15 capability or fixture.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "214"
+      },
+      "evidence_excerpt": "fresh HUMAN recovery: `MIGRATION_BLOCKED→MIGRATION_RECOVERY`",
+      "impact": "A legitimate HUMAN abandon/terminal-freeze decision on migration has no closed registry row to be validated against, so a manifest built exactly from the registry cannot represent an outcome the prose permits and the WBS handoff manifest requires a fixture for every normative edge.",
+      "recommended_action": "Add the HUMAN abandon disposition to CP-05 (or to the CP-16 terminal set) with its exceptional record, allowed effect, accounting pair and passing fixture, and cross-reference the Section 5 diagram line that shows it.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-outside-001",
+        "invocation_id": "inv38-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "observation_id": "EXT38-O-003",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "authority",
+      "claim": "`design_basis` requires the \"latest council-passed HUMAN-accepted design\" path and out-of-band raw-byte SHA-256, but P5 verifies only equality to the hash recorded in the bundle and the design declares no canonical current-accepted-design pointer, generation or resolution rule, so a bundle prepared from an older still-HUMAN-accepted design generation would satisfy P5's equality predicate.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "302"
+      },
+      "evidence_excerpt": "design_basis: <latest council-passed HUMAN-accepted design path + out-of-band SHA256(raw design bytes)",
+      "impact": "The stated requirement that admission cannot proceed against superseded design bytes depends on a \"latest\" resolution that is not expressed in the reviewed bytes; the bundle and P5 are self-consistent with any design generation the preparer chooses.",
+      "recommended_action": "Declare a canonical accepted-design registry or monotone accepted-generation sequence, and require the prepare command, P5 and P14 to resolve and compare it so that a superseded accepted design cannot satisfy the design-basis predicate.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-outside-001",
+        "invocation_id": "inv38-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "observation_id": "EXT38-O-004",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "evidence",
+      "claim": "The Section 15.1 closure matrix asserts that prior audit findings CS-01 through CS-09, CH-01 through CH-03, CA-01 and BA-01 through BA-04 are closed by mapping each ID group to v35 locators and fixtures, but the reviewed bytes contain neither the prior findings' text nor their severity or verification detail, and the outside-view packet omits those Sources of Truth.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v35",
+      "locator": {
+        "kind": "section",
+        "value": "15.1 Immutable finding-to-correction closure matrix"
+      },
+      "evidence_excerpt": "| CS-01, CS-02, CS-03, CS-04, CS-05, CS-06, CS-08, CS-09 | §5.0.1 CP-01…CP-16 and §14 coverage index | state/edge inventory, source/candidate/divergent and blocked-state fixtures |",
+      "impact": "From the reviewed bytes alone a reader can confirm that a closure matrix exists and is internally mapped, but cannot confirm that each mapped section actually closes the prior finding or that no prior finding was dropped or silently downgraded.",
+      "recommended_action": "Reference the pinned consistency-audit bytes by hash and provide a deterministic finding-to-locator-to-fixture diff, or restate each prior finding's falsifiable claim beside its correction locator so closure is checkable within the reviewed bytes.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-outside-001",
+        "invocation_id": "inv38-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.8
+    },
+    {
+      "observation_id": "EXT38-O-005",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "design",
+      "claim": "The normative table states that every row must appear identically in the P3 allowlist, P15 capability manifest, failure matrix and fixtures, while the following paragraph states that the Section 14 coverage index does not claim every table row repeats an ID literal, leaving the exact cross-artifact equality predicate (byte-identical cell versus ID-mapped row) undefined for the failure matrix.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "202-227"
+      },
+      "evidence_excerpt": "Every row must appear identically in the P3 allowlist, P15 capability manifest, failure matrix and fixtures.",
+      "impact": "A deterministic validator cannot be written unambiguously from these two statements: one reading rejects the failure matrix for not repeating CP IDs and the other explicitly permits that, so P15 strict-equality results depend on reviewer interpretation rather than a declared rule.",
+      "recommended_action": "State the exact comparison predicate per artifact (which fields must be byte-identical, which may be an ID mapping, and which artifact is normative on conflict), and make the coverage-index rule an explicit exception clause of the identity requirement.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-outside-001",
+        "invocation_id": "inv38-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "observation_id": "EXT38-O-006",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "authority",
+      "claim": "The design states its own advisory and inactive status and states that council review is advisory and that a council `pass` does not approve the design, build a WBS, resume the mission, charge an attempt, accept attempt 66 or activate GAT.",
+      "classification": "fact",
+      "severity": "info",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "652-654"
+      },
+      "evidence_excerpt": "Council review is advisory. A council `pass` does not approve this design, build a WBS, resume the mission, charge an attempt, accept attempt 66, or activate GAT.",
+      "impact": "Readers can distinguish advisory council evidence from HUMAN approval and execution authority, and the reviewed bytes do not claim project authority.",
+      "recommended_action": "Retain the explicit advisory and acceptance-boundary statements unchanged in later revisions and in the WBS-build handoff.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-outside-001",
+        "invocation_id": "inv38-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.97
+    }
+  ],
+  "advisory_hypotheses": [
+    {
+      "advisory_id": "EXT38-A-001",
+      "claim": "Operators may treat a schema-valid review-closure PASS with a `pass`/`pass_with_notes` verdict as practical authorization to proceed, because the separation between review completion and HUMAN acceptance is one sentence inside dense normative control text.",
+      "basis": "Section 5.4 and Section 12 state that a review PASS never implies acceptance, but the same sections immediately describe the coordinator-projected acceptance flow, so a reader skimming the state machine may merge the two.",
+      "missing_project_sot": [
+        "Observed operator behavior with the HUMAN approval packet",
+        "Comprehension testing of the Section 5.4 boundary statement"
+      ],
+      "confidence": "low",
+      "decision_weight": "none",
+      "suggested_validation": "Walk the HUMAN approval packet through the designated decision owner and record whether review PASS is understood as non-acceptance."
+    },
+    {
+      "advisory_id": "EXT38-A-002",
+      "claim": "The corruption and provenance recovery lattice may consume more administrative units during a real incident than one cumulative ceiling realistically provides, leaving only the terminal `ADMIN_LEDGER_UNRECOVERABLE` or `FAILED_CHARGED_RESOURCE_EXHAUSTED` outcomes reachable.",
+      "basis": "Section 6.3 charges every authorization, candidate-commit, outcome, tombstone, superseding manifest generation and recovery append to the same cumulative ceiling and root recovery ceiling, and no bounded worst-case unit total per corruption scenario is given in the reviewed bytes.",
+      "missing_project_sot": [
+        "Measured unit costs of the mandated corruption and recovery fixtures",
+        "Proposed ceiling value and per-scenario worst-case unit totals"
+      ],
+      "confidence": "low",
+      "decision_weight": "none",
+      "suggested_validation": "Execute the mandated corruption/provenance fixtures and publish worst-case administrative and root unit totals per scenario against the proposed ceilings."
+    },
+    {
+      "advisory_id": "EXT38-A-003",
+      "claim": "The same-epoch ledger-to-goal predicate may be unsatisfiable in ordinary sessions where no runtime goal is armed, leaving admission permanently `NOT_READY` unless a continuation is explicitly armed first.",
+      "basis": "Section 13 requires the ledger run state and pause/resume marker to equal the runtime goal state at one observation epoch and treats a user continuation request as authority evidence that does not substitute for the runtime goal reporting armed.",
+      "missing_project_sot": [
+        "Runtime goal-API behavior across paused, resumed and unarmed states",
+        "Evidence that P10 is reachable without arming autonomous continuation"
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "In an uncharged rehearsal, enumerate reachable ledger/goal state combinations and record which ones satisfy P10 without arming a goal."
+    }
+  ],
+  "context_attestation": {
+    "artifact_ids_received": [
+      "sanitized-design-v35"
+    ],
+    "context_categories_received": [
+      "objective",
+      "audience",
+      "public-constraints"
+    ],
+    "packet_sha256_received": "7c217f980aa348371815e3be151e6c469caa25c70e733705f21f543cbbf1d72d"
+  },
+  "rejected_candidates": [
+    {
+      "candidate_id": "EXT38-R-001",
+      "reason": "Rejected: candidate claim that the design introduces a new scheduler, daemon or custom WBS runner. Section 3.2 excludes a new runtime service, daemon, scheduler or custom WBS runner, and Section 6.1 describes coordinator-owned argv/file operations rather than a service, so the reviewed bytes do not support the claim."
+    },
+    {
+      "candidate_id": "EXT38-R-002",
+      "reason": "Rejected: candidate claim that the one-time strict-ledger migration can change attempts, charge count or acceptance. Section 9.2 and Section 9.3 require an immutable pre-migration backup, byte-preservation of historical attempts/charges/acceptance references, one version-guarded write, independent re-read equality and an explicit condition that no task becomes accepted or ready because of migration."
+    }
+  ]
+}

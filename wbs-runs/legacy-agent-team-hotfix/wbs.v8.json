@@ -1,0 +1,128 @@
+{
+  "format": "dsh-wbs/1",
+  "mission_id": "legacy-agent-team-hotfix",
+  "revision": 8,
+  "objective": "Hotfix the legacy Agent Team plugin so a Lead-only Team may execute after approval and one Approve Plan action imports normalized missing tasks from the latest HUMAN-approved DSH Chat Plan ## Tasks section before approving the exact resulting Team plan revision, then verify the installed plugin canonically.",
+  "mission_root": "wbs-runs/legacy-agent-team-hotfix",
+  "scope": {
+    "read_paths": ["AGENTS.md", "package.json", "packages/core", "packages/tools", "packages/web", "installer", "scripts", "compatibility/dsh-0.1.5-rc.2", "verification", "wbs-runs/legacy-agent-team-hotfix", ".ai-work/account_info.yaml", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix", ".ai-work/tooling", ".ai-work/procedural", ".ai-work/truth"],
+    "write_paths": ["packages/core", "packages/tools", "packages/web", "verification/web/task.expected.md", "compatibility/dsh-0.1.5-rc.2", "wbs-runs/legacy-agent-team-hotfix", ".ai-work/account_info.yaml", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix"],
+    "resource_keys": ["legacy-agent-team-core", "legacy-agent-team-tools", "legacy-agent-team-web", "legacy-agent-team-tests", "legacy-gat-verification-worktree", "aiws-aip-011-runtime"],
+    "effects": ["read", "write", "execute", "external"],
+    "allowed_commands": [
+      {"argv": ["python3", ".ai-work/tooling/lint_aip.py", "--path", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0},
+      {"argv": ["python3", ".ai-work/tooling/run_aip.py", "start", "AIP-EXEC-011", "--title", "Legacy Agent Team hotfix", "--task-id", "TASK-20260913-legacy-agent-team-hotfix"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0},
+      {"argv": ["python3", ".ai-work/tooling/run_aip.py", "step", "AIP-EXEC-011", "--step", "STEP-01", "--task-id", "TASK-20260913-legacy-agent-team-hotfix"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0},
+      {"argv": ["python3", ".ai-work/tooling/run_aip.py", "step", "AIP-EXEC-011", "--step", "STEP-02", "--task-id", "TASK-20260913-legacy-agent-team-hotfix"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0},
+      {"argv": ["python3", ".ai-work/tooling/run_aip.py", "step", "AIP-EXEC-011", "--step", "STEP-03", "--task-id", "TASK-20260913-legacy-agent-team-hotfix"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0},
+      {"argv": ["python3", ".ai-work/tooling/run_aip.py", "step", "AIP-EXEC-011", "--step", "STEP-04", "--task-id", "TASK-20260913-legacy-agent-team-hotfix"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0},
+      {"argv": ["git", "-C", "/home/hoinv/deepseek-harness/.worktrees/verify-gat-install-0.1.5-rc.2", "reset", "--hard", "c291e7961a515f6d7af9304e7fd1d257929aef26"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0},
+      {"argv": ["git", "-C", "/home/hoinv/deepseek-harness/.worktrees/verify-gat-install-0.1.5-rc.2", "clean", "-fdx"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0},
+      {"argv": ["node", "scripts/generate-compatibility.mjs", "/home/hoinv/deepseek-harness"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0},
+      {"argv": ["node", "installer/index.mjs", "install", "--target", "/home/hoinv/deepseek-harness/.worktrees/verify-gat-install-0.1.5-rc.2"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0},
+      {"argv": ["bash", "-lc", "set -o pipefail; node installer/verify.mjs --target /home/hoinv/deepseek-harness/.worktrees/verify-gat-install-0.1.5-rc.2 2>&1 | tee wbs-runs/legacy-agent-team-hotfix/evidence/integration-verification/attempt-integration-005/verifier.log"], "cwd": ".", "timeout_ms": 3600000, "expected_exit_code": 0},
+      {"argv": ["python3", ".ai-work/tooling/lint_all.py", "--scope", "task", "--workspace", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix", "--aip", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0},
+      {"argv": ["python3", ".ai-work/tooling/run_aip.py", "close", "AIP-EXEC-011", "--task-id", "TASK-20260913-legacy-agent-team-hotfix"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0}
+    ]
+  },
+  "non_goals": ["Do not modify packages/gat or the separately owned multi-mission-web-ui mission controls.", "Do not parse arbitrary free-form chat or use AI-based task extraction.", "Do not remove the configurable maximum teammate cap.", "Do not activate a live Web profile or restart the DSH Web server.", "Do not modify AIWS Truth, Wiki, procedural guidance, or tooling."],
+  "requirements": [
+    {"id": "aiws-governance", "acceptance": "AIP-EXEC-011 and its dedicated task workspace are lint-clean, active, and isolated from the separately owned revision-32 mission before product edits."},
+    {"id": "lead-only-execution", "acceptance": "A Team with zero durable teammates may use non-restricted tools after exact current Team plan approval; maximum teammate cap and all non-member readiness/authorization diagnostics remain enforced."},
+    {"id": "approved-plan-import", "acceptance": "One Approve Plan action identifies the latest successful HUMAN-approved exit_plan_mode call/result pair, parses checklist/bullet/numbered items only inside ## Tasks, preserves existing Team tasks, adds normalized missing tasks, and approves the exact resulting revision; missing, rejected, incomplete, stale, empty, or invalid input fails closed without approval."},
+    {"id": "canonical-verification", "acceptance": "The regenerated and installed current plugin passes focused core/tools/Web tests, full DSH build, built-library smoke, and assembled dashboard smoke in the dedicated verification worktree."}
+  ],
+  "sources": [
+    {"path": "packages/tools/src/index.ts", "sha256": "9751514faabfa327de779e9b0a7d3f3afce97f37524b8a8afc45190979a95d49"},
+    {"path": "packages/tools/tests/tool-team.spec.ts", "sha256": "1fc25a33c34a8990132e82ba0486f97970c656dca00c5771ed9ff3b5ffe2ef74"},
+    {"path": "packages/core/src/index.ts", "sha256": "98579b789882122ead5d8573ad698b45edf6de63dd141dbeb6a66893dfcc8bd6"},
+    {"path": "packages/core/src/types.ts", "sha256": "5bf634de3c3d8bec62be9dec0740b0cbbe5801db63b20810a60f997c6ba91928"},
+    {"path": "packages/core/src/task-board.ts", "sha256": "93fc9d92cfe27b10805d09af234222defe8fad9bfb6a63cbf1d0621578b55179"},
+    {"path": "packages/core/tests/team.spec.ts", "sha256": "0e709213c45953a88be23ea66c3ba3cb9d94a84ee114f01bec806a57df05dce9"},
+    {"path": "packages/web/src/client/TeamAction.tsx", "sha256": "86173647768bd4eea1c5f26a39c31d67644bb564676151cb5ca0a55ff7f3ef85"},
+    {"path": "packages/web/src/client/mount.ts", "sha256": "93f71a8ffcbb5ef7a24e204272c97e83f554f9e4e9d0c9c96c3fa816cd3a1549"},
+    {"path": "packages/web/tests/team-action.client.spec.tsx", "sha256": "9d7128db59a0097ed9428f4b42dfe0e604e19cfb5e613b9d103a24226c411344"},
+    {"path": "packages/web/tests/browser-plugin.client.spec.ts", "sha256": "9c71d0a31a0874e5a7a19f6367befa931f180fab890a943890af2ce74db49c23"}
+  ],
+  "tasks": [
+    {
+      "id": "governance-bootstrap", "title": "Start isolated AIWS hotfix governance", "kind": "artifact", "requirements": ["aiws-governance"],
+      "inputs": ["AGENTS.md", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md", "wbs-runs/legacy-agent-team-hotfix/wbs.v8.json"], "depends_on": [], "soft_after": [], "priority": 100,
+      "deliverable": "Lint-clean active AIP-EXEC-011 and dedicated TASK-20260913-legacy-agent-team-hotfix workspace record the approved plan, separate mission ownership, understanding, and no active writer conflict.",
+      "read_paths": ["AGENTS.md", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md", ".ai-work/tooling", ".ai-work/procedural", ".ai-work/truth", "wbs-runs/legacy-agent-team-hotfix"],
+      "write_paths": [".ai-work/account_info.yaml", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix", "wbs-runs/legacy-agent-team-hotfix"],
+      "resource_keys": ["aiws-aip-011-runtime"], "effects": ["read", "write", "execute"],
+      "allowed_commands": [
+        {"argv": ["python3", ".ai-work/tooling/lint_aip.py", "--path", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0},
+        {"argv": ["python3", ".ai-work/tooling/run_aip.py", "start", "AIP-EXEC-011", "--title", "Legacy Agent Team hotfix", "--task-id", "TASK-20260913-legacy-agent-team-hotfix"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0}
+      ],
+      "verification": [{"kind": "command", "command": {"argv": ["python3", ".ai-work/tooling/lint_aip.py", "--path", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0}}, {"kind": "manual", "reviewer": "coordinator", "evidence": ["Confirm exact HUMAN approval and separate ownership from revision-32 mission before start.", "Confirm workspace/AIP contain no mutation authority for packages/gat or multi-mission-web-ui controls."]}],
+      "review": {"required": false, "owner": "none"}, "acceptance": {"owner": "coordinator", "criteria": ["AIP lint has zero errors and start creates the exact dedicated workspace.", "Understanding and ownership boundary are recorded before product attempts."]},
+      "stop_conditions": ["Stop if another coordinator writes packages/core, packages/tools, packages/web, compatibility artifacts, or the dedicated verification worktree.", "Stop if AIP cannot start without changing the other mission."], "max_attempts": 1, "effort_minutes": 30
+    },
+    {
+      "id": "lead-only-readiness", "title": "Allow Lead-only approved Team execution", "kind": "artifact", "requirements": ["lead-only-execution"],
+      "inputs": ["packages/tools", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md"], "depends_on": ["governance-bootstrap"], "soft_after": [], "priority": 90,
+      "deliverable": "Tools config/readiness/guard/prompt and focused tests allow zero durable teammates by default while preserving exact plan approval, maximum cap, and all non-member diagnostics.",
+      "read_paths": ["packages/tools", "packages/core", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix"], "write_paths": ["packages/tools", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix"],
+      "resource_keys": ["legacy-agent-team-tools", "legacy-agent-team-tests", "aiws-aip-011-runtime"], "effects": ["read", "write", "execute"],
+      "allowed_commands": [{"argv": ["python3", ".ai-work/tooling/run_aip.py", "step", "AIP-EXEC-011", "--step", "STEP-01", "--task-id", "TASK-20260913-legacy-agent-team-hotfix"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0}],
+      "verification": [{"kind": "manual", "reviewer": "independent tools reviewer", "evidence": ["Inspect default/schema, readiness metadata, guard, prompt copy, and focused tests for zero durable teammates.", "Confirm plan approval and maximum cap remain mandatory."]}],
+      "review": {"required": true, "owner": "independent"}, "acceptance": {"owner": "coordinator", "criteria": ["Independent review finds no authorization, approval, cap, or legacy regression.", "Runtime proof is deferred to canonical verification."]},
+      "stop_conditions": ["Stop if Lead-only operation requires weakening the plan approval gate or unrelated authorization.", "Stop after six failed attempts without a new diagnosis."], "max_attempts": 6, "effort_minutes": 180
+    },
+    {
+      "id": "approved-plan-import", "title": "Import approved Chat Plan tasks during approval", "kind": "artifact", "requirements": ["approved-plan-import"],
+      "inputs": ["packages/core", "packages/web", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md"], "depends_on": ["governance-bootstrap"], "soft_after": [], "priority": 89,
+      "deliverable": "Core/Web types, service, Remote wiring, one-action UI, localization, and focused tests implement latest successful approved-plan extraction, section-bounded parsing, merge-only-missing tasks, exact post-import approval, and fail-closed errors.",
+      "read_paths": ["packages/core", "packages/web", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix"], "write_paths": ["packages/core", "packages/web", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix"],
+      "resource_keys": ["legacy-agent-team-core", "legacy-agent-team-web", "legacy-agent-team-tests", "aiws-aip-011-runtime"], "effects": ["read", "write", "execute"],
+      "allowed_commands": [{"argv": ["python3", ".ai-work/tooling/run_aip.py", "step", "AIP-EXEC-011", "--step", "STEP-02", "--task-id", "TASK-20260913-legacy-agent-team-hotfix"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0}],
+      "verification": [{"kind": "manual", "reviewer": "independent plan-import reviewer", "evidence": ["Inspect successful exit_plan_mode call/result pairing, ## Tasks parser, normalization/dedupe, merge preservation, exact revision approval, Remote/UI/localization, and focused tests.", "Confirm rejected/incomplete/stale/empty/malformed plans and arbitrary chat never approve or import."]}],
+      "review": {"required": true, "owner": "independent"}, "acceptance": {"owner": "coordinator", "criteria": ["Independent review finds deterministic fail-closed semantics, exact revision accounting, and no legacy regression.", "Runtime proof is deferred to canonical verification."]},
+      "stop_conditions": ["Stop if successful HUMAN approval cannot be distinguished from rejected/incomplete calls.", "Stop if implementation would parse arbitrary free-form chat or content outside ## Tasks.", "Stop after three failed attempts without a new diagnosis."], "max_attempts": 3, "effort_minutes": 150
+    },
+    {
+      "id": "integration-verification", "title": "Install and verify the legacy hotfix in full DSH", "kind": "artifact", "requirements": ["lead-only-execution", "approved-plan-import", "canonical-verification"],
+      "inputs": ["packages/core", "packages/tools", "packages/web", "installer", "scripts/generate-compatibility.mjs", "compatibility/dsh-0.1.5-rc.2", "verification", "wbs-runs/legacy-agent-team-hotfix"], "depends_on": ["lead-only-readiness", "approved-plan-import"], "soft_after": [], "priority": 70,
+      "deliverable": "Regenerated compatibility plus integration.md record reset/clean of only the dedicated worktree, install, canonical verifier stages, exact outcomes, hashes, and limitations.",
+      "read_paths": ["packages/core", "packages/tools", "packages/web", "installer", "scripts", "compatibility/dsh-0.1.5-rc.2", "verification", "wbs-runs/legacy-agent-team-hotfix", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix"], "write_paths": ["verification/web/task.expected.md", "compatibility/dsh-0.1.5-rc.2", "wbs-runs/legacy-agent-team-hotfix/integration.md", "wbs-runs/legacy-agent-team-hotfix/evidence/integration-verification", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix"],
+      "resource_keys": ["legacy-agent-team-core", "legacy-agent-team-tools", "legacy-agent-team-web", "legacy-agent-team-tests", "legacy-gat-verification-worktree", "aiws-aip-011-runtime"], "effects": ["read", "write", "execute", "external"],
+      "allowed_commands": [
+        {"argv": ["python3", ".ai-work/tooling/run_aip.py", "step", "AIP-EXEC-011", "--step", "STEP-03", "--task-id", "TASK-20260913-legacy-agent-team-hotfix"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0},
+        {"argv": ["git", "-C", "/home/hoinv/deepseek-harness/.worktrees/verify-gat-install-0.1.5-rc.2", "reset", "--hard", "c291e7961a515f6d7af9304e7fd1d257929aef26"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0},
+        {"argv": ["git", "-C", "/home/hoinv/deepseek-harness/.worktrees/verify-gat-install-0.1.5-rc.2", "clean", "-fdx"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0},
+        {"argv": ["node", "scripts/generate-compatibility.mjs", "/home/hoinv/deepseek-harness"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0},
+        {"argv": ["node", "installer/index.mjs", "install", "--target", "/home/hoinv/deepseek-harness/.worktrees/verify-gat-install-0.1.5-rc.2"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0},
+        {"argv": ["bash", "-lc", "set -o pipefail; node installer/verify.mjs --target /home/hoinv/deepseek-harness/.worktrees/verify-gat-install-0.1.5-rc.2 2>&1 | tee wbs-runs/legacy-agent-team-hotfix/evidence/integration-verification/attempt-integration-005/verifier.log"], "cwd": ".", "timeout_ms": 3600000, "expected_exit_code": 0}
+      ],
+      "verification": [
+        {"kind": "command", "command": {"argv": ["git", "-C", "/home/hoinv/deepseek-harness/.worktrees/verify-gat-install-0.1.5-rc.2", "reset", "--hard", "c291e7961a515f6d7af9304e7fd1d257929aef26"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0}},
+        {"kind": "command", "command": {"argv": ["git", "-C", "/home/hoinv/deepseek-harness/.worktrees/verify-gat-install-0.1.5-rc.2", "clean", "-fdx"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0}},
+        {"kind": "command", "command": {"argv": ["node", "scripts/generate-compatibility.mjs", "/home/hoinv/deepseek-harness"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0}},
+        {"kind": "command", "command": {"argv": ["node", "installer/index.mjs", "install", "--target", "/home/hoinv/deepseek-harness/.worktrees/verify-gat-install-0.1.5-rc.2"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0}},
+        {"kind": "command", "command": {"argv": ["bash", "-lc", "set -o pipefail; node installer/verify.mjs --target /home/hoinv/deepseek-harness/.worktrees/verify-gat-install-0.1.5-rc.2 2>&1 | tee wbs-runs/legacy-agent-team-hotfix/evidence/integration-verification/attempt-integration-005/verifier.log"], "cwd": ".", "timeout_ms": 3600000, "expected_exit_code": 0}}
+      ],
+      "review": {"required": true, "owner": "independent"}, "acceptance": {"owner": "coordinator", "criteria": ["All five integration commands succeed once for the accepted attempt.", "Canonical verifier passes focused core/tools/Web tests, full build, built-library smoke, and dashboard smoke.", "Raw verifier output is persisted under the accepted attempt evidence directory.", "No live profile activation is claimed."]},
+      "stop_conditions": ["Stop on first command or verifier-stage failure.", "Stop if reset/clean touches anything outside the dedicated worktree or generation touches outside the declared compatibility directory.", "Stop after five integration attempts without a reviewed revision."], "max_attempts": 5, "effort_minutes": 360
+    },
+    {
+      "id": "final-review", "title": "Review and accept the legacy hotfix conclusion", "kind": "conclusion", "requirements": ["aiws-governance", "lead-only-execution", "approved-plan-import", "canonical-verification"],
+      "inputs": ["wbs-runs/legacy-agent-team-hotfix/integration.md", "packages/core", "packages/tools", "packages/web", "compatibility/dsh-0.1.5-rc.2"], "depends_on": ["integration-verification"], "soft_after": [], "priority": 50,
+      "deliverable": "final-report.md maps every requirement to exact implementation, review, canonical verification, lint, capture/open-point, and HUMAN acceptance evidence.",
+      "read_paths": ["packages/core", "packages/tools", "packages/web", "compatibility/dsh-0.1.5-rc.2", "wbs-runs/legacy-agent-team-hotfix", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix"], "write_paths": ["wbs-runs/legacy-agent-team-hotfix/final-report.md", "wbs-runs/legacy-agent-team-hotfix/evidence/final-review", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix"],
+      "resource_keys": ["aiws-aip-011-runtime"], "effects": ["read", "write", "execute"],
+      "allowed_commands": [
+        {"argv": ["python3", ".ai-work/tooling/run_aip.py", "step", "AIP-EXEC-011", "--step", "STEP-04", "--task-id", "TASK-20260913-legacy-agent-team-hotfix"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0},
+        {"argv": ["python3", ".ai-work/tooling/lint_all.py", "--scope", "task", "--workspace", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix", "--aip", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0},
+        {"argv": ["python3", ".ai-work/tooling/run_aip.py", "close", "AIP-EXEC-011", "--task-id", "TASK-20260913-legacy-agent-team-hotfix"], "cwd": ".", "timeout_ms": 30000, "expected_exit_code": 0}
+      ],
+      "verification": [{"kind": "command", "command": {"argv": ["python3", ".ai-work/tooling/lint_all.py", "--scope", "task", "--workspace", ".ai-work/workspaces/hoinv/TASK-20260913-legacy-agent-team-hotfix", "--aip", ".ai-work/aip/hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md"], "cwd": ".", "timeout_ms": 120000, "expected_exit_code": 0}}, {"kind": "manual", "reviewer": "independent final reviewer", "evidence": ["Compare final report with accepted task reviews, canonical verifier output, hashes, and mission boundary.", "Confirm capture/open-point sweep, durable review summaries, reconciled workspace outputs/step metadata, and explicit HUMAN acceptance before AIP close."]}],
+      "review": {"required": true, "owner": "independent"}, "acceptance": {"owner": "human", "criteria": ["The HUMAN accepts the exact reviewed final report or records a hold/rejection."]},
+      "stop_conditions": ["Human hold/rejection, unresolved capture/open point, lint error, or missing provenance leaves mission open."], "max_attempts": 2, "effort_minutes": 60
+    }
+  ],
+  "integration_task": "integration-verification",
+  "final_task": "final-review",
+  "limits": {"max_parallel": 2, "max_total_attempts": 17, "max_total_effort_minutes": 1050}
+}

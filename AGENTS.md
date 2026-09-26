@@ -9,8 +9,16 @@ This project builds the **Governed Agent Team** as a DSH plugin. Adopted **AI Wo
 - **User language:** Vietnamese + English mixed.
 
 <!-- Mọi thứ NGOÀI khối `AIWS:BEGIN rules` bên dưới là project-owned: AIWS không bao giờ ghi đè.
-     Thêm ghi chú riêng của dự án / của cá nhân ở đây. Sửa rule chung → sửa `.ai-work/AIWS.md`
-     rồi chạy `python .ai-work/tooling/compose_aiws_rules.py --refresh --apply`. -->
+     Local override của dự án nằm ở `.ai-work/AIWS.local.md`; không sửa AIWS block generated bằng tay. -->
+
+## Project AIWS override
+
+For this repository, `.ai-work/AIWS.local.md` is the project-owned override for the generated AIWS block below. If the two conflict, the local override wins.
+
+- AIP creation is optional by default. Do not require or create an AIP merely because a task is non-trivial.
+- Create or use an AIP only when the HUMAN explicitly requests it or an approved, task-specific project process requires it.
+- Truth and canonical changes still require their applicable approved CR; this policy does not weaken those gates.
+
 
 <!-- AIWS:BEGIN rules v=v1.2.1 target=agents -->
 AIWS rules v1.2.1 (target=agents) — do not edit inside this block

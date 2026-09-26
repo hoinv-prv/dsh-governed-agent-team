@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v4-council-005",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "r5auth002a2-f1",
+      "source_lane": "internal-authority",
+      "mode": "governance",
+      "category": "control-surface-ownership",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": "textual-defect",
+      "artifact_id": "design-v4",
+      "locator": {
+        "kind": "section",
+        "value": "6. Immutable AdmissionBundle"
+      },
+      "evidence_excerpt": "receipts: plan_format, plan_semantics, execution_strict, dependency_acceptance, source_integrity, design_basis, aip_asc_transition, command_capability, coordinator_quiescence, team_authority, goal_activation, reviewer_availability, budget_reserve",
+      "claim": "The sealed AdmissionBundle enumerates and hash-pins thirteen receipts and five prepared_from hashes but does not pin the append-only AdmissionInvalidation index that Section 6.2 makes the decisive negative premise of P14, so the charge gate tests a mutable aggregate whose path, identity, prior sequence or item count, owner and observation epoch are unbound.",
+      "impact": "The P14/charge-time predicate 'no current AdmissionInvalidation exists for its hash' is evaluated against an artifact that is not part of the sealed bundle, so a stale, truncated, replaced or differently-located index can silently satisfy the gate, an invalidation appended concurrently with the ledger write is unobservable, and no bundle field allows a verifier or the HUMAN to reconstruct which index state authorized a charge.",
+      "recommended_action": "As a condition of the Section 6.1 bootstrap, add the invalidation index to the bundle contract as a pinned receipt (canonical path, raw-byte SHA-256, item count, last observation sequence and freshness rule) and state explicitly that a seal-time index hash mismatch or an unavailable index makes the bundle NOT_READY rather than READY.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-authority-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer5-authority-002",
+        "invocation_id": "inv5-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.72,
+      "source_candidate_ids": [
+        "r5auth002a2-f1"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "r5auth002a2-f2",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "fail-closed-ambiguity",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v4",
+      "locator": {
+        "kind": "section",
+        "value": "5.2 Commit semantics"
+      },
+      "evidence_excerpt": "**Abort branch:** if steps 1-2 do not return fresh PASS, if observation is unavailable, or if any value drifts ... **Charge branch:** steps 5-6 may run only when steps 1-2 produced fresh PASS receipts and no current invalidation exists.",
+      "claim": "The commit gate is written as a passing condition over fresh PASS receipts while the bundle carries a separate sealed 'freshness_rule: <explicit expiry/drift predicate>', and the design nowhere states that the live re-observation at the charge boundary and the bundle's own freshness predicate must be evaluated under the same rule, clock, epoch and scope.",
+      "impact": "When the pinned freshness predicate and the boundary re-observation disagree - for example a bundle still inside a timestamp window whose native execution, goal or Team state has since changed - a coordinator can satisfy the literal charge-branch condition and commit an attempt while a predicate that Section 5.1 says must expire the bundle is already false; the fail-closed disposition differs by branch even though Section 5.1 declares READY not authority to execute.",
+      "recommended_action": "State in Section 5.2 that the charge-boundary re-observation must apply exactly the bundle's sealed freshness_rule with one declared comparison basis (native sequence plus epoch) and that any predicate false under that rule, or any rule mismatch, forces the EXPIRED/NOT_READY abort branch with no ledger write and no attempt allocation.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-authority-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer5-authority-002",
+        "invocation_id": "inv5-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.68,
+      "source_candidate_ids": [
+        "r5auth002a2-f2"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "r5auth002a2-f3",
+      "source_lane": "internal-authority",
+      "mode": "governance",
+      "category": "authority-scope-binding",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": "conditional-activation-risk",
+      "artifact_id": "design-v4",
+      "locator": {
+        "kind": "section",
+        "value": "9.1 Freeze rule"
+      },
+      "evidence_excerpt": "Because P3 deliberately blocks charging any WBS attempt against the known strict-invalid ledger, this one-time migration is **uncharged control-plane maintenance performed before successor-WBS build**, not a product or WBS execution attempt",
+      "claim": "The one-time ledger migration is classified as uncharged control-plane maintenance that nevertheless mutates the same version-guarded execution.json identified in Sections 5.2/6.1 as the charge carrier, while the design never states that this migration authorization cannot be reused to allocate an attempt, never requires the migration write to cite the absence of a sealed AdmissionBundle, and never requires re-authorization if the ledger version changes between the HUMAN authorization and the write.",
+      "impact": "An already-authorized migration write can be repurposed to append an attempt allocation to the ledger without a sealed bundle, so an attempt charge and the mutation it authorizes occur outside READY and outside the P14 invalidation check; the design's charge-only-under-READY rule and its budget accounting then both rest on the coordinator's self-restraint rather than on a declared authority separation, and the HUMAN-approved boundary cannot be shown to cover the bytes it later authorized.",
+      "recommended_action": "Bind the migration authorization to the exact pre-migration ledger SHA-256 and require re-authorization on any version change; require the migration write and receipt to declare that no attempt is allocated and no bundle is sealed, and require P15/P3 at the next admission to reject a ledger whose selected revision or attempt set differs from the HUMAN-accepted migration bytes.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-authority-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer5-authority-002",
+        "invocation_id": "inv5-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.7,
+      "source_candidate_ids": [
+        "r5auth002a2-f3"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

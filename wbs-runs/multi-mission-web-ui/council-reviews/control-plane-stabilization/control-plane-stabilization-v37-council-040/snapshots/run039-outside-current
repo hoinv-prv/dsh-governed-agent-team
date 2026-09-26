@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v36-council-039",
+  "reviewer_id": "reviewer39-outside-002",
+  "lane": "external-outside-view",
+  "invocation_id": "inv39-ext-002",
+  "attempt": 2,
+  "status": "completed",
+  "artifact_manifest_sha256": "b3105bf5f8b796b481aafc49bb664cb207f0036df58b9b994e67e116a9572e17",
+  "packet_sha256": "673850b8d40c131994d5b35c51e1cce984b2d7b28b5948e6ea97bedceea31da6",
+  "authority": "advisory-only",
+  "participates_in_voting": false,
+  "decision_weight": "none",
+  "observations": [
+    {
+      "observation_id": "EXT39R-O-001",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "design",
+      "claim": "Section 5.0.1 declares the CP-01…CP-16 registry the exhaustive normative edge index and states that an edge absent from it is forbidden, but the normal forward edge `VERIFYING→REVIEWING` that the Section 5 diagram shows is not present in the CP-13 or CP-14 `sole permitted edge` text: CP-13 covers only `interrupted_to_dispatched`/`interrupted_to_failed`, attempt-close and the `FAILED_CHARGED|REVISION_REQUIRED_CHARGED→FROZEN` new-attempt edge, while CP-14's text begins only once `REVIEWING` is the current state.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "222-223"
+      },
+      "evidence_excerpt": "| CP-13 | `ACTIVE`, `DISPATCHED`, `INTERRUPTED_CHARGED`, `VERIFYING`, `FAILED_CHARGED`, or `REVISION_REQUIRED_CHARGED` | exact `interrupted_to_dispatched` / `interrupted_to_failed` same-attempt edges; verification/review failure closes the current attempt immutably; only a fresh HUMAN `new_attempt_after_failure` decision binding an unused WBS retry slot, new bundle/reservation and unchanged prior-attempt evidence permits `FAILED_CHARGED|REVISION_REQUIRED_CHARGED→FROZEN` for a new admission cycle |",
+      "impact": "A manifest built exactly from the registry cannot represent the successful-verification edge, so a validator applying the declared fail-closed rule (`absence, extra IDs or drift is NOT_READY`) rejects the ordinary success path in Section 5 and in CP-12's `COMPLETION_INDEX_CLOSE_PENDING→ACTIVE/DISPATCHED` follow-on; the reviewer and dispatch states become unreachable through P15-validated edges, which would block dispatch or force an unregistered edge.",
+      "recommended_action": "Add `VERIFYING→REVIEWING` (with its verification-pass evidence and accounting pair) to the CP-13 or CP-14 row, or state explicitly which registered edge carries verification success into `REVIEWING`, and cover it with the corresponding fixture so the registry and the Section 5 diagram agree edge-for-edge.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-outside-002",
+        "invocation_id": "inv39-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.85
+    },
+    {
+      "observation_id": "EXT39R-O-002",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "authority",
+      "claim": "P5 requires every admission cycle to resolve a create-once append-only `AcceptedDesignRegistry`, take its latest monotone generation and sole `current=true` entry, and re-hash that entry, and Section 15.1 lists registry-based closure, but the registry is bound only as a bundle receipt placeholder; none of the Section 6.1 bootstrap operations (a)-(h) or Section 16 entry criteria define where the registry lives, who creates its first generation, which validator enforces monotonicity/single-current, or how the HUMAN re-baseline generation is appended.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "302"
+      },
+      "evidence_excerpt": "design_basis: <canonical AcceptedDesignRegistry path+raw sha256+monotone generation, selected current entry ID/path/raw design sha256/HUMAN acceptance hash, plus immutable run-002 failure-model snapshot path+sha256>",
+      "impact": "The P5 admission predicate references an authority artifact whose exact path, schema, validator, owner and creation rule are undefined by the reviewed bytes; the manifest cannot carry a real schema/validator/argv hash for it, so a bundle preparer could satisfy the placeholder with a self-chosen registry representation while still claiming P5 PASS, and Section 15.1's `AUTH38-F-005, EXT38-O-003` closure claim stays not-verifiable from these bytes.",
+      "recommended_action": "Declare the AcceptedDesignRegistry contract, canonical path, deterministic validator, monotone-generation and single-current rules, first-generation creation owner and HUMAN re-baseline append operation in Section 6.1/16, and bind its exact hash into P15 so P5's latest-generation test is checkable without external interpretation.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-outside-002",
+        "invocation_id": "inv39-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.8
+    },
+    {
+      "observation_id": "EXT39R-O-003",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "evidence",
+      "claim": "Section 15.1 asserts that closure claims are not-verifiable without exact bytes but pins the run-034 evidence basis with abbreviated ellipsis identifiers (dispatch ledger `9f382a2b…a094`, authority envelope `61cc1b74…2c8e`, adversarial retry envelope `1f6ef212…3a5`), while Section 5.1.1 requires every accepted digest to be 64 lowercase ASCII hexadecimal characters; the same abbreviation appears for the run-002 failure-model snapshot (`434f1613…d8b86`) that P5 must re-hash.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "613"
+      },
+      "evidence_excerpt": "The run-034 evidence basis is explicitly pinned as dispatch ledger `9f382a2b…a094`, authority envelope `61cc1b74…2c8e`, and adversarial retry envelope `1f6ef212…3a5`; absence of any exact byte makes the corresponding closure claim not-verifiable.",
+      "impact": "A validator cannot re-hash or equality-check an abbreviated pin, so the closure row for run-034 content checks is asserted rather than demonstrated. Because the design states its own standard that absent exact bytes make the claim not-verifiable, the reviewed bytes do not close the finding they cite.",
+      "recommended_action": "Replace each abbreviated pin with the full 64-hex digest and raw path, or cite the exact external artifact bytes that carry them and require the WBS-build handoff to resolve them before the closure claim is accepted.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-outside-002",
+        "invocation_id": "inv39-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.8
+    },
+    {
+      "observation_id": "EXT39R-O-004",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "design",
+      "claim": "The abort branch says a failed invalidation append leaves the candidate in `NOT_READY`, and Section 6.2 repeats that failure leaves `NOT_READY` with no mission-ledger write, but the closed registry lists `NOT_READY` only as a `current_state` of CP-10 and gives CP-10 no exit from it: CP-10's sole permitted edge covers `FROZEN→PREPARING`, the uncharged `EXPIRED→FROZEN` close, and `READY→COMMITTING→CHARGED_ACCOUNTING_PENDING` only.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "243"
+      },
+      "evidence_excerpt": "If that append fails, remain `NOT_READY`, perform no ledger/task write, record the unavailable evidence outside mission controls, and require HUMAN/runtime repair before another prepare.",
+      "impact": "Under the declared rule that an edge absent from the registry is forbidden, the abort path's terminal state has no registered downstream edge, so `NOT_READY → re-prepare/PREPARING` (shown in the Section 5 diagram) and the `NOT_READY` failure dispositions in the P1–P16 table and Section 14 matrix have no closed registry row; a manifest built from the registry cannot authorize the required re-prepare.",
+      "recommended_action": "Add `NOT_READY→PREPARING` (and any `NOT_READY` close/terminal edges) to CP-10 with its evidence and accounting pair, or state the exact registered edge that carries a `NOT_READY` candidate back to `PREPARING` after HUMAN/runtime repair.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-outside-002",
+        "invocation_id": "inv39-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.8
+    },
+    {
+      "observation_id": "EXT39R-O-005",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "design",
+      "claim": "Sections 6.1 and 16 require bootstrap to bind and approve an exact contract, deterministic validator and exact argv for every admission operation (prepare, seal, invalidation append, charge-preimage, guarded writer, completion/index close, recovery and `PostChargeRecoveryAllocation`), and P15 makes every such capability a prerequisite of `READY`, so each unproven operation is an independent `NOT_READY` source; the design does not bound how many such operations must exist, provide their bytes, or state a fallback when a required operation cannot be authored within the bootstrap allocation.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v36",
+      "locator": {
+        "kind": "section",
+        "value": "6.1 Contract and operation ownership bootstrap"
+      },
+      "evidence_excerpt": "Before any successor WBS is built, a separately HUMAN-authorized control-plane stabilization action must persist and approve: (a) the exact schema bytes and SHA-256; (b) a deterministic validator and its exact `python3 <approved-validator-path> validate <bundle-path>` argv; and (c) the coordinator-owned read-only prepare operation and exact `python3 <approved-prepare-path> prepare ...` argv",
+      "impact": "The reviewed bytes defer admission reachability to a large set of not-yet-existing operations while also requiring every one of them to pass; a single unauthored or non-executable operation leaves the system permanently `NOT_READY` with no bounded disposition other than HUMAN re-authorization, so the design's stabilization objective depends on bootstrap scope that is asserted, not demonstrated.",
+      "recommended_action": "State a bounded, enumerated minimal operation set with owner, artifact identity and a fail-closed bootstrap-blocked disposition if any item cannot be produced within the accepted administrative allocation, so the gate's reachability is decidable before a WBS is drafted.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-outside-002",
+        "invocation_id": "inv39-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.75
+    },
+    {
+      "observation_id": "EXT39R-O-006",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "evidence",
+      "claim": "The P7 predicate and Section 11 both test command capability against a `pinned root/task allowed-command union whose hash is recorded` / `root/task unions`, but no Section 6.1 bootstrap item, bundle receipt, registry row or Section 16 criterion defines that union's canonical path, owning actor, ordering/canonicalization rule, validator or hash, and it is not among the P15-bound capability argv/effect hashes.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "377"
+      },
+      "evidence_excerpt": "Exact argv appears in the pinned root/task allowed-command union whose hash is recorded; argv/cwd paths resolve; every required command/backend has an explicit fresh capability receipt with status `available`",
+      "impact": "A fail-closed admission predicate is evaluated against an artifact with no declared source, so two coordinators can compute different unions and both claim P7 PASS, and the bundle cannot bind the union's exact hash; the requirement that a command be authorized is therefore not deterministically checkable even though denial of an undeclared command is a stated design goal.",
+      "recommended_action": "Name the allowed-command union's canonical source, owner, canonical byte/hash rule and validator in Section 6.1 and the bundle receipt list, and require P15/P14 to re-hash it so the P7 authorization predicate is deterministic.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-outside-002",
+        "invocation_id": "inv39-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.8
+    },
+    {
+      "observation_id": "EXT39R-O-007",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "design",
+      "claim": "Section 5.0.1 asserts that CP-11's recovery actions `DIVERGENT_CURRENT_TERMINAL_RECOVERY`, `UNCHARGED_NOT_APPLIED_COMPLETION_RECOVERY` and `CORRUPT_COMPLETION_TERMINAL_RECOVERY` are `actions, never extra resumable states`, yet Section 9.1 gives the same `INTENT_CORRUPT_BLOCKED` a tombstone-plus-superseding-manifest recovery that `requir[es] HUMAN byte acceptance before returning to FROZEN/re-prepare`, and Section 14 lists a corresponding failure row and return path.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "220"
+      },
+      "evidence_excerpt": "| CP-11 | `INTENT_INDEX_OPEN_PENDING`, `INTENT_CORRUPT_BLOCKED`, `TRANSITION_IN_FLIGHT`, `TRANSITION_RECOVERY_BLOCKED`, `TRANSITION_RECOVERY_BLOCKED_DIVERGENT`, `UNCHARGED_COMPLETION_CORRUPT_BLOCKED`, or `COMPLETION_CORRUPT_BLOCKED` | exactly the source/candidate/divergent and corruption rows above; recovery actions `DIVERGENT_CURRENT_TERMINAL_RECOVERY`, `UNCHARGED_NOT_APPLIED_COMPLETION_RECOVERY`, and `CORRUPT_COMPLETION_TERMINAL_RECOVERY` are actions, never extra resumable states |",
+      "impact": "The reviewed bytes do not define whether these named recovery actions are themselves registered P3/P15 capabilities with their own edges and fixtures or merely internal steps of the CP-11 row, so the manifest and validator boundaries for corruption recovery are ambiguous, and a recovery action that returns the ledger to `FROZEN` can be read either as a resumable registered transition or as an unregistered action.",
+      "recommended_action": "Either register each named recovery action as an explicit CP-11 edge with its own P3 rule/P15 capability/fixture, or state the closed step set that composes them and the exact registry row that carries their return to `FROZEN`.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-outside-002",
+        "invocation_id": "inv39-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.7
+    },
+    {
+      "observation_id": "EXT39R-O-008",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "authority",
+      "claim": "The Section 14 failure matrix states that authority/revocation change after the last projection read makes the persisted acceptance non-usable and `dependency-blocking` and requires a fresh HUMAN decision plus full two-phase verification, but it does not name `ACCEPTANCE_AUTHORITY_CONFLICT` as the entered state even though CP-15/CP-16 and Section 5.4 make that state the sole predeclared transition and give it unaccepted semantics.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "561"
+      },
+      "evidence_excerpt": "| Authority/revocation changes after last projection read / `ACCEPTANCE_AUTHORITY_CONFLICT` | after | persisted acceptance is non-usable and dependency-blocking; fresh P16 sequence check plus a new HUMAN decision and full two-phase verification are mandatory; external-state TOCTOU remains disclosed |",
+      "impact": "The coverage index is the artifact a WBS handoff uses to bind failure rows to CP IDs; a row whose state name is present only in the registry forces the reader to infer the CP mapping, and the Section 14 coverage paragraph does not enumerate this state's CP ID, so a deterministic row-to-CP diff can report an unmapped failure row.",
+      "recommended_action": "Add the explicit CP-15/CP-16 ID reference to the `ACCEPTANCE_AUTHORITY_CONFLICT` failure row (as done for other rows) so the coverage-index to CP mapping is literal.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-outside-002",
+        "invocation_id": "inv39-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.7
+    },
+    {
+      "observation_id": "EXT39R-O-009",
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "authority",
+      "claim": "Section 17 states the design's advisory and inactive status and enumerates what a council `pass` does not do, and Section 3.2 excludes a new runtime service, daemon, scheduler, custom WBS runner and automatic approval mechanism, so the reviewed bytes do not claim WBS, execution or acceptance authority for themselves.",
+      "classification": "fact",
+      "severity": "info",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v36",
+      "locator": {
+        "kind": "line",
+        "value": "664-666"
+      },
+      "evidence_excerpt": "Council review is advisory. A council `pass` does not approve this design, build a WBS, resume the mission, charge an attempt, accept attempt 66, or activate GAT. Those remain separate HUMAN decisions.",
+      "impact": "Readers and the WBS-build handoff can distinguish advisory council evidence from HUMAN approval and execution authority, and the reviewed bytes keep that boundary explicit.",
+      "recommended_action": "Retain the advisory, non-goal and acceptance-boundary statements unchanged in later revisions and copy them into the WBS-build handoff packet.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer39-outside-002",
+        "invocation_id": "inv39-ext-002",
+        "attempt": 2
+      },
+      "confidence": 0.97
+    }
+  ],
+  "advisory_hypotheses": [
+    {
+      "advisory_id": "EXT39R-A-001",
+      "claim": "The admission gate may remain permanently unreachable in practice because its own `NOT_READY` definition is satisfied by any one of dozens of not-yet-authored contract, validator, argv, capability and fixture artifacts, and the bootstrap allocation that must author them is itself a prerequisite of the same gate.",
+      "basis": "Section 6.1 requires bootstrap to persist and approve contracts, validators and exact argv for every operation; P15 makes every capability a `READY` prerequisite; P7 and Section 11 make command authorization depend on a union with no declared source; Section 16 makes a complete manifest cell set a drafting precondition.",
+      "missing_project_sot": [
+        "Measured administrative cost of authoring the complete bootstrap operation set",
+        "Evidence of the intended minimal bootstrap order that makes the first P15-acceptable state reachable",
+        "HUMAN decision on the accepted bootstrap scope and allocation ceiling"
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "Enumerate the minimal bootstrap operation set from Sections 6.1/16, execute a dry-run reconciliation of required approvals and units against the proposed administrative ceiling, and record whether a first P15 PASS is reachable inside it."
+    },
+    {
+      "advisory_id": "EXT39R-A-002",
+      "claim": "Operators may read a council `pass`/`pass_with_notes` on this design as sufficient practical authority to begin migration or bootstrap work, because the closure matrix and entry criteria read as an implementation plan while the advisory boundary is stated only in Section 17.",
+      "basis": "Sections 15.1 and 16 describe migration, genesis, bootstrap and WBS-drafting prerequisites in normative, obligation-like language, and Section 12/17 separate review completion from HUMAN acceptance mostly in dense control text.",
+      "missing_project_sot": [
+        "HUMAN approval packet wording for this design generation",
+        "Observed operator reading of review PASS versus implementation authorization"
+      ],
+      "confidence": "low",
+      "decision_weight": "none",
+      "suggested_validation": "Walk the HUMAN approval packet through the designated decision owner and record whether review PASS is treated as authorization to start migration/bootstrap."
+    },
+    {
+      "advisory_id": "EXT39R-A-003",
+      "claim": "The distinction between uncharged `EXPIRED` (rebuild without charge) and `NOT_READY` (no ledger write, HUMAN/runtime repair first) may be misapplied during an incident, because both are uncharged abort outcomes of the same abort branch and the invalidation-append failure case lands in `NOT_READY` while all other drift cases land in `EXPIRED`.",
+      "basis": "Section 5.2 step 3 transitions the candidate to `EXPIRED`/`NOT_READY` and Section 6.2 states that append failure leaves `NOT_READY`; the registry gives `EXPIRED` a registered route back to `FROZEN` while `NOT_READY` has no registered exit.",
+      "missing_project_sot": [
+        "Operator runbook for the abort branch",
+        "Evidence that the two uncharged abort outcomes are distinguishable at the point of decision"
+      ],
+      "confidence": "low",
+      "decision_weight": "none",
+      "suggested_validation": "Rehearse both abort outcomes with the designated coordinator and record whether the correct state and next edge are selected without external interpretation."
+    },
+    {
+      "advisory_id": "EXT39R-A-004",
+      "claim": "The procedural gate may not stay closed in real concurrent operation, because P8 only observes topology/quiescence and Section 5.3 concedes that a delegated or otherwise capable writer may bypass the coordinator path without a native capability denial.",
+      "basis": "Section 5.3 states the design claims procedural fail-closed governance, not hard runtime enforcement, and that no native charge entry point consuming an AdmissionBundle is identified; Section 16 requires the HUMAN packet to disclose that residual bypass.",
+      "missing_project_sot": [
+        "Evidence of whether any non-coordinator writer can charge in practice",
+        "HUMAN decision on accepting the disclosed bypass risk"
+      ],
+      "confidence": "medium",
+      "decision_weight": "none",
+      "suggested_validation": "In an uncharged rehearsal, attempt a charge from a non-coordinator writer path and record whether any native guard denies it, then capture the result as the disclosed bypass evidence."
+    }
+  ],
+  "context_attestation": {
+    "artifact_ids_received": [
+      "sanitized-design-v36"
+    ],
+    "context_categories_received": [
+      "objective",
+      "audience",
+      "public-constraints"
+    ],
+    "packet_sha256_received": "673850b8d40c131994d5b35c51e1cce984b2d7b28b5948e6ea97bedceea31da6"
+  },
+  "rejected_candidates": [
+    {
+      "candidate_id": "EXT39R-R-001",
+      "reason": "Rejected: candidate claim that the design introduces a scheduler, daemon or custom WBS runner. Section 3.2 excludes a new runtime service, daemon, scheduler and custom WBS runner, and the bootstrap items in Section 6.1 are coordinator-owned argv/file operations and content-addressed evidence artifacts rather than a service, so the reviewed bytes do not support the claim."
+    },
+    {
+      "candidate_id": "EXT39R-R-002",
+      "reason": "Rejected: candidate claim that the one-time migration can change attempts, charge count or acceptance. Section 9.1 and 9.2 require an immutable pre-migration backup, byte-preservation of attempts/charges/acceptance references, one version-guarded canonical write, independent re-read equality and an explicit condition that no task becomes accepted or ready because of migration."
+    },
+    {
+      "candidate_id": "EXT39R-R-003",
+      "reason": "Rejected: candidate claim that `EXPIRED` permits a charge or that the charge edge is not guarded. CP-10 and Section 5.2 make `EXPIRED` an uncharged outcome with a registered `EXPIRED→FROZEN` close before fresh prepare, and the charge is limited to `READY→COMMITTING→CHARGED_ACCOUNTING_PENDING` through the single version-guarded ledger write."
+    },
+    {
+      "candidate_id": "EXT39R-R-004",
+      "reason": "Rejected: candidate claim that a review `pass` can satisfy task acceptance. Section 5.4 and Section 17 state that a validator-backed `ReviewClosureReceipt` PASS never implies acceptance, only the exact HUMAN accept/reject decision with a complete non-revoked authority chain may produce `ACCEPTED`, and `REVIEW_UNAVAILABLE_CHARGED` preserves the charge unaccepted."
+    },
+    {
+      "candidate_id": "EXT39R-R-005",
+      "reason": "Rejected: candidate claim that the registry omits `COMPLETION_INDEX_CLOSE_PENDING→ACTIVE/DISPATCHED`. CP-12 registers exactly that edge, so the coverage assertion for that transition is present in the reviewed bytes."
+    }
+  ]
+}

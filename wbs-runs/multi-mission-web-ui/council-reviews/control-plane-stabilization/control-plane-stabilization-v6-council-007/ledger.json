@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v6-council-007",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "r7adv-f01",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "admission-artifact-lifecycle",
+      "claim": "The design does not define a legal durable storage and recovery path for the exact sealed AdmissionBundle. It calls prepare read-only while also making that command the bundle write mechanism, forbids every pre-charge write except AdmissionInvalidation, and only requires the charge record to bind a bundle hash. Thus READY can rely on volatile or undeclared evidence and a crash after charge can leave a charged attempt without reproducible proof bytes.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v6",
+      "locator": {
+        "kind": "line",
+        "value": "144;217;219;309"
+      },
+      "evidence_excerpt": "\"The sole pre-charge write exception is the coordinator-owned, uncharged append of one immutable `AdmissionInvalidation`\"; \"the coordinator-owned read-only prepare operation\".",
+      "impact": "A charge can be recorded without a durable, independently verifiable admission proof, or the design requires an undeclared pre-charge write; either defeats the claimed fail-closed evidence boundary and makes crash recovery unverifiable.",
+      "recommended_action": "Before READY, define under P15 an approved canonical immutable storage or atomic embedding of the complete bundle bytes and validator receipt, including its allowed effect and crash-recovery rule; otherwise require NOT_READY. Do not rely on a hash whose exact bytes are not durably retrievable.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer7-adversarial-001",
+        "invocation_id": "inv7-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.93,
+      "source_candidate_ids": [
+        "r7adv-f01"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "r7adv-f02",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "migration-recovery",
+      "claim": "The failed-migration recovery does not require a post-restore raw-byte hash/version equality check against the immutable pre-migration backup. Because the source ledger is explicitly known strict-invalid, rerunning the same strict validator fails whether the original was restored or a different invalid candidate remains, so the stated recovery cannot prove reversibility.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v6",
+      "locator": {
+        "kind": "line",
+        "value": "277;293"
+      },
+      "evidence_excerpt": "\"Because P3 deliberately blocks charging any WBS attempt against the known strict-invalid ledger\"; \"restores the recorded pre-migration current bytes through the declared owning file operation, reruns the same strict validator\".",
+      "impact": "A failed migration can leave altered loss- or acceptance-bearing ledger bytes while the procedure returns to candidate work, undermining the required backup-first, lossless, deterministic, reversible migration guarantee and contaminating later admission evidence.",
+      "recommended_action": "Require a version-guarded restore receipt that rehashes the persisted restored path and proves equality to the immutable backup, including attempt/charge/acceptance-reference equality; stop and escalate on mismatch, while recording the expected strict-invalid result separately.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer7-adversarial-001",
+        "invocation_id": "inv7-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.97,
+      "source_candidate_ids": [
+        "r7adv-f02"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "r7adv-f03",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "ledger-integrity",
+      "claim": "The migration guard says the next P3/P15 admission rejects a ledger whose attempt set or charge count differs from the exact HUMAN-accepted migrated bytes, while the defined first valid commit necessarily allocates an attempt and records cumulative charge. It does not scope equality to the pre-charge source or define a validated append-only lineage for charged successors.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v6",
+      "locator": {
+        "kind": "line",
+        "value": "153;279"
+      },
+      "evidence_excerpt": "\"one attempt allocation, boundary receipt and cumulative charge\"; \"The next P3/P15 admission rejects any ledger whose selected revision, attempt set, charge count or other acceptance-bearing bytes differ from the exact HUMAN-accepted migrated bytes/hash.\"",
+      "impact": "A literal implementation blocks the first or later valid charge; a relaxed implementation has no stated provenance test to distinguish authorized charged successors from altered post-migration ledger state, weakening P3/P15 integrity.",
+      "recommended_action": "Define separate invariants for the exact pre-charge migrated base and for each candidate/persisted charge: require an authorized, deterministic append-only lineage with version and hash proofs, and state precisely which invariant P3/P15 evaluates at each boundary.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer7-adversarial-001",
+        "invocation_id": "inv7-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.95,
+      "source_candidate_ids": [
+        "r7adv-f03"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer7-authority-f001",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority-coverage",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v6",
+      "locator": {
+        "kind": "section",
+        "value": "12. Reviewer availability and fallback"
+      },
+      "evidence_excerpt": "Any alternate acceptor requires a separately recorded HUMAN authority decision before admission; a task-declared rule cannot transfer that authority.",
+      "claim": "Section 12.7 requires a separately recorded HUMAN authority decision for any alternate acceptor, but no admission invariant or AdmissionBundle receipt enforces it: P2 only requires the closure matrix to declare an acceptance owner, P13 binds only the WBS `wbs_authority` record and allowed effects, and neither Section 6 nor Section 7 defines an acceptance-authority record or predicate.",
+      "impact": "A plan could name a non-HUMAN or task-declared acceptance owner and still pass P1-P15, letting a non-HUMAN artifact grant acceptance authority that Section 4 reserves to the HUMAN, contrary to must_check 'HUMAN authority remains explicit for ... acceptance'.",
+      "recommended_action": "Add an admission invariant plus AdmissionBundle receipt binding each task's acceptance owner to the HUMAN decision owner or to an alternate named in a separately recorded, non-revoked HUMAN authority decision, and re-verify that record/scope in P14 at the charge boundary.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer7-authority-002",
+        "invocation_id": "inv7-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.83,
+      "source_candidate_ids": [
+        "reviewer7-authority-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer7-authority-f002",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "requirement-coverage",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v6",
+      "locator": {
+        "kind": "section",
+        "value": "2.2 Counterfactual coverage of observed failures"
+      },
+      "evidence_excerpt": "| stale/contradictory coordinator, Goal, Team or active work | P8-P10 snapshot agreement |",
+      "claim": "The counterfactual table maps contradictory state only to 'coordinator, Goal, Team or active work', and P8-P10 plus Section 13 define no predicate comparing the execution ledger's recorded active/paused mission-run state with the runtime goal state, so must_check 'Goal, Team, coordinator, active work and execution ledger state cannot contradict at admission' is not closed even though Section 2.3 lists ledger-vs-goal active/paused disagreement as a contributing condition.",
+      "impact": "An execution.json recorded as active while the runtime goal is paused (or vice versa) can satisfy P1-P13 and be charged, re-entering the Section 2.3 contributing condition the design claims to close and contradicting must_check item 9.",
+      "recommended_action": "Add an explicit admission predicate and bundle receipt requiring the ledger's recorded mission/run state and pause-resume marker to equal the runtime goal state at the same observation epoch, with P14 re-observation at the charge boundary.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer7-authority-002",
+        "invocation_id": "inv7-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.78,
+      "source_candidate_ids": [
+        "reviewer7-authority-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

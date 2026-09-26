@@ -1,0 +1,19 @@
+Parent read-only verification against immutable run-002 snapshots.
+
+AUTH2-F-001 confirmed: design-v1 lines 77-78 reserve required task acceptance/HUMAN acceptance to HUMAN and forbid coordinator HUMAN acceptance, but line 285 allows coordinator acceptance under an unspecified authority rule. GAT proposal snapshot line 28 reserves deliverable acceptance to an attributable HUMAN decision owner. The escape hatch is contradictory and authority-unsafe.
+
+AUTH2-F-002 confirmed: design-v1 line 90 calls the inactive GAT proposal higher authority. The proposal snapshot lines 6 and 15 state inactive/not authority. Repo-rules snapshot declares Truth/SOP/Contract/AIP precedence. The design misstates precedence.
+
+AUTH2-F-003 confirmed: design-v1 line 204 says council or HUMAN may select the contingency amount, while lines 193 and 347 assign ceiling/reallocation selection to HUMAN. Council is advisory only. Text is contradictory.
+
+AUTH2-F-004 confirmed: P7 at line 188 omits explicit root/task allowed-command-union membership, while Section 11 line 271 requires it. P2 provides partially redundant semantic closure, but the dedicated command-capability receipt is incomplete and should bind the union hash literally.
+
+AUTH2-F-005 confirmed: design-v1 uses 'reserve' for reviewer capacity without defining an available reservation primitive, owning command, lifetime, expiry or release. The pinned council routing source supports model-route inspection and call-budget reservation, not provider-capacity reservation. The claim is unverifiable as written.
+
+AUTH2-F-006 confirmed: P8 says no predecessor/agent/job can still write, but names no lock or non-bypassable lease. Native listings are observable snapshots, not proof of future inability. The absolute claim exceeds available evidence.
+
+AUTH2-F-007 confirmed: migration steps specify validator/review actions and pass criteria but no explicit owner/restoration/re-entry disposition when step 8 or 9 fails. The general failure matrix does not identify candidate migration failure after transformation.
+
+AUTH2-F-008 confirmed: design-v1 line 28 cites a mutable Workspace path without hash. The council manifest pins it for this review, but a later WBS reader using the design alone cannot recover the exact evidence bytes.
+
+All reviewed design and relevant Source-of-Truth snapshot hashes matched the artifact manifest before and after these reads. No command verification was authorized or executed.

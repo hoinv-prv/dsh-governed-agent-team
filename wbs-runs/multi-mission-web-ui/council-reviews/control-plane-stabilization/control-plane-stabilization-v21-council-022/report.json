@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v21-council-022",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "23c9f605fbdbadded2055b29b108a85617345ae126c82988af5395675cc7905f"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "7d0f6941499eadc4c9dcd778c2d590e39ef77731e24ae846fda79dbdcb2d3fb2"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "4a374b0499a0b4bfe1c3f46cae2838edbb32dda1b2da995e960be9a4fae8a599"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "87e42bc198b9467f85a104a259029ac94f6ad978c3b04eb3ae8f6021e89dea43"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "0f4e92f25bd33e090b436dfb1e59c1fa34a4653bcfc09d962c6566c424a1cb4a"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "8e98ff86e38185225316cb8762c4506ea912fb653ccaf70e1a654c42076f79bf"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "ccbbeab2d5df88326d404ab24e236824e49e36a8eb7a55bab45179cd5471f06c"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "05f7560c7c4777990ed0c5e8d46fc13f9784b85804a923b07aa597148b1e0253"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "e77070331d3236d779b80d32a84181870a697d9bfa115bed2933fa21e521771e"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "33061d315556074343f5bf24513aaba67bf5fefaf2d82fd20a6190ed36bc9bd1"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve all three findings and re-review exact revised bytes before WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer22-adversarial-f001",
+      "effective_severity": "high",
+      "claim": "The administrative-accounting bootstrap has no governed genesis: BOOTSTRAP_MAINTENANCE is required to deliver the AdministrativeResourceLedger contract, validator, initialized record, and append capability, but those same artifacts must already validate before maintenance and cannot be created in it.",
+      "artifact_id": "design-v21",
+      "locator": {
+        "kind": "line",
+        "value": "270, 282-284"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed administrative-ledger prerequisite lacks a governed executable genesis."
+    },
+    {
+      "finding_id": "reviewer22-adversarial-f002",
+      "effective_severity": "high",
+      "claim": "The divergent-ledger crash branch has no executable recovery: when current execution.json equals neither the intent source nor candidate, v21 directs the same terminal branch whose recovery link requires verified candidate equality and whose next intent starts from the candidate.",
+      "artifact_id": "design-v21",
+      "locator": {
+        "kind": "line",
+        "value": "353"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed divergent current bytes cannot use the candidate-equality recovery branch."
+    },
+    {
+      "finding_id": "reviewer22-adversarial-f003",
+      "effective_severity": "medium",
+      "claim": "The assertion that the admission gate would have detected every observed control failure before charge is unsupported for reviewer or sandbox availability that may be lost after a successful observation; v21 itself states that provider capacity is not reserved and that external-state TOCTOU remains.",
+      "artifact_id": "design-v21",
+      "locator": {
+        "kind": "section",
+        "value": "§1 line 23; §2.2 lines 42-44; §5.3 lines 199-201; §12 lines 410-425"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed universal pre-charge detection counterfactual exceeds availability and TOCTOU evidence."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Genesis authority, divergent-current terminal repair and root-cause scope remain incomplete until revision."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

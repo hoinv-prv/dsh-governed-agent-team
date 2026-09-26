@@ -1,0 +1,4 @@
+Parent read-only verification against immutable design-v16 SHA-256 f3a80b1207ad5201d79fdc6c0050f2e87f94e0e8213da12ed7c4ee7385b29d20.
+Confirmed reviewer17-adversarial-f001: candidate-equal finalization lacks a preexisting guarded-writer result receipt requirement.
+Confirmed reviewer17-adversarial-f002: source-equal charge restart reuses an intent/candidate that cannot bind a new boundary receipt.
+Confirmed reviewer17-adversarial-f003: fresh P7-P11/P14 receipt persistence is absent from the closed pre-charge write effects.

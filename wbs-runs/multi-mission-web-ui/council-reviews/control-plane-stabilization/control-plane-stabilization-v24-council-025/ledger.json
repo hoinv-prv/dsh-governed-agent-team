@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v24-council-025",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer25-adversarial-001-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "budget-accounting",
+      "claim": "The source-equal administrative-ledger retry branch cannot satisfy the same protocol's per-attempt append accounting: a failed first invocation followed by an identical-candidate retry leaves one embedded overhead/receipt for two attempted appends.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v24",
+      "locator": {
+        "kind": "line",
+        "value": "296"
+      },
+      "evidence_excerpt": "On restart, exact current==source means NOT_APPLIED and permits idempotent retry of identical candidate bytes",
+      "impact": "Cumulative usage, remaining ceiling, and maximum append-count reconciliation can undercount failed retries, so a later admission may charge after the HUMAN-bound administrative ceiling is actually exhausted.",
+      "recommended_action": "Replace identical-candidate retry with an explicit retry candidate/sequence that conservatively debits every prior append invocation and overhead before any later operation, or forbid retry and require separately journaled recovery; add source-equal failure fixtures proving attempted-count and ceiling equality.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer25-adversarial-001",
+        "invocation_id": "inv25-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98,
+      "source_candidate_ids": [
+        "reviewer25-adversarial-001-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer25-adversarial-001-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "administrative-ledger-recovery",
+      "claim": "The divergent or unreadable administrative-ledger branch has no executable, accounted recovery path: it forbids administrative appends while its proposed restore is a mutating effect that the design requires to have a pre-effect authorization and post-effect outcome in that same ledger.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v24",
+      "locator": {
+        "kind": "line",
+        "value": "296"
+      },
+      "evidence_excerpt": "The latter forbids every later administrative append, mission charge, dispatch or acceptance until a fresh HUMAN recovery decision binds source/candidate/current bytes, remaining ceiling and exact restore-or-terminal effect",
+      "impact": "The control plane either remains permanently blocked or must use an undeclared out-of-ledger mutation that bypasses the sole-writer, ceiling, and evidence invariants, making later P15/P14 admission evidence unsound.",
+      "recommended_action": "Define an explicit HUMAN-rooted recovery exception with a named owner, exact version-guarded argv/effect, immutable external recovery evidence, conservative resource debit, independent verification, and a one-way restored or terminal state; make P15 reject any ledger lacking that complete recovery lineage.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer25-adversarial-001",
+        "invocation_id": "inv25-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.96,
+      "source_candidate_ids": [
+        "reviewer25-adversarial-001-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer25-adversarial-001-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "partial-commit-recovery",
+      "claim": "The retry-only completion rule has no branch for a crash that leaves differing or partial bytes at the create-once completion path; those bytes cannot be overwritten or validated, and neither execution-ledger recovery branch applies.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v24",
+      "locator": {
+        "kind": "line",
+        "value": "365"
+      },
+      "evidence_excerpt": "If the completion write itself failed, the same command retries the same content-addressed completion bytes.",
+      "impact": "After a successful charged ledger write, P3 can never reconcile the completion/index to zero-open, permanently stranding the charged attempt and blocking dispatch or terminal closure without a declared recovery.",
+      "recommended_action": "Specify atomic create-once persistence or a HUMAN-bound corrupt-completion recovery/tombstone lineage that binds intended and current bytes, preserves the attempt and charge, closes the OPEN index without treating the corrupt record as APPLIED, and add crash-point fixtures for partial completion and index writes.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer25-adversarial-001",
+        "invocation_id": "inv25-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.94,
+      "source_candidate_ids": [
+        "reviewer25-adversarial-001-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

@@ -30,8 +30,10 @@ import build_relations as br  # noqa: E402  (reuse the parser + builder; same to
 from _common import (  # noqa: E402
     all_index_paths,
     find_ai_work_root,
+    in_system,
     locator_str,
     read_jsonl,
+    read_project_config,
     read_text,
     resolve_data_file,
     resolve_locator,
@@ -198,12 +200,29 @@ def main() -> int:
     p.add_argument("--namespace", choices=["project", "aiws", "all"], default=None,
                    help="for --rebuild (CR-AIWS-2026-08-064 C4): aiws → aiws_meta/ → relations.aiws.jsonl; "
                         "project → meta/ → relations.jsonl; all → legacy merged. Default = build_relations rule.")
+    p.add_argument("--system", default=None, metavar="ID",
+                   help="Multi-system scoping (CR-AIWS-2026-06-017, rule #12): assert the queried "
+                        "source belongs to this system (common docs always pass). Optional - the "
+                        "relation queries are id-targeted, so this validates rather than filters. "
+                        "Ignored by --rebuild (a rebuild is corpus-wide by definition).")
     ns = p.parse_args()
 
     project_root = find_ai_work_root(Path.cwd())
     ai_work = project_root / ".ai-work"
     wiki_sources = ai_work / "wiki_sources"
     index_path = Path(ns.index).resolve() if ns.index else (wiki_sources / "index.jsonl")
+
+    # CR-AIWS-2026-09-003 C2: accept --system. Rule #12 tells agents to carry it on every wiki
+    # lookup; this tool used to answer `unrecognized arguments` and burn a retry turn. It is an
+    # ASSERTION here, not a filter - the relation queries already name one source_id.
+    active_system = None
+    if ns.system:
+        active_system = ns.system.strip()
+        cfg = read_project_config(ai_work)
+        if cfg["multi_system"] and cfg["systems"] and active_system not in cfg["systems"]:
+            print(f"error: --system {active_system!r} is not in this project's systems "
+                  f"{cfg['systems']}.", file=sys.stderr)
+            return 2
 
     if ns.rebuild:
         namespace, why = (ns.namespace, "explicit --namespace") if ns.namespace else br.decide_namespace(ai_work)
@@ -216,6 +235,17 @@ def main() -> int:
         return cmd_rebuild(ai_work, meta_dir, index_path, rel_path, namespace=namespace, why=why)
 
     idx = _load_index(index_path)
+    # Membership assert only when the subject IS in the index; an id absent from the index already
+    # degrades gracefully downstream, and inventing a second failure mode for it would be a
+    # behaviour change this CR did not ask for.
+    subject = ns.relations or ns.expand
+    if active_system is not None and subject and subject in idx:
+        if not in_system(idx[subject], active_system):
+            print(f"error: {subject} belongs to system "
+                  f"{idx[subject].get('system') or '(common)'!r}, not {active_system!r} - "
+                  f"refusing to read across systems (rule #12). Drop --system to read it anyway.",
+                  file=sys.stderr)
+            return 2
     if ns.relations:
         # CR-AIWS-2026-08-064 C3: dual read — project + shipped aiws preset via THE resolver
         # (collapse to relations.jsonl when no preset exists); an explicit file wins alone.

@@ -40,6 +40,23 @@ Bên trong có thể giữ:
 
 > **Note — the AIWS methodology wiki ships pre-built (searchable).** Separate from the project's own domain wiki you are building above (`index.jsonl`), the AIWS methodology / spec / preset-knowledge wiki ships **pre-built** in a dedicated **`aiws` namespace** = `.ai-work/wiki_sources/index.aiws.jsonl` **+ `relations.aiws.jsonl`** (both pre-built in the package `payload/aiws_wiki_index/`, copied at install; rebuild any time with `py .ai-work/tooling/build_preset_wiki.py --target .`). It is searchable immediately after install via `py .ai-work/tooling/lookup_wiki_source.py --query "<topic>" --scope aiws`, and its relations are traversable via `py .ai-work/tooling/wiki_relations.py --relations <source_id>` (reads the project's `relations.jsonl` **and** `relations.aiws.jsonl`). AIWS upgrades refresh **only** the `aiws` namespace (`aiws_meta/` + those two files) — never your project's `index.jsonl` / `relations.jsonl`. (Shipped via CR-AIWS-2026-06-040 / -041; documented here per CR-AIWS-2026-06-059; relations preset + `build_preset_wiki.py` per CR-AIWS-2026-08-064.)
 
+## 4b. Standard Pack — cài bằng một package RIÊNG (CR-AIWS-2026-09-001)
+
+Quy trình chuẩn của công ty **không** nằm trong package AIWS. Nó là **package thứ hai**,
+`vti_standard_pack_<pack_version>_<date>/`, cài **lên trên** một dự án đã có `.ai-work/`:
+
+- Verb **`install-pack`** của skill `aiws-pkg` (`operations/install-pack.md`) — cài mới lẫn nâng cấp,
+  HUMAN-confirm, dry-run trước, và **từ chối trước khi chép byte nào** khi dự án chưa có `.ai-work/`
+  hoặc bản AIWS thấp hơn `aiws_min_version` của pack.
+- Đích: `.ai-work/standard_pack/` (pack-owned, bị thay toàn bộ mỗi lần nâng cấp) ·
+  `.ai-work/wiki_sources/aiws_meta/standard_pack/` (metas, cùng namespace `aiws` ở §4 note trên) ·
+  `.ai-work/wiki_sources/profiles/standard_asset.yml` (**merge, không đè**). Skill của pack vào
+  `.claude/skills/<name>/`; **trùng tên thì dừng hỏi, không đè**.
+- Bản tailoring của dự án nằm ở cây khác — `.ai-work/project_process/` — và tool của pack không bao
+  giờ chạm vào. Sửa thẳng trong `.ai-work/standard_pack/` là mất trắng ở lần nâng cấp kế tiếp.
+- Dự án pin version pack trong `.ai-work/project_profile.yml` (khoá `standard_pack`); không có đường
+  nào để một bản cài tự kéo pack mới về. Hợp đồng: `Standard_Pack_Contract_Spec_MVP` §7–§9.
+
 ## 5. Minimum recommended first-wave setup
 Tối thiểu nên setup trước cho:
 - Requirement-side artifacts

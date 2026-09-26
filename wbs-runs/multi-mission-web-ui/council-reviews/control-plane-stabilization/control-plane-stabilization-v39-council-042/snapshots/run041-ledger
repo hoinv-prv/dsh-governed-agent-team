@@ -1,0 +1,664 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v38-council-041",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "ADV41-F-001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "The exhaustive CP-12 registry omits the failure edges from CHARGED_ACCOUNTING_PENDING or COMPLETION_INDEX_CLOSE_PENDING into CHARGED_ACCOUNTING_BLOCKED, even though the state machine and accounting protocol require those edges when a charged writer, completion, index-close, or accounting append fails.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "143-148, 221, 372"
+      },
+      "evidence_excerpt": "missing/failing writer accounting\u2500\u2500> CHARGED_ACCOUNTING_BLOCKED",
+      "impact": "The closed P3/P15 edge index names CHARGED_ACCOUNTING_BLOCKED only as a current state and provides success/exhaustion prose, so a legitimately charged failure has no registered transition and an implementation must either strand the charged attempt or invent an unlisted recovery edge.",
+      "recommended_action": "Register each charged accounting failure edge, its exact source states, authorization/outcome and reconciliation records, terminal/resource-exhaustion disposition, P3/P15 rules, and fixtures in CP-12 and the mirrored handoff manifest.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-adversarial-001",
+        "invocation_id": "inv41-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98,
+      "source_candidate_ids": [
+        "ADV41-F-001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "ADV41-F-002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "authority-accounting",
+      "claim": "CP-05 permits FROZEN legacy-ledger migration without stating that an accepted ADMIN_LEDGER_GENESIS and AdministrativeLedgerGenesisReceipt already exist, contradicting the separate prerequisite that migration must occur only after genesis and its canonical administrative ledger are accepted.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "214, 348-356"
+      },
+      "evidence_excerpt": "FROZEN legacy ledger with no active bootstrap, MIGRATION_MAINTENANCE, MIGRATION_RECOVERY, or MIGRATION_BLOCKED",
+      "impact": "The normative CP registry can admit MIGRATION_MAINTENANCE directly from FROZEN before the required genesis receipt and common administrative resource ledger exist, leaving migration effects outside the stated accounting and root-of-trust controls.",
+      "recommended_action": "Make accepted genesis, its receipt, and the canonical administrative-ledger contract/path/ceiling explicit CP-05 preconditions and add a no-genesis migration-block fixture mirrored in P3/P15 and the state diagram.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-adversarial-001",
+        "invocation_id": "inv41-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.97,
+      "source_candidate_ids": [
+        "ADV41-F-002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "ADV41-F-003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "review-evidence-binding",
+      "claim": "The AcceptedDesignRegistry generation schema and AdmissionBundle design_basis do not require an equality binding between the selected current design_raw_sha256 and the artifact/design hash covered by the council ReviewClosureReceipt, so re-hashing both does not prove that the latest HUMAN-accepted design is the council-passed design.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "303, 332, 386, 513"
+      },
+      "evidence_excerpt": "council ReviewClosureReceipt path+raw sha256 with pass|pass_with_notes",
+      "impact": "A current registry entry for one design can be paired with a valid receipt for another revision or packet; all listed hashes may individually match while admission still lacks proof that the latest selected design itself passed council review.",
+      "recommended_action": "Add the receipt's reviewed artifact-manifest/design raw hash and review identity to the registry generation and bundle, require exact equality with selected design_raw_sha256 at P5/P14, and reject mismatched or superseded receipt/design pairs.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-adversarial-001",
+        "invocation_id": "inv41-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.94,
+      "source_candidate_ids": [
+        "ADV41-F-003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "ADV41-F-004",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "CP-02 and CP-04 do not enumerate the destinations of their required HUMAN recovery edges, although the state machine requires ADMIN_LEDGER_GENESIS_BLOCKED\u2192ADMIN_LEDGER_GENESIS and BOOTSTRAP_BLOCKED\u2192BOOTSTRAP_MAINTENANCE or a no-effect close to FROZEN.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "113-124, 211-213"
+      },
+      "evidence_excerpt": "fresh HUMAN restore-or-complete only; otherwise stay blocked",
+      "impact": "The declared exhaustive CP registry cannot deterministically distinguish restore/complete from remain-blocked outcomes for two blocked control-plane states, so P3/P15 and recovery fixtures cannot prove the allowed recovery path without inferring an unlisted edge.",
+      "recommended_action": "Name the exact CP-02 and CP-04 destination edges, guards, receipts, accounting effects and fixtures, and mirror them in the P3 allowlist, P15 manifest and Section 14 coverage index.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-adversarial-001",
+        "invocation_id": "inv41-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.93,
+      "source_candidate_ids": [
+        "ADV41-F-004"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "AUTH41-F-001",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "evidence-basis",
+      "claim": "The Section 15.1 exact-basis list binds the consistency audit, the run-033 ledger/verifier, run-034 dispatch/authority/adversarial, run-038 authority/adversarial/outside and preserved run-039 current authority/adversarial/outside, but never raw-byte binds the run-040 authority or run-040 adversarial envelope whose findings the same matrix claims to correct, so the run-040 closure rows cannot satisfy the matrix's own 'Absence or mismatch makes the corresponding closure claim not-verifiable' rule.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "8 and 624 and 672-680"
+      },
+      "evidence_excerpt": "Exact bases are: consistency audit `6e91a5bc...7cfbef`; run-033 ledger and verifier; run-034 dispatch/authority/adversarial; run-038 authority/adversarial/outside; preserved run-039 current authority/adversarial/outside ... Absence or mismatch makes the corresponding closure claim not-verifiable",
+      "impact": "The design header states it was corrected from independently checked run-040 outside content, and rows 672-680 claim closure of AUTH40R-F-001/002/003/006/007 and ADV40R-F-001..008 by citing those IDs, yet none of the constants of the run-040 authority envelope (sha256 5f3eccb0e4a799743ee01190788f91b877f9af9d93a467ebeb168fb385996bc6) or run-040 adversarial envelope (sha256 a131319eca6e423722c2514826ef367bde0d03c7556e222522562cbdb623e05c) appear anywhere in the 709 v38 bytes. A later handoff or deterministic validator cannot re-hash the defining bytes of the newest corrections, so it cannot distinguish a faithful correction from silent drift or substitution, and the Section 16 drafting precondition that every material finding be dispositioned cannot be evidenced from the pinned packet for the run-040 set. This is the same class of defect the design already accepted for run-033/run-038/run-039 as AUTH40R-F-004/AUTH40R-F-005, re-introduced for run-040.",
+      "recommended_action": "Add the run-040 authority and run-040 adversarial envelope SHA-256 constants to the Section 15.1 exact-basis paragraph as the pinned authority for the run-040 rows, and either add a row for run-040 outside envelope sha256 bb119504d27026381ddf990cf8eb7bada55d309b8d6673a72e8884b460e04abc recording that it is schema-invalid and supplies no formal lane, or state explicitly and with reasons that each run-040 base is immaterial to the correction claim.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-authority-001",
+        "invocation_id": "inv41-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.85,
+      "source_candidate_ids": [
+        "AUTH41-F-001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "AUTH41-F-002",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "Section 5.0.1 requires the Section 14 coverage index to cover every `allowed_edges` value of the CP-01..CP-16 registry, but the Section 14 failure matrix has no row for the charged-accounting success edge `CHARGED_ACCOUNTING_PENDING\u2192COMPLETION_INDEX_CLOSE_PENDING` (CP-12), the review-return edge `REVIEW_PENDING\u2192REVIEWING` (CP-14), or the CP-15 return edges `ACCEPTANCE_PENDING|ACCEPTANCE_AUTHORITY_CONFLICT\u2192AWAITING_HUMAN_ACCEPTANCE` and `ACCEPTANCE_VERIFICATION_PENDING|ACCEPTANCE_VERIFICATION_FAILED\u2192ACCEPTANCE_VERIFYING`, so the claimed coverage is incomplete.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "202 and 221-224 and 540-574"
+      },
+      "evidence_excerpt": "the Section 14 coverage index may reference one or more CP IDs without repeating their prose but must cover every `allowed_edges` value; and fixtures bind the CP ID plus exact allowed edge",
+      "impact": "The CP registry is declared the exhaustive normative edge index and the manifest/P3/P15 mirror repeats the `allowed_edges` cell exactly, while Section 14 is the named coverage index for failure dispositions. Because the four success/return edges above have no failure row, the deterministic coverage diff required by Section 5.0.1 cannot return complete, an implementer or later validator cannot derive the failure disposition, receipt pair or fixture for a legitimate accounting-completion, route-restoration or fresh-decision return, and the missing cells are exactly the paths that must not be improvised under the rule that an edge absent from the registry is forbidden.",
+      "recommended_action": "Add explicit Section 14 rows (with CP ID, required response and fixture binding) for the CP-12 charged-accounting success edge, the CP-14 `REVIEW_PENDING\u2192REVIEWING` return, and the CP-15 fresh-decision and identical-input reverification returns, or narrow the Section 5.0.1 coverage predicate to the exact set of edges Section 14 is required to enumerate and state that predicate normatively.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-authority-001",
+        "invocation_id": "inv41-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.7,
+      "source_candidate_ids": [
+        "AUTH41-F-002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "AUTH41-F-003",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "ownership",
+      "claim": "CP-16's row declares its sole permitted edge as the terminal completion-chain head while also stating that an explicit acceptance-authority conflict makes `ACCEPTED` non-usable, but it does not register the outgoing `ACCEPTED\u2192ACCEPTANCE_AUTHORITY_CONFLICT` edge, which CP-15 already lists among its allowed edges, so the transition out of a conflicted `ACCEPTED` has no owner row whose `allowed_edges` cell contains it.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "224-225"
+      },
+      "evidence_excerpt": "| CP-16 | `ACCEPTED`, ... | terminal except explicit acceptance-authority conflict makes ACCEPTED non-usable and requires CP-15 fresh decision | exact terminal completion-chain head | terminal/reliance fixtures |",
+      "impact": "Section 5.4, the failure-matrix row 'Authority/revocation changes after last projection read', and the composed-table row 'acceptance authority conflict' all require a conflicted `ACCEPTED` to move to `ACCEPTANCE_AUTHORITY_CONFLICT` and then, on a fresh owner-rooted HUMAN decision, to `AWAITING_HUMAN_ACCEPTANCE`. CP-15 names `ACCEPTANCE_VERIFYING|ACCEPTED\u2192ACCEPTANCE_AUTHORITY_CONFLICT` among its own edges, so the same edge is attributed to the row that does not own `ACCEPTED` and absent from the row that does. Because the CP row is mirrored one-to-one into the P3 allowlist (`allowed_edges`) and the P15 manifest and Section 5.0.1 states an edge absent from the registry is forbidden, a literal implementation of the registry cannot derive the entry edge and leaves a conflicted acceptance either stranded non-usable or improvised.",
+      "recommended_action": "Register the `ACCEPTED\u2192ACCEPTANCE_AUTHORITY_CONFLICT` edge in CP-16's sole permitted edge cell (and remove the duplicate attribution from CP-15, or state explicitly which row owns it), then mirror the corrected cell in the P3 allowlist, the P15 manifest, the Section 14 coverage index and the terminal/reliance fixture.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-authority-001",
+        "invocation_id": "inv41-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.75,
+      "source_candidate_ids": [
+        "AUTH41-F-003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "AUTH41-F-004",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "evidence-basis",
+      "claim": "The `TransitionCapabilityManifest` header binds a `design_sha256` field, but neither the `AdmissionBundle.transition_capability_manifest` reference nor P5/P14/P15 requires that field to equal the current `AcceptedDesignRegistry` generation's design hash, so a manifest generation authored for an earlier design revision can still be admitted as `READY`.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "206 and 281 and 386"
+      },
+      "evidence_excerpt": "Its header binds `{generation,previous_generation_sha256,registry_revision,design_sha256,human_acceptance_sha256}` ... transition_capability_manifest: <canonical path + latest monotone generation + raw SHA256 + schema/validator/operation hashes + HUMAN acceptance raw SHA256; absent/stale/ambiguous means NOT_READY>",
+      "impact": "P15 re-hashes the manifest's raw bytes/schema/validator/acceptance and P5 re-hashes the bundle's `design_basis` registry generation and raw design bytes, but no predicate compares the manifest header's `design_sha256` with the registry entry's `design_raw_sha256`. A stale-but-accepted manifest generation therefore keeps controlling which state/edge cells P3/P15 accept while the registry's current design differs, and Section 16's requirement that the accepted manifest and the accepted design be simultaneously current is not mechanically checkable from the bundle and P5/P14 evidence alone. The failure direction is conservative (P14 would catch a mismatching bundle), so this is an evidence-precision gap rather than an unpinned charge path.",
+      "recommended_action": "Add `design_sha256` equality with the resolved `AcceptedDesignRegistry` current generation (and with `AdmissionBundle.design_basis`'s selected design hash) to the P5 design-basis predicate and to the P14/P15 re-hash set, with a fixture proving that a manifest generation bound to a superseded design is `NOT_READY`.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-authority-001",
+        "invocation_id": "inv41-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.65,
+      "source_candidate_ids": [
+        "AUTH41-F-004"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "evidence-freshness",
+      "claim": "The closed freshness_rule compares a monotonic-clock reading against the wall-clock field `expires_at_utc`, so the mandated time comparison has no single defined clock domain.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "319"
+      },
+      "evidence_excerpt": "monotonic time must be before `expires_at_utc`",
+      "impact": "A validator implementing this predicate may always pass or always fail freshness depending on how it maps monotonic units to a UTC instant, so a bundle could be admitted on stale evidence or expired spuriously.",
+      "recommended_action": "Name exactly one clock domain, its unit and the comparison semantics for expires_at_utc, and record the observed value's source in the bundle receipt.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-outside-001",
+        "invocation_id": "inv41-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.85,
+      "finding_id": "EXT41-O-001",
+      "source_candidate_ids": [
+        "EXT41-O-001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "failure-matrix-coverage",
+      "claim": "Section 14's normative edge-registry coverage statement maps failures to CP-03 through CP-16 but maps no failure row to CP-01 or CP-02, the genesis and genesis-blocked states.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "538"
+      },
+      "evidence_excerpt": "This mapping is normative and a failure row cannot authorize an edge absent from its CP entry.",
+      "impact": "The failure matrix omits the genesis entry/blocked states even though Section 15 scenario 29 and AUTH39R-F-004 exercise genesis failure, so a genesis failure has no failure-matrix row authorizing its CP edge.",
+      "recommended_action": "Add an explicit CP-01/CP-02 coverage anchor to the Section 14 mapping, or state that genesis failures are excluded from the WBS admission failure matrix by construction.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-outside-001",
+        "invocation_id": "inv41-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.9,
+      "finding_id": "EXT41-O-002",
+      "source_candidate_ids": [
+        "EXT41-O-002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "closure-matrix-integrity",
+      "claim": "Section 15.1 lists the prior finding ID EXT39R-O-006 twice, in two rows that name different v38 correction locators and different required fixtures.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "667, 671"
+      },
+      "evidence_excerpt": "| EXT39R-O-006 | \u00a77 deterministic deny-wins command-policy projection | conflict/prohibition fixture |\n| EXT39R-O-006 | \u00a77 canonical root/task command-policy projection | missing/conflict/prohibition/rehash fixtures |",
+      "impact": "The prior-ID-to-correction mapping is no longer one-to-one, so the required finding-ID completeness diff can double-count or leave ambiguous which correction closes EXT39R-O-006.",
+      "recommended_action": "Merge the two rows or assign the second row a distinct prior ID, then re-run the completeness diff.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-outside-001",
+        "invocation_id": "inv41-ext-001",
+        "attempt": 1
+      },
+      "confidence": 1,
+      "finding_id": "EXT41-O-003",
+      "source_candidate_ids": [
+        "EXT41-O-003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "authority-ordering",
+      "claim": "Section 9.2 step 2 requires migration to consume an execution-representation decision that P15 and Section 6.1 item (g) produce inside bootstrap, while CP-03 permits BOOTSTRAP_MAINTENANCE only after an accepted migrated base exists.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "451"
+      },
+      "evidence_excerpt": "Consume the exact HUMAN-approved P15 execution-representation decision",
+      "impact": "The prerequisite chain may be circular or may rely on an undeclared pre-bootstrap authority for the representation decision, which is the P3/P15 circularity class the design claims to avoid.",
+      "recommended_action": "State which HUMAN decision and which registry/state owns the execution-contract representation choice, and record that it is made before MIGRATION_MAINTENANCE without requiring a P15 PASS.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-outside-001",
+        "invocation_id": "inv41-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.6,
+      "finding_id": "EXT41-O-004",
+      "source_candidate_ids": [
+        "EXT41-O-004"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "state-ownership",
+      "claim": "A differing or partial pre-charge NOT_APPLIED completion is assigned to `NOT_READY` in Section 5.1(e) and to `UNCHARGED_COMPLETION_CORRUPT_BLOCKED` in Section 9.1 and CP-11.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "231"
+      },
+      "evidence_excerpt": "differing existing bytes or persistence failure leaves `NOT_READY` pending HUMAN-authorized recovery",
+      "impact": "Two owning states exist for one observed condition, so the closed-registry claim and fixture binding for pre-charge completion corruption are ambiguous even though both outcomes are fail-closed.",
+      "recommended_action": "State the precedence between Section 5.1(e) NOT_READY and CP-11 UNCHARGED_COMPLETION_CORRUPT_BLOCKED, and bind the condition to exactly one registry row.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-outside-001",
+        "invocation_id": "inv41-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.9,
+      "finding_id": "EXT41-O-005",
+      "source_candidate_ids": [
+        "EXT41-O-005"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "evidence-binding",
+      "claim": "Section 15.1 pins its basis artifacts by SHA-256 only and declares absence or mismatch non-verifiable, yet the design gives no canonical path for the consistency audit and run-033/034/038/039 basis records it requires to be re-hashed.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "624"
+      },
+      "evidence_excerpt": "Absence or mismatch makes the corresponding closure claim not-verifiable; unavailable run-039 attempt-1 IDs are not closure authority.",
+      "impact": "The required audit re-hash, stale-revision scan and finding-completeness diff cannot be executed or reproduced from the design bytes alone, so the closure claims for those prior findings are not independently checkable at handoff.",
+      "recommended_action": "Bind a canonical path plus raw SHA-256 for every Section 15.1 basis artifact and require the handoff to carry the bytes or resolvable references.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-outside-001",
+        "invocation_id": "inv41-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.9,
+      "finding_id": "EXT41-O-006",
+      "source_candidate_ids": [
+        "EXT41-O-006"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "registry-closure",
+      "claim": "The edge `REVIEWING\u2192REVISION_REQUIRED_CHARGED` is declared in both the CP-13 and CP-14 registry rows.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "222-223"
+      },
+      "evidence_excerpt": "review material finding: `REVIEWING\u2192REVISION_REQUIRED_CHARGED`",
+      "impact": "One edge appears under two CP IDs, contrary to the stated one-to-one cp_id field mapping rule, so the P3 allowlist and P15 fixture ownership for that edge are ambiguous.",
+      "recommended_action": "Assign the edge to a single owning CP row and have the other row reference it.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-outside-001",
+        "invocation_id": "inv41-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.95,
+      "finding_id": "EXT41-O-007",
+      "source_candidate_ids": [
+        "EXT41-O-007"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "stale-revision",
+      "claim": "The v38 closure matrix row for AUTH38-F-003 and AUTH38-F-004 names an 'explicit v36 locator contract' as its correction locator, retaining an older revision token within the v38 design bytes.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "649"
+      },
+      "evidence_excerpt": "\u00a715.1 pinned run-034 basis and explicit v36 locator contract",
+      "impact": "A stale-revision token scan, which the matrix itself requires for AUTH33-F-01, would flag this residual v36 reference and leave the row's locator contract ambiguous.",
+      "recommended_action": "Rewrite the row's locator as the current v38 location and run the stale-revision token scan over Section 15.1 before handoff.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-outside-001",
+        "invocation_id": "inv41-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.7,
+      "finding_id": "EXT41-O-008",
+      "source_candidate_ids": [
+        "EXT41-O-008"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "bootstrap-scope",
+      "claim": "Section 6.1 enumerates eleven bootstrap artifacts and operations (items (a) through (k)) that must be authored, validated, reviewed and HUMAN-accepted before a WBS is built, while the AdmissionBundle section describes the mechanism as 'not a new runtime service'.",
+      "classification": "inference",
+      "severity": "info",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "330-336"
+      },
+      "evidence_excerpt": "(k) creates generation 0 of the canonical `TransitionIntentRootManifest` at the HUMAN-selected intent-root path.",
+      "impact": "A reader of the approval packet may underestimate the pre-WBS control-plane toolchain scope, since the required schemas, validators, registries, writers and operations are prerequisites rather than product work.",
+      "recommended_action": "Enumerate the bootstrap inventory and its authority/cost in the HUMAN-facing approval packet so the pre-WBS scope is visible before approval.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-outside-001",
+        "invocation_id": "inv41-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.75,
+      "finding_id": "EXT41-O-009",
+      "source_candidate_ids": [
+        "EXT41-O-009"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "source_lane": "external-outside-view",
+      "mode": "design",
+      "category": "fixture-coverage",
+      "claim": "Section 6.3 supplies a worked integer fixture for the pre-charge reservation and root recurrence but gives no worked integer example for the post-charge D/B recovery recurrence.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "sanitized-design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "368"
+      },
+      "evidence_excerpt": "Fixtures cover zero/partial/full recovery use, allocation-append failure, UNKNOWN, exact exhaustion, root exhaustion and global exhaustion.",
+      "impact": "The required both-ceiling exhaustion and UNKNOWN-usage fixtures for BA-02/BA-03/BA-04 have no in-design numeric anchor, so the exact-integer recomputation check for post-charge recovery rests on prose alone.",
+      "recommended_action": "Add a worked post-charge D/B example with both ceilings, an UNKNOWN debit and an exhaustion case, or name the exact fixture hashes expected in the capability manifest.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify41-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-outside-001",
+        "invocation_id": "inv41-ext-001",
+        "attempt": 1
+      },
+      "confidence": 0.7,
+      "finding_id": "EXT41-O-010",
+      "source_candidate_ids": [
+        "EXT41-O-010"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "candidate_id": "EXT41-R-001",
+      "reason": "Candidate claim that CP-16 omits FAILED_CHARGED from its terminal list was rejected: FAILED_CHARGED is a CP-13 source state with a fresh-HUMAN new-attempt exit and is not claimed terminal.",
+      "source_lane": "external-outside-view"
+    },
+    {
+      "candidate_id": "EXT41-R-002",
+      "reason": "Candidate claim that the Section 5.0.1 diagram's 're-prepare' annotation is an unregistered NOT_READY edge was rejected: line 182 declares the diagram summary-only and CP-10 declares the actual NOT_READY-FROZEN-PREPARING recovery sequence.",
+      "source_lane": "external-outside-view"
+    },
+    {
+      "candidate_id": "EXT41-R-003",
+      "reason": "Candidate claim that the Section 6.3 budget fixture is arithmetically inconsistent was rejected: recomputation reproduces A=28, reservation_remaining=22, root usage 15/remaining 25, and both exhaustion checks 31>30 and 26>25.",
+      "source_lane": "external-outside-view"
+    },
+    {
+      "candidate_id": "EXT41-R-004",
+      "reason": "Candidate claim that the ExecutionTransitionCompletion hash domain is undefined was rejected: Section 6.1 item (h) binds completion schemas, validators and operations, and Section 5.1.1 gives the general typed-root/raw-hash path derivation.",
+      "source_lane": "external-outside-view"
+    },
+    {
+      "candidate_id": "EXT41-R-005",
+      "reason": "Candidate claim that the registry omits POST_CHARGE_REPAIR_* and ACCEPTANCE_PROJECTION_REPAIR_* states was rejected: lines 247 and 268 explicitly declare those names forbidden rather than states.",
+      "source_lane": "external-outside-view"
+    }
+  ]
+}

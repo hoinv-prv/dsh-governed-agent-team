@@ -1,0 +1,4 @@
+Parent read-only verification against immutable design-v29 SHA-256 c6b3e250cfcb9943d62fe58ab14f2a8209b14da95226b67e2c2d8bb067390d95.
+Confirmed f001: preflight exception omits the necessarily changed one-OPEN TransitionIntentIndex extension.
+Confirmed f002: Section 5.4 acceptance repair conflicts with uniform divergent terminal recovery.
+Confirmed f003: corrupt pre-charge NOT_APPLIED completion lacks a zero-charge recovery contract.

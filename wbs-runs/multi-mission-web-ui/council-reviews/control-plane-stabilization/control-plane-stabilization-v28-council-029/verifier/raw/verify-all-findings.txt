@@ -1,0 +1,4 @@
+Parent read-only verification against immutable design-v28 SHA-256 084836856cc381d5929757e57015310bdd057775e80b91115e6c47ee91222bb7.
+Confirmed reviewer29-adversarial-001-f001: invalid-write recovery has conflicting states and unresolved original OPEN lineage.
+Confirmed reviewer29-adversarial-001-f002: preliminary boundary receipt is incorrectly required to incorporate later root/admin/intent/index effects.
+Confirmed reviewer29-adversarial-001-f003: partial/differing intent publication lacks pre-charge corruption recovery.

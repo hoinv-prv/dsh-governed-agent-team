@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v22-council-023",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "1c8566be97035c66c1d101d05802d075908abcde0abc688cdf902d237225c3de"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "cee418ee2bd959bde4ae71da40e3a14558c75b006ea6ad8264c12d61f4a8e459"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "60a1b2b43190ac40a0666ad199a65716932f448e295a7ac0a9a398e98102bd89"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "5252150d74535a48b1129ffd26c502161d0a18413fd18e7cbe5b91d7d8866522"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "5756ead4e02249cb1281b7729a2998bf48b5a96520d8a342903d6517ed2a6208"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "639cef35009cd68474588394c9f4e5ee76bb29ddc10802d2af2236eaa839240f"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "a3c964c594c3a96283936d29ebe0dc6bfcba1b1573c956c5e984fe21f05e5697"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "0b007b5ecf2a7020dd7e2cb4cd2b1199fb8cb907411526033b18de34e4279fc2"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "b5c0a1f4653d01246e9b13009ec6075d02da2a230d622d98a45f6d1ad8e400c0"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "075b35b07648ba39264b0ef7fd665c6acca2bf2c558702112414f3c8c33d01a7"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve both findings and re-review exact revised bytes before WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer23-adversarial-f001",
+      "effective_severity": "high",
+      "claim": "The final acceptance projection has an unclosed cross-artifact revocation race: it re-reads P16 authority and revocation state before a version-guarded execution-ledger write, but defines no atomic guard over the authority source, so a revocation committed after that read and before the write can still persist ACCEPTED despite the categorical no-write claim.",
+      "artifact_id": "design-v22",
+      "locator": {
+        "kind": "line",
+        "value": "210"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed final acceptance projection lacks atomic revocation guarding and overstates the no-write guarantee."
+    },
+    {
+      "finding_id": "reviewer23-adversarial-f002",
+      "effective_severity": "high",
+      "claim": "ADMIN_LEDGER_GENESIS cannot simultaneously honor its fixed allowance of one deterministic invocation and obtain the required independent post-write strict-validator/fixture verification before the administrative ledger is accepted; the design defines no pre-ledger authorization or accounting path for that additional independent activity.",
+      "artifact_id": "design-v22",
+      "locator": {
+        "kind": "line",
+        "value": "285"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed one-call genesis allowance cannot include independent post-write verification."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Acceptance authority TOCTOU and pre-ledger genesis verification remain incomplete until revision."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

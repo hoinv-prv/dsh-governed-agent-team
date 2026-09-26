@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v17-council-018",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "cfa393e6086906582dc78eea5fd9d7e9ff8998e352207f276657fc6ea8791588"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "75553fa16976c258d86cfc96a4390dca3dd3684f5703e94038a131d88e9ec9f5"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "4f3ec89383b59bf1c1c4c56346c880aec0fdb4e09879ac5c0aa72051ef3f5892"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "524d8617071003d2ab13a972cf5c48c042895e4c2a9139a49fc54580942a5fc8"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "4eaa1ca4547ddf5709939d5d9e2f6ae548ea52808cfa362be3a6ac74d195b487"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "cc3ad06923694a22f76a11fdaf1d7d4f1dd86ad88886abe90b7296a5fab3dd39"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "8931b5f6fd3b94673c46d14087733bbfe75eab3a9be81ab4aa6b2dab6d450330"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "8ef0ba66926c81fb95a2497387efc660004850490a15979b27bf2fc70e7dd4d6"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "d36c8b382f561d08b54ae1960eb9b0237275dcea573fbf44fa2d19f4a74a7185"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "b2d0e2d700a7c3bfcf1c90ae7422095b1e3eb4692ee1f35f28de249a9fb370aa"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve all three findings and re-review exact revised bytes before WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer18-adversarial-f001",
+      "effective_severity": "high",
+      "claim": "The last equality check before the charge write covers only the execution-ledger source and named native sequences, not every P14 input re-hashed into the immediately preceding boundary receipt.",
+      "artifact_id": "design-v17",
+      "locator": {
+        "kind": "line",
+        "value": "179"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed final charge comparison omits complete P1-P16/P14 aggregate identity."
+    },
+    {
+      "finding_id": "reviewer18-adversarial-f002",
+      "effective_severity": "high",
+      "claim": "The ordinary APPLIED completion rule does not require or reference the GuardedWriteReceipt that is mandatory only for candidate-equal recovery finalization.",
+      "artifact_id": "design-v17",
+      "locator": {
+        "kind": "line",
+        "value": "333-335"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed every ordinary APPLIED completion does not require guarded-write provenance."
+    },
+    {
+      "finding_id": "reviewer18-adversarial-f003",
+      "effective_severity": "high",
+      "claim": "A source-equal charge restart must persist a NOT_APPLIED completion even though the exhaustive Section 5.1 pre-charge write set does not include an ExecutionTransitionCompletion write.",
+      "artifact_id": "design-v17",
+      "locator": {
+        "kind": "line",
+        "value": "168,335"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed NOT_APPLIED pre-charge completion is absent from the exhaustive effect set."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Final charge freshness and complete transition provenance/effect closure remain incomplete until revision."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

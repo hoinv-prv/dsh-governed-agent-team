@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v20-council-021",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer21-adversarial-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "administrative-accounting",
+      "claim": "The immutable pre-effect accounting entry required for completion and index-close attempts cannot carry the AdministrativeResourceLedger contract's actual result and before/after artifact hashes, and no post-effect ledger closure record is defined.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v20",
+      "locator": {
+        "kind": "line",
+        "value": "274-278"
+      },
+      "evidence_excerpt": "Before each later deterministic file effect, it pre-appends a fixed contract-priced attempt entry",
+      "impact": "The protocol must either record predicted outcome evidence as if it were actual or fail reconciliation after charge, weakening accounting integrity or stranding a charged attempt before dispatch.",
+      "recommended_action": "Define separate immutable pre-effect attempt authorization and post-effect outcome records, bind both in the validator and receipts, and require their closed pair before completion, index closure, or dispatch.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer21-adversarial-001",
+        "invocation_id": "inv21-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.97,
+      "source_candidate_ids": [
+        "reviewer21-adversarial-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer21-adversarial-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "transition-index-recovery",
+      "claim": "The INTENT_INDEX_OPEN_PENDING abandonment path permits NOT_APPLIED closure without explicitly restoring the missing OPEN, although ordered CLOSE requires a matching OPEN and root/index one-to-one reconciliation.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v20",
+      "locator": {
+        "kind": "line",
+        "value": "337-339"
+      },
+      "evidence_excerpt": "permits only the exact idempotent index-open recovery or, while ledger bytes still equal source, the pre-bound NOT_APPLIED close path",
+      "impact": "A crash after intent persistence can leave no valid closed index state; accepting an orphan CLOSE weakens lineage, while rejecting it strands admission with no exact abandonment sequence.",
+      "recommended_action": "Specify one deterministic recovery sequence that first appends and validates the missing OPEN before NOT_APPLIED completion and matching CLOSE, or define a separate pre-OPEN abandonment record and validator rule that preserves one-to-one reconciliation.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer21-adversarial-001",
+        "invocation_id": "inv21-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.96,
+      "source_candidate_ids": [
+        "reviewer21-adversarial-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer21-adversarial-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "post-charge-recovery",
+      "claim": "No executable same-attempt recovery is defined when ledger bytes equal the charged candidate but GuardedWriteReceipt persistence crashed; the text names only an unspecified HUMAN recovery or migration even though migration is defined as one-time pre-WBS maintenance.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v20",
+      "locator": {
+        "kind": "line",
+        "value": "333-343"
+      },
+      "evidence_excerpt": "Candidate equality without that receipt—including crash before receipt persistence—or any receipt mismatch enters `TRANSITION_RECOVERY_BLOCKED` and must not create APPLIED",
+      "impact": "A foreseeable crash immediately after the charge write can permanently strand the charged attempt and break ledger lineage, leaving the partial-commit control without the required owner-bound recovery path.",
+      "recommended_action": "Define an explicit TRANSITION_RECOVERY_BLOCKED owner and exact same-attempt terminal-recovery protocol that independently verifies persisted bytes, preserves the charge, never fabricates APPLIED evidence, and records a validator-accepted failed/unknown lineage link with bounded accounting.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer21-adversarial-001",
+        "invocation_id": "inv21-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.94,
+      "source_candidate_ids": [
+        "reviewer21-adversarial-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

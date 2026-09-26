@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v3-council-004",
+  "source_artifact_id": "design-v3",
+  "sanitized_artifact_id": "sanitized-design-v3",
+  "sanitized_sha256": "8fc33a7d5a09ed5eb53d90d4b34ccfee0b58d061342bd561c5d986f793824bf2",
+  "sanitized_size_bytes": 27665,
+  "producer": {"actor":"parent-orchestrator","implementation":"dsh-council-review","version":"1"},
+  "procedure": {"name":"literal-range-redaction","version":1,"replacement_format":"[REDACTED:<redaction_id>]"},
+  "redactions": []
+}

@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v7-council-008",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "r8auth001a1-f1",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "internal-consistency",
+      "claim": "Section 5 transitions REVIEWING directly to ACCEPTED with no acceptance-authority guard, while Sections 4/12.6/12.7 and P16 make acceptance an attributable HUMAN act, and Section 10's ownership policy declares no write mechanism for the acceptance transition; the acceptance control surface therefore has no modelled owner/guard, fail state or recovery path.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v7",
+      "locator": {
+        "kind": "line",
+        "value": "133-139"
+      },
+      "evidence_excerpt": "REVIEWING -> ACCEPTED",
+      "impact": "A literal implementation of the lifecycle can record ACCEPTED as a consequence of the REVIEWING outcome, so acceptance state can change without the attributable HUMAN acceptance owner required by P16; the transition also lacks the owner, exact evidence, fail state and recovery path that must_check 4 requires for every control surface, and the reject branch in Section 14 has no modelled lifecycle state.",
+      "recommended_action": "Add an explicit acceptance transition in Section 5 guarded by the exact HUMAN acceptance owner or a non-revoked HUMAN delegation decision, with its accept/reject fail states and recovery, and add the acceptance record's owning command or permitted file operation plus evidence and verifier to the Section 10 ownership policy and the P16 receipt.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer8-authority-002",
+        "invocation_id": "inv8-auth-002",
+        "attempt": 2
+      },
+      "confidence": 0.55,
+      "source_candidate_ids": [
+        "r8auth001a1-f1"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer8-adversarial-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "acceptance-authority",
+      "claim": "The state machine has an unlabeled REVIEWING-to-ACCEPTED transition, while P16 is revalidated only at the pre-charge P14 boundary, so no acceptance-boundary check requires a current attributable HUMAN decision bound to the reviewed output.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v7",
+      "locator": {
+        "kind": "section",
+        "value": "5. Admission state machine; P16 Acceptance authority"
+      },
+      "evidence_excerpt": "ACCEPTED",
+      "impact": "A successful review can be projected as acceptance without a fresh HUMAN acceptance record, after an alternate acceptor's authority was revoked, or without binding the decision to the exact output bytes.",
+      "recommended_action": "Add an explicit AWAITING_HUMAN_ACCEPTANCE transition and permit ACCEPTED only after a fresh attributable HUMAN acceptance decision binds the exact task, output hashes, scope, and current P16 delegation/revocation state; otherwise remain unaccepted.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer8-adversarial-001",
+        "invocation_id": "inv8-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98,
+      "source_candidate_ids": [
+        "reviewer8-adversarial-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer8-adversarial-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "pre-charge-ledger-migration",
+      "claim": "Section 5.1 exhaustively allows only bundle sealing and invalidation as pre-charge writes, but Section 9.1 requires an uncharged version-guarded migration of execution.json, leaving that authoritative ledger mutation without a legal admission-state transition.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v7",
+      "locator": {
+        "kind": "section",
+        "value": "5.1 Critical rule; 9.1 Freeze rule"
+      },
+      "evidence_excerpt": "this one-time migration is **uncharged control-plane maintenance performed before successor-WBS build**",
+      "impact": "The compliant path either deadlocks at P3 or mutates the mission ledger outside the design's exhaustive pre-charge write policy and charge accounting, weakening the very boundary the gate is meant to establish.",
+      "recommended_action": "Define an explicit HUMAN-authorized migration-maintenance state and transition before admission, including exact entry and exit evidence, version guard, failure/restore path, and transparent attempt/resource accounting; if it is exempt from charging, bind that exemption to an exact authoritative HUMAN record before the write and return only the accepted migrated-base hash to FROZEN.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer8-adversarial-001",
+        "invocation_id": "inv8-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.96,
+      "source_candidate_ids": [
+        "reviewer8-adversarial-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer8-adversarial-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "bootstrap-accounting",
+      "claim": "Creating and persisting the AdmissionBundle schema, validator, prepare, seal, and invalidation operations is mandatory implementation work before WBS build, but v7 assigns that work no task/attempt or model-call budget accounting boundary.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v7",
+      "locator": {
+        "kind": "line",
+        "value": "224"
+      },
+      "evidence_excerpt": "Before any successor WBS is built, a separately HUMAN-authorized control-plane stabilization action must persist and approve: (a) the exact schema bytes and SHA-256; (b) a deterministic validator",
+      "impact": "Required control code can be produced and reviewed through untracked effort despite the known zero-slack condition; P15 binds resulting bytes but does not expose the execution cost or authority trail that produced them.",
+      "recommended_action": "Require a separately HUMAN-authorized bootstrap task under a Working AIP and Task Workspace with explicit attempt or administrative resource accounting, model-call ceiling, write effects, verification, independent review, and HUMAN acceptance; only then may the accepted hashes satisfy P15.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer8-adversarial-001",
+        "invocation_id": "inv8-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.91,
+      "source_candidate_ids": [
+        "reviewer8-adversarial-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "candidate_id": "r8auth002a2-c1",
+      "reason": "P14 charge-guard completeness: Section 5.2 steps 1-2 do not enumerate P13/P15/P16 revocation/scope re-verification. Rejected because step 1 re-hashes every bundle input under the bundle's sealed freshness_rule and predicate scope and P14 is a binding pre-charge invariant with EXPIRED disposition, so no path to charge with a revoked authority is established.",
+      "source_lane": "internal-authority"
+    },
+    {
+      "candidate_id": "r8auth002a2-c2",
+      "reason": "Budget contingency floor: Section 7.1 says the next WBS 'must reserve at least' two attempts but 'only the HUMAN decision owner may select or change the operative amount', so P12 could pass on a HUMAN-chosen lower reserve. Rejected because must_check 11 reserves ceiling/reallocation to the HUMAN as an explicit recorded decision and the operative reserve stays exposed rather than hidden.",
+      "source_lane": "internal-authority"
+    },
+    {
+      "candidate_id": "r8auth002a2-c3",
+      "reason": "Bundle identity hash: Section 6.2 invalidation records carry bundle_sha256 while Section 6 says READY, invalidation records and the charge boundary identify the bundle by the seal-sidecar full-file SHA-256 and bind the sidecar hash as well. Rejected because the text requires both the bundle full-file hash and the sidecar hash to be bound, so an invalidation cannot be skipped by hash selection.",
+      "source_lane": "internal-authority"
+    },
+    {
+      "candidate_id": "r8auth002a2-c4",
+      "reason": "Sequencing: Section 7.1 orders drafting after design closure and before budget/approval binding, while Section 16 places migration and bootstrap completion before drafting. Rejected because drafting is uncharged, inactive and grants no selection, admission or attempt authority, so the ordering difference cannot permit charge or acceptance.",
+      "source_lane": "internal-authority"
+    },
+    {
+      "candidate_id": "r8auth002a2-c5",
+      "reason": "Section 5.2 step 3 permits recording unavailable evidence 'outside mission controls' without a declared path or owner. Rejected because it writes no mission-control, ledger, product or acceptance bytes and therefore cannot permit charge or acceptance.",
+      "source_lane": "internal-authority"
+    }
+  ]
+}

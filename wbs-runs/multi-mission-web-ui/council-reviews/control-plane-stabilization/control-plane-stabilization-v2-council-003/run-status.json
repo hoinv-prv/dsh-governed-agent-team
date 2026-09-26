@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v2-council-003",
+  "state": "failed",
+  "stage": "review",
+  "failure": {
+    "code": "provider_unavailable",
+    "stage": "review",
+    "subject": "internal-authority",
+    "message": "The authority lane initial envelope was schema-invalid and its one allowed retry failed at provider transport; required internal diversity is unavailable. No council verdict can close.",
+    "retryable": false,
+    "invocation_id": "inv3-auth-002"
+  },
+  "updated_sequence": 2
+}

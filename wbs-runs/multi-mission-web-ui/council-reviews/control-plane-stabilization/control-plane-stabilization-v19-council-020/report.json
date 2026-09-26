@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v19-council-020",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "d9bf035893fff0ec4c2916c511aa1d66ce8dc636ce6b889e1f75791b6c08c4d4"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "82dbdd307065c4b05f04ffc8313b5765e7c9021797c77a5c6ca16b54bfba3a97"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "03395ff1559924e7e1691e207e0f8ceed0614a365c805dfa7be49603acad51d6"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "764f1e359ebbc546ea42f2e50cdc735473c7bebf6e60c1bb9f41f7794dd70a93"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "8fc9c935fbe710013174ed11e9b8a386b068acd0d8272149a8d923b72eed0b6b"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "3ba56cc1fa513db88328918e446a52543a0a46a2ee5a8539b7b4a247bc6cd910"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "00b974b5f5fe7662e7e7207fdb2212c2cd70e138a907b8190aabbaad40304be0"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "f34f07a48ff13c174cc4d9f374f84321d14b40990a2e707c9a00d3c533c294b4"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "932eaadbd71d91e75c4b669fd8516b2c47ca3c4327802f29ad69070a9d9fafda"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "d4ac2e878f4bb171cca706703b8fe82f76b26ae0457d05562078b513795b584a"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve both findings and re-review exact revised bytes before WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer20-adversarial-f001",
+      "effective_severity": "high",
+      "claim": "The intent/completion journal has no fail-closed split-write protocol: it persists content-addressed intent/completion records and mutates a separate TransitionIntentIndex while simultaneously disclaiming cross-file atomicity.",
+      "artifact_id": "design-v19",
+      "locator": {
+        "kind": "line",
+        "value": "172-180;335-339"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed journal record/index split writes lack explicit fail-closed states and recovery."
+    },
+    {
+      "finding_id": "reviewer20-adversarial-f002",
+      "effective_severity": "high",
+      "claim": "The required actual-usage append occurs after each admission operation, but the design does not make the guarded writer's and APPLIED-completion's accounting entries prerequisites for APPLIED closure or dispatch.",
+      "artifact_id": "design-v19",
+      "locator": {
+        "kind": "line",
+        "value": "168;274-276;337-339"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed charged accounting entries are not prerequisites for APPLIED closure and dispatch."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Split-write recovery and post-charge administrative accounting remain incomplete until revision."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

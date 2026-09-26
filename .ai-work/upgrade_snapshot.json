@@ -1,0 +1,71 @@
+{
+  "version": 2,
+  "zones": {
+    "truth": {
+      "AI_WORK_CONTRACT.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "SOP_MASTER.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "wiki_index": {
+      "count": 0,
+      "source_paths": []
+    },
+    "wiki_meta": [],
+    "wiki_local": {
+      "exists": false,
+      "count": 0
+    },
+    "wiki_project": [
+      "task_lens_presets"
+    ],
+    "truth_payload": {
+      "canonical": 141,
+      "templates": 2
+    },
+    "aip_exec": [
+      "hoinv/exec/AIP-EXEC-001-copy-gat-source.md",
+      "hoinv/exec/AIP-EXEC-002-build-gat-installer.md",
+      "hoinv/exec/AIP-EXEC-003-update-agents-project-context.md",
+      "hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+      "hoinv/exec/AIP-EXEC-005-gat-installer-compatibility-fix.md",
+      "hoinv/exec/AIP-EXEC-006-update-gat-proposal.md",
+      "hoinv/exec/AIP-EXEC-007-triage-gat-rereview-v3.md",
+      "hoinv/exec/AIP-EXEC-008-report-progress-html-skill.md",
+      "hoinv/exec/AIP-EXEC-009-control-plane-stabilization-design.md",
+      "hoinv/exec/AIP-EXEC-010-dsh-workflow-typed-failure-diagnostics.md",
+      "hoinv/exec/AIP-EXEC-011-legacy-agent-team-hotfix.md",
+      "hoinv/exec/AIP-EXEC-012-simplify-agent-team-ui.md",
+      "hoinv/exec/AIP-EXEC-013-restore-session-agent-team-toggle.md",
+      "hoinv/exec/AIP-EXEC-014-document-gat-design-and-features.md",
+      "hoinv/exec/AIP-EXEC-015-integrate-durable-agent-design.md",
+      "hoinv/exec/AIP-EXEC-016-recheck-gat-sections.md",
+      "hoinv/exec/AIP-EXEC-017-restrict-subagents-to-enabled-team.md",
+      "hoinv/exec/AIP-EXEC-018-review-durable-agent-team-reference.md"
+    ],
+    "aip_plans": [],
+    "aip_local": [],
+    "workspaces": [
+      "hoinv"
+    ],
+    "skills": {
+      "aiws-agent": true,
+      "aiws-aip": true,
+      "aiws-doc-convert-skill": true,
+      "aiws-lint": true,
+      "aiws-pkg": true,
+      "aiws-review-plan": true,
+      "aiws-runtime-review-checklist": true,
+      "aiws-util-mail-confirm": true,
+      "aiws-util-personal-notebook": true,
+      "aiws-wiki": true
+    },
+    "history_file_count": 0,
+    "personal_notebook": {
+      "exists": false,
+      "file_count": 0
+    },
+    "settings_local": {
+      "exists": false,
+      "checksum": null
+    }
+  }
+}

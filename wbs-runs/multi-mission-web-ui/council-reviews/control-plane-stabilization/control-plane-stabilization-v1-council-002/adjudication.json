@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v1-council-002",
+  "triggered": false,
+  "trigger_reasons": [],
+  "invocation_id": null,
+  "disputed_finding_ids": [],
+  "dispositions": [],
+  "preserved_dissent": []
+}

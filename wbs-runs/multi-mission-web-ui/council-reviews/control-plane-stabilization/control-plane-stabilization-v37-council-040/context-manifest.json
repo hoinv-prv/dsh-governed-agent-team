@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v37-council-040",
+  "packets": [
+    {
+      "lane": "internal-authority",
+      "packet_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v37-council-040/packets/internal-authority.json",
+      "packet_sha256": "909e0be1fb61b06d5c4372da3858c20adc740de7130047799e463fc32bd140ed",
+      "packet_size_bytes": 631968,
+      "artifact_ids": [
+        "design-v37",
+        "run034-dispatch",
+        "run034-authority",
+        "run034-adversarial",
+        "run038-authority",
+        "run038-adversarial",
+        "run038-outside",
+        "run039-status",
+        "run039-ledger",
+        "run039-authority-current",
+        "run039-adversarial-current",
+        "run039-outside-current"
+      ],
+      "sot_ids": [
+        "sot-repo-rules",
+        "sot-aiws-architecture",
+        "sot-runtime-review",
+        "sot-gat-proposal",
+        "sot-failure-evidence",
+        "sot-council-contract",
+        "sot-council-routing",
+        "sot-consistency-audit",
+        "sot-run033-ledger",
+        "sot-run033-verifier"
+      ],
+      "context_categories": [
+        "objective",
+        "must-check",
+        "authority"
+      ],
+      "omitted_categories": [
+        "peer-findings",
+        "external-advice"
+      ],
+      "peer_findings_included": false
+    },
+    {
+      "lane": "internal-adversarial",
+      "packet_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v37-council-040/packets/internal-adversarial.json",
+      "packet_sha256": "055d2056da4b7fa543f82602c13c94ba7dcbf2f3a79a69c074f1c47553d458de",
+      "packet_size_bytes": 631976,
+      "artifact_ids": [
+        "design-v37",
+        "run034-dispatch",
+        "run034-authority",
+        "run034-adversarial",
+        "run038-authority",
+        "run038-adversarial",
+        "run038-outside",
+        "run039-status",
+        "run039-ledger",
+        "run039-authority-current",
+        "run039-adversarial-current",
+        "run039-outside-current"
+      ],
+      "sot_ids": [
+        "sot-repo-rules",
+        "sot-aiws-architecture",
+        "sot-runtime-review",
+        "sot-gat-proposal",
+        "sot-failure-evidence",
+        "sot-council-contract",
+        "sot-council-routing",
+        "sot-consistency-audit",
+        "sot-run033-ledger",
+        "sot-run033-verifier"
+      ],
+      "context_categories": [
+        "objective",
+        "must-check",
+        "authority"
+      ],
+      "omitted_categories": [
+        "peer-findings",
+        "external-advice"
+      ],
+      "peer_findings_included": false
+    },
+    {
+      "lane": "external-outside-view",
+      "packet_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v37-council-040/packets/external-outside-view.json",
+      "packet_sha256": "701bf09015eee5a95924c6a8b5495777127659e2316a89c4bfffb73dac6a0ccd",
+      "packet_size_bytes": 219162,
+      "artifact_ids": [
+        "sanitized-design-v37"
+      ],
+      "sot_ids": [],
+      "context_categories": [
+        "objective",
+        "audience",
+        "public-constraints"
+      ],
+      "omitted_categories": [
+        "internal-history",
+        "peer-findings",
+        "private-sot"
+      ],
+      "peer_findings_included": false
+    }
+  ]
+}

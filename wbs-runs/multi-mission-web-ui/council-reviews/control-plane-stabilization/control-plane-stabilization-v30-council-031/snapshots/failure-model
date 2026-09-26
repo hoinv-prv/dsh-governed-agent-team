@@ -1,0 +1,358 @@
+# Findings
+
+## STEP-00 confirmation
+
+HUMAN confirmed via `ask_user_question:confirm-control-plane-redesign-scope`: freeze current execution; design systemic control-plane/pre-charge admission; council-review exact design bytes; do not build or execute a WBS in this AIP.
+
+## Failure model
+
+### Systemic root cause — RC-SYSTEM-01
+
+The mission has no single atomic, mechanically closed **pre-charge admission transaction** covering all execution-control surfaces. Plan schema/hash approval is checked separately from strict execution-ledger validity, AIP/ASC transition capability, command-backend availability, reviewer capacity, Team-plan authority, goal activation and budget contingency. Consequently a charge can be committed while one or more mandatory downstream controls are invalid or unavailable.
+
+This produces the observed loop:
+
+```text
+partial preflight → charge → mutate one control surface → discover another invalid surface
+→ block review/acceptance → pause → re-plan → consume another reconciliation charge
+```
+
+The root cause is a control-architecture defect. Runner architecture, sandbox refusal, reviewer failure, stale ASC and ledger incompatibility are contributing failures or symptoms, not competing root causes.
+
+### Evidence-to-control traceability
+
+| ID | Observed fact | Classification | Effect | Missing/failed control | Required owner |
+|---|---|---|---|---|---|
+| E-01 | Six historical `conformance-runner-recovery` attempts are retained as failed; `ROOT_CAUSE_AND_RECOVERY_PLAN.md` records late discovery of missing control APIs/trust boundaries. | Product architecture contributing condition | Accepted progress remained flat while attempts accumulated. | Pre-code contract/architecture admission before implementation. | WBS builder + architecture reviewer |
+| E-02 | v31 was later found to contain deterministic schema, requirement, effect, budget, source and command-path defects after an earlier review path allowed it forward. | Planning/control contributing condition | Pause, new revision and reconciliation charge were required. | Official validation and semantic checklist had not both closed before approval. | WBS builder + independent reviewers |
+| E-03 | Attempt65 command was refused before test execution because the selected sandbox backend was unavailable. | Runtime capability failure | Provisional outputs remained unverified/interrupted and the charge was preserved. | Pre-charge proof that exact command/effect backend is currently available. | Coordinator/runtime |
+| E-04 | Official helper validates v32 schema/order/hash, but reconciliation deliverable requires a fresh STEP-10 ASC while task `allowed_commands` contains only AIP lint and status—not the declared ASC step/rebuild command. | Confirmed semantic plan defect | Coordinator had no declared command capable of producing the generated ASC transition. | Command-to-deliverable semantic closure check. | WBS builder + design/governance reviewer |
+| E-05 | Attempt66 verification records ASC as updated but does not cite a declared rebuild command; manual file reconciliation was used. | Governance/evidence defect | Exact-plan execution drifted from the intended generated-artifact pathway. | Generated artifacts must name their owning transition command; manual projection edits must be forbidden. | Coordinator + AIWS AIP owner |
+| E-06 | Progress helper rejects current `execution.json`: `discover-validation.attempts[0].input_hashes contains conflicting hashes for path`. | Ledger-schema/control debt | Strict execution-backed reporting cannot close; execution state cannot be safely projected by the official helper. | Backup-first lossless migration plus strict validator PASS before selection/charge. | WBS-run coordinator + HUMAN migration authority |
+| E-07 | Attempt66 advisory reviewer failed before verdict and no active reviewer remains. | Review-capability failure | `revision-32-reconciliation` remains reviewing; every downstream task is blocked. | Reviewer reservation, independent fallback and typed retry policy before charge. | Coordinator |
+| E-08 | Goal remains `paused/disarmed`; two resume calls were rejected even after HUMAN intent was collected. | Continuation/control mismatch | Autonomous continuation is not observable despite execution ledger `run_state: active`. | Goal state must be active/armed and identity-bound before execution admission. | HUMAN/runtime + coordinator verification |
+| E-09 | Remaining attempt count equals the sum of downstream maxima. | Budget design contributing condition | Any new plan-selection or scope-changing recovery has no reserved capacity. | Explicit contingency reserve or HUMAN-approved ceiling/reallocation before admission. | HUMAN decision owner + WBS builder |
+| E-10 | WBS v32 declares `review.owner: human` but `acceptance.owner: coordinator` for reconciliation. | Authority textual defect | Review, acceptance and decision recording responsibilities can be interpreted inconsistently. | One explicit authority matrix and binding decision record per gate. | WBS builder + governance reviewer + HUMAN |
+| E-11 | One mutable `execution.json` contains heterogeneous historical structures across many revisions and current task projections. | State-model contributing condition | Current validation must parse legacy forms; report/helper behavior diverges from ledger bytes. | Immutable append-only history plus a small current projection with versioned migration. | WBS-run format owner + coordinator |
+| E-12 | The prior recovery proposal correctly split product architecture but did not stabilize execution-control admission. | Scope omission | Product decomposition improved, yet the same pause/replan pattern continued at the governance layer. | Separate control-plane stabilization design must precede next product WBS. | HUMAN + design owner |
+
+## Confirmed findings
+
+### CF-01 — Product decomposition alone cannot prevent recurrence
+
+The v31/v32 matrix→control→handlers→runner sequence addresses late product-architecture discovery, but it does not close ledger validity, generated-context transition, runtime capability, reviewer availability, goal activation or budget slack before charging. Retrying the reviewer can unblock one gate but cannot guarantee the next charge is safe.
+
+### CF-02 — Schema validation is necessary but insufficient
+
+Official v32 helper output proves format, identity, order and hash. It does not prove that every deliverable has an executable declared transition or that all runtime capabilities and control artifacts are jointly ready. A semantic admission matrix is required in addition to the helper.
+
+### CF-03 — Current mission state is contradictory across authorities
+
+The execution ledger is `active`, the current task is `reviewing`, native work is quiescent, and the goal runtime is `paused/disarmed`. No one state alone safely authorizes continuation. Admission must derive from the conjunction, not a preferred source.
+
+### CF-04 — Strict ledger validity must be upstream of WBS execution
+
+An execution ledger rejected by the official progress validator cannot be treated as a harmless reporting-only issue when the same ledger owns attempts, acceptance and readiness. It must be migrated and strictly closed before a new product attempt.
+
+### CF-05 — Zero contingency converts every control defect into re-plan pressure
+
+With remaining allocation exactly equal to downstream maxima, any recovery requiring a new selection attempt forces either a ceiling change or a hidden reduction elsewhere. Contingency must be an explicit admission invariant, not an afterthought.
+
+## Inferred findings
+
+### IF-01 — Reconciliation tasks are overloaded
+
+Reconciliation currently combines plan selection, ledger mutation, AIP update, Workspace projection, validation, review and authority transition. This broad mutation surface increases partial-commit risk. A two-phase prepare/commit design with an immutable admission bundle would reduce it.
+
+### IF-02 — Historical compatibility is obscuring current state
+
+Keeping all historical task schemas inline in one mutable current ledger appears to be the direct reason strict projection fails. A versioned immutable history plus validated current projection is likely safer, subject to council verification of compatibility and no-loss requirements.
+
+## Hypotheses requiring council challenge
+
+- H-01: One immutable `AdmissionBundle` plus prepare/commit markers is the smallest credible control, rather than a new runtime service or custom runner.
+- H-02: Reviewer fallback can be reserved and capability-checked without consuming a task attempt until an implementation effect occurs.
+- H-03: The next WBS requires dedicated stabilization capacity or explicit ceiling increase; reducing downstream maxima without new technical evidence would merely move risk.
+- H-04: Strict progress-helper validation is an adequate executable proxy for current execution-ledger closure; council must verify whether another authoritative validator is required.
+
+## Design requirements derived from evidence
+
+1. No charge before one immutable admission bundle closes all required controls.
+2. Admission is fail-closed and two-phase: prepare is side-effect-free; commit atomically records charge and active task.
+3. Bundle pins plan hash/order, strict ledger receipt, accepted dependencies, source hashes, exact commands, command backend, AIP/ASC owning transition, coordinator/quiescence, Team authority, active goal, reviewer reservations and budget slack.
+4. Any input drift invalidates the bundle; re-prepare is uncharged.
+5. Generated artifacts are changed only through declared owning commands.
+6. A reviewer/provider failure before verdict uses a typed bounded fallback without changing implementation acceptance.
+7. Ledger migration is separate, backup-first, lossless, deterministic and strict-validator-gated.
+8. Historical evidence is immutable; current projection is small, versioned and rebuildable from accepted history.
+9. HUMAN explicitly owns ceiling/reallocation, deviations, task acceptance where declared and final WBS approval.
+10. No new product attempt starts until the stabilization design and WBS derived from it are separately approved.
+
+## To-verify findings
+
+- Council must verify authority alignment between HUMAN review and coordinator acceptance.
+- Council must challenge atomicity feasibility without inventing an unsupported scheduler/service.
+- Council must verify the exact minimum ledger-migration boundary.
+- Council must test negative paths: stale plan, changed source, reviewer loss, goal pause, Team revision drift, sandbox loss, partial commit, crash after charge and report-helper refusal.
+
+## Notes
+
+- `SOP_MASTER.md` and `AI_WORK_CONTRACT.md` are present but empty; no additional project-specific text was inferred from them.
+- GAT proposal was not found as an exact Wiki Source after normal and semantic lookup; CAP-009-01 records the retrieval gap.
+- During AIP creation, initial commands used `python` as shown in generic template prose and failed because only `python3` exists. This is a reproducible toolchain portability issue and should be captured separately if not already covered by the retrieval/tooling capture set.
+
+## Council run-002 outcome and dispositions
+
+- Run status: terminal failure at Chairman stage; no valid council verdict. Required adversarial and outside-view lanes exhausted their single typed schema retries without valid envelopes, and the separate Chairman invocation failed.
+- Valid evidence: internal-authority lane produced eight schema-valid findings; parent read-only verification confirmed all eight.
+- `AUTH2-F-001` → fixed in v2: coordinator cannot originate HUMAN acceptance; alternate acceptor requires a separately recorded HUMAN decision.
+- `AUTH2-F-002` → fixed: repository precedence is explicit; GAT proposal is inactive and non-authoritative.
+- `AUTH2-F-003` → fixed: two-attempt contingency is a recommendation; only HUMAN selects the operative value.
+- `AUTH2-F-004` → fixed: P7 binds exact argv to a hashed root/task allowed-command union.
+- `AUTH2-F-005` → fixed: reviewer route availability and budget reservation replace undefined provider-capacity reservation.
+- `AUTH2-F-006` → fixed: quiescence is an observable expiring snapshot, not proof that another actor can never write.
+- `AUTH2-F-007` → fixed: migration validator/review failure has an operation owner, exact restore and re-entry disposition.
+- `AUTH2-F-008` → fixed: v2 pins the exact failure-model snapshot hash.
+- Non-admitted but technically credible hypotheses visible in schema-invalid adversarial raw evidence were independently addressed conservatively in v2: no claim of a non-bypassable native gate, explicit TOCTOU/residual race, charge-boundary re-observation, and root cause restated as best-supported common control deficiency rather than proven sole cause.
+- v2 must receive a new immutable council run; run-002 does not satisfy the WBS-build entry gate.
+
+## Council run-003 outcome and v3 corrections
+
+- External-outside-view and internal-adversarial lanes produced valid empty envelopes.
+- Authority attempt 1 returned four technically useful findings but violated the schema because two design-mode findings carried non-null governance classes. Its single retry failed at provider transport. Required internal diversity was therefore unavailable and run-003 terminated without a council verdict.
+- The raw authority observations were not admitted as normalized council findings. Parent review nevertheless corrected the credible issues conservatively in v3:
+  - split observed pre-commit drift (`EXPIRED`) from the irreducible post-observation race/bypass residual risk;
+  - bind the design and immutable run-002 failure-model snapshot in the design-basis/source-integrity receipt;
+  - generalize declared ownership and manual-edit prohibition across every generated/mutable mission-control artifact;
+  - clarify that `v32` names current WBS revision 32, not design v2/v3, and bind the future HUMAN decision to the successor WBS revision and hash.
+- The claimed 434f… failure-model hash is the immutable run-002 snapshot. The different 8dc7… run-003 `failure-model` artifact is the subsequently updated Workspace working source, so the raw authority mismatch observation does not invalidate the historical snapshot pin.
+- v3 requires a fresh immutable council run with full required lane closure.
+
+## Council run-004 verified verdict and v4 corrections
+
+- Official helper closure and deterministic render succeeded with Chairman verdict `needs_revision`.
+- `r4auth002a2-f1` high confirmed/accepted: unnamed charge-operation owner. v4 assigns the coordinator an exact class of existing version-guarded native ledger write/edit bounded by HUMAN-approved WBS/effects, with explicit no-write abort semantics; it does not claim a native non-bypassable hook.
+- `r4auth002a2-f2` medium confirmed/accepted: abbreviated precedence. v4 states the exact content, artifact/rule and knowledge-class chains.
+- `r4auth002a2-f3` medium confirmed/accepted: invented AdmissionBundle schema/validator/prepare operation. v4 marks the contract proposed/inactive and makes persisted HUMAN-approved schema, deterministic validator, exact prepare argv and guarded write path pre-WBS bootstrap gates.
+- v4 also resolves credible schema-invalid attempt-1 observations: explicit pre-charge abort/no-attempt-consumption; immutable `AdmissionInvalidation` sidecar; one-time uncharged ledger maintenance before WBS to break the P3 migration circularity; and binding residual enforcement/TOCTOU disclosure in Section 16.
+- v4 requires a new immutable council run before WBS handoff.
+
+## Council run-005 findings and v5 corrections
+
+- Authority attempt 2, adversarial and outside-view envelopes were valid. Three authority findings were normalized and parent-confirmed. The Chairman response was schema-invalid, so run-005 has no official verdict; its expected deterministic consequence was revision.
+- `r5auth002a2-f1` → v5 pins the canonical invalidation-index path, raw hash, count, sequence, owner, epoch and freshness rule; boundary checks require append-only extension and reject truncation/replacement/mismatch.
+- `r5auth002a2-f2` → v5 requires charge-boundary re-observation to use exactly the sealed rule, predicate scope, native sequence and epoch; rule mismatch aborts uncharged.
+- `r5auth002a2-f3` → v5 binds migration authorization to exact source hash/version, forbids attempt/bundle/charge/product/acceptance mutation, requires reauthorization on drift, and makes next P3/P15 reject divergence from HUMAN-accepted migrated bytes.
+- v5 also binds attributable HUMAN decision IDs/raw hashes for bootstrap/migration and makes the native Team Lead coordinator identity/topology an explicit P8 receipt/failure path.
+- v5 requires a fresh immutable council run.
+
+## Council run-006 formal verdict and v6 corrections
+
+- Run-006 closed and rendered with `needs_revision`: authority and adversarial lanes were valid, outside-view succeeded on its one typed retry, six findings were normalized and parent-confirmed, no adjudication was required, and the separate Chairman accepted all six.
+- `r6auth001a1-f1` → v6 names the uncharged AdmissionInvalidation append as the sole pre-charge write exception and binds its approved argv/effect, index, receipt and failure recovery.
+- `r6auth001a1-f2` → v6 orders later work as uncharged candidate drafting/hashing after reviewed design closure and explicit HUMAN drafting authority, then exact-hash HUMAN budget/approval binding before selection/admission. This task still does not authorize WBS drafting.
+- `r6auth001a1-f3` → v6 changes P8 to an observed topology/quiescence predicate and discloses delegated-writer bypass as procedural residual risk.
+- `r6adv001-f1` → v6 adds atomic `wbs_authority` and `bootstrap_authority` receipts with decision ID/raw hash, actor, scope, bound bytes/effects and revocation state, re-verified by P14.
+- `r6adv001-f2` → v6 deterministically constructs and strictly validates exact candidate ledger bytes before guarded charge write, then requires persisted hash equality and strict PASS before dispatch.
+- `r6adv001-f3` → v6 binds reviewer provider/model/route family/eligible role and a substitution matrix preserving mandatory lane coverage and two-family diversity.
+- v6 requires a fresh immutable council run.
+
+## Council run-007 findings and v7 corrections
+
+- Run-007 internal/outside lanes became valid (authority used its one typed retry) and five findings were normalized and parent-confirmed. Its separate Chairman response was schema-invalid, so run-007 has no official verdict; the confirmed medium/high findings still deterministically require revision.
+- `reviewer7-authority-f001` → v7 adds P16 plus a per-task `acceptance_authority` receipt binding every acceptor to the HUMAN owner or exact non-revoked HUMAN delegation, re-verified at P14.
+- `reviewer7-authority-f002` → v7 adds one-epoch execution-ledger run-state/pause marker equality with runtime goal state to the bundle, P10, P14, Section 13 and counterfactual map.
+- `r7adv-f01` → v7 separates read-only bundle computation from a P15-approved create-once content-addressed seal operation and external immutable `AdmissionBundleSeal` sidecar; READY/charge/recovery require durable retrievable exact bytes and avoid self-referential file hashing.
+- `r7adv-f02` → v7 requires version-guarded restore and raw-byte hash/size/version plus attempt/charge/acceptance equality to the immutable backup; the expected strict-invalid source result is not restore proof.
+- `r7adv-f03` → v7 separates the exact migrated pre-charge base invariant from a validated, ordered append-only charge-successor lineage.
+- v7 requires a fresh immutable council run.
+
+## Council run-008 findings and v8 corrections
+
+- Run-008 lanes became valid (authority used its one typed retry) and four findings were normalized and parent-confirmed. The Chairman used a string rather than numeric `schema_version`, so run-008 has no official verdict; confirmed medium/high findings still require revision.
+- `r8auth001a1-f1` and overlapping `reviewer8-adversarial-f001` → v8 adds `AWAITING_HUMAN_ACCEPTANCE`, `ACCEPTANCE_PENDING` and `REJECTED_CHARGED`; Section 5.4 requires a fresh attributable HUMAN accept/reject record bound to exact output/review hashes and current delegation, a guarded strictly validated projection, independent verification and no acceptance by review/silence.
+- `reviewer8-adversarial-f002` → v8 adds explicit HUMAN-authorized `MIGRATION_MAINTENANCE`, recovery/blocked exits, exact base/restore return to FROZEN, and transparent administrative resource/model-call accounting outside mission attempts.
+- `reviewer8-adversarial-f003` → v8 adds explicit `BOOTSTRAP_MAINTENANCE` under a separate Working AIP/Workspace, HUMAN-selected administrative or attempt/resource accounting, model-call ceiling, bounded effects, stop conditions, verification, independent review and HUMAN acceptance; it cannot hide cost in the successor WBS.
+- v8 requires a fresh immutable council run.
+
+## Council run-009 findings and v9 corrections
+
+- Run-009 authority and outside-view lanes were valid/empty; adversarial produced three valid findings, all normalized and parent-confirmed. The Chairman omitted required disposition reasons, so run-009 has no official verdict; confirmed high findings require revision.
+- `reviewer9-adversarial-f001` → v9 requires every acceptance owner/delegate to have `actor.kind = human` across the lifecycle, Section 5.4, bundle receipt, P16, Section 10 and Section 12; non-HUMAN delegates are invalid even if named by a HUMAN record.
+- `reviewer9-adversarial-f002` → v9 binds only review policy/template, roles, substitution, retry and budget before charge; it constructs/hash-pins the exact final packet only after output/verifier bytes exist and before dispatch, with byte-identical retries/fallback.
+- `reviewer9-adversarial-f003` → v9 requires MIGRATION_MAINTENANCE to have a separate Working AIP, one canonical Task Workspace, current-step/ASC binding, Workspace runtime evidence, scoped governed lint and closure before returning to FROZEN.
+- v9 requires a fresh immutable council run.
+
+## Council run-010 finding and v10 correction
+
+- Run-010 closed formally as `needs_revision`. Authority and adversarial independently reported the same high-severity contradiction: Section 5.1 prohibited bootstrap mission-attempt allocation while Section 6.3/P15/entry criteria still offered mission-attempt accounting as an alternative.
+- v10 makes `BOOTSTRAP_MAINTENANCE` accounting single-valued: one canonical uncharged administrative resource ledger and HUMAN-bound ceiling; mission-attempt charging is prohibited with no alternative mode. Entry/exit receipts re-hash the mission ledger and mechanically attest unchanged attempt set/count, zero attempt allocation/consumption, zero mission charge, and complete administrative call/effect accounting.
+- v10 requires a fresh immutable council run.
+
+## Council run-011 findings and v11 corrections
+
+- Run-011 closed formally as `needs_revision` with five parent-confirmed findings; the authority lane used its single typed retry after a schema-invalid first response.
+- `reviewer11-authority-002-f1` → v11 defines HUMAN ownership, exact fresh recovery authority, allowed evidence/effects, terminal-abandon behavior and governed exits for `MIGRATION_BLOCKED`; it also closes the analogous `BOOTSTRAP_BLOCKED` path.
+- `reviewer11-authority-002-f2` → v11 makes P14's invalidation-index exception literal: preserved raw-byte prefix/path/owner, contiguous append-only sequence, rejection of truncation/replacement/mismatch, and block on any appended record naming the bundle.
+- `reviewer11-adversarial-f001` → v11 binds designated mission decision-owner identity/source and requires WBS approver equality or a complete hash-pinned, non-revoked, exact-scope HUMAN delegation chain.
+- `reviewer11-adversarial-f002` → v11 forbids invented boundary fields: P15 must bind either proven existing `dsh-wbs-execution/1` JSON pointers with a strict-valid fixture or an exact HUMAN-authorized versioned execution-contract extension/validator/migration.
+- `reviewer11-adversarial-f003` → v11 defines and HUMAN-binds one canonical `AdministrativeResourceLedgerContract`, ledger ID/path, cumulative ceiling, minimum record fields, sole writer/guarded append, validator and complete invocation/effect reconciliation before maintenance.
+- Additional hardening from the schema-invalid first authority response: bootstrap and migration must use the same administrative ledger/cumulative ceiling, and first post-migration charge must revalidate a hash-pinned `migration_authority` receipt.
+- v11 requires a fresh immutable council run.
+
+## Council run-012 findings and v12 corrections
+
+- Run-012 closed formally as `needs_revision` with five parent-confirmed findings.
+- `reviewer11-authority-001-f1` → v12 explicitly admits the exact AIP-declared `run_aip.py step|resume` pointer/ASC/Workspace-control transition as a coordinator-owned uncharged `FROZEN → PREPARING` effect with argv/hash/sequence/epoch receipt; the closed pre-charge set now has four effects including charge-preimage sealing.
+- `reviewer11-authority-001-f2` → v12 makes commit step 1 execute P14 in full, including live P13/P15/P16 and migration-lineage scope/identity/revocation revalidation, and repeats it after charge-preimage sealing at the guarded-write boundary.
+- `reviewer12-adversarial-f001` → v12 defines `POST_CHARGE_REPAIR_REQUIRED/REPAIRING/BLOCKED`, immutable source/candidate/invalid byte evidence, same-attempt/charge HUMAN authorization, one guarded repair, strict validation, independent review, HUMAN repair-byte acceptance and an exceptional P3 lineage link.
+- `reviewer12-adversarial-f002` → v12 terminates metering recursion with a narrow HUMAN-bound append-primitive outer-meter exemption: pinned argv/effect, verified fixed overhead reserve per attempted append, bounded invocation count, atomic activity record and independent before/after operation receipt reconciliation.
+- `reviewer12-adversarial-f003` → v12 makes bootstrap/migration authority ordered lineages containing initial decision, every recovery decision/receipt and final HUMAN acceptance; P14 re-hashes and revalidates every applicable link.
+- v12 requires a fresh immutable council run.
+
+## Council run-013 findings and v13 corrections
+
+- Run-013 closed formally as `needs_revision` with six parent-confirmed findings.
+- `F-001` → v13 roots every alternate acceptor at the designated mission decision owner through a complete hash-pinned, non-revoked, exact-task/scope HUMAN delegation chain across Section 5.4, the bundle receipt, P16 and review/acceptance governance.
+- `F-002` and `reviewer13-adversarial-f003` → v13 includes exact `run_aip.py start|resume|step` tool/argv hashes and bounded pointer/ASC/Workspace-control effects in the closed pre-charge set, bootstrap authority and P15.
+- `F-003` → v13 defines coordinator ownership of `REVIEW_PENDING`, immutable packet/attempt/charge evidence, bounded re-probe/retry/fallback, HUMAN route/budget authorization, return to REVIEWING and terminal unaccepted `REVIEW_UNAVAILABLE_CHARGED`; review waiver cannot accept.
+- `reviewer13-adversarial-f001` → v13 defines a uniform strict-validated, version-guarded, hash/sequence-chained `ExecutionTransitionReceipt` for every charge and ordinary status/outcome/review/acceptance ledger mutation; P3 admits only the complete chain plus the explicit repair link.
+- `reviewer13-adversarial-f002` → migration step 2 consumes the exact P15 execution-representation decision and selects either proven v1 pointers/fixture or the exact extension/validator/migration, avoiding hard-coded v1 and double migration.
+- v13 requires a fresh immutable council run.
+
+## Council run-014 findings and v14 corrections
+
+- Run-014 closed formally as `needs_revision`; adversarial/outside lanes were valid and empty, while authority produced two parent-confirmed medium findings.
+- `reviewer14-authority-001-f1` → v14 defines coordinator-owned `ACCEPTANCE_PENDING` with only a fresh owner-rooted HUMAN chain/decision exit, and `ACCEPTANCE_PROJECTION_REPAIR_REQUIRED/REPAIRING/BLOCKED` with preserved source/candidate/invalid bytes, unchanged semantic action, same-attempt guarded repair, strict validation, independent review and HUMAN repair-byte acceptance.
+- `reviewer14-authority-001-f2` → v14 defines coordinator-owned `INTERRUPTED_CHARGED`, fresh HUMAN `resume_same_attempt|close_failed` disposition, exact remaining effects/resources and resume ceiling, current control revalidation, named transition-receipt edges, no new charge/attempt and fail-closed stranded state.
+- v14 requires a fresh immutable council run.
+
+## Council run-015 findings and v15 corrections
+
+- Run-015 closed formally as `needs_revision`; authority/outside lanes were valid and empty, and adversarial produced three parent-confirmed high findings.
+- `reviewer15-adversarial-f001` → v15 defines a deterministic validator-backed `ReviewClosureReceipt` proving exact packet/policy, all required lane/result hashes, family diversity, retry dispositions, outside-view separation, adjudication gate, separate Chairman closure and verdict; only receipt PASS with pass/pass_with_notes reaches acceptance waiting.
+- `reviewer15-adversarial-f002` → v15 makes the first projection unaccepted `ACCEPTANCE_VERIFYING`, requires independent confirmation of exact final bytes, then performs a second guarded transition; refuted/unavailable/inconclusive results have explicit non-accepted states and cannot be waived.
+- `reviewer15-adversarial-f003` → v15 replaces post-write-only receipts with create-once pre-write `ExecutionTransitionIntent` plus create-once completion; exact idempotent restart can write, finalize already-applied bytes, retry completion persistence or close NOT_APPLIED, while divergent bytes block for HUMAN recovery/migration.
+- v15 also fixes run-015 non-material scenario numbering and explicitly allocates the common administrative ledger across post-charge repair/review/transition-recovery states.
+- v15 requires a fresh immutable council run.
+
+## Council run-016 findings and v16 corrections
+
+- Run-016 closed formally as `needs_revision` with three parent-confirmed findings.
+- `reviewer16-authority-001-f1` → v16 replaces every obsolete `ExecutionTransitionReceipt` reference with the single defined `ExecutionTransitionIntent`/`ExecutionTransitionCompletion` pair across interruption, P3, migration lineage, ownership and WBS-build entry criteria.
+- `reviewer16-adversarial-f001` → v16 requires a charge-edge source-equal restart to rerun the full Section 5.2 charge-boundary checks, including P1–P16/P14, current invalidation index, P7–P12 live state and source version; drift/unavailability writes nothing, closes NOT_APPLIED, invalidates when authorized and requires fresh prepare.
+- `reviewer16-adversarial-f002` → v16 requires immediate final-projection-boundary re-hashing of output/verifier/review-closure/decision/delegation/revocation/current source and P16 revalidation, including restart; any drift writes no final state and remains explicitly unaccepted.
+- v16 requires a fresh immutable council run.
+
+## Council run-017 findings and v17 corrections
+
+- Run-017 closed formally as `needs_revision`; authority/outside lanes were valid and empty, adversarial produced three parent-confirmed findings.
+- `reviewer17-adversarial-f001` → v17 permits candidate-equal APPLIED finalization only with a pre-existing immutable validated `GuardedWriteReceipt` binding exact authorized writer, boundary/authority state, source/candidate and write result; absent/mismatched receipt blocks without APPLIED.
+- `reviewer17-adversarial-f002` → v17 requires every source-equal charge restart to close the old intent NOT_APPLIED and create a fresh bundle/boundary receipt/candidate/intent; the old candidate is never written or modified.
+- `reviewer17-adversarial-f003` → v17 embeds all fresh P1–P13/P15/P16 receipts and recomputable raw evidence inline in bundle-seal bytes, and fresh P14/boundary evidence inline in the charge-preimage/transition-intent seal; no undeclared evidence write is needed.
+- v17 also orders normal charge construction as fresh boundary observation → exact receipt → final candidate → sealed intent → native-sequence equality check → guarded write, while retaining the disclosed residual race.
+- v17 requires a fresh immutable council run.
+
+## Council run-018 findings and v18 corrections
+
+- Run-018 closed formally as `needs_revision`; authority/outside lanes were valid and empty, adversarial produced three parent-confirmed high findings.
+- `reviewer18-adversarial-f001` → v18 defines a canonical aggregate over every P1–P16/P14 input and requires the exact guarded writer to re-read/re-hash every member immediately before charge, abort on omission/unavailability/mismatch, and bind the complete check into its receipt.
+- `reviewer18-adversarial-f002` → v18 requires one validated hash-bound `GuardedWriteReceipt` from the exact P15 writer for every APPLIED completion and every P3 APPLIED lineage link, not only recovery.
+- `reviewer18-adversarial-f003` → v18 expands the exhaustive pre-charge set to five effects, explicitly allowing only create-once validated NOT_APPLIED completion for an abandoned intent with exact owner/path/argv/accounting and zero ledger/attempt/product/acceptance mutation.
+- v18 also requires APPLIED completion before dispatch and allocates common administrative-ledger resources to ordinary uncharged admission/proof/evidence work.
+- v18 requires a fresh immutable council run.
+
+## Council run-019 findings and v19 corrections
+
+- Run-019 closed formally as `needs_revision`; authority/outside lanes were valid and empty, adversarial produced three parent-confirmed high findings.
+- `reviewer19-adversarial-f001` → v19 expands the closed pre-charge set to six effect classes, explicitly including exact guarded AdministrativeResourceLedger reservation/usage appends plus exempt operation receipts, named `ADMISSION_ACCOUNTING_BLOCKED` failure and HUMAN-bound recovery.
+- `reviewer19-adversarial-f002` → v19 requires a conservative immutable pre-cycle `AdmissionResourceReservation` that deducts the full worst-case envelope, covers every post-boundary intent/accounting/completion/recovery effect, permits no refund, and lets the final writer reconcile mutable usage against stable reservation identity without invalidating the boundary receipt.
+- `reviewer19-adversarial-f003` → v19 defines append-only `TransitionIntentIndex`, explicit `TRANSITION_IN_FLIGHT`, and exact transaction-local `P3_IN_FLIGHT` validation for one source/version/candidate-bound intent only; every other open-intent shape blocks and deterministic completion closes the index.
+- v19 requires a fresh immutable council run.
+
+## Council run-020 findings and v20 corrections
+
+- Run-020 closed formally as `needs_revision`; authority/outside lanes were valid and empty, adversarial produced two parent-confirmed high findings.
+- `reviewer20-adversarial-f001` → v20 replaces the journal atomicity assertion with ordered record-then-index OPEN and completion-then-index CLOSE writes; defines `INTENT_INDEX_OPEN_PENDING` and `COMPLETION_INDEX_CLOSE_PENDING`; requires root/index one-to-one reconciliation, exact idempotent split-state recovery, and zero-open ordinary P3 before dispatch or dependency use.
+- `reviewer20-adversarial-f002` → v20 binds deterministic usage-entry IDs in the intent, introduces `CHARGED_ACCOUNTING_PENDING`, requires writer accounting before APPLIED completion, pre-appends fixed attempt accounting before completion and index-close effects, and forbids dispatch until all entries/receipts, APPLIED completion, CLOSE, reconciliation and zero-open P3 validate.
+- v20 requires a fresh immutable council run.
+
+## Council run-021 findings and v21 corrections
+
+- Run-021 closed formally as `needs_revision`; outside lane was valid/empty, authority required one schema-only retry, and adversarial produced three parent-confirmed high findings.
+- `reviewer21-adversarial-f001` → v21 defines separate immutable `AdministrativeEffectAuthorization` before every mutating effect and `AdministrativeEffectOutcome` afterward with actual result/before-after hashes; validators require closed pairs and record observed UNKNOWN outcomes rather than predictions.
+- `reviewer21-adversarial-f002` → v21 makes orphan-intent recovery deterministic: restore and validate the missing OPEN first, then create NOT_APPLIED completion and matching CLOSE; no orphan CLOSE is valid.
+- `reviewer21-adversarial-f003` → v21 assigns `TRANSITION_RECOVERY_BLOCKED` to HUMAN and defines an exact same-attempt `UNKNOWN_APPLIED_NO_RECEIPT` exceptional lineage into terminal `FAILED_CHARGED_PROVENANCE_UNKNOWN`, with independent verification, new guarded recovery transition, preserved charge and no dispatch/acceptance/reuse.
+- Run-021 unreviewed state-machine consistency observation → v21 routes charge through `CHARGED_ACCOUNTING_PENDING` and `COMPLETION_INDEX_CLOSE_PENDING` before ACTIVE/DISPATCHED.
+- v21 requires a fresh immutable council run.
+
+## Council run-022 findings and v22 corrections
+
+- Run-022 closed formally as `needs_revision`; authority/outside lanes were valid and empty, adversarial produced three parent-confirmed findings.
+- `reviewer22-adversarial-f001` → v22 defines one HUMAN-authorized `ADMIN_LEDGER_GENESIS` exception: exact staged hashes and canonical paths, pre-reviewed immutable generic writer/argv, one deterministic-call/zero-model bounded allowance, independent post-write verification, HUMAN acceptance and immutable genesis receipt seeding sequence zero; no other unmetered authoring is allowed.
+- `reviewer22-adversarial-f002` → v22 adds a distinct `TRANSITION_RECOVERY_BLOCKED_DIVERGENT` branch from exact observed current bytes/version to strict-valid terminal `FAILED_CHARGED_PROVENANCE_UNKNOWN`, conservatively preserving the original attempt/charge under HUMAN authority, dedicated guarded repair, accounting pairs, independent review and explicit exceptional P3 lineage.
+- `reviewer22-adversarial-f003` → v22 limits the counterfactual to unreadiness already observable at the charge boundary and explicitly classifies later provider/sandbox/external-state loss as charged residual `REVIEW_PENDING`, `INTERRUPTED_CHARGED` or terminal recovery.
+- v22 requires a fresh immutable council run.
+
+## Council run-023 findings and v23 corrections
+
+- Run-023 closed formally as `needs_revision`; authority needed one schema-only retry and was empty, outside was valid/empty, and adversarial produced two parent-confirmed high findings.
+- `reviewer23-adversarial-f001` → v23 explicitly discloses the final acceptance cross-artifact revocation TOCTOU, binds authority path/hash/native sequence/epoch into the projection receipt, rechecks immediately post-write and before every dependency/activation/closure reliance, and makes any mismatch `ACCEPTANCE_AUTHORITY_CONFLICT` with unaccepted dependency semantics and mandatory fresh HUMAN decision/two-phase verification.
+- `reviewer23-adversarial-f002` → v23 replaces the one-call genesis allowance with an exact four-invocation/zero-model pre-ledger envelope: staged writer, independent staged verifier, HUMAN-acceptance-gated sequence-zero finalizer and independent canonical closure verifier, each bounded and receipted before final HUMAN genesis acceptance.
+- v23 requires a fresh immutable council run.
+
+## Council run-024 findings and v24 corrections
+
+- Run-024 closed formally as `needs_revision`; authority/outside lanes were valid and empty, adversarial produced three parent-confirmed high findings.
+- `reviewer24-adversarial-001-f001` → v24 expands genesis into a finite HUMAN-bound pre-ledger authoring program: no staged implementation bytes or review evidence are presumed; all authoring, file effects, model/tool calls, review, lint, staging, verification and finalization are recorded in one bounded `GenesisSeedJournal` rooted only in a named HUMAN-supplied immutable generic writer.
+- `reviewer24-adversarial-001-f002` → v24 requires a dedicated hash-bound genesis Working AIP and canonical Task Workspace; their scaffold creation, exact `run_aip.py start|step`, Workspace-control updates, lint and closure effects are explicit first-class entries in the seed ceiling/journal.
+- `reviewer24-adversarial-001-f003` → v24 makes the administrative ledger entry itself the atomic append receipt, embeds idempotency/source/candidate/overhead fields, defines source-equal/candidate-equal/divergent restart branches, conservatively accounts UNKNOWN, blocks all later activity until HUMAN-bound recovery, and requires crash-point fixtures.
+- v24 requires a fresh immutable council run.
+
+## Council run-025 findings and v25 corrections
+
+- Run-025 closed formally as `needs_revision`; authority/outside lanes were valid and empty, adversarial produced three parent-confirmed high findings.
+- `reviewer25-adversarial-001-f001` → v25 forbids identical-candidate self-retry: every administrative append invocation is first assigned/debited a unique RootControlJournal attempt; source-equal is blocked, and any retry needs a new root entry and new candidate/sequence carrying all earlier failed-attempt debits.
+- `reviewer25-adversarial-001-f002` → v25 keeps a finite post-genesis HUMAN-rooted administrative-recovery channel with exact recovery decision, version-guarded argv, preserved corrupt evidence, independent verification, one-way restored/terminal outcome, conservative debit and P15/P14 lineage validation; root failure is fail-stop.
+- `reviewer25-adversarial-001-f003` → v25 requires atomic-publish crash fixtures and defines differing/partial completion tombstones, exceptional recovery CLOSE, same-attempt terminal `FAILED_CHARGED_COMPLETION_CORRUPT`, plus HUMAN/RootControlJournal-governed superseding index generation for corrupt index bytes.
+- v25 requires a fresh immutable council run.
+
+## Council run-026 findings and v26 corrections
+
+- Run-026 closed formally as `needs_revision`; authority/outside lanes were valid and empty, adversarial produced three parent-confirmed high findings.
+- `reviewer26-adversarial-001-f001` → v26 makes P14 pin a RootControlJournal prefix and permits only contiguous reservation-scoped extensions with pre-bound attempt IDs/classes/count; the final writer re-reads and reconciles exact debit/remaining ceiling, while unrelated/missing/duplicate/excess entries expire the bundle.
+- `reviewer26-adversarial-001-f002` → v26 defines non-recursive administrative hashes: canonical entry body excludes hash fields, `entry_body_sha256` and chained `entry_hash` are computed first, the candidate embeds only the root authorization hash, and a second pre-write RootControlJournal candidate-commit binds the full raw candidate-ledger SHA without being embedded back.
+- `reviewer26-adversarial-001-f003` → v26 adds append-only `ReviewRouteAuthorizationAmendment` with prior policy/amendment hash, exact route role/family, eligibility/diversity proof, retry disposition and unchanged-packet invariant; actual dispatch and `ReviewClosureReceipt` bind the complete amendment chain.
+- v26 requires a fresh immutable council run.
+
+## Council run-027 findings and v27 corrections
+
+- Run-027 closed formally as `needs_revision`; authority/outside lanes were valid and empty, adversarial produced three parent-confirmed high findings.
+- `reviewer27-adversarial-001-f001` → v27 requires a RootControlJournal `GenesisEffectAuthorization` before every genesis call/effect with immediate worst-case debit and a linked outcome afterward; open pairs are UNKNOWN/fully consumed and every recovery/replacement carries conservative debits.
+- `reviewer27-adversarial-001-f002` → v27 requires each route amendment actor to equal the designated mission decision owner or present a complete owner-rooted, non-revoked, exact-scope HUMAN delegation chain revalidated at amendment validation, dispatch and closure.
+- `reviewer27-adversarial-001-f003` → v27 forbids amendments from adding call budget, retry slots or changing retry policy; one amendment may only assign a replacement route to an unused original slot within the immutable aggregate reservation, while exhaustion permits wait or terminal unavailable only.
+- v27 requires a fresh immutable council run.
+
+## Council run-028 findings and v28 corrections
+
+- Run-028 closed formally as `needs_revision`; authority/outside lanes were valid and empty, adversarial produced two high and one medium parent-confirmed finding.
+- `reviewer28-adversarial-001-f001` → v28 adds create-once RootControlJournal `AdministrativeAppendAttemptOutcome` after every ledger invocation, binding authorization/candidate-commit, observed bytes/version, APPLIED/NOT_APPLIED/UNKNOWN, units and observation receipt; missing outcome is fail-stop.
+- `reviewer28-adversarial-001-f002` → v28 defines exact integer equations for ceiling, global committed/remaining, reservation debit, actual sub-usage, reservation remaining and append overhead; reservation debits global once, actual entries never double-debit, and failure/UNKNOWN consumes authorized maximum.
+- `reviewer28-adversarial-001-f003` → v28 orders migration as staged candidate → validation/review/lint → HUMAN selection → one version-guarded canonical write → raw re-read/equality/strict validation → independent persisted-byte verification → final HUMAN byte acceptance → `FROZEN(new base)`; all post-write failures use the bound restore path.
+- v28 requires a fresh immutable council run.
+
+## Council run-029 findings and v29 corrections
+
+- Run-029 closed formally as `needs_revision`; authority/outside lanes were valid and empty, adversarial produced three parent-confirmed high findings.
+- `reviewer29-adversarial-001-f001` → v29 removes the conflicting `POST_CHARGE_REPAIR_*` path. Invalid/divergent persisted charge bytes enter only `TRANSITION_RECOVERY_BLOCKED_DIVERGENT`; the original OPEN is first disposed by `DIVERGENT_UNKNOWN_WRITE` plus `RECOVERY_CLOSE`, then a same-attempt terminal recovery reaches only `FAILED_CHARGED_PROVENANCE_UNKNOWN`.
+- `reviewer29-adversarial-001-f002` → v29 defines non-cyclic two-stage evidence: immutable `ChargeBoundaryPreflightReceipt` is embedded unchanged in the candidate; closed administrative authorization plus in-writer checks authorize one write; post-invocation `GuardedWriteReceipt` binds all later root/admin/intent/OPEN and final observation/result hashes without changing preflight.
+- `reviewer29-adversarial-001-f003` → v29 adds pre-charge `INTENT_CORRUPT_BLOCKED`, preserved corrupt bytes, HUMAN-bound `IntentCorruptionTombstone`, independently verified/accepted intent-root manifest supersession and optional index-generation `RECOVERY_CLOSE`, with zero-charge/source-equal proof before re-prepare.
+- v29 requires a fresh immutable council run.
+
+## Council run-030 findings and v30 corrections
+
+- Run-030 closed formally as `needs_revision`; authority/outside lanes were valid and empty; the first adversarial call failed with a typed provider failure and the sole identical-packet retry produced three parent-confirmed high findings.
+- `reviewer30-adversarial-002-f001` → v30 makes the sole index exception explicit: preflight binds zero-open prior index hash/sequence and exact predicted one-OPEN entry/new hash/sequence/intent; the guarded writer rejects every other delta.
+- `reviewer30-adversarial-002-f002` → v30 deletes special acceptance-repair states and subordinates acceptance projection to uniform source/candidate/divergent recovery. Partial, invalid or divergent bytes reach only `FAILED_CHARGED_PROVENANCE_UNKNOWN`, never acceptance/rejection.
+- `reviewer30-adversarial-002-f003` → v30 adds separate zero-charge `UNCHARGED_COMPLETION_CORRUPT_BLOCKED` recovery with source-equal/zero-attempt/unchanged-charge proof, uncharged tombstone, RECOVERY_CLOSE and verified/accepted index generation; it neither requires nor invents a guarded receipt or charge.
+- v30 requires a fresh immutable council run.

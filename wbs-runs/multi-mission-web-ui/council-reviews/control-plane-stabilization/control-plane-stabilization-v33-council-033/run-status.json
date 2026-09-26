@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v33-council-033",
+  "state": "failed",
+  "stage": "chairman",
+  "failure": {
+    "code": "schema_invalid",
+    "stage": "chairman",
+    "subject": "inv33-chairman-002",
+    "message": "Sole typed Chairman retry remained schema-invalid: missing chairman and decision_owner, extra top-level fields, residual_risks wrong shape. Mandatory Chairman unavailable; formal consequence insufficient_evidence.",
+    "retryable": false,
+    "invocation_id": "inv33-chairman-002"
+  },
+  "updated_sequence": 4
+}

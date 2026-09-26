@@ -4,8 +4,8 @@ import type { SessionEvent, SessionEventMap, SessionEventType } from '@deepseek-
 import { emptyTeamState, teamProjectionDefinition } from '../src/projection.ts'
 import type { TeamProjectionState, TeamState } from '../src/projection.ts'
 import { isStructuralTaskMutation } from '../src/task-board.ts'
-import { TeamId, TeamMessageId, TeamTaskId } from '../src/types.ts'
-import type { TeamMemberSnapshot, TeamMessageSnapshot, TeamTaskSnapshot } from '../src/types.ts'
+import { TeamId, TeamMessageId, TeamMissionId, TeamTaskId } from '../src/types.ts'
+import type { TeamMemberSnapshot, TeamMessageSnapshot, TeamMissionSnapshot, TeamTaskSnapshot } from '../src/types.ts'
 
 const ROOT = SessionId('team-root')
 const TEAM = TeamId(ROOT)
@@ -67,6 +67,18 @@ function task(overrides: Partial<TeamTaskSnapshot> = {}): TeamTaskSnapshot {
     status: 'pending',
     blockedBy: [],
     writeScopes: [],
+    ...overrides,
+  }
+}
+
+function mission(overrides: Partial<TeamMissionSnapshot> = {}): TeamMissionSnapshot {
+  return {
+    id: TeamMissionId('mission-1'),
+    revision: 1,
+    title: 'Mission one',
+    objective: 'Mission objective',
+    status: 'draft',
+    plan: { tasks: [task({ id: TeamTaskId('mission-task') })] },
     ...overrides,
   }
 }
@@ -138,6 +150,88 @@ describe('Agent Teams projection events', () => {
     ])
 
     expect(state.planRevision).toBe(2)
+  })
+
+  it('replays independent mission records and isolated approvals', () => {
+    const alpha = mission()
+    const beta = mission({
+      id: TeamMissionId('mission-2'),
+      title: 'Mission two',
+      plan: { tasks: [task({ id: TeamTaskId('beta-task') })] },
+    })
+    const approvedAlpha = {
+      ...alpha,
+      revision: 2,
+      status: 'approved' as const,
+      approval: { approvedRevision: 2 },
+    }
+    const state = projectTeam(ROOT, [
+      event('team/mission', { version: 2, teamId: TEAM, mission: alpha }, SessionSeq(0)),
+      event('team/mission', { version: 2, teamId: TEAM, mission: beta }, SessionSeq(1)),
+      event('team/mission', { version: 2, teamId: TEAM, mission: approvedAlpha }, SessionSeq(2)),
+    ])
+
+    expect(state.missions).toEqual([approvedAlpha, beta])
+    expect(state.tasks).toEqual([])
+    expect(() => projectTeam(ROOT, [
+      event('team/mission', { version: 2, teamId: TEAM, mission: alpha }, SessionSeq(0)),
+      event('team/mission', { version: 2, teamId: TEAM, mission: approvedAlpha }, SessionSeq(1)),
+      event('team/mission', {
+        version: 2,
+        teamId: TEAM,
+        mission: { ...approvedAlpha, revision: 4, approval: { approvedRevision: 4 } },
+      }, SessionSeq(2)),
+    ])).toThrow(/revision is not contiguous/)
+  })
+
+  it('rejects malformed and non-initial mission task plans during replay', () => {
+    const base = mission()
+    const invalid: Array<{ mission: TeamMissionSnapshot; message: RegExp }> = [
+      {
+        mission: { ...base, plan: { tasks: {} as unknown as TeamTaskSnapshot[] } },
+        message: /persisted Agent Teams team\/mission payload is invalid/,
+      },
+      {
+        mission: { ...base, plan: { tasks: [
+          task({ id: TeamTaskId('duplicate-task') }),
+          task({ id: TeamTaskId('duplicate-task') }),
+        ] } },
+        message: /duplicate task id/,
+      },
+      {
+        mission: { ...base, plan: { tasks: [
+          task({ id: TeamTaskId('cycle-a'), blockedBy: [TeamTaskId('cycle-b')] }),
+          task({ id: TeamTaskId('cycle-b'), blockedBy: [TeamTaskId('cycle-a')] }),
+        ] } },
+        message: /dependency cycle/,
+      },
+      {
+        mission: { ...base, plan: { tasks: [
+          task({ blockedBy: [TeamTaskId('missing-task')] }),
+        ] } },
+        message: /missing or deleted/,
+      },
+      {
+        mission: { ...base, plan: { tasks: [task({ ownerId: SessionId('unknown-owner') })] } },
+        message: /must begin unowned/,
+      },
+      {
+        mission: { ...base, plan: { tasks: [task({ revision: 2 })] } },
+        message: /must begin at revision 1/,
+      },
+      {
+        mission: { ...base, plan: { tasks: [task({ status: 'completed' })] } },
+        message: /must begin pending/,
+      },
+    ]
+
+    for (const { mission: candidate, message } of invalid) {
+      expect(() => projectTeam(ROOT, [event('team/mission', {
+        version: 2,
+        teamId: TEAM,
+        mission: candidate,
+      }, SessionSeq(0))])).toThrow(message)
+    }
   })
 
   it('projects exact-revision approval and derives staleness after a structural mutation', () => {

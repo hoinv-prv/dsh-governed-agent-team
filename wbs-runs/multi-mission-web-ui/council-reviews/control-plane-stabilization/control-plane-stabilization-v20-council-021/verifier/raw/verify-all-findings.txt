@@ -1,0 +1,4 @@
+Parent read-only verification against immutable design-v20 SHA-256 fb527fc53487c587888172383b243efb06a19d63314d50bdd1a14967d3927e0a.
+Confirmed reviewer21-adversarial-f001: pre-effect attempt entry cannot contain actual result/after hash and has no explicit outcome pair.
+Confirmed reviewer21-adversarial-f002: orphan-intent abandonment does not require restoring OPEN before completion/CLOSE.
+Confirmed reviewer21-adversarial-f003: candidate-equal missing-writer-receipt state has no executable same-attempt terminal recovery.

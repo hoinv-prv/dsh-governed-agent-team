@@ -52,6 +52,12 @@
 ## Shipped runtime wiki (aiws namespace)
 - The AIWS install also ships a **pre-built, searchable AIWS wiki** in a dedicated **`aiws` namespace** (`.ai-work/wiki_sources/index.aiws.jsonl` + `relations.aiws.jsonl`, pre-built in `payload/aiws_wiki_index/`; rebuild via `build_preset_wiki.py --target .`), queryable via `lookup_wiki_source.py --scope aiws` and traversable via `wiki_relations.py --relations <id>` — separate from the project's own domain wiki (`index.jsonl` / `relations.jsonl`). (CR-AIWS-2026-06-040 / -041; noted per CR-AIWS-2026-06-059; relations preset per CR-AIWS-2026-08-064.)
 
+## Standard Pack — a SECOND, separate package (CR-AIWS-2026-09-001)
+- **The AIWS package does NOT contain a Standard Pack.** A company's versioned process assets (process · template · checklist · guideline · rule · aip_template · skill) ship as their **own** package `vti_standard_pack_<pack_version>_<date>/`, built by `build_standard_pack_package.py`.
+- It installs **on top of** a project that already has AIWS — verb **`install-pack`** of the `aiws-pkg` skill (`operations/install-pack.md`). The two packages never replace each other and never write each other's files.
+- Payload → targets: `payload/standard_pack/` → `.ai-work/standard_pack/` (pack-owned, replaced wholesale on upgrade) · `payload/standard_pack_wiki/` → `.ai-work/wiki_sources/aiws_meta/standard_pack/` (same `aiws` namespace as above) · `payload/wiki_source_profiles/standard_asset.yml` → `.ai-work/wiki_sources/profiles/` (**merge, never overwrite**) · pack skills → `.claude/skills/<name>/` (name clash → **stop and ask**, never overwrite).
+- Three version layers, three owners: AIWS (`product/aiws_version.md`) · pack (`pack.yml > pack_version`) · the project's pin (`standard_pack` in `.ai-work/project_profile.yml`). The pack's `aiws_min_version` is a one-way contract — install refuses before copying a byte when the project's AIWS is older. Contract: `Standard_Pack_Contract_Spec_MVP` §9 / §2.1.
+
 ## Appendix
 - execution notes
 - sprint backlogs

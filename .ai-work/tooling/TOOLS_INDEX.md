@@ -22,6 +22,8 @@
 | `build_python_wiki_metas.py` | Batch-build Wiki Source Metas for Python source files (LEAN + typed import edges). |
 | `build_reading_kit.py` | Reading-kit / digest generator (CR-AIWS-2026-07-003 E2). |
 | `build_relations.py` | Build the Wiki Relations projection (relations.jsonl) from source metas. |
+| `build_standard_pack_metas.py` | Build Wiki Source Metas for a Standard Pack (Standard_Pack_Contract_Spec_MVP §12). |
+| `build_standard_pack_package.py` | Build an installable package for ONE Standard Pack (Standard_Pack_Contract_Spec_MVP §2/§9/§12). |
 | `build_wiki_overview.py` | Wiki overview synthesis pages (CR-AIWS-2026-07-010). |
 | `build_wiki_page_base.py` | deterministic base for /aiws-wiki build-pages (CR-AIWS-2026-07-023). |
 | `build_wiki_source_index.py` | Build the Wiki Source Index as a projection of all source metas. |
@@ -35,8 +37,10 @@
 | `diff_payload_tree.py` | Per-file ADD / UPDATE / UNCHANGED / REMOVED between a package payload and an installed tree. |
 | `evaluate_wiki_source_impact.py` | Evaluate whether a source change likely impacts the wiki. |
 | `init_workspace.py` | Initialize a task workspace from the workspace template. |
+| `install_standard_pack.py` | Install AND upgrade ONE Standard Pack package into a project that already has AIWS. |
 | `lint_aip.py` | Lint AIP files (PLAN / EXEC / LOCAL). |
 | `lint_all.py` | Run all MVP lints (AIP, workspaces, wiki) and aggregate results. |
+| `lint_standard_pack.py` | contract lint for a Standard Pack. |
 | `lint_wiki.py` | Lint wiki knowledge artifacts and wiki source-side artifacts. |
 | `lint_workspace.py` | Lint a runtime workspace directory. |
 | `lookup_wiki_source.py` | Lookup sources via the Wiki Source Index. |
@@ -45,8 +49,10 @@
 | `normalize_wiki_meta.py` | Batch-normalize legacy Wiki Source Meta fields to current lint-conformant form. |
 | `personal_notebook_write.py` | aiws-util-personal-notebook helper. |
 | `project_profile.py` | create, check and complete `.ai-work/project_profile.yml`. |
+| `pull_standard_pack.py` | snapshot a Standard Pack from OUTSIDE the repo into `product/standard_pack/`. |
 | `read_operating_memory.py` | Print the Operating Memory L2 digest on stdout (CR-AIWS-2026-08-029). |
 | `refresh_wiki_source_meta.py` | Refresh a Wiki Source Meta against the current source artifact. |
+| `resolve_task.py` | Resolve the EFFECTIVE binding of one standard-pack task (Standard_Pack_Contract_Spec_MVP §6/§7.3/§8). |
 | `route_build_tool.py` | Source Build Routing registry CLI — CR-AIWS-2026-05-019 Stage 2. |
 | `run_aip.py` | Orchestrate AIP execution: start, resume, jump-to-step, status, list-steps. |
 | `scan_sensitive.py` | Scan markdown files for sensitive information and report findings. |
@@ -59,4 +65,4 @@
 | `wiki_meta.py` | Meta value-add reader — output a Wiki Source Meta's ORIENTATION info for AI WITHOUT |
 | `wiki_relations.py` | Query the Wiki Relations edge layer (opt-in, one-hop). |
 
-**Tổng: 52 tool.**
+**Tổng: 58 tool.**

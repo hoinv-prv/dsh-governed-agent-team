@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v38-council-041",
+  "reviewer_id": "reviewer41-authority-001",
+  "lane": "internal-authority",
+  "invocation_id": "inv41-auth-001",
+  "attempt": 1,
+  "status": "completed",
+  "artifact_manifest_sha256": "f94f521fc6cb9a42eb40052cd64668a066d207dd3337d6b4491da59a216699ed",
+  "packet_sha256": "e4d88d2ca087f938e987270e83c940b1ae7e572fb714b73e3e1725f2b21aa217",
+  "findings": [
+    {
+      "finding_id": "AUTH41-F-001",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "evidence-basis",
+      "claim": "The Section 15.1 exact-basis list binds the consistency audit, the run-033 ledger/verifier, run-034 dispatch/authority/adversarial, run-038 authority/adversarial/outside and preserved run-039 current authority/adversarial/outside, but never raw-byte binds the run-040 authority or run-040 adversarial envelope whose findings the same matrix claims to correct, so the run-040 closure rows cannot satisfy the matrix's own 'Absence or mismatch makes the corresponding closure claim not-verifiable' rule.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "8 and 624 and 672-680"
+      },
+      "evidence_excerpt": "Exact bases are: consistency audit `6e91a5bc...7cfbef`; run-033 ledger and verifier; run-034 dispatch/authority/adversarial; run-038 authority/adversarial/outside; preserved run-039 current authority/adversarial/outside ... Absence or mismatch makes the corresponding closure claim not-verifiable",
+      "impact": "The design header states it was corrected from independently checked run-040 outside content, and rows 672-680 claim closure of AUTH40R-F-001/002/003/006/007 and ADV40R-F-001..008 by citing those IDs, yet none of the constants of the run-040 authority envelope (sha256 5f3eccb0e4a799743ee01190788f91b877f9af9d93a467ebeb168fb385996bc6) or run-040 adversarial envelope (sha256 a131319eca6e423722c2514826ef367bde0d03c7556e222522562cbdb623e05c) appear anywhere in the 709 v38 bytes. A later handoff or deterministic validator cannot re-hash the defining bytes of the newest corrections, so it cannot distinguish a faithful correction from silent drift or substitution, and the Section 16 drafting precondition that every material finding be dispositioned cannot be evidenced from the pinned packet for the run-040 set. This is the same class of defect the design already accepted for run-033/run-038/run-039 as AUTH40R-F-004/AUTH40R-F-005, re-introduced for run-040.",
+      "recommended_action": "Add the run-040 authority and run-040 adversarial envelope SHA-256 constants to the Section 15.1 exact-basis paragraph as the pinned authority for the run-040 rows, and either add a row for run-040 outside envelope sha256 bb119504d27026381ddf990cf8eb7bada55d309b8d6673a72e8884b460e04abc recording that it is schema-invalid and supplies no formal lane, or state explicitly and with reasons that each run-040 base is immaterial to the correction claim.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-authority-001",
+        "invocation_id": "inv41-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "finding_id": "AUTH41-F-002",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "Section 5.0.1 requires the Section 14 coverage index to cover every `allowed_edges` value of the CP-01..CP-16 registry, but the Section 14 failure matrix has no row for the charged-accounting success edge `CHARGED_ACCOUNTING_PENDING→COMPLETION_INDEX_CLOSE_PENDING` (CP-12), the review-return edge `REVIEW_PENDING→REVIEWING` (CP-14), or the CP-15 return edges `ACCEPTANCE_PENDING|ACCEPTANCE_AUTHORITY_CONFLICT→AWAITING_HUMAN_ACCEPTANCE` and `ACCEPTANCE_VERIFICATION_PENDING|ACCEPTANCE_VERIFICATION_FAILED→ACCEPTANCE_VERIFYING`, so the claimed coverage is incomplete.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "202 and 221-224 and 540-574"
+      },
+      "evidence_excerpt": "the Section 14 coverage index may reference one or more CP IDs without repeating their prose but must cover every `allowed_edges` value; and fixtures bind the CP ID plus exact allowed edge",
+      "impact": "The CP registry is declared the exhaustive normative edge index and the manifest/P3/P15 mirror repeats the `allowed_edges` cell exactly, while Section 14 is the named coverage index for failure dispositions. Because the four success/return edges above have no failure row, the deterministic coverage diff required by Section 5.0.1 cannot return complete, an implementer or later validator cannot derive the failure disposition, receipt pair or fixture for a legitimate accounting-completion, route-restoration or fresh-decision return, and the missing cells are exactly the paths that must not be improvised under the rule that an edge absent from the registry is forbidden.",
+      "recommended_action": "Add explicit Section 14 rows (with CP ID, required response and fixture binding) for the CP-12 charged-accounting success edge, the CP-14 `REVIEW_PENDING→REVIEWING` return, and the CP-15 fresh-decision and identical-input reverification returns, or narrow the Section 5.0.1 coverage predicate to the exact set of edges Section 14 is required to enumerate and state that predicate normatively.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-authority-001",
+        "invocation_id": "inv41-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "finding_id": "AUTH41-F-003",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "ownership",
+      "claim": "CP-16's row declares its sole permitted edge as the terminal completion-chain head while also stating that an explicit acceptance-authority conflict makes `ACCEPTED` non-usable, but it does not register the outgoing `ACCEPTED→ACCEPTANCE_AUTHORITY_CONFLICT` edge, which CP-15 already lists among its allowed edges, so the transition out of a conflicted `ACCEPTED` has no owner row whose `allowed_edges` cell contains it.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "224-225"
+      },
+      "evidence_excerpt": "| CP-16 | `ACCEPTED`, ... | terminal except explicit acceptance-authority conflict makes ACCEPTED non-usable and requires CP-15 fresh decision | exact terminal completion-chain head | terminal/reliance fixtures |",
+      "impact": "Section 5.4, the failure-matrix row 'Authority/revocation changes after last projection read', and the composed-table row 'acceptance authority conflict' all require a conflicted `ACCEPTED` to move to `ACCEPTANCE_AUTHORITY_CONFLICT` and then, on a fresh owner-rooted HUMAN decision, to `AWAITING_HUMAN_ACCEPTANCE`. CP-15 names `ACCEPTANCE_VERIFYING|ACCEPTED→ACCEPTANCE_AUTHORITY_CONFLICT` among its own edges, so the same edge is attributed to the row that does not own `ACCEPTED` and absent from the row that does. Because the CP row is mirrored one-to-one into the P3 allowlist (`allowed_edges`) and the P15 manifest and Section 5.0.1 states an edge absent from the registry is forbidden, a literal implementation of the registry cannot derive the entry edge and leaves a conflicted acceptance either stranded non-usable or improvised.",
+      "recommended_action": "Register the `ACCEPTED→ACCEPTANCE_AUTHORITY_CONFLICT` edge in CP-16's sole permitted edge cell (and remove the duplicate attribution from CP-15, or state explicitly which row owns it), then mirror the corrected cell in the P3 allowlist, the P15 manifest, the Section 14 coverage index and the terminal/reliance fixture.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-authority-001",
+        "invocation_id": "inv41-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.75
+    },
+    {
+      "finding_id": "AUTH41-F-004",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "evidence-basis",
+      "claim": "The `TransitionCapabilityManifest` header binds a `design_sha256` field, but neither the `AdmissionBundle.transition_capability_manifest` reference nor P5/P14/P15 requires that field to equal the current `AcceptedDesignRegistry` generation's design hash, so a manifest generation authored for an earlier design revision can still be admitted as `READY`.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": {
+        "kind": "line",
+        "value": "206 and 281 and 386"
+      },
+      "evidence_excerpt": "Its header binds `{generation,previous_generation_sha256,registry_revision,design_sha256,human_acceptance_sha256}` ... transition_capability_manifest: <canonical path + latest monotone generation + raw SHA256 + schema/validator/operation hashes + HUMAN acceptance raw SHA256; absent/stale/ambiguous means NOT_READY>",
+      "impact": "P15 re-hashes the manifest's raw bytes/schema/validator/acceptance and P5 re-hashes the bundle's `design_basis` registry generation and raw design bytes, but no predicate compares the manifest header's `design_sha256` with the registry entry's `design_raw_sha256`. A stale-but-accepted manifest generation therefore keeps controlling which state/edge cells P3/P15 accept while the registry's current design differs, and Section 16's requirement that the accepted manifest and the accepted design be simultaneously current is not mechanically checkable from the bundle and P5/P14 evidence alone. The failure direction is conservative (P14 would catch a mismatching bundle), so this is an evidence-precision gap rather than an unpinned charge path.",
+      "recommended_action": "Add `design_sha256` equality with the resolved `AcceptedDesignRegistry` current generation (and with `AdmissionBundle.design_basis`'s selected design hash) to the P5 design-basis predicate and to the P14/P15 re-hash set, with a fixture proving that a manifest generation bound to a superseded design is `NOT_READY`.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer41-authority-001",
+        "invocation_id": "inv41-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.65
+    }
+  ],
+  "rejected_candidates": []
+}

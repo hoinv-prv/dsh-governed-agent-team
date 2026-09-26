@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v31-council-032",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "AUTH32-F-001",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "The root-cause and design-basis pin cannot be reproduced from the pinned bytes: line 29 names the immutable run-002 snapshot `snapshots/failure-model` with SHA-256 434f1613751d8a2b5b8813936404e4567e698ea4ace88ed74863e2a56e4d8b86, while the dispatched source_of_truth `failure-model` artifact and its snapshot carry SHA-256 fda41fa9e8de24f6f567c60cfa8ea58b82cba41886230692a6a7f77b0c95d253, and no 434f snapshot is included in the packet.",
+      "classification": "fact",
+      "severity": "critical",
+      "governance_class": null,
+      "artifact_id": "design-v31",
+      "locator": {
+        "kind": "line",
+        "value": "29"
+      },
+      "evidence_excerpt": "The evidence-bound failure model used for v31 is the immutable run-002 snapshot `snapshots/failure-model`, SHA-256 `434f1613751d8a2b5b8813936404e4567e698ea4ace88ed74863e2a56e4d8b86`",
+      "impact": "RC-SYSTEM-01 and the P5 source/design-basis integrity gate rest on a hash that no dispatched artifact reproduces and that is not included in the review packet, so the root-cause classification and the P5 failure disposition are not verifiable from exact pinned bytes; a later WBS admission could pass or fail P5 against a basis no reviewer or validator can re-hash.",
+      "recommended_action": "Either include the exact 434f1613… run-002 failure-model snapshot in the immutable design-basis set with its path and hash, or correct the cited hash to the accepted basis bytes, and make P5 fail closed when the cited hash is not present and reproducible.",
+      "verification": {
+        "status": "refuted",
+        "verification_id": "verify-refuted"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer32-authority-001",
+        "invocation_id": "inv32-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.96,
+      "source_candidate_ids": [
+        "AUTH32-F-001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "AUTH32-F-002",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "Every admission predicate is produced by the same coordinator actor whose charge it gates, and the design sets no independent observer/witness requirement for the bypass it concedes, so declared procedural fail-closed governance rests on self-attestation.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v31",
+      "locator": {
+        "kind": "line",
+        "value": "203"
+      },
+      "evidence_excerpt": "A delegated or otherwise capable writer may also bypass the procedural single-coordinator path because no native capability denial is established; P8 observes topology/quiescence but does not prove such a writer is technically unable to charge.",
+      "impact": "A charge taken outside the procedural path by the coordinator or another capable writer is detectable only by the same actor that performs the write; the HUMAN-facing disclosure is the only compensating control and no predicate is independently corroborated, so known unreadiness can be charged without any observer able to establish it.",
+      "recommended_action": "Require at least one admission predicate — minimum coordinator quiescence and the post-charge ledger write — to be observed and bound by an independent actor or an append-only witness the charging writer cannot author, and make its absence NOT_READY.",
+      "verification": {
+        "status": "refuted",
+        "verification_id": "verify-refuted"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer32-authority-001",
+        "invocation_id": "inv32-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.85,
+      "source_candidate_ids": [
+        "AUTH32-F-002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "AUTH32-F-003",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "The design declares that authority and precedence follow the pinned repository rule, but never hash-pins the repository rule or AIWS architecture bytes into the admission bundle or P5 re-hash set, leaving its own authority basis outside the verified evidence chain.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v31",
+      "locator": {
+        "kind": "line",
+        "value": "106"
+      },
+      "evidence_excerpt": "Authority follows the pinned repository rule without abbreviation.",
+      "impact": "If the rule or architecture bytes are revised after design approval, nothing in the bundle detects it and no admission predicate re-hashes the source that defines the coordinator's authority, HUMAN gates and content precedence, so the constitutional basis of the gate is unverified.",
+      "recommended_action": "Bind the exact repository-rule and AIWS-architecture snapshot hashes in the design-basis/bootstrap decision and have P5 re-hash them like the design and failure-model inputs.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer32-authority-001",
+        "invocation_id": "inv32-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.8,
+      "source_candidate_ids": [
+        "AUTH32-F-003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer32-adversarial-001-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "commitment-construction",
+      "claim": "The claimed acyclic intent construction is internally undefined: PlannedIntentBodyCommitment includes the deterministic intent path before the final intent hash/path is derived, while ExecutionTransitionIntent is required to be content-addressed.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v31",
+      "locator": {
+        "kind": "line",
+        "value": "192-193,369"
+      },
+      "evidence_excerpt": "That domain includes source hash/version, previous completion head/sequence, edge, attempt/count invariants, reservation, deterministic intent ID/path, writer/authorization IDs, and candidate-template hash",
+      "impact": "No byte-exact validator can prove the stated order without either a hash/path cycle or an unstated non-content-addressed path rule; different implementations can bind OPEN and P3 to different intent identities at the charge boundary.",
+      "recommended_action": "Separate a pre-hash logical intent ID from the content-addressed path, exclude the latter from the body commitment, derive it only from the finalized intent hash, and pin that exact derivation in the fixture and validators.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer32-adversarial-001",
+        "invocation_id": "inv32-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.99,
+      "source_candidate_ids": [
+        "reviewer32-adversarial-001-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer32-adversarial-001-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "charged-recovery-lineage",
+      "claim": "P3 does not admit the charged completion-corruption recovery that Section 9.1 requires: that recovery makes a CompletionCorruptionTombstone the next P3 source even though P3's closed exceptional-link list omits such a record and every next intent otherwise requires a completion-chain head.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v31",
+      "locator": {
+        "kind": "line",
+        "value": "316,369-373"
+      },
+      "evidence_excerpt": "then uses the tombstone as the sole P3 source for one guarded same-attempt terminal transition",
+      "impact": "After a partial or differing charged APPLIED completion, the terminal transition cannot satisfy ordinary P3 without either bypassing the closed lineage validator or inventing an undeclared exceptional link, so the charged attempt can remain unrecoverably open or be closed with unreviewed charge semantics.",
+      "recommended_action": "Define a charged CompletionCorruptionRecovery lineage record with predecessor head/hash/sequence, preserved attempt and charge, tombstone and RECOVERY_CLOSE bindings; make it the monotone next chain head and explicitly admit only that record in P3 before the terminal transition.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer32-adversarial-001",
+        "invocation_id": "inv32-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.99,
+      "source_candidate_ids": [
+        "reviewer32-adversarial-001-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer32-adversarial-001-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "post-charge-resource-recovery",
+      "claim": "The post-charge exhaustion branch has no executable accounting transition: reservation R and its retry IDs are immutable and no-refund with all usage constrained to A <= R, yet exhaustion is said to be recoverable by a fresh HUMAN ceiling/recovery decision without defining a new allocation or how it binds the already-open intent.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v31",
+      "locator": {
+        "kind": "line",
+        "value": "294,300-306"
+      },
+      "evidence_excerpt": "exhaustion requires a fresh HUMAN ceiling/recovery decision and never permits a new admission cycle to reuse the charged attempt",
+      "impact": "Once a legitimate charge exhausts the fixed reservation or append count before completion/index closure, the declared pairs cannot spend more and new pairs are not authorized; recovery therefore either strands the charge or requires undeclared, unaccounted effects.",
+      "recommended_action": "Define a HUMAN-authorized post-charge recovery-allocation record and deterministic ceiling arithmetic that preserves the original reservation, binds the same attempt/open intent, authorizes new bounded pair IDs, and is accepted by P3/P15; otherwise declare exhaustion terminally fail-stop instead of recoverable.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-confirmed"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer32-adversarial-001",
+        "invocation_id": "inv32-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.97,
+      "source_candidate_ids": [
+        "reviewer32-adversarial-001-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

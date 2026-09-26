@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v1-council-002",
+  "budget_reserved": {"maximum_model_calls":8,"initial_lane_calls":3,"retry_allowance":3,"reserved_chairman":1,"reserved_adjudicator":1,"worst_case_required":8},
+  "chairman_invocation_id": "inv2-chair-001",
+  "participants": [
+    {"invocation_id":"inv2-auth-001","lane":"internal-authority","role":"internal-reviewer","provider":"deepseek-official","model":"deepseek-flash","route_family":"deepseek-v41","attempt":1,"packet_sha256":"616099d6cd531f3efd4af95b881a2bf371aea8cf6ddff34894e8c82b37fa5361","restriction_mode":"prompt-only","capabilities":{"persona":false,"tool_filter":false,"output_schema":false},"status":"completed","failure_code":null},
+    {"invocation_id":"inv2-adv-001","lane":"internal-adversarial","role":"internal-reviewer","provider":"openai-codex","model":"gpt-5.6-sol","route_family":"openai-gpt5","attempt":1,"packet_sha256":"c9889f1a9daaf524c576e22abf3b1994662204a07f10dc216c255476b306413a","restriction_mode":"prompt-only","capabilities":{"persona":false,"tool_filter":false,"output_schema":false},"status":"failed","failure_code":"schema_invalid"},
+    {"invocation_id":"inv2-adv-002","lane":"internal-adversarial","role":"internal-reviewer","provider":"openai-codex","model":"gpt-5.6-sol","route_family":"openai-gpt5","attempt":2,"packet_sha256":"c9889f1a9daaf524c576e22abf3b1994662204a07f10dc216c255476b306413a","restriction_mode":"prompt-only","capabilities":{"persona":false,"tool_filter":false,"output_schema":false},"status":"failed","failure_code":"schema_invalid"},
+    {"invocation_id":"inv2-ext-001","lane":"external-outside-view","role":"outside-view","provider":"openai-codex","model":"gpt-5.6-luna","route_family":"openai-gpt5","attempt":1,"packet_sha256":"987cc50e090dadaac3aa1c47ce13b0d19b72d3d2437f95539dfade5c24674883","restriction_mode":"prompt-only","capabilities":{"persona":false,"tool_filter":false,"output_schema":false},"status":"failed","failure_code":"schema_invalid"},
+    {"invocation_id":"inv2-ext-002","lane":"external-outside-view","role":"outside-view","provider":"openai-codex","model":"gpt-5.6-luna","route_family":"openai-gpt5","attempt":2,"packet_sha256":"987cc50e090dadaac3aa1c47ce13b0d19b72d3d2437f95539dfade5c24674883","restriction_mode":"prompt-only","capabilities":{"persona":false,"tool_filter":false,"output_schema":false},"status":"failed","failure_code":"schema_invalid"},
+    {"invocation_id":"inv2-chair-001","lane":"chairman","role":"chairman","provider":"openai-codex","model":"gpt-5.6-terra","route_family":"openai-gpt5","attempt":1,"packet_sha256":"db9e848e3a33f0f445b7bf703d50199d9c1a921b63223cdb4f4060ae1e4b1cb5","restriction_mode":"prompt-only","capabilities":{"persona":false,"tool_filter":false,"output_schema":false},"status":"reserved","failure_code":null}
+  ]
+}

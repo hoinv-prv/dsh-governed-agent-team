@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v1-council-002",
+  "reviewer_id": "reviewer2-external-002",
+  "lane": "external-outside-view",
+  "invocation_id": "inv2-ext-002",
+  "attempt": 2,
+  "status": "failed",
+  "failure_code": "schema_invalid",
+  "artifact_manifest_sha256": "dabaafcdcddd8fecf0f547a2e8c84eb6a0dbbd6ab4850f0d231ab29752ac0edb",
+  "packet_sha256": "987cc50e090dadaac3aa1c47ce13b0d19b72d3d2437f95539dfade5c24674883",
+  "authority": "advisory-only",
+  "participates_in_voting": false,
+  "decision_weight": "none",
+  "observations": [],
+  "advisory_hypotheses": [],
+  "context_attestation": {"artifact_ids_received":["sanitized-design-v1"],"context_categories_received":["objective","audience","public-constraints"],"packet_sha256_received":"987cc50e090dadaac3aa1c47ce13b0d19b72d3d2437f95539dfade5c24674883"},
+  "rejected_candidates": []
+}

@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v4-council-005",
+  "reviewer_id": "reviewer5-authority-001",
+  "lane": "internal-authority",
+  "invocation_id": "inv5-auth-001",
+  "attempt": 1,
+  "status": "completed",
+  "artifact_manifest_sha256": "cd0ad945c89610220fa0d68f82d8552a38f1aa933d2dc9521c484815f07fdef2",
+  "packet_sha256": "83ae32da69d7bf264bdf131e863c73d92849996b4ee4a6cea0dca23bb0485ff9",
+  "findings": [
+    {
+      "finding_id": "f-auth-bootstrap-approval-unverified",
+      "source_lane": "internal-authority",
+      "mode": "design-review",
+      "category": "authority-binding",
+      "claim": "P15 admits the admission mechanism on a bundle whose contract_ref, validator_ref, prepare argv and invalidation contract are only self-declared as HUMAN-approved; no invariant re-binds an exact attributable HUMAN decision artifact/hash for the one-time ledger migration or the control-plane bootstrap, and the universal NOT_READY rule ('silence is failure') is not applied to that approval evidence.",
+      "classification": "material",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v4",
+      "locator": "section 6.2 (line 208) and section 7 P15 (line 238)",
+      "evidence_excerpt": "Missing, stale, replayed, ambiguous or degraded material makes the bundle `NOT_READY`; silence is failure. || HUMAN-approved bundle/invalidation contract hashes, deterministic validator argv, prepare argv and version-guarded ledger write capability all exist and pass",
+      "impact": "Admission can pass with the control-plane bootstrap and the one-time ledger migration resting on unverified approval claims, so a charge (or, through migrated ledger bytes, an acceptance-relevant state) could be reached on authority that is never re-observed before the charge boundary.",
+      "recommended_action": "Add to section 7 and section 16 a P15 sub-invariant requiring an exact HUMAN decision record (id, raw-byte hash, scope binding to the migration and to the bootstrap artifacts) and require it to be re-verified immediately before the charge-boundary ledger write like P14, with the same uncharged abort disposition.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer5-authority-001",
+        "invocation_id": "inv5-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "finding_id": "f-auth-coordinator-identity-topology-unowned",
+      "source_lane": "internal-authority",
+      "mode": "design-review",
+      "category": "authority-binding",
+      "claim": "Section 13 makes the pre-charge precondition 'execution.coordinator == native Team Lead/coordinator' normative, but the section 4 responsibility table assigns the coordinator only read-only prepare, bundle, charge-first commit, dispatch, verification collection and ledger projection, and no invariant or bootstrap step establishes how the identity equivalence is verified, who resolves a mismatch, or what happens when the coordinator is a delegated subagent rather than the native Team Lead.",
+      "classification": "material",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v4",
+      "locator": "section 4 responsibility table (lines 93-94) and section 13 (line 338)",
+      "evidence_excerpt": "execution.coordinator == native Team Lead/coordinator || HUMAN decision owner | WBS approval, attempt-ceiling/reallocation, material deviation, required task acceptance, final design/WBS direction || Read-only prepare phase, immutable admission bundle, charge-first commit, dispatch, verification collection, ledger projection",
+      "impact": "The single-owner control surface required at the charge gate is incomplete: an operator either charges under an undocumented coordinator topology or treats NOT_READY as an unresolvable hard block, and neither outcome is decidable from the pinned bundle evidence.",
+      "recommended_action": "Declare the coordinator-to-native-lead binding as an explicit invariant with its evidence receipt, owner and failure disposition in the section 7 table, and add the non-matching coordinator topology to the section 14 failure matrix with a named resolution path and an uncharged abort.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer5-authority-001",
+        "invocation_id": "inv5-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.62
+    },
+    {
+      "finding_id": "f-consistency-migration-write-owner-undeclared",
+      "source_lane": "internal-authority",
+      "mode": "design-review",
+      "category": "internal-consistency",
+      "claim": "The ledger-migration write mechanism has no single declared owner or exact argv: section 9.2 step 11 restores bytes 'through the declared owning file operation' and section 10 requires that 'A migration projection may be written only by the migration operation named in the approved closure matrix', yet the section 10 ownership list declares 'execution ledger/current projection -> coordinator through the declared migration operation or one version-guarded native file write/edit' without naming that migration operation's path/hash/argv or separating it from the charge-boundary write.",
+      "classification": "material",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v4",
+      "locator": "section 9.2 step 11 (line 284) and section 10 ownership list (lines 300-301)",
+      "evidence_excerpt": "restores the recorded pre-migration current bytes through the declared owning file operation || execution ledger/current projection → coordinator through the declared migration operation or one version-guarded native file write/edit || A migration projection may be written only by the migration operation named in the approved closure matrix.",
+      "impact": "Two write mechanisms (migration operation versus version-guarded charge-boundary write) are granted over the same execution.json, so the requirement that every control surface has exactly one owner, exact evidence and a recovery path is not mechanically decidable at admission, and a declared rollback could itself be rejected as an undeclared edit.",
+      "recommended_action": "Name the exact migration argv/path/hash in the section 10 closure matrix as the sole writer of migration and projection bytes, require its declared restore operation with pinned argv and guaranteed no attempt/charge effect, and require the bundle to carry that receipt separately from the charge-boundary write receipt.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer5-authority-001",
+        "invocation_id": "inv5-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.81
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "candidate_id": "cand-auth-p15-circularity",
+      "reason": "Rejected as a material authority defect: sections 6.1 and 16 already place the bundle/invalidation schema, deterministic validator, prepare command and version-guarded ledger-write path under a separate HUMAN-authorized pre-WBS bootstrap and state they must exist and pass before admission, which resolves the P3/P15 self-reference for the successor WBS. The residual question of whether that HUMAN approval is verifiable at admission is captured separately in f-auth-bootstrap-approval-unverified."
+    },
+    {
+      "candidate_id": "cand-auth-p12-reserve-floor",
+      "reason": "Rejected as an authority defect: section 7.1 states the design recommends two attempts and that only the HUMAN decision owner may select or change the operative amount, so the design does not set a binding ceiling itself; the 'at least' phrasing reads against a minimum reserve floor rather than a HUMAN ceiling and is wording ambiguity, not invented authority."
+    },
+    {
+      "candidate_id": "cand-auth-p8-quiescence-overblock",
+      "reason": "Rejected as a charge-permitting ambiguity: section 7 P8 and section 13 define quiescence as execution.active_work equal to native active workers/jobs for the mission, so the predicate is scoped to a declared active-work snapshot and any mismatch blocks charge; over-blocking cannot permit a charge and is therefore not material under the must-check rule."
+    },
+    {
+      "candidate_id": "cand-consistency-p-numbering-gap",
+      "reason": "Rejected as material: section 2.2 references P1/P2 and section 6.1 states v4 does not claim P1/P2 mechanical validation, while the section 7 table defines P1 Plan identity and P2 Plan semantic closure; the reference affects no charge or acceptance decision and cannot by itself permit charging from invalid closure."
+    }
+  ]
+}

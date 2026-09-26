@@ -1,0 +1,70 @@
+profile_id: standard_asset
+title: Standard Pack asset profile
+source_type: standard_asset
+default_impact: medium
+# An asset of an installed Standard Pack (Standard_Pack_Contract_Spec_MVP §3): a process,
+# template, checklist, guideline, rule, aip_template or skill owned by the pack owner and
+# copied into a project at install time. Metas are built by
+# `.ai-work/tooling/build_standard_pack_metas.py` (§12 wiki projection).
+knowledge_targets:
+  - reference
+  - pattern
+  - domain
+# Hints below mirror the three axes a reader searches an asset by (§3 frontmatter):
+# `kind` (what shape it is), `area` (which lifecycle step it serves) and
+# `classification` (how much the project may change it).
+lookup_key_hints:
+  # kind — §3.2, the seven values
+  - Process
+  - Template
+  - Checklist
+  - Guideline
+  - Rule
+  - AIP Template
+  - Skill
+  # area — §2, the lifecycle steps a pack organizes by
+  - RD
+  - BD
+  - DD
+  - CD
+  - UT
+  - IT
+  - ST
+  - COMMON
+  # classification — §4
+  - Mandatory
+  - Default
+  - Tailorable
+  - Reference
+  # pack-level vocabulary
+  - Standard Pack
+  - Task Catalog
+  - Tailoring
+section_hints:
+  - Purpose
+  - Scope
+  - Steps
+  - Checklist
+  - Rules
+  - Objective
+  - Input
+  - Output
+summary_extraction:
+  # Cold-start summary only. `build_standard_pack_metas.py` passes an explicit --summary
+  # derived from the asset frontmatter, and an explicit summary always wins.
+  target_sections:
+    - Purpose
+    - Scope
+    - Objective
+    - Overview
+    - Summary
+    - Mục đích
+  max_chars: 400
+cautions:
+  - pack-owned content — a project tailors its OWN copy (§8), it never edits the installed
+    pack tree in place; `classification` says how much may change and only the pack owner
+    changes that value (§4.2)
+  - the meta describes the PACK's asset, not a project's tailored variant; when both exist
+    the tailored copy under the project tree wins at runtime (§8.3)
+  - asset_id is the stable identity every task catalog binds to — a renamed asset_id is a
+    breaking change of the pack, not a meta refresh (§3.1)

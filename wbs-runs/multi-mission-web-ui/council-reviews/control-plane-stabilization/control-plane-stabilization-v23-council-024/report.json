@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v23-council-024",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "620bd40f5c8d56ff29e325b96c48446d392108ad5954fa1ee83d2c2beb742f16"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "e1311f7eb0b530d6e930f8b6ba493bb51fd970737cca9e1b4ba631e3fd9882b9"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "f06396d7e48c35ae23f6baa364ba7446f4f7302838a36c095777455eb8c1e26c"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "b1697b771b42c465cecd63feb89a01e14934b8caff3f200d51d353f507833ba9"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "a55e77eceb3e532b93a52ecfdb67a1905b9be6f77fb9db44f40807e6009cfab9"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "7d7c41410fe5d1354debbb6c268585f3d314c6210ecab2174c9e4c77fdf84c4a"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "9c44e460ba0ebf877e5465d2285bf8f8215a87992f45ddb382e332e73226e66f"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "85007dc04e8b329888815f988957348070c2ab2ec9421ebd646dfd1d7f32c542"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "a2dd63506a3ee8310078d92e7ea49f9925a6ef39c00bd330fcaa86503cf99881"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "fec7e30c148e8a41f11932ded1735a7c5a601edd563ad1b6fbb9771d2453be62"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve all three findings and re-review exact revised bytes before WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer24-adversarial-001-f001",
+      "effective_severity": "high",
+      "claim": "ADMIN_LEDGER_GENESIS is not closed over its own required inputs: it requires pre-existing staged contract, validator, append implementation, candidate, fixtures, and prior review evidence, but defines no authorized and accounted operation that authors those bytes before the ledger while forbidding all other unmetered authoring.",
+      "artifact_id": "design-v23",
+      "locator": {
+        "kind": "line",
+        "value": "288-290"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed genesis lacks governed authoring/review lineage for its staged inputs."
+    },
+    {
+      "finding_id": "reviewer24-adversarial-001-f002",
+      "effective_severity": "high",
+      "claim": "ADMIN_LEDGER_GENESIS is a non-trivial multi-write verification workflow but has no required Working AIP, canonical Task Workspace, or seed allowance for their start, step, and lint effects; the only explicit AIP and Workspace requirement begins with later BOOTSTRAP_MAINTENANCE.",
+      "artifact_id": "design-v23",
+      "locator": {
+        "kind": "line",
+        "value": "288-292"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed genesis lacks a dedicated AIP/Workspace and allowances for their effects."
+    },
+    {
+      "finding_id": "reviewer24-adversarial-001-f003",
+      "effective_severity": "high",
+      "claim": "The AdministrativeResourceLedger append primitive has no crash-safe protocol for an append whose separate operation receipt is not persisted, although reconciliation requires every attempted append to have both usage accounting and receipt evidence.",
+      "artifact_id": "design-v23",
+      "locator": {
+        "kind": "line",
+        "value": "294"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed administrative append plus separate receipt lacks crash-safe idempotent recovery."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Pre-ledger authoring governance and administrative append crash closure remain incomplete."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

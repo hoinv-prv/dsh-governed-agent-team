@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v1-council-001",
+  "state": "failed",
+  "stage": "review",
+  "failure": {
+    "code": "ledger_integrity_failed",
+    "stage": "review",
+    "subject": "initial-lane invocation outcomes",
+    "message": "The schema-constrained workflow returned null for all three lanes without typed per-invocation failures, so provenance-safe retry eligibility and reviewer envelopes cannot be established.",
+    "retryable": false,
+    "invocation_id": null
+  },
+  "updated_sequence": 2
+}

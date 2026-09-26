@@ -1,0 +1,7 @@
+Parent read-only verification against immutable run-005 snapshots.
+
+r5auth002a2-f1 confirmed: the bundle contract does not pin canonical invalidation-index identity, hash, count, sequence or freshness even though P14 relies on that negative premise.
+r5auth002a2-f2 confirmed: charge-boundary text requires fresh PASS but does not explicitly require the identical sealed freshness rule, epoch and predicate scope, leaving a branch-interpretation ambiguity.
+r5auth002a2-f3 confirmed: the migration authorization is source-hash bounded but does not explicitly forbid attempt allocation/bundle sealing, require no-bundle attestation, or re-authorize on ledger-version drift.
+
+The design-v4 snapshot hash matched the artifact manifest before and after reading. No command verification was authorized or executed.

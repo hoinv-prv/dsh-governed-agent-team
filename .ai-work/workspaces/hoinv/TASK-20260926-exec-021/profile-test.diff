@@ -1,0 +1,176 @@
+diff --git a/packages/profile/tests/profile.spec.ts b/home/hoinv/deepseek-harness/packages/experimental/gat-profile/tests/profile.spec.ts
+index 53e2b0d..648be41 100644
+--- a/packages/profile/tests/profile.spec.ts
++++ b/home/hoinv/deepseek-harness/packages/experimental/gat-profile/tests/profile.spec.ts
+@@ -1,6 +1,6 @@
+ /** The experimental bundle must carry one parseable, explicit Team layer. */
+ 
+-import { mkdtempSync, readFileSync, rmSync } from 'node:fs'
++import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+ import { tmpdir } from 'node:os'
+ import { join, resolve } from 'node:path'
+ import { fileURLToPath, pathToFileURL } from 'node:url'
+@@ -82,11 +82,6 @@ function text(result: Awaited<ReturnType<typeof execute>>): string {
+   return result.content.flatMap(block => block.type === 'text' ? [block.text] : []).join('')
+ }
+ 
+-function childId(result: Awaited<ReturnType<typeof execute>>): SessionId {
+-  const value = JSON.parse(text(result)) as { member: { id: string } }
+-  return SessionId(value.member.id)
+-}
+-
+ async function waitRunning(ctx: Context, id: SessionId): Promise<Agent> {
+   return vi.waitFor(() => {
+     const agent = ctx.agents.get(id)
+@@ -204,6 +199,8 @@ describe('Agent Teams profile bundle', () => {
+         forkProvider: 'fork',
+         minExecutionMembers: 2,
+         maxExecutionMembers: 4,
++        simpleMode: true,
++        teamMembersMaxBytes: 65_536,
+         externalRestrictedTools: ['ask_user_question', 'glob', 'grep', 'read', 'read_image'],
+       },
+     })
+@@ -213,28 +210,31 @@ describe('Agent Teams profile bundle', () => {
+     const storageRoot = mkdtempSync(join(tmpdir(), 'dsh-agent-team-profile-smoke-'))
+     roots.push(storageRoot)
+     const sessionId = SessionId('governed-profile-smoke')
++    writeFileSync(join(storageRoot, 'team_members.yaml'), `version: 1
++members:
++  - name: worker-a
++    description: First smoke worker.
++    prompt: Stay available.
++    provider: mock
++    model: mock
++  - name: worker-b
++    description: Second smoke worker.
++    prompt: Stay available.
++    provider: mock
++    model: mock
++`)
+     const first = await bootProfile(storageRoot, [
+-      textResponse('spawn one-shot result'),
+-      textResponse('fork one-shot result'),
+       'hang',
+       'hang',
++      textResponse('spawn one-shot result'),
++      textResponse('fork one-shot result'),
+     ])
+     const leadHandle = await first.agents.create({
+       sessionId,
++      meta: { cwd: storageRoot },
+       agentOptions: { provider: 'mock', model: 'mock' },
+     })
+     const lead = leadHandle.agent
+-    const soloFresh = await execute(first, lead, 'subagent', {
+-      description: 'solo fresh one shot', prompt: 'return the scripted fresh result',
+-    })
+-    expect(soloFresh.isError).toBe(false)
+-    expect(text(soloFresh)).toBe('spawn one-shot result')
+-    const soloFork = await execute(first, lead, 'subagent_fork', {
+-      description: 'solo fork one shot', prompt: 'return the scripted fork result',
+-    })
+-    expect(soloFork.isError).toBe(false)
+-    expect(text(soloFork)).toBe('fork one-shot result')
+-
+     const dangerCalls = { count: 0 }
+     first.tools.register(defineContentToolFixture({
+       name: 'danger_write',
+@@ -245,6 +245,7 @@ describe('Agent Teams profile bundle', () => {
+         return [{ type: 'text', text: 'wrote' }]
+       },
+     }))
++    await first.agentTeams.enable(lead, SIGNAL)
+ 
+     const entries = new Map([...first.loader.entries()].map(entry => [entry.options.id, entry.options]))
+     expect(entries.get('tool-subagent')?.config).toMatchObject({
+@@ -265,6 +266,8 @@ describe('Agent Teams profile bundle', () => {
+       forkProvider: 'fork',
+       minExecutionMembers: 2,
+       maxExecutionMembers: 4,
++      simpleMode: true,
++      teamMembersMaxBytes: 65_536,
+       externalRestrictedTools: ['ask_user_question', 'glob', 'grep', 'read', 'read_image'],
+     })
+ 
+@@ -290,32 +293,25 @@ describe('Agent Teams profile bundle', () => {
+     const draftView = first.agentTeams.remoteView(lead)
+     expect(draftView.planApproval).toBeUndefined()
+     expect(draftView).toEqual({
+-      enabled: false,
++      enabled: true,
+       planRevision: 1,
+       planPhase: 'draft',
+       work: [],
+-      members: [expect.objectContaining({ name: 'lead', role: 'lead' })],
++      members: [
++        expect.objectContaining({ name: 'lead', role: 'lead' }),
++        expect.objectContaining({ name: 'worker-a', role: 'teammate' }),
++        expect.objectContaining({ name: 'worker-b', role: 'teammate' }),
++      ],
+       tasks: [expectedTask],
+     })
+-    const denied = await execute(first, lead, 'danger_write', {})
+-    expect(denied.isError).toBe(true)
+-    expect(text(denied)).toContain('is not HUMAN-approved')
+-    expect(dangerCalls.count).toBe(0)
++    const authorized = await execute(first, lead, 'danger_write', {})
++    expect(authorized.isError).toBe(false)
++    expect(dangerCalls.count).toBe(1)
+ 
+     const currentRevision = 1
+-    await expect(first.agentTeams.remoteApprovePlan(lead, { approvedRevision: currentRevision - 1 }))
+-      .resolves.toMatchObject({ ok: false, error: { code: 'team-plan-conflict' } })
+-    await expect(first.agentTeams.remoteApprovePlan(lead, { approvedRevision: currentRevision }))
+-      .resolves.toEqual({ ok: true, value: { approvedRevision: currentRevision } })
+-
+-    const blockedSpawn = await execute(first, lead, 'spawn_teammate', {
+-      name: 'blocked-worker', description: 'report a durable blocker', prompt: 'stay active',
+-    })
+-    const blockedWorker = await waitRunning(first, childId(blockedSpawn))
+-    const reviewSpawn = await execute(first, lead, 'spawn_teammate', {
+-      name: 'review-worker', description: 'report a review file', prompt: 'stay active', context: 'fork',
+-    })
+-    const reviewWorker = await waitRunning(first, childId(reviewSpawn))
++    const initialMembers = first.agentTeams.listMembers(lead)
++    const blockedWorker = await waitRunning(first, initialMembers.find(member => member.name === 'worker-a')!.id)
++    const reviewWorker = await waitRunning(first, initialMembers.find(member => member.name === 'worker-b')!.id)
+     expect(lead.session.snapshotEvents().filter(event => event.type === 'team/member'
+       && event.data.member.phase === 'active')).toHaveLength(2)
+ 
+@@ -323,18 +319,17 @@ describe('Agent Teams profile bundle', () => {
+     const freshDelegation = await execute(first, lead, 'subagent', {
+       description: 'fresh one shot', prompt: 'return the scripted fresh result',
+     })
+-    expect(freshDelegation.isError).toBe(true)
+-    expect(text(freshDelegation)).toContain('Agent Team is enabled for this session')
+-    expect(text(freshDelegation)).toContain('ask the HUMAN to approve adding a member')
++    if (freshDelegation.isError) throw new Error(text(freshDelegation))
++    expect(text(freshDelegation)).toBe('spawn one-shot result')
+     const forkDelegation = await execute(first, lead, 'subagent_fork', {
+       description: 'fork one shot', prompt: 'return the scripted fork result',
+     })
+-    expect(forkDelegation.isError).toBe(true)
+-    expect(text(forkDelegation)).toContain('Agent Team is enabled for this session')
+-    expect(starts).not.toHaveBeenCalled()
++    if (forkDelegation.isError) throw new Error(text(forkDelegation))
++    expect(text(forkDelegation)).toBe('fork one-shot result')
++    expect(starts.mock.calls.map(([provider]) => provider)).toEqual(['spawn', 'fork'])
+ 
+     expect((await execute(first, lead, 'danger_write', {})).isError).toBe(false)
+-    expect(dangerCalls.count).toBe(1)
++    expect(dangerCalls.count).toBe(2)
+ 
+     const blocked = await execute(first, blockedWorker, 'report_team_status', {
+       state: 'blocked', summary: 'Cannot continue', reason: 'Waiting for a local prerequisite',
+@@ -357,8 +352,8 @@ describe('Agent Teams profile bundle', () => {
+     const beforeRestart = planWork(first.agentTeams.remoteView(lead))
+     expect(beforeRestart).toMatchObject({
+       planRevision: currentRevision,
+-      planPhase: 'approved',
+-      planApproval: { approvedRevision: currentRevision },
++      planPhase: 'draft',
++      planApproval: undefined,
+       tasks: [{ status: 'completed' }],
+       work: [
+         { state: 'blocked', reason: 'Waiting for a local prerequisite' },

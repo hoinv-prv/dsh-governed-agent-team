@@ -1,18 +1,22 @@
-import { useCallback, useEffect, useRef, useState, type ChangeEvent } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import type { SessionId } from '@deepseek-ai/dsh-session/types'
 import type {
+  ImportApprovedTeamPlanResult,
+  TeamEnableResult,
   TeamMemberView as TeamRosterMember,
-  TeamPlanApprovalResult,
   TeamTaskAction,
   TeamTaskId,
   TeamTaskMutationResult,
-  TeamTaskView as TeamTask,
   TeamView,
 } from '@vuhoi/gat-core/client'
+import type {
+  TeamMissionId,
+  TeamMissionMutationResult,
+  TeamMissionView as TeamMission,
+} from '@vuhoi/gat-core/types'
 import type { RemoteResult } from '@deepseek-ai/dsh-api-remotes/client'
 import {
-  IconCheckOutline14, IconCloseOutline16, IconEditOutline16, IconPlusOutline16,
-  IconRefreshOutline14, IconTrashOutline16, IconUserOutline16, StateDot,
+  IconCloseOutline16, IconRefreshOutline14, IconUserOutline16, StateDot,
 } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
 import type {} from '@deepseek-ai/dsh-client-ui-conversation/client'
@@ -25,12 +29,24 @@ export type TeamActionResult<T> = RemoteResult<T>
 /** Generated Remote result whose business value preserves Team task rejections. */
 export type TeamTaskActionResult = RemoteResult<TeamTaskMutationResult>
 
+/** Generated Remote result whose business value preserves mission rejections. */
+export type TeamMissionActionResult = RemoteResult<TeamMissionMutationResult>
+
 /** Business actions injected by the browser plugin. */
 export interface TeamActionInjected {
   load: (sessionId: SessionId) => Promise<TeamActionResult<TeamView>>
-  approvePlan: (sessionId: SessionId, input: {
-    approvedRevision: number
-  }) => Promise<TeamActionResult<TeamPlanApprovalResult>>
+  enable: (sessionId: SessionId) => Promise<TeamActionResult<TeamEnableResult>>
+  listMissions: (sessionId: SessionId) => Promise<TeamActionResult<TeamMission[]>>
+  getMission: (sessionId: SessionId, missionId: TeamMissionId) => Promise<TeamActionResult<TeamMission>>
+  createMission: (sessionId: SessionId, input: {
+    title: string
+    objective: string
+  }) => Promise<TeamMissionActionResult>
+  approveMission: (sessionId: SessionId, input: {
+    missionId: TeamMissionId
+    expectedRevision: number
+  }) => Promise<TeamMissionActionResult>
+  importApprovedPlan: (sessionId: SessionId) => Promise<TeamActionResult<ImportApprovedTeamPlanResult>>
   createTask: (sessionId: SessionId, input: {
     subject: string
     description: string
@@ -58,39 +74,9 @@ export type TeamActionProps =
     refreshIntervalMs?: number
   }
 
-interface Draft {
-  subject: string
-  description: string
-  blockers: string
-  scopes: string
-}
-
-const EMPTY_DRAFT: Draft = { subject: '', description: '', blockers: '', scopes: '' }
-
-function items(value: string): string[] {
-  return [...new Set(value.split(',').map(item => item.trim()).filter(Boolean))]
-}
-
-function taskIds(value: string): TeamTaskId[] {
-  return items(value) as TeamTaskId[]
-}
-
-/**
- * One failure line for either carrier: a Remote failure, or a Team business
- * rejection whose codes stay local to this seam and never ride the wire.
- */
+/** One failure line for a generated Remote failure. */
 function failureText(error: { readonly code: string; readonly message: string }): string {
   return `${error.message} (${error.code})`
-}
-
-function statusKey(status: TeamTask['status']): TeamKey {
-  switch (status) {
-    case 'pending': return 'status.pending'
-    case 'in_progress': return 'status.in_progress'
-    case 'completed': return 'status.completed'
-    /* v8 ignore next -- Team views omit deleted task tombstones. */
-    case 'deleted': return 'status.completed'
-  }
 }
 
 function memberStatusKey(status: TeamRosterMember['status']): TeamKey {
@@ -103,21 +89,27 @@ function memberStatusKey(status: TeamRosterMember['status']): TeamKey {
   }
 }
 
-/** Render the live Team roster and compare-and-set task board. */
+function missionStatusKey(status: TeamMission['status']): TeamKey {
+  switch (status) {
+    case 'draft': return 'missionStatus.draft'
+    case 'approved': return 'missionStatus.approved'
+    case 'active': return 'missionStatus.active'
+    case 'completed': return 'missionStatus.completed'
+  }
+}
+
+/** Render the most recently created Team mission and the live member roster. */
 export function TeamAction({
-  sessionId, load, approvePlan, createTask, updateTask, openTeammate, openReviewFile, t,
+  sessionId, load, enable, listMissions, openTeammate, openReviewFile, t,
   stallWarningMs = 180_000, refreshIntervalMs = 5_000,
 }: TeamActionProps) {
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [enabling, setEnabling] = useState(false)
   const [view, setView] = useState<TeamView | null>(null)
+  const [currentMission, setCurrentMission] = useState<TeamMission | null>(null)
+  const [missionsLoaded, setMissionsLoaded] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [approving, setApproving] = useState(false)
-  const [creating, setCreating] = useState(false)
-  const [createDraft, setCreateDraft] = useState<Draft>(EMPTY_DRAFT)
-  const [editing, setEditing] = useState<string | null>(null)
-  const [editDraft, setEditDraft] = useState<Draft>(EMPTY_DRAFT)
-  const [pendingTasks, setPendingTasks] = useState<ReadonlySet<string>>(() => new Set())
   const sessionRef = useRef(sessionId)
   const refreshGeneration = useRef(0)
   const pollOwner = useRef<object | null>(null)
@@ -127,37 +119,36 @@ export function TeamAction({
     refreshGeneration.current += 1
     setOpen(false)
     setLoading(false)
+    setEnabling(false)
     setView(null)
+    setCurrentMission(null)
+    setMissionsLoaded(false)
     setError(null)
-    setApproving(false)
-    setCreating(false)
-    setCreateDraft(EMPTY_DRAFT)
-    setEditing(null)
-    setEditDraft(EMPTY_DRAFT)
-    setPendingTasks(new Set())
   }, [sessionId])
 
   const refresh = useCallback(async (): Promise<boolean> => {
     const requestedSession = sessionId
     const generation = ++refreshGeneration.current
     setLoading(true)
-    const result = await load(requestedSession)
+    const [viewResult, missionsResult] = await Promise.all([load(requestedSession), listMissions(requestedSession)])
     if (sessionRef.current !== requestedSession || refreshGeneration.current !== generation) return false
     setLoading(false)
-    if (result.ok) {
-      setView(result.value)
-      setError(null)
-      return true
-    } else {
-      setError(failureText(result.error))
+    if (!viewResult.ok) {
+      setError(failureText(viewResult.error))
       return false
     }
-  }, [load, sessionId])
-
-  const invalidateRefresh = useCallback((): void => {
-    refreshGeneration.current += 1
-    setLoading(false)
-  }, [])
+    setView(viewResult.value)
+    if (!missionsResult.ok) {
+      setCurrentMission(null)
+      setMissionsLoaded(false)
+      setError(failureText(missionsResult.error))
+      return false
+    }
+    setCurrentMission(missionsResult.value.at(-1) ?? null)
+    setMissionsLoaded(true)
+    setError(null)
+    return true
+  }, [listMissions, load, sessionId])
 
   useEffect(() => {
     if (!open) return
@@ -176,129 +167,7 @@ export function TeamAction({
     }
   }, [open, refresh, refreshIntervalMs])
 
-  const submitApproval = async (displayedRevision: number): Promise<void> => {
-    const requestedSession = sessionId
-    invalidateRefresh()
-    setApproving(true)
-    try {
-      const result = await approvePlan(requestedSession, { approvedRevision: displayedRevision })
-      if (sessionRef.current !== requestedSession) return
-      if (!result.ok) {
-        setError(failureText(result.error))
-        return
-      }
-      if (!result.value.ok) {
-        if (result.value.error.code === 'team-plan-conflict') {
-          const reloaded = await refresh()
-          if (sessionRef.current !== requestedSession) return
-          if (reloaded) setError(t('approvalConflict'))
-        } else {
-          setError(failureText(result.value.error))
-        }
-        return
-      }
-      setError(null)
-      await refresh()
-    } finally {
-      if (sessionRef.current === requestedSession) setApproving(false)
-    }
-  }
-
-  const settleTask = useCallback(async (
-    taskId: string,
-    operation: () => Promise<TeamTaskActionResult>,
-  ): Promise<TeamTask | undefined> => {
-    const requestedSession = sessionId
-    invalidateRefresh()
-    setPendingTasks(current => new Set(current).add(taskId))
-    try {
-      const result = await operation()
-      if (sessionRef.current !== requestedSession) return undefined
-      if (!result.ok) {
-        setError(failureText(result.error))
-        return undefined
-      }
-      if (!result.value.ok) {
-        if (result.value.error.code === 'team-task-conflict') {
-          const reloaded = await refresh()
-          if (sessionRef.current !== requestedSession) return undefined
-          if (reloaded) setError(t('conflict'))
-        } else {
-          setError(failureText(result.value.error))
-        }
-        return undefined
-      }
-      const task = result.value.value
-      setError(null)
-      await refresh()
-      if (sessionRef.current !== requestedSession) return undefined
-      return task
-    } finally {
-      if (sessionRef.current === requestedSession) {
-        setPendingTasks((current) => {
-          const next = new Set(current)
-          next.delete(taskId)
-          return next
-        })
-      }
-    }
-  }, [invalidateRefresh, refresh, sessionId, t])
-
-  const submitCreate = async (): Promise<void> => {
-    const subject = createDraft.subject.trim()
-    const description = createDraft.description.trim()
-    /* v8 ignore next -- TaskForm disables Save while either normalized field is empty. */
-    if (subject === '' || description === '') return
-    const created = await settleTask('create', () => createTask(sessionId, {
-      subject,
-      description,
-      blockedBy: taskIds(createDraft.blockers),
-      writeScopes: items(createDraft.scopes),
-    }))
-    if (created === undefined) return
-    setCreateDraft(EMPTY_DRAFT)
-    setCreating(false)
-  }
-
-  const startEdit = (task: TeamTask): void => {
-    setEditing(task.id)
-    setEditDraft({
-      subject: task.subject,
-      description: task.description,
-      blockers: task.blockedBy.join(', '),
-      scopes: task.writeScopes.join(', '),
-    })
-  }
-
-  const submitEdit = async (task: TeamTask): Promise<void> => {
-    const requestedSession = sessionId
-    const edited = await settleTask(task.id, () => updateTask(requestedSession, {
-      taskId: task.id,
-      expectedRevision: task.revision,
-      action: 'edit',
-      subject: editDraft.subject.trim(),
-      description: editDraft.description.trim(),
-      writeScopes: items(editDraft.scopes),
-    }))
-    if (edited === undefined) return
-    const blockedBy = taskIds(editDraft.blockers)
-    if (blockedBy.length === edited.blockedBy.length
-      && blockedBy.every((blocker, index) => blocker === edited.blockedBy[index])) {
-      setEditing(null)
-      return
-    }
-    const dependencyTask = await settleTask(task.id, () => updateTask(requestedSession, {
-      taskId: task.id,
-      expectedRevision: edited.revision,
-      action: 'set_dependencies',
-      blockedBy,
-    }))
-    if (dependencyTask === undefined) return
-    setEditing(null)
-  }
-
   const teammates = view?.members.filter(member => member.role === 'teammate') ?? []
-  const assignable = view?.members.filter(member => member.status !== 'failed' && member.status !== 'provisioning') ?? []
 
   return (
     <div className={css.root} data-team-action>
@@ -330,28 +199,50 @@ export function TeamAction({
           </div>
           {error !== null && <div className={css.error} role="alert">{error}</div>}
           {loading && view === null && <div className={css.notice}>{t('loading')}</div>}
-          {view !== null && (
+          {view !== null && !view.enabled && (
+            <section className={css.notice}>
+              <strong>{t('teamOff')}</strong>
+              <p>{t('teamOffDescription')}</p>
+              <button
+                type="button"
+                disabled={enabling}
+                onClick={() => {
+                  setEnabling(true)
+                  void enable(sessionId).then((result) => {
+                    if (!result.ok) {
+                      setError(failureText(result.error))
+                      return
+                    }
+                    void refresh()
+                  }).catch((reason: unknown) => { setError(String(reason)) }).finally(() => { setEnabling(false) })
+                }}
+              >
+                {enabling ? t('enabling') : t('enableTeam')}
+              </button>
+            </section>
+          )}
+          {view !== null && view.enabled && (
             <>
-              <section className={css.plan}>
-                <h3>{t('plan')}</h3>
-                <div className={css.meta}>
-                  <span>{t('planPhase')}: {t(`planPhase.${view.planPhase}`)}</span>
-                  <span>{t('planRevision')}: {view.planRevision}</span>
-                  {view.planApproval !== undefined && (
-                    <span>{t('approvedRevision')}: {view.planApproval.approvedRevision}</span>
-                  )}
-                </div>
-                {view.planPhase === 'draft' && (
-                  <button
-                    type="button"
-                    className={css.smallButton}
-                    disabled={approving}
-                    onClick={() => { void submitApproval(view.planRevision) }}
-                  >
-                    <IconCheckOutline14 /> {t('approvePlan')}
-                  </button>
-                )}
-              </section>
+              {missionsLoaded && (
+                <section>
+                  <h3>{t('missionDetail')}</h3>
+                  {currentMission === null
+                    ? <div className={css.notice}>{t('emptyMissions')}</div>
+                    : (
+                      <article className={css.missionDetail} aria-label={t('missionDetail')}>
+                        <div className={css.taskTitle}>
+                          <strong>{currentMission.title}</strong>
+                          <span>{t(missionStatusKey(currentMission.status))}</span>
+                        </div>
+                        <p>{currentMission.objective}</p>
+                        <div className={css.meta}>
+                          <span>{t('missionRevision')}: {currentMission.revision}</span>
+                          <span>{t('missionApproval')}: {currentMission.approval === undefined ? t('missionApprovalPending') : `${t('missionApprovalApproved')} (${currentMission.approval.approvedRevision})`}</span>
+                        </div>
+                      </article>
+                    )}
+                </section>
+              )}
               <section>
                 <h3>{t('roster')}</h3>
                 <div className={css.roster}>
@@ -409,127 +300,10 @@ export function TeamAction({
                   })}
                 </div>
               </section>
-              <section>
-                <div className={css.sectionTitle}>
-                  <h3>{t('tasks')}</h3>
-                  <button type="button" className={css.smallButton} onClick={() => { setCreating(true) }}>
-                    <IconPlusOutline16 size={13} /> {t('create')}
-                  </button>
-                </div>
-                {creating && (
-                  <TaskForm
-                    draft={createDraft}
-                    setDraft={setCreateDraft}
-                    pending={pendingTasks.has('create')}
-                    onSave={() => { void submitCreate() }}
-                    onCancel={() => { setCreating(false) }}
-                    t={t}
-                  />
-                )}
-                {view.tasks.length === 0 && !creating && <div className={css.notice}>{t('empty')}</div>}
-                <div className={css.tasks}>
-                  {view.tasks.map(task => editing === task.id
-                    ? (
-                      <TaskForm
-                        key={task.id}
-                        draft={editDraft}
-                        setDraft={setEditDraft}
-                        pending={pendingTasks.has(task.id)}
-                        onSave={() => { void submitEdit(task) }}
-                        onCancel={() => { setEditing(null) }}
-                        t={t}
-                      />
-                    )
-                    : (
-                      <article key={task.id} className={css.task}>
-                        <div className={css.taskTitle}>
-                          <strong>{task.subject}</strong>
-                          <span>{t(statusKey(task.status))}</span>
-                        </div>
-                        <p>{task.description}</p>
-                        <div className={css.meta}>
-                          <span>{task.id}</span>
-                          {task.status === 'pending' && <span>{task.ready ? t('ready') : t('blocked')}</span>}
-                          {task.blockedBy.length > 0 && <span>{t('blockedBy')}: {task.blockedBy.join(', ')}</span>}
-                          {task.writeScopes.length > 0 && <span>{t('writeScopes')}: {task.writeScopes.join(', ')}</span>}
-                          {task.writeScopeWarnings.map(warning => <span key={warning} className={css.warning}>{warning}</span>)}
-                        </div>
-                        <div className={css.taskActions}>
-                          <label>
-                            {t('owner')}
-                            <select
-                              value={task.ownerName ?? ''}
-                              disabled={pendingTasks.has(task.id) || task.status === 'completed'}
-                              onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-                                const owner = event.target.value
-                                void settleTask(task.id, () => updateTask(sessionId, {
-                                  taskId: task.id,
-                                  expectedRevision: task.revision,
-                                  action: 'reassign',
-                                  ...owner === '' ? {} : { owner },
-                                }))
-                              }}
-                            >
-                              <option value="">{t('unowned')}</option>
-                              {assignable.map(member => <option key={member.id} value={member.name}>{member.name}</option>)}
-                            </select>
-                          </label>
-                          <button type="button" onClick={() => { startEdit(task) }} disabled={pendingTasks.has(task.id)}>
-                            <IconEditOutline16 size={13} /> {t('edit')}
-                          </button>
-                          {task.status === 'in_progress' && (
-                            <button type="button" disabled={pendingTasks.has(task.id)} onClick={() => {
-                              void settleTask(task.id, () => updateTask(sessionId, {
-                                taskId: task.id, expectedRevision: task.revision, action: 'complete',
-                              }))
-                            }}><IconCheckOutline14 /> {t('complete')}</button>
-                          )}
-                          {task.status === 'completed' && (
-                            <button type="button" disabled={pendingTasks.has(task.id)} onClick={() => {
-                              void settleTask(task.id, () => updateTask(sessionId, {
-                                taskId: task.id, expectedRevision: task.revision, action: 'reopen',
-                              }))
-                            }}>{t('reopen')}</button>
-                          )}
-                          <button type="button" disabled={pendingTasks.has(task.id)} onClick={() => {
-                            void settleTask(task.id, () => updateTask(sessionId, {
-                              taskId: task.id, expectedRevision: task.revision, action: 'delete',
-                            }))
-                          }}><IconTrashOutline16 size={13} /> {t('delete')}</button>
-                        </div>
-                      </article>
-                    ))}
-                </div>
-              </section>
             </>
           )}
         </div>
       )}
-    </div>
-  )
-}
-
-interface TaskFormProps {
-  draft: Draft
-  setDraft: (draft: Draft) => void
-  pending: boolean
-  onSave: () => void
-  onCancel: () => void
-  t: TeamActionProps['t']
-}
-
-function TaskForm({ draft, setDraft, pending, onSave, onCancel, t }: TaskFormProps) {
-  const field = (key: keyof Draft, value: string): void => { setDraft({ ...draft, [key]: value }) }
-  return (
-    <div className={css.form}>
-      <input value={draft.subject} placeholder={t('subject')} onChange={(event: ChangeEvent<HTMLInputElement>) => { field('subject', event.target.value) }} />
-      <textarea value={draft.description} placeholder={t('description')} onChange={(event: ChangeEvent<HTMLTextAreaElement>) => { field('description', event.target.value) }} />
-      <input value={draft.blockers} placeholder={t('blockers')} onChange={(event: ChangeEvent<HTMLInputElement>) => { field('blockers', event.target.value) }} />
-      <input value={draft.scopes} placeholder={t('scopes')} onChange={(event: ChangeEvent<HTMLInputElement>) => { field('scopes', event.target.value) }} />
-      <div className={css.formActions}>
-        <button type="button" disabled={pending || draft.subject.trim() === '' || draft.description.trim() === ''} onClick={onSave}>{t('save')}</button>
-        <button type="button" disabled={pending} onClick={onCancel}>{t('cancel')}</button>
-      </div>
     </div>
   )
 }

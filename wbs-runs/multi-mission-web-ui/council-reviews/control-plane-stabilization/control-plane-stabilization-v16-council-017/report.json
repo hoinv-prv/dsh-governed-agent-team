@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v16-council-017",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "2c78634afe4ef1509b495b2b36553b248e969de8bf729bc60c23534a58e82c10"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "08be5f1eb624f41c742ce98199779df759a54c0444d13c531403b1468ca51d69"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "f1d93dd837b7c311c28c7e910802e6c44220bae0fa2fa197dec1aa482aa2b884"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "3a6211f46d5922e07979df534d19098d478289f0513c7637a210890ef16296c9"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "98fef40102504c488b7b2dbab0d44ec8ea63615621298708b81546d891f1fa06"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "ff820c0f2fba5feccef288cc6647187a9408c01fb95da55016fe37b997c1ca27"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "8eaf06e0a9ed2ec29725f5acadfd3848fe0b250c1a51138442c27b942ae28128"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "7630227e61f18d6c0b698f992f6d15d59ad5f21617b881a5d29cf0a806f41cd8"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "10e645a70c61324d963df82246558006aed504cf8b0288f10caf48f06a23758d"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "48647124b77d05e761a5557df763a2ab1ade541606ab85bfc541dc8a0b83f453"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve all three findings and re-review exact revised bytes before WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer17-adversarial-f001",
+      "effective_severity": "high",
+      "claim": "A candidate-equal restart may finalize an APPLIED transition from candidate equality and strict validation alone, without durable proof that the edge-specific live authority/readiness checks and authorized guarded writer produced those bytes.",
+      "artifact_id": "design-v16",
+      "locator": {
+        "kind": "line",
+        "value": "334"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed candidate-equal recovery lacks durable authorized-writer provenance."
+    },
+    {
+      "finding_id": "reviewer17-adversarial-f002",
+      "effective_severity": "high",
+      "claim": "The source-equal charge restart requires a new boundary receipt but reuses an immutable intent whose exact candidate bytes/hash were pinned before that new observation; the design defines no way to bind the new receipt into the unchanged candidate ledger bytes.",
+      "artifact_id": "design-v16",
+      "locator": {
+        "kind": "line",
+        "value": "334"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed a fresh charge receipt cannot bind the immutable old intent/candidate."
+    },
+    {
+      "finding_id": "reviewer17-adversarial-f003",
+      "effective_severity": "medium",
+      "claim": "The closed four-effect pre-charge write set contains no operation that can persist the fresh path-and-hash receipt artifacts required for live P7–P11 and P14 evidence before the AdmissionBundle is sealed, while prepare is explicitly read-only.",
+      "artifact_id": "design-v16",
+      "locator": {
+        "kind": "line",
+        "value": "168"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed fresh pre-charge evidence persistence is missing from closed effects."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Transition recovery provenance and pre-charge evidence persistence remain incomplete until revision."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

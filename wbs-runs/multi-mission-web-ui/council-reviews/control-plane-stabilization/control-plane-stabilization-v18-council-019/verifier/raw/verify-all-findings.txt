@@ -1,0 +1,4 @@
+Parent read-only verification against immutable design-v18 SHA-256 3bf2635a9337e91a0cce9e1016b1bf979b6eab259b332fab308261b0691a473c.
+Confirmed reviewer19-adversarial-f001: pre-charge write whitelist omits administrative-ledger append/receipt.
+Confirmed reviewer19-adversarial-f002: no stable administrative reservation spans post-boundary intent/accounting/completion.
+Confirmed reviewer19-adversarial-f003: no exact single in-flight intent exception/index reconciles charge intent with P3.

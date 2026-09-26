@@ -1,0 +1,3 @@
+{"output_id": "OUT-009-01-01", "source_id": "OUT-009-01-01", "source_type": "step_output", "step_id": "STEP-01", "status": "draft", "target_path": "04_findings.md#STEP-01", "created_at": "2026-09-15T22:59:21"}
+{"output_id": "OUT-009-02-01", "source_id": "OUT-009-02-01", "source_type": "step_output", "step_id": "STEP-02", "status": "draft", "target_path": "wbs-runs/multi-mission-web-ui/control-plane-stabilization-design.v1.md", "created_at": "2026-09-15T23:03:35"}
+{"output_id": "OUT-009-03-01", "source_id": "OUT-009-03-01", "source_type": "step_output", "step_id": "STEP-03", "status": "draft", "target_path": "wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/", "created_at": "2026-09-16T00:00:03"}

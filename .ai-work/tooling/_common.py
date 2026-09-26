@@ -1781,6 +1781,15 @@ PROJECT_PROFILE_SCHEMA: "dict[str, dict]" = {
                                  "`type` or a `suggested_target`"},
     "wiki_single_index": {"required": False, "default": False, "gates_guard": False,
                           "doc": "keep ONE index.jsonl instead of the dual-index layout"},
+    # Standard_Pack_Contract_Spec_MVP §9, the THIRD version layer (AIWS · pack · this pin). OPTIONAL
+    # on purpose: most projects install no pack, and a required key would make every one of them
+    # INCOMPLETE for a feature they do not use. Written by `install_standard_pack.py` as a two-key
+    # BLOCK (`id` + `version`) — the only schema value that is not a scalar, because §9 fixes that
+    # shape and flattening it would lose the pack identity the version belongs to. `null` (the
+    # default `refresh` writes) means "no pack installed", and is falsy for every reader.
+    "standard_pack":     {"required": False, "default": None, "gates_guard": False,
+                          "doc": "which Standard Pack (id + version) this project is pinned to; "
+                                 "null until `install_standard_pack.py` writes it"},
 }
 
 #: "Complete" is keys AND invariants (HUMAN ruling OP-1119-02). A file can carry every required key and
@@ -1882,7 +1891,14 @@ def profile_upsert(path: "Path", updates: "dict", *, create_block: bool = True) 
 
 
 def _profile_scalar(v) -> str:
-    """Render a scalar the way this file writes them (lists are not upserted — they are hand-owned)."""
+    """Render a scalar the way this file writes them (lists are not upserted — they are hand-owned).
+
+    `None` -> `null`, so an optional key can be seeded ABSENT-but-declared: `str(None)` would write
+    the literal `None`, which every reader here coerces to the truthy string 'None'. The one key that
+    needs this today is `standard_pack` (§9 pin, written later by install_standard_pack.py).
+    """
+    if v is None:
+        return "null"
     if isinstance(v, bool):
         return "true" if v else "false"
     return str(v)

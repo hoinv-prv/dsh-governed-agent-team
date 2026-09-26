@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v13-council-014",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "ced327721d8df1d9215378fafb3742a0d6ba3a72ada6123e895c287107eff4ed"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "a33fdc73b61da6ee4a6fedf5453fc3c5a093a98000d950ea9748ff1bca2f8616"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "c6bb0c68dc9ab70d305fcda86d3f9a24332596c365e8cf6b1263a6a0ff994f11"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "832e1aea39a60da8ebdab92d9b18895930ce2d8b83c7d6ce5568ede7f83f080e"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "a6a29d1f23961863b55e45e9fb7661fe7736a6f7bd5f61d3445f3746f0277eee"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "94e3e446025f57604cbe63e0c4faba3ab1a18dad2dd8852e0ff5651497b416e5"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "c97c71693c464f9f99f8f08cb3e095a0b6320cf448972b146bacfb607ddcc15a"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "b1c81328730718e7c1820bd41229a2785f5034147debd67c4fa7c62a064b9888"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "b299849f47edc323a31767ec4aea240a76eb702f3a77ba3633a1a8c44f54267d"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "cecc572de875980c3c850700b0d9ebc649204677fe48c06542cc8cb002b274e8"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve both confirmed findings and re-review exact revised bytes before any WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer14-authority-001-f1",
+      "effective_severity": "medium",
+      "claim": "The design declares no owner, authority record, bound evidence, target state or fail-closed disposition for the acceptance-projection write/validation failure path, specifying only an undefined 'separately authorized repair', and the state machine gives ACCEPTANCE_PENDING no declared owning transition.",
+      "artifact_id": "design-v13",
+      "locator": {
+        "kind": "line",
+        "value": "186"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed acceptance projection repair and ACCEPTANCE_PENDING closure gap."
+    },
+    {
+      "finding_id": "reviewer14-authority-001-f2",
+      "effective_severity": "medium",
+      "claim": "The charged INTERRUPTED_CHARGED state has no declared owning transition, target state or recovery command; the only crash-after-charge guidance is the undefined phrase 'reconcile from write-ahead record'.",
+      "artifact_id": "design-v13",
+      "locator": {
+        "kind": "line",
+        "value": "420"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed INTERRUPTED_CHARGED same-attempt recovery/closure gap."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Acceptance projection and interrupted-charge recovery remain incomplete until revision."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

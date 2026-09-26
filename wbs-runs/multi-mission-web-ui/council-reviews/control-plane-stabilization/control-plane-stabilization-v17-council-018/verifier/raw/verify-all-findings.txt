@@ -1,0 +1,4 @@
+Parent read-only verification against immutable design-v17 SHA-256 4dea4c3d32d8df9c75e31a5e518de17c192898229bc66fed897616920a5bad29.
+Confirmed reviewer18-adversarial-f001: final charge comparison omits aggregate identity for all P1-P16/P14 inputs.
+Confirmed reviewer18-adversarial-f002: ordinary APPLIED completion does not require GuardedWriteReceipt.
+Confirmed reviewer18-adversarial-f003: pre-charge NOT_APPLIED completion persistence is absent from the exhaustive write set.

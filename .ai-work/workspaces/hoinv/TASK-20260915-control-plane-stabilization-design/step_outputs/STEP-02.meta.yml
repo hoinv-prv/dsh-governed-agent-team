@@ -1,0 +1,10 @@
+output_id: OUT-009-02-01
+result_type: output
+working_aip_ref: AIP-EXEC-009
+step_id: STEP-02
+output_locator: wbs-runs/multi-mission-web-ui/control-plane-stabilization-design.v1.md
+created_at: 2026-09-15T23:03:35
+review_status: draft
+verification_level: unverified
+source_refs: []
+notes: ""

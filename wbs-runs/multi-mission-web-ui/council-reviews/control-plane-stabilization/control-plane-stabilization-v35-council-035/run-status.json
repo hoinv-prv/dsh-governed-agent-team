@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v35-council-035",
+  "state": "failed",
+  "stage": "dispatch",
+  "failure": {
+    "code": "ledger_integrity_failed",
+    "stage": "dispatch",
+    "subject": "schema-enforced-workflow",
+    "message": "All three schema-enforced workflow agents returned null without per-invocation typed failure evidence. Retry eligibility cannot be established; no reviewer envelope may be inferred or repaired.",
+    "retryable": false,
+    "invocation_id": null
+  },
+  "updated_sequence": 2
+}

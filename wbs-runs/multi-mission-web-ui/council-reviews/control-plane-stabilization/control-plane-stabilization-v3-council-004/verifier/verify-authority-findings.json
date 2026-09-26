@@ -1,0 +1,22 @@
+{
+  "verification_id":"verify-authority-findings",
+  "finding_ids":["r4auth002a2-f1","r4auth002a2-f2","r4auth002a2-f3"],
+  "method":"read",
+  "command_id":null,
+  "argv":null,
+  "cwd":null,
+  "timeout_seconds":null,
+  "authorized_by_request":true,
+  "status":"confirmed",
+  "exit_code":null,
+  "output_excerpt":"All three normalized authority findings confirmed against immutable design-v3 and repo-rule snapshots.",
+  "reason":"The named charge operation, exact precedence, and proposed bundle schema/validator ownership are absent as claimed.",
+  "artifact_hashes_before":[{"artifact_id":"design-v3","sha256":"8fc33a7d5a09ed5eb53d90d4b34ccfee0b58d061342bd561c5d986f793824bf2"},{"artifact_id":"repo-rules","sha256":"9260216bebe60f86e08e3b745a4d822afd0120ce560a631285d17a3b59221177"}],
+  "artifact_hashes_after":[{"artifact_id":"design-v3","sha256":"8fc33a7d5a09ed5eb53d90d4b34ccfee0b58d061342bd561c5d986f793824bf2"},{"artifact_id":"repo-rules","sha256":"9260216bebe60f86e08e3b745a4d822afd0120ce560a631285d17a3b59221177"}],
+  "result_path":"/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v3-council-004/verifier/verify-authority-findings.json",
+  "raw_output_path":"/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v3-council-004/verifier/raw/verify-authority-findings.txt",
+  "raw_output_sha256":"e38c668a30ff96f10035d4129e3d878ba481e2ec3e731c7777aa92301be10f00",
+  "raw_output_size_bytes":1226,
+  "started_at":null,
+  "duration_ms":null
+}

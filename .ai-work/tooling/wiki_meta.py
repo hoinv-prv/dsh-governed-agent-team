@@ -12,11 +12,13 @@ PRINT (sections NOT projected to the index — the orientation value-add):
   CR-AIWS-2026-06-054) · any CUSTOM section.
 SKIP (already in the index, or a frontmatter mirror):
   Lookup Keys · Knowledge Targets · Profile Mapping · routing frontmatter.
-A one-line header carries the trust flag (authority_level / intended_ai_use / status).
+A one-line header carries the trust flag (authority_level / intended_ai_use / status) and the
+artifact path (CR-AIWS-2026-09-003 C3) so the meta-first flow needs no second call for it.
 
 Usage:
     python wiki_meta.py --view <source_id>
     python wiki_meta.py --view <source_id> --index <path>   # cross-index (root derived from --index)
+    python wiki_meta.py --view <source_id> --system <id>    # assert the source is in that system
 
 Additive: does not change lookup_wiki_source.py (discovery) — this is the META-FIRST companion.
 """
@@ -34,9 +36,11 @@ from _common import (  # noqa: E402
     all_index_paths,
     extract_sections,  # noqa: F401  (kept for parity / potential reuse)
     find_ai_work_root,
+    in_system,
     locator_str,
     parse_frontmatter,
     read_jsonl,
+    read_project_config,
     read_text,
     resolve_data_file,
     resolve_locator,
@@ -96,7 +100,8 @@ def _related_sources_signal(section_text: str, source_id: str) -> str:
     )
 
 
-def cmd_view(source_id: str, index_paths: list, project_root: Path) -> int:
+def cmd_view(source_id: str, index_paths: list, project_root: Path,
+             active_system: "str | None" = None) -> int:
     # CR-AIWS-2026-07-051 T2 (Rule 6): resolve across EVERY namespace index, not just index.jsonl —
     # `--view` used to fail with "not found in index" for all 187 AIWS sources.
     idx: dict = {}
@@ -106,6 +111,17 @@ def cmd_view(source_id: str, index_paths: list, project_root: Path) -> int:
     if rec is None:
         joined = ", ".join(p.name for p in index_paths) or "(none)"
         print(f"error: {source_id} not found in index ({joined})", file=sys.stderr)
+        return 2
+    # CR-AIWS-2026-09-003 C2: --system is an ASSERTION, not a filter. `--view` is already
+    # id-targeted, so scoping cannot change WHICH record is read - it can only catch the caller
+    # reading across systems by mistake. Rule #12 tells agents to carry --system on every lookup;
+    # this tool used to answer `unrecognized arguments` and cost a retry turn (31 such retries
+    # across 11/12 multi-system runs, AIP-EXEC-1156). Optional by design: hard-requiring it the way
+    # lookup_wiki_source.py does would break every existing id-targeted caller.
+    if active_system is not None and not in_system(rec, active_system):
+        print(f"error: {source_id} belongs to system {rec.get('system') or '(common)'!r}, "
+              f"not {active_system!r} - refusing to read across systems (rule #12). "
+              f"Drop --system to read it anyway.", file=sys.stderr)
         return 2
     # CR-AIWS-2026-07-064 B4 (Rule 9): normalize the index value first (a non-string crashed
     # inside resolve_locator, before any guard), and require a real FILE — exists() is true for a
@@ -126,6 +142,13 @@ def cmd_view(source_id: str, index_paths: list, project_root: Path) -> int:
     print(f"{source_id} — {title}")
     if flags:
         print("  [" + " · ".join(flags) + "]")
+    # CR-AIWS-2026-09-003 C3: carry the artifact path in the header. Without it the meta-first flow
+    # had to make a SECOND call (`lookup_wiki_source.py --mode id`) purely to learn where the
+    # artifact lives - measured in 12/16 runs (AIP-EXEC-1156). Same string form the lookup prints,
+    # so the two surfaces agree.
+    artifact = locator_str(rec.get("artifact_locator"))
+    if artifact:
+        print(f"  artifact: {artifact}")
     print()
 
     skipped: list[str] = []
@@ -153,6 +176,10 @@ def main() -> int:
         description="Meta value-add reader (orientation info; skips index-duplicated sections)")
     p.add_argument("--view", metavar="SOURCE_ID", required=True, help="source_id of the meta to view")
     p.add_argument("--index", help="override index.jsonl path (project root derived from it)")
+    p.add_argument("--system", default=None, metavar="ID",
+                   help="Multi-system scoping (CR-AIWS-2026-06-017, rule #12): assert the viewed "
+                        "source belongs to this system (common docs always pass). Optional - "
+                        "`--view` is id-targeted, so this validates rather than filters.")
     ns = p.parse_args()
 
     if ns.index:
@@ -164,7 +191,16 @@ def main() -> int:
         project_root = find_ai_work_root(Path.cwd())
         index_paths = all_index_paths(project_root / ".ai-work" / "wiki_sources")
 
-    return cmd_view(ns.view, index_paths, project_root)
+    active_system = None
+    if ns.system:
+        active_system = ns.system.strip()
+        cfg = read_project_config(project_root / ".ai-work")
+        if cfg["multi_system"] and cfg["systems"] and active_system not in cfg["systems"]:
+            print(f"error: --system {active_system!r} is not in this project's systems "
+                  f"{cfg['systems']}.", file=sys.stderr)
+            return 2
+
+    return cmd_view(ns.view, index_paths, project_root, active_system)
 
 
 if __name__ == "__main__":

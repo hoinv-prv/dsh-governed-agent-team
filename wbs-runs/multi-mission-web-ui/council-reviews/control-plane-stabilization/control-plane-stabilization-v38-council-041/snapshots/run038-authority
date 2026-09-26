@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v35-council-038",
+  "reviewer_id": "reviewer38-authority-001",
+  "lane": "internal-authority",
+  "invocation_id": "inv38-auth-001",
+  "attempt": 1,
+  "status": "completed",
+  "artifact_manifest_sha256": "328a9e72938ac6f51f2336d2883f25dfd5ec5207bc4e45e70b43d1a773ae8188",
+  "packet_sha256": "8f35aa8e2bf5afacbbdf68ddcf23c038968b2d8052163193573e24581c54a6a3",
+  "findings": [
+    {
+      "finding_id": "AUTH38-F-001",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "The AIP/ASC transition effect 5.1(a) is declared to be funded by a \"separately accepted bootstrap/pre-charge-control allocation\" that the design never creates: the Section 6.3 state-specific allocation enumeration funds bootstrap, migration, ordinary uncharged pre-charge admission work, charged-accounting finalization, provenance-terminal recovery, review recovery and transition-intent finalization, but names no pre-charge-control or AIP/ASC-transition allocation, and the Section 16 bootstrap decision binding does not bind one either.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "355"
+      },
+      "evidence_excerpt": "Effect 5.1(a), the AIP pointer/ASC transition, is a pre-admission control prerequisite funded only by the separately accepted bootstrap/pre-charge-control allocation; it occurs before the admission cycle and is never debited again to a reservation.",
+      "impact": "The one pre-charge effect that writes AIP pointer/ASC/Workspace-control bytes through `run_aip.py start|resume|step` has no named accounting allocation, no ceiling and no root/administrative authorization-outcome pairs while effects 5.1(b)-(f) must run under Section 6.3, so a control-cost surface the design itself counts among its six P15-approved effects is unbounded and cannot be reconciled; a builder also cannot complete the Section 16 P15 handoff manifest cell for this capability without inventing an allocation.",
+      "recommended_action": "Add the AIP/ASC transition allocation to the Section 6.3 state-specific allocation list (or bind it explicitly into the bootstrap decision) and require its own authorization/outcome pair and ceiling reconciliation exactly like effects 5.1(b)-(f); if bootstrap is intended to fund it, name that allocation and its hash in the Section 16 bootstrap-decision entry criteria.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-authority-001",
+        "invocation_id": "inv38-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.88
+    },
+    {
+      "finding_id": "AUTH38-F-002",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "Bootstrap entry is inconsistent across the normative surfaces: Section 6.3 permits `BOOTSTRAP_MAINTENANCE` \"outside the frozen mission-attempt ledger until a valid migrated ledger exists\", while Section 9 states the current `execution.json` remains frozen until a HUMAN decision enters `MIGRATION_MAINTENANCE` and that migration is the sole ledger-write exception before valid P3, Section 16 lists the migration decision before the bootstrap decision as separate pre-WBS prerequisites, and the CP-03 and CP-05 registry rows both admit entry directly from `FROZEN` with no mutual exclusion.",
+      "classification": "inference",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "347"
+      },
+      "evidence_excerpt": "Bootstrap implementation is not free or implicit work. It enters `BOOTSTRAP_MAINTENANCE` only through a separately HUMAN-authorized administrative task under its own Working AIP and Task Workspace, outside the frozen mission-attempt ledger until a valid migrated ledger exists.",
+      "impact": "If bootstrap is admitted before the accepted migrated base exists, the design admits pre-WBS control work while Section 9 declares migration the sole pre-P3 write exception and holds the ledger frozen; if bootstrap must follow migration, its Section 6.3 timing statement and the CP-03 FROZEN edge are wrong. Both readings cannot hold, and because no precedence or mutual exclusion is stated between the CP-03 and CP-05 FROZEN edges an approver may start the wrong prerequisite first, which is the P3/P15 circularity the entry criteria claim to avoid.",
+      "recommended_action": "Pin one ordering across the registry, Section 6.3 and Section 16 (for example FROZEN to ADMIN_LEDGER_GENESIS, then MIGRATION_MAINTENANCE/RECOVERY to FROZEN(new base), then BOOTSTRAP_MAINTENANCE) and add the explicit precondition and mutual-exclusion statement to CP-03 and CP-05.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-authority-001",
+        "invocation_id": "inv38-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.78
+    },
+    {
+      "finding_id": "AUTH38-F-003",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "The Section 15.1 closure matrix claims to close the run-034 valid-lane findings, but its only row for them points to a summary topic list (\"migration states, successful dispatch edge, current-global recurrence, design-basis freshness, P7 not-probed, migration carve-out\") at CP-05/CP-12, Section 6.3, P5/P7 and Section 9.1, and no pinned artifact in this packet contains the run-034 finding or verifier bytes, so AUTH34-F-001, AUTH34-F-002, AUTH34-F-003 and ADV34R-F-001 cannot be shown corrected by exact locator in this run.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "631"
+      },
+      "evidence_excerpt": "run-034 content checks: migration states, successful dispatch edge, current-global recurrence, design-basis freshness, P7 not-probed, migration carve-out | CP-05/CP-12, Section 6.3, P5/P7, Section 9.1 | corresponding transition, arithmetic, freshness, capability and migration fixtures",
+      "impact": "The must-check requires every run-033 and run-034 finding to close demonstrably and refuted findings not to be reintroduced; with only run-033 ledger and verifier bytes pinned, the four run-034 rows rest on an unpinned basis, so any closure conclusion for them is asserted rather than verified and a reintroduced refuted finding could not be detected from these bytes.",
+      "recommended_action": "State in Section 15.1 that the run-034 basis bytes are absent from this packet (as the run-033 verifier did for the sanitized outside-view context reduction) and mark the corresponding closure claims not-verifiable, or pin the run-034 ledger and verifier records as declared Source of Truth artifacts for this lane.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-authority-001",
+        "invocation_id": "inv38-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "finding_id": "AUTH38-F-004",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "The Section 15.1 closure matrix row for the pinned consistency audit remains revision-ambiguous: it maps `CS-01` through `CS-09` to \"Section 5.0.1 CP-01...CP-16 and Section 14 coverage index\" without naming the revision being closed, the design contains no residual v33 identifier, and no row states that the closure claim applies to this exact reviewed revision rather than superseded bytes.",
+      "classification": "fact",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "615"
+      },
+      "evidence_excerpt": "| CS-01, CS-02, CS-03, CS-04, CS-05, CS-06, CS-08, CS-09 | Section 5.0.1 CP-01...CP-16 and Section 14 coverage index | state/edge inventory, source/candidate/divergent and blocked-state fixtures |",
+      "impact": "A reader, WBS task or bootstrap decision can bind the audit-closure claim to superseded v33 bytes while v35 remains the reviewed design, the same superseded-bytes exposure class as AUTH33-F-01; the closure evidence for the pinned audit is therefore not traceable to these exact reviewed bytes.",
+      "recommended_action": "Make the Section 15.1 prior-ID rows carry an explicit current-revision reference (for example this design's own revision label, as AUTH33-F-01 required for Section 6.1) so no superseded-revision token remains in the closure mapping.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-authority-001",
+        "invocation_id": "inv38-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.82
+    },
+    {
+      "finding_id": "AUTH38-F-005",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "P5 pins repository rule `AGENTS.md` and the AIWS architecture document as the reviewed authority/precedence basis and re-hashes them every admission cycle, but that architecture file lives under the package-owned canonical Truth path `.ai-work/truth/canonical/methodology/`, whose canonical bytes are governed by the AIWS compose/CR process rather than by this design, and no recovery path is declared for an authority-version change.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "414"
+      },
+      "evidence_excerpt": "it also pins and re-hashes repository rule `AGENTS.md` SHA-256 `9260216bebe60f86e08e3b745a4d822afd0120ce560a631285d17a3b59221177` and AIWS architecture SHA-256 `5e4c399d63f7c066db471918961288bc9bfc8cac24334e7c7f9ea28031b54ff9` as the reviewed authority/precedence basis",
+      "impact": "The admitted control plane treats a mutable canonical Truth document as an immutable admission input; a legitimate AIWS package upgrade or approved change request that rewrites either pinned file silently invalidates the admission basis and blocks the delivery path, while the stated disposition (\"NOT_READY; invalidate carry-forward\") describes no way to re-establish a superseding accepted authority baseline or to distinguish a legitimate authority update from drift.",
+      "recommended_action": "Declare the re-baselining procedure for a legitimately superseded authority file (new bundle carrying the superseding AGENTS.md and AIWS-architecture hashes plus attributable HUMAN re-acceptance of the authority/precedence basis) and state in P5 that an authority-version change is a re-baseline event rather than silent drift.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-authority-001",
+        "invocation_id": "inv38-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.72
+    },
+    {
+      "finding_id": "AUTH38-F-006",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "`EXPIRED` is named as a permitted current state for the CP-10 registry row, but no registry row enumerates the recovery edge out of `EXPIRED` even though Sections 5.0.1 and 14 require the no-charge rebuild, and the design's own rule is that an edge absent from the registry is forbidden.",
+      "classification": "inference",
+      "severity": "low",
+      "governance_class": null,
+      "artifact_id": "design-v35",
+      "locator": {
+        "kind": "line",
+        "value": "219"
+      },
+      "evidence_excerpt": "CP-10 | ordinary `FROZEN`, `PREPARING`, `NOT_READY`, `READY`, `EXPIRED`, or `COMMITTING` after accepted prerequisites | `FROZEN\u2192PREPARING` only through effect 5.1(a); Sections 5.1\u20135.3 then govern prepare/re-prepare/expiry; charge solely `READY\u2192COMMITTING\u2192CHARGED_ACCOUNTING_PENDING`",
+      "impact": "The design states that an edge absent from the registry is forbidden and that every control surface needs an exact recovery path; EXPIRED has a named fail state and a documented uncharged rebuild disposition but no enumerated edge or next state in the registry, so the declared recovery is not mechanically closed and a builder cannot derive the permitted EXPIRED transition or its P3/P15 mirror cell without inventing it.",
+      "recommended_action": "Add the explicit EXPIRED recovery edge (for example `EXPIRED \u2192 PREPARING` uncharged re-prepare, or `EXPIRED \u2192 FROZEN` then effect 5.1(a)) to CP-10 and mirror it in the P3/P15 columns, the Section 14 matrix and the fixture class.",
+      "verification": {
+        "status": "pending",
+        "verification_id": null
+      },
+      "provenance": {
+        "reviewer_id": "reviewer38-authority-001",
+        "invocation_id": "inv38-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.7
+    }
+  ],
+  "rejected_candidates": []
+}

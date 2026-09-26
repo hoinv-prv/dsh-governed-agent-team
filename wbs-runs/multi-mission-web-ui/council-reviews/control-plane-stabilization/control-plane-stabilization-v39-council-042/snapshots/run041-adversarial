@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v38-council-041",
+  "reviewer_id": "reviewer41-adversarial-001",
+  "lane": "internal-adversarial",
+  "invocation_id": "inv41-adv-001",
+  "attempt": 1,
+  "status": "completed",
+  "artifact_manifest_sha256": "f94f521fc6cb9a42eb40052cd64668a066d207dd3337d6b4491da59a216699ed",
+  "packet_sha256": "ad902e9e014e690a6b1050585656ffdb1fc0026de4840616b4eef564e4dfac77",
+  "findings": [
+    {
+      "finding_id": "ADV41-F-001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "The exhaustive CP-12 registry omits the failure edges from CHARGED_ACCOUNTING_PENDING or COMPLETION_INDEX_CLOSE_PENDING into CHARGED_ACCOUNTING_BLOCKED, even though the state machine and accounting protocol require those edges when a charged writer, completion, index-close, or accounting append fails.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": { "kind": "line", "value": "143-148, 221, 372" },
+      "evidence_excerpt": "missing/failing writer accounting──> CHARGED_ACCOUNTING_BLOCKED",
+      "impact": "The closed P3/P15 edge index names CHARGED_ACCOUNTING_BLOCKED only as a current state and provides success/exhaustion prose, so a legitimately charged failure has no registered transition and an implementation must either strand the charged attempt or invent an unlisted recovery edge.",
+      "recommended_action": "Register each charged accounting failure edge, its exact source states, authorization/outcome and reconciliation records, terminal/resource-exhaustion disposition, P3/P15 rules, and fixtures in CP-12 and the mirrored handoff manifest.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer41-adversarial-001",
+        "invocation_id": "inv41-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98
+    },
+    {
+      "finding_id": "ADV41-F-002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "authority-accounting",
+      "claim": "CP-05 permits FROZEN legacy-ledger migration without stating that an accepted ADMIN_LEDGER_GENESIS and AdministrativeLedgerGenesisReceipt already exist, contradicting the separate prerequisite that migration must occur only after genesis and its canonical administrative ledger are accepted.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": { "kind": "line", "value": "214, 348-356" },
+      "evidence_excerpt": "FROZEN legacy ledger with no active bootstrap, MIGRATION_MAINTENANCE, MIGRATION_RECOVERY, or MIGRATION_BLOCKED",
+      "impact": "The normative CP registry can admit MIGRATION_MAINTENANCE directly from FROZEN before the required genesis receipt and common administrative resource ledger exist, leaving migration effects outside the stated accounting and root-of-trust controls.",
+      "recommended_action": "Make accepted genesis, its receipt, and the canonical administrative-ledger contract/path/ceiling explicit CP-05 preconditions and add a no-genesis migration-block fixture mirrored in P3/P15 and the state diagram.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer41-adversarial-001",
+        "invocation_id": "inv41-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.97
+    },
+    {
+      "finding_id": "ADV41-F-003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "review-evidence-binding",
+      "claim": "The AcceptedDesignRegistry generation schema and AdmissionBundle design_basis do not require an equality binding between the selected current design_raw_sha256 and the artifact/design hash covered by the council ReviewClosureReceipt, so re-hashing both does not prove that the latest HUMAN-accepted design is the council-passed design.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": { "kind": "line", "value": "303, 332, 386, 513" },
+      "evidence_excerpt": "council ReviewClosureReceipt path+raw sha256 with pass|pass_with_notes",
+      "impact": "A current registry entry for one design can be paired with a valid receipt for another revision or packet; all listed hashes may individually match while admission still lacks proof that the latest selected design itself passed council review.",
+      "recommended_action": "Add the receipt's reviewed artifact-manifest/design raw hash and review identity to the registry generation and bundle, require exact equality with selected design_raw_sha256 at P5/P14, and reject mismatched or superseded receipt/design pairs.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer41-adversarial-001",
+        "invocation_id": "inv41-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.94
+    },
+    {
+      "finding_id": "ADV41-F-004",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "state-closure",
+      "claim": "CP-02 and CP-04 do not enumerate the destinations of their required HUMAN recovery edges, although the state machine requires ADMIN_LEDGER_GENESIS_BLOCKED→ADMIN_LEDGER_GENESIS and BOOTSTRAP_BLOCKED→BOOTSTRAP_MAINTENANCE or a no-effect close to FROZEN.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v38",
+      "locator": { "kind": "line", "value": "113-124, 211-213" },
+      "evidence_excerpt": "fresh HUMAN restore-or-complete only; otherwise stay blocked",
+      "impact": "The declared exhaustive CP registry cannot deterministically distinguish restore/complete from remain-blocked outcomes for two blocked control-plane states, so P3/P15 and recovery fixtures cannot prove the allowed recovery path without inferring an unlisted edge.",
+      "recommended_action": "Name the exact CP-02 and CP-04 destination edges, guards, receipts, accounting effects and fixtures, and mirror them in the P3 allowlist, P15 manifest and Section 14 coverage index.",
+      "verification": { "status": "pending", "verification_id": null },
+      "provenance": {
+        "reviewer_id": "reviewer41-adversarial-001",
+        "invocation_id": "inv41-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.93
+    }
+  ],
+  "rejected_candidates": []
+}

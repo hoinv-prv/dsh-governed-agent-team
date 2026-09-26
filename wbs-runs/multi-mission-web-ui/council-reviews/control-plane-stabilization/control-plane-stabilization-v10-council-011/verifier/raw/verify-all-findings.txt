@@ -1,0 +1,10 @@
+Parent read-only verification against immutable design-v10 SHA-256 d40edaec1b3b01604eda581db15c8f2035b645119c63ffff3504ae979dd9d90f.
+
+Confirmed all five normalized findings:
+- authority-002-f1: MIGRATION_BLOCKED has no governed owner/exit/decision/evidence contract.
+- authority-002-f2: literal P14 raw equality conflicts with the permitted invalidation-index append-only extension rule.
+- adversarial-f001: P13 proves HUMAN actor but not decision-owner identity or validated delegation chain.
+- adversarial-f002: mandatory execution boundary receipt lacks an exact strict-contract JSON-pointer mapping or authorized versioned contract extension.
+- adversarial-f003: administrative resource ledger lacks a bound schema/path/single writer/guarded append/validator/reconciliation contract.
+
+No command verification was authorized or executed; these are exact specification-presence/consistency checks.

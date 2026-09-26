@@ -312,6 +312,45 @@ describe('dsh-tool-team', () => {
     expect(text(capped)).toContain('durable teammate cap of 4')
   })
 
+  it('allows solo delegation before enable and denies external sub-agent paths after enable', async () => {
+    const { ctx, lead } = await setup(['hang'])
+    const calls = new Map<string, number>()
+    for (const name of ['subagent', 'subagent_fork', 'workflow', 'ralph']) {
+      calls.set(name, 0)
+      ctx.tools.register(defineContentToolFixture({
+        name,
+        description: `test-only ${name} delegation path`,
+        parameters: {},
+        async execute() {
+          calls.set(name, (calls.get(name) ?? 0) + 1)
+          return [{ type: 'text', text: `ran ${name}` }]
+        },
+      }))
+    }
+
+    for (const name of calls.keys()) {
+      const solo = await execute(ctx, lead, name, {})
+      expect(solo.isError).toBe(false)
+      expect(text(solo)).toBe(`ran ${name}`)
+    }
+
+    await approveCurrentPlan(ctx, lead)
+    const spawned = await execute(ctx, lead, 'spawn_teammate', spawnRequest(0))
+    expect(spawned.isError).toBe(false)
+    await waitRunning(ctx, spawnedChildId(spawned))
+
+    for (const name of calls.keys()) {
+      const denied = await execute(ctx, lead, name, {})
+      expect(denied.isError).toBe(true)
+      expect(text(denied)).toContain(`External sub-agent delegation denied for tool "${name}"`)
+      expect(text(denied)).toContain('ask the HUMAN to approve adding a member')
+      expect(text(denied)).toContain('create it with spawn_teammate, then assign the task')
+      expect(calls.get(name)).toBe(1)
+    }
+    expect(renderPrompt(await assembly(ctx, lead))).toContain('Delegate only to members of the current Team')
+    expect(renderPrompt(await assembly(ctx, lead))).toContain('ask the HUMAN to approve adding a suitable member')
+  })
+
   it('uses configured minimum readiness and durable teammate cap', async () => {
     const { ctx, lead } = await setup(['hang', 'hang'], false, {
       minExecutionMembers: 1,
@@ -322,7 +361,7 @@ describe('dsh-tool-team', () => {
 
     const restricted = await execute(ctx, lead, 'danger_write', {})
     expect(restricted.isError).toBe(true)
-    expect(text(restricted)).toContain('requires at least 1 durable active teammates; found 0')
+    expect(text(restricted)).toContain('at least 1 durable active teammates; found 0 durable active teammate(s)')
     const first = await execute(ctx, lead, 'spawn_teammate', spawnRequest(0))
     expect(first.isError).toBe(false)
     await waitRunning(ctx, spawnedChildId(first))
@@ -340,9 +379,46 @@ describe('dsh-tool-team', () => {
     expect(text(capped)).toContain('durable teammate cap of 2')
   })
 
+  it('permits approved Lead-only execution without teammate diagnostics and still enforces the cap', async () => {
+    const { ctx, lead } = await setup(['hang'], false, {
+      maxExecutionMembers: 1,
+    })
+    const calls = { count: 0 }
+    registerDanger(ctx, calls)
+
+    const unapproved = await execute(ctx, lead, 'danger_write', {})
+    expect(unapproved.isError).toBe(true)
+    expect(text(unapproved)).toMatch(/current Team plan revision \d+ is not HUMAN-approved/u)
+    expect(calls.count).toBe(0)
+
+    await approveCurrentPlan(ctx, lead)
+    const preflight = JSON.parse(text(await execute(ctx, lead, 'team_task_list', {}))) as {
+      preflight: { requiredActiveTeammates: number; executionReady: boolean; diagnostics: string[] }
+    }
+    expect(preflight.preflight).toEqual({
+      planRevision: ctx.agentTeams.remoteView(lead).planRevision,
+      planPhase: 'approved',
+      approvedRevision: ctx.agentTeams.remoteView(lead).planRevision,
+      durableActiveTeammates: 0,
+      requiredActiveTeammates: 0,
+      executionReady: true,
+      diagnostics: [],
+    })
+    expect(renderPrompt(await assembly(ctx, lead))).toContain('zero durable teammates are permitted')
+    expect(renderPrompt(await assembly(ctx, lead))).not.toContain('at least 0 durable active teammates')
+
+    expect((await execute(ctx, lead, 'danger_write', {})).isError).toBe(false)
+    expect(calls.count).toBe(1)
+    expect((await execute(ctx, lead, 'spawn_teammate', spawnRequest(0))).isError).toBe(false)
+    const capped = await execute(ctx, lead, 'spawn_teammate', spawnRequest(1))
+    expect(capped.isError).toBe(true)
+    expect(text(capped)).toContain('durable teammate cap of 1')
+  })
+
   it('denies direct and nested non-allowlisted calls until approval and two durable teammates', async () => {
     const { ctx, lead } = await setup(['hang', 'hang'], false, {
       externalRestrictedTools: ['composite_dispatch'],
+      minExecutionMembers: 2,
     })
     const calls = { count: 0 }
     registerDanger(ctx, calls)
@@ -375,7 +451,7 @@ describe('dsh-tool-team', () => {
     await approveCurrentPlan(ctx, lead)
     const stillShort = await execute(ctx, lead, 'danger_write', {})
     expect(stillShort.isError).toBe(true)
-    expect(text(stillShort)).toContain('requires at least 2 durable active teammates; found 0')
+    expect(text(stillShort)).toContain('at least 2 durable active teammates; found 0 durable active teammate(s)')
 
     const readyIds: SessionId[] = []
     for (const index of [1, 2]) {
@@ -552,6 +628,7 @@ describe('dsh-tool-team', () => {
     const { ctx, lead } = await setup(['hang', 'hang', 'hang', 'hang'], false, {
       forkProvider: 'missing-fork',
       externalRestrictedTools,
+      minExecutionMembers: 2,
     })
     externalRestrictedTools.push('mutated-after-apply')
     const calls = { count: 0 }
@@ -694,7 +771,7 @@ describe('dsh-tool-team', () => {
   })
 
   it('allows spawn for the minimum-member diagnostic alone', async () => {
-    const { ctx, lead } = await setup(['hang'])
+    const { ctx, lead } = await setup(['hang'], false, { minExecutionMembers: 2 })
     await approveCurrentPlan(ctx, lead)
     const before = JSON.parse(text(await execute(ctx, lead, 'team_task_list', {}))) as {
       preflight: { executionReady: boolean; diagnostics: string[] }
@@ -1017,12 +1094,12 @@ describe('dsh-tool-team', () => {
     expect(() => { toolTeam.apply(ctx, { externalRestrictedTools: [''] }) })
       .toThrow('externalRestrictedTools[0] must be a non-empty string')
     for (const config of [
-      { minExecutionMembers: 0 },
+      { minExecutionMembers: -1 },
       { minExecutionMembers: 1.5 },
       { maxExecutionMembers: Number.MAX_SAFE_INTEGER + 1 },
     ]) {
       expect(() => { toolTeam.apply(ctx, config) })
-        .toThrow(/ExecutionMembers must be a positive safe integer/u)
+        .toThrow(/ExecutionMembers must be a (non-negative|positive) safe integer/u)
     }
     expect(() => { toolTeam.apply(ctx, { minExecutionMembers: 3, maxExecutionMembers: 2 }) })
       .toThrow('maxExecutionMembers must be greater than or equal to minExecutionMembers')

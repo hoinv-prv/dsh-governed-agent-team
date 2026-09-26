@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v18-council-019",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "03765330ac850df2177dbb41df47dd301c166f930cc9e9d67b31e2a7211a02b4"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "6f83b799c23f533f1b028f97d39fa7cb45e0f1f827e735d8e3776f28d24863d9"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "d513ec2d0e06d1a0043732928c13c6bc6ace271bfab1a41a79922eba4acd986d"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "aefb6e3568d5bc46ad516b683da70af1bcf485d181ffd28dc1925c5bcbd1d2c5"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "f7d3a203932467fd55043327db96eadf24db10266a40c6c479cf2c2706943826"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "b76b09207cb678d24343206dd9787ad786d20696064d17cedbbbc16d10aae632"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "321dbbb537d3475336e8c8cf6abdba4c4d36d1b4c9bb585033a4cf1b64914b2e"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "cc2e6567d4011b57177554ae4fbcca8c5f2851de90202036f35cc57d2d82ce8a"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "d002c105621ad5d69129710613eeeef8f65be7d1696ad950cb07ffc16b73c207"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "def6ddde8682ff419746615d05d0b4a2fcc09687a2a30ed8433d1057b95f4d1e"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Resolve all three findings and re-review exact revised bytes before WBS build.",
+  "findings": [
+    {
+      "finding_id": "reviewer19-adversarial-f001",
+      "effective_severity": "high",
+      "claim": "The exhaustive normal-admission write whitelist declares exactly five pre-charge effects but omits the required AdministrativeResourceLedger append, which is itself an additional durable pre-charge write needed to account every allowed call and effect.",
+      "artifact_id": "design-v18",
+      "locator": {
+        "kind": "line",
+        "value": "168"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed administrative-ledger append is absent from the closed pre-charge effect set."
+    },
+    {
+      "finding_id": "reviewer19-adversarial-f002",
+      "effective_severity": "high",
+      "claim": "The commit protocol defines no stable administrative-budget reservation or snapshot across the post-boundary charge-intent seal and the final aggregate-equality check.",
+      "artifact_id": "design-v18",
+      "locator": {
+        "kind": "line",
+        "value": "178-179"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed no stable reservation spans post-boundary intent/accounting/completion effects."
+    },
+    {
+      "finding_id": "reviewer19-adversarial-f003",
+      "effective_severity": "high",
+      "claim": "The uniform transition protocol requires a charge intent to exist before the ledger write but gives no transaction-local rule reconciling that required in-flight intent with P3's rule that any incomplete intent is NOT_READY.",
+      "artifact_id": "design-v18",
+      "locator": {
+        "kind": "line",
+        "value": "333-335"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Confirmed no explicit single in-flight intent exception/index reconciles P3."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Administrative accounting and in-flight transition semantics remain incomplete until revision."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

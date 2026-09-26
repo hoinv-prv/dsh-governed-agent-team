@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v26-council-027",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer27-adversarial-001-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "crash-accounting",
+      "claim": "Genesis accounting records each side-effecting activity only once with its result, so no durable pre-effect authorization proves or debits a call or file effect when the process crashes after that effect but before the single RootControlJournal append.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v26",
+      "locator": {
+        "kind": "line",
+        "value": "288-290"
+      },
+      "evidence_excerpt": "Each activity—including every seed-journal append overhead—is recorded once in that append-only journal with actor/tool/model, units, result and before/after hashes; exceeding or missing the ceiling blocks.",
+      "impact": "A no-output model/tool call or a partially persisted scaffold/authoring effect can be absent from the seed journal and from the recovered remaining ceiling, allowing genesis closure and later P15 evidence to undercount control-plane work and effects.",
+      "recommended_action": "Use a RootControlJournal pre-authorization/outcome pair for every genesis call and effect: debit worst case before invocation, append the observed outcome afterward, treat an open pair as UNKNOWN, and carry its conservative debit through every recovery or replacement genesis.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer27-adversarial-001",
+        "invocation_id": "inv27-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.96,
+      "source_candidate_ids": [
+        "reviewer27-adversarial-001-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer27-adversarial-001-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "authority",
+      "claim": "ReviewRouteAuthorizationAmendment does not require its HUMAN actor to equal the designated mission decision owner or resolve through a complete owner-rooted, non-revoked, exact-scope delegation chain, although the amendment changes the review route and adds review-call budget for an acceptance prerequisite.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v26",
+      "locator": {
+        "kind": "line",
+        "value": "441"
+      },
+      "evidence_excerpt": "The record binds the prior immutable review-policy hash and prior-amendment hash/sequence, exact new provider/model/role/family, reason and typed retry disposition, additional review-only call budget, eligibility and two-family/lane/independence proof, explicit invariant that rubric/template/context/packet bytes are unchanged, decision actor/scope/revocation state, validator identity and administrative authorization/outcome entries.",
+      "impact": "An unrooted HUMAN actor can authorize a replacement route and extra budget, obtain ReviewClosureReceipt PASS, and move a charged task toward acceptance without the decision owner's authority over reallocation and material deviation.",
+      "recommended_action": "Require each amendment to bind the designated decision-owner identity/source and raw decision hash or a complete non-revoked exact-scope HUMAN delegation chain, and revalidate that chain at amendment validation, dispatch, and ReviewClosureReceipt closure.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer27-adversarial-001",
+        "invocation_id": "inv27-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.95,
+      "source_candidate_ids": [
+        "reviewer27-adversarial-001-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer27-adversarial-001-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "review-budget",
+      "claim": "The REVIEW_PENDING amendment path can add route and call budget after the immutable policy's single typed retry is exhausted, but it neither versions that retry policy nor defines a global amendment/retry ceiling, so the same policy hash can authorize more calls than its stated maximum.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v26",
+      "locator": {
+        "kind": "section",
+        "value": "§12 Reviewer availability and fallback, step 5 and REVIEW_PENDING paragraph"
+      },
+      "evidence_excerpt": "When no bound route/budget remains, the coordinator stops and escalates to the HUMAN. A fresh HUMAN decision may append one immutable versioned `ReviewRouteAuthorizationAmendment` without changing packet/output/attempt.",
+      "impact": "Review closure is ambiguous: either the unchanged-policy validator must reject the amended call after the retry cap, making the recovery edge unusable, or it accepts extra invocations outside the pre-bound retry maximum and worst-case reservation, making call accounting and reproducibility non-deterministic.",
+      "recommended_action": "Permit an amendment only within an unused retry slot, or require a separately versioned and reviewed policy with an explicit finite aggregate amendment/call ceiling and a new reconciled worst-case reservation before any additional dispatch.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer27-adversarial-001",
+        "invocation_id": "inv27-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.91,
+      "source_candidate_ids": [
+        "reviewer27-adversarial-001-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

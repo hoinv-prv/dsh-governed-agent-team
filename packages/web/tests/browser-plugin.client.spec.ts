@@ -4,6 +4,7 @@ import type { SessionId } from '@deepseek-ai/dsh-session/types'
 import { LocaleRuntime } from '@deepseek-ai/dsh-client-locale/client'
 import { SlotRegistry } from '@deepseek-ai/dsh-client-ui-renderer/client'
 import type { TeamMemberView as TeamRosterMember, TeamTaskId } from '@vuhoi/gat-core/client'
+import type { TeamMissionId } from '@vuhoi/gat-core/types'
 import type {} from '@vuhoi/gat-core/remote'
 import { RemoteError } from '@deepseek-ai/dsh-client-test-runtime'
 import type { TypertRemoteContribution } from '@deepseek-ai/dsh-typert-protocol'
@@ -15,6 +16,7 @@ import { en, zh } from '../src/client/locales.ts'
 const SESSION = 'team-session' as SessionId
 const CHILD = 'team-child' as SessionId
 const TASK_ID = 'task-1' as TeamTaskId
+const MISSION_ID = 'mission-1' as TeamMissionId
 const REMOTE: TypertRemoteContribution = {
   package: '@vuhoi/gat-core',
   descriptors: [],
@@ -64,6 +66,14 @@ async function bench(options: {
       id: SESSION, name: 'lead', role: 'lead' as const, status: 'idle' as const, diagnostics: [],
     }], tasks: [task],
   }
+  const mission = {
+    id: MISSION_ID,
+    revision: 3,
+    title: 'Release',
+    objective: 'Ship independently.',
+    status: 'draft' as const,
+    plan: { tasks: [] },
+  }
   ctx.provide('remote.agentTeams', {
     view: (...args: unknown[]) => {
       calls.push({ method: 'agentTeams/view', args })
@@ -71,8 +81,15 @@ async function bench(options: {
         ? failure
         : { ok: true as const, value: view })
     },
+    listMissions: answer('agentTeams/listMissions', [mission]),
+    getMission: answer('agentTeams/getMission', mission),
+    createMission: answer('agentTeams/createMission', { ok: true as const, value: mission }),
+    approveMission: answer('agentTeams/approveMission', {
+      ok: true as const,
+      value: { ...mission, status: 'approved' as const, approval: { approvedRevision: mission.revision } },
+    }),
     createTask: answer('agentTeams/createTask', task),
-    approvePlan: answer('agentTeams/approvePlan', { ok: true as const, value: { approvedRevision: 1 } }),
+    importApprovedPlan: answer('agentTeams/importApprovedPlan', { ok: true as const, value: { approvedRevision: 1 } }),
     updateTask: (...args: unknown[]) => {
       calls.push({ method: 'agentTeams/updateTask', args })
       if (options.remoteFailure === 'update') return Promise.resolve(failure)
@@ -173,7 +190,7 @@ describe('ui-team browser plugin', () => {
     })
   })
 
-  it('registers one disposable header action with RPC-backed task operations', async () => {
+  it('registers one disposable header action with RPC-backed Team and mission operations', async () => {
     const b = await bench()
     expect(inject).toEqual(['sessions', 'remote', 'slots', 'locale', 'sidebarRight'])
     expect(b.entry()).toMatchObject({
@@ -184,7 +201,11 @@ describe('ui-team browser plugin', () => {
     expect(b.remote.mount).toHaveBeenCalledWith(REMOTE)
     const actions = (b.entry()!.inject as unknown as () => TeamActionInjected)()
     expect((await actions.load(SESSION)).ok).toBe(true)
-    expect((await actions.approvePlan(SESSION, { approvedRevision: 1 })).ok).toBe(true)
+    expect((await actions.listMissions(SESSION)).ok).toBe(true)
+    expect((await actions.getMission(SESSION, MISSION_ID)).ok).toBe(true)
+    expect((await actions.createMission(SESSION, { title: 'Release', objective: 'Ship independently.' })).ok).toBe(true)
+    expect((await actions.approveMission(SESSION, { missionId: MISSION_ID, expectedRevision: 3 })).ok).toBe(true)
+    expect((await actions.importApprovedPlan(SESSION)).ok).toBe(true)
     expect((await actions.createTask(SESSION, {
       subject: 'Task', description: 'Description', blockedBy: [], writeScopes: [],
     })).ok).toBe(true)
@@ -195,9 +216,19 @@ describe('ui-team browser plugin', () => {
       taskId: TASK_ID, expectedRevision: 2, action: 'reassign', owner: 'worker',
     })).ok).toBe(true)
     expect(b.calls.map(call => call.method)).toEqual([
-      'agentTeams/view', 'agentTeams/approvePlan', 'agentTeams/createTask', 'agentTeams/updateTask', 'agentTeams/updateTask',
+      'agentTeams/view',
+      'agentTeams/listMissions',
+      'agentTeams/getMission',
+      'agentTeams/createMission',
+      'agentTeams/approveMission',
+      'agentTeams/importApprovedPlan',
+      'agentTeams/createTask',
+      'agentTeams/updateTask',
+      'agentTeams/updateTask',
     ])
-    expect(b.calls[1]?.args).toEqual([SESSION, { approvedRevision: 1 }])
+    expect(b.calls[2]?.args).toEqual([SESSION, MISSION_ID])
+    expect(b.calls[4]?.args).toEqual([SESSION, { missionId: MISSION_ID, expectedRevision: 3 }])
+    expect(b.calls[5]?.args).toEqual([SESSION])
     expect(b.calls.at(-1)?.args[1]).toMatchObject({ owner: 'worker' })
 
     await actions.openTeammate(SESSION, {

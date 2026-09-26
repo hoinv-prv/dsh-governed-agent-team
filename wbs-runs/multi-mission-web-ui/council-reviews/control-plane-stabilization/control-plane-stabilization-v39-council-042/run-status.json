@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v39-council-042",
+  "state": "failed",
+  "stage": "review",
+  "failure": {
+    "code": "ledger_integrity_failed",
+    "stage": "review",
+    "subject": "required-reviewer-envelopes",
+    "message": "All three dispatched background reviewer invocations produced no persisted envelope, no terminal notification and no typed transient/schema failure across goal rounds 19-21; child identities were not addressable when probed. Retry eligibility cannot be proven, so no retry, normalization, Chairman or verdict is permitted. Formal consequence insufficient_evidence.",
+    "retryable": false,
+    "invocation_id": null
+  },
+  "updated_sequence": 2
+}

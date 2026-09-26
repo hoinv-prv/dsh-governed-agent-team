@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v1-council-002",
+  "state": "failed",
+  "stage": "chairman",
+  "failure": {
+    "code": "chairman_separation_unavailable",
+    "stage": "chairman",
+    "subject": "inv2-chair-001",
+    "message": "The required separate Chairman invocation failed. The required adversarial and outside-view lanes had already exhausted their one schema retry without valid envelopes; no council verdict can close.",
+    "retryable": false,
+    "invocation_id": "inv2-chair-001"
+  },
+  "updated_sequence": 3
+}

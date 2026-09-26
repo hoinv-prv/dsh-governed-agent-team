@@ -4,7 +4,7 @@
   "gat": {
     "version": "0.1.0",
     "sourceRepository": "/home/hoinv/work/dsh-governed-agent-team",
-    "sourceCommit": "5f4e265e1d20dbf3d9cbf35c764ca0c22e47c2d7",
+    "sourceCommit": "6a8e4f62a30e05cf1e36950d74245b707f5394fe",
     "acceptedGoldenCommit": "12fef7a7e01f6c3ba7ecab0929355659b3370435"
   },
   "installer": {
@@ -129,8 +129,8 @@
       "source": "verification/web/task.expected.md",
       "destination": "apps/web/tests/snapshots/gat-agent-team-panel/task.expected.md",
       "mode": "0600",
-      "sha256": "96ac61fa0f16fd6aadec395c8842c4d714792d64e8d3571fb27e538f2182855f",
-      "bytes": 938
+      "sha256": "c16e5d4f17190e4da2302b0685c3685cfcc1ac32aee95525b785a1f03d672266",
+      "bytes": 1057
     },
     {
       "source": "packages/core/package.json",
@@ -168,11 +168,18 @@
       "bytes": 3247
     },
     {
+      "source": "packages/core/src/approved-plan-import.ts",
+      "destination": "packages/experimental/gat-core/src/approved-plan-import.ts",
+      "mode": "0600",
+      "sha256": "f7f5776aadb423850423d2671a6229cc5be589b022c3546afd5d53f85dd02633",
+      "bytes": 4715
+    },
+    {
       "source": "packages/core/src/client.ts",
       "destination": "packages/experimental/gat-core/src/client.ts",
       "mode": "0664",
-      "sha256": "bedcec346d7e2b3a158ac23b29c971d2bc3ab41ac079962e7e4bab6554a3b78c",
-      "bytes": 477
+      "sha256": "1715f889c67d051dc5cdd5f66147a2d11b85e1675ca39822093bd5c0f7ecf420",
+      "bytes": 509
     },
     {
       "source": "packages/core/src/error.ts",
@@ -185,8 +192,8 @@
       "source": "packages/core/src/index.ts",
       "destination": "packages/experimental/gat-core/src/index.ts",
       "mode": "0664",
-      "sha256": "a8b5df7e22b22227d36f7b01474528519dd42f215d609b1ab47855bee348ba8b",
-      "bytes": 18255
+      "sha256": "71f2ab79707d372b67ae510c9932bd71c226ded98b6db38e54b21eadfbe2118d",
+      "bytes": 24970
     },
     {
       "source": "packages/core/src/invariant.ts",
@@ -199,8 +206,8 @@
       "source": "packages/core/src/journal.ts",
       "destination": "packages/experimental/gat-core/src/journal.ts",
       "mode": "0664",
-      "sha256": "27f476c2fe46a979553868cf1612e7723b40d11a3452c750e12e670d317d9e1e",
-      "bytes": 2967
+      "sha256": "e750a2409ba4debeee05d98ff4f73e38d0c5a7d80b579c8874ccaef3324eed61",
+      "bytes": 3618
     },
     {
       "source": "packages/core/src/lifecycle.ts",
@@ -217,6 +224,20 @@
       "bytes": 14302
     },
     {
+      "source": "packages/core/src/mission-board.ts",
+      "destination": "packages/experimental/gat-core/src/mission-board.ts",
+      "mode": "0600",
+      "sha256": "dfff88d1ffcdb329b60bafa160dde9411a911eeaec6d125105fe8fb8c222c3f8",
+      "bytes": 4188
+    },
+    {
+      "source": "packages/core/src/mission-plan.ts",
+      "destination": "packages/experimental/gat-core/src/mission-plan.ts",
+      "mode": "0600",
+      "sha256": "be389c339817bcd321b13844cda082629dd897657298c36f43a21f5c331f2c52",
+      "bytes": 3516
+    },
+    {
       "source": "packages/core/src/persisted.ts",
       "destination": "packages/experimental/gat-core/src/persisted.ts",
       "mode": "0664",
@@ -227,8 +248,8 @@
       "source": "packages/core/src/projection.ts",
       "destination": "packages/experimental/gat-core/src/projection.ts",
       "mode": "0664",
-      "sha256": "b7042352c03a07d4dd0cb245ae612f4a3ce4d89b85412c2cd897129109f6ed17",
-      "bytes": 16994
+      "sha256": "48c1d284c0c39a39c379e84b8fc474bf4bbaeed994c3d02c42925c3c89d3bdae",
+      "bytes": 19134
     },
     {
       "source": "packages/core/src/roster.ts",
@@ -248,8 +269,8 @@
       "source": "packages/core/src/task-board.ts",
       "destination": "packages/experimental/gat-core/src/task-board.ts",
       "mode": "0664",
-      "sha256": "93fc9d92cfe27b10805d09af234222defe8fad9bfb6a63cbf1d0621578b55179",
-      "bytes": 14239
+      "sha256": "174234469ffd8dc7d1a470d15df070cd03e34f245374f35a9e89feb1d75cc22e",
+      "bytes": 16500
     },
     {
       "source": "packages/core/src/task-graph.ts",
@@ -262,8 +283,8 @@
       "source": "packages/core/src/types.ts",
       "destination": "packages/experimental/gat-core/src/types.ts",
       "mode": "0664",
-      "sha256": "4911d4dadbd17b027dadb6f62b0b8a743eaece4c59e5f7eda20da356f378766d",
-      "bytes": 9682
+      "sha256": "f6b04e674506a1329abd15f6e5b160538b5abb81779eda0dc7bfd6345ecbfafd",
+      "bytes": 12253
     },
     {
       "source": "packages/core/src/validation.ts",
@@ -283,8 +304,8 @@
       "source": "packages/core/tests/built-lib.e2e.ts",
       "destination": "packages/experimental/gat-core/tests/built-lib.e2e.ts",
       "mode": "0664",
-      "sha256": "184bc4074d6b9d786749030b9639a1ad4b0262c757db273c9e84e62647f2a4fb",
-      "bytes": 2546
+      "sha256": "b26bda45aba2b2befe570d8f5f1ca0bfb0a9495f280505f0eff7ebdcce30f219",
+      "bytes": 2808
     },
     {
       "source": "packages/core/tests/invariant.spec.ts",
@@ -304,15 +325,15 @@
       "source": "packages/core/tests/projection-events.spec.ts",
       "destination": "packages/experimental/gat-core/tests/projection-events.spec.ts",
       "mode": "0664",
-      "sha256": "31daeae0a7bd0e911d0f07e1f036d85eec6c4c3c2bb079162db3bea6019281e7",
-      "bytes": 20191
+      "sha256": "d5226f62fcf193e56c0d77ee149e7a7c676f7c91e44f8958d4a719cab44a2170",
+      "bytes": 23564
     },
     {
       "source": "packages/core/tests/team.spec.ts",
       "destination": "packages/experimental/gat-core/tests/team.spec.ts",
       "mode": "0664",
-      "sha256": "ef74752c99ba1811bb22196af195f331f55b666ff74a2da6bf2d2095d8ef51c9",
-      "bytes": 94826
+      "sha256": "e1439d272fe542a2467a0ac16d6d758bcb061db3652b9d1e17f2e9f0e1da0e10",
+      "bytes": 108536
     },
     {
       "source": "packages/core/tests/test-session-query.ts",
@@ -430,15 +451,15 @@
       "source": "packages/tools/src/index.ts",
       "destination": "packages/experimental/gat-tools/src/index.ts",
       "mode": "0664",
-      "sha256": "62926c442ae9ada08c6be328eda3aa85177c28ca72428a02e63a28529c46f183",
-      "bytes": 30591
+      "sha256": "9751514faabfa327de779e9b0a7d3f3afce97f37524b8a8afc45190979a95d49",
+      "bytes": 31125
     },
     {
       "source": "packages/tools/tests/tool-team.spec.ts",
       "destination": "packages/experimental/gat-tools/tests/tool-team.spec.ts",
       "mode": "0664",
-      "sha256": "a8dd60aa15f14017129b69f6591d2f798fdbebaf465685e63ac0aabf94eab8c3",
-      "bytes": 49552
+      "sha256": "650e93367b78aadae2d22388d67ab4bc107698d299a31c049f9c9f12a228022f",
+      "bytes": 51379
     },
     {
       "source": "packages/tools/tsconfig.json",
@@ -542,29 +563,29 @@
       "source": "packages/web/src/client/locales.ts",
       "destination": "packages/experimental/gat-web/src/client/locales.ts",
       "mode": "0664",
-      "sha256": "933acda1036c89d3cfd5448092d43ff8b42c7322a785cc6c2b64dddb02b865ed",
-      "bytes": 4091
+      "sha256": "5c8d4dafde6311603e863bd7bd3ed331e7abe5a655a9db813c13fab475916a44",
+      "bytes": 5982
     },
     {
       "source": "packages/web/src/client/mount.ts",
       "destination": "packages/experimental/gat-web/src/client/mount.ts",
       "mode": "0664",
-      "sha256": "7ca65ecd0cabd31599ea3b11d3a82c6338d394bf4c6b27fa00c014fce08ae12e",
-      "bytes": 5480
+      "sha256": "434a4e484b6c6ec7dd50b5ae1694c315ef257c7d8ed8cf1291ac19b1b5c37d4f",
+      "bytes": 6216
     },
     {
       "source": "packages/web/src/client/TeamAction.module.css",
       "destination": "packages/experimental/gat-web/src/client/TeamAction.module.css",
       "mode": "0664",
-      "sha256": "7a3dbd6bebdaabfa13c503d01db233396ae4704f116a764a2cca19bd1e85f952",
-      "bytes": 4082
+      "sha256": "1bef36132464f30e4730e5dfb934d8a255334c3b0eb89ad68cc22930e764239b",
+      "bytes": 5724
     },
     {
       "source": "packages/web/src/client/TeamAction.tsx",
       "destination": "packages/experimental/gat-web/src/client/TeamAction.tsx",
       "mode": "0664",
-      "sha256": "645d0a0856965b9added5f2de22c160509a7a65337bcfb432d3d73c7072b037e",
-      "bytes": 22938
+      "sha256": "d2742e4288892ee30daaa6b3ea860c30989ec573a88451101ec387577354f144",
+      "bytes": 34559
     },
     {
       "source": "packages/web/src/css-modules.d.ts",
@@ -584,15 +605,15 @@
       "source": "packages/web/tests/browser-plugin.client.spec.ts",
       "destination": "packages/experimental/gat-web/tests/browser-plugin.client.spec.ts",
       "mode": "0664",
-      "sha256": "600685e07a84adbcbc3e8d7307d1ca6f478527487a393e0bd114f8d6c9e9199a",
-      "bytes": 12910
+      "sha256": "079d0cce3ab95629975c2bc82cc6caa5128bf59d242fc02221aefb9a133879f1",
+      "bytes": 14284
     },
     {
       "source": "packages/web/tests/team-action.client.spec.tsx",
       "destination": "packages/experimental/gat-web/tests/team-action.client.spec.tsx",
       "mode": "0664",
-      "sha256": "9237cf46cf3eecf8e3f55b7e2ec0212f1fed2576a0481a5f881bada0fc0e1481",
-      "bytes": 47593
+      "sha256": "0276c91f7bdee22ffcac8afa79e6a427bc2d7dfcd7dd7a56aabba2f73cddbb0f",
+      "bytes": 55998
     },
     {
       "source": "packages/web/tsconfig.json",
@@ -610,7 +631,7 @@
     }
   ],
   "patchsetChecksum": "e3bf5ab3fa6c6117e5e5ab080c0ff5b93caf1750f1b5027be3a5303c4ae4ab38",
-  "payloadChecksum": "55f814daa2ecd3c88fbd4b92cd72f4401b8bd2f13424e006dca8b83e2cc672b5",
+  "payloadChecksum": "2dca38007ed5e0533f04f9f26c0eb140dda29ed593301b29f67b62e7184dd5e5",
   "allowedPaths": [
     "packages/experimental/gat-core/",
     "packages/experimental/gat-tools/",

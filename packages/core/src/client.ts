@@ -3,7 +3,9 @@
 export type {
   ApproveTeamPlanRequest,
   CreateTeamTaskRequest,
+  ImportApprovedTeamPlanResult,
   ReportTeamWorkRequest,
+  TeamEnableResult,
   TeamMemberView,
   TeamPlanApprovalResult,
   TeamPlanApprovalSnapshot,

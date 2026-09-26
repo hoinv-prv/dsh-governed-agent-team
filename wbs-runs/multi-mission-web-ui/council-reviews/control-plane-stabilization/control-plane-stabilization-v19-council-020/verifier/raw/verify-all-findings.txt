@@ -1,0 +1,3 @@
+Parent read-only verification against immutable design-v19 SHA-256 1f6a6f81ddbe6e263b277483a5457f4009d1cef96d7cfcad4888aaff6ec092a6.
+Confirmed reviewer20-adversarial-f001: journal record/index split writes lack explicit states and idempotent close/recovery.
+Confirmed reviewer20-adversarial-f002: guarded-writer/completion/index-close usage entries are not prerequisites for APPLIED closure/dispatch.

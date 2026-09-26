@@ -1,0 +1,243 @@
+diff --git a/packages/tools/tests/tool-team.spec.ts b/home/hoinv/deepseek-harness/packages/experimental/gat-tools/tests/tool-team.spec.ts
+index 80819a5..0cc6eec 100644
+--- a/packages/tools/tests/tool-team.spec.ts
++++ b/home/hoinv/deepseek-harness/packages/experimental/gat-tools/tests/tool-team.spec.ts
+@@ -1,5 +1,5 @@
+ import { afterEach, describe, expect, it, vi } from 'vitest'
+-import { mkdtempSync, rmSync } from 'node:fs'
++import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+ import { tmpdir } from 'node:os'
+ import { join } from 'node:path'
+ import { Context } from '@deepseek-ai/cordis'
+@@ -70,11 +70,16 @@ async function setup(
+   await ctx.plugin(SubagentSpawn, { providerName: 'spawn' })
+   await ctx.plugin(SubagentFork, { providerName: 'fork' })
+   await ctx.plugin(TeamService)
+-  const fiber = await ctx.plugin(toolTeam, config)
++  const pluginConfig = Object.assign({}, config, { simpleMode: config.simpleMode ?? false })
++  const fiber = await ctx.plugin(toolTeam, pluginConfig)
+   const adapter = new MockAdapter(script)
+   ctx.llm.registerAdapter(['mock'], adapter)
+-  const lead = await ctx.agentLoop.create(SessionId('tool-team-lead'), { provider: 'mock', model: 'mock' })
+-  return { ctx, lead, fiber }
++  const lead = await ctx.agentLoop.create(
++    SessionId('tool-team-lead'),
++    { provider: 'mock', model: 'mock' },
++    { cwd: storageRoot },
++  )
++  return { ctx, lead, fiber, storageRoot }
+ }
+ 
+ async function approveCurrentPlan(ctx: Context, lead: Agent): Promise<void> {
+@@ -156,6 +161,35 @@ async function waitNoAgent(ctx: Context, id: SessionId): Promise<void> {
+ }
+ 
+ describe('dsh-tool-team', () => {
++  it('keeps a simple-mode Session solo, then provisions the workspace route on enable', async () => {
++    const { ctx, lead, storageRoot } = await setup(['hang'], false, {
++      simpleMode: true,
++      minExecutionMembers: 1,
++      maxExecutionMembers: 1,
++    })
++    expect(ctx.agentTeams.remoteView(lead).enabled).toBe(false)
++    const before = (await assembly(ctx, lead)).tools.map(schema => schema.name)
++    expect(before.filter(name => TOOL_NAMES.includes(name))).toEqual([])
++    writeFileSync(join(storageRoot, 'team_members.yaml'), `version: 1
++members:
++  - name: routed-worker
++    description: Exercises the configured route.
++    prompt: Stay available.
++    provider: mock
++    model: mock
++`)
++
++    await expect(ctx.agentTeams.enable(lead, SIGNAL)).resolves.toMatchObject({
++      enabled: true,
++      alreadyEnabled: false,
++      source: 'workspace',
++      members: [expect.objectContaining({ name: 'routed-worker', model: 'mock' })],
++    })
++    const after = (await assembly(ctx, lead)).tools.map(schema => schema.name)
++    expect(after.filter(name => TOOL_NAMES.includes(name)).sort()).toEqual(TOOL_NAMES)
++    ctx.agentTeams.interrupt(lead, 'routed-worker')
++  })
++
+   it('reports the exact durable Team work view and preserves domain rejections', async () => {
+     const { ctx, lead } = await setup(['hang', 'hang'])
+     const schema = (await assembly(ctx, lead)).tools.find(tool => tool.name === 'report_team_status')
+@@ -312,45 +346,6 @@ describe('dsh-tool-team', () => {
+     expect(text(capped)).toContain('durable teammate cap of 4')
+   })
+ 
+-  it('allows solo delegation before enable and denies external sub-agent paths after enable', async () => {
+-    const { ctx, lead } = await setup(['hang'])
+-    const calls = new Map<string, number>()
+-    for (const name of ['subagent', 'subagent_fork', 'workflow', 'ralph']) {
+-      calls.set(name, 0)
+-      ctx.tools.register(defineContentToolFixture({
+-        name,
+-        description: `test-only ${name} delegation path`,
+-        parameters: {},
+-        async execute() {
+-          calls.set(name, (calls.get(name) ?? 0) + 1)
+-          return [{ type: 'text', text: `ran ${name}` }]
+-        },
+-      }))
+-    }
+-
+-    for (const name of calls.keys()) {
+-      const solo = await execute(ctx, lead, name, {})
+-      expect(solo.isError).toBe(false)
+-      expect(text(solo)).toBe(`ran ${name}`)
+-    }
+-
+-    await approveCurrentPlan(ctx, lead)
+-    const spawned = await execute(ctx, lead, 'spawn_teammate', spawnRequest(0))
+-    expect(spawned.isError).toBe(false)
+-    await waitRunning(ctx, spawnedChildId(spawned))
+-
+-    for (const name of calls.keys()) {
+-      const denied = await execute(ctx, lead, name, {})
+-      expect(denied.isError).toBe(true)
+-      expect(text(denied)).toContain(`External sub-agent delegation denied for tool "${name}"`)
+-      expect(text(denied)).toContain('ask the HUMAN to approve adding a member')
+-      expect(text(denied)).toContain('create it with spawn_teammate, then assign the task')
+-      expect(calls.get(name)).toBe(1)
+-    }
+-    expect(renderPrompt(await assembly(ctx, lead))).toContain('Delegate only to members of the current Team')
+-    expect(renderPrompt(await assembly(ctx, lead))).toContain('ask the HUMAN to approve adding a suitable member')
+-  })
+-
+   it('uses configured minimum readiness and durable teammate cap', async () => {
+     const { ctx, lead } = await setup(['hang', 'hang'], false, {
+       minExecutionMembers: 1,
+@@ -361,7 +356,7 @@ describe('dsh-tool-team', () => {
+ 
+     const restricted = await execute(ctx, lead, 'danger_write', {})
+     expect(restricted.isError).toBe(true)
+-    expect(text(restricted)).toContain('at least 1 durable active teammates; found 0 durable active teammate(s)')
++    expect(text(restricted)).toContain('requires at least 1 durable active teammates; found 0')
+     const first = await execute(ctx, lead, 'spawn_teammate', spawnRequest(0))
+     expect(first.isError).toBe(false)
+     await waitRunning(ctx, spawnedChildId(first))
+@@ -379,46 +374,9 @@ describe('dsh-tool-team', () => {
+     expect(text(capped)).toContain('durable teammate cap of 2')
+   })
+ 
+-  it('permits approved Lead-only execution without teammate diagnostics and still enforces the cap', async () => {
+-    const { ctx, lead } = await setup(['hang'], false, {
+-      maxExecutionMembers: 1,
+-    })
+-    const calls = { count: 0 }
+-    registerDanger(ctx, calls)
+-
+-    const unapproved = await execute(ctx, lead, 'danger_write', {})
+-    expect(unapproved.isError).toBe(true)
+-    expect(text(unapproved)).toMatch(/current Team plan revision \d+ is not HUMAN-approved/u)
+-    expect(calls.count).toBe(0)
+-
+-    await approveCurrentPlan(ctx, lead)
+-    const preflight = JSON.parse(text(await execute(ctx, lead, 'team_task_list', {}))) as {
+-      preflight: { requiredActiveTeammates: number; executionReady: boolean; diagnostics: string[] }
+-    }
+-    expect(preflight.preflight).toEqual({
+-      planRevision: ctx.agentTeams.remoteView(lead).planRevision,
+-      planPhase: 'approved',
+-      approvedRevision: ctx.agentTeams.remoteView(lead).planRevision,
+-      durableActiveTeammates: 0,
+-      requiredActiveTeammates: 0,
+-      executionReady: true,
+-      diagnostics: [],
+-    })
+-    expect(renderPrompt(await assembly(ctx, lead))).toContain('zero durable teammates are permitted')
+-    expect(renderPrompt(await assembly(ctx, lead))).not.toContain('at least 0 durable active teammates')
+-
+-    expect((await execute(ctx, lead, 'danger_write', {})).isError).toBe(false)
+-    expect(calls.count).toBe(1)
+-    expect((await execute(ctx, lead, 'spawn_teammate', spawnRequest(0))).isError).toBe(false)
+-    const capped = await execute(ctx, lead, 'spawn_teammate', spawnRequest(1))
+-    expect(capped.isError).toBe(true)
+-    expect(text(capped)).toContain('durable teammate cap of 1')
+-  })
+-
+   it('denies direct and nested non-allowlisted calls until approval and two durable teammates', async () => {
+     const { ctx, lead } = await setup(['hang', 'hang'], false, {
+       externalRestrictedTools: ['composite_dispatch'],
+-      minExecutionMembers: 2,
+     })
+     const calls = { count: 0 }
+     registerDanger(ctx, calls)
+@@ -451,7 +409,7 @@ describe('dsh-tool-team', () => {
+     await approveCurrentPlan(ctx, lead)
+     const stillShort = await execute(ctx, lead, 'danger_write', {})
+     expect(stillShort.isError).toBe(true)
+-    expect(text(stillShort)).toContain('at least 2 durable active teammates; found 0 durable active teammate(s)')
++    expect(text(stillShort)).toContain('requires at least 2 durable active teammates; found 0')
+ 
+     const readyIds: SessionId[] = []
+     for (const index of [1, 2]) {
+@@ -628,7 +586,6 @@ describe('dsh-tool-team', () => {
+     const { ctx, lead } = await setup(['hang', 'hang', 'hang', 'hang'], false, {
+       forkProvider: 'missing-fork',
+       externalRestrictedTools,
+-      minExecutionMembers: 2,
+     })
+     externalRestrictedTools.push('mutated-after-apply')
+     const calls = { count: 0 }
+@@ -771,7 +728,7 @@ describe('dsh-tool-team', () => {
+   })
+ 
+   it('allows spawn for the minimum-member diagnostic alone', async () => {
+-    const { ctx, lead } = await setup(['hang'], false, { minExecutionMembers: 2 })
++    const { ctx, lead } = await setup(['hang'])
+     await approveCurrentPlan(ctx, lead)
+     const before = JSON.parse(text(await execute(ctx, lead, 'team_task_list', {}))) as {
+       preflight: { executionReady: boolean; diagnostics: string[] }
+@@ -1081,7 +1038,7 @@ describe('dsh-tool-team', () => {
+       async execute() { return [{ type: 'text', text: 'collision' }] },
+     }))
+ 
+-    await expect(ctx.plugin(toolTeam)).rejects.toThrow(/already registered/u)
++    await expect(ctx.plugin(toolTeam, { simpleMode: false })).rejects.toThrow(/already registered/u)
+     const assembled = await assembly(ctx, lead)
+     expect(assembled.tools.filter(schema => TOOL_NAMES.includes(schema.name)).map(schema => schema.name))
+       .toEqual(['spawn_teammate'])
+@@ -1094,18 +1051,18 @@ describe('dsh-tool-team', () => {
+     expect(() => { toolTeam.apply(ctx, { externalRestrictedTools: [''] }) })
+       .toThrow('externalRestrictedTools[0] must be a non-empty string')
+     for (const config of [
+-      { minExecutionMembers: -1 },
++      { minExecutionMembers: 0 },
+       { minExecutionMembers: 1.5 },
+       { maxExecutionMembers: Number.MAX_SAFE_INTEGER + 1 },
+     ]) {
+       expect(() => { toolTeam.apply(ctx, config) })
+-        .toThrow(/ExecutionMembers must be a (non-negative|positive) safe integer/u)
++        .toThrow(/ExecutionMembers must be a positive safe integer/u)
+     }
+     expect(() => { toolTeam.apply(ctx, { minExecutionMembers: 3, maxExecutionMembers: 2 }) })
+       .toThrow('maxExecutionMembers must be greater than or equal to minExecutionMembers')
+     toolTeam.apply(ctx, {})
+     expect((await assembly(ctx, lead)).tools.map(schema => schema.name).filter(name => TOOL_NAMES.includes(name)).sort())
+-      .toEqual(TOOL_NAMES)
++      .toEqual([])
+     const ordinary = await ctx.subagents.startContinuable({
+       provider: 'spawn',
+       label: 'ordinary child',
+@@ -1144,14 +1101,14 @@ describe('dsh-tool-team', () => {
+     expect(text(result)).toContain('unknown tool "list_agents"')
+     expect('default' in toolTeam).toBe(false)
+     expect(toolTeam.name).toBe('tool-agent-team')
+-    expect(toolTeam.inject).toEqual(['agents', 'agentTeams', 'subagents', 'tools', 'systemPrompt'])
++    expect(toolTeam.inject).toEqual(['agents', 'agentTeams', 'llm', 'subagents', 'tools', 'systemPrompt'])
+   })
+ 
+   it('uses configured fresh and fork provider names', async () => {
+     const { ctx, lead, fiber } = await setup([textResponse('custom')])
+     await fiber.dispose()
+     await ctx.plugin(SubagentSpawn, { providerName: 'team-fresh' })
+-    await ctx.plugin(toolTeam, { freshProvider: 'team-fresh', forkProvider: 'fork' })
++    await ctx.plugin(toolTeam, { freshProvider: 'team-fresh', forkProvider: 'fork', simpleMode: false })
+     await approveCurrentPlan(ctx, lead)
+     const result = await execute(ctx, lead, 'spawn_teammate', {
+       name: 'custom-provider', description: 'custom provider', prompt: 'go',

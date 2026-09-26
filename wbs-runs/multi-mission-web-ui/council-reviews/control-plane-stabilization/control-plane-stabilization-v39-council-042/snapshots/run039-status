@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v36-council-039",
+  "state": "failed",
+  "stage": "review",
+  "failure": {
+    "code": "ledger_integrity_failed",
+    "stage": "review",
+    "subject": "late-initial-and-retry-envelope-race",
+    "message": "All three attempt-1 invocations completed only after their sole provider-unavailable retries were dispatched. Retry envelopes then reused canonical lane paths; the adversarial attempt-1 envelope overwrote attempt-2, so immutable per-invocation response preservation and one-valid-envelope lane selection cannot be proven. No normalization, adjudication, Chairman or verdict is permitted. Valid content informed a new inactive design only.",
+    "retryable": false,
+    "invocation_id": null
+  },
+  "updated_sequence": 2
+}

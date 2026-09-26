@@ -1,0 +1,134 @@
+# Version 1 contracts
+
+This file owns every persisted machine-readable council record. Each record is a JSON object with `schema_version: 1` and `review_id`; validators reject duplicate keys, unknown fields, unknown enum values, non-finite numbers, unresolved references, and missing required fields. Arrays documented as unique reject duplicates. SHA-256 values are 64 lowercase hexadecimal characters computed over raw bytes. IDs are non-empty stable strings; `review_id` matches `[a-z0-9][a-z0-9._-]*`. Every candidate-defining `finding_id`, `candidate_id`, and `observation_id` shares one run-global namespace: each value is introduced exactly once across reviewer findings, rejected candidates, and external observations. Ledger entries, verifier records, adjudication, Chairman disposition, and reports may repeat that value only as a reference or exact projection of the introducing candidate. Promotion retains the observation ID as the finding ID and does not introduce a second identity. Advisory IDs use a separate run-global namespace. Examples illustrate valid values but do not define defaults or prove approval.
+
+## Common rules
+
+Paths for artifacts, Sources of Truth, read roots, output root, report target, and command working directories are absolute canonical paths. A selected range has positive integer `start_line` and `end_line`, with start no greater than end. A locator is `{ "kind": "line" | "json-pointer" | "section" | "byte", "value": string }`. Severity is `critical | high | medium | low | info`; finding classification is `fact | inference | hypothesis`. Governance findings also require `governance_class: current-authority-fact | textual-defect | conditional-activation-risk`.
+
+The run directory is `<output_root>/<review_id>`. Creation is exclusive. If it already exists, leave every existing byte untouched and return an `output_root_invalid` failure to the caller; never write the collision into that directory. V1 has no resume. All writes use a temporary sibling file and atomic rename beneath the authorized new run.
+
+Persist these records when applicable: `request.json`, `run-status.json`, `artifact-manifest.json`, `context-manifest.json`, `dispatch-ledger.json`, `sanitization.json`, reviewer envelopes, unchanged raw responses, `external-advisory.json`, `ledger.json`, verifier manifest and result files, `adjudication.json`, `chairman.json`, `telemetry.json`, `degradations.json`, optional `lineage.json`, `report.json`, and `report.md`. Raw text is not a machine contract and remains byte-for-byte unchanged.
+
+## Request
+
+`request.json` requires:
+
+- `schema_version`, `request_id`, `review_id`;
+- `requested_by` and `decision_owner`, each `{ kind: "human" | "leader", id }`;
+- `report_to: { kind: "path", target }`;
+- `write_authority: { kind: "caller-grant", granted_by, scope }`, where `scope` equals or contains the canonical `output_root`; possession of a write-capable tool is not this authority;
+- unique non-empty `mode` from `code | design | governance | research | agent-output`, plus `objective`, `risk`, and `downstream_impact` from `low | medium | high | critical`;
+- non-empty unique `artifacts`, each `{ artifact_id, path, required, media_type, selected_ranges }`;
+- unique `sources_of_truth`, each `{ sot_id, authority, artifact_id, locator }`, whose `artifact_id` resolves to a declared artifact and whose locator identifies the applicable pinned range; `authority` is `repo-rule | architecture | decision-record | package-contract | request-authority | primary-source | other`;
+- unique `must_check` and `out_of_scope` string arrays;
+- `allowed_verification: { read_paths, commands, network }`; each command is `{ command_id, argv, cwd, timeout_seconds }`, `argv` is a non-empty string array, timeout is a positive integer, and shell strings are invalid;
+- `routing: { minimum_internal_lanes, require_model_diversity, require_external_lane, chairman_must_be_separate }`;
+- `budget: { maximum_model_calls, maximum_retries_per_lane }`, both non-negative safe integers with a positive maximum;
+- absolute `output_root`.
+
+Network must be `false` in v1. High or critical downstream impact sets `require_external_lane: true`. High or critical risk sets `require_model_diversity: true`. The call budget must cover all mandatory initial lanes, the required outside-view lane, mandatory adjudication, Chairman, and permitted retry policy under [risk and routing](risk-and-routing.md). Ambiguous decision owner, report target, write authority, or required artifact is `invalid_request` or `authority_ambiguous` before model calls.
+
+## Run status, failure, and degradation
+
+`run-status.json` is the current durable milestone, not a complete transition history. It requires `state`, `stage`, `failure`, and `updated_sequence`. State is `initialized | running | failed | completed`; stage is `init | manifest | dispatch | review | normalize | verify | adjudicate | chairman | render | close`. `updated_sequence` is a non-negative integer counting helper-owned rewrites of this record; parent-owned work between rewrites does not increment it, and the value does not prove how many workflow stages occurred. `failure` is null or `{ code, stage, subject, message, retryable, invocation_id }`. Failure code is `invalid_request | authority_ambiguous | artifact_unavailable | artifact_changed | output_root_invalid | provider_unavailable | quota_exhausted | timeout | schema_invalid | diversity_unavailable | external_lane_unavailable | verification_not_authorized | verification_failed | context_attestation_mismatch | chairman_separation_unavailable | ledger_integrity_failed`.
+
+Helper-owned advancement is monotonic: it never moves `stage` backward, and every helper rewrite increments `updated_sequence` by one. It may advance across parent-owned stages whose owning records were persisted outside the helper. Before the parent advances the milestone to `chairman`, it persists the stage-owned artifact, context, dispatch, reviewer, ledger, verifier, adjudication, external-advisory, telemetry, and degradation records that apply. Closure does not infer full history from `run-status.json`; it requires a `chairman`-or-later milestone and independently validates those stage-owned records and their reference closure. Rendering advances to `render` and then `completed/close`. `failed` and `completed` are terminal; `failure` is null outside `failed` and required in `failed`.
+
+`degradations.json` requires `degradations`, an array of `{ degradation_id, kind, affected_lane, detail, verdict_consequence }`. Kind is `correlated_review_risk | prompt_only_read_only | context_attestation_mismatch | unknown_cost | route_capability_missing | external_context_reduction`; consequence is `none | pass_with_notes_at_best | insufficient_evidence`. Required diversity or outside-view absence is a failure, not a harmless degradation.
+
+## Immutable artifact and context manifests
+
+`artifact-manifest.json` requires unique `artifacts`. Each artifact has `artifact_id`, `role: reviewed | source-of-truth | sanitized`, `source_artifact_id` (null unless derived), `canonical_path`, `snapshot_path`, raw `sha256`, `size_bytes`, `media_type`, and `selected_ranges`. `snapshot_path` is beneath the new run and contains the bytes used by packets. Other records bind to the SHA-256 of the finalized raw manifest bytes; the manifest does not hash itself. Required source paths are rehashed before Chairman synthesis and final persistence; a mismatch is `artifact_changed`.
+
+`sanitization.json` requires `source_artifact_id`, `sanitized_artifact_id`, `sanitized_sha256`, `sanitized_size_bytes`, `producer`, `procedure`, and `redactions`. Producer is `{ actor: "parent-orchestrator", implementation: "dsh-council-review", version: "1" }`. Procedure is `{ name: "literal-range-redaction", version: 1, replacement_format: "[REDACTED:<redaction_id>]" }`. V1 accepts valid UTF-8 text only, performs no Unicode or newline normalization, sorts non-overlapping source byte ranges by ascending start offset, copies untouched source bytes exactly, replaces each selected range with the UTF-8 bytes of its recorded ASCII marker, and hashes the resulting persisted bytes. Each redaction is `{ redaction_id, source_locator, sanitized_locator, action, reason }`, where byte locators are mandatory, action is `retained | replaced | removed`, and output locators are calculated from the emitted bytes. Every retained outside-view locator maps to a source locator. Invalid UTF-8, overlapping ranges, an unlogged change, or sanitization failure makes a required outside-view lane unavailable.
+
+`context-manifest.json` requires unique `packets`. Each packet has `lane`, `packet_path`, `packet_sha256`, `packet_size_bytes`, unique `artifact_ids`, unique `sot_ids`, unique `context_categories`, unique `omitted_categories`, and `peer_findings_included: false`. `packet_path` is beneath `packets/` in the run directory. The parent persists the exact bytes dispatched before the call, then hashes and sizes those raw bytes; no reconstruction, JSON reserialization, prompt transcript, or model echo may substitute for that file. The dispatch ledger and returned context attestation bind to this hash. The referenced artifacts are immutable snapshot entries. The external packet references only sanitized artifacts and no private Source of Truth.
+
+## Parent-owned dispatch ledger
+
+`dispatch-ledger.json` requires `budget_reserved`, `chairman_invocation_id`, and unique `participants`. `budget_reserved` is `{ maximum_model_calls, initial_lane_calls, retry_allowance, reserved_chairman, reserved_adjudicator, worst_case_required }`; the adjudicator count is one even when conflict-triggered, and all six numeric fields are non-negative safe integers satisfying [risk and routing](risk-and-routing.md). Each participant is recorded by the parent before or immediately after dispatch as `{ invocation_id, lane, role, provider, model, route_family, attempt, packet_sha256, restriction_mode, capabilities, status, failure_code }`. Role is `internal-reviewer | outside-view | adjudicator | chairman`; restriction mode is `enforced | prompt-only | none`; capabilities is `{ persona, tool_filter, output_schema }`; status is `reserved | dispatched | completed | failed`; failure code is null or a typed failure. Provider/model/attempt in reviewer output are never authoritative over this record.
+
+The Chairman invocation ID resolves to exactly one `chairman` participant and no participant with that invocation ID has another role. Internal diversity compares recorded route families. Reviewer envelopes must match participant lane, role, packet hash, attempt, and invocation ID; mismatch is `ledger_integrity_failed`.
+
+## Internal reviewer envelope and atomic finding
+
+Every `reviewers/<lane>.json` requires `reviewer_id`, `lane`, `invocation_id`, `attempt`, `status`, `artifact_manifest_sha256`, `packet_sha256`, `findings`, and `rejected_candidates`. Status is `completed | failed`; completed responses contain arrays, while failed responses additionally require `failure_code` and contain no accepted findings. A rejected candidate is `{ candidate_id, reason }`.
+
+Each finding requires:
+
+- `finding_id`, `source_lane`, one selected `mode`, `category`, `claim`, `classification`, and `severity`;
+- `governance_class`, null outside governance and required for governance;
+- a declared `artifact_id`, `locator`, exact short `evidence_excerpt`, `impact`, and bounded `recommended_action`;
+- `verification: { status, verification_id }`, initially `{ status: "pending", verification_id: null }`, later `confirmed | refuted | inconclusive | not_verifiable` with a verifier reference;
+- `provenance: { reviewer_id, invocation_id, attempt }` matching the envelope and dispatch ledger;
+- `confidence`, a finite number from 0 through 1 used only as metadata.
+
+One finding contains one falsifiable claim. Missing evidence, locator, impact, or provenance rejects it from the active ledger. Distinct evidence targets or failure modes remain separate. Confidence and reviewer count are not vote weights.
+
+## Outside-view envelope and advisory register
+
+`reviewers/external-outside-view.json` requires reviewer and dispatch binding fields from the internal envelope, plus `authority: "advisory-only"`, `participates_in_voting: false`, `decision_weight: "none"`, `observations`, `advisory_hypotheses`, and `context_attestation`. An observation requires `observation_id`, `source_lane: "external-outside-view"`, selected `mode`, `category`, `claim`, `classification`, `severity`, `governance_class`, declared `artifact_id`, locator, evidence excerpt, impact, recommended action, verification, provenance, and numeric confidence exactly as an atomic finding does. It remains a candidate until normal verification. A hypothesis is `{ advisory_id, claim, basis, missing_project_sot, confidence, decision_weight, suggested_validation }`; confidence is `low | medium | high` and decision weight is always `none`. Context attestation is `{ artifact_ids_received, context_categories_received, packet_sha256_received }` and must equal the context manifest or produce a recorded degradation.
+
+`external-advisory.json` requires `observations`, `advisory_hypotheses`, and `promoted_observation_ids`. Normalization transforms an eligible observation deterministically by renaming `observation_id` to `finding_id` without changing its value, copying every other atomic field value-for-value from the parsed observation, setting `source_candidate_ids` to the single original ID, and applying the same scope, provenance, deduplication, and verification rules as internal candidates. No field may be inferred, defaulted, or rewritten. Ineligible observations remain advisory with a rejection reason. Promotion requires an exact locator, matching dispatch provenance, ordinary ledger admission, and a verifier record; hypotheses can never be promoted directly.
+
+## Normalized ledger
+
+`ledger.json` requires `normalization_policy`, `findings`, and `rejected_candidates`. Each finding preserves the atomic fields, has unique `source_candidate_ids`, and adds `normalization: { disposition, reason }`, where disposition is `accepted | rejected | duplicate`; only accepted findings drive the verdict. Deduplication uses normalized claim plus artifact and evidence target. A duplicate names its retained finding ID in the reason. Refuted findings remain present but are verdict-inactive. A rejected candidate requires `{ candidate_id, source_lane, reason }`. Minority high or critical evidence cannot be discarded solely because other reviewers disagree.
+
+## Parent verifier records
+
+The parent/orchestrator is the sole command-execution owner. `verifier/manifest.json` requires `executor: "parent-orchestrator"`, `artifact_manifest_sha256`, and unique `records`. Each record requires `verification_id`, unique `finding_ids`, `method`, `command_id`, `argv`, `cwd`, `timeout_seconds`, `authorized_by_request`, `status`, `exit_code`, `output_excerpt`, `reason`, `artifact_hashes_before`, `artifact_hashes_after`, `result_path`, `raw_output_path`, `raw_output_sha256`, and `raw_output_size_bytes`. Method is `read | command | unavailable`; status is `confirmed | refuted | inconclusive | not_verifiable`. For a command, `command_id`, argv, cwd, and timeout exactly match the request, and `exit_code` is an integer or null on timeout. A read or unavailable method uses null command fields. `result_path` identifies the structured JSON record. `raw_output_path` identifies a separate unchanged byte capture beneath `verifier/raw/`; its hash and size cover those exact bytes. An unavailable method uses null raw-output fields. Every affected artifact hash entry is `{ artifact_id, sha256 }`. Unauthorized verification is not run and is recorded `not_verifiable` with `verification_not_authorized` in reason.
+
+Each `verifier/<verification-id>.json` repeats the complete record plus `started_at` and `duration_ms`, both null when unavailable; its structured result never doubles as the raw-output artifact. A failed or missing command is never PASS. Material accepted findings must resolve to one verifier record before Chairman synthesis.
+
+## Adjudication
+
+`adjudication.json` requires `triggered`, `trigger_reasons`, `invocation_id`, `disputed_finding_ids`, `dispositions`, and `preserved_dissent`. If not triggered, invocation is null and the arrays are empty. If triggered, the invocation resolves to an adjudicator participant; every disputed and disposition ID exists in the ledger. A disposition is `{ finding_id, disposition, recalibrated_severity, reason, evidence_refs }`, with `uphold | reject | recalibrate | unresolved`. `recalibrated_severity` is null unless disposition is `recalibrate`, when it is a severity enum and becomes the effective ledger severity without changing the original reviewer field. Recalibration cannot create or merge away a finding. Preserved dissent is `{ finding_id, position, reason }`. Required adjudication failure constrains the verdict to `insufficient_evidence` unless a confirmed critical issue requires `blocked`.
+
+## Chairman disposition
+
+`chairman.json` requires `chairman`, `finding_dispositions`, `verdict`, `recommendation`, `confidence`, `residual_risks`, `unreviewed_observations`, `decision_owner`, `project_authority_claimed: false`, and `artifact_mutation_authorized: false`. Chairman is `{ reviewer_id, invocation_id, participated_in_initial_review: false, participated_in_external_review: false, participated_in_adjudication: false }`; provider and model come from the dispatch ledger. Each finding disposition is `{ finding_id, disposition, reason }`, with `accept | reject | note`, and references an existing ledger ID. Verdict follows [risk and routing](risk-and-routing.md); confidence is `low | medium | high`. An unreviewed observation is `{ observation_id, claim, recommended_lane }` and cannot drive the verdict until a new bounded review. Closure rejects invented finding IDs or participant overlap.
+
+## Telemetry
+
+`telemetry.json` requires `calls`, `calls_reserved`, `calls_released`, `calls_attempted`, `calls_remaining`, `maximum_model_calls`, `durations_complete`, `token_usage_complete`, and `cost_usage_complete`. Each call is `{ invocation_id, role, lane, provider, model, attempt, status, duration_ms, input_tokens, output_tokens, cost }`; status is `completed | failed`, and unavailable duration, token, or cost values are null. Reserved initially equals dispatch `worst_case_required`; released records only an unused conditional adjudicator reservation after a persisted non-trigger decision; attempted equals the number of calls; remaining equals maximum minus attempted and unreleased reservations. Counts reconcile with the dispatch ledger and never exceed the maximum. Completeness booleans are true only when every corresponding value is known. Unknown cost also appears as a degradation; values are never estimated silently.
+
+## Lineage
+
+Optional `lineage.json` requires `predecessor_review_id`, `predecessor_report_sha256`, `changed_artifacts`, and `lane_decisions`. A changed artifact is `{ artifact_id, prior_sha256, current_sha256, changed_ranges }`. A lane decision is `{ lane, prior_packet_sha256, current_packet_sha256, packet_hash_equal, affected, impact_boundary_evidence, action }`, where action is `rerun | carried_forward`. Carry-forward requires equal packet hashes and `affected: false`; otherwise action is rerun. A corrected artifact always uses a new review ID and leaves predecessor bytes untouched.
+
+## Reports and closure
+
+`report.json` requires `request_ref`, `artifact_manifest_ref`, `context_manifest_ref`, `dispatch_ledger_ref`, `ledger_ref`, `verifier_manifest_ref`, `adjudication_ref`, `chairman_ref`, `telemetry_ref`, `degradations_ref`, `lineage_ref`, `report_template_sha256`, `verdict`, `recommendation`, `findings`, `external_advisory`, `residual_risks`, `unreviewed_observations`, `decision_owner`, `advisory_only: true`, and `reviewed_artifacts_unchanged: true`. `report_template_sha256` is the raw-byte SHA-256 of [the exact template](../templates/report.md) loaded for that render. Every non-null `*_ref` is `{ path, sha256 }` beneath the run; lineage is null when absent. `verdict` is the Chairman verdict, `recommendation` is the Chairman string, `decision_owner` is the exact request actor object, and `residual_risks` is the Chairman string array. `findings` is an array of `{ finding_id, effective_severity, claim, artifact_id, locator, verification_status, verification_id, chairman_disposition, disposition_reason }` projected from accepted ledger, verifier, adjudication, and Chairman records. `external_advisory` is `{ observation_ids, advisory_hypotheses }`, where `observation_ids` is a unique string array of unpromoted observation IDs, hypotheses are exact objects owned by `external-advisory.json`, and no promoted observation remains in the ID array. `unreviewed_observations` is an array of `{ observation_id, claim, recommended_lane }` copied from Chairman output. Projected members exactly match their owners; no renderer derives new semantic content. `report.md` is a deterministic projection through [the report template](../templates/report.md), not an independent source.
+
+The template is the executable Markdown projection owner. Its exact closed placeholder set is `review_id`, `verdict`, `confidence`, `decision_owner`, `objective_and_modes`, `artifact_manifest`, `dispatch_summary`, `budget_summary`, `degradations`, `finding_table`, `verifier_summary`, `adjudication_summary`, `external_advisory`, `recommendation`, `residual_risks`, `unreviewed_observations`, `lineage_or_none`, and `telemetry_and_closure`, each written as `{{name}}` exactly once. The renderer loads the template's raw bytes, hashes those bytes into `report_template_sha256`, decodes strict UTF-8 without newline or Unicode normalization, rejects an unknown, missing, or duplicate placeholder, and substitutes each token exactly once from deterministic report projections in template byte order. It persists no output containing an unresolved `{{...}}` token. Any template-byte change changes the recorded hash and rendered output evidence.
+
+Closure verifies all references, hashes, dispatch provenance, required routes, call counts, verifier links, adjudication links, Chairman separation, verdict consequences, and final artifact identity. `pass` is invalid when any mandatory record, lane, check, diversity rule, outside-view lane, or separation proof is absent.
+
+## Prior council finding closure
+
+| Finding | Version 1 resolution |
+|---|---|
+| `F-001` | The parent/orchestrator is the single verification executor; verifier manifest and result records are defined above. |
+| `F-002` | Every persisted machine record is enumerated and requires `schema_version: 1`. |
+| `F-003` | The complete internal reviewer envelope and atomic finding are defined above. |
+| `F-004` | Every Source of Truth resolves through a declared, snapshotted artifact and locator. |
+| `F-005` | Sanitized bytes have an artifact identity, hash, producer method, redaction map, and source-locator mapping. |
+| `F-006` | `write_authority` explicitly names grantor and authorized output scope. |
+| `F-007` | The dispatch ledger reserves mandatory calls; telemetry accounts for every attempt. |
+| `F-008` | Parent-owned participant identities make Chairman separation closure-checkable. |
+| `F-009` | [Risk and routing](risk-and-routing.md) fixes verdict consequences for inconclusive and not-verifiable material evidence. |
+| `F-010` | Packets and verifier inputs bind to immutable snapshot paths, manifest hash, and packet hash. |
+| `F-011` | [Risk and routing](risk-and-routing.md) requires composition-time restrictions or records prompt-only degradation. |
+| `F-012` | Adjudication, failure, degradation, telemetry, transition, and report records are versioned above. |
+| `F-013` | Enforcement claims are limited to recorded capabilities; real-path denial remains required verification, not inferred from prompts. |
+| `F-014` | `SKILL.md` declares canonical name, concise description, and explicit model/user invocation policy. |
+| `F-015` | An existing run remains untouched and collision failure returns outside it. |
+| `F-016` | Lineage binds predecessor report, packet equality, affected lanes, and impact evidence. |
+| `F-017` | Parent-owned invocation IDs ground provenance and mismatches fail ledger integrity. |
+
+## Compatibility
+
+V1 validators accept only `schema_version: 1`. Additive or breaking machine-field changes require a new schema version, updated examples, helper validation, focused valid and invalid fixtures, and explicit migration policy. Never reinterpret a persisted v1 field silently. Human-readable wording may change only when deterministic rendering and snapshots change together.
+

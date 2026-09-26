@@ -5,6 +5,7 @@
 .trigger,
 .iconButton,
 .smallButton,
+.fileButton,
 .taskActions button,
 .formActions button {
   border: 0;
@@ -26,9 +27,28 @@
 .trigger:hover,
 .iconButton:hover,
 .smallButton:hover,
+.fileButton:hover,
 .taskActions button:hover,
-.formActions button:hover {
+.formActions button:hover,
+.mission:hover,
+.missionSelected:hover {
   background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.trigger:focus-visible,
+.iconButton:focus-visible,
+.smallButton:focus-visible,
+.taskActions button:focus-visible,
+.formActions button:focus-visible,
+.mission:focus-visible,
+.missionSelected:focus-visible,
+.member:focus-visible,
+.fileButton:focus-visible,
+.taskActions select:focus-visible,
+.form input:focus-visible,
+.form textarea:focus-visible {
+  outline: 2px solid var(--dsw-alias-interactive-border-primary);
+  outline-offset: 2px;
 }
 
 .count {
@@ -244,6 +264,65 @@
 .form textarea {
   min-height: 58px;
   resize: vertical;
+}
+
+.missionList {
+  display: grid;
+  gap: 6px;
+}
+
+.mission,
+.missionSelected {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 3px 8px;
+  width: 100%;
+  padding: 8px;
+  border: 0.5px solid var(--dsw-alias-border-l1);
+  border-radius: 8px;
+  background: var(--dsw-alias-bg-base);
+  color: var(--dsw-alias-label-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.mission span {
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 11px;
+}
+
+.missionSelected {
+  border-color: var(--dsw-alias-interactive-border-primary);
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.missionSelected span {
+  color: var(--dsw-alias-label-secondary);
+  font-size: 11px;
+}
+
+.missionDetail {
+  margin-top: 7px;
+  padding: 9px;
+  border: 0.5px solid var(--dsw-alias-border-l1);
+  border-radius: 9px;
+  background: var(--dsw-alias-bg-base);
+}
+
+.missionDetail p {
+  margin: 5px 0;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 12px;
+  white-space: pre-wrap;
+}
+
+.missionTasks {
+  display: grid;
+  gap: 4px;
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 12px;
 }
 
 .notice,

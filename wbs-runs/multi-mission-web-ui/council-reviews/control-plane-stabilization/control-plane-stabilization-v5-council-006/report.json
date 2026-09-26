@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v5-council-006",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "e2396c00f3713153eebf6097e3d1f2e02e8c6d622282f8ca2acb0b958e490a60"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "b8bde6fc86f2325ba7b26cf0cd93a56a8756513c89ef3e1218fef70e99d961fa"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "007da84fb62ff0ed9f388c88f30854bf9f53ab4f36912de05e1f7c19f0677c0f"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "0d162c0289de0d738634031f4109bda60a69e328ddcf7d8e38cc841fc6a4f266"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "9e9cff30b5d35a6b11b5d1c10f512d6b4090e7c824eaf66045afc21e0d47dbaf"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "1d9de733be44b113c6ac92a90dbcd41a9910415fd26c6e9feaf7652f23330571"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "ad62f46cf0236fac3a051472e758a7a7d8118021d8e9cb7beb9f510ebc1661ea"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "abea03ae0ca34d363470e382ac2d97463b2154308d6fcaa059a91924c5b36b21"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "d15673183ed2f62d3c432bdb6f97adeb3a8a253e08eea52ad5584cf0e7d7d65e"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "6cabb5329b62e76796de1e7671314856bcb8ef200fedd430abfa7c62bba68bbc"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Revise the reviewed artifact to address all six accepted findings, then submit a new review run.",
+  "findings": [
+    {
+      "finding_id": "r6adv001-f1",
+      "effective_severity": "high",
+      "claim": "The AdmissionBundle contract has no field or receipt for P13's exact HUMAN WBS decision or P15's HUMAN bootstrap decision ID and raw hash; prepared_from.decisions_sha256 binds only an undifferentiated artifact hash, so a sealed READY bundle cannot itself identify the authority records those invariants require.",
+      "artifact_id": "design-v5",
+      "locator": {
+        "kind": "line",
+        "value": "170-208;240-242"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Accepted as a parent-confirmed finding requiring revision."
+    },
+    {
+      "finding_id": "r6adv001-f2",
+      "effective_severity": "high",
+      "claim": "P3 validates only the pre-commit execution.json, while the commit protocol writes structurally new attempt, boundary, and charge data without requiring strict validation of the exact post-write candidate bytes before the charge or a strict PASS before dispatch.",
+      "artifact_id": "design-v5",
+      "locator": {
+        "kind": "line",
+        "value": "146-158;226-242"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Accepted as a parent-confirmed finding requiring revision."
+    },
+    {
+      "finding_id": "r6adv001-f3",
+      "effective_severity": "high",
+      "claim": "The fallback rule requires only a distinct invocation identity and does not require the fallback's provider/model route family to preserve the two-family diversity required for high-risk review when either primary lane is lost.",
+      "artifact_id": "design-v5",
+      "locator": {
+        "kind": "line",
+        "value": "325-337"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Accepted as a parent-confirmed finding requiring revision."
+    },
+    {
+      "finding_id": "r6auth001a1-f1",
+      "effective_severity": "medium",
+      "claim": "Section 5.1 forbids every mutable mission-control write in NOT_READY, READY and EXPIRED, but the mandatory abort path in Section 5.2 step 3 requires the coordinator to append an AdmissionInvalidation record in exactly those states, and Section 10 lists AdmissionInvalidation among generated or mutable mission-control artifacts owned by the coordinator through an approved append operation; no exception, owning command or receipt is declared for that write.",
+      "artifact_id": "design-v5",
+      "locator": {
+        "kind": "section",
+        "value": "5.1 Critical rule"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Accepted as a parent-confirmed finding requiring revision."
+    },
+    {
+      "finding_id": "r6auth001a1-f2",
+      "effective_severity": "medium",
+      "claim": "Section 7.1 requires the HUMAN ceiling/reallocation and contingency decision to be bound to the successor WBS's exact revision and SHA-256 before that WBS may be built or admitted, while Section 16 makes the HUMAN selection of that same ceiling/contingency policy a precondition for building the WBS; because the revision and hash exist only after the WBS bytes are authored and the design states no ordering or provisional-binding rule, the two entry gates are mutually blocking.",
+      "artifact_id": "design-v5",
+      "locator": {
+        "kind": "section",
+        "value": "7.1 Mission-specific contingency rule"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Accepted as a parent-confirmed finding requiring revision."
+    },
+    {
+      "finding_id": "r6auth001a1-f3",
+      "effective_severity": "medium",
+      "claim": "P8 asserts as an admission invariant that a delegated subagent cannot charge, but Section 5.3 concedes that no pinned Source of Truth identifies a non-bypassable native charge entry point and claims only procedural fail-closed governance; the design names no existing guard that denies the version-guarded execution.json charge write to a delegated writer, so P8 records an unconditional capability denial that its own topology observation does not establish.",
+      "artifact_id": "design-v5",
+      "locator": {
+        "kind": "section",
+        "value": "7 Admission invariants and evidence — P8 Coordinator identity/quiescence snapshot"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Accepted as a parent-confirmed finding requiring revision."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "The control plane remains at risk until all six accepted findings are resolved and independently re-reviewed."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

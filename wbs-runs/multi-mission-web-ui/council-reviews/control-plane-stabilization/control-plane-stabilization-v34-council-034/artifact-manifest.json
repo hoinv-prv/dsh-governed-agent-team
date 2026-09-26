@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v34-council-034",
+  "artifacts": [
+    {
+      "artifact_id": "design-v34",
+      "role": "reviewed",
+      "source_artifact_id": null,
+      "canonical_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/control-plane-stabilization-design.v34.md",
+      "snapshot_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v34-council-034/snapshots/design-v34",
+      "sha256": "8e565866fa2e20b144b318c1f02ccbdeaa0efc58da9028df64b4b84c0b955f95",
+      "size_bytes": 139582,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 630
+        }
+      ]
+    },
+    {
+      "artifact_id": "sanitized-design-v34",
+      "role": "sanitized",
+      "source_artifact_id": "design-v34",
+      "canonical_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/control-plane-stabilization-design.v34.md",
+      "snapshot_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v34-council-034/snapshots/sanitized-design-v34",
+      "sha256": "8e565866fa2e20b144b318c1f02ccbdeaa0efc58da9028df64b4b84c0b955f95",
+      "size_bytes": 139582,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 630
+        }
+      ]
+    },
+    {
+      "artifact_id": "repo-rules",
+      "role": "source-of-truth",
+      "source_artifact_id": null,
+      "canonical_path": "/home/hoinv/work/dsh-governed-agent-team/AGENTS.md",
+      "snapshot_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v34-council-034/snapshots/repo-rules",
+      "sha256": "9260216bebe60f86e08e3b745a4d822afd0120ce560a631285d17a3b59221177",
+      "size_bytes": 10570,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 134
+        }
+      ]
+    },
+    {
+      "artifact_id": "aiws-architecture",
+      "role": "source-of-truth",
+      "source_artifact_id": null,
+      "canonical_path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/truth/canonical/methodology/10_design/Architecture_Design_MVP.md",
+      "snapshot_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v34-council-034/snapshots/aiws-architecture",
+      "sha256": "5e4c399d63f7c066db471918961288bc9bfc8cac24334e7c7f9ea28031b54ff9",
+      "size_bytes": 18303,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 28,
+          "end_line": 220
+        },
+        {
+          "start_line": 320,
+          "end_line": 430
+        }
+      ]
+    },
+    {
+      "artifact_id": "runtime-review-method",
+      "role": "source-of-truth",
+      "source_artifact_id": null,
+      "canonical_path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/truth/canonical/methodology/20_specs/Runtime_Review_Methodology_MVP.md",
+      "snapshot_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v34-council-034/snapshots/runtime-review-method",
+      "sha256": "fb8a49d426a6b98c7d1525a4a46e1905b40c08d98981ac99ac4f40e9a3bf1ffe",
+      "size_bytes": 11454,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 20,
+          "end_line": 108
+        },
+        {
+          "start_line": 133,
+          "end_line": 146
+        }
+      ]
+    },
+    {
+      "artifact_id": "gat-proposal",
+      "role": "source-of-truth",
+      "source_artifact_id": null,
+      "canonical_path": "/home/hoinv/work/dsh-governed-agent-team/docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+      "snapshot_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v34-council-034/snapshots/gat-proposal",
+      "sha256": "dc47dc96949ea0c83d779d3dec11e30fbefb0bd738c4fb4898e6367313bd60ee",
+      "size_bytes": 66815,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 13,
+          "end_line": 64
+        },
+        {
+          "start_line": 92,
+          "end_line": 205
+        }
+      ]
+    },
+    {
+      "artifact_id": "failure-model",
+      "role": "source-of-truth",
+      "source_artifact_id": null,
+      "canonical_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v1-council-002/snapshots/failure-model",
+      "snapshot_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v34-council-034/snapshots/failure-model",
+      "sha256": "434f1613751d8a2b5b8813936404e4567e698ea4ace88ed74863e2a56e4d8b86",
+      "size_bytes": 11261,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 102
+        }
+      ]
+    },
+    {
+      "artifact_id": "consistency-audit-v32",
+      "role": "source-of-truth",
+      "source_artifact_id": null,
+      "canonical_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/control-plane-stabilization-consistency-audit.v32.md",
+      "snapshot_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v34-council-034/snapshots/consistency-audit-v32",
+      "sha256": "6e91a5bc3d333b052469d4f381e5805a53c7ecc4eb8ba11e5c0dfe64157cfbef",
+      "size_bytes": 7456,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 51
+        }
+      ]
+    },
+    {
+      "artifact_id": "council-contract",
+      "role": "source-of-truth",
+      "source_artifact_id": null,
+      "canonical_path": "/home/hoinv/deepseek-harness/.agents/skills/dsh-council-review/references/contracts.md",
+      "snapshot_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v34-council-034/snapshots/council-contract",
+      "sha256": "24252c322bc43eaec3ad38f77ae79653ffc3a404b31da6ea586af0e5abfa6c60",
+      "size_bytes": 24858,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 13,
+          "end_line": 107
+        }
+      ]
+    },
+    {
+      "artifact_id": "council-routing",
+      "role": "source-of-truth",
+      "source_artifact_id": null,
+      "canonical_path": "/home/hoinv/deepseek-harness/.agents/skills/dsh-council-review/references/risk-and-routing.md",
+      "snapshot_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v34-council-034/snapshots/council-routing",
+      "sha256": "c946c21caeeee25e460eacacb1466f9371f2d7534ed18b5c8bfbd61ee4d205e8",
+      "size_bytes": 6123,
+      "media_type": "text/markdown",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 45
+        }
+      ]
+    },
+    {
+      "artifact_id": "run033-ledger",
+      "role": "source-of-truth",
+      "source_artifact_id": null,
+      "canonical_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v33-council-033/ledger.json",
+      "snapshot_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v34-council-034/snapshots/run033-ledger",
+      "sha256": "25a4e907178ead1cf8ee94fab6929f67c9063f91550de80f72c5f96969eaf534",
+      "size_bytes": 30282,
+      "media_type": "application/json",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 603
+        }
+      ]
+    },
+    {
+      "artifact_id": "run033-verifier",
+      "role": "source-of-truth",
+      "source_artifact_id": null,
+      "canonical_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v33-council-033/verifier/manifest.json",
+      "snapshot_path": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/council-reviews/control-plane-stabilization/control-plane-stabilization-v34-council-034/snapshots/run033-verifier",
+      "sha256": "567e50546ca8979c6dadded30f2f4de85d928abdb4211aa4009706a1ff76f07f",
+      "size_bytes": 5551,
+      "media_type": "application/json",
+      "selected_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 103
+        }
+      ]
+    }
+  ]
+}

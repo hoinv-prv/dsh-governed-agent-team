@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v9-council-010",
+  "report_template_sha256": "4599c8d529eff781c5629faa16a67bb226e81745729cc48d9daee529618168b2",
+  "request_ref": {
+    "path": "request.json",
+    "sha256": "2ce68ad21435b7b8891ed1146b1ceab952a40a9caf8141c316dc4e93243ff251"
+  },
+  "artifact_manifest_ref": {
+    "path": "artifact-manifest.json",
+    "sha256": "0d370879644fc892441c5686376abde674afe5710bb4b5a4cf40ecd604c4905a"
+  },
+  "context_manifest_ref": {
+    "path": "context-manifest.json",
+    "sha256": "0f8c8dbc11de3b6998a1c5f728fca579f69ea984af4f82b7883d9861b8fbc758"
+  },
+  "dispatch_ledger_ref": {
+    "path": "dispatch-ledger.json",
+    "sha256": "19e556317a1b6b0467a3bb205506baf60f5c11602eb420cd06338da4235bc5c6"
+  },
+  "ledger_ref": {
+    "path": "ledger.json",
+    "sha256": "1ff3de73807cf1402e5b28a2d7000854f8f9b19d41e7cfcd42415f847540f033"
+  },
+  "verifier_manifest_ref": {
+    "path": "verifier/manifest.json",
+    "sha256": "c3349648c4f0bcf5697a6e05a741827487ce1c73b06db9bd5df918e1f221c412"
+  },
+  "adjudication_ref": {
+    "path": "adjudication.json",
+    "sha256": "d50790fe893d9d77c91002582cac428618f5ba4d65137f68411f22c39d4ad037"
+  },
+  "chairman_ref": {
+    "path": "chairman.json",
+    "sha256": "9949bd1a9b4954b6b36cf18bd084ee37bb22a7447987c7db3743dcf0c8d613c4"
+  },
+  "telemetry_ref": {
+    "path": "telemetry.json",
+    "sha256": "e4da43af1ea0fb6bdddb023a338fc7dd051ada680ac20580a13aac859ff6931c"
+  },
+  "degradations_ref": {
+    "path": "degradations.json",
+    "sha256": "093d25a2ecfa8a46453e1bb01470da267900a364b9942f4ee6325ad60252f9b7"
+  },
+  "lineage_ref": null,
+  "verdict": "needs_revision",
+  "recommendation": "Make BOOTSTRAP_MAINTENANCE exclusively uncharged administrative work with a HUMAN-bound resource ledger/ceiling and mechanical zero mission-attempt/charge attestations, then re-review exact revised bytes.",
+  "findings": [
+    {
+      "finding_id": "reviewer10-adversarial-f001",
+      "effective_severity": "high",
+      "claim": "BOOTSTRAP_MAINTENANCE has contradictory attempt-accounting semantics: Section 5.1 forbids it from allocating a mission attempt, while Section 6.3 presents mission-attempt charging as the alternative to an explicitly authorized uncharged administrative exception.",
+      "artifact_id": "design-v9",
+      "locator": {
+        "kind": "line",
+        "value": "153,251"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Parent-confirmed high-severity overlapping bootstrap accounting contradiction requires revision."
+    },
+    {
+      "finding_id": "reviewer10-authority-001-f1",
+      "effective_severity": "high",
+      "claim": "v9 states that BOOTSTRAP_MAINTENANCE may not allocate a mission attempt, yet it also treats mission-attempt charging as the default bootstrap accounting mode and uncharged administrative accounting as the exception, so a bootstrap attempt charge could be taken or concealed outside the counted mission-attempt ledger.",
+      "artifact_id": "design-v9",
+      "locator": {
+        "kind": "line",
+        "value": "251"
+      },
+      "verification_status": "confirmed",
+      "verification_id": "verify-all-findings",
+      "chairman_disposition": "accept",
+      "disposition_reason": "Parent-confirmed high-severity bootstrap accounting contradiction requires revision."
+    }
+  ],
+  "external_advisory": {
+    "observation_ids": [],
+    "advisory_hypotheses": []
+  },
+  "residual_risks": [
+    "Bootstrap accounting remains contradictory until revised and independently reviewed."
+  ],
+  "unreviewed_observations": [],
+  "decision_owner": {
+    "kind": "human",
+    "id": "HUMAN-current-user"
+  },
+  "advisory_only": true,
+  "reviewed_artifacts_unchanged": true
+}

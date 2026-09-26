@@ -1,0 +1,48 @@
+{
+  "name": "@deepseek-ai/dsh-gat",
+  "version": "0.0.0-conservative-mvp",
+  "private": true,
+  "type": "module",
+  "description": "Inactive standalone Governed Agent Team conservative MVP package",
+  "files": [
+    "lib/",
+    "types/",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./lib/index.mjs"
+    },
+    "./governance": {
+      "types": "./types/governance/index.d.ts",
+      "import": "./lib/governance/index.mjs"
+    },
+    "./memory": {
+      "types": "./types/memory/index.d.ts",
+      "import": "./lib/memory/index.mjs"
+    },
+    "./policy": {
+      "types": "./types/policy/index.d.ts",
+      "import": "./lib/policy/index.mjs"
+    },
+    "./adapter": {
+      "types": "./types/adapter/index.d.ts",
+      "import": "./lib/adapter/index.mjs"
+    },
+    "./conformance": {
+      "types": "./types/conformance/index.d.ts",
+      "import": "./lib/conformance/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "freeze": "node scripts/freeze.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:built": "node --test tests/built-package.test.mjs",
+    "test:conformance": "node src/conformance/cli.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

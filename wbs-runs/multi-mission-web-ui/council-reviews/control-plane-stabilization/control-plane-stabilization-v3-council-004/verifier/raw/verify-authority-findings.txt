@@ -1,0 +1,9 @@
+Parent read-only verification against immutable run-004 snapshots.
+
+r4auth002a2-f1 confirmed: Section 10 assigns the charge/boundary record to an unnamed 'owning charge operation'; Section 5.3 explicitly says no pinned Source of Truth identifies a non-bypassable native charge entry point. The design must name the coordinator's existing version-guarded ledger write/edit operation, authority/effect boundary and no-write-on-failed-precondition semantics, or keep the gate NOT_READY.
+
+r4auth002a2-f2 confirmed: Section 4 paraphrases precedence as one generic Wiki tier and omits the pinned content chain Project Wiki → Local Wiki → Common Wiki → History. Exact citation or verbatim dual precedence chains are required.
+
+r4auth002a2-f3 confirmed: Section 6 labels a new gat-admission-bundle/1 schema but provides no approved schema authority, persisted schema path, deterministic validator, producer command or exact argv. The design must classify it as a proposed contract and make accepted schema/validator/prepare command prerequisites before WBS build/admission.
+
+The design-v3 and repo-rules snapshot hashes matched the artifact manifest before and after reading. No command verification was authorized or executed.

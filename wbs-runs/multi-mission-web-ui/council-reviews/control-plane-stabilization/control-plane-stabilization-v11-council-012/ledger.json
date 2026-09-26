@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v11-council-012",
+  "normalization_policy": "normalized claim plus artifact and evidence target; no voting",
+  "findings": [
+    {
+      "finding_id": "reviewer11-authority-001-f1",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "ownership",
+      "claim": "Section 5.1 closes the set of pre-charge writes to two evidence effects, but P6 makes a fresh ASC produced by a declared run_aip transition a mandatory pre-charge predicate and Section 10 assigns that AIP-pointer/ASC write to run_aip.py, so the mandatory P6 transition has no admitted pre-charge owner, state or allowed effect.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v11",
+      "locator": {
+        "kind": "line",
+        "value": "157"
+      },
+      "evidence_excerpt": "Within the normal admission lifecycle, the only pre-charge writes are two coordinator-owned, uncharged evidence effects separately approved under P15",
+      "impact": "The coordinator cannot produce the P6 admission evidence without either violating Section 5.1's closed write enumeration or performing an undeclared write of a generated control artifact that Section 10 declares invalid admission evidence; admission is either unreachable for a first charge or permits an undeclared pre-charge effect.",
+      "recommended_action": "Admit the declared run_aip AIP-pointer/ASC transition explicitly as an allowed pre-charge effect with owner, permitted state, observation epoch and receipt, or move its production and freshness rule into the Section 16 WBS-build entry criteria that precede admission.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer11-authority-001",
+        "invocation_id": "inv12-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.7,
+      "source_candidate_ids": [
+        "reviewer11-authority-001-f1"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer11-authority-001-f2",
+      "source_lane": "internal-authority",
+      "mode": "design",
+      "category": "authority",
+      "claim": "The Section 5.2 commit procedure re-observes only live P7-P11 predicates and re-hashes bundle inputs, while P14 additionally requires live re-verification of P13/P15/P16 non-revocation and scope and of the migration-authority receipt, so the documented charge gate never names re-checking revocation.",
+      "classification": "fact",
+      "severity": "medium",
+      "governance_class": null,
+      "artifact_id": "design-v11",
+      "locator": {
+        "kind": "line",
+        "value": "164"
+      },
+      "evidence_excerpt": "re-observe every live P7–P11 predicate",
+      "impact": "A WBS, bootstrap or acceptance authority decision revoked after the bundle is sealed leaves the pinned receipt bytes unchanged, so the documented Section 5.2 sequence can return fresh PASS and commit a charge against revoked authority.",
+      "recommended_action": "Add explicit live P13/P15/P16 revocation and scope re-observation, plus first-post-migration migration_authority revalidation, to the Section 5.2 commit steps, or state in Section 5.2 that step 1 executes P14 in full.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer11-authority-001",
+        "invocation_id": "inv12-auth-001",
+        "attempt": 1
+      },
+      "confidence": 0.6,
+      "source_candidate_ids": [
+        "reviewer11-authority-001-f2"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer12-adversarial-f001",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "charge-recovery-closure",
+      "claim": "The post-charge invalid-ledger branch names a HUMAN-authorized repair but defines no repair state, source backup, durable candidate/receipt, allowed-effect operation, validator, or lineage rule that can admit the repaired bytes under P3.",
+      "classification": "fact",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v11",
+      "locator": {
+        "kind": "line",
+        "value": "169"
+      },
+      "evidence_excerpt": "If persisted validation fails, dispatch nothing, freeze the ledger, preserve the charged attempt plus invalid bytes/validation evidence, and require separately HUMAN-authorized repair to project that same attempt as `failed`; never allocate a replacement attempt implicitly.",
+      "impact": "A failed or partial first ledger write can leave no mechanically admissible successor: replacing the invalid bytes can break the required strictly-valid append-only lineage, while omitting that write can lose or reuse a charge.",
+      "recommended_action": "Define a bounded post-charge repair state and contract that preserves exact pre-write, candidate, and invalid persisted bytes/hashes; binds the same attempt and cumulative charge; authorizes one version-guarded repair; requires strict validation and independent verification; and specifies how the repair receipt enters later P3 lineage.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer12-adversarial-001",
+        "invocation_id": "inv12-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.98,
+      "source_candidate_ids": [
+        "reviewer12-adversarial-f001"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer12-adversarial-f002",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "administrative-ledger-contract",
+      "claim": "The AdministrativeResourceLedger does not define how its own guarded append invocation is accounted without creating another append invocation that must itself be accounted.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v11",
+      "locator": {
+        "kind": "line",
+        "value": "258"
+      },
+      "evidence_excerpt": "Reconciliation enumerates every authorized model/tool invocation and Workspace file effect against exactly one ledger entry; missing, duplicate or unattributable activity fails closed.",
+      "impact": "Complete reconciliation is either recursively non-terminating or silently exempts and potentially underprices the metering primitive, so P15 cannot deterministically prove complete cumulative usage and ceiling closure.",
+      "recommended_action": "Define the append primitive's exact accounting boundary in the contract and validator: use an atomic metering operation whose single record includes its bounded append overhead without self-referential hashing, or declare a narrowly HUMAN-bound exemption with independently proven resource/effect bounds and fixtures.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer12-adversarial-001",
+        "invocation_id": "inv12-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.95,
+      "source_candidate_ids": [
+        "reviewer12-adversarial-f002"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    },
+    {
+      "finding_id": "reviewer12-adversarial-f003",
+      "source_lane": "internal-adversarial",
+      "mode": "design",
+      "category": "cumulative-authority-closure",
+      "claim": "A migrated base produced through MIGRATION_RECOVERY is not required to carry the fresh recovery authorization into migration_authority; first-charge admission re-hashes only the original migration decision.",
+      "classification": "inference",
+      "severity": "high",
+      "governance_class": null,
+      "artifact_id": "design-v11",
+      "locator": {
+        "kind": "line",
+        "value": "315"
+      },
+      "evidence_excerpt": "the bundle `migration_authority` receipt to re-hash the original migration decision",
+      "impact": "A first charge can rely on bytes written during recovery without P14 rechecking the recovery decision's designated-owner chain, scope, effects, administrative-ceiling binding, or revocation state, breaking cumulative HUMAN authority.",
+      "recommended_action": "Make migration_authority an ordered authority lineage containing the initial migration decision, every recovery decision and receipt, and final HUMAN acceptance; require P14 to re-hash and revalidate actor/delegation, scope/effects, ceiling, and revocation for every link, and apply the same rule to bootstrap recovery.",
+      "verification": {
+        "status": "confirmed",
+        "verification_id": "verify-all-findings"
+      },
+      "provenance": {
+        "reviewer_id": "reviewer12-adversarial-001",
+        "invocation_id": "inv12-adv-001",
+        "attempt": 1
+      },
+      "confidence": 0.96,
+      "source_candidate_ids": [
+        "reviewer12-adversarial-f003"
+      ],
+      "normalization": {
+        "disposition": "accepted",
+        "reason": "Structurally valid atomic finding."
+      }
+    }
+  ],
+  "rejected_candidates": []
+}

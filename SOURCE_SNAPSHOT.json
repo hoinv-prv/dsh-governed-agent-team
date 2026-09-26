@@ -17,8 +17,8 @@
     "version": "0.1.0",
     "namespace": "@vuhoi",
     "compatibilityManifest": "compatibility/dsh-0.1.5-rc.2/manifest.json",
-    "payloadFiles": 71,
-    "payloadSha256": "55f814daa2ecd3c88fbd4b92cd72f4401b8bd2f13424e006dca8b83e2cc672b5",
+    "payloadFiles": 74,
+    "payloadSha256": "2dca38007ed5e0533f04f9f26c0eb140dda29ed593301b29f67b62e7184dd5e5",
     "hostFiles": 9,
     "patchsetSha256": "e3bf5ab3fa6c6117e5e5ab080c0ff5b93caf1750f1b5027be3a5303c4ae4ab38"
   },

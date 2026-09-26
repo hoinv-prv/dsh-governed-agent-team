@@ -1,0 +1,102 @@
+# Findings
+
+## STEP-00 confirmation
+
+HUMAN confirmed via `ask_user_question:confirm-control-plane-redesign-scope`: freeze current execution; design systemic control-plane/pre-charge admission; council-review exact design bytes; do not build or execute a WBS in this AIP.
+
+## Failure model
+
+### Systemic root cause — RC-SYSTEM-01
+
+The mission has no single atomic, mechanically closed **pre-charge admission transaction** covering all execution-control surfaces. Plan schema/hash approval is checked separately from strict execution-ledger validity, AIP/ASC transition capability, command-backend availability, reviewer capacity, Team-plan authority, goal activation and budget contingency. Consequently a charge can be committed while one or more mandatory downstream controls are invalid or unavailable.
+
+This produces the observed loop:
+
+```text
+partial preflight → charge → mutate one control surface → discover another invalid surface
+→ block review/acceptance → pause → re-plan → consume another reconciliation charge
+```
+
+The root cause is a control-architecture defect. Runner architecture, sandbox refusal, reviewer failure, stale ASC and ledger incompatibility are contributing failures or symptoms, not competing root causes.
+
+### Evidence-to-control traceability
+
+| ID | Observed fact | Classification | Effect | Missing/failed control | Required owner |
+|---|---|---|---|---|---|
+| E-01 | Six historical `conformance-runner-recovery` attempts are retained as failed; `ROOT_CAUSE_AND_RECOVERY_PLAN.md` records late discovery of missing control APIs/trust boundaries. | Product architecture contributing condition | Accepted progress remained flat while attempts accumulated. | Pre-code contract/architecture admission before implementation. | WBS builder + architecture reviewer |
+| E-02 | v31 was later found to contain deterministic schema, requirement, effect, budget, source and command-path defects after an earlier review path allowed it forward. | Planning/control contributing condition | Pause, new revision and reconciliation charge were required. | Official validation and semantic checklist had not both closed before approval. | WBS builder + independent reviewers |
+| E-03 | Attempt65 command was refused before test execution because the selected sandbox backend was unavailable. | Runtime capability failure | Provisional outputs remained unverified/interrupted and the charge was preserved. | Pre-charge proof that exact command/effect backend is currently available. | Coordinator/runtime |
+| E-04 | Official helper validates v32 schema/order/hash, but reconciliation deliverable requires a fresh STEP-10 ASC while task `allowed_commands` contains only AIP lint and status—not the declared ASC step/rebuild command. | Confirmed semantic plan defect | Coordinator had no declared command capable of producing the generated ASC transition. | Command-to-deliverable semantic closure check. | WBS builder + design/governance reviewer |
+| E-05 | Attempt66 verification records ASC as updated but does not cite a declared rebuild command; manual file reconciliation was used. | Governance/evidence defect | Exact-plan execution drifted from the intended generated-artifact pathway. | Generated artifacts must name their owning transition command; manual projection edits must be forbidden. | Coordinator + AIWS AIP owner |
+| E-06 | Progress helper rejects current `execution.json`: `discover-validation.attempts[0].input_hashes contains conflicting hashes for path`. | Ledger-schema/control debt | Strict execution-backed reporting cannot close; execution state cannot be safely projected by the official helper. | Backup-first lossless migration plus strict validator PASS before selection/charge. | WBS-run coordinator + HUMAN migration authority |
+| E-07 | Attempt66 advisory reviewer failed before verdict and no active reviewer remains. | Review-capability failure | `revision-32-reconciliation` remains reviewing; every downstream task is blocked. | Reviewer reservation, independent fallback and typed retry policy before charge. | Coordinator |
+| E-08 | Goal remains `paused/disarmed`; two resume calls were rejected even after HUMAN intent was collected. | Continuation/control mismatch | Autonomous continuation is not observable despite execution ledger `run_state: active`. | Goal state must be active/armed and identity-bound before execution admission. | HUMAN/runtime + coordinator verification |
+| E-09 | Remaining attempt count equals the sum of downstream maxima. | Budget design contributing condition | Any new plan-selection or scope-changing recovery has no reserved capacity. | Explicit contingency reserve or HUMAN-approved ceiling/reallocation before admission. | HUMAN decision owner + WBS builder |
+| E-10 | WBS v32 declares `review.owner: human` but `acceptance.owner: coordinator` for reconciliation. | Authority textual defect | Review, acceptance and decision recording responsibilities can be interpreted inconsistently. | One explicit authority matrix and binding decision record per gate. | WBS builder + governance reviewer + HUMAN |
+| E-11 | One mutable `execution.json` contains heterogeneous historical structures across many revisions and current task projections. | State-model contributing condition | Current validation must parse legacy forms; report/helper behavior diverges from ledger bytes. | Immutable append-only history plus a small current projection with versioned migration. | WBS-run format owner + coordinator |
+| E-12 | The prior recovery proposal correctly split product architecture but did not stabilize execution-control admission. | Scope omission | Product decomposition improved, yet the same pause/replan pattern continued at the governance layer. | Separate control-plane stabilization design must precede next product WBS. | HUMAN + design owner |
+
+## Confirmed findings
+
+### CF-01 — Product decomposition alone cannot prevent recurrence
+
+The v31/v32 matrix→control→handlers→runner sequence addresses late product-architecture discovery, but it does not close ledger validity, generated-context transition, runtime capability, reviewer availability, goal activation or budget slack before charging. Retrying the reviewer can unblock one gate but cannot guarantee the next charge is safe.
+
+### CF-02 — Schema validation is necessary but insufficient
+
+Official v32 helper output proves format, identity, order and hash. It does not prove that every deliverable has an executable declared transition or that all runtime capabilities and control artifacts are jointly ready. A semantic admission matrix is required in addition to the helper.
+
+### CF-03 — Current mission state is contradictory across authorities
+
+The execution ledger is `active`, the current task is `reviewing`, native work is quiescent, and the goal runtime is `paused/disarmed`. No one state alone safely authorizes continuation. Admission must derive from the conjunction, not a preferred source.
+
+### CF-04 — Strict ledger validity must be upstream of WBS execution
+
+An execution ledger rejected by the official progress validator cannot be treated as a harmless reporting-only issue when the same ledger owns attempts, acceptance and readiness. It must be migrated and strictly closed before a new product attempt.
+
+### CF-05 — Zero contingency converts every control defect into re-plan pressure
+
+With remaining allocation exactly equal to downstream maxima, any recovery requiring a new selection attempt forces either a ceiling change or a hidden reduction elsewhere. Contingency must be an explicit admission invariant, not an afterthought.
+
+## Inferred findings
+
+### IF-01 — Reconciliation tasks are overloaded
+
+Reconciliation currently combines plan selection, ledger mutation, AIP update, Workspace projection, validation, review and authority transition. This broad mutation surface increases partial-commit risk. A two-phase prepare/commit design with an immutable admission bundle would reduce it.
+
+### IF-02 — Historical compatibility is obscuring current state
+
+Keeping all historical task schemas inline in one mutable current ledger appears to be the direct reason strict projection fails. A versioned immutable history plus validated current projection is likely safer, subject to council verification of compatibility and no-loss requirements.
+
+## Hypotheses requiring council challenge
+
+- H-01: One immutable `AdmissionBundle` plus prepare/commit markers is the smallest credible control, rather than a new runtime service or custom runner.
+- H-02: Reviewer fallback can be reserved and capability-checked without consuming a task attempt until an implementation effect occurs.
+- H-03: The next WBS requires dedicated stabilization capacity or explicit ceiling increase; reducing downstream maxima without new technical evidence would merely move risk.
+- H-04: Strict progress-helper validation is an adequate executable proxy for current execution-ledger closure; council must verify whether another authoritative validator is required.
+
+## Design requirements derived from evidence
+
+1. No charge before one immutable admission bundle closes all required controls.
+2. Admission is fail-closed and two-phase: prepare is side-effect-free; commit atomically records charge and active task.
+3. Bundle pins plan hash/order, strict ledger receipt, accepted dependencies, source hashes, exact commands, command backend, AIP/ASC owning transition, coordinator/quiescence, Team authority, active goal, reviewer reservations and budget slack.
+4. Any input drift invalidates the bundle; re-prepare is uncharged.
+5. Generated artifacts are changed only through declared owning commands.
+6. A reviewer/provider failure before verdict uses a typed bounded fallback without changing implementation acceptance.
+7. Ledger migration is separate, backup-first, lossless, deterministic and strict-validator-gated.
+8. Historical evidence is immutable; current projection is small, versioned and rebuildable from accepted history.
+9. HUMAN explicitly owns ceiling/reallocation, deviations, task acceptance where declared and final WBS approval.
+10. No new product attempt starts until the stabilization design and WBS derived from it are separately approved.
+
+## To-verify findings
+
+- Council must verify authority alignment between HUMAN review and coordinator acceptance.
+- Council must challenge atomicity feasibility without inventing an unsupported scheduler/service.
+- Council must verify the exact minimum ledger-migration boundary.
+- Council must test negative paths: stale plan, changed source, reviewer loss, goal pause, Team revision drift, sandbox loss, partial commit, crash after charge and report-helper refusal.
+
+## Notes
+
+- `SOP_MASTER.md` and `AI_WORK_CONTRACT.md` are present but empty; no additional project-specific text was inferred from them.
+- GAT proposal was not found as an exact Wiki Source after normal and semantic lookup; CAP-009-01 records the retrieval gap.
+- During AIP creation, initial commands used `python` as shown in generic template prose and failed because only `python3` exists. This is a reproducible toolchain portability issue and should be captured separately if not already covered by the retrieval/tooling capture set.

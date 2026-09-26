@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_id": "control-plane-stabilization-v35-council-037",
+  "state": "failed",
+  "stage": "review",
+  "failure": {
+    "code": "ledger_integrity_failed",
+    "stage": "review",
+    "subject": "all-required-review-lanes",
+    "message": "All three independent prompt-only children settled stopReason=error with typed child-not-completed and no provider diagnostic. The exact allowed failure code and retry eligibility cannot be established; no valid reviewer output exists and formal consequence is insufficient_evidence.",
+    "retryable": false,
+    "invocation_id": null
+  },
+  "updated_sequence": 2
+}

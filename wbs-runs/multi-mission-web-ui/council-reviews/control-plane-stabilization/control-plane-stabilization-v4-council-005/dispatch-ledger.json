@@ -1,0 +1,12 @@
+{
+  "schema_version":1,"review_id":"control-plane-stabilization-v4-council-005",
+  "budget_reserved":{"maximum_model_calls":8,"initial_lane_calls":3,"retry_allowance":3,"reserved_chairman":1,"reserved_adjudicator":1,"worst_case_required":8},
+  "chairman_invocation_id":"inv5-chair-001",
+  "participants":[
+    {"invocation_id":"inv5-auth-001","lane":"internal-authority","role":"internal-reviewer","provider":"deepseek-official","model":"deepseek-flash","route_family":"deepseek-v41","attempt":1,"packet_sha256":"83ae32da69d7bf264bdf131e863c73d92849996b4ee4a6cea0dca23bb0485ff9","restriction_mode":"prompt-only","capabilities":{"persona":false,"tool_filter":false,"output_schema":false},"status":"failed","failure_code":"schema_invalid"},
+    {"invocation_id":"inv5-auth-002","lane":"internal-authority","role":"internal-reviewer","provider":"deepseek-official","model":"deepseek-flash","route_family":"deepseek-v41","attempt":2,"packet_sha256":"83ae32da69d7bf264bdf131e863c73d92849996b4ee4a6cea0dca23bb0485ff9","restriction_mode":"prompt-only","capabilities":{"persona":false,"tool_filter":false,"output_schema":false},"status":"completed","failure_code":null},
+    {"invocation_id":"inv5-adv-001","lane":"internal-adversarial","role":"internal-reviewer","provider":"openai-codex","model":"gpt-5.6-terra","route_family":"openai-gpt5","attempt":1,"packet_sha256":"3b2ebb6fb138a77e66f1ccdfffee62ab95136eb182d62d5a7fa05c25a18205f4","restriction_mode":"prompt-only","capabilities":{"persona":false,"tool_filter":false,"output_schema":false},"status":"completed","failure_code":null},
+    {"invocation_id":"inv5-ext-001","lane":"external-outside-view","role":"outside-view","provider":"openai-codex","model":"gpt-5.6-luna","route_family":"openai-gpt5","attempt":1,"packet_sha256":"14b146ce51d3fbfaa9f5fa3f464b293d75d1c89ec18075f7371a6dd1b32072a7","restriction_mode":"prompt-only","capabilities":{"persona":false,"tool_filter":false,"output_schema":false},"status":"completed","failure_code":null},
+    {"invocation_id":"inv5-chair-001","lane":"chairman","role":"chairman","provider":"openai-codex","model":"gpt-5.6-sol","route_family":"openai-gpt5","attempt":1,"packet_sha256":"62152b3030fc1c058d79c0115ebfbfd97c239a985da3084ca2508963b3d276eb","restriction_mode":"prompt-only","capabilities":{"persona":false,"tool_filter":false,"output_schema":false},"status":"failed","failure_code":"schema_invalid"}
+  ]
+}
