@@ -152,7 +152,21 @@ describe('Agent Teams projection events', () => {
     expect(state.planRevision).toBe(2)
   })
 
-  it('replays independent mission records and isolated approvals', () => {
+  it('accepts immediately authorized missions while retaining legacy draft replay', () => {
+    const legacy = mission()
+    const authorized = mission({
+      id: TeamMissionId('mission-2'),
+      status: 'approved',
+      approval: { approvedRevision: 1 },
+    })
+
+    expect(projectTeam(ROOT, [
+      event('team/mission', { version: 2, teamId: TEAM, mission: legacy }, SessionSeq(0)),
+      event('team/mission', { version: 2, teamId: TEAM, mission: authorized }, SessionSeq(1)),
+    ]).missions).toEqual([legacy, authorized])
+  })
+
+  it('replays independent legacy mission records and isolated approvals', () => {
     const alpha = mission()
     const beta = mission({
       id: TeamMissionId('mission-2'),

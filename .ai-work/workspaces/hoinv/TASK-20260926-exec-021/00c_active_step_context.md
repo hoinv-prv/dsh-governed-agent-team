@@ -1,15 +1,15 @@
 ---
 artifact_type: active_step_context
-artifact_id: ASC-TASK-20260926-exec-021-STEP-02
+artifact_id: ASC-TASK-20260926-exec-021-STEP-04
 task_id: TASK-20260926-exec-021
 working_aip_ref: AIP-EXEC-021
 working_aip_path: __PROJECT_ROOT__/.ai-work/aip/hoinv/exec/AIP-EXEC-021-gat-baseline-sync-contract-freeze.md
-active_step_id: STEP-02
-active_step_title: Synchronize approved baseline deltas
+active_step_id: STEP-04
+active_step_title: Verify compatibility and prepare handoff
 source_aip: AIP-EXEC-021
 source_aip_path: __PROJECT_ROOT__/.ai-work/aip/hoinv/exec/AIP-EXEC-021-gat-baseline-sync-contract-freeze.md
-step_id: STEP-02
-step_index: 3
+step_id: STEP-04
+step_index: 5
 step_total: 5
 status: active
 active_task_lens: design_authoring
@@ -18,7 +18,7 @@ staleness_reason:
 updated_at: 2026-09-26
 ---
 
-# Active Step Context — Synchronize approved baseline deltas
+# Active Step Context — Verify compatibility and prepare handoff
 
 ## AIP Goal & Outcome
 - Goal (AIP-level objective):
@@ -40,16 +40,18 @@ updated_at: 2026-09-26
 ## Step Map — You Are Here
 - STEP-00 — Persist confirmed task understanding  [upstream — done]
 - STEP-01 — Pin baselines and build exact delta inventory  [upstream — done]
-- STEP-02 — Synchronize approved baseline deltas  ◀ ACTIVE (step 3 of 5)
-- STEP-03 — Freeze member-binding integration contracts  [downstream]
-- STEP-04 — Verify compatibility and prepare handoff  [downstream]
+- STEP-02 — Synchronize approved baseline deltas  [upstream — done]
+- STEP-03 — Freeze member-binding integration contracts  [upstream — done]
+- STEP-04 — Verify compatibility and prepare handoff  ◀ ACTIVE (step 5 of 5)
 
 ## Downstream / Output Contract
-- Next step (STEP-03 — Freeze member-binding integration contracts) needs as Inputs:
-  - AIP-PLAN-001 target architecture.
-  - Synchronized baseline APIs and lifecycle seams.
-  - DSH subagent continuation contracts.
-- Shape this step's output to satisfy the above + the AIP final outcome (see AIP Goal & Outcome).
+- Final step. This AIP's `## Expected Outputs`:
+  - `.ai-work/workspaces/hoinv/TASK-20260926-exec-021/04_findings.md` — source-authority map, exact delta inventory, preservation decisions and evidence.
+  - `.ai-work/workspaces/hoinv/TASK-20260926-exec-021/07_output_draft.md` — synchronization and contract-freeze draft.
+  - `.ai-work/workspaces/hoinv/TASK-20260926-exec-021/11_output_final.md` — compatibility results and EXEC-B/EXEC-C readiness handoff.
+  - `docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md` — versioned semantic contracts and unresolved HUMAN decisions.
+  - Bounded standalone package/test/profile/compatibility updates required to match the selected DSH behavioral baseline.
+- Shape this step's output to satisfy the above.
 
 ## Guardrails (from AIP)
 - **Current Risks / Constraints:**
@@ -77,34 +79,38 @@ updated_at: 2026-09-26
 | GAT design reference | SRC-GAT-DESIGN-REFERENCE | `docs/GAT_DESIGN_AND_FEATURE_REFERENCE.md` | Maintained reference; executable source/tests override | — |
 
 ## Workspace Actions
-- Record each applied file and rationale immediately in `04_findings.md`.
+- Finalize `11_output_final.md`, close open points, triage captures and run scoped lint.
 
 ## Acceptance Criteria
 **Self-check / Review Points:** (from Step Output / Decision Persistence Requirements)
+
+**Done Criteria (for this step):**
+No unexplained regression remains; failures are fixed or explicitly block readiness; task lint is reported truthfully.
 
 ## Active Task Lens
 - design_authoring
 - Reading-surface hint (CR-030): when a lens is set, prioritise its preset `relevant_source_types` + `register_priority`/`expansion_priority` (`.ai-work/wiki/task_lens_presets/`) when ordering what to read — a HINT, not a hard filter; expand or verify raw/source when correctness needs it.
 
 ## Step Objective
-Apply the minimal file-by-file changes needed for standalone source/tests/profiles to represent the selected current DSH GAT behavior while preserving project-specific distribution semantics and unrelated work.
+Run focused package tests/build/type checks, persistence/profile integration tests, installer structural checks and final AIWS lint; report real results and residual risks.
 
 ## Recommended Mode
-Executing
+Verification
 
 ## Applicable Guidelines
 - `docs/GAT_INSTALLER_VERSION_COMPATIBILITY_REFACTOR_SPEC.md`
 
 ## Recommended Skills
-- (none — controlled read/edit/write and deterministic diff verification)
+- `aiws-lint`
 
 ## Inputs
-- STEP-01 classified delta matrix.
-- Exact standalone and DSH file variants.
+- STEP-02 changes.
+- STEP-03 contract freeze.
 
 ## Expected Outputs
-- Reviewed source/test/profile/compatibility changes.
-- Pre/post preservation evidence for overlapping dirty files.
+- Verification matrix with exact commands/results.
+- Final handoff determining readiness for EXEC-B and EXEC-C.
+- Deferred capture disposition.
 
 ## Step Output / Decision Persistence Requirements
 → See `AIP_Detail_Spec_MVP.md` §7.2
@@ -113,7 +119,7 @@ Executing
 → See `Active_Step_Context_Spec_MVP.md` §5
 
 ## Done Condition
-All adopted deltas are traceable to the matrix; excluded differences remain untouched and documented.
+No unexplained regression remains; failures are fixed or explicitly block readiness; task lint is reported truthfully.
 
 ## Output State
 | Path | Exists | VCS Status | Suggested Mode |
@@ -121,9 +127,8 @@ All adopted deltas are traceable to the matrix; excluded differences remain unto
 | (no expected outputs declared) | — | — | — |
 
 ## Notes / Constraints
-- No blanket directory replacement.
-- Do not modify DSH checkout.
-- Stop if a target edit cannot preserve existing intent confidently.
+- Do not activate a live profile.
+- Separate structural install verification from post-build runtime/profile verification.
 
 ## Operating Memory (L2 — bài học vận hành)
 - Lát cắt: mọi nhóm (step không khai Kind)
@@ -138,6 +143,8 @@ All adopted deltas are traceable to the matrix; excluded differences remain unto
 
 ## Previous Step Results / Handoff Inputs
 - OUT-021-01-01 —  (draft)
+- OUT-021-02-01 —  (draft)
+- OUT-021-03-01 —  (draft)
 
 ## Capture Inbox References
 - CAP-021-01 — Current DSH GAT behavioral baseline is an uncommitted working-tree state (captured)

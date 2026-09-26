@@ -215,6 +215,7 @@ run('pnpm', ['install', '--frozen-lockfile', '--ignore-scripts', '--lockfile-onl
 removeBuildOutputs(target)
 const unlinkDependencies = linkVerificationDependencies(target, dependencyCheckout)
 try {
+  run('pnpm', ['run', 'build:native-system'], target)
   run('pnpm', [
     'exec', 'vitest', 'run',
     'packages/experimental/gat-core/tests/invariant.spec.ts',

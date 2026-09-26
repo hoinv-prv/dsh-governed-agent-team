@@ -34,6 +34,8 @@
         forkProvider: fork
         minExecutionMembers: 2
         maxExecutionMembers: 4
+        simpleMode: true
+        teamMembersMaxBytes: 65536
         externalRestrictedTools:
           - ask_user_question
           - glob

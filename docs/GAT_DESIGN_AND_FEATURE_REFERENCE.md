@@ -2,7 +2,7 @@
 
 **Status:** Project reference, not canonical Truth or activation approval  
 **Last verified:** 2026-09-26  
-**Driving work:** AIP-EXEC-014, AIP-EXEC-015, AIP-EXEC-018  
+**Driving work:** AIP-EXEC-014, AIP-EXEC-015, AIP-EXEC-018, AIP-EXEC-021
 **Scope:** GAT `0.1.0` on the pinned DeepSeek Harness compatibility target, including its target relationship with Durable Agent MiniMVP
 
 ## 1. Purpose and authority
@@ -17,15 +17,11 @@ This page is a maintained navigation and behavior reference. It distinguishes:
 
 When this page conflicts with executable source, tests, installation records, or approved project Truth, those stronger sources win.
 
-### Current-source caveat
+### Current-source status
 
-At the verification date, the newest session-enable and `team_members.yaml` implementation is present in the installed DSH checkout at:
+AIP-EXEC-021 synchronized the selected DSH session-enable, bounded `team_members.yaml`, route-preflight, optional Agent route, and immediate-mission-authorization baseline into this standalone workspace through a controlled merge. The standalone package tree is now the authoring/distribution source for those behaviors; the installed DSH checkout remains the pinned host compatibility target.
 
-```text
-/home/hoinv/deepseek-harness/packages/experimental/gat-*
-```
-
-The standalone workspace remains the GAT installer/distribution source, but some package documentation and source files are being synchronized. Use the source map in §13 when confirming a behavior.
+The DSH baseline was a working-tree state rooted at commit `aeedf19995babaa28e35ca84624baff18a77a7d8`, so its commit id alone is not a complete behavioral revision. Use the AIP-EXEC-021 file-hash evidence and the source map in §13 when auditing provenance.
 
 ## 2. System overview
 
@@ -567,14 +563,14 @@ Implemented Web behavior includes:
 
 The simplified current panel intentionally does not expose mission/task creation controls or the task list. The backend and model tools may still retain those capabilities.
 
-### Current Web integration drift
+### Installed DSH baseline Web drift
 
-The verified source snapshot contains a type/injection mismatch that maintainers must not overlook:
+The selected DSH working-tree baseline contains a type/injection mismatch that EXEC-A intentionally did not copy:
 
-- `TeamAction.tsx` still imports `ImportApprovedTeamPlanResult` from the core client surface, but that type is absent from the verified core type/client exports.
-- `TeamActionInjected` still declares `approveMission` and `importApprovedPlan`, while the current `mount.ts` action object does not provide them.
+- its core/client surface removes `ImportApprovedTeamPlanResult` while `TeamAction.tsx` still imports it;
+- its `mount.ts` removes `approveMission` and `importApprovedPlan` while the unchanged `TeamActionInjected` interface still requires them.
 
-The simplified render path does not use those retired actions, and the client bundle can still transpile because the missing import is type-only, but the source is not type-consistent. This is an implementation cleanup gap, not a supported UI capability.
+The synchronized standalone source retains the newer approved-plan type and both action injections, so its interface remains internally consistent. The simplified render path still does not expose those controls. The installed DSH checkout remains unchanged until a later verified installer application.
 
 ## 10. Governance and execution controls
 
@@ -638,6 +634,7 @@ Proposed but not current runtime behavior includes the GAT–Durable Agent integ
 
 - `README.md` — install, verify, activate, rollback, compatibility.
 - `docs/golden-reference/2026-09-12-governed-agent-team-v1-design.md` — accepted V1 design foundation; some approval behavior predates simple mode.
+- `docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md` — frozen EXEC-B/EXEC-C ownership, attachment, binder, lifecycle, authorization, and conformance boundary; not implementation authority.
 - `packages/core/README.md` — core domain behavior.
 - `packages/tools/README.md` — tool surface; may lag the installed runtime during synchronization.
 - `packages/web/README.md` — Web package behavior; may lag the installed runtime during synchronization.

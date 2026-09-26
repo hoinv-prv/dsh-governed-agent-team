@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | OP-TASK-20260926-exec-021-01 | resolved | 🟡 Major | 2026-09-26 | Select baseline authority and sync direction |
 | OP-TASK-20260926-exec-021-02 | resolved | 🟡 Major | 2026-09-26 | Classify DSH-only versus portable GAT deltas |
-| OP-TASK-20260926-exec-021-03 | deferred | 🔵 Minor | 2026-09-26 | Final attachment bounds and event migration choice |
+| OP-TASK-20260926-exec-021-03 | resolved | 🔵 Minor | 2026-09-26 | Final attachment bounds and event migration choice |
 
 ## OP-TASK-20260926-exec-021-01 — Baseline authority
 - **Status:** resolved
@@ -40,7 +40,7 @@ Adopt only deltas backed by source/test behavior that can be represented in the 
 Portable baseline: simpleMode, bounded YAML roster loading, route preflight/AgentOptions, Session-keyed installation, enable/profile behavior, immediate-authorized mission plus compatible replay, and navigation type cast. Merge rather than copy where standalone has newer approved-plan import, Team-exclusive delegation, mission APIs and tests. Exclude generated `lib/**`, caches, host-layout paths, and the internally inconsistent DSH Web contract removal.
 
 ## OP-TASK-20260926-exec-021-03 — Attachment bounds and event migration
-- **Status:** deferred
+- **Status:** resolved
 - **Severity:** 🔵 Minor
 - **Context:** Contract freeze
 
@@ -48,4 +48,4 @@ Portable baseline: simpleMode, bounded YAML roster loading, route preflight/Agen
 What exact member-attachment count/byte/depth limits and v2→v3 event migration form should EXEC-B implement?
 
 ### Conclusion
-Defer final numeric/schema choice to HUMAN review after the contract document presents evidence-backed options. This does not block baseline synchronization.
+The HUMAN selected required-only V1 attachments; `team/member` event v3 with an explicit adjacent v2 adapter; and the conservative preset: 8 records/member, 65,536 UTF-8 bytes/record, 262,144 bytes/member, JSON depth 16, 4,096 nodes, 16,384 UTF-8 bytes/string, and binder ids capped at 64 ASCII lower-kebab characters. The HUMAN also selected canonical task-board authority with `missionId`, host-attested HUMAN mission admission bound to exactly one current mission revision, and capability-metadata external-delegation denial with a name fallback.

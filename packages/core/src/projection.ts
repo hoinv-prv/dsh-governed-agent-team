@@ -365,8 +365,10 @@ function applyCurrentTeamEvent(state: TeamState, event: TeamSessionEvent): void 
       const index = state.missions.findIndex(candidate => candidate.id === mission.id)
       const prior = state.missions[index]
       if (prior === undefined) {
-        if (mission.revision !== 1 || mission.status !== 'draft' || mission.approval !== undefined) {
-          throw new Error(`team mission "${mission.id}" must begin as unapproved revision 1 draft`)
+        const legacyDraft = mission.status === 'draft' && mission.approval === undefined
+        const authorized = mission.status === 'approved' && mission.approval?.approvedRevision === 1
+        if (mission.revision !== 1 || (!legacyDraft && !authorized)) {
+          throw new Error(`team mission "${mission.id}" must begin as revision 1`)
         }
       } else if (mission.revision !== prior.revision + 1) {
         throw new Error(`team mission "${mission.id}" revision is not contiguous`)

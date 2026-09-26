@@ -3,7 +3,7 @@ import { mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@deepseek-ai/dsh-agent'
+import type { Agent, AgentOptions } from '@deepseek-ai/dsh-agent'
 import AgentLoop from '@deepseek-ai/dsh-agent-loop'
 import { mountAgentLoopTestDependencies } from '@deepseek-ai/dsh-agent-loop-testkit'
 import { ToolCallId, createToolResultMessage, createUserMessage } from '@deepseek-ai/dsh-llm'
@@ -146,7 +146,7 @@ function spawn(
   ctx: Context,
   lead: Agent,
   name: string,
-  options: { context?: 'fresh' | 'fork'; provider?: string } = {},
+  options: { context?: 'fresh' | 'fork'; provider?: string; agentOptions?: AgentOptions } = {},
 ) {
   const context = options.context ?? 'fresh'
   return ctx.agentTeams.spawnTeammate(lead, {
@@ -155,6 +155,7 @@ function spawn(
     prompt: content(`${name} initial`),
     context,
     provider: options.provider ?? (context === 'fork' ? 'fork' : 'spawn'),
+    ...(options.agentOptions === undefined ? {} : { agentOptions: options.agentOptions }),
     signal: SIGNAL,
   })
 }
@@ -468,6 +469,23 @@ describe('Team identity and provisioning', () => {
     await waitNoAgent(ctx, worker.id)
     expect(ctx.agentTeams.interrupt(lead, 'worker')).toEqual({ previousStatus: 'inactive' })
     expect(() => ctx.agentTeams.interrupt(lead, 'lead')).toThrow(expect.objectContaining({ code: 'TEAM_INVALID_TARGET' }))
+  })
+
+  it('forwards an exact teammate Agent route to continuable provisioning', async () => {
+    const { ctx, lead } = await setup(['hang'])
+    const start = ctx.subagents.startContinuable.bind(ctx.subagents)
+    let observed: AgentOptions | undefined
+    vi.spyOn(ctx.subagents, 'startContinuable').mockImplementation(async (spec) => {
+      observed = spec.request.agentOptions
+      return start(spec)
+    })
+
+    const result = await spawn(ctx, lead, 'routed-worker', {
+      agentOptions: { provider: 'mock', model: 'mock' },
+    })
+    expect(observed).toEqual({ provider: 'mock', model: 'mock' })
+    ctx.agentTeams.interrupt(lead, 'routed-worker')
+    await waitNoAgent(ctx, result.member.id)
   })
 
   it('validates teammate text fields and pre-provisioning cancellation', async () => {
@@ -911,7 +929,48 @@ describe('Team shared task DAG', () => {
 })
 
 describe('Team Remote API', () => {
-  it('keeps two missions and their approvals independently durable', async () => {
+  it('enables through the registered initializer and then returns the durable roster idempotently', async () => {
+    const { ctx, lead } = await setup(['hang'])
+    await expect(ctx.agentTeams.remoteEnable(lead, SIGNAL))
+      .rejects.toMatchObject({ code: 'TEAM_INVALID_CONFIG' })
+    const initialize = vi.fn(async (root: Agent, signal: AbortSignal) => {
+      const result = await ctx.agentTeams.spawnTeammate(root, {
+        name: 'enabled-worker',
+        description: 'Enabled from the test initializer.',
+        prompt: content('stay active'),
+        context: 'fresh',
+        provider: 'spawn',
+        agentOptions: { provider: 'mock', model: 'mock' },
+        signal,
+      })
+      return {
+        enabled: true as const,
+        alreadyEnabled: false,
+        source: 'workspace' as const,
+        diagnostics: [],
+        members: [result.member],
+      }
+    })
+    const dispose = ctx.agentTeams.registerInitializer(initialize)
+
+    await expect(ctx.agentTeams.remoteEnable(lead, SIGNAL)).resolves.toMatchObject({
+      enabled: true,
+      alreadyEnabled: false,
+      source: 'workspace',
+      members: [expect.objectContaining({ name: 'enabled-worker', model: 'mock' })],
+    })
+    await expect(ctx.agentTeams.remoteEnable(lead, SIGNAL)).resolves.toMatchObject({
+      enabled: true,
+      alreadyEnabled: true,
+      source: 'existing',
+    })
+    expect(initialize).toHaveBeenCalledTimes(1)
+    expect(ctx.agentTeams.remoteView(lead).enabled).toBe(true)
+    dispose()
+    ctx.agentTeams.interrupt(lead, 'enabled-worker')
+  })
+
+  it('creates HUMAN-authored missions already authorized and keeps them independently durable', async () => {
     const { ctx, lead } = await setup(['hang'])
     const alpha = await ctx.agentTeams.createMission(lead, {
       title: 'Alpha mission',
@@ -933,9 +992,10 @@ describe('Team Remote API', () => {
     expect(ctx.agentTeams.listMissions(lead).map(mission => mission.id)).toEqual([alpha.id, beta.id])
     expect(ctx.agentTeams.getMission(lead, alpha.id).plan.tasks.map(task => task.id)).toEqual([TeamTaskId('alpha-task')])
     expect(ctx.agentTeams.getMission(lead, beta.id).plan.tasks.map(task => task.id)).toEqual([TeamTaskId('beta-task')])
-    await expect(ctx.agentTeams.approveMission(lead, { missionId: alpha.id, expectedRevision: alpha.revision }))
-      .resolves.toMatchObject({ id: alpha.id, revision: 2, status: 'approved', approval: { approvedRevision: 2 } })
-    expect(ctx.agentTeams.getMission(lead, beta.id)).toMatchObject({ revision: 1, status: 'draft' })
+    expect(ctx.agentTeams.getMission(lead, alpha.id))
+      .toMatchObject({ revision: 1, status: 'approved', approval: { approvedRevision: 1 } })
+    expect(ctx.agentTeams.getMission(lead, beta.id))
+      .toMatchObject({ revision: 1, status: 'approved', approval: { approvedRevision: 1 } })
 
     const started = await spawn(ctx, lead, 'mission-worker')
     const worker = await waitRunning(ctx, started.member.id)
@@ -948,8 +1008,8 @@ describe('Team Remote API', () => {
     const populatedView = ctx.agentTeams.remoteView(lead)
     expect(populatedView).toHaveProperty('missions')
     expect(populatedView.missions).toEqual([
-      expect.objectContaining({ id: alpha.id, revision: 2, status: 'approved' }),
-      expect.objectContaining({ id: beta.id, revision: 1, status: 'draft' }),
+      expect.objectContaining({ id: alpha.id, revision: 1, status: 'approved' }),
+      expect.objectContaining({ id: beta.id, revision: 1, status: 'approved' }),
     ])
     ctx.agentTeams.interrupt(lead, 'mission-worker')
     await waitNoAgent(ctx, worker.id)

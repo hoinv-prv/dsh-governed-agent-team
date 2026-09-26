@@ -2,25 +2,24 @@
 
 import { execFile } from 'node:child_process'
 import { existsSync } from 'node:fs'
-import { join, resolve } from 'node:path'
+import { join } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { describe, expect, it } from 'vitest'
 
 const packageDir = fileURLToPath(new URL('..', import.meta.url))
-const root = resolve(packageDir, '../../..')
-const artifact = (path: string): string => join(root, path)
+const artifact = (path: string): string => join(packageDir, path)
 const artifactUrl = (path: string): string => pathToFileURL(artifact(path)).href
 
 const requiredArtifacts = [
-  'packages/experimental/gat-core/lib/index.js',
-  'packages/experimental/gat-core/lib/typert.remote-client.js',
+  'lib/index.js',
+  'lib/typert.remote-client.js',
 ].every(path => existsSync(artifact(path)))
 
 describe.skipIf(!requiredArtifacts)('Agent Teams built LIB service', () => {
   it('loads the Host service and its generated browser contribution under plain Node', async () => {
     const urls = {
-      host: artifactUrl('packages/experimental/gat-core/lib/index.js'),
-      remote: artifactUrl('packages/experimental/gat-core/lib/typert.remote-client.js'),
+      host: artifactUrl('lib/index.js'),
+      remote: artifactUrl('lib/typert.remote-client.js'),
     }
     const script = `
       const host = await import(${JSON.stringify(urls.host)})

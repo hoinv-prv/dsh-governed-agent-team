@@ -18,7 +18,7 @@ import { requiredText } from './validation.ts'
 export class TeamMissionBoard {
   constructor(private readonly journal: TeamJournal) {}
 
-  /** Create one unapproved mission in the caller's Team. */
+  /** Create one mission with its initial revision already authorized by the current baseline flow. */
   async create(membership: TeamMembership, request: CreateTeamMissionRequest): Promise<TeamMissionView> {
     if (membership.role !== 'lead') throw new TeamError('only the Team Lead can create a mission', 'TEAM_LEAD_REQUIRED')
     const { root } = membership
@@ -32,8 +32,9 @@ export class TeamMissionBoard {
         revision: 1,
         title: requiredText(request.title, 'title', 200),
         objective: requiredText(request.objective, 'objective', 16_384),
-        status: 'draft',
+        status: 'approved',
         plan: { tasks },
+        approval: { approvedRevision: 1 },
       }
       await this.journal.appendAndFlush(root, 'team/mission', {
         version: 2,

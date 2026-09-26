@@ -2,17 +2,20 @@
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import type {} from '@deepseek-ai/dsh-subagent'
+import type { Agent, AgentOptions } from '@deepseek-ai/dsh-agent'
+import { ReasoningEffortId } from '@deepseek-ai/dsh-llm'
+import { parentAgentOptionsForDelegation } from '@deepseek-ai/dsh-subagent'
+import type { SessionId } from '@deepseek-ai/dsh-session'
 import { scopesOverlap, TeamTaskId } from '@vuhoi/gat-core'
 import type { TeamEnableResult, TeamMemberView, TeamView } from '@vuhoi/gat-core'
 import { defineTool } from '@deepseek-ai/dsh-tools'
 import type { InferValue, ValueSchemaSpec } from '@deepseek-ai/dsh-tools'
+import { loadTeamMembers } from './team-config.ts'
 
 /** Cordis plugin name. */
 export const name = 'tool-agent-team'
 /** Services required by the Team tool plugin. */
-export const inject = ['agents', 'agentTeams', 'subagents', 'tools', 'systemPrompt']
+export const inject = ['agents', 'agentTeams', 'llm', 'subagents', 'tools', 'systemPrompt']
 
 /** Tool routing configuration. */
 export interface Config {
@@ -26,6 +29,10 @@ export interface Config {
   readonly minExecutionMembers?: number
   /** Maximum durable active teammates the Team Lead may create. */
   readonly maxExecutionMembers?: number
+  /** Enable per-Session GUI opt-in and skip the legacy Team-plan approval gate. */
+  readonly simpleMode?: boolean
+  /** Maximum UTF-8 bytes accepted from workspace team_members.yaml. */
+  readonly teamMembersMaxBytes?: number
 }
 
 /** Loader schema for the opt-in Team tool plugin. */
@@ -33,8 +40,10 @@ export const Config: z<Config> = z.object({
   freshProvider: z.string().default('spawn'),
   forkProvider: z.string().default('fork'),
   externalRestrictedTools: z.array(z.string().min(1)).default([]),
-  minExecutionMembers: z.natural().min(0).max(Number.MAX_SAFE_INTEGER).default(0),
+  minExecutionMembers: z.natural().min(1).max(Number.MAX_SAFE_INTEGER).default(2),
   maxExecutionMembers: z.natural().min(1).max(Number.MAX_SAFE_INTEGER).default(4),
+  simpleMode: z.boolean().default(true),
+  teamMembersMaxBytes: z.natural().min(1).max(Number.MAX_SAFE_INTEGER).default(65_536),
 })
 
 /** Model-facing collaboration guidance shared by Lead and teammates. */
@@ -68,22 +77,60 @@ function durableActiveTeammates(view: TeamView): number {
     && member.status !== 'provisioning' && member.status !== 'failed').length
 }
 
-/** Return the current approval failure, if any, with revision values actionable. */
-function approvalFailure(view: TeamView): string | undefined {
-  if (view.planApproval === undefined) {
-    return `current Team plan revision ${view.planRevision} is not HUMAN-approved`
+interface ModelSelection {
+  readonly provider?: string
+  readonly model?: string
+  readonly reasoning_effort?: string
+}
+
+/** Validate and preflight one optional child route before durable provisioning starts. */
+async function childAgentOptions(
+  ctx: Context,
+  parent: Agent,
+  selection: ModelSelection,
+  signal: AbortSignal,
+): Promise<AgentOptions | undefined> {
+  const { provider, model, reasoning_effort: effort } = selection
+  for (const [name, value] of [['provider', provider], ['model', model], ['reasoning_effort', effort]] as const) {
+    if (value !== undefined && (value.length === 0 || value.trim() !== value)) {
+      throw new Error(`child LLM ${name} must be a trimmed non-empty string`)
+    }
   }
+  if ((provider === undefined) !== (model === undefined)) {
+    throw new Error('child LLM provider and model must be supplied together')
+  }
+  if (provider === undefined && effort === undefined) return undefined
+  const parentOptions = parentAgentOptionsForDelegation(parent)
+  const effectiveProvider = provider ?? parentOptions.provider
+  const effectiveModel = model ?? parentOptions.model
+  if (effectiveProvider === undefined || effectiveModel === undefined) {
+    throw new Error('cannot select a teammate LLM without an effective provider and model')
+  }
+  const reasoningEffort = effort === undefined ? undefined : ReasoningEffortId(effort)
+  await ctx.llm.resolveCallConfig({
+    provider: effectiveProvider,
+    model: effectiveModel,
+    ...reasoningEffort === undefined ? {} : { reasoningEffort },
+  }, signal)
+  return {
+    ...provider === undefined ? {} : { provider, model },
+    ...reasoningEffort === undefined ? {} : { reasoningEffort },
+  }
+}
+
+/** Return the legacy governed-mode approval failure, if any. */
+function approvalFailure(view: TeamView): string | undefined {
+  if (view.planApproval === undefined) return `current Team plan revision ${view.planRevision} is not HUMAN-approved`
   if (view.planPhase !== 'approved' || view.planApproval.approvedRevision !== view.planRevision) {
     return `approved revision ${view.planApproval.approvedRevision} is stale for current revision ${view.planRevision}`
   }
   return undefined
 }
 
-/** Describe the current execution threshold without inventing a teammate requirement for Lead-only Teams. */
+/** Describe the active readiness contract without hiding the legacy approval gate. */
 function executionRequirement(config: Required<Config>): string {
-  return config.minExecutionMembers === 0
-    ? 'an exact current Team plan approved by HUMAN; zero durable teammates are permitted'
-    : `an exact current Team plan approved by HUMAN and at least ${config.minExecutionMembers} durable active teammates`
+  const members = `at least ${config.minExecutionMembers} durable active teammates`
+  return config.simpleMode ? members : `an exact current Team plan approved by HUMAN and ${members}`
 }
 
 /** Read the canonical Team view and convert projection failures into one stable denial. */
@@ -140,19 +187,18 @@ function completeEnvelopeDiagnostics(
 
 /** Canonical complete-envelope evaluation shared by preflight and dispatch enforcement. */
 function readiness(current: TeamView, agent: Agent, ctx: Context, config: Required<Config>) {
-  const approvalDiagnostic = approvalFailure(current)
+  const approvalDiagnostic = config.simpleMode ? undefined : approvalFailure(current)
   const durableCount = durableActiveTeammates(current)
   const memberDiagnostic = durableCount < config.minExecutionMembers
     ? `only ${durableCount} durable active teammate(s); ${config.minExecutionMembers} required`
     : undefined
   const envelopeDiagnostics = completeEnvelopeDiagnostics(current, agent, ctx, config)
-  const mandatoryDiagnostics = [
-    ...envelopeDiagnostics,
-    ...(approvalDiagnostic === undefined ? [] : [approvalDiagnostic]),
-  ]
   return {
     durableCount,
-    mandatoryDiagnostics,
+    mandatoryDiagnostics: [
+      ...envelopeDiagnostics,
+      ...(approvalDiagnostic === undefined ? [] : [approvalDiagnostic]),
+    ],
     diagnostics: [
       ...(approvalDiagnostic === undefined ? [] : [approvalDiagnostic]),
       ...(memberDiagnostic === undefined ? [] : [memberDiagnostic]),
@@ -333,11 +379,9 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
     register(scoped.tools.guard((exec) => {
       const current = guardedTeamView(ctx, agent)
       if (typeof current === 'string') return `Team execution denied: ${current}`
-      if (EXTERNAL_SUBAGENT_TOOLS.has(exec.name)) {
-        if (!current.enabled) return undefined
+      if (EXTERNAL_SUBAGENT_TOOLS.has(exec.name) && current.enabled) {
         return `External sub-agent delegation denied for tool "${exec.name}": Agent Team is enabled for this session. Use an existing Team member. If the required skill or capability is missing, ask the HUMAN to approve adding a member, create it with spawn_teammate, then assign the task to that member.`
       }
-
       const evaluation = readiness(current, agent, ctx, config)
       const active = evaluation.durableCount
 
@@ -363,7 +407,7 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
       if (ownAdmission === true || externalRestrictedTools.has(exec.name)) return undefined
       if (typeof ownAdmission === 'string') return ownAdmission
       const condition = evaluation.mandatoryDiagnostics[0]
-        ?? `Team execution requires ${executionRequirement(config)}; found ${active} durable active teammate(s)`
+        ?? `Team execution requires ${executionRequirement(config)}; found ${active}`
       return `Team execution denied for tool "${exec.name}": ${condition}`
     }))
 
@@ -388,17 +432,22 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
           enum: ['fresh', 'fork'],
           description: 'fresh starts without Lead history; fork inherits completed Lead turns. Defaults to fresh.',
         },
+        provider: { type: 'string', description: 'LLM provider route for this teammate. Supply together with model.' },
+        model: { type: 'string', description: 'Model id interpreted by provider. Supply together with provider.' },
+        reasoning_effort: { type: 'string', description: 'Optional adapter-owned reasoning effort for the teammate route.' },
       },
       output: jsonOutput(SPAWN_VALUE_SCHEMA),
       async execute(args, exec) {
         const agent = callingAgent(exec.agent, 'spawn_teammate')
         const context = args.context ?? 'fresh'
+        const agentOptions = await childAgentOptions(ctx, agent, args, exec.signal)
         return await ctx.agentTeams.spawnTeammate(agent, {
           name: args.name,
           description: args.description,
           prompt: [{ type: 'text', text: args.prompt }],
           context,
           provider: context === 'fork' ? config.forkProvider : config.freshProvider,
+          ...agentOptions === undefined ? {} : { agentOptions },
           signal: exec.signal,
         })
       },
@@ -622,8 +671,10 @@ export function apply(ctx: Context, config: Config = {}): void {
   const resolved: Required<Config> = {
     freshProvider: config.freshProvider ?? 'spawn',
     forkProvider: config.forkProvider ?? 'fork',
-    minExecutionMembers: config.minExecutionMembers ?? 0,
+    minExecutionMembers: config.minExecutionMembers ?? 2,
     maxExecutionMembers: config.maxExecutionMembers ?? 4,
+    simpleMode: config.simpleMode ?? true,
+    teamMembersMaxBytes: config.teamMembersMaxBytes ?? 65_536,
     externalRestrictedTools: [...new Set((config.externalRestrictedTools ?? []).map((tool, index) => {
       if (typeof tool !== 'string' || tool.length === 0) {
         throw new Error(`externalRestrictedTools[${index}] must be a non-empty string`)
@@ -631,11 +682,10 @@ export function apply(ctx: Context, config: Config = {}): void {
       return tool
     }))].sort(),
   }
-  if (!Number.isSafeInteger(resolved.minExecutionMembers) || resolved.minExecutionMembers < 0) {
-    throw new TypeError('minExecutionMembers must be a non-negative safe integer')
-  }
-  if (!Number.isSafeInteger(resolved.maxExecutionMembers) || resolved.maxExecutionMembers < 1) {
-    throw new TypeError('maxExecutionMembers must be a positive safe integer')
+  for (const key of ['minExecutionMembers', 'maxExecutionMembers', 'teamMembersMaxBytes'] as const) {
+    if (!Number.isSafeInteger(resolved[key]) || resolved[key] < 1) {
+      throw new TypeError(`${key} must be a positive safe integer`)
+    }
   }
   if (resolved.maxExecutionMembers < resolved.minExecutionMembers) {
     throw new RangeError('maxExecutionMembers must be greater than or equal to minExecutionMembers')
@@ -643,12 +693,13 @@ export function apply(ctx: Context, config: Config = {}): void {
   ctx.effect(() => ctx.agentTeams.registerApprovalPreflight((agent, view) => (
     completeEnvelopeDiagnostics(view, agent, ctx, resolved)
   )), 'tool-team.approvalPreflight()')
-  const installed = new Map<Agent, () => void>()
+  const installed = new Map<SessionId, () => void>()
   const maybeInstall = (agent: Agent): void => {
-    if (installed.has(agent) || ctx.agentTeams.tryMembership(agent) === undefined) return
-    installed.set(agent, install(agent, ctx, resolved))
+    if (installed.has(agent.id) || ctx.agentTeams.tryMembership(agent) === undefined) return
+    if (resolved.simpleMode && !ctx.agentTeams.remoteView(agent).enabled) return
+    installed.set(agent.id, install(agent, ctx, resolved))
   }
-  const enabling = new Map<string, Promise<TeamEnableResult>>()
+  const enabling = new Map<SessionId, Promise<TeamEnableResult>>()
   ctx.effect(() => ctx.agentTeams.registerInitializer((lead, signal) => {
     const current = ctx.agentTeams.remoteView(lead)
     if (current.enabled) {
@@ -663,24 +714,45 @@ export function apply(ctx: Context, config: Config = {}): void {
     const active = enabling.get(lead.id)
     if (active !== undefined) return active
     const operation = (async (): Promise<TeamEnableResult> => {
-      const definitions = [
-        ['advisor', 'Advises the Lead when requested.', 'Give evidence-based options and risks.'],
-        ['dev', 'Handles implementation tasks.', 'Implement assigned tasks and report verification evidence.'],
-      ] as const
-      const members = []
-      for (const [name, description, prompt] of definitions) {
+      const parent = parentAgentOptionsForDelegation(lead)
+      if (parent.provider === undefined) throw new Error('cannot build the default Team without the Lead LLM provider')
+      const loaded = await loadTeamMembers(
+        lead.session.header.cwd,
+        parent.provider,
+        resolved.maxExecutionMembers,
+        resolved.teamMembersMaxBytes,
+      )
+      const prepared = await Promise.all(loaded.members.map(async member => ({
+        member,
+        agentOptions: await childAgentOptions(ctx, lead, {
+          provider: member.provider,
+          model: member.model,
+          ...member.reasoningEffort === undefined ? {} : { reasoning_effort: member.reasoningEffort },
+        }, signal),
+      })))
+      signal.throwIfAborted()
+      const members: TeamMemberView[] = []
+      for (const item of prepared) {
+        const member = item.member
         const spawned = await ctx.agentTeams.spawnTeammate(lead, {
-          name,
-          description,
-          prompt: [{ type: 'text', text: prompt }],
-          context: 'fresh',
-          provider: resolved.freshProvider,
+          name: member.name,
+          description: member.description,
+          prompt: [{ type: 'text', text: member.prompt }],
+          context: member.context,
+          provider: member.context === 'fork' ? resolved.forkProvider : resolved.freshProvider,
+          ...item.agentOptions === undefined ? {} : { agentOptions: item.agentOptions },
           signal,
         })
         members.push(spawned.member)
       }
       maybeInstall(lead)
-      return { enabled: true, alreadyEnabled: false, source: 'built-in-default', diagnostics: [], members }
+      return {
+        enabled: true,
+        alreadyEnabled: false,
+        source: loaded.source,
+        diagnostics: loaded.diagnostics,
+        members,
+      }
     })()
     enabling.set(lead.id, operation)
     void operation.finally(() => { enabling.delete(lead.id) }).catch(() => undefined)
@@ -688,12 +760,19 @@ export function apply(ctx: Context, config: Config = {}): void {
   }), 'tool-team.initializer()')
   for (const agent of ctx.agents.list()) maybeInstall(agent)
   ctx.on('agent/created', ({ agent }) => { maybeInstall(agent) })
+  ctx.on('session/event', (session, event) => {
+    if (event.type !== 'team/member') return
+    const lead = ctx.agents.get(session.id)
+    if (lead !== undefined) maybeInstall(lead)
+  })
   ctx.on('agent/disposed', ({ agent }) => {
-    installed.get(agent)?.()
-    installed.delete(agent)
+    installed.get(agent.id)?.()
+    installed.delete(agent.id)
+    enabling.delete(agent.id)
   })
   ctx.effect(() => () => {
     for (const dispose of installed.values()) dispose()
     installed.clear()
+    enabling.clear()
   }, 'tool-team.scopedTools()')
 }

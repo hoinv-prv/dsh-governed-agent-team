@@ -69,9 +69,10 @@ export function assertInitialMissionTaskPlan(tasks: readonly TeamTaskSnapshot[])
     })
   }
 
-  if (tasks.length === 0) return
+  const firstTask = tasks[0]
+  if (!firstTask) return
   try {
-    assertTaskGraphCandidate(tasks, tasks[0]!)
+    assertTaskGraphCandidate(tasks, firstTask)
   } catch (error: unknown) {
     if (error instanceof TeamTaskGraphError) invalid(error.message)
     throw error

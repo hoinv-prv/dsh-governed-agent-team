@@ -2,7 +2,7 @@
 artifact_type: aip_exec
 artifact_id: AIP-EXEC-021
 title: "Sync current DSH GAT baseline and freeze member-binding contracts"
-status: active
+status: done
 project: "dsh-governed-agent-team"
 owner: "hoinv"
 plan_source: AIP-PLAN-001

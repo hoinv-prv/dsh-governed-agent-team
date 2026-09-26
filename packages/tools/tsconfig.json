@@ -11,9 +11,11 @@
     { "path": "../../../vendor/cordis" },
     { "path": "../../core/agent" },
     { "path": "../../core/scope" },
+    { "path": "../../llm/llm" },
     { "path": "../../core/session" },
     { "path": "../../core/system-prompt" },
     { "path": "../../core/tools" },
+    { "path": "../../subagent/subagent" },
     { "path": "../gat-core" }
   ]
 }

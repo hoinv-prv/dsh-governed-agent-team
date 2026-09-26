@@ -17,10 +17,10 @@
     "version": "0.1.0",
     "namespace": "@vuhoi",
     "compatibilityManifest": "compatibility/dsh-0.1.5-rc.2/manifest.json",
-    "payloadFiles": 74,
-    "payloadSha256": "2dca38007ed5e0533f04f9f26c0eb140dda29ed593301b29f67b62e7184dd5e5",
+    "payloadFiles": 76,
+    "payloadSha256": "b23ca05622d9ed0ad3580c9d10614884836d4b6f7ca35697d0e5e8d910880ac6",
     "hostFiles": 9,
-    "patchsetSha256": "e3bf5ab3fa6c6117e5e5ab080c0ff5b93caf1750f1b5027be3a5303c4ae4ab38"
+    "patchsetSha256": "faab0ce41d40dffc731be873c69d95c943b20edac60bdba415301d10c526c132"
   },
   "transformations": [
     "Package identities use @vuhoi/gat-* and version 0.1.0.",

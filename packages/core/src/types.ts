@@ -1,5 +1,6 @@
 /** Public Agent Teams identities, durable records, and service request values. */
 
+import type { AgentOptions } from '@deepseek-ai/dsh-agent'
 import type { Branded } from '@deepseek-ai/dsh-brand'
 import type { ContentBlock } from '@deepseek-ai/dsh-llm/types'
 import type { SessionId } from '@deepseek-ai/dsh-session/types'
@@ -285,7 +286,10 @@ export interface SpawnTeammateRequest {
   readonly description: string
   readonly prompt: ContentBlock[]
   readonly context: 'fresh' | 'fork'
+  /** Continuable-subagent provider used to create the durable child. */
   readonly provider: string
+  /** Optional LLM route and reasoning overrides for the child Agent. */
+  readonly agentOptions?: AgentOptions
   readonly signal: AbortSignal
 }
 
@@ -298,7 +302,7 @@ export interface SpawnTeammateResult {
 export interface TeamEnableResult {
   readonly enabled: true
   readonly alreadyEnabled: boolean
-  readonly source: 'built-in-default' | 'existing'
+  readonly source: 'workspace' | 'built-in-default' | 'existing'
   readonly diagnostics: string[]
   readonly members: TeamMemberView[]
 }

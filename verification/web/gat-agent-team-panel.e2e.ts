@@ -87,6 +87,7 @@ describe('web e2e: Governed Agent Team panel', () => {
     onTestFailed(() => saveFailureShot(page, 'web-e2e-gat-agent-team-panel'))
     const action = page.locator('[data-team-action]')
     await action.getByRole('button', { name: /Agent Team/iu }).click()
+    await action.getByRole('button', { name: 'Enable Agent Team for this session' }).click()
     await action.getByRole('heading', { name: 'Mission detail' }).waitFor()
     await action.getByRole('heading', { name: 'Members' }).waitFor()
     await action.getByText('lead').waitFor()

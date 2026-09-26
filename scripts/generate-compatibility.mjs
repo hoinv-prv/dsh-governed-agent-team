@@ -88,6 +88,17 @@ function transformedHostFile(path, before) {
         .replaceAll('link:../agent-team', 'link:../gat-core')
         .replaceAll('link:../tool-agent-team', 'link:../gat-tools')
         .replaceAll('link:../client-ui-agent-team', 'link:../gat-web')
+      if (destination === 'packages/experimental/gat-tools') {
+        block = block
+          .replace(
+            "      '@deepseek-ai/schemastery':\n        specifier: link:../../../vendor/schemastery\n        version: link:../../../vendor/schemastery\n",
+            "      '@deepseek-ai/schemastery':\n        specifier: link:../../../vendor/schemastery\n        version: link:../../../vendor/schemastery\n      yaml:\n        specifier: ^2.9.0\n        version: 2.9.0\n",
+          )
+          .replace(
+            "      '@deepseek-ai/dsh-agent-loop-testkit':\n        specifier: workspace:^\n        version: link:../../test-support/agent-loop-testkit\n",
+            "      '@deepseek-ai/dsh-agent-loop-testkit':\n        specifier: workspace:^\n        version: link:../../test-support/agent-loop-testkit\n      '@deepseek-ai/dsh-llm':\n        specifier: workspace:^\n        version: link:../../llm/llm\n",
+          )
+      }
       if (destination === 'packages/experimental/gat-web') {
         block = block
           .replace(
