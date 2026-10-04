@@ -20,6 +20,16 @@ For this repository, `.ai-work/AIWS.local.md` is the project-owned override for 
 - Truth and canonical changes still require their applicable approved CR; this policy does not weaken those gates.
 
 
+## GAT design-first — mandatory workspace rule
+
+Áp dụng cho **mọi agent và subagent** làm việc trong workspace này, với mọi thay đổi source code hoặc design liên quan **Governed Agent Team (GAT)**, kể cả bugfix, refactor, tests, integration và thay đổi qua WBS. Design chính thức của GAT nằm ở `docs/gat-design/` (workspace hiện tại: `/home/hoinv/work/dsh-governed-agent-team/docs/gat-design/`).
+
+1. **Read design before changing source/design.** Trước mỗi thay đổi, tra cứu theo quy trình wiki-first hiện hành rồi đọc các tài liệu GAT liên quan trong `docs/gat-design/`, bao gồm các contract, invariant và phần phụ thuộc bị ảnh hưởng. Không chỉ dựa vào code hiện tại, ký ức phiên trước hoặc tài liệu trong run. Kiểm tra đề xuất với design hiện hữu để tránh conflict; nếu có mâu thuẫn hoặc chưa rõ quyết định cần áp dụng, dừng phần việc bị ảnh hưởng và hỏi HUMAN, không tự ghi đè design cũ.
+2. **Design → source, never source → design.** Trước khi sửa source code GAT, phải cập nhật design tương ứng trong `docs/gat-design/` để mô tả thay đổi dự kiến và ảnh hưởng của nó; sau đó mới implement theo design đã cập nhật. Không sửa code trước rồi bổ sung design để hợp thức hóa. Thay đổi design-only cũng phải đối chiếu design hiện hữu theo bước 1.
+3. **WBS intermediate artifacts.** Với mission thực hiện bằng WBS, có thể soạn và review design delta/tài liệu trung gian trong `wbs-runs/`. Trong luồng này, design delta tương ứng vẫn phải được cập nhật **trước** source code và phải đối chiếu với `docs/gat-design/`; nó không tự trở thành design chính thức. Khi finalize mission, bắt buộc apply các design delta đã được phê duyệt vào `docs/gat-design/`, bảo đảm design chính thức phản ánh đầy đủ source code cuối cùng. Không finalize/close mission nếu thay đổi design còn chỉ nằm trong `wbs-runs/`.
+4. **Delegate with the same gates.** Agent giao việc phải truyền rule này, các đường dẫn design liên quan và thứ tự design-before-code cho subagent; khi chia việc song song, công việc source phụ thuộc vào design delta tương ứng đã sẵn sàng, không chạy trước nó. Reviewer phải kiểm tra cả tính nhất quán với design cũ và sự đồng bộ source/design cuối cùng.
+5. **Evidence before finalize.** Báo cáo hoàn tất phải nêu tài liệu design đã tham khảo/cập nhật (đường dẫn và section), phần source bị ảnh hưởng và kết quả kiểm tra tính nhất quán; với WBS, nêu cả mapping từ delta trong run sang design chính thức đã apply. Rule này không bỏ qua review/approval hay CR gate hiện hành cho Truth/canonical; nếu chưa được phép apply thì báo chờ phê duyệt, không tuyên bố finalize.
+
 <!-- AIWS:BEGIN rules v=v1.2.1 target=agents -->
 AIWS rules v1.2.1 (target=agents) — do not edit inside this block
 

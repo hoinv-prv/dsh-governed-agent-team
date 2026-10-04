@@ -51,6 +51,8 @@ AIP là stable control artifact (AIP_Detail_Spec §2.3/§10/§11). Vi phạm bi�
 
 ## Execution policy
 
+**GAT workspace policy:** Mọi agent/subagent phải đọc và tuân thủ mục **“GAT design-first — mandatory workspace rule”** trong `AGENTS.md` ở project root. Đây là rule project-owned áp dụng cho mọi thay đổi source/design GAT, cả execution qua WBS; nội dung rule được duy trì tại một chỗ trong `AGENTS.md`, không chép sang khối AIWS generated.
+
 **AIP là tùy chọn theo mặc định trong repository này.** Không yêu cầu hoặc tự tạo AIP chỉ vì task là non-trivial. Chỉ tạo hoặc dùng AIP khi HUMAN yêu cầu rõ ràng hoặc một process project đã được phê duyệt cho task đó yêu cầu. Khi có AIP, wire workspace và làm việc trong workspace files, không dùng AIP làm runtime notebook. Lint trước khi finalize khi task/process áp dụng yêu cầu nó.
 
 Các gate phê duyệt khác vẫn giữ nguyên — đặc biệt, thay đổi Truth/canonical vẫn cần CR được phê duyệt. AIP không thay thế, cũng không tự động được yêu cầu bởi các gate đó.
