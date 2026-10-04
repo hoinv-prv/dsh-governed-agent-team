@@ -1,0 +1,13 @@
+AIP:       AIP-EXEC-023  (/home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-023-implement-binding-prerequisites.md)
+Task ID:   TASK-20261004-exec-023
+Workspace: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-023 (exists)
+Steps:     8
+Pointer:   STEP-07 (done)  updated 2026-10-04
+  [✔] 00c_active_step_context.md
+  [✔] 04_findings.md
+  [✔] 07_output_draft.md
+  [✔] 11_output_final.md
+Captures:  9 total, 0 need triage (status=captured)
+           by kind: retrieval_improvement=3, aiws_system_improvement=2, tooling_opportunity=2, reusable_pattern=1, wiki_quality_issue=1
+Queue:     0 item(s), 0 open, 0 blocking
+Backlog:   34 row(s), 34 open

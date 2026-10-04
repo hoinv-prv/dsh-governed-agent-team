@@ -1,0 +1,15 @@
+lint target: /home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-023-implement-binding-prerequisites.md
+  OK — no findings
+summary: errors=0 warnings=0 info=0
+pointer set: AIP-EXEC-023 / STEP-03 (active)
+  -> /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-023/.current_step.json
+active step context written: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-023/00c_active_step_context.md
+lint-gate: checking AIP-EXEC-023-implement-binding-prerequisites.md (CR-037 Option A) ...
+
+READY:
+  workspace: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-023
+  step:      STEP-03
+  active step context: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-023/00c_active_step_context.md
+Next: open 00c_active_step_context.md and work the step.
+Wiki candidate check: append candidates to 08_capture_inbox.jsonl IMMEDIATELY on discovery — do not batch to end of step or AIP.
+Do not promote candidates into Wiki / Knowledge Hub without HUMAN review.

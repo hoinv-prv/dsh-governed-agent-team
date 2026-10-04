@@ -1,0 +1,15 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+(node:27207) Warning: Closing file descriptor 41 on garbage collection
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:27207) [DEP0137] DeprecationWarning: Closing a FileHandle object on garbage collection is deprecated. Please close FileHandle objects explicitly using FileHandle.prototype.close(). In the future, an error will be thrown if a file descriptor is closed during garbage collection.
+
+ Test Files  17 passed (17)
+      Tests  270 passed (270)
+   Start at  12:51:35
+   Duration  9.56s (transform 16.65s, setup 2.15s, import 23.52s, tests 25.77s, environment 477ms)
+

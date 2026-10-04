@@ -1,0 +1,198 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+(node:2830740) Warning: Closing file descriptor 23 on garbage collection
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2830740) [DEP0137] DeprecationWarning: Closing a FileHandle object on garbage collection is deprecated. Please close FileHandle objects explicitly using FileHandle.prototype.close(). In the future, an error will be thrown if a file descriptor is closed during garbage collection.
+ ❯ |thread-safe| packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts (17 tests | 10 failed) 45101ms
+     × keeps the send_message definition and ordering byte-identical in a fork child 17ms
+     × JSON-encodes a caller-supplied parent id in the initial return instruction 5002ms
+     × lets a continuable child steer its direct parent with send_message 5001ms
+     × cold-resumes a settled child and reports delivery 5002ms
+     × steers the nearest step of an open turn 5001ms
+     × rejects a caller that is not the child's durable direct parent 5001ms
+     × interrupts a running direct child with the parent cause, parking its queue 5001ms
+     × lets a deep live ancestor interrupt a descendant it did not directly create 5006ms
+     × rejects self, sibling, and unrelated callers without touching the target 5001ms
+     × accepts an absent target as a no-op without cold-resuming it 5006ms
+ ❯ |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts (8 tests | 7 failed) 70107ms
+     × awaits refreshed scoped sections and contexts on retries, preserving unrelated owners and replay 10035ms
+     × contains refresh failure before provider dispatch and accepted user admission 10015ms
+     × prevents late publication and dispatch when the owner disposes during refresh 10010ms
+     × revalidates model admission after asynchronous route resolution 10011ms
+     × denies revocation in a later asynchronous admission listener at the synchronous final cutoff 10005ms
+     × rechecks synchronously at provider dispatch when a committed request event revokes authority 10011ms
+     × removes only disposed policy effects while retaining other owners 10013ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 17 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > awaits refreshed scoped sections and contexts on retries, preserving unrelated owners and replay
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > contains refresh failure before provider dispatch and accepted user admission
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > prevents late publication and dispatch when the owner disposes during refresh
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > revalidates model admission after asynchronous route resolution
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > denies revocation in a later asynchronous admission listener at the synchronous final cutoff
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > rechecks synchronously at provider dispatch when a committed request event revokes authority
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > removes only disposed policy effects while retaining other owners
+ FAIL  |thread-safe| packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts > dsh-tool-subagent-control > keeps the send_message definition and ordering byte-identical in a fork child
+Error: cannot get property "agents" without inject
+ ❯ Proxy.withAgentDriver packages/core/tools/src/index.ts:827:18
+    825|    */
+    826|   withAgentDriver<T>(agent: Agent, callback: () => T): T {
+    827|     if (this.ctx.agents.get(agent.id) !== agent) throw new Error('inde…
+       |                  ^
+    828|     return this.executionParents.exit(callback)
+    829|   }
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ packages/core/agent-loop/src/agent.ts:224:70
+ ❯ packages/core/agent/src/index.ts:688:66
+ ❯ Proxy.runWithInitiator packages/core/agent/src/index.ts:688:35
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Proxy.withInitiator packages/core/agent/src/index.ts:374:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/24]⎯
+
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > awaits refreshed scoped sections and contexts on retries, preserving unrelated owners and replay
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > contains refresh failure before provider dispatch and accepted user admission
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > prevents late publication and dispatch when the owner disposes during refresh
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > revalidates model admission after asynchronous route resolution
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > denies revocation in a later asynchronous admission listener at the synchronous final cutoff
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > rechecks synchronously at provider dispatch when a committed request event revokes authority
+ FAIL  |thread-safe| packages/core/agent-loop/tests/prepare-prompt.spec.ts > owner prompt preparation and final model admission > removes only disposed policy effects while retaining other owners
+Error: Hook timed out in 10000ms.
+If this is a long-running hook, pass a timeout value as the last argument or configure it globally with "hookTimeout".
+ ❯ packages/core/agent-loop/tests/prepare-prompt.spec.ts:11:1
+      9|
+     10| const contexts: Context[] = []
+     11| afterEach(async () => { for (const ctx of contexts.splice(0)) await ct…
+       | ^
+     12| async function harness(script: ConstructorParameters<typeof MockAdapte…
+     13|   const ctx = new Context()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/24]⎯
+
+ FAIL  |thread-safe| packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts > dsh-tool-subagent-control > JSON-encodes a caller-supplied parent id in the initial return instruction
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts:167:3
+    165|   })
+    166|
+    167|   it('JSON-encodes a caller-supplied parent id in the initial return i…
+       |   ^
+    168|     const { ctx } = await setup([textResponse('child done')])
+    169|     const parent = await ctx.agentLoop.create(SessionId('parent"\nagen…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/24]⎯
+
+ FAIL  |thread-safe| packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts > dsh-tool-subagent-control > lets a continuable child steer its direct parent with send_message
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts:189:3
+    187|   })
+    188|
+    189|   it('lets a continuable child steer its direct parent with send_messa…
+       |   ^
+    190|     const release = Promise.withResolvers<undefined>()
+    191|     const { ctx, parent, adapter } = await setupWith(new GatedAdapter([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/24]⎯
+
+ FAIL  |thread-safe| packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts > dsh-tool-subagent-control > cold-resumes a settled child and reports delivery
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts:230:3
+    228|   })
+    229|
+    230|   it('cold-resumes a settled child and reports delivery', async () => {
+       |   ^
+    231|     const { ctx, parent } = await setup([textResponse('first answer'),…
+    232|     const started = await ctx.subagents.startContinuable({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/24]⎯
+
+ FAIL  |thread-safe| packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts > dsh-tool-subagent-control > steers the nearest step of an open turn
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts:263:3
+    261|   })
+    262|
+    263|   it('steers the nearest step of an open turn', async () => {
+       |   ^
+    264|     const { ctx, parent, adapter } = await setup([textResponse('first'…
+    265|     const started = await ctx.subagents.startContinuable({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/24]⎯
+
+ FAIL  |thread-safe| packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts > dsh-tool-subagent-control > rejects a caller that is not the child's durable direct parent
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts:304:3
+    302|   })
+    303|
+    304|   it('rejects a caller that is not the child\'s durable direct parent'…
+       |   ^
+    305|     const { ctx, parent } = await setup([textResponse('first')])
+    306|     const started = await ctx.subagents.startContinuable({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/24]⎯
+
+ FAIL  |thread-safe| packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts > dsh-tool-subagent-control interrupt_agent > interrupts a running direct child with the parent cause, parking its queue
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts:362:3
+    360|   })
+    361|
+    362|   it('interrupts a running direct child with the parent cause, parking…
+       |   ^
+    363|     const releaseFirst = Promise.withResolvers<undefined>()
+    364|     const adapter = new GatedAdapter([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/24]⎯
+
+ FAIL  |thread-safe| packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts > dsh-tool-subagent-control interrupt_agent > lets a deep live ancestor interrupt a descendant it did not directly create
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts:418:3
+    416|   })
+    417|
+    418|   it('lets a deep live ancestor interrupt a descendant it did not dire…
+       |   ^
+    419|     const releaseChild = Promise.withResolvers<undefined>()
+    420|     const releaseGrandchild = Promise.withResolvers<undefined>()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/24]⎯
+
+ FAIL  |thread-safe| packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts > dsh-tool-subagent-control interrupt_agent > rejects self, sibling, and unrelated callers without touching the target
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts:454:3
+    452|   })
+    453|
+    454|   it('rejects self, sibling, and unrelated callers without touching th…
+       |   ^
+    455|     const releaseA = Promise.withResolvers<undefined>()
+    456|     const releaseB = Promise.withResolvers<undefined>()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/24]⎯
+
+ FAIL  |thread-safe| packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts > dsh-tool-subagent-control interrupt_agent > accepts an absent target as a no-op without cold-resuming it
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/tool-subagent-control/tests/tool-subagent-control.spec.ts:498:3
+    496|   })
+    497|
+    498|   it('accepts an absent target as a no-op without cold-resuming it', a…
+       |   ^
+    499|     const { ctx, parent } = await setup([textResponse('done')])
+    500|     const started = await ctx.subagents.startContinuable({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/24]⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  17 failed | 22 passed (39)
+   Start at  11:39:14
+   Duration  70.84s (transform 1.33s, setup 362ms, import 1.40s, tests 115.28s, environment 0ms)
+

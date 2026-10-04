@@ -205,8 +205,8 @@ describe('ui-team browser plugin', () => {
     expect((await actions.getMission(SESSION, MISSION_ID)).ok).toBe(true)
     expect((await actions.createMission(SESSION, { title: 'Release', objective: 'Ship independently.' })).ok).toBe(true)
     expect((await actions.approveMission(SESSION, { missionId: MISSION_ID, expectedRevision: 3 })).ok).toBe(true)
-    expect((await actions.importApprovedPlan(SESSION)).ok).toBe(true)
-    expect((await actions.createTask(SESSION, {
+    expect((await actions.importApprovedPlan(SESSION, { missionId: 'mission-1' as never })).ok).toBe(true)
+    expect((await actions.createTask(SESSION, { missionId: 'mission-1' as never,
       subject: 'Task', description: 'Description', blockedBy: [], writeScopes: [],
     })).ok).toBe(true)
     expect((await actions.updateTask(SESSION, {
@@ -228,7 +228,7 @@ describe('ui-team browser plugin', () => {
     ])
     expect(b.calls[2]?.args).toEqual([SESSION, MISSION_ID])
     expect(b.calls[4]?.args).toEqual([SESSION, { missionId: MISSION_ID, expectedRevision: 3 }])
-    expect(b.calls[5]?.args).toEqual([SESSION])
+    expect(b.calls[5]?.args).toEqual([SESSION, { missionId: MISSION_ID }])
     expect(b.calls.at(-1)?.args[1]).toMatchObject({ owner: 'worker' })
 
     await actions.openTeammate(SESSION, {

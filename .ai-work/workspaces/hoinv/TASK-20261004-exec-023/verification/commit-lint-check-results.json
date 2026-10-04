@@ -1,0 +1,35 @@
+{
+  "stagedLint": {
+    "command": "node --import tsx/esm scripts/run-oxlint.ts --config .oxlintrc.staged.json --format=unix <244 source-patch-receipt paths>",
+    "exitCode": 0,
+    "errors": 0,
+    "warnings": 21,
+    "log": "verification/commit-staged-host-lint-corrected.log"
+  },
+  "gatTests": {
+    "command": "node node_modules/vitest/vitest.mjs run packages/experimental/gat-core/tests packages/experimental/gat-tools/tests packages/experimental/gat-profile/tests packages/experimental/gat-web-profile/tests packages/experimental/gat-web/tests --reporter=dot",
+    "exitCode": 0,
+    "files": 18,
+    "tests": 271,
+    "qualificationCoverage": "All earlier qualified 17 files / 270 tests plus gat-web-profile/tests/profile.spec.ts",
+    "log": "verification/commit-lint-gat-behavior.log"
+  },
+  "connectionGatewayTests": {
+    "command": "node node_modules/vitest/vitest.mjs run packages/client/connection/tests packages/api/gateway/tests --reporter=dot",
+    "exitCode": 0,
+    "files": 22,
+    "tests": 451,
+    "log": "verification/commit-lint-connection-gateway.log"
+  },
+  "whitespace": {
+    "command": "git diff --check -- <11 edited files>",
+    "exitCode": 0
+  },
+  "supplementalTypeAwareLint": {
+    "command": "node --import tsx/esm scripts/run-oxlint.ts --format=unix <11 edited files>",
+    "exitCode": 1,
+    "diagnostics": 172,
+    "log": "verification/commit-lint-type-aware.log",
+    "limit": "Supplemental normal-config lint includes untouched fixture/expression diagnostics; no normal-config pass is claimed. Required staged profile excludes type analysis."
+  }
+}

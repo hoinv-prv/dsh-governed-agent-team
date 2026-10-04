@@ -1,0 +1,150 @@
+$ tsx scripts/run-gates.ts doc-quick
+run-gates: doc-quick running 16 gate(s) with 4 worker(s) from 12 available CPU(s), doc-quick cap 4.
+run-gates: start markdown links
+run-gates: start type equivalence
+run-gates: start translation pairing
+run-gates: start markdown wrap
+
+== FAILED markdown wrap (11.11s) ==
+command: pnpm run verify-md-wrap
+outcome: exit 1
+$ tsx scripts/verify-md-wrap.ts
+verify-md-wrap: hard-wrapped prose paragraphs found (write one physical line per paragraph):
+  packages/subagent/subagent/README.md:181  <a id="reserved-admission-and-request-preparation"></a>
+  packages/subagent/subagent/README.zh.md:181  <a id="reserved-admission-and-request-preparation"></a>
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start public repository links
+
+== FAILED type equivalence (12.47s) ==
+command: pnpm run verify-type-equiv
+outcome: exit 1
+$ tsx scripts/verify-type-equiv.ts
+verify-type-equiv: type-equiv verification failed:
+  DRIFT: docs/subsystems/tools.md:323 — type-equiv block for ToolGuard does not match packages/core/tools/src/index.ts.
+    source structure: type ToolGuard = (execution: Readonly<ToolExecution>) => string | undefined
+    doc structure:    type ToolGuard = (execution: Readonly<ToolExecution>) => string | undefined
+    source JSDoc:     ["/** * A monotonic execution guard evaluated after every `tools/pre-execute` * listener and before the tool body. Returning a reason denies the call; * returning `undefined` leaves it unchanged. Because guards have no allow * result, listener ordering cannot turn a denial back into permission. * Guards may run repeatedly before policy, wrappers and the body; they must be pure. * @param execution - the identity-protected call with its immutable capability union. * @returns a final denial reason, or `undefined` to leave the call allowed. */"]
+    doc JSDoc:        ["/** * A monotonic execution guard evaluated after every `tools/pre-execute` * listener and before the tool body. Returning a reason denies the call; * returning `undefined` leaves it unchanged. Because guards have no allow * result, listener ordering cannot turn a denial back into permission. * @param execution - the identity-protected call after extensible pre-execute policy completed. * @returns a final denial reason, or `undefined` to leave the call allowed. */"]
+  DRIFT: docs/subsystems/core.md:28 — type-equiv block for AgentHandle does not match packages/core/agent/src/index.ts.
+    source structure: interface AgentHandle { agent: Agent dispose(): Promise<void> releaseExecution?(): void closeExecution?(): void }
+    doc structure:    interface AgentHandle { agent: Agent dispose(): Promise<void> }
+    source JSDoc:     ["/** * An owned agent plus its disposer, returned by {@link AgentRegistry.create} / * {@link AgentRegistry.resume}. The disposer is a CAPABILITY: among consumers, * only the holder can tear this agent down. The registered factory provider is * also a structural owner because the scoped agent depends on that provider's * service API; provider unload stops and drains every live handle it made. * `dispose()` stops the loop, awaits its exit, unregisters the agent, removes * its session from the store, and finally unwinds its scoped world. * * `ctx.agents.get(id)` still returns a bare {@link Agent} — the handle is * exposed only to the consumer owner that created it; the structural provider * reaches the same teardown internally. Config-created agents (the loop's own * startup) are owned by the loop fiber and never need a handle. */","/** Owner-only release for deferred execution; absent on factories without reservation support. */","/** Close the owner execution gate immediately, preserving pending input for recovery. */"]
+    doc JSDoc:        ["/** * An owned agent plus its disposer, returned by {@link AgentRegistry.create} / * {@link AgentRegistry.resume}. The disposer is a CAPABILITY: among consumers, * only the holder can tear this agent down. The registered factory provider is * also a structural owner because the scoped agent depends on that provider's * service API; provider unload stops and drains every live handle it made. * `dispose()` stops the loop, awaits its exit, unregisters the agent, removes * its session from the store, and finally unwinds its scoped world. * * `ctx.agents.get(id)` still returns a bare {@link Agent} — the handle is * exposed only to the consumer owner that created it; the structural provider * reaches the same teardown internally. Config-created agents (the loop's own * startup) are owned by the loop fiber and never need a handle. */"]
+
+(checked 419 primary block(s) across 47 doc(s), 419 paired derivative(s); manifest at scripts/type-equiv.manifest.json)
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start doc refs
+run-gates: PASS doc refs (1.40s)
+run-gates: start package README Summaries
+run-gates: PASS public repository links (3.48s)
+run-gates: start package README model experience
+run-gates: PASS package README Summaries (0.78s)
+run-gates: start agent note classification
+run-gates: PASS agent note classification (0.83s)
+run-gates: start agent note format
+
+== FAILED agent note format (0.90s) ==
+command: pnpm run verify-agent-note-format
+outcome: exit 1
+$ tsx scripts/verify-agent-note-format.ts
+verify-agent-note-format: violations found:
+  format: proposed/process/2026-10-04-active-catalog-replacements.md — line 3 must match the proposed status grammar (/^Status: proposed$/)
+  format: proposed/process/2026-10-04-active-catalog-replacements.md — the line-3 `Status:` line must be the only one in the file
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start archived agent notes
+run-gates: PASS archived agent notes (0.99s)
+run-gates: start skill invocation metadata
+run-gates: PASS skill invocation metadata (0.79s)
+run-gates: start translation prompt
+run-gates: PASS translation prompt (0.77s)
+run-gates: start doc budgets
+run-gates: PASS doc budgets (0.89s)
+run-gates: start documentation standard tests
+
+== FAILED markdown links (21.21s) ==
+command: pnpm run verify-md-links
+outcome: exit 1
+$ tsx scripts/verify-md-links.ts
+verify-md-links: broken relative cross-links found:
+  docs/architecture.zh.md:169  subsystems/subagent.zh.md#reserved-continuable-children  (no such anchor in target)
+  docs/architecture.zh.md:173  subsystems/core.zh.md#prompt-preparation-and-reserved-execution  (no such anchor in target)
+  docs/subsystems/core.md:913  agent.md  (target does not exist)
+  docs/subsystems/core.zh.md:923  agent.md  (target does not exist)
+  packages/experimental/gat-core/README.md:168  ../tools/README.md  (target does not exist)
+  packages/experimental/gat-core/README.zh.md:168  ../tools/README.zh.md  (target does not exist)
+  packages/experimental/gat-profile/README.md:12  ../core/README.md  (target does not exist)
+  packages/experimental/gat-profile/README.md:69  ../core/README.md  (target does not exist)
+  packages/experimental/gat-profile/README.md:70  ../tools/README.md  (target does not exist)
+  packages/experimental/gat-profile/README.md:82  ../tools/README.md  (target does not exist)
+  packages/experimental/gat-profile/README.zh.md:12  ../core/README.zh.md  (target does not exist)
+  packages/experimental/gat-profile/README.zh.md:69  ../core/README.zh.md  (target does not exist)
+  packages/experimental/gat-profile/README.zh.md:70  ../tools/README.zh.md  (target does not exist)
+  packages/experimental/gat-profile/README.zh.md:82  ../tools/README.zh.md  (target does not exist)
+  packages/experimental/gat-tools/README.md:36  ../core/README.md#smallest-working-setup  (target does not exist)
+  packages/experimental/gat-tools/README.md:123  ../core/README.md  (target does not exist)
+  packages/experimental/gat-tools/README.zh.md:36  ../core/README.zh.md#smallest-working-setup  (target does not exist)
+  packages/experimental/gat-tools/README.zh.md:123  ../core/README.zh.md  (target does not exist)
+  packages/experimental/gat-web-profile/README.md:12  ../core/README.md  (target does not exist)
+  packages/experimental/gat-web-profile/README.md:12  ../profile/README.md  (target does not exist)
+  packages/experimental/gat-web-profile/README.md:41  ../web/README.md  (target does not exist)
+  packages/experimental/gat-web-profile/README.md:67  ../profile/README.md  (target does not exist)
+  packages/experimental/gat-web-profile/README.md:68  ../web/README.md  (target does not exist)
+  packages/experimental/gat-web-profile/README.zh.md:12  ../core/README.zh.md  (target does not exist)
+  packages/experimental/gat-web-profile/README.zh.md:12  ../profile/README.zh.md  (target does not exist)
+  packages/experimental/gat-web-profile/README.zh.md:41  ../web/README.zh.md  (target does not exist)
+  packages/experimental/gat-web-profile/README.zh.md:67  ../profile/README.zh.md  (target does not exist)
+  packages/experimental/gat-web-profile/README.zh.md:68  ../web/README.zh.md  (target does not exist)
+  packages/experimental/gat-web/README.md:28  ../web-profile/README.md  (target does not exist)
+  packages/experimental/gat-web/README.md:50  ../core/README.md  (target does not exist)
+  packages/experimental/gat-web/README.md:68  ../web-profile/README.md  (target does not exist)
+  packages/experimental/gat-web/README.md:69  ../core/README.md  (target does not exist)
+  packages/experimental/gat-web/README.zh.md:28  ../web-profile/README.zh.md  (target does not exist)
+  packages/experimental/gat-web/README.zh.md:50  ../core/README.zh.md  (target does not exist)
+  packages/experimental/gat-web/README.zh.md:68  ../web-profile/README.zh.md  (target does not exist)
+  packages/experimental/gat-web/README.zh.md:69  ../core/README.zh.md  (target does not exist)
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start package README limitations
+run-gates: PASS documentation standard tests (2.23s)
+
+== FAILED package README model experience (7.94s) ==
+command: pnpm run verify-package-readme-model-experience
+outcome: exit 1
+$ tsx scripts/verify-package-readme-model-experience.ts
+verify-package-readme-model-experience failed:
+  packages/core/agent-loop/README.md: ## Model Experience and ## Known Limitations and Deferred Work must be the final two H2 sections, in that order
+  packages/core/agent/README.md: ## Model Experience and ## Known Limitations and Deferred Work must be the final two H2 sections, in that order
+  packages/experimental/gat-core/README.md: ## Model Experience and ## Known Limitations and Deferred Work must be the final two H2 sections, in that order
+  packages/experimental/gat-web-profile/README.md: line 76: short Model Experience form requires an audited entry in SENTENCE_MODEL_EXPERIENCE
+  packages/experimental/gat-web/README.md: line 78: short Model Experience form requires an audited entry in SENTENCE_MODEL_EXPERIENCE
+  packages/subagent/subagent/README.md: ## Model Experience and ## Known Limitations and Deferred Work must be the final two H2 sections, in that order
+[ELIFECYCLE] Command failed with exit code 1.
+
+== FAILED translation pairing (23.19s) ==
+command: pnpm run verify-translation-pairing
+outcome: exit 1
+$ tsx scripts/verify-translation-pairing.ts
+verify-translation-pairing: bilingual pairing rules violated (see docs/i18n/README.md):
+  docs/config-catalog.md: out of sync — content no longer matches the pair's last confirmed-consistent state in docs/config-catalog.i18n.yaml (bring the other side along, then re-record with --write)
+  packages/experimental/gat-core/README.md: out of sync — content no longer matches the pair's last confirmed-consistent state in packages/experimental/gat-core/README.i18n.yaml (bring the other side along, then re-record with --write)
+  packages/experimental/gat-profile/README.md ↔ packages/experimental/gat-profile/README.zh.md: link target #1 diverges between the pair: "../core/README.md" vs "../core/README.zh.md"
+  packages/experimental/gat-tools/README.md: out of sync — content no longer matches the pair's last confirmed-consistent state in packages/experimental/gat-tools/README.i18n.yaml (bring the other side along, then re-record with --write)
+  packages/experimental/gat-web-profile/README.md ↔ packages/experimental/gat-web-profile/README.zh.md: link target #1 diverges between the pair: "../core/README.md" vs "../core/README.zh.md"
+  packages/experimental/gat-web/README.md ↔ packages/experimental/gat-web/README.zh.md: link target #7 diverges between the pair: "../web-profile/README.md" vs "../web-profile/README.zh.md"
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: PASS package README limitations (6.75s)
+
+run-gates: 10 passed, 6 failed, 0 skipped in 27.96s.
+run-gates: unsuccessful gates:
+  - FAILED markdown links (21.21s, exit 1)
+    pnpm run verify-md-links
+  - FAILED type equivalence (12.47s, exit 1)
+    pnpm run verify-type-equiv
+  - FAILED translation pairing (23.19s, exit 1)
+    pnpm run verify-translation-pairing
+  - FAILED markdown wrap (11.11s, exit 1)
+    pnpm run verify-md-wrap
+  - FAILED package README model experience (7.94s, exit 1)
+    pnpm run verify-package-readme-model-experience
+  - FAILED agent note format (0.90s, exit 1)
+    pnpm run verify-agent-note-format
+[ELIFECYCLE] Command failed with exit code 1.

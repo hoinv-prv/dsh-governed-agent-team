@@ -1,0 +1,910 @@
+{
+  "format": "gat-design-source-baseline/1",
+  "inspected_on": "2026-10-04",
+  "authority": "Current source code is truth for implemented behavior; hashes bind working-tree bytes",
+  "repositories": [
+    {
+      "id": "gat",
+      "root": "/home/hoinv/work/dsh-governed-agent-team",
+      "head": "8121d8c13640afa234496af34fdeac727312c5b1",
+      "working_tree_status_at_inspection": [
+        " M .ai-work/capture_backlog/_promotion_log.jsonl",
+        " M .ai-work/capture_backlog/hoinv.jsonl",
+        " M SOURCE_SNAPSHOT.json",
+        " M compatibility/dsh-0.1.5-rc.2/manifest.json",
+        " M docs/gat-design/ARCHITECTURE_DESIGN.md",
+        " M docs/gat-design/BASIC_DESIGN.md",
+        " M docs/gat-design/DETAIL_DESIGN.md",
+        " M docs/gat-design/DURABLE_AGENT_INTEGRATION.md",
+        " M docs/gat-design/SOURCE_CODE_MAP.md",
+        " M docs/gat-design/design-verification.json",
+        " M docs/gat-design/source-baseline.json",
+        " M docs/gat-design/source-code-map.json",
+        " M installer/verify.mjs",
+        " M packages/core/README.md",
+        " M packages/core/README.zh.md",
+        " M packages/core/package.json",
+        " M packages/core/src/approved-plan-import.ts",
+        " M packages/core/src/index.ts",
+        " M packages/core/src/journal.ts",
+        " M packages/core/src/lifecycle.ts",
+        " M packages/core/src/mailbox.ts",
+        " M packages/core/src/mission-board.ts",
+        " M packages/core/src/mission-plan.ts",
+        " M packages/core/src/projection.ts",
+        " M packages/core/src/roster.ts",
+        " M packages/core/src/task-board.ts",
+        " M packages/core/src/types.ts",
+        " M packages/core/src/work-state.ts",
+        " M packages/core/tests/persistence.spec.ts",
+        " M packages/core/tests/projection-events.spec.ts",
+        " M packages/core/tests/team.spec.ts",
+        " M packages/core/tsconfig.json",
+        " M packages/profile/tests/profile.spec.ts",
+        " M packages/tools/README.md",
+        " M packages/tools/README.zh.md",
+        " M packages/tools/src/index.ts",
+        " M packages/tools/src/team-config.ts",
+        " M packages/tools/tests/tool-team.spec.ts",
+        " M packages/web/src/client/TeamAction.tsx",
+        " M packages/web/src/client/locales.ts",
+        " M packages/web/src/client/mount.ts",
+        " M packages/web/tests/browser-plugin.client.spec.ts",
+        " M packages/web/tests/team-action.client.spec.tsx",
+        "?? .ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+        "?? .ai-work/aip/hoinv/exec/AIP-EXEC-023-implement-binding-prerequisites.md",
+        "?? .ai-work/tests/__pycache__/",
+        "?? .ai-work/tooling/__pycache__/build_typescript_wiki_metas.cpython-312.pyc",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-023/",
+        "?? docs/gat-design/DURABLE_AGENT_BINDING_PROPOSAL.md",
+        "?? packages/core/src/attachments.ts",
+        "?? packages/core/src/authority.ts",
+        "?? packages/core/src/binding-deadline.ts",
+        "?? packages/core/src/member-binders.ts",
+        "?? packages/core/src/member-binding.ts",
+        "?? packages/core/tests/authority.spec.ts",
+        "?? packages/core/tests/authorized-team-fixture.ts",
+        "?? packages/core/tests/binding-enable.spec.ts",
+        "?? packages/core/tests/human-control-fixture.ts",
+        "?? packages/core/tests/member-attachments.spec.ts",
+        "?? packages/core/tests/member-binding.spec.ts",
+        "?? packages/core/tests/member-replay.spec.ts",
+        "?? packages/durable-agent/",
+        "?? packages/tools/tests/authorization-matrix.spec.ts",
+        "?? packages/tools/tests/binding-views.spec.ts",
+        "?? packages/tools/tests/prerequisite-composition.spec.ts"
+      ]
+    },
+    {
+      "id": "durable-agent",
+      "root": "/home/hoinv/work/dsh-durable-agent",
+      "head": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+      "working_tree_status_at_inspection": []
+    },
+    {
+      "id": "dsh-prerequisites",
+      "root": "/home/hoinv/work/dsh-binding-prerequisites",
+      "head": "c291e7961a515f6d7af9304e7fd1d257929aef26",
+      "working_tree_status_at_inspection": [
+        " M apps/web/tsconfig.json",
+        " M docs/architecture.i18n.yaml",
+        " M docs/architecture.md",
+        " M docs/architecture.zh.md",
+        " M docs/config-catalog.i18n.yaml",
+        " M docs/config-catalog.md",
+        " M docs/config-catalog.zh.md",
+        " M docs/event-producer-consumer.i18n.yaml",
+        " M docs/event-producer-consumer.md",
+        " M docs/event-producer-consumer.zh.md",
+        " M docs/persistence-catalog.i18n.yaml",
+        " M docs/persistence-catalog.md",
+        " M docs/persistence-catalog.zh.md",
+        " M docs/subsystems/agent-team.i18n.yaml",
+        " M docs/subsystems/agent-team.md",
+        " M docs/subsystems/agent-team.zh.md",
+        " M docs/subsystems/core.i18n.yaml",
+        " M docs/subsystems/core.md",
+        " M docs/subsystems/core.zh.md",
+        " M docs/subsystems/subagent.i18n.yaml",
+        " M docs/subsystems/subagent.md",
+        " M docs/subsystems/subagent.zh.md",
+        " M docs/subsystems/tools.i18n.yaml",
+        " M docs/subsystems/tools.md",
+        " M docs/subsystems/tools.zh.md",
+        " M docs/tool-catalog.i18n.yaml",
+        " M docs/tool-catalog.md",
+        " M docs/tool-catalog.zh.md",
+        " M packages/api/gateway/README.i18n.yaml",
+        " M packages/api/gateway/README.md",
+        " M packages/api/gateway/README.zh.md",
+        " M packages/api/gateway/src/index.ts",
+        " M packages/api/gateway/tests/gateway.host.spec.ts",
+        " M packages/client/connection/README.i18n.yaml",
+        " M packages/client/connection/README.md",
+        " M packages/client/connection/README.zh.md",
+        " M packages/client/connection/src/index.ts",
+        " M packages/client/connection/src/rpc-host.ts",
+        " M packages/client/connection/tsconfig.host.json",
+        " M packages/context/agent-instructions/tests/agent-instructions.spec.ts",
+        " M packages/core/agent-loop/README.i18n.yaml",
+        " M packages/core/agent-loop/README.md",
+        " M packages/core/agent-loop/README.zh.md",
+        " M packages/core/agent-loop/src/agent.ts",
+        " M packages/core/agent-loop/src/index.ts",
+        " M packages/core/agent-loop/tests/system-prompt-admission.spec.ts",
+        " M packages/core/agent/README.i18n.yaml",
+        " M packages/core/agent/README.md",
+        " M packages/core/agent/README.zh.md",
+        " M packages/core/agent/src/index.ts",
+        " M packages/core/agent/src/runtime-types.ts",
+        " M packages/core/agent/src/types.ts",
+        " M packages/core/scope/src/scoped-events.generated.ts",
+        " M packages/core/scope/tests/invariant.spec.ts",
+        " M packages/core/session/src/known-event-types.ts",
+        " M packages/core/tools/README.i18n.yaml",
+        " M packages/core/tools/README.md",
+        " M packages/core/tools/README.zh.md",
+        " M packages/core/tools/src/index.ts",
+        " M packages/core/tools/src/ptc.ts",
+        " M packages/core/tools/src/schema.ts",
+        " M packages/core/tools/src/types.ts",
+        " M packages/core/tools/tests/invariant.spec.ts",
+        " M packages/core/tools/tests/ptc.spec.ts",
+        " M packages/core/tools/tests/scoped.spec.ts",
+        " M packages/core/tools/tests/tools.spec.ts",
+        " M packages/experimental/tool-agent-team/README.i18n.yaml",
+        " M packages/experimental/tool-agent-team/README.md",
+        " M packages/experimental/tool-agent-team/README.zh.md",
+        " M packages/extensions/cordis-client-runner/src/client/slot-catalog.ts",
+        " M packages/extensions/tool-cordis/src/api-catalog.ts",
+        " M packages/fs/tool-fs-search/README.i18n.yaml",
+        " M packages/fs/tool-fs-search/README.md",
+        " M packages/fs/tool-fs-search/README.zh.md",
+        " M packages/fs/tool-fs-search/package.json",
+        " M packages/fs/tool-fs-search/src/glob.ts",
+        " M packages/fs/tool-fs-search/src/grep.ts",
+        " M packages/fs/tool-fs-search/tests/tools.spec.ts",
+        " M packages/fs/tool-fs-search/tsconfig.json",
+        " M packages/shell/shell-env/tests/shell-env.spec.ts",
+        " M packages/spill/spill-policy/tests/spill-policy.spec.ts",
+        " M packages/subagent/subagent/README.i18n.yaml",
+        " M packages/subagent/subagent/README.md",
+        " M packages/subagent/subagent/README.zh.md",
+        " M packages/subagent/subagent/src/continuation-activation.ts",
+        " M packages/subagent/subagent/src/continuation.ts",
+        " M packages/subagent/subagent/src/index.ts",
+        " M packages/subagent/subagent/src/internal.ts",
+        " M packages/subagent/subagent/src/types.ts",
+        " M packages/subagent/subagent/tests/continuation.spec.ts",
+        " M packages/subagent/tool-subagent/README.i18n.yaml",
+        " M packages/subagent/tool-subagent/README.md",
+        " M packages/subagent/tool-subagent/README.zh.md",
+        " M packages/subagent/tool-subagent/src/index.ts",
+        " M packages/subagent/tool-subagent/tests/tool-subagent.spec.ts",
+        " M packages/workflow/tool-ralph/README.i18n.yaml",
+        " M packages/workflow/tool-ralph/README.md",
+        " M packages/workflow/tool-ralph/README.zh.md",
+        " M packages/workflow/tool-ralph/src/index.ts",
+        " M packages/workflow/tool-ralph/tests/tool-ralph.spec.ts",
+        " M packages/workflow/tool-workflow/README.i18n.yaml",
+        " M packages/workflow/tool-workflow/README.md",
+        " M packages/workflow/tool-workflow/README.zh.md",
+        " M packages/workflow/tool-workflow/src/index.ts",
+        " M packages/workflow/tool-workflow/tests/tool-workflow.spec.ts",
+        " M pnpm-lock.yaml",
+        " M scripts/cordis-walk.ts",
+        " M scripts/gen-cordis-catalog.ts",
+        " M scripts/gen-persistence-catalog.ts",
+        " M scripts/gen-tool-catalog.ts",
+        " M scripts/slot-walk.ts",
+        " M scripts/smoke-python-runtime.py",
+        " M scripts/verify-package-readme-model-experience.ts",
+        " M snapshots/sdk/sdk.snapshot.ts",
+        " M snapshots/sdk/subagent-continuable-inheritance/session.1.v3.jsonl",
+        " M snapshots/sdk/subagent-continuable/session.1.v3.jsonl",
+        " M snapshots/sdk/subagent-list-agents/session.1.v3.jsonl",
+        " M snapshots/sdk/subagent-send-message/session.1.v3.jsonl",
+        " M tsconfig.base.json",
+        " M tsconfig.client.json",
+        " M tsconfig.host.json",
+        " M tsdown.config.ts",
+        "?? .agents/notes/implemented/architecture/2026-10-04-authenticated-control-admission.i18n.yaml",
+        "?? .agents/notes/implemented/architecture/2026-10-04-authenticated-control-admission.md",
+        "?? .agents/notes/implemented/architecture/2026-10-04-authenticated-control-admission.zh.md",
+        "?? .agents/notes/implemented/architecture/2026-10-04-immutable-tool-capabilities.i18n.yaml",
+        "?? .agents/notes/implemented/architecture/2026-10-04-immutable-tool-capabilities.md",
+        "?? .agents/notes/implemented/architecture/2026-10-04-immutable-tool-capabilities.zh.md",
+        "?? .agents/notes/implemented/architecture/2026-10-04-reserved-continuable-admission.i18n.yaml",
+        "?? .agents/notes/implemented/architecture/2026-10-04-reserved-continuable-admission.md",
+        "?? .agents/notes/implemented/architecture/2026-10-04-reserved-continuable-admission.zh.md",
+        "?? .agents/notes/implemented/process/2026-10-04-active-catalog-replacements.i18n.yaml",
+        "?? .agents/notes/implemented/process/2026-10-04-active-catalog-replacements.md",
+        "?? .agents/notes/implemented/process/2026-10-04-active-catalog-replacements.zh.md",
+        "?? .gat/",
+        "?? apps/web/tests/gat-agent-team-panel.e2e.ts",
+        "?? apps/web/tests/gat-agent-team-panel.overlay.yml",
+        "?? apps/web/tests/snapshots/gat-agent-team-panel/",
+        "?? native/system/packages/linux-x64/bin",
+        "?? packages/client/connection/src/control-admission.ts",
+        "?? packages/core/agent-loop/tests/prepare-prompt.spec.ts",
+        "?? packages/core/tools/tests/capabilities.spec.ts",
+        "?? packages/experimental/gat-core/",
+        "?? packages/experimental/gat-profile/",
+        "?? packages/experimental/gat-tools/",
+        "?? packages/experimental/gat-web-profile/",
+        "?? packages/experimental/gat-web/",
+        "?? packages/subagent/subagent/src/reserved.ts",
+        "?? packages/subagent/subagent/tests/reserved.spec.ts",
+        "?? scripts/catalog-source-files.spec.ts",
+        "?? scripts/catalog-source-files.ts",
+        "?? scripts/fixtures/sdk-request-refresh.mjs",
+        "?? scripts/snapshots/python-sdk-single-exe/request-refresh/",
+        "?? snapshots/sdk/request-refresh/",
+        "?? website/.vitepress/.temp/"
+      ],
+      "qualified_patch_sha256": "d532cc1e8d110c9db891219c89f20b4fd94d0836aa1e8c7d6d3494dddfb8cbf0",
+      "commit_status": "Uncommitted qualification patch on approved compatibility baseline"
+    }
+  ],
+  "files": [
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/client/connection/src/control-admission.ts",
+      "sha256": "05ac55f7db7e75e3bf1737408c8fb8301daf788b0068c6fdb2ed660e76246d0d",
+      "bytes": 225
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/client/connection/src/rpc-host.ts",
+      "sha256": "e3cb5081c6019ac15763e327bb75bc94bccba2e84dee65aa2e67c51aa2f395c2",
+      "bytes": 14569
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/client/connection/tests/api-request-trust.host.spec.ts",
+      "sha256": "3f83467bf814c83bf45e8bfaa53d5602b2a907a3d9008561c7ab971cfe6e9668",
+      "bytes": 7180
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/client/connection/tests/fetch-routes.host.spec.ts",
+      "sha256": "db3d9f8597b6427cf66ca132a216d3c0ce5d5ce5ae466b9df9d85a0c0f935b20",
+      "bytes": 3323
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/client/connection/tests/http-bridge.host.spec.ts",
+      "sha256": "4b2951638ac1434f682e5c29fe3586bae82b1541003c112f34d9be7d7d091f4f",
+      "bytes": 5938
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/agent-loop/src/agent.ts",
+      "sha256": "d8d46efb267c9b983266b2424d24d4658b1217f093ab268b6ec1e60e29376c97",
+      "bytes": 26585
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/agent-loop/src/runtime-context.ts",
+      "sha256": "5813738fff54d6282b31647f12623214692cd08d4d8559706487a47a578b1fe2",
+      "bytes": 7148
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/agent-loop/tests/loop.spec.ts",
+      "sha256": "fdc47ca40343b006c766de9ed586943fa53732cdf73a4f1b4f1445a8e0d44ef8",
+      "bytes": 79523
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/agent-loop/tests/prepare-prompt.spec.ts",
+      "sha256": "a7faaf33e58ec5bb47dd1a3b90769fa4c79a9619579c7067a7e4eed849349189",
+      "bytes": 11289
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/agent-loop/tests/request-reconstruction.spec.ts",
+      "sha256": "d7d290c121bae7340b682448bd74bc9150536c3373eda8ba2382f9e4a4b29894",
+      "bytes": 44280
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/agent-loop/tests/system-prompt-admission.spec.ts",
+      "sha256": "b8d07321c99fe4421c8637c96bb9f4c269166e7b15bb6cc3825836e6c06b1095",
+      "bytes": 16489
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/system-prompt/src/index.ts",
+      "sha256": "2cd5cc40c006e70b8fb5f50ad459213623f9f7f86e12ad3fc402cefca0ece577",
+      "bytes": 25933
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/tools/src/index.ts",
+      "sha256": "de773858f9674e21acf881f28267358013032738fcb62018fd3a9dec3dc48b5c",
+      "bytes": 97345
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/tools/src/schema.ts",
+      "sha256": "6434b819d35ec77fe6928f33b0e6a5f4a12485b5592ff0750862e8a8168c05d3",
+      "bytes": 25756
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/tools/tests/capabilities.spec.ts",
+      "sha256": "38d807128432ae008562eb12fa54bc503daf59ff55acb41e8e6a40a617b17e8f",
+      "bytes": 12990
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/tools/tests/ptc.spec.ts",
+      "sha256": "43a04a9a86397e6ac75009e5c6b8cc1b8732882aca53a4b0240519bfb22a618e",
+      "bytes": 86794
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/tools/tests/tools.spec.ts",
+      "sha256": "081f701dba2f57b138488ae84cd0e01e9f55ebf19d6db33d5b62e6947f996e27",
+      "bytes": 108979
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/subagent/subagent/src/continuation.ts",
+      "sha256": "1975cc34b307d81e0878a34ba06814fbb7511c36f7e33062d815f9d2ec2cae79",
+      "bytes": 28652
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/subagent/subagent/src/index.ts",
+      "sha256": "93ac02c618f1cca9c18a04fbe606dae0b8f95b5f22fef61e3547a256d5a9a477",
+      "bytes": 30721
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/subagent/subagent/src/reserved.ts",
+      "sha256": "e23d9488888c9df5b8cbf3705663782687989862538bb9d1e69996bc7075e595",
+      "bytes": 13163
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/subagent/subagent/tests/continuation.spec.ts",
+      "sha256": "4eba565931245d445ff19db5d155d10cc4db4ae927b0b0160b7a2025ff917487",
+      "bytes": 164473
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/subagent/subagent/tests/reserved.spec.ts",
+      "sha256": "0568b8082b1550d17ccb42ac9c3e53ad804545026bc36887fa3585a7dc2ef47d",
+      "bytes": 16577
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/src/consumer.ts",
+      "sha256": "77c1507140a86b90d9766c61f9e1cab1c59248f4d56142ade512e36f4bc2edd6",
+      "bytes": 4573
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/src/local-provider.ts",
+      "sha256": "75e63d7d634d5afe7b162dd4e3758103a733ac7eff1f9481b1115fd72c6ca58a",
+      "bytes": 47567
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/src/service.ts",
+      "sha256": "f54e4954ad7a4b085fdb8c6dcc600c28832ce16cb5174c1985ab35085c9ed833",
+      "bytes": 7235
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/tests/composition.spec.ts",
+      "sha256": "8d8d0e8af8ea6a05378a3027e92c3938196691a7b9c1c88f19d03ec49219e6b6",
+      "bytes": 1598
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/tests/consumer.spec.ts",
+      "sha256": "af213b432ce6dd33c84dfca4acbba8c124b4917e7ace8aab9a7dc31f6bbc85b9",
+      "bytes": 4613
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/tests/local-provider.spec.ts",
+      "sha256": "c2a5a0da091b80c1e52f2479d06f07f13a5a0ba410ea5f88f71928ad1172d3e4",
+      "bytes": 19114
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/tests/memory-lifecycle.spec.ts",
+      "sha256": "4a65b5f5940c7081c21499719931950d9392bb0874d71355ce90b11d591cd72a",
+      "bytes": 31934
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/tests/service-contracts.spec.ts",
+      "sha256": "1107ad16ec00e1fecc31b9261c5a9982644fff7f2d8437f91b46fc353fdb2ebd",
+      "bytes": 11496
+    },
+    {
+      "repository": "gat",
+      "path": "installer/compatibility.mjs",
+      "sha256": "f9fcbdaf6a266f4370812539e96cfe4aec3071d4410fe7cf87b0a484af168371",
+      "bytes": 4090
+    },
+    {
+      "repository": "gat",
+      "path": "installer/index.mjs",
+      "sha256": "2e7b8c6f8fa18dfef7252004b0aa0f69a06550058fc55e2f84d834dc5d11f95d",
+      "bytes": 20794
+    },
+    {
+      "repository": "gat",
+      "path": "installer/tests/cli.test.mjs",
+      "sha256": "f55e86732397bccb7df349555aa2604df13959e3e0c693a708182a48f452a106",
+      "bytes": 4605
+    },
+    {
+      "repository": "gat",
+      "path": "installer/tests/compatibility.test.mjs",
+      "sha256": "cf3c624d8bac43be3bf408a5af0be3a4d841f5e0cfd0e6bd894d6426634b5c44",
+      "bytes": 1675
+    },
+    {
+      "repository": "gat",
+      "path": "installer/tests/verify-profile.test.mjs",
+      "sha256": "5c5ff881669999fe860c8ed4c149844676312045edf2e6b642c9b3fce53b3b48",
+      "bytes": 2306
+    },
+    {
+      "repository": "gat",
+      "path": "installer/verify.mjs",
+      "sha256": "10b630428ec104fc13086802665d322f583478f451a35e20665f1497a7c72400",
+      "bytes": 10764
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/activity.ts",
+      "sha256": "a35a8d322aea033ef7f2e1d8539026f6a49251b3c0252ee695d361066cbd4f08",
+      "bytes": 3247
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/approved-plan-import.ts",
+      "sha256": "3efdd14de8baaa4ae76a5d41ffb82216a28959b129f66f4abccdae6356d10fb9",
+      "bytes": 5392
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/attachments.ts",
+      "sha256": "cc6c3c678acb13ac71950db8519c343ae42256e28035b005cbad089925e87fd2",
+      "bytes": 8021
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/authority.ts",
+      "sha256": "7d0c9297333759c1d5ce7a0a90705a671cf93130d8f9315fe83862ec499ac16d",
+      "bytes": 9347
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/binding-deadline.ts",
+      "sha256": "5ce023bc8e8613822edd046b9e298c2a4247a52309cf509c725223a19cffc6aa",
+      "bytes": 3094
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/index.ts",
+      "sha256": "516a26552a23c07becf9954a4c86bee2d94ceb5608c709b32f5e5de4ec5d4a0f",
+      "bytes": 50692
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/journal.ts",
+      "sha256": "2b046d6ff7d759ccd96c996b63dfc9b43aef974e69aedc132c3272ee18911b00",
+      "bytes": 5272
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/lifecycle.ts",
+      "sha256": "763a3afe65dd3fc762b1a6b9aad0909b30751c7b3908c453c92f0d708674f8ac",
+      "bytes": 5180
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/mailbox.ts",
+      "sha256": "30dbcc2ed5e9af1379dd2328148f0139ba7d44cd5f00bf036245d1fb15f44c1a",
+      "bytes": 13284
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/member-binders.ts",
+      "sha256": "9c202cf04e1a588a2ecc4426ef620c4fab0b9f381ccbf56e97144b25907c5eda",
+      "bytes": 14665
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/member-binding.ts",
+      "sha256": "e58fe1ea3c02f99a43544f62319985a32651cef6ad9dcb6ea72b440474d459a0",
+      "bytes": 18910
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/mission-board.ts",
+      "sha256": "5edc76c4b4cfca7185c646b62fc2f789003a03050062deec76751ab7c8323033",
+      "bytes": 6438
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/mission-plan.ts",
+      "sha256": "625bcb7a9b2e5113291adb73f81dc70a6294637ed2531f06d0588d4531b4d029",
+      "bytes": 3694
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/persisted.ts",
+      "sha256": "382fe7cab52e47100a798307300d649c506536d6bbe0ac89025e6c41abe4ec87",
+      "bytes": 1357
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/projection.ts",
+      "sha256": "1255829d060fae3c0d8f82af11e8ea7fd852048ac5996732c6809fcbb5e425ec",
+      "bytes": 23536
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/roster.ts",
+      "sha256": "f41577261e78c3fd6ed06a4fa23a4835796f2881151f548839e464488f16e14b",
+      "bytes": 24550
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/session-message.ts",
+      "sha256": "c74ef1d18667d0f221bafd726d8332e682778f06cf43b1ce13d174e5a843cf10",
+      "bytes": 1340
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/task-board.ts",
+      "sha256": "6a2c74c7a360ee0747a666226c708b1b45c4ee599f9a10a0f7d816c9c72e094f",
+      "bytes": 18371
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/task-graph.ts",
+      "sha256": "a726081289a2f7a848f69109a750db3ead0d95b88ab0adfdae0477f749b8f490",
+      "bytes": 2560
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/types.ts",
+      "sha256": "0076d8ef6204c7f95a79ed284c7dd730ef3ab296cfc474a5222d03a0dd77e490",
+      "bytes": 16054
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/work-state.ts",
+      "sha256": "1e5d26383684f5fd41633ea15ecad161b0bb7ba694834fe72a29b3821c0bbcdb",
+      "bytes": 4167
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/authority.spec.ts",
+      "sha256": "241ce1688b469dc3949f1972f283b7b6f1252b63c89ceb408752d1f7e1c68c4d",
+      "bytes": 24709
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/binding-enable.spec.ts",
+      "sha256": "b77a8b728a3287cb6fcf4dacc47478fe8ce025678e12e02dd260d2befbb796a1",
+      "bytes": 3142
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/human-control-fixture.ts",
+      "sha256": "c499351f324619bbf068c2dc8e057f56299ca52a2549fa3c2627cefa50e95a3d",
+      "bytes": 2612
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/member-attachments.spec.ts",
+      "sha256": "cfaef2cf3b91e3ac7cc693a6ea13d0dd72c8919e5bd1e6a6cdc551d048e6a7d1",
+      "bytes": 12598
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/member-binding.spec.ts",
+      "sha256": "ff397d063ca840ddb4654d588fbe789b340d6280dec3294e0791996323576277",
+      "bytes": 26105
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/member-replay.spec.ts",
+      "sha256": "55eeb4cf816e869c81305a0903f07ea6cc78408e98cadebde71efab9bec34150",
+      "bytes": 7241
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/persistence.spec.ts",
+      "sha256": "2a29cff185af0650172d82e8f08ab3ba657b9d5753111be28347f041bcc07be7",
+      "bytes": 23828
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/projection-events.spec.ts",
+      "sha256": "b72b24e623919e0144a3716b3871b1ead7dddde170c524414e698cf27ab5dce2",
+      "bytes": 24386
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/team.spec.ts",
+      "sha256": "38a1f629a7ca340905d45b4773390e69a8f57cb643879572030f201ba53c03fc",
+      "bytes": 112962
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/src/binder.ts",
+      "sha256": "a66e935d50c02812daa2d543a07520b9ba77a5c6741254106bc44ed2588a3aaa",
+      "bytes": 11227
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/src/index.ts",
+      "sha256": "e345b8a9e7f766f1453146a9cbaf8b1f43b94baac2d902ba8b1dbb3488c36c8c",
+      "bytes": 419
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/src/initializer.ts",
+      "sha256": "e87d65a34990ef7b06cd234f25f6a71a10cbbd16c912dd31437ad633c748144d",
+      "bytes": 8733
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/src/ownership.ts",
+      "sha256": "4bb19a667a661e21adfb6ffaaddb78e141957d1cd0e074f5bb838e8b20b0e949",
+      "bytes": 1054
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/src/tools.ts",
+      "sha256": "21c7fd9a05e11236b8356be7a0ac3558eb79af50e8d7a5a2634823711bd30204",
+      "bytes": 8674
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/tests/binder.spec.ts",
+      "sha256": "1a90ff1449a3d6963b0bae64f1ea17d2969a61ca38d846972f3b7d379dcae7ca",
+      "bytes": 22389
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/tests/initializer.spec.ts",
+      "sha256": "265de4d8c48d1c3734e72e9c313537220f7261a1b0d765d2551a81da226557f4",
+      "bytes": 6105
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/tests/public-provider.spec.ts",
+      "sha256": "5ddcd08c94376c5868727815d44f89a3f543f1a59d320c2e939f0bc6a7d6658f",
+      "bytes": 4696
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/tests/tools.spec.ts",
+      "sha256": "9b753f4145dc4ada1508468e0ddcf86c7a69357c490573a8da4fbff2672bd942",
+      "bytes": 5434
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/adapter/index.mjs",
+      "sha256": "86c877d97594dbc359a8692d32f8a02d01d521510ac51fe40b195f72647ea460",
+      "bytes": 5831
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/conformance/cli.mjs",
+      "sha256": "b9326aff5acc13a34f82665694be9833e0ec3c830d58f774095d9adbf0c9ae04",
+      "bytes": 1643
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/conformance/index.mjs",
+      "sha256": "fb95fd98aa7c1107a4af4be0f256c58b110e83839cc20d516d9c01068d7240b1",
+      "bytes": 8662
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/conformance/runtime.mjs",
+      "sha256": "89688915c4e82b4a7890c6bc72db744a5f566dcbd651c87d4130fbb4c3d35213",
+      "bytes": 4180
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/conformance/scenario.mjs",
+      "sha256": "df0abae186411e200590f4c50326d24bdfeb5ec9d7cf0640b621295a17a4d3c2",
+      "bytes": 11380
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/governance/index.mjs",
+      "sha256": "86ba33128b2b221d1f924a04024fa6239ee99cef605808603f9707bf8785c864",
+      "bytes": 8231
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/index.mjs",
+      "sha256": "b23642ad1d0fc40c79fa4b98fc3b489a7208f89bdb8c8ce9a882030dfacd17cd",
+      "bytes": 271
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/memory/index.mjs",
+      "sha256": "6531e5fc8644372ac0f8ab43124076cc39cd50dd1e49a2c5142b00ff2c337bf0",
+      "bytes": 35827
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/policy/index.mjs",
+      "sha256": "06137e382a2c4125d466c7c7fd707aad84fd329b7d584b8bc747188910f7bc98",
+      "bytes": 15517
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/built-package.test.mjs",
+      "sha256": "cd577d072d9206e338c2449cf81d4da514196f2bc5c66ddd77317e346175702c",
+      "bytes": 1553
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/conformance-contract-matrix.test.mjs",
+      "sha256": "e4156e00f9b8ca5a86386d998cb753edf7bddb9f17cb21c7c3c1776220db4af9",
+      "bytes": 8367
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/conformance-runner.test.mjs",
+      "sha256": "213105e8047b70cffecd7f4fa632de803090733fd3787b61a73786c7dde75fb8",
+      "bytes": 11114
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/governance.test.mjs",
+      "sha256": "d81ebd63111d11a2dd8c6ef87060d6209174e82edeb81528b49d33cdfdf6a7d3",
+      "bytes": 6013
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/lifecycle-privacy.test.mjs",
+      "sha256": "513f0b3bf68bdc1ded40653c144627b804724d6df1070a884b2c6b1ca03852eb",
+      "bytes": 8601
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/partition-store.test.mjs",
+      "sha256": "dd9d5a377e92b40ff29be9f9fe7ae1197a1f90b066a0d5d4fd58d75a92a55ca9",
+      "bytes": 6469
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/policy-selector.test.mjs",
+      "sha256": "723c7c738ed0020df3b0e16152708995ea4753b8976e979b73675fd1c01fe78b",
+      "bytes": 10030
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/transaction-audit.test.mjs",
+      "sha256": "7682f23500b77dc89b70d2065812e5acc9113ed30f5378f420431c75c3e1582d",
+      "bytes": 9570
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/wrapper-admission.test.mjs",
+      "sha256": "14730bc5fb418f91b63c64088a23ae112f81eeb3ff0dd31ac34da4db951658fb",
+      "bytes": 7615
+    },
+    {
+      "repository": "gat",
+      "path": "packages/profile/cordis.patch.yml",
+      "sha256": "d3238c2a7b54173f78918b23023b2a2d2344113d247b82f5ee7c5176c874f2aa",
+      "bytes": 1163
+    },
+    {
+      "repository": "gat",
+      "path": "packages/profile/tests/profile.spec.ts",
+      "sha256": "8c6ae453b436eca23882b0d45ad2bc8b216502a6f62681d2359c77a236c9fd3e",
+      "bytes": 16033
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/src/index.ts",
+      "sha256": "b134eec6087435fd732287b62792d05a1e088053a4215b84eea77e841f028a66",
+      "bytes": 39282
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/src/team-config.ts",
+      "sha256": "544234653dbd6abd8b9e2fcea30fc82600c9707254368b3d9cadcc641378d413",
+      "bytes": 6807
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/tests/authorization-matrix.spec.ts",
+      "sha256": "f3668acef9eff719c3ad7f7f75797b44022a621e0994fc0bc67ca450d4b10c18",
+      "bytes": 9250
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/tests/binding-views.spec.ts",
+      "sha256": "995d128705740915e0961a7a9ad421527462c1082913096d1a198c83a7b48179",
+      "bytes": 5027
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/tests/prerequisite-composition.spec.ts",
+      "sha256": "de2564b25262083e0812d047c135124c0b957a8143b020304b88399e94dcc9d2",
+      "bytes": 11255
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/tests/team-config.spec.ts",
+      "sha256": "a2b2b38caa88344528ca59a5cf4d68d59697d1d3e6b4069d20d19f60a8bccdf6",
+      "bytes": 3289
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/tests/tool-team.spec.ts",
+      "sha256": "6541e1dd5ba17f5b015ed77216c2626b13adbd3e7bbd0e8c04f539186cbb88fe",
+      "bytes": 59343
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web-profile/cordis.patch.yml",
+      "sha256": "3b477314736c4c20d15d72c6ce2b771fa28f3edd19971fe950c2227c6f800bf4",
+      "bytes": 307
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web-profile/tests/profile.spec.ts",
+      "sha256": "50889d3d5df9fa9477a3d5f5ffb7a509d13ddada62c5ec9a17458c7d0fe7e7f1",
+      "bytes": 1539
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web/src/client/TeamAction.tsx",
+      "sha256": "d2285b5a428a4ae84993ed300a0da349a4215dd3f04898b0472bdd8b398a80d7",
+      "bytes": 13502
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web/src/client/index.ts",
+      "sha256": "c62df96466421c75347c35a1bbdf935583be21a9b75c241597e268cfd6a4a9a4",
+      "bytes": 753
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web/src/client/mount.ts",
+      "sha256": "bd970c155e2546cca7af2ea855f57bfc6e83192ba7b766df12a64da59df0f03f",
+      "bytes": 6982
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web/tests/browser-plugin.client.spec.ts",
+      "sha256": "ac96ce8f4ac507691c749da446fa9f7a7690c7ab096e550e02a8e21b03350689",
+      "bytes": 14381
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web/tests/team-action.client.spec.tsx",
+      "sha256": "dbc95423f603a45b5361fbcb9a7e7ce5efdd90c5149c619a8cbfb82bc989148b",
+      "bytes": 13673
+    }
+  ],
+  "iteration": {
+    "aip_id": "AIP-EXEC-023",
+    "provenance": "Current mapped file bytes and repository HEADs; initial protected baselines remain in AIP-022/023 workspaces. Prior AIP-022 mapping hashes preserved in verification/source-baseline-before-prerequisite-final.json. Qualification applies to the exact uncommitted patch and build/test receipts, not only the unchanged host HEAD."
+  }
+}

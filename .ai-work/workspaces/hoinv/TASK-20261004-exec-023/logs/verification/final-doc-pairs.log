@@ -1,0 +1,13 @@
+2026-10-04 — Isolated DSH checkout: /home/hoinv/work/dsh-binding-prerequisites
+Read-before-edit: DSH AGENTS.md; docs/AGENTS.md; docs/i18n/translation-rules.md; docs/i18n/terminology.md; GAT docs/gat-design/DETAIL_DESIGN.md §7.
+
+Pair records written:
+- pnpm run verify-translation-pairing --write docs/config-catalog.md
+- pnpm run verify-translation-pairing --write docs/tool-catalog.md
+- pnpm run verify-translation-pairing --write packages/experimental/gat-tools/README.md
+- pnpm run verify-translation-pairing --write packages/experimental/tool-agent-team/README.md
+
+Checks:
+- pnpm run verify-translation-pairing — PASS; 817 pairs checked.
+- pnpm run verify-md-links — PASS; 1,626 files checked.
+- pnpm run verify-md-wrap — PASS; 1,634 files checked.

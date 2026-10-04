@@ -66,9 +66,9 @@ Only the Lead can create teammates or interrupt them.
 
 ### Messages between teammates
 
-Any member can send a message to any other member or to the Lead. A live member receives it immediately; an offline member's messages queue and arrive when it resumes. Messages are never lost and never delivered twice.
+Any member can send a message to any other member or to the Lead. An exactly authorized live member receives it immediately; other targets remain queued until trusted host recovery and exact authorization. Durable message identity prevents duplicate delivery.
 
-Every message uses Steer: a running target receives it at the nearest step boundary, an idle target starts a turn, and an inactive teammate cold-resumes. The sender always sees the outcome — accepted by the target inbox, or retained as queued when delivery is temporarily unavailable. A queued message is already safely stored, so it must not be resent.
+Every admitted message uses Steer: an exactly authorized running target receives it at the nearest step boundary, and an exactly authorized idle target starts a turn. Inactive teammates remain queued until trusted host recovery and exact authorization. The sender always sees the outcome — accepted by the target inbox, or retained as queued when delivery is temporarily unavailable. A queued message is already safely stored, so it must not be resent.
 
 ### Shared task board
 
@@ -131,13 +131,13 @@ The [Agent Teams Agent Note](../../../.agents/notes/implemented/feature/2026-08-
 
 ### Team identity and roster
 
-Every ordinary runtime root is the implicit Lead of a Team whose `TeamId` equals its `SessionId`; there is no creation event, and durable state begins with the first member, message, or task record. `spawnTeammate()` first appends and flushes a `provisioning` member record, then asks the configured provider to create the reserved child; a provider failure appends a durable `failed` member. A fresh child starts with no Lead history; a fork child captures the Lead's completed-turn prefix once. Recovery reconciles an unterminated provisioning record against the child's independently persisted Session: a matching direct-parent and continuable descriptor plus a recorded initial user message produces `active`, and anything else produces `failed`. If recovery wins a same-process race, the creator accepts the terminal state or reports `TEAM_PROVISIONING_CONFLICT` and drains the child. Names are reserved by the first provisioning record and never reused.
+Every ordinary runtime root is the implicit Lead of a Team whose `TeamId` equals its `SessionId`; there is no creation event, and durable state begins with the first member, message, or task record. `spawnTeammate()` first appends and flushes a `provisioning` member record, then asks the configured provider to create the reserved child; a provider failure appends a durable `failed` member. A fresh child starts with no Lead history; a fork child captures the Lead's completed-turn prefix once. Recovery reconciles an unterminated provisioning record against the child's independently persisted Session: a matching direct-parent and reserved continuable descriptor plus a durable initial-admission record produces gated `active`, and anything else produces `failed`. If recovery wins a same-process race, the creator accepts the terminal state or reports `TEAM_PROVISIONING_CONFLICT` and drains the child. Names are reserved by the first provisioning record and never reused.
 
 ### Durable mailbox
 
-`sendMessage()` validates peer membership, appends `team/message/queued`, and flushes before attempting delivery. The target message begins with `Team message <id> from <name>:` and keeps the same id and sender in `TeamMessageSource`. A target receipt is acknowledged with `team/message/delivered` only after the target Session durably holds the message identity in its pending inbox or recorded history. Immediate admissions are serialized per target in durable queue order; recovery dispatches queued-minus-delivered records in the same order. Delivery folds both live and persisted target inbox/history state before retrying, so a crash between inbox acceptance and model claim does not duplicate the message. The guarantee is process-local retry plus target-Session de-duplication, not cross-process exactly-once delivery.
+`sendMessage()` validates peer membership, appends `team/message/queued`, and flushes before attempting delivery. The target message begins with `Team message <id> from <name>:` and keeps the same id and sender in `TeamMessageSource`. A target receipt is acknowledged with `team/message/delivered` only after the target Session durably holds the message identity in its pending inbox or recorded history. Immediate admissions are serialized per target in durable queue order; recovery dispatches queued-minus-delivered records in the same order. Delivery folds the exact live target inbox/history state before retrying; an absent target remains queued until explicit host recovery, so a crash between inbox acceptance and model claim does not duplicate the message. The guarantee is process-local retry plus target-Session de-duplication, not cross-process exactly-once delivery.
 
-Lead delivery calls `Agent.steer()` directly. Teammate delivery uses the continuation owner's host-only Steer path, which preserves the Team sender source while authorizing the Lead-to-child edge and cold-resuming inactive targets. Sibling messages never impersonate the Lead through the public adjacent-Agent messaging operation.
+Live delivery revalidates the exact target lease, activates its reserved handle once when needed, revalidates after that awaited preparation, then calls the exact target `Agent.steer()` synchronously with the original Team sender source. Inactive targets remain queued until explicit trusted host recovery and binding. The delivered edge requires a successful target flush; false or failed flush leaves the same durable identity queued for retry.
 
 ### Shared task board
 
@@ -176,6 +176,14 @@ Read these pages when the package-level contract is not enough. They move from t
 ### Browser Remote
 
 `TeamService` owns the generated `agentTeams/view`, `agentTeams/createTask`, and `agentTeams/updateTask` Remote methods beside the roster, mailbox, task, and lifecycle operations. The `./remote` export supplies the Client contribution mounted by the Web UI, while `./client` re-exports the request, view, and task-mutation result types that are safe in a browser compilation face. Typert retains transport failures in its outer `RemoteResult`; create and update rejections remain explicit domain results inside a successful transport response, with stale update revisions distinguished as task conflicts.
+
+## Exact HUMAN authority
+
+Mission creation writes a draft. Authenticated operator control approves, closes or revokes exactly the displayed mission revision; Lead/model credentials and direct Remote/Gateway calls cannot supply HUMAN provenance. New `team/mission`, `team/task` and `team/plan-approved` writes use payload v3; adjacent v2 history remains readable without granting authenticated execution. Projection checkpoints use state version 9. Executable tasks live on the canonical Teamboard with immutable `missionId`; missions carry `taskIds`, while v2 embedded snapshots remain historical only. Structural task changes advance the owning mission revision and revoke its approval.
+
+Trusted host code calls `bindExecution` with explicit mission id/revision, and optional claimed task id. The opaque lease belongs to that exact live Agent generation. Every effect, child wake and actual model request revalidates canonical authorization; claimed task scopes require exact owner and `in_progress` status. Failed claims grant no lease. Non-simple mode also requires current host-attested Team-plan approval. Live snapshots observed during a pending or failed flush never grant authority.
+
+Member addition needs the exact one-use `approveMemberAdd` HUMAN control receipt; authenticated Enable can establish its reviewed normalized default roster. Both paths materialize and persist quarantined child input before the durable active edge, with zero model admission until the child has its own exact lease and guarded activation. Message queueing is durable without a lease, while delivery/wake remains separately guarded. Cold recovery requires explicit target and mission scope through `recoverMember`; it never selects the first/current mission. Plan import also requires explicit `missionId` and leaves mission execution draft until its resulting structural revision is separately approved.
 
 ## Model Experience
 

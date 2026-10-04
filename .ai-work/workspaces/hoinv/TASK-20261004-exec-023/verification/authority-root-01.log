@@ -1,0 +1,65 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ |thread-safe| packages/experimental/gat-core/tests/authority.spec.ts (5 tests | 5 failed) 305ms
+     × model and direct host Agent credentials create drafts and cannot self-authorize 98ms
+     × canonical task creation and structural edits invalidate the exact mission; runtime claims preserve it 44ms
+     × closeMission requires exact HUMAN receipt and invalidates live leases 73ms
+     × revokeMission requires exact HUMAN receipt and invalidates live leases 51ms
+     × wrong Team and historical auto-approved snapshots never supply execution authority 38ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/authority.spec.ts > exact canonical execution authority > model and direct host Agent credentials create drafts and cannot self-authorize
+TypeError: ctx.dispose is not a function
+ ❯ packages/experimental/gat-core/tests/authority.spec.ts:67:50
+     65|       ctx.agentTeams.bindExecution(lead, { missionId: mission.id, expe…
+     66|       expect(() => ctx.agentTeams.assertExecution(lead)).not.toThrow()
+     67|     } finally { await control.close(); await ctx.dispose() }
+       |                                                  ^
+     68|   })
+     69|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/authority.spec.ts > exact canonical execution authority > canonical task creation and structural edits invalidate the exact mission; runtime claims preserve it
+TypeError: ctx.dispose is not a function
+ ❯ packages/experimental/gat-core/tests/authority.spec.ts:86:50
+     84|       await ctx.agentTeams.updateTask(lead, { taskId: task.id, expecte…
+     85|       expect(() => ctx.agentTeams.assertExecution(lead, task.id)).toTh…
+     86|     } finally { await control.close(); await ctx.dispose() }
+       |                                                  ^
+     87|   })
+     88|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/authority.spec.ts > exact canonical execution authority > closeMission requires exact HUMAN receipt and invalidates live leases
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/authority.spec.ts > exact canonical execution authority > revokeMission requires exact HUMAN receipt and invalidates live leases
+TypeError: ctx.dispose is not a function
+ ❯ packages/experimental/gat-core/tests/authority.spec.ts:96:50
+     94|       expect(await control.call(action, lead.id, { missionId: mission.…
+     95|       expect(() => ctx.agentTeams.assertExecution(lead)).toThrow('clos…
+     96|     } finally { await control.close(); await ctx.dispose() }
+       |                                                  ^
+     97|   })
+     98|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/authority.spec.ts > exact canonical execution authority > wrong Team and historical auto-approved snapshots never supply execution authority
+TypeError: ctx.dispose is not a function
+ ❯ packages/experimental/gat-core/tests/authority.spec.ts:106:50
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed (5)
+   Start at  11:11:05
+   Duration  1.59s (transform 949ms, setup 150ms, import 1.04s, tests 305ms, environment 0ms)
+

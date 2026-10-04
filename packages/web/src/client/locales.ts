@@ -89,6 +89,8 @@ export const zh = {
   'missionStatus.approved': '已批准',
   'missionStatus.active': '进行中',
   'missionStatus.completed': '已完成',
+  'missionStatus.closed': '已关闭',
+  'missionStatus.revoked': '已撤销',
 } satisfies Record<string, string>
 
 /** Agent Teams locale key union. */
@@ -180,4 +182,6 @@ export const en = {
   'missionStatus.approved': 'Approved',
   'missionStatus.active': 'Active',
   'missionStatus.completed': 'Completed',
+  'missionStatus.closed': 'Closed',
+  'missionStatus.revoked': 'Revoked',
 } satisfies Record<TeamKey, string>

@@ -1,0 +1,148 @@
+[
+  {
+    "step": "STEP-00",
+    "command": [
+      "python3",
+      ".ai-work/tooling/run_aip.py",
+      "step",
+      ".ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+      "--task-id",
+      "TASK-20261004-exec-022",
+      "--step",
+      "STEP-00"
+    ],
+    "exit_code": 0,
+    "output": "lint target: /home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md\n  OK \u2014 no findings\nsummary: errors=0 warnings=0 info=0\npointer set: AIP-EXEC-022 / STEP-00 (active)\n  -> /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/.current_step.json\nactive step context written: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nlint-gate: checking AIP-EXEC-022-implement-durable-agent-binding.md (CR-037 Option A) ...\n\nREADY:\n  workspace: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022\n  step:      STEP-00\n  active step context: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nNext: open 00c_active_step_context.md and work the step.\nWiki candidate check: append candidates to 08_capture_inbox.jsonl IMMEDIATELY on discovery \u2014 do not batch to end of step or AIP.\nDo not promote candidates into Wiki / Knowledge Hub without HUMAN review.\n",
+    "stderr": ""
+  },
+  {
+    "step": "STEP-01",
+    "command": [
+      "python3",
+      ".ai-work/tooling/run_aip.py",
+      "step",
+      ".ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+      "--task-id",
+      "TASK-20261004-exec-022",
+      "--step",
+      "STEP-01"
+    ],
+    "exit_code": 0,
+    "output": "lint target: /home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md\n  OK \u2014 no findings\nsummary: errors=0 warnings=0 info=0\npointer set: AIP-EXEC-022 / STEP-01 (active)\n  -> /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/.current_step.json\nactive step context written: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nlint-gate: checking AIP-EXEC-022-implement-durable-agent-binding.md (CR-037 Option A) ...\n\nREADY:\n  workspace: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022\n  step:      STEP-01\n  active step context: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nNext: open 00c_active_step_context.md and work the step.\nWiki candidate check: append candidates to 08_capture_inbox.jsonl IMMEDIATELY on discovery \u2014 do not batch to end of step or AIP.\nDo not promote candidates into Wiki / Knowledge Hub without HUMAN review.\n",
+    "stderr": ""
+  },
+  {
+    "step": "STEP-02",
+    "command": [
+      "python3",
+      ".ai-work/tooling/run_aip.py",
+      "step",
+      ".ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+      "--task-id",
+      "TASK-20261004-exec-022",
+      "--step",
+      "STEP-02"
+    ],
+    "exit_code": 0,
+    "output": "lint target: /home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md\n  OK \u2014 no findings\nsummary: errors=0 warnings=0 info=0\npointer set: AIP-EXEC-022 / STEP-02 (active)\n  -> /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/.current_step.json\nactive step context written: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nlint-gate: checking AIP-EXEC-022-implement-durable-agent-binding.md (CR-037 Option A) ...\n\nREADY:\n  workspace: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022\n  step:      STEP-02\n  active step context: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nNext: open 00c_active_step_context.md and work the step.\nWiki candidate check: append candidates to 08_capture_inbox.jsonl IMMEDIATELY on discovery \u2014 do not batch to end of step or AIP.\nDo not promote candidates into Wiki / Knowledge Hub without HUMAN review.\n",
+    "stderr": ""
+  },
+  {
+    "step": "STEP-03",
+    "command": [
+      "python3",
+      ".ai-work/tooling/run_aip.py",
+      "step",
+      ".ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+      "--task-id",
+      "TASK-20261004-exec-022",
+      "--step",
+      "STEP-03"
+    ],
+    "exit_code": 0,
+    "output": "lint target: /home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md\n  OK \u2014 no findings\nsummary: errors=0 warnings=0 info=0\npointer set: AIP-EXEC-022 / STEP-03 (active)\n  -> /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/.current_step.json\nactive step context written: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nlint-gate: checking AIP-EXEC-022-implement-durable-agent-binding.md (CR-037 Option A) ...\n\nREADY:\n  workspace: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022\n  step:      STEP-03\n  active step context: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nNext: open 00c_active_step_context.md and work the step.\nWiki candidate check: append candidates to 08_capture_inbox.jsonl IMMEDIATELY on discovery \u2014 do not batch to end of step or AIP.\nDo not promote candidates into Wiki / Knowledge Hub without HUMAN review.\n",
+    "stderr": ""
+  },
+  {
+    "step": "STEP-04",
+    "command": [
+      "python3",
+      ".ai-work/tooling/run_aip.py",
+      "step",
+      ".ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+      "--task-id",
+      "TASK-20261004-exec-022",
+      "--step",
+      "STEP-04"
+    ],
+    "exit_code": 0,
+    "output": "lint target: /home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md\n  OK \u2014 no findings\nsummary: errors=0 warnings=0 info=0\npointer set: AIP-EXEC-022 / STEP-04 (active)\n  -> /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/.current_step.json\nactive step context written: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nlint-gate: checking AIP-EXEC-022-implement-durable-agent-binding.md (CR-037 Option A) ...\n\nREADY:\n  workspace: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022\n  step:      STEP-04\n  active step context: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nNext: open 00c_active_step_context.md and work the step.\nWiki candidate check: append candidates to 08_capture_inbox.jsonl IMMEDIATELY on discovery \u2014 do not batch to end of step or AIP.\nDo not promote candidates into Wiki / Knowledge Hub without HUMAN review.\n",
+    "stderr": ""
+  },
+  {
+    "step": "STEP-05",
+    "command": [
+      "python3",
+      ".ai-work/tooling/run_aip.py",
+      "step",
+      ".ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+      "--task-id",
+      "TASK-20261004-exec-022",
+      "--step",
+      "STEP-05"
+    ],
+    "exit_code": 0,
+    "output": "lint target: /home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md\n  OK \u2014 no findings\nsummary: errors=0 warnings=0 info=0\npointer set: AIP-EXEC-022 / STEP-05 (active)\n  -> /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/.current_step.json\nactive step context written: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nlint-gate: checking AIP-EXEC-022-implement-durable-agent-binding.md (CR-037 Option A) ...\n\nREADY:\n  workspace: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022\n  step:      STEP-05\n  active step context: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nNext: open 00c_active_step_context.md and work the step.\nWiki candidate check: append candidates to 08_capture_inbox.jsonl IMMEDIATELY on discovery \u2014 do not batch to end of step or AIP.\nDo not promote candidates into Wiki / Knowledge Hub without HUMAN review.\n",
+    "stderr": ""
+  },
+  {
+    "step": "STEP-06",
+    "command": [
+      "python3",
+      ".ai-work/tooling/run_aip.py",
+      "step",
+      ".ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+      "--task-id",
+      "TASK-20261004-exec-022",
+      "--step",
+      "STEP-06"
+    ],
+    "exit_code": 0,
+    "output": "lint target: /home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md\n  OK \u2014 no findings\nsummary: errors=0 warnings=0 info=0\npointer set: AIP-EXEC-022 / STEP-06 (active)\n  -> /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/.current_step.json\nactive step context written: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nlint-gate: checking AIP-EXEC-022-implement-durable-agent-binding.md (CR-037 Option A) ...\n\nREADY:\n  workspace: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022\n  step:      STEP-06\n  active step context: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nNext: open 00c_active_step_context.md and work the step.\nWiki candidate check: append candidates to 08_capture_inbox.jsonl IMMEDIATELY on discovery \u2014 do not batch to end of step or AIP.\nDo not promote candidates into Wiki / Knowledge Hub without HUMAN review.\n",
+    "stderr": ""
+  },
+  {
+    "step": "STEP-07",
+    "command": [
+      "python3",
+      ".ai-work/tooling/run_aip.py",
+      "step",
+      ".ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+      "--task-id",
+      "TASK-20261004-exec-022",
+      "--step",
+      "STEP-07"
+    ],
+    "exit_code": 0,
+    "output": "lint target: /home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md\n  OK \u2014 no findings\nsummary: errors=0 warnings=0 info=0\npointer set: AIP-EXEC-022 / STEP-07 (active)\n  -> /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/.current_step.json\nactive step context written: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nlint-gate: checking AIP-EXEC-022-implement-durable-agent-binding.md (CR-037 Option A) ...\n\nREADY:\n  workspace: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022\n  step:      STEP-07\n  active step context: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md\nNext: open 00c_active_step_context.md and work the step.\nWiki candidate check: append candidates to 08_capture_inbox.jsonl IMMEDIATELY on discovery \u2014 do not batch to end of step or AIP.\nDo not promote candidates into Wiki / Knowledge Hub without HUMAN review.\n",
+    "stderr": ""
+  },
+  {
+    "step": "STEP-08 preview",
+    "command": [
+      "python3",
+      ".ai-work/tooling/build_active_step_context.py",
+      "--workspace",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-022",
+      "--aip",
+      ".ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+      "--step-id",
+      "STEP-08",
+      "--output",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-08.md"
+    ],
+    "exit_code": 0,
+    "output": "active step context written: .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-08.md\n",
+    "stderr": ""
+  }
+]

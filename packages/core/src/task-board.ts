@@ -9,7 +9,7 @@ import type { TeamState } from './projection.ts'
 import { resolveActiveMember } from './roster.ts'
 import { assertTaskGraphCandidate, TeamTaskGraphError } from './task-graph.ts'
 import type { TeamTaskGraphViolation } from './task-graph.ts'
-import { TeamId, TeamTaskId } from './types.ts'
+import { TeamId, TeamTaskId, type TeamMissionId } from './types.ts'
 import type {
   CreateTeamTaskRequest,
   TeamTaskSnapshot,
@@ -63,6 +63,9 @@ export class TeamTaskBoard {
   constructor(
     private readonly journal: TeamJournal,
     private readonly maxTasks: number,
+    private readonly assertExecution: (caller: Agent, taskId: TeamTaskId) => void,
+    private readonly validateClaim: (caller: Agent, membership: TeamMembership, taskId: TeamTaskId) => void,
+    private readonly bindClaimedTask: (caller: Agent, membership: TeamMembership, taskId: TeamTaskId) => void,
   ) {}
 
   /**
@@ -79,12 +82,15 @@ export class TeamTaskBoard {
       if (active >= this.maxTasks) {
         throw new TeamError(`Team task limit ${this.maxTasks} reached`, 'TEAM_TASK_LIMIT')
       }
+      const mission = state.missions.find(value => value.id === request.missionId)
+      if (!mission || mission.status === 'closed' || mission.status === 'revoked') throw new TeamError('new tasks require an explicit live canonical missionId', 'TEAM_TASK_MISSION_REQUIRED')
       const id = TeamTaskId(`task-${state.nextTaskNumber}`)
       if (state.tasks.some(task => task.id === id)) {
         throw new TeamError('Team task id space exhausted', 'TEAM_TASK_LIMIT')
       }
       const task: TeamTaskSnapshot = {
         id,
+        missionId: mission.id,
         revision: 1,
         subject: requiredText(request.subject, 'subject', 200),
         description: requiredText(request.description, 'description', 16_384),
@@ -93,7 +99,7 @@ export class TeamTaskBoard {
         writeScopes: this.writeScopes(request.writeScopes ?? []),
       }
       this.assertTaskGraph(state, task)
-      await this.journal.appendAndFlush(root, 'team/task', { version: 2, teamId: TeamId(root.id), task })
+      await this.journal.appendAndFlush(root, 'team/task', { version: 3, teamId: TeamId(root.id), task })
       return this.taskView(root, state, task)
     })
   }
@@ -122,7 +128,12 @@ export class TeamTaskBoard {
     return this.views(root, this.journal.state(root))
   }
 
-  /** Build detached views for a prepared state that has not yet been appended. */
+  /**
+   * Build detached views for a prepared state that has not yet been appended.
+   * @param root Authoritative Team projection root.
+   * @param state Current canonical Team state.
+   * @returns Detached task views derived from the supplied canonical state.
+   */
   views(root: Agent, state: TeamState): TeamTaskView[] {
     return state.tasks
       .filter(task => task.status !== 'deleted')
@@ -133,8 +144,13 @@ export class TeamTaskBoard {
    * Fully validate and prepare missing tasks for one approved-plan import.
    * This performs no append, allowing its caller to atomically batch tasks with
    * the plan-approval event after all preflights have passed.
+   * @param state Current canonical Team state.
+   * @param subjects Approved task subjects to import.
+   * @param missionId Canonical mission associated with imported tasks.
+   * @returns New task snapshots to append with the approved plan event.
    */
-  prepareApprovedPlanImport(state: TeamState, subjects: readonly string[]): TeamTaskSnapshot[] {
+
+  prepareApprovedPlanImport(state: TeamState, subjects: readonly string[], missionId: TeamMissionId): TeamTaskSnapshot[] {
     const knownSubjects = new Set(state.tasks
       .filter(task => task.status !== 'deleted')
       .map(task => normalizedTaskSubject(task.subject)))
@@ -164,6 +180,7 @@ export class TeamTaskBoard {
       ids.add(id)
       prepared.push({
         id,
+        missionId,
         revision: 1,
         subject,
         description: 'Imported from approved plan.',
@@ -194,6 +211,10 @@ export class TeamTaskBoard {
     const root = membership.root
     return this.journal.transact(root.id, async () => {
       const state = this.journal.state(root)
+      if (!['edit', 'set_dependencies', 'delete'].includes(request.action)) {
+        if (request.action === 'claim') this.validateClaim(caller, membership, request.taskId)
+        else this.assertExecution(caller, request.taskId)
+      }
       const current = state.tasks.find(task => task.id === request.taskId)
       if (current === undefined) throw new TeamError(`team task "${request.taskId}" not found`, 'TEAM_TASK_NOT_FOUND')
       if (current.revision !== request.expectedRevision) {
@@ -288,8 +309,13 @@ export class TeamTaskBoard {
         ...next,
         revision: current.revision + 1,
       }
+      if (isStructuralTaskMutation(current, task) && current.missionId !== undefined) {
+        const mission = state.missions.find(value => value.id === current.missionId)
+        if (!mission || mission.status === 'closed' || mission.status === 'revoked') throw new TeamError('closed mission structural mutation denied', 'TEAM_MISSION_UNAUTHORIZED')
+      }
       this.assertTaskGraph(state, task)
-      await this.journal.appendAndFlush(root, 'team/task', { version: 2, teamId: TeamId(root.id), task })
+      await this.journal.appendAndFlush(root, 'team/task', { version: 3, teamId: TeamId(root.id), task })
+      if (request.action === 'claim') this.bindClaimedTask(caller, membership, task.id)
       return this.taskView(root, state, task)
     })
   }
@@ -363,6 +389,7 @@ export class TeamTaskBoard {
     }
     return {
       id: task.id,
+      ...task.missionId === undefined ? {} : { missionId: task.missionId },
       revision: task.revision,
       subject: task.subject,
       description: task.description,

@@ -66,9 +66,9 @@ roster 显示每个成员的职责（`lead` 或 `teammate`）与当前状态：`
 
 ### teammate 之间的消息
 
-任何成员都可以向任何其他成员或 Lead 发送消息。live 成员会立即收到；离线成员的消息会排队，并在其恢复后到达。消息不会丢失，也不会重复投递。
+任何成员都可以向任何其他成员或 Lead 发送消息。获得精确授权的 live 成员会立即收到；其他 target 保持排队，直到受信任的 host 恢复并授予精确授权。持久消息身份可防止重复投递。
 
-每条消息都使用 Steer：running target 在最近的步骤边界收到消息，idle target 启动一个轮次，inactive teammate 则冷恢复。发送方始终能看到结果——target inbox 已接受，或在投递暂时不可用时保留为 queued。排队的消息已经安全存储，因此绝不能重发。
+每条获准投递的消息都使用 Steer：获得精确授权的 running target 在最近的步骤边界收到消息，获得精确授权的 idle target 启动一个轮次。inactive teammate 保持排队，直到受信任的 host 恢复并授予精确授权。发送方始终能看到结果——target inbox 已接受，或在投递暂时不可用时保留为 queued。排队的消息已经安全存储，因此绝不能重发。
 
 ### 共享任务板
 
@@ -131,13 +131,13 @@ Lead 可以停止 teammate 的当前轮次，而不会删除其排队的消息�
 
 ### Team 身份与 roster
 
-每个普通运行时 root 都是一个隐式 Team 的 Lead，其 `TeamId` 等于 `SessionId`；不存在创建事件，持久状态从第一条成员、消息或任务记录开始。`spawnTeammate()` 先追加并 flush 一条 `provisioning` 成员记录，再要求配置的提供方创建预留 child；提供方失败会追加一条持久的 `failed` 成员。fresh child 不携带 Lead 历史；fork child 只捕获一次 Lead 的已完成 turn 前缀。恢复把未终结的 provisioning 记录对照 child 独立持久化的会话进行对账：直接 parent 与 continuable descriptor 匹配、且初始用户消息已记录则产生 `active`，其他任何情况都产生 `failed`。如果恢复在同进程竞争中先完成，creator 会接受终态，或报告 `TEAM_PROVISIONING_CONFLICT` 并 drain 该 child。名字由第一条 provisioning 记录保留，且永不复用。
+每个普通运行时 root 都是一个隐式 Team 的 Lead，其 `TeamId` 等于 `SessionId`；不存在创建事件，持久状态从第一条成员、消息或任务记录开始。`spawnTeammate()` 先追加并 flush 一条 `provisioning` 成员记录，再要求配置的提供方创建预留 child；提供方失败会追加一条持久的 `failed` 成员。fresh child 不携带 Lead 历史；fork child 只捕获一次 Lead 的已完成 turn 前缀。恢复把未终结的 provisioning 记录对照 child 独立持久化的会话进行对账：直接 parent 与预留 continuable descriptor 匹配、且初始准入记录已持久化则产生仍受门禁约束的 `active`，其他任何情况都产生 `failed`。如果恢复在同进程竞争中先完成，creator 会接受终态，或报告 `TEAM_PROVISIONING_CONFLICT` 并 drain 该 child。名字由第一条 provisioning 记录保留，且永不复用。
 
 ### 持久 mailbox
 
-`sendMessage()` 校验 peer 成员关系，追加 `team/message/queued` 并在尝试投递前 flush。目标消息以 `Team message <id> from <name>:` 开头，并在 `TeamMessageSource` 中保留同一 id 与发送者。只有目标会话在 pending inbox 或已记录历史中持久持有消息身份后，才会以 `team/message/delivered` 确认投递。即时准入按目标与持久队列顺序串行化；恢复按同一顺序重新投递 queued-minus-delivered 记录。重试前会同时折叠 live 与持久目标 inbox／历史状态，因此 inbox 已接受但模型尚未 claim 时发生崩溃不会复制消息。该保证是进程内重试加 target 会话去重，而不是跨进程 exactly-once 投递。
+`sendMessage()` 校验 peer 成员关系，追加 `team/message/queued` 并在尝试投递前 flush。目标消息以 `Team message <id> from <name>:` 开头，并在 `TeamMessageSource` 中保留同一 id 与发送者。只有目标会话在 pending inbox 或已记录历史中持久持有消息身份后，才会以 `team/message/delivered` 确认投递。即时准入按目标与持久队列顺序串行化；恢复按同一顺序重新投递 queued-minus-delivered 记录。重试前会折叠精确 live target 的 inbox／历史状态；不存在的 target 保持排队，直到显式 host 恢复，因此 inbox 已接受但模型尚未 claim 时发生崩溃不会复制消息。该保证是进程内重试加 target 会话去重，而不是跨进程 exactly-once 投递。
 
-投递给 Lead 时直接调用 `Agent.steer()`。投递给 teammate 时使用 continuation owner 的 host-only Steer 路径；该路径会保留 Team 发送者 source，同时授权 Lead-to-child edge 并冷恢复 inactive target。sibling 消息绝不会通过公开的相邻 Agent 消息操作伪装成 Lead。
+live 投递先重新校验精确 target 租约，在需要时激活其预留 handle 一次，并在该等待完成后再次校验，然后携带原始 Team 发送者 source 同步调用精确 target 的 `Agent.steer()`。inactive target 保持排队，直到受信任的 host 显式恢复并绑定授权。投递确认要求 target flush 成功；false 或失败的 flush 会让同一持久消息身份继续排队以便重试。
 
 ### 共享任务板
 
@@ -176,6 +176,12 @@ dispose 会关闭准入、中止并等待已获准的创建与 mailbox dispatch 
 ### 浏览器 Remote
 
 `TeamService` 除了 roster、mailbox、task 与 lifecycle operation，还拥有生成的 `agentTeams/view`、`agentTeams/createTask` 与 `agentTeams/updateTask` Remote method。`./remote` 导出由 Web UI 挂载的 Client contribution，`./client` 则重新导出可在浏览器 compilation face 中安全使用的 request、view 与 task mutation result type。Typert 在外层 `RemoteResult` 中保留 transport failure；create 与 update rejection 则作为 transport 成功响应中的显式 domain result，其中过期的 update revision 会区分为 task conflict。
+
+## 精确 HUMAN 授权
+
+新 mission 只写入草稿。经过验证的操作员控制只批准、关闭或撤销显示的精确 revision；Lead/model 身份及直接 Remote/Gateway 调用不能提供 HUMAN 来源证明。新 mission、task 和 plan-approved 事件采用 payload v3；相邻 v2 历史可读但不能授予执行权。可执行任务只位于规范 Teamboard，并保留不可变 missionId；mission 保存 taskIds，旧嵌入快照仅为历史。结构变化撤销对应 mission 的授权。
+
+可信 Host 用显式 mission id/revision 将不透明 lease 绑定到精确 Agent generation。每个 effect、child wake 和真实模型请求重新检查规范授权；task scope 必须已被同一 Agent claim 且处于 in_progress。未完成或失败的 flush 不授予权力。非 simple 模式还要求当前 Team plan 的 HUMAN 授权。成员批准和 Enable 只允许隔离输入持久化；child 只有获得自己的 lease 并通过独立激活检查后才能运行。消息可以排队，但 delivery/wake 另外检查 lease。冷恢复和 plan import 要求显式目标 mission，不能从列表推断。
 
 ## 模型体验
 

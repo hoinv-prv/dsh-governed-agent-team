@@ -1,0 +1,10 @@
+output_id: "OUT-022-00-01"
+result_type: "output"
+working_aip_ref: "AIP-EXEC-022"
+step_id: "STEP-00"
+output_locator: "approved-decisions.md"
+created_at: "2026-10-04T10:40:00"
+review_status: "approved_for_next_step"
+verification_level: "human_approved"
+source_refs: ["docs/gat-design/DETAIL_DESIGN.md", "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md"]
+notes: "HUMAN approved P01\u201308 and WK/direct-continuable target. Exact replies recorded; no external source edit or live activation grant."

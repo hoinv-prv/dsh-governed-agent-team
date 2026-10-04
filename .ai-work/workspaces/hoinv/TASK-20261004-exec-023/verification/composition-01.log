@@ -1,0 +1,50 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ |thread-safe| packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts (3 tests | 1 failed) 1066ms
+     × keeps actual roster bootstrap quarantined, then refreshes the exact leased child before its only request 345ms
+ ❯ |thread-safe| packages/experimental/gat-core/tests/authority.spec.ts (7 tests | 1 failed) 1240ms
+     × canonical task creation and structural edits invalidate the exact mission; runtime claims preserve it 203ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/authority.spec.ts > exact canonical execution authority > canonical task creation and structural edits invalidate the exact mission; runtime claims preserve it
+TypeError: this.bindTask is not a function
+ ❯ packages/experimental/gat-core/src/task-board.ts:204:46
+    202|       const state = this.journal.state(root)
+    203|       if (!['edit', 'set_dependencies', 'delete'].includes(request.act…
+    204|         if (request.action === 'claim') this.bindTask(caller, membersh…
+       |                                              ^
+    205|         this.assertExecution(caller, request.taskId)
+    206|       }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts > qualified prerequisite composition > keeps actual roster bootstrap quarantined, then refreshes the exact leased child before its only request
+AssertionError: expected undefined to be false // Object.is equality
+
+- Expected:
+false
+
++ Received:
+undefined
+
+ ❯ packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts:77:30
+     75|     await expect(h.ctx.agentTeams.activateMember(h.child, signal)).rej…
+     76|     const queued = await h.ctx.agentTeams.sendMessage(h.lead, { target…
+     77|     expect(queued.delivered).toBe(false)
+       |                              ^
+     78|     expect(h.adapter.requests).toEqual([])
+     79|     const { mission, task } = await authorize(h)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  2 failed | 8 passed (10)
+   Start at  11:15:00
+   Duration  2.89s (transform 2.41s, setup 377ms, import 2.77s, tests 2.31s, environment 0ms)
+

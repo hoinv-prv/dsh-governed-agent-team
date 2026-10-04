@@ -1,0 +1,33 @@
+[WARN] GAT source tree contains local modifications; source hashes are advisory.
+{
+  "status": "ready",
+  "gatVersion": "0.1.0",
+  "manifestId": "gat-0.1.0-dsh-0.1.5-rc.2-c291e796",
+  "target": "/tmp/gat-exec022-install",
+  "targetCommit": "c291e7961a515f6d7af9304e7fd1d257929aef26",
+  "compatibility": "SUPPORTED",
+  "sourceDriftFiles": 0,
+  "dirtyTargetPathsPreserved": [],
+  "hostFiles": 9,
+  "payloadFiles": 85,
+  "allowedPaths": [
+    "packages/experimental/gat-core/",
+    "packages/experimental/gat-tools/",
+    "packages/experimental/gat-web/",
+    "packages/experimental/gat-profile/",
+    "packages/experimental/gat-web-profile/",
+    "apps/web/tests/gat-agent-team-panel.e2e.ts",
+    "apps/web/tests/gat-agent-team-panel.overlay.yml",
+    "apps/web/tests/snapshots/gat-agent-team-panel/task.expected.md",
+    "apps/web/tsconfig.json",
+    "packages/core/session/src/known-event-types.ts",
+    "packages/extensions/tool-cordis/src/api-catalog.ts",
+    "pnpm-lock.yaml",
+    "scripts/gen-tool-catalog.ts",
+    "tsdown.config.ts",
+    "tsconfig.base.json",
+    "tsconfig.host.json",
+    "tsconfig.client.json",
+    ".gat/installation.json"
+  ]
+}

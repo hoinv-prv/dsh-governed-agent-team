@@ -3,10 +3,12 @@
 import type { Agent } from '@deepseek-ai/dsh-agent'
 import type { Context } from '@deepseek-ai/cordis'
 import type { SessionEventMap, SessionId } from '@deepseek-ai/dsh-session'
-import type { TeamEventType, TeamState } from './projection.ts'
+import { TeamError } from './error.ts'
+import type { TeamState } from './projection.ts'
 
-type AppendTeamEvent = <T extends TeamEventType>(type: T, data: SessionEventMap[T]) => void
+type AppendTeamEvent = <T extends MutableTeamEventType>(type: T, data: SessionEventMap[T]) => void
 type MutableTeamEventType =
+  | 'team/member-add-approved'
   | 'team/member'
   | 'team/task'
   | 'team/mission'
@@ -19,17 +21,25 @@ type PendingTeamEvent = {
   [T in MutableTeamEventType]: { readonly type: T; readonly data: SessionEventMap[T] }
 }[MutableTeamEventType]
 
+const AUTHORITY_EVENT_TYPES: ReadonlySet<MutableTeamEventType> = new Set([
+  'team/member-add-approved', 'team/member', 'team/task', 'team/mission', 'team/plan-approved',
+])
+
 /** Owns per-Lead transaction order and committed Team event publication. */
 export class TeamJournal {
+  private readonly pendingPublication = new Set<SessionId>()
+  private readonly failedPublication = new Set<SessionId>()
   private readonly tails = new Map<SessionId, Promise<void>>()
 
   /**
    * @param ctx - Team service context with the injected Session service.
    * @param onCommit - synchronous notification after the Team event flush succeeds.
+   * @param assertAdmission - synchronous runtime withdrawal cutoff for bindings and new publication.
    */
   constructor(
     private readonly ctx: Context,
     private readonly onCommit: (root: Agent) => void,
+    private readonly assertAdmission: () => void,
   ) {}
 
   /**
@@ -42,6 +52,18 @@ export class TeamJournal {
     if (projection === undefined) throw new Error('Agent Teams projection is not registered')
     if (projection.failure !== undefined) throw new Error(projection.failure)
     return projection
+  }
+
+  /**
+   * Reject memory-only canonical authorization while publication is pending or failed.
+   * @param root Authoritative Team projection root.
+   */
+
+  assertCommitted(root: Agent): void {
+    this.assertAdmission()
+    if (this.pendingPublication.has(root.id) || this.failedPublication.has(root.id)) {
+      throw new TeamError('canonical Team authority is pending or failed durability publication', 'TEAM_AUTHORITY_NOT_DURABLE')
+    }
   }
 
   /**
@@ -81,14 +103,27 @@ export class TeamJournal {
    * flush and publish only after that flush succeeds. Callers must make all
    * validation decisions before this method so an invalid batch never appends
    * any prefix.
+   * @param root Authoritative Team projection root.
+   * @param events Events to append before the journal flush.
+   * @returns A promise that resolves after the event batch is durably flushed.
    */
   async appendManyAndFlush(root: Agent, events: readonly PendingTeamEvent[]): Promise<void> {
+    this.assertAdmission()
     // Team events never enter the conversation surface. This narrower local
     // capability removes Session.append's conditional surface argument while
     // preserving the event-key/payload correlation.
     const append = root.session.append.bind(root.session) as unknown as AppendTeamEvent
-    for (const event of events) append(event.type, event.data)
-    await this.ctx.sessions.flush(root.session)
-    this.onCommit(root)
+    const publishesAuthority = events.some(event => AUTHORITY_EVENT_TYPES.has(event.type))
+    if (publishesAuthority) this.pendingPublication.add(root.id)
+    try {
+      for (const event of events) append(event.type, event.data)
+      if (!await this.ctx.sessions.flush(root.session)) throw new TeamError('canonical Team authority flush did not succeed', 'TEAM_AUTHORITY_NOT_DURABLE')
+      this.onCommit(root)
+    } catch (error) {
+      if (publishesAuthority) this.failedPublication.add(root.id)
+      throw error
+    } finally {
+      if (publishesAuthority) this.pendingPublication.delete(root.id)
+    }
   }
 }

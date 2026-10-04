@@ -50,10 +50,10 @@ Precondition: GAT host profile loaded, exact live root Lead, one initializer reg
 
 1. Web invokes `agentTeams/enable` for that Session.
 2. Existing retained teammate rows return `alreadyEnabled: true` and source `existing`.
-3. Otherwise the initializer deduplicates concurrent Enable calls for the Lead.
+3. Otherwise core deduplicates concurrent Enable calls for the exact Lead object.
 4. Read literal `<session.cwd>/team_members.yaml`; malformed/missing/oversized/symlink configuration yields built-in defaults and safe diagnostics.
-5. Resolve all configured provider/model routes before the first spawn.
-6. Provision members sequentially; each creates durable provisioning and terminal evidence.
+5. The default initializer returns normalized specs after route preflight; core validates all names, content blocks, routes and attachments before the first spawn.
+6. Core provisions empty-attachment members sequentially with v3 durable evidence; required attachments fail closed until qualified reserved-host composition exists.
 7. Install scoped Team policy/tools and refresh projected views.
 
 A later provisioning failure can leave earlier members intact. Enable is not an all-or-nothing roster transaction. Current V1 has no destructive Disable or declaration reload of an already retained roster.
@@ -117,3 +117,15 @@ The contracted task-runner stream is separate: one task remains busy through han
 [Source Code Map](SOURCE_CODE_MAP.md) lists the fixtures to assess each current/standalone/external feature. Target features list missing production implementations and reference sources explicitly. Documentation checks validate links, design-ID coverage, symbols and baseline hashes; they do not substitute for behavioral suites.
 
 When source changes, update the affected DD contract and mapping, then reconcile BD/AD only if behavior/ownership changes. Preserve collected snapshots and historical acceptance records. Promotion to Truth or wiki authority requires the applicable separate review gate.
+
+## 10. Approved binding implementation delta — AIP-EXEC-022
+
+HUMAN approval dated 2026-10-04 selects proposal P-01–P-08 and WK/direct-continuable composition. Detail Design §5 defines intended contracts before implementation. BD-01 moves provisioning ownership from the initializer into core; BD-02/03 add v3 bounded records with strict v2 replay; BD-12/13 add the required WK adapter and generic binding lifecycle. BD-09/14 retain exact host authority as a production dependency. BD-10 exposes only safe binding summaries and qualifies new composition/build/install mappings. Unsupported or corrupt required capabilities never fall back to unbound execution. These planned changes remain distinct from production qualification and from isolated-only closing fixtures.
+
+## 11. Qualified foundation versus production
+
+AIP-EXEC-022 adds normalized initialization, v3 attachment replay, safe binding summaries, generic lifecycle ports and the separate WK adapter. BD-13 has tested foundation code; production admission remains Target. BD-14 exact authority remains Target. Core and tool guards exclude unavailable bindings, including queued legacy recovery. WK/global or fork declarations reject; explicit Durable YAML never falls back. See Detail Design §6 and the source map for current implementation and workspace evidence.
+
+## 12. Approved prerequisite behavior — AIP-EXEC-023
+
+HUMAN authorized isolated host prerequisite implementation on 2026-10-04. Intended ownership and behavior are defined in [Detail Design §7](DETAIL_DESIGN.md#7-approved-prerequisite-implementation-delta--aip-exec-023): DSH owns reserved/quarantined child lifecycle, pre-render request refresh and immutable nested dispatch capabilities; GAT owns host-attested exact mission/task leases and effect/model admission. WK/direct-continuable target remains fixed. Deployment stays separate and prerequisite eligibility requires actual conformance evidence.

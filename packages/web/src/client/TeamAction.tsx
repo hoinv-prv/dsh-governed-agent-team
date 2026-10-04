@@ -46,8 +46,9 @@ export interface TeamActionInjected {
     missionId: TeamMissionId
     expectedRevision: number
   }) => Promise<TeamMissionActionResult>
-  importApprovedPlan: (sessionId: SessionId) => Promise<TeamActionResult<ImportApprovedTeamPlanResult>>
+  importApprovedPlan: (sessionId: SessionId, input: { missionId: TeamMissionId }) => Promise<TeamActionResult<ImportApprovedTeamPlanResult>>
   createTask: (sessionId: SessionId, input: {
+    missionId: TeamMissionId
     subject: string
     description: string
     blockedBy: TeamTaskId[]
@@ -95,6 +96,8 @@ function missionStatusKey(status: TeamMission['status']): TeamKey {
     case 'approved': return 'missionStatus.approved'
     case 'active': return 'missionStatus.active'
     case 'completed': return 'missionStatus.completed'
+    case 'closed': return 'missionStatus.closed'
+    case 'revoked': return 'missionStatus.revoked'
   }
 }
 

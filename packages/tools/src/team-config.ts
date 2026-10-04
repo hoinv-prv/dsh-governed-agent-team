@@ -83,7 +83,12 @@ function normalizeDocument(value: unknown, maxMembers: number): TeamMemberDefini
   return members
 }
 
-/** Build the four-member starter Team on the Lead's current LLM provider. */
+/**
+ * Build the four-member starter Team on the Lead's current LLM provider.
+ * @param provider Provider identifier used for each starter member.
+ * @returns Starter member definitions using the selected provider.
+ */
+
 export function builtInTeamMembers(provider: string): TeamMemberDefinition[] {
   return [
     {
@@ -121,7 +126,15 @@ export function builtInTeamMembers(provider: string): TeamMemberDefinition[] {
   ]
 }
 
-/** Load a bounded literal workspace file, falling back to the built-in starter Team on any config error. */
+/**
+ * Load a bounded literal workspace file, falling back to the built-in starter Team on any config error.
+ * @param cwd Session workspace directory, when one exists.
+ * @param fallbackProvider Provider used when workspace configuration is unavailable.
+ * @param maxMembers Maximum accepted roster size.
+ * @param maxBytes Maximum accepted configuration size in UTF-8 bytes.
+ * @returns The validated workspace roster or built-in fallback with diagnostics.
+ */
+
 export async function loadTeamMembers(
   cwd: string | undefined,
   fallbackProvider: string,

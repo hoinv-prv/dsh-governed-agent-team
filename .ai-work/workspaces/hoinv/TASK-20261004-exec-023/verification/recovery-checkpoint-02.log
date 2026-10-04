@@ -1,0 +1,103 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+stdout | packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > aborts and awaits an admitted explicitly recovered mailbox dispatch during disposal
+recovered idle 2
+
+stdout | packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > aborts and awaits an admitted explicitly recovered mailbox dispatch during disposal
+send result {
+  messageId: 'team-message-70b3dce3-9cf7-499f-afd6-f897554a1bdb',
+  status: 'queued'
+} target undefined requests 2
+
+ ❯ |thread-safe| packages/experimental/gat-core/tests/team.spec.ts (66 tests | 1 failed | 65 skipped) 1217ms
+     ↓ rejects missing and failed authoritative Team projections
+     ↓ rejects deployment limits that are not positive safe integers
+     ↓ supports direct-constructor defaults and recovers roots that already exist
+     ↓ creates fresh and fork teammates with immutable names and bounded roster size
+     ↓ flushes the accepted child prompt before committing the active roster edge
+     ↓ persists an initial prompt idempotently while the actual host gate remains closed
+     ↓ drains a materialized child when its initial durable prompt fails
+     ↓ records failed provisioning durably, reserves its name, and counts it against the limit
+     ↓ records non-Error provider failures and contains a reversed provisioning settlement race
+     ↓ cleans up a child when recovery settles its provisioning record first
+     ↓ keeps a durably persisted child gated until explicit authorization and preserves its route
+     ↓ validates names and permits only the Lead to create or interrupt teammates
+     ↓ forwards an exact teammate Agent route to continuable provisioning
+     ↓ validates teammate text fields and pre-provisioning cancellation
+     ↓ treats an ordinary fork as a new Root Team and filters inherited Team state
+     ↓ rejects stale Agent identities and non-Team subagent children
+     ↓ does not reinterpret an orphaned provider child or malformed parent stream as a Team root
+     ↓ fails loudly when the durable numeric task id space is exhausted
+     ↓ bounds non-deleted tasks while retaining deleted task ids as tombstones
+     ↓ enforces CAS, ownership, dependencies, transitions, and write-scope warnings
+     ↓ rejects malformed scopes and every invalid dependency relation
+     ↓ rejects incomplete mutations, invalid transitions, and deletion of a live blocker
+     ↓ supports Lead reassignment, completion, reopen, and deletion permissions
+     ↓ covers partial edits, Lead ownership, unassignment, and blocked reassignment
+     ↓ enables through the registered initializer and then returns the durable roster idempotently
+     ↓ creates independent draft missions and stores executable task references on the canonical Teamboard
+     ↓ rejects malformed initial mission task plans before appending
+     ↓ reports caller-bound durable work with exact semantic and file contracts
+     ↓ rejects an unknown work state before append without poisoning the projection
+     ↓ rejects provisioning teammate reports before append while the Lead remains eligible
+     ↓ requires the latest exit-plan call to have exactly one successful matching result
+     ↓ normalizes every plan parsing validation failure to plan-import-invalid
+     ↓ imports, de-duplicates, and approves the exact post-import plan revision in one flush
+     ↓ approves a no-op import at the current unapproved revision and leaves failures unmutated
+     ↓ fails closed for malformed source input, preflights, and non-Leads without a partial import
+     ↓ rejects a later incomplete or rejected plan call without importing the older plan
+     ↓ maps empty and overlong imported task subjects to typed import rejections without mutation
+     ↓ approves only a Lead exact non-empty current plan revision and appends no invalid event
+     ↓ exports Team views and task mutations from the owning service
+     ↓ preserves Team task rejections and propagates unexpected failures
+     ↓ steers a message addressed to the Lead and checkpoints its receipt
+     ↓ acknowledges steered messages persisted by a busy Lead before model claim
+     ↓ flushes a live pending receipt before acknowledgement without inserting a duplicate
+     ↓ acknowledges steered messages accepted by a busy target inbox
+     ↓ serializes concurrent Steer delivery admission for one target
+     ↓ delivers persisted mail before the later message that cold-resumes its target
+     ↓ deduplicates live target history and contains inspection and delivery failures
+     ↓ queues an inactive sibling until explicit host recovery, preserving sender attribution
+     ↓ enforces message byte and pending-count limits without encouraging retry after enqueue
+     ↓ interrupts only the current turn and retains an already accepted follow-up
+     ↓ waits for one change, supports cancellation, times out, and releases waiters on HMR disposal
+     ↓ disposes live teammate Activations and their waits when the Team service unloads
+     ↓ closes creation admission and drains an in-flight spawn before unload completes
+     ↓ drains an admitted plan approval before projection teardown and rejects late approval
+     ↓ drains an admitted work report before projection teardown and rejects late work
+     ↓ keeps the projection registered after mutation disposal times out until the mutation settles
+     ↓ retains an in-flight creation cleanup failure during disposal
+     ↓ recognizes wrapped and coded runtime cancellation during disposal settlement
+     ↓ disposes a quarantined child after its provisioning edge becomes failed
+     × aborts and awaits an admitted explicitly recovered mailbox dispatch during disposal 1216ms
+     ↓ awaits an admitted target receipt flush without publishing acknowledgement after withdrawal
+     ↓ bounds Team runtime disposal when a reserved physical cleanup never settles
+     ↓ bounds disposal while an admitted creation ignores cancellation
+     ↓ contains recovery callback failures and ignores work scheduled after disposal
+     ↓ reports contained teardown failures without retaining the Team service
+     ↓ reconciles mismatched persisted children and ignores a concurrently settled member
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > aborts and awaits an admitted explicitly recovered mailbox dispatch during disposal
+Error: Recovery disposal checkpoint timed out: target receipt flush entry
+ ❯ Timeout.<anonymous> packages/experimental/gat-core/tests/team.spec.ts:2222:43
+    2220|       try {
+    2221|         return await Promise.race([operation, new Promise<never>((_res…
+    2222|           timer = setTimeout(() => reject(new Error(`Recovery disposal…
+       |                                           ^
+    2223|         })])
+    2224|       } finally {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 65 skipped (66)
+   Start at  12:35:23
+   Duration  2.48s (transform 949ms, setup 137ms, import 1.04s, tests 1.22s, environment 0ms)
+

@@ -1,0 +1,95 @@
+{
+  "method": "TypeScript transpileModule ESNext with removeComments, emitted JavaScript parsed to ordered AST node kind plus identifier/literal text; formatting, comments and positions excluded",
+  "compilerVersion": "6.0.3",
+  "files": [
+    {
+      "file": "packages/api/gateway/src/index.ts",
+      "beforeSourceSha256": "8abbd1e7354e0ec006528b0e0ecf3521287f4876fa6d63b795cb13337d2e227e",
+      "afterSourceSha256": "465ec00cd70de3661670696627b834428958440910e79c2d2c9395f96e06438c",
+      "beforeNormalizedJsAstSha256": "c3deba8ef1453b28e79786b557f44cd826f08f169d113f64d5be393b3695bfbf",
+      "afterNormalizedJsAstSha256": "c3deba8ef1453b28e79786b557f44cd826f08f169d113f64d5be393b3695bfbf",
+      "exactNormalizedJavaScriptAstMatch": true
+    },
+    {
+      "file": "packages/api/gateway/tests/gateway.host.spec.ts",
+      "beforeSourceSha256": "a8ff0a5a29871759f40f6c00131b29bed55ef893ebdcc3f0fea336512e87f2a2",
+      "afterSourceSha256": "3b65eceb83fe485f32e172277ce047ebc3dce23dcbd8213659f7256207cec13d",
+      "beforeNormalizedJsAstSha256": "a7b3a7fabbc336588ef044f0c23060c90a7e23381a60b98cc8747435ce071b97",
+      "afterNormalizedJsAstSha256": "a7b3a7fabbc336588ef044f0c23060c90a7e23381a60b98cc8747435ce071b97",
+      "exactNormalizedJavaScriptAstMatch": true
+    },
+    {
+      "file": "packages/client/connection/src/rpc-host.ts",
+      "beforeSourceSha256": "e3cb5081c6019ac15763e327bb75bc94bccba2e84dee65aa2e67c51aa2f395c2",
+      "afterSourceSha256": "cd6e44981accc19089eb3350f50eebcd39992ab2530272c32d94bdff322b9d91",
+      "beforeNormalizedJsAstSha256": "66a41036e5727cdb2fe55c2a7f06a779edaa3d082f32b587959e78b2e737a79b",
+      "afterNormalizedJsAstSha256": "66a41036e5727cdb2fe55c2a7f06a779edaa3d082f32b587959e78b2e737a79b",
+      "exactNormalizedJavaScriptAstMatch": true
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "beforeSourceSha256": "516a26552a23c07becf9954a4c86bee2d94ceb5608c709b32f5e5de4ec5d4a0f",
+      "afterSourceSha256": "2cd97b437e28b9e17b6030429db6bbcfb23428d59950b21e725ec645ba245577",
+      "beforeNormalizedJsAstSha256": "83faa95aff4d411932a1915ae8cccd5f749ee724e8849e5373c7aa346de991dd",
+      "afterNormalizedJsAstSha256": "83faa95aff4d411932a1915ae8cccd5f749ee724e8849e5373c7aa346de991dd",
+      "exactNormalizedJavaScriptAstMatch": true
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "beforeSourceSha256": "241ce1688b469dc3949f1972f283b7b6f1252b63c89ceb408752d1f7e1c68c4d",
+      "afterSourceSha256": "d806b302834485514b756290c229d623a45dde8ee4610a03f4296a4adcc5f19e",
+      "beforeNormalizedJsAstSha256": "5ef085c01e1ba7dfe10af75bda4031f64707bce1a24253b06fc5125c2ca8aef8",
+      "afterNormalizedJsAstSha256": "5ef085c01e1ba7dfe10af75bda4031f64707bce1a24253b06fc5125c2ca8aef8",
+      "exactNormalizedJavaScriptAstMatch": true
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authorized-team-fixture.ts",
+      "beforeSourceSha256": "ea5456fef1e4de8dae1cdbea4cd4415d0796ad4dcb8e86c71de3355551a50a00",
+      "afterSourceSha256": "fa3283c946b0e9b1dc77dfbb37c3a99e3104ef1a9624489659684fba7357a9a9",
+      "beforeNormalizedJsAstSha256": "8c0b08fb9c93c234cc0b83430f3c5365c7a047624eaf371d449e2579cd97cbaf",
+      "afterNormalizedJsAstSha256": "8c0b08fb9c93c234cc0b83430f3c5365c7a047624eaf371d449e2579cd97cbaf",
+      "exactNormalizedJavaScriptAstMatch": true
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "beforeSourceSha256": "cfaef2cf3b91e3ac7cc693a6ea13d0dd72c8919e5bd1e6a6cdc551d048e6a7d1",
+      "afterSourceSha256": "f582e773344dbcf60048af2601b9e01231ad0cb05bf65ed4532d176918160b76",
+      "beforeNormalizedJsAstSha256": "ccd76f87c2ed20601bbdbe1d007c80af839b57a7b08ab359108e4c2145ac8c15",
+      "afterNormalizedJsAstSha256": "ccd76f87c2ed20601bbdbe1d007c80af839b57a7b08ab359108e4c2145ac8c15",
+      "exactNormalizedJavaScriptAstMatch": true
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "beforeSourceSha256": "ff397d063ca840ddb4654d588fbe789b340d6280dec3294e0791996323576277",
+      "afterSourceSha256": "6278825cdca961d9155065206a5d646e99a52e26dfddb95a64660b408b392eac",
+      "beforeNormalizedJsAstSha256": "59eb4f94a42aa9931b6ec9dad0d29500eb89b76bc80c1268e77cca68f6075c21",
+      "afterNormalizedJsAstSha256": "59eb4f94a42aa9931b6ec9dad0d29500eb89b76bc80c1268e77cca68f6075c21",
+      "exactNormalizedJavaScriptAstMatch": true
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/projection-events.spec.ts",
+      "beforeSourceSha256": "b72b24e623919e0144a3716b3871b1ead7dddde170c524414e698cf27ab5dce2",
+      "afterSourceSha256": "336aa4ebecdeab1a98747670f45502a1fb6321bb672a871e5c5d941e9cbe8210",
+      "beforeNormalizedJsAstSha256": "b5f7e5f8e59947f02a976a371542ba5ee6cb6b1f799f01453d205119d5ad0174",
+      "afterNormalizedJsAstSha256": "b5f7e5f8e59947f02a976a371542ba5ee6cb6b1f799f01453d205119d5ad0174",
+      "exactNormalizedJavaScriptAstMatch": true
+    },
+    {
+      "file": "packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts",
+      "beforeSourceSha256": "de2564b25262083e0812d047c135124c0b957a8143b020304b88399e94dcc9d2",
+      "afterSourceSha256": "cd99f2f2958d1964fa43bfc3c8c67f18f3c654ed0b65b6ac748e0c4d984e2850",
+      "beforeNormalizedJsAstSha256": "8dab89a18c21ffb5477e095e62cfd1d103a2566f81facf759a45ef65726d51e0",
+      "afterNormalizedJsAstSha256": "8dab89a18c21ffb5477e095e62cfd1d103a2566f81facf759a45ef65726d51e0",
+      "exactNormalizedJavaScriptAstMatch": true
+    },
+    {
+      "file": "packages/experimental/gat-tools/tests/tool-team.spec.ts",
+      "beforeSourceSha256": "6541e1dd5ba17f5b015ed77216c2626b13adbd3e7bbd0e8c04f539186cbb88fe",
+      "afterSourceSha256": "2ea65a30248306c38f6330eee9557019c20d37d2d82fa5173dba0c886640a634",
+      "beforeNormalizedJsAstSha256": "fd5399cdc83c7e73de731b3b9cc505bb0313e8c56f2896b5e0deda5acc870e1f",
+      "afterNormalizedJsAstSha256": "fd5399cdc83c7e73de731b3b9cc505bb0313e8c56f2896b5e0deda5acc870e1f",
+      "exactNormalizedJavaScriptAstMatch": true
+    }
+  ],
+  "allMatch": true
+}

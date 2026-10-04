@@ -1,0 +1,9 @@
+{
+  "apps/cli/lib/bin.js": "0ff7f1d72c4e0cbe14001709c81e20a04b70464118a7f78568952988e28f2ac5",
+  "packages/core/agent/lib/index.js": "8639f4a0a0fa1b6cb9e25a3097d751ffb05cbc6651bee4b0985504330b9f2d93",
+  "packages/core/agent-loop/lib/index.js": "0326a8f0520035249efe85872b335f44e6d4705c4cd694e178f4e1f1f225a788",
+  "packages/subagent/subagent/lib/index.js": "a9ff01f68cd45314e2e4bbbbc7d89e782d6be749daed895f26e41984fa834dc4",
+  "packages/core/tools/lib/index.js": "540cf4ad7c5dfb3ebd5b8177e0919a993599c013f9c17230d412bf83054e0720",
+  "packages/sdk/client/lib/index.js": "3e936345f36c1845ad07a66084a126cd0a9b511aa192501932874d7e09b9e7b8",
+  "packages/sdk/server/lib/index.js": "7b19ef78260b4a9287b9712074d9df63271a67bae752e5a26deb1fd17067340e"
+}

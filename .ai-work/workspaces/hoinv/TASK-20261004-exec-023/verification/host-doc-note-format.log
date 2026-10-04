@@ -1,0 +1,7 @@
+verify-agent-note-format: violations found:
+  format: implemented/architecture/2026-10-04-authenticated-control-admission.md — line 1 must be `# Agent Note: <title>`
+  format: implemented/architecture/2026-10-04-authenticated-control-admission.md — line 3 must match the implemented status grammar (/^Status: implemented$/)
+  format: implemented/architecture/2026-10-04-authenticated-control-admission.md — the first section must be `## Problem` (got "<none>")
+  format: implemented/architecture/2026-10-04-authenticated-control-admission.md — missing the required `## Decision` section
+  format: implemented/architecture/2026-10-04-authenticated-control-admission.md — missing the required `## Consequences` section
+  format: implemented/architecture/2026-10-04-authenticated-control-admission.md — missing `## Alternatives considered` (a pre-format Agent Note whose alternatives are not reconstructible carries the grandfather comment instead — see .agents/notes/README.md § The file format)

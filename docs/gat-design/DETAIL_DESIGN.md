@@ -16,13 +16,13 @@ Status: Formal source-aligned design draft. Parent: [Basic Design](BASIC_DESIGN.
 | Value | Current shape / constraint |
 |---|---|
 | Team identity | Branded root SessionId; exact live Agent registry identity resolves Lead/teammate membership |
-| Member snapshot | id, name, description, continuation provider, fresh/fork context, optional model, provisioning/active/failed phase, optional error |
+| Member snapshot | id, name, description, continuation provider, fresh/fork context, optional model, provisioning/active/failed phase, optional error and immutable required attachments |
 | Task snapshot | id, positive revision, subject, description, pending/in_progress/completed/deleted, optional ownerId, blockedBy, writeScopes |
 | Mission snapshot | id/revision/title/objective/status, embedded `plan.tasks`, optional approval; no current task `missionId` field |
 | Work snapshot | memberId/state/summary, optional reason/taskId, files; view adds updatedAt |
 | TeamView | enabled, planRevision/phase/optional approval, optional missions, work, members, tasks |
 | Message snapshot | message id, sender id/name, target id, ContentBlock content |
-| Team event payload | Current strict version 2 and matching teamId; unknown version fails projection |
+| Team event payload | Member writes v3, strict legacy v2 supplies empty attachments; other families remain strict v2. Matching teamId and known family version required |
 
 Core defaults are maxMembers 8, maxTasks 256, maxPendingMessagesPerMember 64, maxMessageBytes 65536 and disposalTimeoutMs 5000. Tools defaults are minExecutionMembers 2, maxExecutionMembers 4, simpleMode true and teamMembersMaxBytes 65536. The shipped host YAML patch also declares 2/4/true. Historical minimum-zero hotfix claims do not replace these inspected values.
 
@@ -38,7 +38,7 @@ Input: exact Lead Agent, AbortSignal and Session cwd. Read `join(cwd, 'team_memb
 
 Loader errors return bounded-source built-in fallback diagnostics with cwd redacted. Defaults use the Lead LLM provider and are sliced to maxExecutionMembers. Provider/model resolution then preflights every member with `childAgentOptions`; failure stops before any member spawn.
 
-`TeamService.enable` requires Lead role, returns existing retained teammates when any exist, otherwise calls the one registered initializer under lifecycle admission. The initializer deduplicates by Lead Session and provisions sequentially after preflight. Output is enabled/alreadyEnabled/source/diagnostics/members. It does not support live reload or transactional rollback of the entire roster.
+`TeamService.enable` requires Lead role, returns existing retained teammates when any exist, otherwise calls the one registered initializer under lifecycle admission. Core deduplicates by exact Lead object. The initializer returns normalized specs; core validates the entire roster before sequential legacy provisioning with empty attachments. Required attachments fail before any row until a qualified reserved-child host is connected. Output is enabled/alreadyEnabled/source/diagnostics/members. It does not support live reload or transactional rollback of the entire roster.
 
 Failure examples: TEAM_LEAD_REQUIRED, TEAM_INVALID_CONFIG (missing initializer), route resolution/aborted signal; invalid YAML itself selects defaults.
 
@@ -50,7 +50,7 @@ Failure examples: TEAM_LEAD_REQUIRED, TEAM_INVALID_CONFIG (missing initializer),
 
 Basic feature: BD-02. Status: Current. Architecture decisions: AD-01, AD-04.
 
-`TeamRoster.spawn` admits lifecycle work; `spawnAdmitted` resolves exact Lead membership, validates name/description/provider and allocates child UUID. Under the per-root journal transaction, reject previously used names or durable member cap, then append/flush version-2 provisioning snapshot.
+`TeamRoster.spawn` admits lifecycle work; `spawnAdmitted` resolves exact Lead membership, validates name/description/provider and allocates child UUID. Under the per-root journal transaction, reject previously used names or durable member cap, then append/flush version-3 provisioning snapshot with empty attachments on the legacy path.
 
 Call DSH `startContinuable` using reserved childId, continuation provider, prompt, root parent and AgentOptions. `checkpointInitialPrompt` flushes the child and verifies its accepted message in the child-owned suffix outside inherited fork events. Commit active only after that evidence. Errors settle failed state and stop child; conflicting terminal reconciliation raises TEAM_PROVISIONING_CONFLICT and may aggregate cleanup errors.
 
@@ -249,7 +249,7 @@ The following IDs retain traceability to requested designs, but are not part of 
 
 Basic feature: BD-13. Status: Target. Source design: [Member binding freeze](../GAT_MEMBER_BINDING_CONTRACT_FREEZE.md).
 
-Target prepare-all validates normalized specs/routes/binder protocol/JSON value/digest bounds, then provisions/materializes without model admission, binds contributions, persists quarantined prompt, commits active and guarded activation. Required-only recovery rebinds persisted records before work; reverse cleanup preserves external data. Current source instead has no attachment field/binder registry, writes event v2 and uses startContinuable. No production file/symbol is mapped for this target.
+Target prepare-all validates normalized specs/routes/binder protocol/JSON value/digest bounds, then provisions/materializes without model admission, binds contributions, persists quarantined prompt, commits active and guarded activation. Required-only recovery rebinds persisted records before work; reverse cleanup preserves external data. The AIP-EXEC-022 foundation now provides bounded attachment records, member v3/strict v2 replay, a pinned registry and standalone lifecycle ports. The legacy production path retains startContinuable for empty attachments and rejects required attachments. Reserved-child production wiring remains Target; port tests are not proof of host admission.
 
 <a id="dd-17"></a>
 
@@ -279,10 +279,156 @@ P0/P1/P2 are bounded external PoCs; BS1 is unfinished design. Earlier runtime-pl
 |---|---|---|
 | Active teammate minimum | 2; positive config required | Accepted hotfix had minimum/default 0 |
 | Plan admission | simpleMode true skips legacy plan gate | Hotfix described mandatory exact Team-plan approval |
-| Member event/lifecycle | v2/startContinuable/no attachments | Freeze specifies v3, required binders and reserved-handle activation |
+| Member lifecycle | v3/strict v2 replay; empty-attachment startContinuable; required bindings refused on legacy wake paths | Reserved-handle production wiring and exact authority remain dependencies |
 | Mission authority | Lead-created approved revision 1; embedded tasks | Freeze requires authenticated HUMAN lease and normalized task authority |
 | Web control surface | Current renderer consumes Enable/view/missions/navigation | Injected types and older reports include more mutation controls |
 | Runtime timeout | Mutation timeout diagnostic retains physical drain | Target total deadline cleanup is not current behavior |
 | Reference memory | Standalone maps/injected registries; inactive/not integrated | Proposed production MCP/reference-memory architecture |
 
 No source correction is authorized by documenting these gaps. Update implementation through the applicable task/approval process, then regenerate mappings and reconcile design.
+
+## 5. Approved implementation delta — AIP-EXEC-022
+
+Approved on 2026-10-04: proposal P-01–P-08; WK-style adapter with current direct-continuable members. This section specifies intended changes **before source implementation**. It is project draft design, not Truth promotion, a contract revision or production activation evidence. The member-binding freeze §§3–14 remains normative. Isolated execution and the official DSH Consumer are outside this selected implementation.
+
+### DD-01 / DD-16 — normalized roster ownership
+
+The single initializer returns `TeamInitialization` containing `source`, bounded diagnostics and normalized `TeamMemberSpec[]` (`name`, `description`, `initialTask`, `context`, `continuationProvider`, optional AgentOptions and required attachments). Core deduplicates Enable by exact Lead object and owns complete-roster validation/preparation followed by provisioning. The default adapter still owns existing YAML fallback and route preflight; it no longer spawns members. Explicit Durable declarations use their separate strict adapter and never select unbound defaults.
+
+Before any durable member row, validate all names, prompts, contexts, limits, routes and attachment registrations/output. A requested attachment without a qualified reserved-host integration fails closed before rows/children. Generic prepare/lifecycle modules can be exercised against deterministic ports; neither installing those modules nor returning a Consumer descriptor qualifies production integration. GAT-only members continue through the existing compatibility path with empty attachments until the host reserved contract is qualified.
+
+Initial-task preflight uses the same content-block validation as replay: core block variants must match their fields, while documented plugin tags retain replay compatibility. Readiness counts exclude any required binding that is unavailable or failed; closed tool result schemas admit only the safe binding summaries.
+
+### DD-03 / DD-16 — bounded records and replay
+
+`attachments.ts` validates detached plain acyclic JSON without invoking accessors; reject sparse/custom arrays, symbols, non-finite numbers, unsupported values and invalid Unicode surrogate strings. Implement RFC 8785 ordering and ECMAScript numeric rendering, including negative zero normalization. Requests and prepared records enforce freeze §5 bounds; complete records include digest/envelope bytes. Each record is validated with root depth zero; nodes are summed across records. The wrapper array participates in the aggregate canonical byte limit. Digests cover canonical payload bytes only. Clone and deeply freeze returned records before persistence; validate again on replay.
+
+`team/member` writes v3; a strict v2 parser supplies empty attachments. Unknown member versions and unrelated family versions reject independently. Projection enforces unchanged attachment canonical value/digest across provisioning→active/failed, and its cached state version increases. Types retain an explicit legacy v2 snapshot for old event fixtures. Durable snapshot attachment storage is host-only; `TeamMemberView` allows only binder id/version/readiness summaries, constructed explicitly.
+
+### DD-02 / DD-07 / DD-08 / DD-16 — generic binding port
+
+`member-binders.ts` owns one registration per binder/version and requires an injected authoritative durable-reference enumeration (including inactive records); mutation cannot replace a referenced registration. Deterministic prepare-all detaches/revalidates every returned value and builds digests before provisioning. Every successful prepared resource transfers to a binding once or aborts once; cancellation/validation failure aborts in reverse order. Registry participant errors are bounded host diagnostics, never payload/ref exposure.
+
+`member-binding.ts` uses an explicit reserved-child port, durable journal port and trusted execution-authorization port. The caller supplies exact Team/member/generation identity and least-privileged capability scope. Success is prepare-all→provisioning flush→materialize without admission→bind/contributions→quarantined initial persist→active flush→readiness→authorized activate. A stable member initial-message key excludes transient generation. Journal uncertainty is resolved through committed evidence before a failed edge is written. After active commit, a valid live retry preserves its binding and only retries publication/activation; reconstruction cleans the old generation before recovery. Recovery validates stored records and child evidence, never rereads YAML, and releases existing initial/mailbox work only after bindings and authorization succeed. No production caller is connected before qualified S2 and authorization dependencies.
+
+All cleanup consumes one remaining-deadline signal; cutoff is synchronous, release reverse-ordered, promises observed even after timeout, and late callbacks never install authority into a lost generation. Non-cancellable provider cleanup retains ownership quarantine until actual settlement. Generic foundation shutdown is separate from the legacy runtime mutation drain; do not claim the latter becomes bounded merely because a new standalone port is present.
+
+Preparations pin registrations until abort settles or ownership transfers to a durably recorded binding. Required-binding rows are excluded from every legacy wake path, including already queued mailbox recovery and live target resolution. Unavailable publishers cannot interrupt admission cutoff or resource cleanup. A cancelled acquisition remains observed: late prepared resources abort, late children tombstone/drain, and late bindings close/settle/release without activating. Bounded cleanup invokes all reverse callbacks even if an earlier callback ignores cancellation.
+
+### DD-09 / DD-15 / DD-16 — WK adapter
+
+Proposed `packages/durable-agent/src/{initializer,binder,ownership,tools}.ts` uses only WK public service/Consumer interfaces. Persist schema v1 payload (trusted `serviceBindingKey`, independently verified `workspaceRealpath`, immutable declaration); never persist a ref, capability scope or prepared lease. Name equals GAT member name. Require API v1 plus selective-read/candidate flags; reject global/fork for this adapter. Dedicated provider and single-host workspace are composition preconditions, not a claimed distributed lock.
+
+An identity coordinator shared across this binder's Teams reserves canonical workspace/name before provision; release once through a memoized promise; retain identity if physical cleanup is pending. Executable closed-schema read and candidate handlers close over the Consumer; validate current exact scope/generation and execution policy before and after asynchronous responses. Candidate remains unconfirmed; host approval cannot come from model arguments. One coherent bounded `modelContribution` refresh replaces its owner section before every authorized request; errors prevent requests. Existing static Team policy labels remain presentation-only. On this direct-continuable target authority loss strictly rejects; no isolated known-closing classifier is fabricated. Cutoff removes listeners/tools immediately and withholds late context/bodies without awaiting cleanup from an operation that cleanup itself must drain.
+
+### DD-10 / DD-11 / DD-17 — deferred host integration
+
+Safe summaries, supported opt-in profile composition and package build/export/installer coverage ship only with evidence for the exact selected host. The new adapter may be tested in fake scopes and real temporary provider storage first. Reserved inbox/model admission, refresh gating, authenticated exact mission/task leases and immutable nested capability classification remain production prerequisites owned by their respective workstreams. A v2-only package refuses v3 logs; installer rollback never strips attachments. Source/test mapping must identify independent foundation evidence separately from integrated production evidence.
+
+## 6. Implementation qualification — AIP-EXEC-022
+
+The intended §5 delta preceded source changes. Current foundation sources and test locators are mapped in SOURCE_CODE_MAP.md. The WK adapter is a separately buildable, explicit integration library; its YAML loader, exclusive owner coordinator, executable read/candidate tools and request refresh run over trusted ports. It imports the selected WK public service/Consumer exports only. Snapshot prompt is bounded to 1 MiB; read output to 2 MiB; candidate output to 128 KiB. Provider cleanup keeps identity quarantined until actual settlement and never deletes persistent data.
+
+Production status remains gated. Inspected DSH APIs combine materialization and initial dispatch; cold resume also releases messages directly. The inspected request hook runs after prompt rendering and cannot replace message content. Exact authenticated mission/task leases and immutable nested capability union are not qualified. Core therefore refuses nonempty attachments before rows, skips attached provisioning reconciliation and denies attached target resolution/mailbox recovery; tools exclude unavailable bindings from readiness. No automatic Durable profile, supported installer activation or known-closing isolated classifier is claimed.
+
+Verification, remaining prerequisite ownership and applicability decisions live in the AIP workspace acceptance-matrix.md, dependency-qualification.md and implementation-handoff.md. Historical collection and wiki registration results remain historical evidence; source mapping changes do not promote wiki/canonical content.
+
+## 7. Approved prerequisite implementation delta — AIP-EXEC-023
+
+HUMAN authorized the separate DSH host worktree at c291e7961a515f6d7af9304e7fd1d257929aef26 and the authority/capability prerequisites on 2026-10-04. This intended design precedes all prerequisite source edits. The direct-continuable WK target and frozen semantics remain unchanged. Deployment remains separate; qualification status changes only with executable evidence.
+
+### DD-02 / DD-03 / DD-16 — reserved host lifecycle
+
+DSH owns opaque materializeContinuable/recoverContinuable handles with exact child Agent/scope and persisted activation inspection. New calls separate materialized, inbox-persisted, activated, aborted and disposed; use freeze §7 stable errors. Materialization never admits a user inbox item or model work. Initial prompt, exact idempotency key/digest and cancellation/release facts are durable child-owned events. Persist-only flush completes before return; same key/content returns original message id, differing content fails. Child mutex serializes persistence/activation/disposal and surviving durable state reconstructs idempotently. Activation releases the existing non-tombstoned item exactly once; recovery starts with the gate closed even if the persisted state was activated. Legacy startContinuable performs staged operations and retains behavior only for children not requiring explicit recovery. Ordinary send/cold resume cannot bypass a reserved owner's gate. All release/activation/provider requests retain exact generation ownership, cancellation, shared bounded teardown and observed late resources. DSH APIs do not import GAT or accept arbitrary binder callbacks.
+
+### DD-09 / DD-15 / DD-16 — prompt refresh and model admission
+
+DSH supplies an awaited owner-scoped extension before rendering every actual model request, including retries. Binder refresh replaces its existing contribution and does not append duplicate sections. Assembly is refreshed before rendered system text is reconciled into logged model history; model-visible context remains reconstructable from durable system/message events. Existing request-route hook remains route-only. Refresh failure, cancellation or owner disposal prevents provider dispatch and late contribution publication; other owners' sections remain intact. GAT revalidates exact execution lease at every model admission as well as tool/effect/wake boundaries. Registration/disposal uses reversible Cordis effects.
+
+### DD-04 / DD-06 / DD-17 — HUMAN approvals and exact scoped authority
+
+Mission creation from model/Lead operations creates draft state; historical auto-approved mission records do not acquire HUMAN authority on replay. Trusted authenticated host control ingress produces a process-local opaque approval receipt with exact action, Team/Agent identity, mission/plan revision, unique approval event id and canonical action digest. Receipt minting occurs only in verified host ingress, not a public model argument, ordinary Service call or unverified programmatic Gateway invoke; receipts cannot be JSON-cloned, forged, cross-used or consumed after their invocation scope closes. Human-facing Remote/command handlers consume the receipt once and append durable provenance. Exact trusted ingress must be qualified against its actual authentication implementation before accepting approval.
+
+Authority publication follows durable commit: pending, failed or false-result journal flush cannot make a newly appended mission/plan approval or member-add grant executable through the live in-memory projection. Admission checks require committed provenance; a concurrent binding/effect during an uncommitted authority append fails closed. This is the intended implementation of the durable approval boundary, before dependent journal changes.
+
+GAT owns opaque per-exact-Agent execution leases in a private runtime store. Each lease records Team id, mission id/revision, authorization event id/digest, issuance/revocation generation and canonical task association. Task-bound issuance derives from the canonical task's immutable missionId and the mission revision authorized for the exact structural task-plan revision; task identity is not inferred from first/current list order. Mission taskIds refer to the canonical Team board; embedded historical snapshots remain explicit legacy views and never become a second executable board. Structural task/mission mutation invalidates authority; close/revoke invalidates all dependent live leases. Public task effect operations, working/done reports, model requests, child activation/resume and queued mailbox release check the current projected authority immediately before effects. New authority/task data has explicit event-family versions and adjacent read adapters; no released log bytes are rewritten.
+
+Freeze §10 control/read/bootstrap exemptions remain exhaustive; wrappers inherit most restrictive descendant classification. Bootstrap can establish quarantined resources and queue messages without a mission execution lease, with separately host-attested member-add approval where required; it cannot release model work. Simple mode requires exact HUMAN mission approval; non-simple mode additionally requires exact current HUMAN plan approval. Existing static Team labels remain fixed while live guards remain strict. Unknown, missing, ambiguous, wrong-Team, stale, replaced-Agent, closed or revoked scopes deny with safe stable reasons. Model-visible approval wording grants no authority.
+
+### DD-09 / DD-17 — registry-owned nested capabilities
+
+DSH ToolDefinition permits explicit capability keys and declared nested tool references; registry registration captures immutable normalized metadata detached from mutable definitions. Reserved external-delegation is attached to every shipped subagent/fork/workflow/Ralph entrypoint regardless of alias. Alias/wrapper/composite registrations retain source/descendant capability union; cycles/missing required descendant metadata deny rather than widen an exemption. The executor attaches captured capabilities to immutable execution identity and checks current policy before pre-execute/provider/tool/child/event side effects at each nested dispatch. Async nested calls inherit their parent union and cannot replace it through arguments or around-dispatch identity mutation. PTC run_code checks each actual descendant boundary without globally prohibiting harmless Team inspection. GAT combines capability denial with compatibility name fallback when enabled; disabled Team semantics remain unchanged. Explicit read/control exemptions cannot cover unknown or effectful descendants.
+
+### File ownership and qualification
+
+Reserved host lifecycle/request refresh owner: DSH packages/subagent/subagent, packages/core/agent and packages/core/agent-loop plus their owning docs/tests. Capability owner: DSH packages/core/tools and shipped delegation Consumers/wrapper/PTC routes. Authority owner: GAT packages/core/src/{types,projection,mission-board,task-board,index,roster,mailbox,work-state} and packages/tools policy; DSH authenticated control ingress/gateway as required. Source edit ownership is disjoint; shared files require coordination. Review exercises actual host registry/provider/inbox/auth ingress and independent durable observations, complete freeze §13 matrix, public built imports and affected docs/SDK gates. Formal source maps reconcile after evidence; parent AIP022 consumes exact receipts and does not infer production eligibility from source presence.
+
+### DD-04 / DD-17 — authority qualification details
+
+Authenticated admission minting remains private inside the verified Connection HTTP dispatcher; public imports expose receipt consumption and invocation binding only. Exact current-plan revision and receipt identity are captured in each governed-mode lease, so changing policy from simple to governed requires a new binding. Task execution and working/done reports revalidate inside the canonical journal transaction after queue admission, before any append. A claim derives its lease from the explicitly requested canonical task inside that same transaction; no prior current-mission selection supplies authority.
+
+Enable consumes an exact authenticated Session Enable receipt before initializing its configured roster. The protected Remote approveMemberAdd action appends a durable exact specification receipt and grants one non-replayable creation permission in the exact live Lead scope. Additional creation consumes that grant inside the member-row transaction; a model tool cannot mint one from approval wording or transfer it across Lead generations. Enable authorizes its initializer-selected specifications with the authenticated invocation receipt. Member-add approval evidence is retained in a distinct durable event; replay never recreates a grant. Bootstrap remains quarantined and requires a separate current mission lease at activation and model admission.
+
+Canonical authority publication also waits for a successful durability flush. Live Session projection can observe appended snapshots before asynchronous persistence finishes; TeamJournal records pending/failed authority publication and every lease bind/effect/model admission rejects that interval. A false or rejected flush leaves the exact root unavailable for execution in that process until explicit recovery; a memory-only approval never grants authority. Member-add receipts use the same tracked append/flush path, and grants publish only after success.
+
+Task-derived lease publication follows successful durable claim inside the canonical transaction. A claim preflight validates the explicit task/mission association without granting execution; a failed stale, blocked or owned-task claim leaves no new lease. Task-scoped bind and every subsequent effect/model check require the exact current owner Agent and `in_progress` status, so release/completion/reassignment revoke that scope. Lead administrative task operations may instead use an explicitly host-bound mission scope for that same canonical mission; they do not derive a work lease from an unclaimed task.
+
+#### Prerequisite generated-reference ownership
+
+The isolated qualification tree retains original DSH prototype files while the installed GAT packages replace their build references. Generated persistence, scoped Cordis and client references must use the explicitly selected replacement declarations, without deleting retained source or hand-editing generated artifacts. Catalog discovery excludes a retained prototype only when the repository build entry explicitly excludes it and references its replacement; incomplete or contradictory replacement configuration fails closed. Every other source remains in the discovery corpus. This intended tooling delta precedes generator changes and does not qualify a deployable installer revision.
+
+DSH exact Agent execution guards are synchronous and owner scoped. GAT registers a generation-bound canonical lease check through `agent.ctx.agents.guardExecution`. DSH checks all guards after every asynchronous model-admission listener, again immediately before provider streaming, and after reserved activation flush immediately before inbox release. No asynchronous listener or await separates the final check from the protected release. GAT withdrawal releases its scoped guards; a replacement Agent generation never inherits them.
+
+### Prerequisite mailbox delivery publication
+
+An admitted mailbox delivery may publish its durable delivered receipt only after the exact target Session flush reports success. A false result or rejection leaves delivery unacknowledged and fails closed; a retry preserves message identity. This applies to warm delivery and explicit recovery delivery after exact execution authorization. It does not release a quarantined child or create authority from queued input. The implementation and regression must observe a false child flush separately from a thrown flush before claiming a durable receipt.
+
+### Prerequisite model-visible mailbox contract
+
+The `send_message` tool must describe exact delivery behavior: a message for an inactive or quarantined member is queued without model wake; subsequent delivery requires explicit host recovery and a current exact mission/task execution binding. Ordinary model input cannot request generic cold resume or grant that binding. Update the affected tool description and its owning model-visible schema/description expectation using the established snapshot workflow; retain the existing runtime delivery and denial assertions.
+
+### Prerequisite live delivery and recovered release
+
+Reserved children intentionally reject the generic subagent continuation delivery route. The GAT mailbox owns the exact live target and must, after exact lease revalidation, steer a typed `team-message` user item directly to that admitted Agent, then checkpoint its durable receipt. An absent target remains queued; only host recovery reconstructs it. The generic route remains denied for explicitly reserved children.
+
+Durable `activated` history does not imply the recovered generation's execution gate is open. The roster tracks successful release per reserved-handle identity, separately from durable state; every newly recovered handle requires `activate` after exact binding. A successfully released warm handle is not reopened on later mailbox deliveries. Regression evidence must cover warm follow-up, explicit cold recovery with consumed initial input, and continued quarantine without a lease.
+
+### Prerequisite legacy continuation prompt compatibility
+
+The automatic legacy continuation wrapper must preserve its parent-return prompt suffix and actual child-to-parent `send_message` behavior. Capability metadata snapshots may detach the ToolDefinition object; adjacent sender recognition must use exact registry-owned provenance rather than original definition object equality. The reserved explicit GAT path retains its own admitted initial item and does not receive accidental generic delivery authority. SDK acceptance observes the child's tool effect and actual parent mailbox/history, independently from model prose; a recording that loses the relay is a regression.
+
+### Prerequisite failed-spawn cleanup deadline
+
+A reserved spawn that fails during materialization or initial publication uses one fresh cleanup deadline based on the configured Team disposal bound, independently of the already cancelled request. Close execution synchronously, start abort/tombstone and dispose cleanup with that deadline, and retain their physical settlement observers. A stuck flush or disposal cannot hold the spawn failure response indefinitely. Report the original creation failure together with cleanup timeout/failures; publish the failed member edge only when its own durable journal operation succeeds. A late cleanup cannot reopen or duplicate the child. Add a blocked-child-cleanup regression using the actual reserved handle.
+
+### Prerequisite Team withdrawal cutoff
+
+Closing the Team runtime synchronously revokes all further lease binding, execution assertions, activation and recovery admission, even while durable mutation drainage temporarily retains its projection. `bindExecution` and `assertExecution` reject the closed lifecycle before reading authorization. Recovery and activation join the runtime cancellation signal, are tracked as admitted operations, and revalidate at each actual release/request boundary. Disposal removes the final guard only after closing the relevant execution gates; a retained valid mission receipt cannot reopen a withdrawing Team. Regression evidence blocks physical disposal settlement and independently observes denied activation/model admission with zero wake/provider effects.
+
+### Prerequisite independent Agent driver context
+
+An independently scheduled Agent turn is a new root tool execution context. The host Agent-loop wraps each fresh driver with a trusted registry operation `withAgentDriver(agent, callback)`, which validates the exact live Agent generation and exits the enclosing tool AsyncLocalStorage while starting that driver. The caller's context is restored immediately after scheduling; asynchronous work inside the new driver retains its detached root. Ordinary nested `tools.execute` keeps ambient-parent inference and rejects wrong-Agent, stale or forged parent tokens. This operation is host-only scheduling infrastructure, never a model-facing tool or a permission to dispatch a descendant without capability checks. SDK regression evidence must observe successful child-to-parent relay while the direct cross-Agent nesting negatives remain denied.
+
+### Prerequisite authority publication families
+
+The committed-publication barrier protects events that establish or change execution authority: mission, canonical task, current-plan approval, member/member-add approval, and Team enable/control state. Pending or failed publication of those facts denies binding and final execution assertion. Mailbox queue/delivery and work-status facts do not establish or revise authority, so their independent pending flush does not suspend an otherwise valid exact lease. Every family still requires a successful flush before publishing its own durable acknowledgement/notification; no false or failed delivery receipt becomes durable authority. Test a warm admitted child's request concurrently with delayed mailbox acknowledgement, separately from blocked mission/task publication.
+
+### Prerequisite active member authority
+
+Teammate execution binding and every execution assertion require the exact canonical member row to be `active`. A live provisioning, failed or missing member remains eligible only for its established inspection/queue/control operations. Persisted initial admission does not itself make that member active or authorize execution. Recovery settles the durable roster transition before trusted host binding and release; an early bind/activate attempt observes zero model requests and wake effects.
+
+### Prerequisite public API documentation completion
+
+Before final qualification, complete exported GAT API JSDoc summaries and parameter/return descriptions against the contracts above. This documentation-only source delta changes no signatures, persistence payloads, scheduling or authority behavior. Rebuild generated references from the documented declarations and refresh mapping anchors after comment insertion; do not replace executable conformance with documentation completeness.
+
+### Prerequisite authorization matrix qualification
+
+The prerequisite conformance report must enumerate the complete simple/governed × disabled/enabled × selected mission absent/draft/authorized/stale/closed × plan unapproved/current/stale matrix. Exercise reachable states through actual host control and effect dispatch. Distinguish absent selected scope from an unrelated approved mission; no list-order inference supplies authority. Disabled simple-mode Agents retain ordinary tool behavior before Team tool installation; disabled governed-mode Agents retain the existing roster/current-plan readiness restriction. Where authenticated plan preflight makes a disabled/current or disabled/stale tuple unreachable, report that constraint and its actual rejection rather than manufacture approved state. Enabled simple mode ignores plan approval only after exact mission authorization; enabled governed mode requires both, and every denied effect body stays uncalled.
+
+### Prerequisite source lint reconciliation
+
+Before final acceptance, reconcile the imported GAT prerequisite source with the host's required style and type-aware lint. Formatting, explicit unknown error boundaries, local narrowing and removal of redundant assertions must preserve the existing runtime validation, malformed-input rejection, guard order and cleanup ownership contracts. Restore any accidental annotation-edit statement/export loss against the prior qualified behavior. Do not suppress a safety check solely because its input has a static type; expose and validate the actual untrusted boundary instead. Re-run affected behavior and compare pre-comment and final built JavaScript, explaining equivalent lint-only differences separately.
+
+### Prerequisite commit-check reconciliation
+
+Before committing the qualified work, satisfy the host's staged-file lint for all included source and test fixtures. This delta permits parentheses, indentation and line wrapping without changing executable expressions, exports, guards, validation or cleanup ordering. Fixture completion types may express the existing void return through `ReturnType<() => void>` where the staged rule rejects method-level void type arguments; preserve resolver calls and emitted JavaScript. Retain required type-aware suppression comments even when staged lint omits type analysis. Compare normalized emitted source before and after, refresh affected declaration pointers and source hashes, and rerun affected fixtures and required documentation checks. Keep the earlier qualification receipt as history; bind the commit to the final corrected bytes separately.

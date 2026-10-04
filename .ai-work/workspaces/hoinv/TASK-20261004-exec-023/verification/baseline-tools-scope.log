@@ -1,0 +1,53 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ |thread-safe| packages/core/tools/tests/scoped.spec.ts (27 tests | 2 failed) 116ms
+     × defers a scoped guard that replaces the last guard in its generation 4ms
+     × shares one token and materialized argument value across the pipeline 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/core/tools/tests/scoped.spec.ts > scoped execution dispatch > defers a scoped guard that replaces the last guard in its generation
+AssertionError: expected 'Error: replacement denial' to be 'ran:t' // Object.is equality
+
+Expected: "ran:t"
+Received: "Error: replacement denial"
+
+ ❯ packages/core/tools/tests/scoped.spec.ts:372:38
+    370|     })
+    371|
+    372|     expect(await run(ctx, 't', key)).toBe('ran:t')
+       |                                      ^
+    373|     expect(calls).toEqual(['first'])
+    374|     expect(await run(ctx, 't', key)).toBe('Error: replacement denial')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |thread-safe| packages/core/tools/tests/scoped.spec.ts > scoped execution dispatch > shares one token and materialized argument value across the pipeline
+AssertionError: expected 1 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ packages/core/tools/tests/scoped.spec.ts:432:25
+    430|     expect(callerArguments).toEqual({ source: true })
+    431|     // One token for danger and one shared by every phase of safe.
+    432|     expect(tokens.size).toBe(2)
+       |                         ^
+    433|     expect({ safeCalls, dangerCalls, scopedResults }).toEqual({
+    434|       safeCalls: 1,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 25 passed (27)
+   Start at  11:04:07
+   Duration  736ms (transform 466ms, setup 186ms, import 342ms, tests 116ms, environment 0ms)
+

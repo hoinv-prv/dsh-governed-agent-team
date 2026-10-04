@@ -146,3 +146,15 @@ External memory approval is explicit and provider-governed. Selective reads and 
 Read [Basic Design](BASIC_DESIGN.md) for features, inputs/outputs and flows; [Detail Design](DETAIL_DESIGN.md) for algorithms/data/contracts; [Source Code Map](SOURCE_CODE_MAP.md) for implementation/test locators.
 
 The open gaps are: Lead-only hotfix/current default mismatch; target binder/event v3/two-phase activation; host-attested mission leases and task normalization; nested capability enforcement; Conservative MVP production integration/full conformance; and complete BS1 task-runner adoption. These are explicit gaps, not requests to implement them in this documentation task.
+
+## 9. Approved binding implementation delta — AIP-EXEC-022
+
+On 2026-10-04 the HUMAN approved proposal P-01–P-08 and selected the WK-style adapter with existing direct-continuable members. Intended implementation is specified in Detail Design §5 before source changes. AD-04/06/08 add immutable required attachment records, core-owned normalized roster preparation and generic reserved-child orchestration. AD-09 stays a separate exact mission/executor prerequisite. AD-12 requires new package/profile verification before distribution or activation. Existing Team authority and DA storage ownership remain separate; no isolated-session migration, official Consumer adoption or standalone reference-memory substitution is approved. Foundation modules/fake tests do not qualify production child wiring.
+
+## 10. Foundation qualification boundary
+
+AIP-EXEC-022 implements generic member v3 records/replay and lifecycle ports in core, with the WK adapter in packages/durable-agent. The default runtime admits empty-attachment members and refuses attached members on legacy wake/recovery paths. The tested ports do not establish DSH reserved-child activation, request-time prompt replacement, exact mission/task leases or nested capability enforcement. These production dependencies remain Target; the adapter is not auto-installed or activated. Detail Design §6 and SOURCE_CODE_MAP.md identify source coverage and remaining gates.
+
+## 11. Approved prerequisite ownership — AIP-EXEC-023
+
+HUMAN authorized isolated host prerequisite implementation on 2026-10-04. Intended ownership and behavior are defined in [Detail Design §7](DETAIL_DESIGN.md#7-approved-prerequisite-implementation-delta--aip-exec-023): DSH owns reserved/quarantined child lifecycle, pre-render request refresh and immutable nested dispatch capabilities; GAT owns host-attested exact mission/task leases and effect/model admission. WK/direct-continuable target remains fixed. Deployment stays separate and prerequisite eligibility requires actual conformance evidence.

@@ -73,3 +73,15 @@ Residual deployment constraints include supported rename/fsync filesystem behavi
 The existing feature reference §7 describes an older MiniMVP target. Use this document for the accepted service capability while preserving §4–6 GAT Team/Enable/roster ownership and the [member-binding freeze](../GAT_MEMBER_BINDING_CONTRACT_FREEZE.md).
 
 A future binder task should demonstrate explicit Session/Team scope ownership, member identity binding, context/tool injection, candidate approval policy, release drain, cancellation/teardown and restart behavior in GAT composition tests. Durable task execution from the Agile/PoC/BS1 line is a separate design stream; the completed service mission does not implement that task runner.
+
+## Approved WK adapter baseline — AIP-EXEC-022
+
+The HUMAN approved proposal P-01–P-08 on 2026-10-04 and selected WK-style public DA APIs with existing direct-continuable GAT members. Intended payload, ownership, executable tool, request-refresh and cleanup contracts are defined before code in [Detail Design §5](DETAIL_DESIGN.md). Use workspace/fresh, a dedicated provider and exclusive workspace/name owner; context snapshots and later reads remain per-call consistent. Recovery validates trusted host workspace/registration and persisted declaration, obtains a fresh process ref, and never reloads mutable YAML. Model tools read one item or submit an unconfirmed candidate; confirmed commit stays separately host-authorized. No provider-private storage/API change or official DSH Consumer adoption is implied. Production adoption still needs exact reserved-host, refresh and mission/executor qualification; fake-scope/temporary-provider evidence must be labeled separately.
+
+## AIP-EXEC-022 foundation implementation
+
+The selected WK adapter library is packages/durable-agent. It validates strict workspace/fresh declarations, persists only bounded declaration payloads, coordinates exclusive live identities and installs read/candidate tools and refresh through a trusted capability scope. Temporary public-provider and deterministic-port verification are recorded in the AIP workspace. Production composition remains unavailable until the reserved-child, request-refresh and exact authorization dependencies qualify; current core rejects required attachments before member creation. No isolated known-closing behavior is claimed for the selected direct-continuable target.
+
+## Prerequisite implementation — AIP-EXEC-023
+
+HUMAN authorized isolated host prerequisite implementation on 2026-10-04. Intended ownership and behavior are defined in [Detail Design §7](DETAIL_DESIGN.md#7-approved-prerequisite-implementation-delta--aip-exec-023): DSH owns reserved/quarantined child lifecycle, pre-render request refresh and immutable nested dispatch capabilities; GAT owns host-attested exact mission/task leases and effect/model admission. WK/direct-continuable target remains fixed. Deployment stays separate and prerequisite eligibility requires actual conformance evidence.

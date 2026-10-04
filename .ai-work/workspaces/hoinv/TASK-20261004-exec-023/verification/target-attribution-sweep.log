@@ -1,0 +1,9 @@
+docs/gat-design/source-baseline.json:55:        "?? .ai-work/aip/hoinv/exec/AIP-EXEC-023-implement-binding-prerequisites.md",
+docs/gat-design/source-baseline.json:907:    "aip_id": "AIP-EXEC-023",
+docs/gat-design/DETAIL_DESIGN.md:336:## 7. Approved prerequisite implementation delta — AIP-EXEC-023
+docs/gat-design/design-verification.json:3:  "aip": "AIP-EXEC-023",
+docs/gat-design/BASIC_DESIGN.md:129:## 12. Approved prerequisite behavior — AIP-EXEC-023
+docs/gat-design/source-code-map.json:1748:      "implementation_gap": "Prerequisite host APIs, exact authenticated GAT mission/task authority and nested capabilities are qualified in AIP-EXEC-023. Parent AIP-EXEC-022 production binder/profile/package/browser composition, changed-host compatibility and deployment remain separate.",
+docs/gat-design/source-code-map.json:1758:      "implementation_gap": "Complete contracted member task runner remains future scope. AIP-EXEC-023 prerequisites do not implement or qualify DD-18.",
+docs/gat-design/ARCHITECTURE_DESIGN.md:158:## 11. Approved prerequisite ownership — AIP-EXEC-023
+docs/gat-design/DURABLE_AGENT_INTEGRATION.md:85:## Prerequisite implementation — AIP-EXEC-023

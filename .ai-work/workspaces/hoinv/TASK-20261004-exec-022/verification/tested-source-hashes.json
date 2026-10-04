@@ -1,0 +1,348 @@
+{
+  "checked": 57,
+  "mismatches": [],
+  "files": [
+    {
+      "path": "packages/core/src/work-state.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/work-state.ts",
+      "sha256": "96d21eea191d689d331fcf5783ead39399a66b8c3b0f792c146f52d92ab89780",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/projection.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/projection.ts",
+      "sha256": "b28648d91c203557b0ab2f87847fe311c939e9b2fc1d0d98dbfbceec2eba14a6",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/member-binding.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/member-binding.ts",
+      "sha256": "657276e41f170bc712475e07c3a814c3c94e8c9272065efcce36dc1f10a25824",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/binding-deadline.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/binding-deadline.ts",
+      "sha256": "bcea7f9d689fff8a4c171f70c11c943bbdb21f1e46295e400b4b0eca9f720755",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/mission-board.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/mission-board.ts",
+      "sha256": "b0d1f6979800ebdd83339d68923c7827128b8c9c745ccfc09bc7d2f98a8b4c4b",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/lifecycle.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/lifecycle.ts",
+      "sha256": "a56df2d2c0d97dddab4bfd7c7824a8e63a8cd9b87aa430385175b6a88b626a62",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/journal.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/journal.ts",
+      "sha256": "e750a2409ba4debeee05d98ff4f73e38d0c5a7d80b579c8874ccaef3324eed61",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/persisted.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/persisted.ts",
+      "sha256": "382fe7cab52e47100a798307300d649c506536d6bbe0ac89025e6c41abe4ec87",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/approved-plan-import.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/approved-plan-import.ts",
+      "sha256": "f7f5776aadb423850423d2671a6229cc5be589b022c3546afd5d53f85dd02633",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/member-binders.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/member-binders.ts",
+      "sha256": "d987abecb70d86dca9b36c77de5e25316a6974d6bb2d3087cf530fbbe09cd46c",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/invariant.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/invariant.ts",
+      "sha256": "95667f2092b28b5e62a4bfcdd910a0e712ff1b71ce97bd20b79b1bab3be12753",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/attachments.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/attachments.ts",
+      "sha256": "88ba0ef671523e389f5822941eb462fd627c2fe43a04e7c72be7d33e6dfe3402",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/activity.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/activity.ts",
+      "sha256": "a35a8d322aea033ef7f2e1d8539026f6a49251b3c0252ee695d361066cbd4f08",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/error.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/error.ts",
+      "sha256": "b9d14250f819c6cfd364c42cf2b4045674a1f7c88321f99e9a4a29b68419bea4",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/validation.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/validation.ts",
+      "sha256": "eb0668e8096ce9ca294b7d787f974d27e896329bb0b4c547cb4d6bd7e42ee44b",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/types.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/types.ts",
+      "sha256": "fa07834d0cd6fb473d54ebe385716d947c6e22cec890d2afe25baa95a5052507",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/session-message.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/session-message.ts",
+      "sha256": "c74ef1d18667d0f221bafd726d8332e682778f06cf43b1ce13d174e5a843cf10",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/mailbox.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/mailbox.ts",
+      "sha256": "4fb72bc13030d553d84f1b79b71d223099cd68b7c2610491b4c04c716b44f47e",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/task-graph.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/task-graph.ts",
+      "sha256": "a726081289a2f7a848f69109a750db3ead0d95b88ab0adfdae0477f749b8f490",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/roster.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/roster.ts",
+      "sha256": "fd515e54370f6553c124bea131a283f943bd9ba13d05b51a1c8d4dcd930c4eda",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/task-board.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/task-board.ts",
+      "sha256": "174234469ffd8dc7d1a470d15df070cd03e34f245374f35a9e89feb1d75cc22e",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/mission-plan.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/mission-plan.ts",
+      "sha256": "1d067c57bdd20f445d4229853caf3f0d8971f065b17b597118b54be257cdcbb2",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/index.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/index.ts",
+      "sha256": "f8aec851803cadf7cc059cb15fe92c7b94821e2c493416b1e8916c06dc65ca67",
+      "matched": true
+    },
+    {
+      "path": "packages/core/src/client.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/src/client.ts",
+      "sha256": "e698321df957a563b624d7e27a356f69c8ed1fb7a2d28cfa14209a1ce8ea03e2",
+      "matched": true
+    },
+    {
+      "path": "packages/core/tests/test-session-query.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/tests/test-session-query.ts",
+      "sha256": "7ea5a954b40909339e2f0d2e8106aae4df5a6220035c465ec7c1ce7f407dc757",
+      "matched": true
+    },
+    {
+      "path": "packages/core/tests/member-replay.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/tests/member-replay.spec.ts",
+      "sha256": "124667f7f1af47f5e8ef49c1611bceacd7999e31c057fccb8b6882fa18efe66d",
+      "matched": true
+    },
+    {
+      "path": "packages/core/tests/persistence.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/tests/persistence.spec.ts",
+      "sha256": "9b9d9efbe2a205310e7adb3e3f9169c3ea7e941acebd996d7469adee5a4c0fce",
+      "matched": true
+    },
+    {
+      "path": "packages/core/tests/built-lib.e2e.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/tests/built-lib.e2e.ts",
+      "sha256": "d6553aaf203d46f01d7b8672e51fb43bb2b32fe4f9c3d01e994b4275608d0525",
+      "matched": true
+    },
+    {
+      "path": "packages/core/tests/team.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/tests/team.spec.ts",
+      "sha256": "ba47f8fe53f614a463f8f5747e745cb19d4c1a64d61a8be45434d9d231e1d5b1",
+      "matched": true
+    },
+    {
+      "path": "packages/core/tests/projection-events.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/tests/projection-events.spec.ts",
+      "sha256": "f0989b3067e57607cd2df40d31b4971dd32f75828018f15a43c3b57095bbec38",
+      "matched": true
+    },
+    {
+      "path": "packages/core/tests/member-attachments.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "sha256": "cfaef2cf3b91e3ac7cc693a6ea13d0dd72c8919e5bd1e6a6cdc551d048e6a7d1",
+      "matched": true
+    },
+    {
+      "path": "packages/core/tests/binding-enable.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/tests/binding-enable.spec.ts",
+      "sha256": "b77a8b728a3287cb6fcf4dacc47478fe8ce025678e12e02dd260d2befbb796a1",
+      "matched": true
+    },
+    {
+      "path": "packages/core/tests/invariant.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/tests/invariant.spec.ts",
+      "sha256": "15905991fba1d95ef01e29459542d3f4eb13278978c78be126d0c48fd89291e2",
+      "matched": true
+    },
+    {
+      "path": "packages/core/tests/member-binding.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "sha256": "ff397d063ca840ddb4654d588fbe789b340d6280dec3294e0791996323576277",
+      "matched": true
+    },
+    {
+      "path": "packages/tools/src/team-config.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-tools/src/team-config.ts",
+      "sha256": "df161d29335b9ecb6da3444a72058de61da93e286c805c7b9184e2b7ad89deed",
+      "matched": true
+    },
+    {
+      "path": "packages/tools/src/index.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-tools/src/index.ts",
+      "sha256": "11ef4b970a5c5e7860dcb44513ace9f2c08f9826b5904e86a9e05948796233c7",
+      "matched": true
+    },
+    {
+      "path": "packages/tools/tests/tool-team.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-tools/tests/tool-team.spec.ts",
+      "sha256": "8ae405842ac9d9364ae3e97d4e48731d59906d2fbb761812cb623836d5e36f3f",
+      "matched": true
+    },
+    {
+      "path": "packages/tools/tests/team-config.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-tools/tests/team-config.spec.ts",
+      "sha256": "a2b2b38caa88344528ca59a5cf4d68d59697d1d3e6b4069d20d19f60a8bccdf6",
+      "matched": true
+    },
+    {
+      "path": "packages/tools/tests/binding-views.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-tools/tests/binding-views.spec.ts",
+      "sha256": "a6da6bc02f52e6bc21175cfb3a91b0bad8b19cd433747567f40682ad10016a78",
+      "matched": true
+    },
+    {
+      "path": "packages/web/src/css-modules.d.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-web/src/css-modules.d.ts",
+      "sha256": "e28410d74a0d763364c04fa690c2ca2202ad3019c74f8f5205e8dc6cba69c02f",
+      "matched": true
+    },
+    {
+      "path": "packages/web/src/index.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-web/src/index.ts",
+      "sha256": "1eff6fe14f46d1807a21f73ee698ecd73407b27c3d84edbaec9697bd56ce94df",
+      "matched": true
+    },
+    {
+      "path": "packages/web/src/client/mount.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-web/src/client/mount.ts",
+      "sha256": "be014fe6165450a4146320e380e5f6a7fab2eb8abfd4f8e639d0a092499ff15e",
+      "matched": true
+    },
+    {
+      "path": "packages/web/src/client/locales.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-web/src/client/locales.ts",
+      "sha256": "5d9dbc55cb826cb98028d1f59460b8e5f0c1974e07c6bd65fcb2c8d8dbad565c",
+      "matched": true
+    },
+    {
+      "path": "packages/web/src/client/TeamAction.tsx",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-web/src/client/TeamAction.tsx",
+      "sha256": "3e895fcb5e811da2dc654853698fc57c12ef556a0d01b3882ba7481f298ee9a3",
+      "matched": true
+    },
+    {
+      "path": "packages/web/src/client/TeamAction.module.css",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-web/src/client/TeamAction.module.css",
+      "sha256": "1bef36132464f30e4730e5dfb934d8a255334c3b0eb89ad68cc22930e764239b",
+      "matched": true
+    },
+    {
+      "path": "packages/web/src/client/index.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-web/src/client/index.ts",
+      "sha256": "c62df96466421c75347c35a1bbdf935583be21a9b75c241597e268cfd6a4a9a4",
+      "matched": true
+    },
+    {
+      "path": "packages/web/tests/browser-plugin.client.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-web/tests/browser-plugin.client.spec.ts",
+      "sha256": "079d0cce3ab95629975c2bc82cc6caa5128bf59d242fc02221aefb9a133879f1",
+      "matched": true
+    },
+    {
+      "path": "packages/web/tests/team-action.client.spec.tsx",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-web/tests/team-action.client.spec.tsx",
+      "sha256": "dbc95423f603a45b5361fbcb9a7e7ce5efdd90c5149c619a8cbfb82bc989148b",
+      "matched": true
+    },
+    {
+      "path": "packages/durable-agent/src/ownership.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-durable-agent/src/ownership.ts",
+      "sha256": "4bb19a667a661e21adfb6ffaaddb78e141957d1cd0e074f5bb838e8b20b0e949",
+      "matched": true
+    },
+    {
+      "path": "packages/durable-agent/src/initializer.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-durable-agent/src/initializer.ts",
+      "sha256": "e87d65a34990ef7b06cd234f25f6a71a10cbbd16c912dd31437ad633c748144d",
+      "matched": true
+    },
+    {
+      "path": "packages/durable-agent/src/binder.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-durable-agent/src/binder.ts",
+      "sha256": "a66e935d50c02812daa2d543a07520b9ba77a5c6741254106bc44ed2588a3aaa",
+      "matched": true
+    },
+    {
+      "path": "packages/durable-agent/src/tools.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-durable-agent/src/tools.ts",
+      "sha256": "21c7fd9a05e11236b8356be7a0ac3558eb79af50e8d7a5a2634823711bd30204",
+      "matched": true
+    },
+    {
+      "path": "packages/durable-agent/src/index.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-durable-agent/src/index.ts",
+      "sha256": "e345b8a9e7f766f1453146a9cbaf8b1f43b94baac2d902ba8b1dbb3488c36c8c",
+      "matched": true
+    },
+    {
+      "path": "packages/durable-agent/tests/tools.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-durable-agent/tests/tools.spec.ts",
+      "sha256": "9b753f4145dc4ada1508468e0ddcf86c7a69357c490573a8da4fbff2672bd942",
+      "matched": true
+    },
+    {
+      "path": "packages/durable-agent/tests/initializer.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-durable-agent/tests/initializer.spec.ts",
+      "sha256": "265de4d8c48d1c3734e72e9c313537220f7261a1b0d765d2551a81da226557f4",
+      "matched": true
+    },
+    {
+      "path": "packages/durable-agent/tests/public-provider.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-durable-agent/tests/public-provider.spec.ts",
+      "sha256": "5ddcd08c94376c5868727815d44f89a3f543f1a59d320c2e939f0bc6a7d6658f",
+      "matched": true
+    },
+    {
+      "path": "packages/durable-agent/tests/binder.spec.ts",
+      "tested_path": "/tmp/gat-exec022-verify/packages/experimental/gat-durable-agent/tests/binder.spec.ts",
+      "sha256": "1a90ff1449a3d6963b0bae64f1ea17d2969a61ca38d846972f3b7d379dcae7ca",
+      "matched": true
+    }
+  ]
+}

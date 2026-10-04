@@ -1,0 +1,10 @@
+[
+  "packages/core/src/index.ts",
+  "packages/core/tests/authority.spec.ts",
+  "packages/core/tests/authorized-team-fixture.ts",
+  "packages/core/tests/member-attachments.spec.ts",
+  "packages/core/tests/member-binding.spec.ts",
+  "packages/core/tests/projection-events.spec.ts",
+  "packages/tools/tests/prerequisite-composition.spec.ts",
+  "packages/tools/tests/tool-team.spec.ts"
+]

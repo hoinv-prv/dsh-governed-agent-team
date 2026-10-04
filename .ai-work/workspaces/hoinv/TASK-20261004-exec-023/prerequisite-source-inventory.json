@@ -1,0 +1,122 @@
+{
+  "artifact_type": "prerequisite_source_inventory",
+  "task_id": "TASK-20261004-exec-023",
+  "observed_at": "2026-10-04",
+  "status": "provisional mapping only",
+  "qualification": "Source may change during the active prerequisite work. This inventory proves path/symbol presence only; it is not a qualification PASS, test result, deployment evidence, or canonical promotion.",
+  "design_inputs": [
+    {"path": "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md", "sections": ["§7", "§10", "§11", "§12", "§13"]},
+    {"path": "docs/gat-design/DETAIL_DESIGN.md", "section": "§7 Approved prerequisite implementation delta — AIP-EXEC-023"},
+    {"path": "docs/gat-design/source-code-map.json", "rows": ["DD-02", "DD-03", "DD-04", "DD-06", "DD-09", "DD-15", "DD-16", "DD-17"]}
+  ],
+  "repositories": {
+    "gat": "/home/hoinv/work/dsh-governed-agent-team",
+    "host": "/home/hoinv/work/dsh-binding-prerequisites",
+    "host_checkout_note": "Uses the approved isolated host worktree, not the original dirty DSH checkout."
+  },
+  "mapping": [
+    {
+      "area": "Reserved lifecycle, quarantined initial admission, cold recovery",
+      "detail_ids": ["DD-02", "DD-03", "DD-16"],
+      "host_sources": [
+        {"path": "packages/subagent/subagent/src/index.ts", "symbols": [{"name": "materializeContinuable", "line": 238}, {"name": "recoverContinuable", "line": 246}, {"name": "startContinuable", "line": 250}]},
+        {"path": "packages/subagent/subagent/src/continuation.ts", "symbols": [{"name": "startContinuable", "line": 107}, {"name": "materializeContinuable", "line": 135}, {"name": "recoverContinuable", "line": 143}, {"name": "materialize", "line": 189}, {"name": "recover", "line": 271}]},
+        {"path": "packages/subagent/subagent/src/reserved.ts", "symbols": [{"name": "ReservedContinuable", "line": 30}, {"name": "reserveContinuable", "line": 121}, {"name": "persistInitialPrompt", "line": 166}]}
+      ],
+      "host_tests": [
+        {"path": "packages/subagent/subagent/tests/reserved.spec.ts", "coverage_anchors": ["quarantined/idempotent/once", "direct wake and legacy recovery gates", "cancellation tombstone", "cold recovery gate", "persistence failure/retry"]},
+        {"path": "packages/subagent/subagent/tests/continuation.spec.ts", "coverage_anchors": ["continuable manager lifecycle and regressions; broad suite"]}
+      ],
+      "gat_sources": [
+        {"path": "packages/core/src/roster.ts", "symbols": ["spawnAdmitted", "reconcileProvisioning", "resolveActiveMember"]},
+        {"path": "packages/core/src/member-binding.ts", "symbols": ["provisionPreparedMember", "recoverBoundMember", "BoundMemberRuntime.activate"]},
+        {"path": "packages/core/src/index.ts", "symbols": ["enable", "validateInitialization", "disposeRuntime"]},
+        {"path": "packages/core/src/mailbox.ts", "symbols": ["dispatchOnce", "checkpointDelivered", "markDelivered"]}
+      ],
+      "gat_tests": ["packages/core/tests/member-binding.spec.ts", "packages/core/tests/binding-enable.spec.ts", "packages/core/tests/member-replay.spec.ts", "packages/core/tests/member-attachments.spec.ts", "packages/core/tests/team.spec.ts"]
+    },
+    {
+      "area": "Awaited owner-scoped prompt refresh and model admission",
+      "detail_ids": ["DD-09", "DD-15", "DD-16"],
+      "host_sources": [
+        {"path": "packages/core/agent-loop/src/agent.ts", "symbols": [{"name": "ReactLoopAgent.preStep / agent/prepare-prompt", "line": 257}, {"name": "ReactLoopAgent.step / agent/prepare-prompt + agent/model-admission", "lines": [371, 383, 392]}, {"name": "ReactLoopAgent.prepareRequest", "line": 534}]},
+        {"path": "packages/core/agent-loop/src/runtime-context.ts", "symbols": ["SystemPromptProjection", "RuntimeContextProjection"]},
+        {"path": "packages/core/system-prompt/src/index.ts", "symbols": ["SystemPrompt", "renderPrompt", "renderContextSnapshot"]}
+      ],
+      "host_tests": ["packages/core/agent-loop/tests/prepare-prompt.spec.ts", "packages/core/agent-loop/tests/system-prompt-admission.spec.ts", "packages/core/agent-loop/tests/request-reconstruction.spec.ts", "packages/core/agent-loop/tests/loop.spec.ts"],
+      "gat_sources": [
+        {"path": "packages/durable-agent/src/binder.ts", "symbols": ["createDurableAgentBinder"]},
+        {"path": "packages/durable-agent/src/tools.ts", "symbols": ["createDurableTools"]},
+        {"path": "packages/tools/src/index.ts", "symbols": ["install", "guardedTeamView", "TeamExecutionGuard"]}
+      ],
+      "gat_tests": ["packages/durable-agent/tests/binder.spec.ts", "packages/durable-agent/tests/tools.spec.ts", "packages/tools/tests/prerequisite-composition.spec.ts"]
+    },
+    {
+      "area": "Authenticated HUMAN control and exact mission/task authority with durable journal publication",
+      "detail_ids": ["DD-04", "DD-06", "DD-17"],
+      "host_sources": [
+        {"path": "packages/client/connection/src/rpc-host.ts", "symbols": [{"name": "authenticatedControl", "line": 334}, {"name": "withControlInvocation", "line": 347}, {"name": "consumeHumanControl", "line": 368}]},
+        {"path": "packages/client/connection/src/control-admission.ts", "symbols": ["process-local opaque receipt state and invocation binding"]}
+      ],
+      "host_tests": ["packages/client/connection/tests/api-request-trust.host.spec.ts", "packages/client/connection/tests/http-bridge.host.spec.ts", "packages/client/connection/tests/fetch-routes.host.spec.ts"],
+      "gat_sources": [
+        {"path": "packages/core/src/authority.ts", "symbols": [{"name": "TeamExecutionAuthority.bind", "line": 34}, {"name": "bindTask", "line": 56}, {"name": "assert", "line": 67}, {"name": "assertPlan", "line": 94}]},
+        {"path": "packages/core/src/mission-board.ts", "symbols": [{"name": "TeamMissionBoard.create", "line": 16}, {"name": "approve/control", "lines": [46, 55]}]},
+        {"path": "packages/core/src/journal.ts", "symbols": [{"name": "TeamJournal.assertCommitted", "line": 52}, {"name": "appendManyAndFlush", "line": 96}]},
+        {"path": "packages/core/src/task-board.ts", "symbols": ["TeamTaskBoard effectful transition and structural mutation paths"]},
+        {"path": "packages/core/src/index.ts", "symbols": [{"name": "assertExecution", "line": 189}, {"name": "member-add receipt append", "line": 255}, {"name": "Session Enable receipt consume", "line": 469}]},
+        {"path": "packages/core/src/projection.ts", "symbols": ["versioned mission approvals and canonical task projection"]}
+      ],
+      "gat_tests": ["packages/core/tests/authority.spec.ts", "packages/core/tests/human-control-fixture.ts", "packages/core/tests/projection-events.spec.ts", "packages/core/tests/team.spec.ts", "packages/core/tests/binding-enable.spec.ts"]
+    },
+    {
+      "area": "Registry-owned immutable and nested tool capabilities",
+      "detail_ids": ["DD-09", "DD-17"],
+      "host_sources": [
+        {"path": "packages/core/tools/src/index.ts", "symbols": [{"name": "ToolRuntime", "line": 797}, {"name": "EXTERNAL_DELEGATION / NESTED_DISPATCH_CAPABILITY", "lines": [215, 221]}, {"name": "captured immutable normalized metadata", "line": 1074}, {"name": "nested capability resolution and dispatch recheck", "lines": [1180, 1214]}]},
+        {"path": "packages/core/tools/src/schema.ts", "symbols": [{"name": "defineTool capability/nestedTools contract", "line": 549}]}
+      ],
+      "host_tests": ["packages/core/tools/tests/capabilities.spec.ts", "packages/core/tools/tests/ptc.spec.ts", "packages/core/tools/tests/tools.spec.ts"],
+      "gat_sources": ["packages/tools/src/index.ts: guarded policy and Team capability exemptions/fallback", "packages/durable-agent/src/tools.ts: member tool wrappers"],
+      "gat_tests": ["packages/tools/tests/prerequisite-composition.spec.ts", "packages/tools/tests/tool-team.spec.ts", "packages/durable-agent/tests/tools.spec.ts"]
+    }
+  ],
+  "source_map_staleness": [
+    {"detail_id": "DD-17", "finding": "The existing map row has empty sources and tests. The AIP-EXEC-023 delta now names concrete source/test ownership for host control receipts, GAT authority leases, and nested capabilities; it must be evidence-reconciled before promoting a nonempty current map."},
+    {"detail_ids": ["DD-02", "DD-03", "DD-04", "DD-06", "DD-09", "DD-15", "DD-16"], "finding": "The map retains pre-prerequisite GAT line anchors and marks verification as mapped/not run. Source files in this checkout are modified or newly added since that map snapshot; line-number anchors are stale wherever current declarations differ. Current declarations are captured above; DD-02 roster spawnAdmitted/reconcileProvisioning and DD-09 tools readiness/preflight/install/EXTERNAL_SUBAGENT_TOOLS require refresh against current line positions. DD-15 host paths refer to durable-agent plugin source, while the actual reserved lifecycle owners are packages/subagent/subagent/src/{index,continuation,reserved}.ts."}
+  ],
+  "hashes": {
+    "algorithm": "SHA-256",
+    "capture_rule": "Hashes below identify bytes observed during this inventory and are provisional; regenerate after source changes and before qualification.",
+    "files": {
+      "packages/core/src/authority.ts": "216a1da65c63e24f7580216b388559be40b4807aff61a449526b2f0fc43d9368",
+      "packages/core/src/index.ts": "37e47891cde440a0a987e2a6532dbe3bd6e61883a49cb3fbb4859eba0c597cc6",
+      "packages/core/src/journal.ts": "c94520602d4b2836b5b77310e53f1e9545dda1e3aa192404744efe8113dbc4a2",
+      "packages/core/src/mission-board.ts": "2241a57b2fb9e3ec39d38e38a00a2726edd6c9e5fa6c783c5fd8cb910f9c26bc",
+      "packages/core/src/task-board.ts": "515fb7bc5adde805f277fd9fda594838e4a722db73a7cae0143e154a7e84b318",
+      "packages/core/src/projection.ts": "2027d013a98da048fa2e328b9e283192523729c2ac831d502099de3eec9f66d7",
+      "packages/core/src/types.ts": "3215eff7378a9565986080bd7aa37124b34276791751db286917ff46b2d28d39",
+      "packages/core/src/roster.ts": "a4bc380b76db7b2ef866c291f744289b1a282a7dbf6ecc22bb491b920f4e5e25",
+      "packages/core/src/mailbox.ts": "d5196ba42bf4e6e894a3a69303e3c30f1cf2b90b9bc8e668eddaa13da60e05f8",
+      "packages/core/src/work-state.ts": "1e5d26383684f5fd41633ea15ecad161b0bb7ba694834fe72a29b3821c0bbcdb",
+      "packages/tools/src/index.ts": "95f7b26e0e905918537a68477e242768a80b7b9caab3ed9f417777046f335487",
+      "packages/core/tests/authority.spec.ts": "cbeeb4abdf2dcf133af8f79dc54c19a341224ab3bbe0330443afce1a8869dbe3",
+      "packages/core/tests/human-control-fixture.ts": "c499351f324619bbf068c2dc8e057f56299ca52a2549fa3c2627cefa50e95a3d",
+      "packages/core/tests/member-binding.spec.ts": "ff397d063ca840ddb4654d588fbe789b340d6280dec3294e0791996323576277",
+      "packages/core/tests/binding-enable.spec.ts": "b77a8b728a3287cb6fcf4dacc47478fe8ce025678e12e02dd260d2befbb796a1",
+      "packages/tools/tests/prerequisite-composition.spec.ts": "ee7f42eca9f3ae882c2e6e0bec17ccf8e613f54968da48fd6ac4fb96b9c796fd",
+      "packages/tools/tests/tool-team.spec.ts": "8ae405842ac9d9364ae3e97d4e48731d59906d2fbb761812cb623836d5e36f3f",
+      "/home/hoinv/work/dsh-binding-prerequisites/packages/subagent/subagent/src/index.ts": "15d08bb61d8d6108163496f108f4dfaf6f58c8c106ec02bca01dcca06dd78a00",
+      "/home/hoinv/work/dsh-binding-prerequisites/packages/subagent/subagent/src/continuation.ts": "6c24c9666a7b7c9774b2148fd9a586b9db08f057856399b40e48041cec1dc629",
+      "/home/hoinv/work/dsh-binding-prerequisites/packages/subagent/subagent/src/reserved.ts": "5ccd1fba47ad85e000c62b48071c1a66514ce88ac11007a0f44b0c0a36232860",
+      "/home/hoinv/work/dsh-binding-prerequisites/packages/subagent/subagent/tests/reserved.spec.ts": "d8a826ee6e2aca078df05b176370dc68f04e3e4c6ec3da8e5450ba6fe2c1cfaf",
+      "/home/hoinv/work/dsh-binding-prerequisites/packages/subagent/subagent/tests/continuation.spec.ts": "4eba565931245d445ff19db5d155d10cc4db4ae927b0b0160b7a2025ff917487",
+      "/home/hoinv/work/dsh-binding-prerequisites/packages/core/agent-loop/src/agent.ts": "aeb249e40ffe43d191418510a80357fdf3ca07bd9f902eed75499706ec1c2e33",
+      "/home/hoinv/work/dsh-binding-prerequisites/packages/core/agent-loop/tests/prepare-prompt.spec.ts": "a0aa6e95932f749f8eb5812c3e0f74e387a57c3b7c50245fc5e02556c94ded2c",
+      "/home/hoinv/work/dsh-binding-prerequisites/packages/core/agent-loop/tests/system-prompt-admission.spec.ts": "b8d07321c99fe4421c8637c96bb9f4c269166e7b15bb6cc3825836e6c06b1095",
+      "/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/control-admission.ts": "05ac55f7db7e75e3bf1737408c8fb8301daf788b0068c6fdb2ed660e76246d0d",
+      "/home/hoinv/work/dsh-binding-prerequisites/packages/core/tools/src/index.ts": "b36d7b9a213ba62a1b7153d89155525a3fb36ac7b274268e80aa2c39baef3f0c",
+      "/home/hoinv/work/dsh-binding-prerequisites/packages/core/tools/tests/capabilities.spec.ts": "38d807128432ae008562eb12fa54bc503daf59ff55acb41e8e6a40a617b17e8f"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+$ tsx scripts/run-gates.ts doc-sync
+run-gates: doc-sync running 34 gate(s) with 4 worker(s) from 12 available CPU(s), doc-sync cap 4.
+run-gates: start doc-typecheck
+run-gates: start documentation build
+run-gates: start doc graphs
+run-gates: start markdown links

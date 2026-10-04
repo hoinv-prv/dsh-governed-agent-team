@@ -1,0 +1,4 @@
+verify-translation-pairing: recorded docs/subsystems/core.i18n.yaml
+verify-translation-pairing: recorded docs/subsystems/subagent.i18n.yaml
+verify-translation-pairing: recorded packages/core/tools/README.i18n.yaml
+verify-translation-pairing: 3 record(s) written; run the check to validate the pairs.

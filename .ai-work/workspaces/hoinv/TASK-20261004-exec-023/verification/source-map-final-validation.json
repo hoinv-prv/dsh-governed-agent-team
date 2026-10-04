@@ -1,0 +1,163 @@
+{
+  "format": "gat-source-map-final-validation-v1",
+  "checked_at_utc": "2026-10-04T03:58:47Z",
+  "scope": {
+    "markdown": "docs/gat-design/SOURCE_CODE_MAP.md",
+    "json": "docs/gat-design/source-code-map.json",
+    "design_rows_including_future": 18,
+    "mapped_rows_audited": 17,
+    "future_rows_preserved": [
+      "DD-18"
+    ],
+    "repository_roots": {
+      "gat": "/home/hoinv/work/dsh-governed-agent-team",
+      "dsh-prerequisites": "/home/hoinv/work/dsh-binding-prerequisites",
+      "durable-agent": "/home/hoinv/work/dsh-durable-agent"
+    },
+    "dsh_prerequisites_baseline": "c291e7961a515f6d7af9304e7fd1d257929aef26"
+  },
+  "counts": {
+    "source_symbols": 180,
+    "source_symbol_anchors_checked": 180,
+    "test_paths_checked": 73,
+    "json_test_line_anchors_checked": 0,
+    "markdown_line_anchors_checked": 61
+  },
+  "missing_paths": [],
+  "unresolved_symbols": [],
+  "mismatched_line_anchors": [],
+  "invalid_test_line_anchors": [],
+  "row_results": [
+    {
+      "detail_id": "DD-01",
+      "status": "Current",
+      "sources": 3,
+      "symbols": 5,
+      "tests": 3
+    },
+    {
+      "detail_id": "DD-02",
+      "status": "Current",
+      "sources": 1,
+      "symbols": 4,
+      "tests": 2
+    },
+    {
+      "detail_id": "DD-03",
+      "status": "Current",
+      "sources": 3,
+      "symbols": 6,
+      "tests": 2
+    },
+    {
+      "detail_id": "DD-04",
+      "status": "Current",
+      "sources": 3,
+      "symbols": 6,
+      "tests": 2
+    },
+    {
+      "detail_id": "DD-05",
+      "status": "Current",
+      "sources": 3,
+      "symbols": 6,
+      "tests": 2
+    },
+    {
+      "detail_id": "DD-06",
+      "status": "Current",
+      "sources": 4,
+      "symbols": 5,
+      "tests": 2
+    },
+    {
+      "detail_id": "DD-07",
+      "status": "Current",
+      "sources": 2,
+      "symbols": 5,
+      "tests": 2
+    },
+    {
+      "detail_id": "DD-08",
+      "status": "Current",
+      "sources": 5,
+      "symbols": 6,
+      "tests": 2
+    },
+    {
+      "detail_id": "DD-09",
+      "status": "Current",
+      "sources": 1,
+      "symbols": 5,
+      "tests": 1
+    },
+    {
+      "detail_id": "DD-10",
+      "status": "Current",
+      "sources": 3,
+      "symbols": 4,
+      "tests": 2
+    },
+    {
+      "detail_id": "DD-11",
+      "status": "Current",
+      "sources": 5,
+      "symbols": 5,
+      "tests": 5
+    },
+    {
+      "detail_id": "DD-12",
+      "status": "Standalone",
+      "sources": 2,
+      "symbols": 9,
+      "tests": 4
+    },
+    {
+      "detail_id": "DD-13",
+      "status": "Standalone",
+      "sources": 2,
+      "symbols": 3,
+      "tests": 2
+    },
+    {
+      "detail_id": "DD-14",
+      "status": "Standalone",
+      "sources": 5,
+      "symbols": 4,
+      "tests": 3
+    },
+    {
+      "detail_id": "DD-15",
+      "status": "External + Adapter; production gated",
+      "sources": 8,
+      "symbols": 13,
+      "tests": 9
+    },
+    {
+      "detail_id": "DD-16",
+      "status": "Foundation + Adapter; production gated",
+      "sources": 14,
+      "symbols": 43,
+      "tests": 9
+    },
+    {
+      "detail_id": "DD-17",
+      "status": "Prerequisite implementation mapped; qualification pending",
+      "sources": 16,
+      "symbols": 51,
+      "tests": 21
+    },
+    {
+      "detail_id": "DD-18",
+      "status": "Target / future",
+      "sources": 0,
+      "tests": 0,
+      "future_row_preserved": true
+    }
+  ],
+  "result": "pass",
+  "limitations": [
+    "Test file presence and any explicit test line anchors were checked; the JSON map currently has no test line anchors.",
+    "This is source-map validation only and does not report behavioral test results or product qualification."
+  ]
+}

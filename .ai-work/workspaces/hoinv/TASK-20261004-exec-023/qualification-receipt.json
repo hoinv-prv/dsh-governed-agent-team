@@ -1,0 +1,101 @@
+{
+  "format": "gat-prerequisite-qualification-v1",
+  "aip": "AIP-EXEC-023",
+  "qualified_on": "2026-10-04",
+  "status": "prerequisite_source_and_artifacts_PASS",
+  "host": {
+    "worktree": "/home/hoinv/work/dsh-binding-prerequisites",
+    "branch": "gat-binding-prerequisites",
+    "baseline": "c291e7961a515f6d7af9304e7fd1d257929aef26",
+    "patch_sha256": "d532cc1e8d110c9db891219c89f20b4fd94d0836aa1e8c7d6d3494dddfb8cbf0",
+    "patch_files": 244,
+    "uncommitted": true,
+    "patch_validation": "verification/source-patch-final-validation.json"
+  },
+  "behavior": {
+    "gat_files": 17,
+    "gat_tests": 270,
+    "independently_repeated": true,
+    "matrix_cases": 60,
+    "matrix_allowed_bodies": 19,
+    "matrix_denied": 41,
+    "matrix_provider_requests": 0,
+    "counts_overlap": true
+  },
+  "builds": {
+    "host_types": "PASS",
+    "host_bundle": "PASS",
+    "client_types": "PASS",
+    "client_bundle": "PASS",
+    "plain_node_public_imports": 11
+  },
+  "documentation": {
+    "gates_passed": 34,
+    "gates_failed": 0,
+    "gates_skipped": 0
+  },
+  "source_bindings": {
+    "root_and_staged_gat_files": 57,
+    "mismatches": 0,
+    "mapped_baseline_files": 109,
+    "source_symbol_anchors": 180,
+    "test_paths": 73,
+    "receipt": "verification/tested-source-final-hashes.json"
+  },
+  "sdk": {
+    "typescript_replay_checks": 10,
+    "python_scenarios": 4,
+    "runtime_artifacts_unchanged": 7,
+    "qualification_limit": "Source SDK facades with actual built CLI/host runtime; no installed wheel or deployment claim."
+  },
+  "independent_review": "independent-review.md#final-independent-vote--pass-for-aip-exec-023-prerequisites",
+  "governance": {
+    "scoped_strict": {
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0
+    },
+    "whole_tree_strict": {
+      "exit_code": 1,
+      "errors": 0,
+      "warnings": 37,
+      "info": 3005,
+      "accepted": 1,
+      "baseline_warnings_unchanged": true
+    }
+  },
+  "limitations": [
+    "Two earlier corrective intended-design chronology gaps retained",
+    "Annotation expression/export accidents corrected and independently qualified",
+    "Original DSH AGENTS.md changed outside task-issued edits and preserved; 365 other protected hashes match",
+    "Core built AST differs through independently reviewed equivalent changes; tools normalized AST matches",
+    "Parent AIP-EXEC-022 production binder/profile/package/browser compatibility qualification remains OPEN",
+    "Deployment, merge, publication, live activation and canonical promotion remain separate"
+  ],
+  "evidence_sha256": {
+    "verification/gat-behavior-final.log": "05993309f9db4bd4eebb9e2bbe61a58c3f958c2e47d4b8aa61c8d6f8d1b40bdd",
+    "verification/gat-source-lint-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verification/host-qualified-types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verification/host-qualified-bundle.log": "c96c06c410d22372f394392804b33da408178f116056fae28cbca91fc6068943",
+    "verification/client-qualified-types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verification/client-qualified-bundle.log": "d90da7383884eb977592089933c2223b56da8cf92bea1d7a5b3a4a531054e2b8",
+    "verification/public-built-qualified.log": "1b7358ba67907b79c561286f68a5fe93f176235c9759a378b294329d8163337c",
+    "verification/doc-sync-accepted.log": "b70274994ec19324a34d4d80d00dad7ed195e1bdafa4fe54c134cf08d380af79",
+    "verification/governance-qualified.log": "94e7c69519e5339546b3bb52eeec3d2252a96bf7bc0bd380a6a5db1e6faa5c22",
+    "verification/governance-whole-tree-accepted.log": "435674425545143e415ce3594255e914ca70412ef65dbac5c3be3f2b8e1b8c28",
+    "independent-review.md": "974a1e140880194c53839be4840e643fb9ab70f7957a32fdcc27a30d727d1321",
+    "verification/built-public-entry-final-hashes.json": "438748fc16df248d2e832b0e5dcdca828515616ac672eafae6c4824f2735c673",
+    "verification/source-patch-receipt.json": "18f7ef349d6590b7223046f310aec2a4d03466610898b4df94e46bc5f736e620",
+    "verification/source-map-final-validation.json": "b785b60da37d80868c0fe59c7415ea777898ede7bcfbf0492493f4c4fcaa9cf4"
+  },
+  "aip_status": "done",
+  "closure_receipt": "verification/aip-close.log",
+  "asc": {
+    "steps": 8,
+    "snapshots": "step_contexts",
+    "final_step": "STEP-07",
+    "pointer_status": "done",
+    "generated_context_status": "active",
+    "staleness_status": "fresh"
+  }
+}

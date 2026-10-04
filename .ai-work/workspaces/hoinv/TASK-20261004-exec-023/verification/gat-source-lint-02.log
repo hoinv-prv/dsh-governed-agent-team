@@ -1,0 +1,19 @@
+packages/experimental/gat-core/src/mission-board.ts:104:1: error @stylistic(max-len): This line has a length of 152. Maximum allowed is 140.
+packages/experimental/gat-core/src/authority.ts:66:1: error @stylistic(max-len): This line has a length of 158. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binders.ts:212:1: error @stylistic(max-len): This line has a length of 141. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binders.ts:265:1: error @stylistic(max-len): This line has a length of 162. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:217:1: error @stylistic(max-len): This line has a length of 147. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:222:1: error @stylistic(max-len): This line has a length of 151. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:243:1: error @stylistic(max-len): This line has a length of 148. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:293:1: error @stylistic(max-len): This line has a length of 224. Maximum allowed is 140.
+packages/experimental/gat-core/src/roster.ts:462:1: error @stylistic(max-len): This line has a length of 142. Maximum allowed is 140.
+packages/experimental/gat-core/src/projection.ts:128:1: error @stylistic(max-len): This line has a length of 254. Maximum allowed is 140.
+packages/experimental/gat-core/src/projection.ts:168:1: error @stylistic(max-len): This line has a length of 178. Maximum allowed is 140.
+packages/experimental/gat-core/src/projection.ts:263:1: error @stylistic(max-len): This line has a length of 193. Maximum allowed is 140.
+packages/experimental/gat-core/src/projection.ts:394:1: error @stylistic(max-len): This line has a length of 144. Maximum allowed is 140.
+packages/experimental/gat-core/src/mission-plan.ts:48:9: error typescript(no-unnecessary-condition): This condition will always return the same value since the types have no overlap.
+packages/experimental/gat-core/src/binding-deadline.ts:60:7: error typescript(prefer-promise-reject-errors): Expected the Promise rejection reason to be an Error.
+packages/experimental/gat-core/src/binding-deadline.ts:74:9: error typescript(prefer-promise-reject-errors): Expected the Promise rejection reason to be an Error.
+packages/experimental/gat-core/src/roster.ts:200:72: error typescript(prefer-promise-reject-errors): Expected the Promise rejection reason to be an Error.
+packages/experimental/gat-core/src/member-binders.ts:295:43: error typescript(no-unnecessary-type-conversion): This type conversion does not change the type or value of the expression.
+packages/experimental/gat-core/src/roster.ts:381:63: error typescript(prefer-promise-reject-errors): Expected the Promise rejection reason to be an Error.

@@ -1,0 +1,41 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts (136 tests | 1 failed) 16393ms
+     × releases the Activation when the parent catalog append fails 41ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > SubagentRuntime.startContinuable > releases the Activation when the parent catalog append fails
+AssertionError: expected SubagentError: subagent "00000000-0000-40… { code: '…' } to be Error: catalog append failed // Object.is equality
+
+- Expected
++ Received
+
+- Error {
+-   "message": "catalog append failed",
++ SubagentError {
++   "message": "subagent \"00000000-0000-4000-8000-000000000321\" activation handle disposal failed: activation disposal also failed",
++   "code": "ACTIVATION_TEARDOWN_FAILED",
++   "name": "SubagentError",
+  }
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:450:7
+    448|       ...startSpec(parent),
+    449|       childId,
+    450|     })).rejects.toBe(catalogFailure)
+       |       ^
+    451|
+    452|     await vi.waitFor(() => { expect(ctx.agents.get(childId)).toBeUndef…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 139 passed (140)
+   Start at  11:09:59
+   Duration  17.57s (transform 1.42s, setup 286ms, import 1.46s, tests 16.45s, environment 0ms)
+

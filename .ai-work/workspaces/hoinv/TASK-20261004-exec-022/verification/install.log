@@ -1,0 +1,9 @@
+[WARN] GAT source tree contains local modifications; source hashes are advisory.
+{
+  "status": "installed",
+  "manifestId": "gat-0.1.0-dsh-0.1.5-rc.2-c291e796",
+  "target": "/tmp/gat-exec022-install",
+  "compatibility": "SUPPORTED",
+  "files": 94,
+  "structuralVerification": "PASS"
+}

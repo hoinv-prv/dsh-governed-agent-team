@@ -1,0 +1,168 @@
+╭──────────────────────────────────────╮
+│ lefthook  v2.1.9   hook:  [1mpre-commit[m │
+╰──────────────────────────────────────╯
+┃  translation pairing (staged records) ❯ 
+verify-translation-pairing: 29 named staged pair(s) consistent; the corpus-wide check still runs in doc-sync.
+
+│  archived agent notes (skip) no matching staged files
+┃  lint (staged) ❯ 
+packages/experimental/gat-core/src/roster.ts:551:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/subagent/tool-subagent/src/index.ts:623:7: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/index.ts:1004:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/index.ts:1091:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/index.ts:1197:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:317:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:418:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:448:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:466:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:494:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/experimental/gat-core/src/mailbox.ts:294:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/subagent/subagent/src/index.ts:538:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:553:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:555:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:557:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:559:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:561:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:563:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:565:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent-loop/src/index.ts:181:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent-loop/src/index.ts:761:5: warning: Unused oxlint-disable directive (no problems were reported).
+
+┃  third-party notices (staged) ❯ 
+gen-third-party-notices: wrote THIRD_PARTY_NOTICES.md.
+
+┃  whitespace (staged) ❯ 
+
+┃  vendor manifest guard ❯ 
+
+[38;2;56;56;56m  ────────────────────────────────────[m
+summary: (done in 8.56 seconds)
+✓ translation pairing (staged records) (2.02 seconds)
+✓ lint (staged) (2.71 seconds)
+✓ third-party notices (staged) (3.70 seconds)
+✓ whitespace (staged) (0.05 seconds)
+✓ vendor manifest guard (0.01 seconds)
+[gat-binding-prerequisites 5c02ce9f3e] feat(gat): add governed binding prerequisites
+ 244 files changed, 23294 insertions(+), 424 deletions(-)
+ create mode 100644 .agents/notes/implemented/architecture/2026-10-04-authenticated-control-admission.i18n.yaml
+ create mode 100644 .agents/notes/implemented/architecture/2026-10-04-authenticated-control-admission.md
+ create mode 100644 .agents/notes/implemented/architecture/2026-10-04-authenticated-control-admission.zh.md
+ create mode 100644 .agents/notes/implemented/architecture/2026-10-04-immutable-tool-capabilities.i18n.yaml
+ create mode 100644 .agents/notes/implemented/architecture/2026-10-04-immutable-tool-capabilities.md
+ create mode 100644 .agents/notes/implemented/architecture/2026-10-04-immutable-tool-capabilities.zh.md
+ create mode 100644 .agents/notes/implemented/architecture/2026-10-04-reserved-continuable-admission.i18n.yaml
+ create mode 100644 .agents/notes/implemented/architecture/2026-10-04-reserved-continuable-admission.md
+ create mode 100644 .agents/notes/implemented/architecture/2026-10-04-reserved-continuable-admission.zh.md
+ create mode 100644 .agents/notes/implemented/process/2026-10-04-active-catalog-replacements.i18n.yaml
+ create mode 100644 .agents/notes/implemented/process/2026-10-04-active-catalog-replacements.md
+ create mode 100644 .agents/notes/implemented/process/2026-10-04-active-catalog-replacements.zh.md
+ create mode 100644 apps/web/tests/gat-agent-team-panel.e2e.ts
+ create mode 100644 apps/web/tests/gat-agent-team-panel.overlay.yml
+ create mode 100644 apps/web/tests/snapshots/gat-agent-team-panel/task.expected.md
+ create mode 100644 packages/client/connection/src/control-admission.ts
+ create mode 100644 packages/core/agent-loop/tests/prepare-prompt.spec.ts
+ create mode 100644 packages/core/tools/tests/capabilities.spec.ts
+ create mode 100644 packages/experimental/gat-core/README.i18n.yaml
+ create mode 100644 packages/experimental/gat-core/README.md
+ create mode 100644 packages/experimental/gat-core/README.zh.md
+ create mode 100644 packages/experimental/gat-core/package.json
+ create mode 100644 packages/experimental/gat-core/src/activity.ts
+ create mode 100644 packages/experimental/gat-core/src/approved-plan-import.ts
+ create mode 100644 packages/experimental/gat-core/src/attachments.ts
+ create mode 100644 packages/experimental/gat-core/src/authority.ts
+ create mode 100644 packages/experimental/gat-core/src/binding-deadline.ts
+ create mode 100644 packages/experimental/gat-core/src/client.ts
+ create mode 100644 packages/experimental/gat-core/src/error.ts
+ create mode 100644 packages/experimental/gat-core/src/index.ts
+ create mode 100644 packages/experimental/gat-core/src/invariant.ts
+ create mode 100644 packages/experimental/gat-core/src/journal.ts
+ create mode 100644 packages/experimental/gat-core/src/lifecycle.ts
+ create mode 100644 packages/experimental/gat-core/src/mailbox.ts
+ create mode 100644 packages/experimental/gat-core/src/member-binders.ts
+ create mode 100644 packages/experimental/gat-core/src/member-binding.ts
+ create mode 100644 packages/experimental/gat-core/src/mission-board.ts
+ create mode 100644 packages/experimental/gat-core/src/mission-plan.ts
+ create mode 100644 packages/experimental/gat-core/src/persisted.ts
+ create mode 100644 packages/experimental/gat-core/src/projection.ts
+ create mode 100644 packages/experimental/gat-core/src/roster.ts
+ create mode 100644 packages/experimental/gat-core/src/session-message.ts
+ create mode 100644 packages/experimental/gat-core/src/task-board.ts
+ create mode 100644 packages/experimental/gat-core/src/task-graph.ts
+ create mode 100644 packages/experimental/gat-core/src/types.ts
+ create mode 100644 packages/experimental/gat-core/src/validation.ts
+ create mode 100644 packages/experimental/gat-core/src/work-state.ts
+ create mode 100644 packages/experimental/gat-core/tests/authority.spec.ts
+ create mode 100644 packages/experimental/gat-core/tests/authorized-team-fixture.ts
+ create mode 100644 packages/experimental/gat-core/tests/binding-enable.spec.ts
+ create mode 100644 packages/experimental/gat-core/tests/built-lib.e2e.ts
+ create mode 100644 packages/experimental/gat-core/tests/human-control-fixture.ts
+ create mode 100644 packages/experimental/gat-core/tests/invariant.spec.ts
+ create mode 100644 packages/experimental/gat-core/tests/member-attachments.spec.ts
+ create mode 100644 packages/experimental/gat-core/tests/member-binding.spec.ts
+ create mode 100644 packages/experimental/gat-core/tests/member-replay.spec.ts
+ create mode 100644 packages/experimental/gat-core/tests/persistence.spec.ts
+ create mode 100644 packages/experimental/gat-core/tests/projection-events.spec.ts
+ create mode 100644 packages/experimental/gat-core/tests/team.spec.ts
+ create mode 100644 packages/experimental/gat-core/tests/test-session-query.ts
+ create mode 100644 packages/experimental/gat-core/tsconfig.json
+ create mode 100644 packages/experimental/gat-core/tsdown.config.ts
+ create mode 100644 packages/experimental/gat-profile/README.i18n.yaml
+ create mode 100644 packages/experimental/gat-profile/README.md
+ create mode 100644 packages/experimental/gat-profile/README.zh.md
+ create mode 100644 packages/experimental/gat-profile/cordis.patch.yml
+ create mode 100644 packages/experimental/gat-profile/package.json
+ create mode 100644 packages/experimental/gat-profile/src/index.ts
+ create mode 100644 packages/experimental/gat-profile/tests/fixtures/keyless-base.yml
+ create mode 100644 packages/experimental/gat-profile/tests/profile.spec.ts
+ create mode 100644 packages/experimental/gat-profile/tsconfig.json
+ create mode 100644 packages/experimental/gat-tools/README.i18n.yaml
+ create mode 100644 packages/experimental/gat-tools/README.md
+ create mode 100644 packages/experimental/gat-tools/README.zh.md
+ create mode 100644 packages/experimental/gat-tools/package.json
+ create mode 100644 packages/experimental/gat-tools/src/index.ts
+ create mode 100644 packages/experimental/gat-tools/src/team-config.ts
+ create mode 100644 packages/experimental/gat-tools/tests/authorization-matrix.spec.ts
+ create mode 100644 packages/experimental/gat-tools/tests/binding-views.spec.ts
+ create mode 100644 packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts
+ create mode 100644 packages/experimental/gat-tools/tests/team-config.spec.ts
+ create mode 100644 packages/experimental/gat-tools/tests/tool-team.spec.ts
+ create mode 100644 packages/experimental/gat-tools/tsconfig.json
+ create mode 100644 packages/experimental/gat-web-profile/README.i18n.yaml
+ create mode 100644 packages/experimental/gat-web-profile/README.md
+ create mode 100644 packages/experimental/gat-web-profile/README.zh.md
+ create mode 100644 packages/experimental/gat-web-profile/cordis.patch.yml
+ create mode 100644 packages/experimental/gat-web-profile/package.json
+ create mode 100644 packages/experimental/gat-web-profile/src/index.ts
+ create mode 100644 packages/experimental/gat-web-profile/tests/profile.spec.ts
+ create mode 100644 packages/experimental/gat-web-profile/tsconfig.json
+ create mode 100644 packages/experimental/gat-web/README.i18n.yaml
+ create mode 100644 packages/experimental/gat-web/README.md
+ create mode 100644 packages/experimental/gat-web/README.zh.md
+ create mode 100644 packages/experimental/gat-web/package.json
+ create mode 100644 packages/experimental/gat-web/src/client/TeamAction.module.css
+ create mode 100644 packages/experimental/gat-web/src/client/TeamAction.tsx
+ create mode 100644 packages/experimental/gat-web/src/client/index.ts
+ create mode 100644 packages/experimental/gat-web/src/client/locales.ts
+ create mode 100644 packages/experimental/gat-web/src/client/mount.ts
+ create mode 100644 packages/experimental/gat-web/src/css-modules.d.ts
+ create mode 100644 packages/experimental/gat-web/src/index.ts
+ create mode 100644 packages/experimental/gat-web/tests/browser-plugin.client.spec.ts
+ create mode 100644 packages/experimental/gat-web/tests/team-action.client.spec.tsx
+ create mode 100644 packages/experimental/gat-web/tsconfig.json
+ create mode 100644 packages/experimental/gat-web/tsdown.config.ts
+ create mode 100644 packages/subagent/subagent/src/reserved.ts
+ create mode 100644 packages/subagent/subagent/tests/reserved.spec.ts
+ create mode 100644 scripts/catalog-source-files.spec.ts
+ create mode 100644 scripts/catalog-source-files.ts
+ create mode 100644 scripts/fixtures/sdk-request-refresh.mjs
+ create mode 100644 scripts/snapshots/python-sdk-single-exe/request-refresh/prompt-history.json
+ create mode 100644 snapshots/sdk/request-refresh/cordis.snapshot.yml
+ create mode 100644 snapshots/sdk/request-refresh/cordis.yml
+ create mode 100644 snapshots/sdk/request-refresh/notifications.expected.jsonl
+ create mode 100644 snapshots/sdk/request-refresh/replay.override.json
+ create mode 100644 snapshots/sdk/request-refresh/result.expected.json
+ create mode 100644 snapshots/sdk/request-refresh/session.v3.jsonl
+ create mode 100644 snapshots/sdk/request-refresh/snapshot.yml
+ create mode 100644 snapshots/sdk/request-refresh/system-prompt.expected.md
+ create mode 100644 snapshots/sdk/request-refresh/tool-schemas.expected.json
+ create mode 100644 snapshots/sdk/request-refresh/workspace/task.txt

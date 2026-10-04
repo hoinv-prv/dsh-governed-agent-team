@@ -1,0 +1,5 @@
+packages/core/agent-loop/tests/prepare-prompt.spec.ts:38:23: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/core/agent-loop/src/agent.ts:224:1: error @stylistic(max-len): This line has a length of 146. Maximum allowed is 140.
+scripts/catalog-source-files.ts:28:51: error typescript(unbound-method): Avoid referencing unbound methods which may cause unintentional scoping of `this`. help: If your function does not access `this`, you can annotate it with `this: void`, or consider using an arrow function instead.
+packages/core/agent-loop/tests/prepare-prompt.spec.ts:35:18: error typescript(no-confusing-void-expression): Returning a void expression from an arrow function shorthand is forbidden. help: Add braces to the arrow function.
+packages/core/agent-loop/tests/prepare-prompt.spec.ts:63:18: error typescript(no-confusing-void-expression): Returning a void expression from an arrow function shorthand is forbidden. help: Add braces to the arrow function.

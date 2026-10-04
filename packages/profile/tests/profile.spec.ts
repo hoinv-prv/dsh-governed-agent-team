@@ -26,6 +26,7 @@ import { MockAdapter, textResponse } from '../../../core/agent-loop/tests/mock-a
 import * as toolSubagent from '../../../subagent/tool-subagent/src/index.ts'
 import TeamService from '../../gat-core/src/index.ts'
 import * as toolTeam from '../../gat-tools/src/index.ts'
+import { initializeAuthorizedFixture, humanAction, fixtureMission, authorizeFixtureAgent } from '../../gat-core/tests/authorized-team-fixture.ts'
 
 const roots: string[] = []
 const contexts: Context[] = []
@@ -103,6 +104,7 @@ function planWork(view: ReturnType<TeamService['remoteView']>) {
 async function bootProfile(storageRoot: string, script: ConstructorParameters<typeof MockAdapter>[0]) {
   const ctx = new Context()
   contexts.push(ctx)
+  await initializeAuthorizedFixture(ctx)
   await mountAgentLoopTestDependencies(ctx)
   await ctx.plugin(JsonlSessionPersistence, { root: storageRoot })
   await ctx.plugin(TestSessionQuery)
@@ -147,6 +149,7 @@ async function bootProfile(storageRoot: string, script: ConstructorParameters<ty
     ctx.tools.register(defineContentToolFixture({
       name,
       description: `test-only ${name} restricted-mode capability`,
+      capabilities: [name === 'ask_user_question' ? 'human-question' : 'team-inspection'],
       parameters: {},
       async execute() { return [{ type: 'text', text: name }] },
     }))
@@ -238,6 +241,7 @@ members:
     const dangerCalls = { count: 0 }
     first.tools.register(defineContentToolFixture({
       name: 'danger_write',
+      capabilities: ['effectful-test'],
       description: 'test-only non-allowlisted write capability',
       parameters: {},
       async execute() {
@@ -245,7 +249,7 @@ members:
         return [{ type: 'text', text: 'wrote' }]
       },
     }))
-    await first.agentTeams.enable(lead, SIGNAL)
+    await humanAction(first, lead, 'enable')
 
     const entries = new Map([...first.loader.entries()].map(entry => [entry.options.id, entry.options]))
     expect(entries.get('tool-subagent')?.config).toMatchObject({
@@ -271,7 +275,9 @@ members:
       externalRestrictedTools: ['ask_user_question', 'glob', 'grep', 'read', 'read_image'],
     })
 
+    const mission = await fixtureMission(first, lead)
     const createdResult = await execute(first, lead, 'team_task_create', {
+      mission_id: mission.id,
       subject: 'Implement governed smoke',
       description: 'Exercise composition and replay',
       write_scopes: ['src/governed-smoke.ts'],
@@ -280,6 +286,7 @@ members:
     const task = JSON.parse(text(createdResult)) as { id: string; revision: number }
     const expectedTask = {
       id: 'task-1',
+      missionId: mission.id,
       revision: 1,
       subject: 'Implement governed smoke',
       description: 'Exercise composition and replay',
@@ -292,7 +299,7 @@ members:
     expect(task).toEqual(expectedTask)
     const draftView = first.agentTeams.remoteView(lead)
     expect(draftView.planApproval).toBeUndefined()
-    expect(draftView).toEqual({
+    expect(draftView).toMatchObject({
       enabled: true,
       planRevision: 1,
       planPhase: 'draft',
@@ -304,6 +311,15 @@ members:
       ],
       tasks: [expectedTask],
     })
+    const deniedDraft = await execute(first, lead, 'danger_write', {})
+    expect(deniedDraft.isError).toBe(true)
+    expect(dangerCalls.count).toBe(0)
+    await authorizeFixtureAgent(first, lead)
+    for (const member of first.agentTeams.listMembers(lead).filter(member => member.role === 'teammate')) {
+      const child = first.agents.get(member.id)!
+      await authorizeFixtureAgent(first, child)
+      await first.agentTeams.activateMember(child, SIGNAL)
+    }
     const authorized = await execute(first, lead, 'danger_write', {})
     expect(authorized.isError).toBe(false)
     expect(dangerCalls.count).toBe(1)

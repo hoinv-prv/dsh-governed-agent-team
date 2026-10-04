@@ -65,7 +65,7 @@ Create and validate the WBS, then resolve every preflight diagnostic except the 
 The ten tools group into five capabilities:
 
 - **Create a teammate** — `spawn_teammate` takes a name, a description, and the initial task; only the Lead can call it.
-- **Send messages** — `send_message` steers a running member at its nearest step boundary, starts an idle member, and cold-resumes an inactive teammate.
+- **Send messages** — `send_message` steers an exactly authorized live member at its nearest step boundary or starts its idle turn. Other targets remain queued until trusted host recovery and exact authorization.
 - **See and wait** — `list_agents` shows the roster with live status; `wait_agent` waits for the next team change; `interrupt_agent` stops a teammate's current turn (Lead only).
 - **Report durable work** — `report_team_status` records `working`, `blocked`, `review_required`, or `done` independently of transient runtime status.
 - **Manage the task board** — `team_task_create`, `team_task_list`, `team_task_get`, and `team_task_update` add, browse, read, and update shared tasks.
@@ -165,3 +165,5 @@ These limits describe what the policy and tools cannot guarantee for a team. The
 None.
 
 </details>
+
+Team execution combines immutable tool capability metadata with the compatibility delegation-name deny-list. A reserved external-delegation key in any alias or nested union denies on enabled Teams before dispatch effects. Inspection, HUMAN questioning and exhaustive structural/control classes permit only their declared control operation; an unknown or effectful descendant removes the exemption. `run_code` transports nested dispatch while each actual child is checked again. Effectful work requires the exact current Agent mission lease in both simple-mode settings, with current HUMAN Team-plan approval additionally required when simpleMode is false. Bootstrap/member-add and queue exemptions never authorize a model wake.

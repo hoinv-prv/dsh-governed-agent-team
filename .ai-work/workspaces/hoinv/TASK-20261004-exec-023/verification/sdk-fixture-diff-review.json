@@ -1,0 +1,50 @@
+{
+  "subagent-continuable": {
+    "child_type_count_delta": {
+      "agent/execution-reserved": 1,
+      "subagent/initial-admission": 2
+    },
+    "initial_content_preserved": true,
+    "historical_sidecar_hashes_preserved": true,
+    "initial_admission_kinds": [
+      "persisted",
+      "activated"
+    ]
+  },
+  "subagent-continuable-inheritance": {
+    "child_type_count_delta": {
+      "agent/execution-reserved": 1,
+      "subagent/initial-admission": 2
+    },
+    "initial_content_preserved": true,
+    "historical_sidecar_hashes_preserved": true,
+    "initial_admission_kinds": [
+      "persisted",
+      "activated"
+    ]
+  },
+  "subagent-send-message": {
+    "child_type_count_delta": {
+      "agent/execution-reserved": 1,
+      "subagent/initial-admission": 2
+    },
+    "initial_content_preserved": true,
+    "historical_sidecar_hashes_preserved": true,
+    "initial_admission_kinds": [
+      "persisted",
+      "activated"
+    ]
+  },
+  "subagent-list-agents": {
+    "child_type_count_delta": {
+      "agent/execution-reserved": 1,
+      "subagent/initial-admission": 2
+    },
+    "initial_content_preserved": true,
+    "historical_sidecar_hashes_preserved": true,
+    "initial_admission_kinds": [
+      "persisted",
+      "activated"
+    ]
+  }
+}

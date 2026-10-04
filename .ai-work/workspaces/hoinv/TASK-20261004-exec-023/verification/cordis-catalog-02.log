@@ -1,0 +1,85 @@
+/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:572
+  throw new Error(
+        ^
+
+Error: gen-cordis-catalog: 68 JSDoc completeness violation(s) (see AGENTS.md):
+  service method ctx.agentTeams.configureExecutionPolicy (packages/experimental/gat-core/src/index.ts:202) is missing @param requireCurrentPlan.
+  service method ctx.agentTeams.bindExecution (packages/experimental/gat-core/src/index.ts:205) is missing @param caller.
+  service method ctx.agentTeams.bindExecution (packages/experimental/gat-core/src/index.ts:205) is missing @param request.
+  service method ctx.agentTeams.assertExecution (packages/experimental/gat-core/src/index.ts:210) is missing @param caller.
+  service method ctx.agentTeams.assertExecution (packages/experimental/gat-core/src/index.ts:210) is missing @param taskId.
+  service method ctx.agentTeams.activateMember (packages/experimental/gat-core/src/index.ts:215) is missing @param caller.
+  service method ctx.agentTeams.activateMember (packages/experimental/gat-core/src/index.ts:215) is missing @param signal.
+  service method ctx.agentTeams.recoverMember (packages/experimental/gat-core/src/index.ts:221) is missing @param caller.
+  service method ctx.agentTeams.recoverMember (packages/experimental/gat-core/src/index.ts:221) is missing @param targetName.
+  service method ctx.agentTeams.recoverMember (packages/experimental/gat-core/src/index.ts:221) is missing @param request.
+  service method ctx.agentTeams.recoverMember (packages/experimental/gat-core/src/index.ts:221) is missing @param signal.
+  service method ctx.agentTeams.recoverMember (packages/experimental/gat-core/src/index.ts:221) is missing @returns (return type: Promise<Agent>).
+  service method ctx.agentTeams.executionDiagnostic (packages/experimental/gat-core/src/index.ts:234) is missing @param caller.
+  service method ctx.agentTeams.executionDiagnostic (packages/experimental/gat-core/src/index.ts:234) is missing @returns (return type: string | undefined).
+  service method ctx.agentTeams.approveMemberAdd (packages/experimental/gat-core/src/index.ts:273) is missing @param caller.
+  service method ctx.agentTeams.approveMemberAdd (packages/experimental/gat-core/src/index.ts:273) is missing @param request.
+  service method ctx.agentTeams.approveMemberAdd (packages/experimental/gat-core/src/index.ts:273) is missing @returns (return type: Promise<{ readonly approved: true; }>).
+  service method ctx.agentTeams.remoteApproveMemberAdd (packages/experimental/gat-core/src/index.ts:286) is missing @param agent.
+  service method ctx.agentTeams.remoteApproveMemberAdd (packages/experimental/gat-core/src/index.ts:286) is missing @param request.
+  service method ctx.agentTeams.remoteApproveMemberAdd (packages/experimental/gat-core/src/index.ts:286) is missing @returns (return type: Promise<{ readonly approved: true; }>).
+  service method ctx.agentTeams.createMission (packages/experimental/gat-core/src/index.ts:312) is missing @param caller.
+  service method ctx.agentTeams.createMission (packages/experimental/gat-core/src/index.ts:312) is missing @param request.
+  service method ctx.agentTeams.createMission (packages/experimental/gat-core/src/index.ts:312) is missing @returns (return type: Promise<TeamMissionView>).
+  service method ctx.agentTeams.getMission (packages/experimental/gat-core/src/index.ts:317) is missing @param caller.
+  service method ctx.agentTeams.getMission (packages/experimental/gat-core/src/index.ts:317) is missing @param id.
+  service method ctx.agentTeams.getMission (packages/experimental/gat-core/src/index.ts:317) is missing @returns (return type: TeamMissionView).
+  service method ctx.agentTeams.listMissions (packages/experimental/gat-core/src/index.ts:322) is missing @param caller.
+  service method ctx.agentTeams.listMissions (packages/experimental/gat-core/src/index.ts:322) is missing @returns (return type: TeamMissionView[]).
+  service method ctx.agentTeams.approveMission (packages/experimental/gat-core/src/index.ts:327) is missing @param caller.
+  service method ctx.agentTeams.approveMission (packages/experimental/gat-core/src/index.ts:327) is missing @param request.
+  service method ctx.agentTeams.approveMission (packages/experimental/gat-core/src/index.ts:327) is missing @returns (return type: Promise<TeamMissionView>).
+  service method ctx.agentTeams.closeMission (packages/experimental/gat-core/src/index.ts:333) is missing @param caller.
+  service method ctx.agentTeams.closeMission (packages/experimental/gat-core/src/index.ts:333) is missing @param request.
+  service method ctx.agentTeams.closeMission (packages/experimental/gat-core/src/index.ts:333) is missing @returns (return type: Promise<TeamMissionView>).
+  service method ctx.agentTeams.revokeMission (packages/experimental/gat-core/src/index.ts:338) is missing @param caller.
+  service method ctx.agentTeams.revokeMission (packages/experimental/gat-core/src/index.ts:338) is missing @param request.
+  service method ctx.agentTeams.revokeMission (packages/experimental/gat-core/src/index.ts:338) is missing @returns (return type: Promise<TeamMissionView>).
+  service method ctx.agentTeams.importApprovedPlanAndApprove (packages/experimental/gat-core/src/index.ts:433) is missing @param caller.
+  service method ctx.agentTeams.importApprovedPlanAndApprove (packages/experimental/gat-core/src/index.ts:433) is missing @param request.
+  service method ctx.agentTeams.importApprovedPlanAndApprove (packages/experimental/gat-core/src/index.ts:433) is missing @returns (return type: Promise<TeamPlanApprovalSnapshot>).
+  service method ctx.agentTeams.registerInitializer (packages/experimental/gat-core/src/index.ts:473) is missing @param initializer.
+  service method ctx.agentTeams.registerInitializer (packages/experimental/gat-core/src/index.ts:473) is missing @returns (return type: () => void).
+  service method ctx.agentTeams.enable (packages/experimental/gat-core/src/index.ts:480) is missing @param caller.
+  service method ctx.agentTeams.enable (packages/experimental/gat-core/src/index.ts:480) is missing @param signal.
+  service method ctx.agentTeams.enable (packages/experimental/gat-core/src/index.ts:480) is missing @returns (return type: Promise<TeamEnableResult>).
+  service method ctx.agentTeams.remoteEnable (packages/experimental/gat-core/src/index.ts:629) is missing @param agent.
+  service method ctx.agentTeams.remoteEnable (packages/experimental/gat-core/src/index.ts:629) is missing @param signal.
+  service method ctx.agentTeams.remoteEnable (packages/experimental/gat-core/src/index.ts:629) is missing @returns (return type: Promise<TeamEnableResult>).
+  service method ctx.agentTeams.remoteCreateMission (packages/experimental/gat-core/src/index.ts:635) is missing @param agent.
+  service method ctx.agentTeams.remoteCreateMission (packages/experimental/gat-core/src/index.ts:635) is missing @param request.
+  service method ctx.agentTeams.remoteCreateMission (packages/experimental/gat-core/src/index.ts:635) is missing @returns (return type: Promise<TeamMissionMutationResult>).
+  service method ctx.agentTeams.remoteListMissions (packages/experimental/gat-core/src/index.ts:641) is missing @param agent.
+  service method ctx.agentTeams.remoteListMissions (packages/experimental/gat-core/src/index.ts:641) is missing @returns (return type: TeamMissionView[]).
+  service method ctx.agentTeams.remoteGetMission (packages/experimental/gat-core/src/index.ts:647) is missing @param agent.
+  service method ctx.agentTeams.remoteGetMission (packages/experimental/gat-core/src/index.ts:647) is missing @param id.
+  service method ctx.agentTeams.remoteGetMission (packages/experimental/gat-core/src/index.ts:647) is missing @returns (return type: TeamMissionView).
+  service method ctx.agentTeams.remoteApproveMission (packages/experimental/gat-core/src/index.ts:653) is missing @param agent.
+  service method ctx.agentTeams.remoteApproveMission (packages/experimental/gat-core/src/index.ts:653) is missing @param request.
+  service method ctx.agentTeams.remoteApproveMission (packages/experimental/gat-core/src/index.ts:653) is missing @returns (return type: Promise<TeamMissionMutationResult>).
+  service method ctx.agentTeams.remoteCloseMission (packages/experimental/gat-core/src/index.ts:659) is missing @param agent.
+  service method ctx.agentTeams.remoteCloseMission (packages/experimental/gat-core/src/index.ts:659) is missing @param request.
+  service method ctx.agentTeams.remoteCloseMission (packages/experimental/gat-core/src/index.ts:659) is missing @returns (return type: Promise<TeamMissionMutationResult>).
+  service method ctx.agentTeams.remoteRevokeMission (packages/experimental/gat-core/src/index.ts:665) is missing @param agent.
+  service method ctx.agentTeams.remoteRevokeMission (packages/experimental/gat-core/src/index.ts:665) is missing @param request.
+  service method ctx.agentTeams.remoteRevokeMission (packages/experimental/gat-core/src/index.ts:665) is missing @returns (return type: Promise<TeamMissionMutationResult>).
+  service method ctx.agentTeams.remoteImportApprovedPlan (packages/experimental/gat-core/src/index.ts:719) is missing @param agent.
+  service method ctx.agentTeams.remoteImportApprovedPlan (packages/experimental/gat-core/src/index.ts:719) is missing @param request.
+  service method ctx.agentTeams.remoteImportApprovedPlan (packages/experimental/gat-core/src/index.ts:719) is missing @returns (return type: Promise<ImportApprovedTeamPlanResult>).
+    at reportViolations (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:572:9)
+    at CordisCatalogProjector.collectServices (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:325:5)
+    at CordisCatalogProjector.project (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:159:22)
+    at projectCordisCatalog (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:394:40)
+    at computeOutputs (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-cordis-catalog.ts:989:32)
+    at main (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-cordis-catalog.ts:1104:8)
+    at <anonymous> (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-cordis-catalog.ts:1159:3)
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.23.1

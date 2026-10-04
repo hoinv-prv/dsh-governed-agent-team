@@ -8,11 +8,9 @@ import { createUserMessage } from '@deepseek-ai/dsh-llm'
 import type { ContentBlock } from '@deepseek-ai/dsh-llm'
 import { SessionId } from '@deepseek-ai/dsh-session'
 import type { Session, SessionEvent } from '@deepseek-ai/dsh-session'
-import { steerHostSubagentPrompt } from '@deepseek-ai/dsh-subagent/internal'
 import { errorMessage, TeamError } from './error.ts'
 import type { TeamJournal } from './journal.ts'
 import type { TeamRuntimeLifecycle } from './lifecycle.ts'
-import { readPersistedSession } from './persisted.ts'
 import type { TeamRoster } from './roster.ts'
 import { resolveActiveMember } from './roster.ts'
 import { messageAccepted } from './session-message.ts'
@@ -44,6 +42,7 @@ export class TeamMailbox {
     private readonly lifecycle: TeamRuntimeLifecycle,
     private readonly maxPendingMessagesPerMember: number,
     private readonly maxMessageBytes: number,
+    private readonly assertExecution: (agent: Agent) => void,
   ) {}
 
   /**
@@ -234,10 +233,16 @@ export class TeamMailbox {
   /** Attempt one queued delivery after target-local ordering admits it. */
   private async dispatchOnce(root: Agent, message: TeamMessageSnapshot, signal: AbortSignal): Promise<boolean> {
     try {
+      const member = this.journal.state(root).members.find(candidate => candidate.id === message.targetId)
+      if (member?.attachments.length) return false
       const target = message.targetId === root.id ? root : this.ctx.agents.get(message.targetId)
       if (target !== undefined && this.targetRecorded(target.session, message.id)) {
         return await this.checkpointDelivered(root, target.session, message.id)
       }
+      if (target === undefined) return false
+      this.assertExecution(target)
+      await this.roster.activateMember(target, signal)
+      this.assertExecution(target)
       const source = {
         kind: 'team-message' as const,
         teamId: TeamId(root.id),
@@ -246,23 +251,10 @@ export class TeamMailbox {
         senderName: message.senderName,
       }
       const content = this.deliveryContent(message)
-      if (message.targetId === root.id) {
-        const input = createUserMessage({ content, source })
-        root.steer(input)
-        return await this.checkpointDelivered(root, root.session, message.id)
-      }
-      if (target === undefined) {
-        const recorded = await this.persistedTargetRecorded(message.targetId, message.id, signal)
-        if (recorded === undefined) return false
-        if (recorded) {
-          await this.markDelivered(root, message.id, message.targetId)
-          return true
-        }
-      }
-      await steerHostSubagentPrompt(this.ctx.subagents, root, message.targetId, content, source, signal)
-      return target === undefined
-        ? true
-        : await this.checkpointDelivered(root, target.session, message.id)
+      signal.throwIfAborted()
+      this.assertExecution(target)
+      target.steer(createUserMessage({ content, source }))
+      return await this.checkpointDelivered(root, target.session, message.id)
     } catch (error: unknown) {
       this.ctx.logger.warn(`team message "${message.id}" remains queued: ${errorMessage(error)}`)
       return false
@@ -275,7 +267,7 @@ export class TeamMailbox {
     target: Session,
     messageId: TeamMessageId,
   ): Promise<boolean> {
-    await this.ctx.sessions.flush(target)
+    if (!await this.ctx.sessions.flush(target)) return false
     if (!this.targetRecorded(target, messageId)) return false
     await this.markDelivered(root, messageId, target.id)
     return true
@@ -313,20 +305,4 @@ export class TeamMailbox {
     ]
   }
 
-  /** Read an inactive target's durable log before cold resume; uncertainty keeps the mailbox queued. */
-  private async persistedTargetRecorded(
-    targetId: SessionId,
-    messageId: TeamMessageId,
-    signal: AbortSignal,
-  ): Promise<boolean | undefined> {
-    try {
-      const stored = await readPersistedSession(this.ctx.sessionPersistence, targetId, signal)
-      const suffix = stored.events.slice(stored.inheritedEventCount)
-      return messageAccepted(suffix, message => message.source.kind === 'team-message'
-        && message.source.messageId === messageId)
-    } catch (error: unknown) {
-      this.ctx.logger.warn(`cannot read Team message target "${targetId}": ${errorMessage(error)}`)
-      return undefined
-    }
-  }
 }

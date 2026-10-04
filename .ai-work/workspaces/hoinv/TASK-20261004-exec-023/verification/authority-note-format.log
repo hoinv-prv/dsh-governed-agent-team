@@ -1,0 +1,3 @@
+verify-agent-note-format: violations found:
+  format: proposed/process/2026-10-04-active-catalog-replacements.md — missing the required `## Acceptance criteria` section
+  format: proposed/process/2026-10-04-active-catalog-replacements.md — missing the required `## Risks` section

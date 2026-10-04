@@ -1,0 +1,33 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+(node:2839581) Warning: Closing file descriptor 41 on garbage collection
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2839581) [DEP0137] DeprecationWarning: Closing a FileHandle object on garbage collection is deprecated. Please close FileHandle objects explicitly using FileHandle.prototype.close(). In the future, an error will be thrown if a file descriptor is closed during garbage collection.
+ ❯ |thread-safe| packages/experimental/gat-core/tests/team.spec.ts (66 tests | 1 failed) 13016ms
+     × aborts and awaits an admitted explicitly recovered mailbox dispatch during disposal 5001ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > aborts and awaits an admitted explicitly recovered mailbox dispatch during disposal
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:2217:3
+    2215|   })
+    2216|
+    2217|   it('aborts and awaits an admitted explicitly recovered mailbox dispa…
+       |   ^
+    2218|     const { ctx, lead } = await setup([textResponse('worker done'), 'h…
+    2219|     const started = await spawn(ctx, lead, 'mailbox-worker')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 15 passed (16)
+      Tests  1 failed | 209 passed (210)
+   Start at  11:49:58
+   Duration  16.02s (transform 10.77s, setup 1.04s, import 16.57s, tests 25.01s, environment 1.32s)
+

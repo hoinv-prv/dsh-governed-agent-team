@@ -1,0 +1,83 @@
+packages/experimental/gat-core/src/mission-board.ts:104:1: error @stylistic(max-len): This line has a length of 152. Maximum allowed is 140.
+packages/experimental/gat-core/src/authority.ts:65:78: error typescript(no-non-null-assertion): Forbidden non-null assertion. help: Consider using the optional chain operator `?.` instead. `x!.y` is equivalent to `x.y` at runtime and will throw if `x` is `null` or `undefined`, but `x?.y` will return `undefined`.
+packages/experimental/gat-core/src/authority.ts:64:1: error @stylistic(max-len): This line has a length of 176. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:266:58: error typescript(no-non-null-assertion): Forbidden non-null assertion. help: Consider using the optional chain operator `?.` instead. `x!.y` is equivalent to `x.y` at runtime and will throw if `x` is `null` or `undefined`, but `x?.y` will return `undefined`.
+packages/experimental/gat-core/src/member-binding.ts:266:112: error typescript(no-non-null-assertion): Forbidden non-null assertion. help: Consider using the optional chain operator `?.` instead. `x!.y` is equivalent to `x.y` at runtime and will throw if `x` is `null` or `undefined`, but `x?.y` will return `undefined`.
+packages/experimental/gat-core/src/member-binding.ts:74:1: error @stylistic(max-len): This line has a length of 192. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:160:1: error @stylistic(max-len): This line has a length of 193. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:162:1: error @stylistic(max-len): This line has a length of 192. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:188:1: error @stylistic(max-len): This line has a length of 150. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:196:1: error @stylistic(max-len): This line has a length of 147. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:201:1: error @stylistic(max-len): This line has a length of 149. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:222:1: error @stylistic(max-len): This line has a length of 148. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:266:1: error @stylistic(max-len): This line has a length of 164. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binding.ts:96:14: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/src/member-binding.ts:201:141: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/src/member-binding.ts:266:156: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/src/roster.ts:382:39: error typescript(no-non-null-assertion): Forbidden non-null assertion. help: Consider using the optional chain operator `?.` instead. `x!.y` is equivalent to `x.y` at runtime and will throw if `x` is `null` or `undefined`, but `x?.y` will return `undefined`.
+packages/experimental/gat-core/src/roster.ts:385:40: error typescript(no-non-null-assertion): Forbidden non-null assertion. help: Consider using the optional chain operator `?.` instead. `x!.y` is equivalent to `x.y` at runtime and will throw if `x` is `null` or `undefined`, but `x?.y` will return `undefined`.
+packages/experimental/gat-core/src/roster.ts:461:1: error @stylistic(max-len): This line has a length of 142. Maximum allowed is 140.
+packages/experimental/gat-core/src/roster.ts:202:72: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/src/roster.ts:386:73: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/src/roster.ts:391:74: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/src/projection.ts:128:1: error @stylistic(max-len): This line has a length of 254. Maximum allowed is 140.
+packages/experimental/gat-core/src/projection.ts:168:1: error @stylistic(max-len): This line has a length of 178. Maximum allowed is 140.
+packages/experimental/gat-core/src/projection.ts:263:1: error @stylistic(max-len): This line has a length of 193. Maximum allowed is 140.
+packages/experimental/gat-core/src/projection.ts:394:1: error @stylistic(max-len): This line has a length of 144. Maximum allowed is 140.
+packages/experimental/gat-core/src/binding-deadline.ts:49:1: error @stylistic(max-len): This line has a length of 143. Maximum allowed is 140.
+packages/experimental/gat-core/src/binding-deadline.ts:60:61: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/src/binding-deadline.ts:67:8: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/src/attachments.ts:64:21: error typescript(no-non-null-assertion): Forbidden non-null assertion.
+packages/experimental/gat-core/src/attachments.ts:75:84: error typescript(no-non-null-assertion): Forbidden non-null assertion.
+packages/experimental/gat-core/src/attachments.ts:153:10: error typescript(no-non-null-assertion): Forbidden non-null assertion.
+packages/experimental/gat-core/src/attachments.ts:152:1: error @stylistic(max-len): This line has a length of 153. Maximum allowed is 140.
+packages/experimental/gat-core/src/approved-plan-import.ts:63:18: error typescript(no-non-null-assertion): Forbidden non-null assertion.
+packages/experimental/gat-core/src/approved-plan-import.ts:73:30: error typescript(no-non-null-assertion): Forbidden non-null assertion. help: Consider using the optional chain operator `?.` instead. `x!.y` is equivalent to `x.y` at runtime and will throw if `x` is `null` or `undefined`, but `x?.y` will return `undefined`.
+packages/experimental/gat-core/src/approved-plan-import.ts:101:58: error typescript(no-non-null-assertion): Forbidden non-null assertion.
+packages/experimental/gat-core/src/member-binders.ts:142:78: error typescript(no-non-null-assertion): Forbidden non-null assertion.
+packages/experimental/gat-core/src/member-binders.ts:228:21: error typescript(no-non-null-assertion): Forbidden non-null assertion.
+packages/experimental/gat-core/src/member-binders.ts:254:21: error typescript(no-non-null-assertion): Forbidden non-null assertion.
+packages/experimental/gat-core/src/member-binders.ts:256:41: error typescript(no-non-null-assertion): Forbidden non-null assertion.
+packages/experimental/gat-core/src/member-binders.ts:163:1: error @stylistic(max-len): This line has a length of 154. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binders.ts:200:1: error @stylistic(max-len): This line has a length of 146. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binders.ts:203:1: error @stylistic(max-len): This line has a length of 141. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binders.ts:212:1: error @stylistic(max-len): This line has a length of 181. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binders.ts:247:1: error @stylistic(max-len): This line has a length of 162. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binders.ts:270:1: error @stylistic(max-len): This line has a length of 268. Maximum allowed is 140.
+packages/experimental/gat-core/src/member-binders.ts:262:36: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/src/member-binders.ts:270:155: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/src/member-binders.ts:270:199: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/src/approved-plan-import.ts:33:10: error typescript(no-unnecessary-condition): Unnecessary comparison between literal values.
+packages/experimental/gat-core/src/approved-plan-import.ts:35:8: error typescript(no-unnecessary-condition): Unnecessary comparison between literal values.
+packages/experimental/gat-core/src/approved-plan-import.ts:35:8: error typescript(no-unnecessary-condition): Unnecessary optional chain on a non-nullish value.
+packages/experimental/gat-core/src/approved-plan-import.ts:44:11: error typescript(no-unnecessary-condition): Unnecessary comparison between literal values.
+packages/experimental/gat-core/src/approved-plan-import.ts:45:38: error typescript(no-unnecessary-condition): Unnecessary comparison between literal values.
+packages/experimental/gat-core/src/mission-plan.ts:64:57: error typescript(no-confusing-void-expression): Returning a void expression from an arrow function shorthand is forbidden. help: Add braces to the arrow function.
+packages/experimental/gat-core/src/mission-plan.ts:74:9: error typescript(no-unsafe-assignment): Unsafe assignment of an any value.
+packages/experimental/gat-core/src/mission-plan.ts:77:37: error typescript(no-unsafe-argument): Unsafe argument of type any assigned to a parameter of type TeamTaskSnapshot.
+packages/experimental/gat-core/src/attachments.ts:17:60: error typescript(no-unsafe-member-access): Unsafe member access .stringBytes on an `error` typed value.
+packages/experimental/gat-core/src/attachments.ts:39:33: error typescript(no-unsafe-member-access): Unsafe member access .depth on an `error` typed value.
+packages/experimental/gat-core/src/attachments.ts:39:77: error typescript(no-unsafe-member-access): Unsafe member access .nodes on an `error` typed value.
+packages/experimental/gat-core/src/binding-deadline.ts:57:7: error typescript(prefer-promise-reject-errors): Expected the Promise rejection reason to be an Error.
+packages/experimental/gat-core/src/binding-deadline.ts:67:8: error typescript(use-unknown-in-catch-callback-variable): Prefer the safe `: unknown` for a `then` rejection callback variable.
+packages/experimental/gat-core/src/binding-deadline.ts:71:9: error typescript(prefer-promise-reject-errors): Expected the Promise rejection reason to be an Error.
+packages/experimental/gat-core/src/roster.ts:200:72: error typescript(prefer-promise-reject-errors): Expected the Promise rejection reason to be an Error.
+packages/experimental/gat-core/src/roster.ts:202:72: error typescript(use-unknown-in-catch-callback-variable): Prefer the safe `: unknown` for a `then` rejection callback variable.
+packages/experimental/gat-core/src/attachments.ts:99:75: error typescript(no-unsafe-member-access): Unsafe member access .binderId on an `error` typed value.
+packages/experimental/gat-core/src/attachments.ts:101:71: error typescript(no-unsafe-member-access): Unsafe member access .recordBytes on an `error` typed value.
+packages/experimental/gat-core/src/attachments.ts:107:120: error typescript(no-unsafe-member-access): Unsafe member access .records on an `error` typed value.
+packages/experimental/gat-core/src/roster.ts:380:63: error typescript(prefer-promise-reject-errors): Expected the Promise rejection reason to be an Error.
+packages/experimental/gat-core/src/attachments.ts:121:130: error typescript(no-unsafe-member-access): Unsafe member access .aggregateBytes on an `error` typed value.
+packages/experimental/gat-core/src/attachments.ts:132:9: error typescript(no-unnecessary-type-assertion): This assertion is unnecessary since the receiver accepts the original type of the expression.
+packages/experimental/gat-core/src/roster.ts:387:56: error typescript(no-unsafe-return): Unsafe return of a value of type `any[]`.
+packages/experimental/gat-core/src/roster.ts:391:74: error typescript(use-unknown-in-catch-callback-variable): Prefer the safe `: unknown` for a `then` rejection callback variable.
+packages/experimental/gat-core/src/authority.ts:137:27: error typescript(no-unnecessary-condition): Unnecessary optional chain on a non-nullish value.
+packages/experimental/gat-core/src/member-binding.ts:96:14: error typescript(use-unknown-in-catch-callback-variable): Prefer the safe `: unknown` for a `catch` callback variable.
+packages/experimental/gat-core/src/member-binders.ts:219:9: error typescript(no-unsafe-assignment): Unsafe assignment of an any value.
+packages/experimental/gat-core/src/member-binders.ts:270:199: error typescript(use-unknown-in-catch-callback-variable): Prefer the safe `: unknown` for a `then` rejection callback variable.
+packages/experimental/gat-core/src/member-binders.ts:273:35: error typescript(no-unnecessary-condition): Unnecessary conditional, value is always truthy.
+packages/experimental/gat-core/src/member-binders.ts:279:16: error typescript(no-unnecessary-condition): Unnecessary conditional, value is always falsy.
+packages/experimental/gat-core/src/member-binding.ts:292:8: error typescript(no-unnecessary-condition): Unnecessary conditional, value is always falsy.
+packages/experimental/gat-core/src/member-binding.ts:296:18: error typescript(no-unnecessary-condition): Unnecessary optional chain on a non-nullish value.
+packages/experimental/gat-core/src/member-binding.ts:297:18: error typescript(no-unnecessary-condition): Unnecessary optional chain on a non-nullish value.
+packages/experimental/gat-core/src/member-binding.ts:298:18: error typescript(no-unnecessary-condition): Unnecessary optional chain on a non-nullish value.

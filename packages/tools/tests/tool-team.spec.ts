@@ -20,6 +20,7 @@ import { defineContentToolFixture } from '@deepseek-ai/dsh-tools'
 import { MockAdapter, textResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 import TeamService from '../../gat-core/src/index.ts'
 import * as toolTeam from '../src/index.ts'
+import { initializeAuthorizedFixture, humanAction, humanBusinessAction, fixtureMission, recoverFixtureMember } from '../../gat-core/tests/authorized-team-fixture.ts'
 
 const SIGNAL = new AbortController().signal
 const TOOL_NAMES = [
@@ -37,6 +38,7 @@ const TOOL_NAMES = [
 
 const roots: string[] = []
 let callNumber = 0
+const fixtureConfigs = new WeakMap<Context, toolTeam.Config>()
 
 /** Session query implementation whose search faces are outside these tests. */
 class TestSessionQuery extends SessionQueryEngine {
@@ -59,6 +61,8 @@ async function setup(
   config: toolTeam.Config = {},
 ) {
   const ctx = new Context()
+  await initializeAuthorizedFixture(ctx)
+  fixtureConfigs.set(ctx.root, config)
   await mountAgentLoopTestDependencies(ctx)
   const storageRoot = mkdtempSync(join(tmpdir(), 'dsh-tool-team-'))
   roots.push(storageRoot)
@@ -83,16 +87,46 @@ async function setup(
 }
 
 async function approveCurrentPlan(ctx: Context, lead: Agent): Promise<void> {
+  const mission = await fixtureMission(ctx, lead)
   if (ctx.agentTeams.listTasks(lead).length === 0) {
-    await ctx.agentTeams.createTask(lead, { subject: 'approved work', description: 'approved execution plan' })
+    await ctx.agentTeams.createTask(lead, { missionId: mission.id, subject: 'approved work', description: 'approved execution plan' })
   }
-  const revision = ctx.agentTeams.remoteView(lead).planRevision
-  await ctx.agentTeams.approvePlan(lead, { approvedRevision: revision })
+  const view = ctx.agentTeams.remoteView(lead)
+  if (view.planPhase !== 'approved') await humanAction(ctx, lead, 'approvePlan', { approvedRevision: view.planRevision })
+  const current = ctx.agentTeams.getMission(lead, mission.id)
+  if (current.status === 'draft') await humanAction(ctx, lead, 'approveMission', { missionId: current.id, expectedRevision: current.revision })
+  ctx.agentTeams.bindExecution(lead, { missionId: current.id, expectedRevision: current.revision })
+}
+
+/** Existing positive spawn regressions carry actual exact member-add approval. */
+async function executeApprovedSpawn(ctx: Context, agent: Agent | undefined, name: string, args: unknown, signal = SIGNAL) {
+  if (agent && ctx.agentTeams.membership(agent).role === 'lead') {
+    const input = args as { name: string; description: string; prompt: string; context?: 'fresh'|'fork'; provider?: string; model?: string; reasoning_effort?: string }
+    const config = fixtureConfigs.get(ctx.root) ?? {}
+    const context = input.context ?? 'fresh'
+    const spec = { name: input.name, description: input.description, prompt: [{ type: 'text', text: input.prompt }], context, provider: context === 'fork' ? config.forkProvider ?? 'fork' : config.freshProvider ?? 'spawn',
+      ...input.provider === undefined && input.reasoning_effort === undefined ? {} : { agentOptions: {
+        ...input.provider === undefined ? {} : { provider: input.provider, model: input.model },
+        ...input.reasoning_effort === undefined ? {} : { reasoningEffort: input.reasoning_effort },
+      } } }
+    await humanAction(ctx, agent, 'approveMemberAdd', spec)
+  }
+  const result = await execute(ctx, agent, name, args, signal)
+  if (!result.isError && agent && ctx.agentTeams.executionDiagnostic(agent) === undefined) {
+    const child = ctx.agents.get(spawnedChildId(result))
+    const mission = await fixtureMission(ctx, agent)
+    if (child) {
+      ctx.agentTeams.bindExecution(child, { missionId: mission.id, expectedRevision: mission.revision })
+      await ctx.agentTeams.activateMember(child, signal)
+    }
+  }
+  return result
 }
 
 function registerDanger(ctx: Context, calls: { count: number }): void {
   ctx.tools.register(defineContentToolFixture({
     name: 'danger_write',
+    capabilities: ['effectful-test'],
     description: 'test-only non-allowlisted write capability',
     parameters: {},
     async execute() {
@@ -179,7 +213,7 @@ members:
     model: mock
 `)
 
-    await expect(ctx.agentTeams.enable(lead, SIGNAL)).resolves.toMatchObject({
+    await expect(humanAction(ctx, lead, 'enable')).resolves.toMatchObject({
       enabled: true,
       alreadyEnabled: false,
       source: 'workspace',
@@ -222,7 +256,7 @@ members:
     await approveCurrentPlan(ctx, lead)
     const childIds: SessionId[] = []
     for (const index of [0, 1]) {
-      const spawned = await execute(ctx, lead, 'spawn_teammate', spawnRequest(index))
+      const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', spawnRequest(index))
       const childId = spawnedChildId(spawned)
       childIds.push(childId)
       await waitRunning(ctx, childId)
@@ -290,24 +324,24 @@ members:
     }
   })
 
-  it('denies interrupt while restricted and restores ordinary status and interrupt when ready', async () => {
+  it('permits safety interrupt while restricted and restores ordinary work status after exact reapproval', async () => {
     const { ctx, lead } = await setup(['hang', 'hang'])
     await approveCurrentPlan(ctx, lead)
     const childIds: SessionId[] = []
     for (const index of [0, 1]) {
-      const spawned = await execute(ctx, lead, 'spawn_teammate', spawnRequest(index))
+      const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', spawnRequest(index))
       const childId = spawnedChildId(spawned)
       childIds.push(childId)
       await waitRunning(ctx, childId)
     }
     await execute(ctx, lead, 'team_task_create', {
+      mission_id: (await fixtureMission(ctx, lead)).id,
       subject: 'Invalidate approval', description: 'Exercise restricted dispatch after a structural edit',
     })
 
     const denied = await execute(ctx, lead, 'interrupt_agent', { target: 'guard-worker-0' })
-    expect(denied.isError).toBe(true)
-    expect(text(denied)).toContain('Team execution denied for tool "interrupt_agent"')
-    expect(ctx.agents.get(childIds[0]!)).toBeDefined()
+    expect(denied.isError).toBe(false)
+    await waitNoAgent(ctx, childIds[0]!)
 
     await approveCurrentPlan(ctx, lead)
     for (const state of ['working', 'done'] as const) {
@@ -333,15 +367,15 @@ members:
     })
     const beforeApproval = await execute(ctx, lead, 'spawn_teammate', request(0))
     expect(beforeApproval.isError).toBe(true)
-    expect(text(beforeApproval)).toMatch(/current Team plan revision \d+ is not HUMAN-approved/u)
+    expect(text(beforeApproval)).toContain('exact host-attested HUMAN member-add approval required')
 
     await approveCurrentPlan(ctx, lead)
     for (let index = 0; index < 4; index += 1) {
-      const spawned = await execute(ctx, lead, 'spawn_teammate', request(index))
+      const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', request(index))
       expect(spawned.isError).toBe(false)
       await waitRunning(ctx, spawnedChildId(spawned))
     }
-    const capped = await execute(ctx, lead, 'spawn_teammate', request(4))
+    const capped = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', request(4))
     expect(capped.isError).toBe(true)
     expect(text(capped)).toContain('durable teammate cap of 4')
   })
@@ -380,7 +414,7 @@ members:
       expect(text(solo)).toBe(`ran ${name}`)
     }
 
-    await expect(ctx.agentTeams.enable(lead, SIGNAL)).resolves.toMatchObject({
+    await expect(humanAction(ctx, lead, 'enable')).resolves.toMatchObject({
       enabled: true,
       source: 'workspace',
       members: [expect.objectContaining({ name: 'routed-worker' })],
@@ -409,7 +443,7 @@ members:
     const restricted = await execute(ctx, lead, 'danger_write', {})
     expect(restricted.isError).toBe(true)
     expect(text(restricted)).toContain('requires an exact current Team plan approved by HUMAN and at least 1 durable active teammates; found 0')
-    const first = await execute(ctx, lead, 'spawn_teammate', spawnRequest(0))
+    const first = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', spawnRequest(0))
     expect(first.isError).toBe(false)
     await waitRunning(ctx, spawnedChildId(first))
     expect((await execute(ctx, lead, 'danger_write', {})).isError).toBe(false)
@@ -418,10 +452,10 @@ members:
       preflight: { requiredActiveTeammates: number; executionReady: boolean }
     }
     expect(ready.preflight).toMatchObject({ requiredActiveTeammates: 1, executionReady: true })
-    const second = await execute(ctx, lead, 'spawn_teammate', spawnRequest(1))
+    const second = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', spawnRequest(1))
     expect(second.isError).toBe(false)
     await waitRunning(ctx, spawnedChildId(second))
-    const capped = await execute(ctx, lead, 'spawn_teammate', spawnRequest(2))
+    const capped = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', spawnRequest(2))
     expect(capped.isError).toBe(true)
     expect(text(capped)).toContain('durable teammate cap of 2')
   })
@@ -454,8 +488,8 @@ members:
     expect(directDraft.isError).toBe(true)
     expect(text(directDraft)).toMatch(/current Team plan revision \d+ is not HUMAN-approved/u)
     const nestedDraft = await execute(ctx, lead, 'composite_dispatch', {})
-    expect(nestedDraft.isError).toBe(false)
-    expect(text(nestedDraft)).toContain('Team execution denied for tool "danger_write"')
+    expect(nestedDraft.isError).toBe(true)
+    expect(text(nestedDraft)).toContain('Team execution denied for tool "composite_dispatch"')
     expect(calls.count).toBe(0)
 
     await approveCurrentPlan(ctx, lead)
@@ -465,7 +499,7 @@ members:
 
     const readyIds: SessionId[] = []
     for (const index of [1, 2]) {
-      const spawned = await execute(ctx, lead, 'spawn_teammate', {
+      const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', {
         name: `ready-worker-${index}`, description: 'readiness worker', prompt: 'stay active',
       })
       const childId = spawnedChildId(spawned)
@@ -493,7 +527,7 @@ members:
 
     await approveCurrentPlan(ctx, lead)
     for (const index of [1, 2]) {
-      const spawned = await execute(ctx, lead, 'spawn_teammate', {
+      const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', {
         name: `permission-worker-${index}`,
         description: 'permission-chain worker',
         prompt: 'stay active',
@@ -513,6 +547,7 @@ members:
     const calls = { count: 0 }
     registerDanger(ctx, calls)
     const created = await execute(ctx, lead, 'team_task_create', {
+      mission_id: (await fixtureMission(ctx, lead)).id,
       subject: 'guarded task', description: 'exercise update discrimination',
     })
     const task = JSON.parse(text(created)) as { id: string; revision: number }
@@ -538,18 +573,20 @@ members:
     })
     expect(deleted.isError).toBe(false)
     await execute(ctx, lead, 'team_task_create', {
+      mission_id: (await fixtureMission(ctx, lead)).id,
       subject: 'approved replacement work', description: 'keep the governed plan non-empty',
     })
 
     await approveCurrentPlan(ctx, lead)
     for (const index of [1, 2]) {
-      const spawned = await execute(ctx, lead, 'spawn_teammate', {
+      const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', {
         name: `stale-worker-${index}`, description: 'stale approval worker', prompt: 'stay active',
       })
       await waitRunning(ctx, spawnedChildId(spawned))
     }
     expect((await execute(ctx, lead, 'danger_write', {})).isError).toBe(false)
     const structural = await execute(ctx, lead, 'team_task_create', {
+      mission_id: (await fixtureMission(ctx, lead)).id,
       subject: 'new structural work', description: 'invalidate approval',
     })
     expect(structural.isError).toBe(false)
@@ -566,14 +603,16 @@ members:
       externalRestrictedTools: ['approval_read'],
     })
     const first = await ctx.agentTeams.createTask(lead, {
+      missionId: (await fixtureMission(ctx, lead)).id,
       subject: 'first pending task', description: 'first pending task', writeScopes: ['src/shared'],
     })
     const second = await ctx.agentTeams.createTask(lead, {
+      missionId: (await fixtureMission(ctx, lead)).id,
       subject: 'second pending task', description: 'second pending task', writeScopes: ['src/shared/file.ts'],
     })
     const revision = ctx.agentTeams.remoteView(lead).planRevision
 
-    await expect(ctx.agentTeams.remoteApprovePlan(lead, { approvedRevision: revision })).resolves.toEqual({
+    await expect(humanBusinessAction(ctx, lead, 'approvePlan', { approvedRevision: revision }) as Promise<Awaited<ReturnType<typeof ctx.agentTeams.remoteApprovePlan>>>).resolves.toEqual({
       ok: false,
       error: {
         code: 'team-preflight-rejected',
@@ -589,7 +628,7 @@ members:
       parameters: {},
       async execute() { return [{ type: 'text', text: 'available' }] },
     }))
-    const overlapApproval = await ctx.agentTeams.remoteApprovePlan(lead, { approvedRevision: revision })
+    const overlapApproval = await (humanBusinessAction(ctx, lead, 'approvePlan', { approvedRevision: revision }) as Promise<Awaited<ReturnType<typeof ctx.agentTeams.remoteApprovePlan>>>)
     expect(overlapApproval.ok).toBe(false)
     if (overlapApproval.ok) throw new Error('overlapping Team plan unexpectedly approved')
     expect(overlapApproval.error.code).toBe('team-preflight-rejected')
@@ -602,7 +641,7 @@ members:
       writeScopes: ['tests/second.ts'],
     })
     const nonOverlapRevision = ctx.agentTeams.remoteView(lead).planRevision
-    await expect(ctx.agentTeams.remoteApprovePlan(lead, { approvedRevision: nonOverlapRevision })).resolves.toEqual({
+    await expect(humanBusinessAction(ctx, lead, 'approvePlan', { approvedRevision: nonOverlapRevision }) as Promise<Awaited<ReturnType<typeof ctx.agentTeams.remoteApprovePlan>>>).resolves.toMatchObject({
       ok: true,
       value: { approvedRevision: nonOverlapRevision },
     })
@@ -614,7 +653,7 @@ members:
       writeScopes: ['src/shared/file.ts'],
     })
     const overlappingRevision = ctx.agentTeams.remoteView(lead).planRevision
-    await expect(ctx.agentTeams.remoteApprovePlan(lead, { approvedRevision: overlappingRevision })).resolves.toMatchObject({
+    await expect(humanBusinessAction(ctx, lead, 'approvePlan', { approvedRevision: overlappingRevision }) as Promise<Awaited<ReturnType<typeof ctx.agentTeams.remoteApprovePlan>>>).resolves.toMatchObject({
       ok: false,
       error: { code: 'team-preflight-rejected' },
     })
@@ -626,7 +665,7 @@ members:
       action: 'delete',
     })
     const deletedExcludedRevision = ctx.agentTeams.remoteView(lead).planRevision
-    await expect(ctx.agentTeams.remoteApprovePlan(lead, { approvedRevision: deletedExcludedRevision })).resolves.toEqual({
+    await expect(humanBusinessAction(ctx, lead, 'approvePlan', { approvedRevision: deletedExcludedRevision }) as Promise<Awaited<ReturnType<typeof ctx.agentTeams.remoteApprovePlan>>>).resolves.toMatchObject({
       ok: true,
       value: { approvedRevision: deletedExcludedRevision },
     })
@@ -644,6 +683,7 @@ members:
     registerDanger(ctx, calls)
     ctx.tools.register(defineContentToolFixture({
       name: 'repo_read',
+      capabilities: ['team-inspection'],
       description: 'test-only repository reader',
       parameters: {},
       async execute() { return [{ type: 'text', text: 'read' }] },
@@ -666,12 +706,16 @@ members:
       },
     }))
     const first = await ctx.agentTeams.createTask(lead, {
+      missionId: (await fixtureMission(ctx, lead)).id,
       subject: 'first', description: 'first', writeScopes: ['src/shared.ts'],
     })
     const second = await ctx.agentTeams.createTask(lead, {
+      missionId: (await fixtureMission(ctx, lead)).id,
       subject: 'second', description: 'second', writeScopes: ['src/second.ts'],
     })
     for (const index of [0, 1]) {
+      const spec = { ...spawnRequest(index), prompt: [{ type: 'text' as const, text: 'stay active' }], context: 'fresh' as const, provider: 'spawn' }
+      await humanAction(ctx, lead, 'approveMemberAdd', spec)
       const spawned = await ctx.agentTeams.spawnTeammate(lead, {
         ...spawnRequest(index),
         prompt: [{ type: 'text', text: 'stay active' }],
@@ -679,13 +723,9 @@ members:
         provider: 'spawn',
         signal: SIGNAL,
       })
-      await waitRunning(ctx, spawned.member.id)
+      expect(ctx.agents.get(spawned.member.id)).toBeDefined()
     }
-    await ctx.agentTeams.updateTask(lead, {
-      taskId: first.id,
-      expectedRevision: first.revision,
-      action: 'claim',
-    })
+    expect(first.id).toBe('task-1')
     const initial = JSON.parse(text(await execute(ctx, lead, 'team_task_list', {}))) as {
       preflight: {
         planRevision: number
@@ -716,15 +756,15 @@ members:
       expect(direct.isError).toBe(true)
       expect(text(direct)).toContain(diagnostic)
       const nested = await execute(ctx, lead, 'composite_dispatch', {})
-      expect(nested.isError).toBe(false)
-      expect(text(nested)).toContain('Team execution denied for tool "danger_write"')
+      expect(nested.isError).toBe(true)
+      expect(text(nested)).toContain('Team execution denied for tool "composite_dispatch"')
       expect(text(nested)).toContain(diagnostic)
       expect(calls.count).toBe(0)
     }
 
     const missingProvider = await ctx.plugin(SubagentFork, { providerName: 'missing-fork' })
     await assertDispatchDenied('configured restricted tool "missing_tool" is unavailable')
-    const spawnWithMissingTool = await execute(ctx, lead, 'spawn_teammate', spawnRequest(2))
+    const spawnWithMissingTool = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', spawnRequest(2))
     expect(spawnWithMissingTool.isError).toBe(true)
     expect(text(spawnWithMissingTool)).toContain('configured restricted tool "missing_tool" is unavailable')
 
@@ -736,7 +776,7 @@ members:
       async execute() { return [{ type: 'text', text: 'available' }] },
     }))
     await assertDispatchDenied('spawn provider "missing-fork" is unavailable')
-    const spawnWithMissingProvider = await execute(ctx, lead, 'spawn_teammate', spawnRequest(2))
+    const spawnWithMissingProvider = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', spawnRequest(2))
     expect(spawnWithMissingProvider.isError).toBe(true)
     expect(text(spawnWithMissingProvider)).toContain('spawn provider "missing-fork" is unavailable')
 
@@ -751,7 +791,7 @@ members:
       approvedRevision: ctx.agentTeams.remoteView(lead).planRevision,
     })).resolves.toMatchObject({ ok: false, error: { code: 'team-preflight-rejected' } })
     await assertDispatchDenied('task write-scope overlap')
-    const spawnWithOverlap = await execute(ctx, lead, 'spawn_teammate', spawnRequest(2))
+    const spawnWithOverlap = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', spawnRequest(2))
     expect(spawnWithOverlap.isError).toBe(true)
     expect(text(spawnWithOverlap)).toContain('task write-scope overlap')
 
@@ -789,7 +829,7 @@ members:
       executionReady: false,
       diagnostics: ['only 0 durable active teammate(s); 2 required'],
     }))
-    const spawned = await execute(ctx, lead, 'spawn_teammate', spawnRequest(0))
+    const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', spawnRequest(0))
     expect(spawned.isError).toBe(false)
   })
 
@@ -820,7 +860,7 @@ members:
     expect(leadPrompt).toContain('returns noProgress immediately')
     expect(leadPrompt).toContain('Your Team role is lead')
 
-    const spawned = await execute(ctx, lead, 'spawn_teammate', {
+    const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', {
       name: 'tool-worker',
       description: 'exercise scoped tools',
       prompt: 'stay available',
@@ -832,13 +872,13 @@ members:
     expect(childAssembly.tools.map(schema => schema.name).filter(name => TOOL_NAMES.includes(name)).sort())
       .toEqual(TOOL_NAMES)
     expect(renderPrompt(childAssembly)).toContain('Your Team role is teammate; your Team name is tool-worker')
-    const initialPrompt = child.session.snapshotEvents().find(event => event.type === 'user/message'
-      && event.data.source.kind === 'user')
-    expect(initialPrompt?.type === 'user/message'
-      ? initialPrompt.data.content.flatMap(block => block.type === 'text' ? [block.text] : [])
+    const initialPrompt = child.session.snapshotEvents().find(event => event.type === 'subagent/initial-admission'
+      && event.data.kind === 'persisted')
+    expect(initialPrompt?.type === 'subagent/initial-admission' && initialPrompt.data.kind === 'persisted'
+      ? initialPrompt.data.message.content.flatMap(block => block.type === 'text' ? [block.text] : [])
       : []).toEqual(['stay available'])
 
-    const denied = await execute(ctx, child, 'spawn_teammate', {
+    const denied = await executeApprovedSpawn(ctx, child, 'spawn_teammate', {
       name: 'nested', description: 'not allowed', prompt: 'no',
     })
     expect(denied.isError).toBe(true)
@@ -850,7 +890,7 @@ members:
   it('renders scoped policy after membership revocation while denying stale task creation', async () => {
     const { ctx, lead } = await setup(['hang'])
     await approveCurrentPlan(ctx, lead)
-    const spawned = await execute(ctx, lead, 'spawn_teammate', {
+    const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', {
       name: 'revoked-worker', description: 'exercise revoked identity', prompt: 'stay available',
     })
     const childId = spawnedChildId(spawned)
@@ -878,7 +918,7 @@ members:
   it('returns actionable no-progress output and renders structured wait cancellation', async () => {
     const inactiveSetup = await setup([textResponse('worker done')])
     await approveCurrentPlan(inactiveSetup.ctx, inactiveSetup.lead)
-    const inactiveSpawn = await execute(inactiveSetup.ctx, inactiveSetup.lead, 'spawn_teammate', {
+    const inactiveSpawn = await executeApprovedSpawn(inactiveSetup.ctx, inactiveSetup.lead, 'spawn_teammate', {
       name: 'inactive-worker', description: 'finish immediately', prompt: 'finish',
     })
     const inactiveId = spawnedChildId(inactiveSpawn)
@@ -889,7 +929,7 @@ members:
       timedOut: false,
       noProgress: {
         reason: 'no-active-peer',
-        message: 'No other Team member is running or provisioning. wait_agent cannot make progress or wake inactive teammates. Re-list with list_agents and team_task_list, then use send_message to wake each required inactive teammate before waiting again.',
+        message: 'No other Team member is running or provisioning. wait_agent cannot make progress or wake inactive teammates. Re-list with list_agents and team_task_list, then ask the HUMAN for trusted host recovery and exact authorization of each required inactive teammate before waiting again. Queued messages never supply wake authority.',
       },
     })
     for (const timeout_ms of [9_999, 3_600_001, Number.MAX_SAFE_INTEGER + 1]) {
@@ -900,7 +940,7 @@ members:
 
     const activeSetup = await setup(['hang'])
     await approveCurrentPlan(activeSetup.ctx, activeSetup.lead)
-    const activeSpawn = await execute(activeSetup.ctx, activeSetup.lead, 'spawn_teammate', {
+    const activeSpawn = await executeApprovedSpawn(activeSetup.ctx, activeSetup.lead, 'spawn_teammate', {
       name: 'active-worker', description: 'stay active', prompt: 'wait',
     })
     const activeId = spawnedChildId(activeSpawn)
@@ -919,6 +959,7 @@ members:
   it('adapts roster, mailbox, wait, and task CAS operations to canonical JSON', async () => {
     const { ctx, lead } = await setup(['hang', 'hang', textResponse('lead received wakeup')])
     const created = await execute(ctx, lead, 'team_task_create', {
+      mission_id: (await fixtureMission(ctx, lead)).id,
       subject: 'tool task',
       description: 'created through tool',
       blocked_by: [],
@@ -926,12 +967,12 @@ members:
     })
     const task = JSON.parse(text(created)) as { id: string; revision: number }
     await approveCurrentPlan(ctx, lead)
-    const spawned = await execute(ctx, lead, 'spawn_teammate', {
+    const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', {
       name: 'json-worker', description: 'json worker', prompt: 'wait', context: 'fresh',
     })
     const childId = spawnedChildId(spawned)
     const child = await waitRunning(ctx, childId)
-    const readinessSpawn = await execute(ctx, lead, 'spawn_teammate', {
+    const readinessSpawn = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', {
       name: 'readiness-worker', description: 'second durable worker', prompt: 'wait', context: 'fresh',
     })
     const readinessId = spawnedChildId(readinessSpawn)
@@ -995,20 +1036,22 @@ members:
   it('adapts optional task filters, mutations, pagination, and default waiting', async () => {
     const { ctx, lead } = await setup(['hang', 'hang'])
     const firstResult = await execute(ctx, lead, 'team_task_create', {
+      mission_id: (await fixtureMission(ctx, lead)).id,
       subject: 'first', description: 'first task',
     })
     const secondResult = await execute(ctx, lead, 'team_task_create', {
+      mission_id: (await fixtureMission(ctx, lead)).id,
       subject: 'second', description: 'second task',
     })
     const first = JSON.parse(text(firstResult)) as { id: string; revision: number }
     const second = JSON.parse(text(secondResult)) as { id: string; revision: number }
     await approveCurrentPlan(ctx, lead)
-    const spawned = await execute(ctx, lead, 'spawn_teammate', {
+    const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', {
       name: 'fork-worker', description: 'fork worker', prompt: 'stay active', context: 'fork',
     })
     const childId = spawnedChildId(spawned)
     await waitRunning(ctx, childId)
-    const readinessSpawn = await execute(ctx, lead, 'spawn_teammate', {
+    const readinessSpawn = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', {
       name: 'filter-readiness-worker', description: 'second durable worker', prompt: 'stay active', context: 'fresh',
     })
     const readinessId = spawnedChildId(readinessSpawn)
@@ -1057,10 +1100,12 @@ members:
       owner: 'fork-worker',
     })).isError).toBe(true)
 
+    const firstMissionId = (await fixtureMission(ctx, lead)).id
     const wait = execute(ctx, lead, 'wait_agent', {})
     const wake = new Promise<Awaited<ReturnType<typeof execute>>>((resolve, reject) => {
       setTimeout(() => {
         void execute(ctx, lead, 'team_task_create', {
+          mission_id: firstMissionId,
           subject: 'wake', description: 'wake default wait',
         }).then(resolve, reject)
       }, 0)
@@ -1076,7 +1121,7 @@ members:
   it('removes and reinstalls every scoped registration across plugin HMR without stopping the child', async () => {
     const { ctx, lead, fiber } = await setup(['hang'])
     await approveCurrentPlan(ctx, lead)
-    const spawned = await execute(ctx, lead, 'spawn_teammate', {
+    const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', {
       name: 'hmr-worker', description: 'hmr worker', prompt: 'wait',
     })
     const childId = spawnedChildId(spawned)
@@ -1153,20 +1198,25 @@ members:
   })
 
   it('reinstalls Team scope before a cold-resumed teammate request', async () => {
-    const { ctx, lead } = await setup([textResponse('first'), 'hang'])
+    const { ctx, lead } = await setup([textResponse('first'), 'hang', 'hang'])
     await approveCurrentPlan(ctx, lead)
-    const spawned = await execute(ctx, lead, 'spawn_teammate', {
+    const spawned = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', {
       name: 'cold-worker', description: 'cold worker', prompt: 'finish once',
     })
     const childId = spawnedChildId(spawned)
     await vi.waitFor(() => { expect(ctx.agents.get(childId)).toBeUndefined() }, { timeout: 5_000 })
 
-    await ctx.agentTeams.sendMessage(lead, {
+    const queued = await ctx.agentTeams.sendMessage(lead, {
       target: 'cold-worker',
       content: [{ type: 'text', text: 'resume with Team scope' }],
       signal: SIGNAL,
     })
-    const resumed = await waitRunning(ctx, childId)
+    expect(queued.status).toBe('queued')
+    const recovered = await recoverFixtureMember(ctx, lead, 'cold-worker')
+    const { mailbox } = ctx.agentTeams as unknown as { mailbox: { tryDispatch(root: Agent, message: import('../../gat-core/src/types.ts').TeamMessageSnapshot, signal: AbortSignal): Promise<boolean> } }
+    const pending = (ctx.agentTeams as unknown as { journal: { state(root: Agent): { messages: import('../../gat-core/src/types.ts').TeamMessageSnapshot[] } } }).journal.state(lead).messages.find(message => message.id === queued.messageId)!
+    await mailbox.tryDispatch(lead, pending, SIGNAL)
+    const resumed = await waitRunning(ctx, recovered.id)
     expect((await assembly(ctx, resumed)).tools.map(schema => schema.name)
       .filter(name => TOOL_NAMES.includes(name)).sort()).toEqual(TOOL_NAMES)
     expect(renderPrompt(await assembly(ctx, resumed))).toContain('Your Team role is teammate; your Team name is cold-worker')
@@ -1188,9 +1238,10 @@ members:
     const { ctx, lead, fiber } = await setup([textResponse('custom')])
     await fiber.dispose()
     await ctx.plugin(SubagentSpawn, { providerName: 'team-fresh' })
+    fixtureConfigs.set(ctx.root, { freshProvider: 'team-fresh', forkProvider: 'fork', simpleMode: false })
     await ctx.plugin(toolTeam, { freshProvider: 'team-fresh', forkProvider: 'fork', simpleMode: false })
     await approveCurrentPlan(ctx, lead)
-    const result = await execute(ctx, lead, 'spawn_teammate', {
+    const result = await executeApprovedSpawn(ctx, lead, 'spawn_teammate', {
       name: 'custom-provider', description: 'custom provider', prompt: 'go',
     })
     expect(result.isError).toBe(false)

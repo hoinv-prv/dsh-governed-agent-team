@@ -1,0 +1,13 @@
+verify-translation-pairing: recorded .agents/notes/proposed/process/2026-10-04-active-catalog-replacements.i18n.yaml
+verify-translation-pairing: recorded docs/subsystems/core.i18n.yaml
+verify-translation-pairing: recorded docs/subsystems/tools.i18n.yaml
+verify-translation-pairing: recorded packages/core/agent-loop/README.i18n.yaml
+verify-translation-pairing: recorded packages/core/agent/README.i18n.yaml
+verify-translation-pairing: recorded packages/core/tools/README.i18n.yaml
+verify-translation-pairing: recorded packages/experimental/gat-core/README.i18n.yaml
+verify-translation-pairing: recorded packages/experimental/gat-profile/README.i18n.yaml
+verify-translation-pairing: recorded packages/experimental/gat-tools/README.i18n.yaml
+verify-translation-pairing: recorded packages/experimental/gat-web-profile/README.i18n.yaml
+verify-translation-pairing: recorded packages/experimental/gat-web/README.i18n.yaml
+verify-translation-pairing: recorded packages/subagent/subagent/README.i18n.yaml
+verify-translation-pairing: 12 record(s) written; run the check to validate the pairs.

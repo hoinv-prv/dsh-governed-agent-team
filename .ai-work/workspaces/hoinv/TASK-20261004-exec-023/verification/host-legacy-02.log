@@ -1,0 +1,231 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts (136 tests | 11 failed) 40396ms
+     × releases the Activation when the parent catalog append fails 32ms
+     × preserves prompt admission failure when Activation disposal also fails 42ms
+     × rechecks direct Agent inbox work accepted during the final flush 5005ms
+     × retries after Session-only work completes during the final flush 5007ms
+     × keeps a child acquired during the final flush before settling 5004ms
+     × lets explicit disposal win while the natural final flush is pending 5003ms
+     × rechecks maintenance that claims the Agent during the final flush 5008ms
+     × logs a failed final flush after every listener settles without failing the Activation 64ms
+     × releases only selected direct children 231ms
+     × rejects an initial prompt when drain starts after materialization 44ms
+     × stays silent about a child the caller was told does not exist 47ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > SubagentRuntime.startContinuable > releases the Activation when the parent catalog append fails
+AssertionError: expected SubagentError: subagent "00000000-0000-40… { code: '…' } to be Error: catalog append failed // Object.is equality
+
+- Expected
++ Received
+
+- Error {
+-   "message": "catalog append failed",
++ SubagentError {
++   "message": "subagent \"00000000-0000-4000-8000-000000000321\" activation handle disposal failed: activation disposal also failed",
++   "code": "ACTIVATION_TEARDOWN_FAILED",
++   "name": "SubagentError",
+  }
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:450:7
+    448|       ...startSpec(parent),
+    449|       childId,
+    450|     })).rejects.toBe(catalogFailure)
+       |       ^
+    451|
+    452|     await vi.waitFor(() => { expect(ctx.agents.get(childId)).toBeUndef…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > SubagentRuntime.startContinuable > preserves prompt admission failure when Activation disposal also fails
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:482:9
+    480|     expect(warnings.some(warning => warning.startsWith(
+    481|       'subagent continuation: disposal after admission or catalog appe…
+    482|     ))).toBe(true)
+       |         ^
+    483|   })
+    484|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > rechecks direct Agent inbox work accepted during the final flush
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1130:3
+    1128|
+    1129| describe('continuable durability and teardown', () => {
+    1130|   it('rechecks direct Agent inbox work accepted during the final flush…
+       |   ^
+    1131|     const releaseFirstTurn = Promise.withResolvers<undefined>()
+    1132|     const adapter = new GatedAdapter([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > retries after Session-only work completes during the final flush
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1170:3
+    1168|   })
+    1169|
+    1170|   it('retries after Session-only work completes during the final flush…
+       |   ^
+    1171|     const releaseFirstTurn = Promise.withResolvers<undefined>()
+    1172|     const adapter = new GatedAdapter([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > keeps a child acquired during the final flush before settling
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1204:3
+    1202|   })
+    1203|
+    1204|   it('keeps a child acquired during the final flush before settling', …
+       |   ^
+    1205|     const releaseFirstTurn = Promise.withResolvers<undefined>()
+    1206|     const releaseGrandchild = Promise.withResolvers<undefined>()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/11]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > lets explicit disposal win while the natural final flush is pending
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1239:3
+    1237|   })
+    1238|
+    1239|   it('lets explicit disposal win while the natural final flush is pend…
+       |   ^
+    1240|     const releaseFirstTurn = Promise.withResolvers<undefined>()
+    1241|     const adapter = new GatedAdapter([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/11]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > rechecks maintenance that claims the Agent during the final flush
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1267:3
+    1265|   })
+    1266|
+    1267|   it('rechecks maintenance that claims the Agent during the final flus…
+       |   ^
+    1268|     const releaseFirstTurn = Promise.withResolvers<undefined>()
+    1269|     const adapter = new GatedAdapter([{ chunks: textResponse('answer')…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/11]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > logs a failed final flush after every listener settles without failing the Activation
+SubagentError: initial admission persistence failed
+ ❯ packages/subagent/subagent/src/reserved.ts:173:15
+    171|         await flush()
+    172|       } catch (cause: unknown) {
+    173|         throw new SubagentError('initial admission persistence failed'…
+       |               ^
+    174|       }
+    175|       assertOpen()
+
+Caused by: Error: disk full
+ ❯ Object.<anonymous> packages/subagent/subagent/tests/continuation.spec.ts:1341:61
+ ❯ Object.apply vendor/cordis/src/reflect.ts:411:24
+ ❯ packages/core/session/src/index.ts:1150:16
+ ❯ Proxy.flush packages/core/session/src/index.ts:1148:56
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ flush packages/subagent/subagent/src/reserved.ts:122:35
+ ❯ packages/subagent/subagent/src/reserved.ts:171:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/11]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > releases only selected direct children
+AssertionError: expected "cancel" to be called with arguments: [ { kind: 'parent' } ]
+
+Received:
+
+  1st cancel call:
+
+  [
+    {
+      "kind": "parent",
+    },
++   {
++     "keepInbox": false,
++   },
+  ]
+
+
+Number of calls: 1
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1525:20
+    1523|     )
+    1524|
+    1525|     expect(cancel).toHaveBeenCalledWith({ kind: 'parent' })
+       |                    ^
+    1526|     expect(ctx.agents.get(sibling.childId)).toBe(siblingAgent)
+    1527|     releaseTarget.resolve(undefined)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/11]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > rejects an initial prompt when drain starts after materialization
+AssertionError: expected SubagentError: continuable reservation is… { code: '…' } to match object { code: 'DRAINING' }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "DRAINING",
++ SubagentError {
++   "code": "CONTINUABLE_CLOSED",
+  }
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1710:67
+    1708|     ctx.on('agent/inbox/inserted', ({ message }) => { accepted.push(me…
+    1709|
+    1710|     await expect(ctx.subagents.startContinuable(startSpec(parent)))
+       |                                                                   ^
+    1711|       .rejects.toMatchObject({ code: 'DRAINING' })
+    1712|     await Promise.all(drains)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/11]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > stays silent about a child the caller was told does not exist
+AssertionError: expected SubagentError: continuable reservation is… { code: '…' } to match object { code: 'DRAINING' }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "DRAINING",
++ SubagentError {
++   "code": "CONTINUABLE_CLOSED",
+  }
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2968:67
+    2966|     ctx.on('subagent/start', () => { drains.push(drainManager(ctx)) })
+    2967|
+    2968|     await expect(ctx.subagents.startContinuable(startSpec(parent)))
+       |                                                                   ^
+    2969|       .rejects.toMatchObject({ code: 'DRAINING' })
+    2970|     await Promise.all(drains)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/11]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  11 failed | 125 passed (136)
+   Start at  11:08:28
+   Duration  41.58s (transform 895ms, setup 145ms, import 948ms, tests 40.40s, environment 0ms)
+

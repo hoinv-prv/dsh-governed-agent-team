@@ -17,10 +17,17 @@ export function TeamId(id: SessionId | string): TeamId {
   return id as TeamId
 }
 
-/** Stable identifier for one durable mission in a Team. */
+/**
+ * Stable identifier for one durable mission in a Team.
+ */
+
 export type TeamMissionId = Branded<'TeamMissionId'>
 
-/** Brand a validated Team-local mission id. */
+/**
+ * Brand a validated Team-local mission id.
+ * @param id Team-local mission identity.
+ * @returns The same string branded as a Team mission identifier.
+ */
 export function TeamMissionId(id: string): TeamMissionId {
   return id as TeamMissionId
 }
@@ -52,6 +59,56 @@ export function TeamMessageId(id: string): TeamMessageId {
 /** Durable teammate lifecycle. */
 export type TeamMemberPhase = 'provisioning' | 'active' | 'failed'
 
+
+/**
+ * Represent a plain JSON value accepted by attachment persistence.
+ */
+export type JsonValue = null | boolean | number | string | JsonValue[] | { readonly [key: string]: JsonValue }
+
+/**
+ * Declare one required binder attachment in normalized member input.
+ */
+export interface TeamMemberAttachmentRequest {
+  readonly binderId: string
+  readonly protocolVersion: number
+  readonly required: true
+  readonly payload: JsonValue
+}
+
+/**
+ * Persist one canonical required attachment and its payload digest.
+ */
+export interface TeamMemberAttachmentRecord extends TeamMemberAttachmentRequest {
+  readonly payloadSha256: string
+}
+
+/**
+ * Describe one normalized member before child provisioning.
+ */
+export interface TeamMemberSpec {
+  readonly name: string
+  readonly description: string
+  readonly initialTask: ContentBlock[]
+  readonly context: 'fresh' | 'fork'
+  readonly continuationProvider: string
+  readonly agentOptions?: AgentOptions
+  readonly attachments?: readonly TeamMemberAttachmentRequest[]
+}
+
+/**
+ * Return the normalized roster produced by one Team initializer.
+ */
+export interface TeamInitialization {
+  readonly source: string
+  readonly diagnostics: string[]
+  readonly members: readonly TeamMemberSpec[]
+}
+
+/**
+ * Initialize the complete normalized Team roster for a Lead.
+ */
+export type TeamInitializer = (lead: import('@deepseek-ai/dsh-agent').Agent, signal: AbortSignal) => Promise<TeamInitialization>
+
 /** Whole durable value written on every teammate lifecycle change. */
 export interface TeamMemberSnapshot {
   readonly id: SessionId
@@ -59,9 +116,15 @@ export interface TeamMemberSnapshot {
   readonly description: string
   readonly provider: string
   readonly context: 'fresh' | 'fork'
+  /** Explicit child model retained when the live continuation is inactive. */
+  readonly model?: string
   readonly phase: TeamMemberPhase
   readonly error?: string
+  readonly attachments: readonly TeamMemberAttachmentRecord[]
 }
+
+/** Explicit adjacent legacy representation; v2 fixtures never invent attachments. */
+export type LegacyTeamMemberSnapshot = Omit<TeamMemberSnapshot, 'attachments'>
 
 /** Current runtime-enriched roster row. */
 export interface TeamMemberView {
@@ -74,6 +137,7 @@ export interface TeamMemberView {
   readonly context?: 'fresh' | 'fork'
   readonly model?: string
   readonly diagnostics: string[]
+  readonly bindings?: { readonly binderId: string; readonly protocolVersion: number; readonly readiness: 'ready' | 'unavailable' | 'failed' }[]
 }
 
 /** Durable task lifecycle. */
@@ -81,6 +145,8 @@ export type TeamTaskStatus = 'pending' | 'in_progress' | 'completed' | 'deleted'
 
 /** Whole durable task snapshot; every mutation increments {@link revision}. */
 export interface TeamTaskSnapshot {
+  /** Immutable canonical mission association; absent only in adjacent v2 history. */
+  readonly missionId?: TeamMissionId
   readonly id: TeamTaskId
   readonly revision: number
   readonly subject: string
@@ -93,6 +159,7 @@ export interface TeamTaskSnapshot {
 
 /** Runtime-enriched task view returned to tools and hosts. */
 export interface TeamTaskView {
+  readonly missionId?: TeamMissionId
   readonly id: TeamTaskId
   readonly revision: number
   readonly subject: string
@@ -106,20 +173,28 @@ export interface TeamTaskView {
 }
 
 /** Durable lifecycle of one independently governed Team mission. */
-export type TeamMissionStatus = 'draft' | 'approved' | 'active' | 'completed'
+export type TeamMissionStatus = 'draft' | 'approved' | 'active' | 'completed' | 'closed' | 'revoked'
 
 /** Immutable task-set plan owned by exactly one Team mission. */
 export interface TeamMissionPlanSnapshot {
+  /** Historical v2 snapshots, never an executable task authority. */
   readonly tasks: readonly TeamTaskSnapshot[]
+  readonly taskIds?: readonly TeamTaskId[]
 }
 
 /** Durable HUMAN approval of one exact mission revision. */
 export interface TeamMissionApprovalSnapshot {
+  readonly eventId?: string
+  readonly digest?: string
+  readonly humanSessionId?: string
+  readonly generation?: number
   readonly approvedRevision: number
 }
 
 /** Whole durable mission value; every mutation increments {@link revision}. */
 export interface TeamMissionSnapshot {
+  readonly authorizationGeneration?: number
+  readonly revocationGeneration?: number
   readonly id: TeamMissionId
   readonly revision: number
   readonly title: string
@@ -158,6 +233,9 @@ export type TeamMissionMutationResult =
 
 /** Durable HUMAN approval of one exact structural plan revision. */
 export interface TeamPlanApprovalSnapshot {
+  readonly eventId?: string
+  readonly digest?: string
+  readonly humanSessionId?: string
   readonly approvedRevision: number
 }
 
@@ -291,7 +369,11 @@ export interface SpawnTeammateRequest {
   /** Optional LLM route and reasoning overrides for the child Agent. */
   readonly agentOptions?: AgentOptions
   readonly signal: AbortSignal
+  readonly attachments?: readonly TeamMemberAttachmentRequest[]
 }
+
+/** Exact immutable member specification reviewed through HUMAN control. */
+export type ApproveTeamMemberAddRequest = Omit<SpawnTeammateRequest, 'signal'>
 
 /** Result after one teammate reaches a durable active or failed edge. */
 export interface SpawnTeammateResult {
@@ -302,7 +384,7 @@ export interface SpawnTeammateResult {
 export interface TeamEnableResult {
   readonly enabled: true
   readonly alreadyEnabled: boolean
-  readonly source: 'workspace' | 'built-in-default' | 'existing'
+  readonly source: string
   readonly diagnostics: string[]
   readonly members: TeamMemberView[]
 }
@@ -322,6 +404,7 @@ export interface SendTeamMessageResult {
 
 /** Input for creating one shared task. */
 export interface CreateTeamTaskRequest {
+  readonly missionId?: TeamMissionId
   readonly subject: string
   readonly description: string
   readonly blockedBy?: readonly TeamTaskId[]
@@ -369,14 +452,16 @@ export interface TeamWaitResult {
 
 declare module '@deepseek-ai/dsh-session/types' {
   interface SessionEventMap {
+    /** Durable evidence for exact one-use HUMAN member-add approval; restart never restores its runtime grant. */
+    'team/member-add-approved': { version: 1; teamId: TeamId; receiptId: string; digest: string; specDigest: string; name: string }
     /** Whole teammate lifecycle value, stored only in the Team Lead Session. */
-    'team/member': { version: 2; teamId: TeamId; member: TeamMemberSnapshot }
+    'team/member': { version: 2; teamId: TeamId; member: LegacyTeamMemberSnapshot } | { version: 3; teamId: TeamId; member: TeamMemberSnapshot }
     /** Whole shared-task value, stored only in the Team Lead Session. */
-    'team/task': { version: 2; teamId: TeamId; task: TeamTaskSnapshot }
+    'team/task': { version: 2 | 3; teamId: TeamId; task: TeamTaskSnapshot }
     /** Whole independently governed mission value, stored only in the Team Lead Session. */
-    'team/mission': { version: 2; teamId: TeamId; mission: TeamMissionSnapshot }
+    'team/mission': { version: 2 | 3; teamId: TeamId; mission: TeamMissionSnapshot }
     /** HUMAN approval of one exact structural plan revision. */
-    'team/plan-approved': { version: 2; teamId: TeamId; approval: TeamPlanApprovalSnapshot }
+    'team/plan-approved': { version: 2 | 3; teamId: TeamId; approval: TeamPlanApprovalSnapshot }
     /** Latest durable work state reported by one exact Team member. */
     'team/work': { version: 2; teamId: TeamId; work: TeamWorkSnapshot }
     /** Durable mailbox enqueue, stored before delivery is attempted. */

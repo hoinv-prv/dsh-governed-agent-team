@@ -1,0 +1,2962 @@
+[
+  {
+    "id": "gat",
+    "root": "/home/hoinv/work/dsh-governed-agent-team",
+    "head": "8121d8c13640afa234496af34fdeac727312c5b1",
+    "dirty": [
+      {
+        "status": " M",
+        "path": "SOURCE_SNAPSHOT.json",
+        "sha256": "e39e39c7846c6557a2fd7a28cdfb5e119e0f8d7072fe6abb8a144dc352c29deb",
+        "bytes": 1474
+      },
+      {
+        "status": " M",
+        "path": "compatibility/dsh-0.1.5-rc.2/manifest.json",
+        "sha256": "e0973ad5c8937caa3268d735014c29f00e9e457c29448fcdcdffa5b930794713",
+        "bytes": 27921
+      },
+      {
+        "status": " M",
+        "path": "docs/gat-design/ARCHITECTURE_DESIGN.md",
+        "sha256": "40cf438b64691e4946ba22845093b64489b422d4fb806f1836d027337b4d1ffc",
+        "bytes": 16164
+      },
+      {
+        "status": " M",
+        "path": "docs/gat-design/BASIC_DESIGN.md",
+        "sha256": "b29c87d022532003fcd6bedfc632168bf9225e7373476f05c5862fc77f1f4f8b",
+        "bytes": 13534
+      },
+      {
+        "status": " M",
+        "path": "docs/gat-design/DETAIL_DESIGN.md",
+        "sha256": "3701668fc510e517043c4a89d9f987bbec1cbd25b080b37c29b1a612564f48f9",
+        "bytes": 42488
+      },
+      {
+        "status": " M",
+        "path": "docs/gat-design/DURABLE_AGENT_INTEGRATION.md",
+        "sha256": "018db3bb7da0ff349ac4b89b42c58fbdcafdbf772e8f9d5dd47995eeb4c442f3",
+        "bytes": 8735
+      },
+      {
+        "status": " M",
+        "path": "docs/gat-design/SOURCE_CODE_MAP.md",
+        "sha256": "d5e28e10d123a4cf5a9e6b7b5f5449cf98e7be5a08115b390a6cf1a7b41a6b8e",
+        "bytes": 15194
+      },
+      {
+        "status": " M",
+        "path": "docs/gat-design/design-verification.json",
+        "sha256": "c189ec54d6cb3c9cfb9821646fd560dedc70635f51607364bac84994d0e38c95",
+        "bytes": 2995
+      },
+      {
+        "status": " M",
+        "path": "docs/gat-design/source-baseline.json",
+        "sha256": "d4b98746ecc440e34d421aa75b5a79369e8bbf65685353aa66236dd80eb8a9f1",
+        "bytes": 19140
+      },
+      {
+        "status": " M",
+        "path": "docs/gat-design/source-code-map.json",
+        "sha256": "c69b4e28a2d139f03b23c1978ef87370d6cc3dd87dd76eb94526a57ab1095c50",
+        "bytes": 39832
+      },
+      {
+        "status": " M",
+        "path": "installer/verify.mjs",
+        "sha256": "10b630428ec104fc13086802665d322f583478f451a35e20665f1497a7c72400",
+        "bytes": 10764
+      },
+      {
+        "status": " M",
+        "path": "packages/core/src/index.ts",
+        "sha256": "f8aec851803cadf7cc059cb15fe92c7b94821e2c493416b1e8916c06dc65ca67",
+        "bytes": 31767
+      },
+      {
+        "status": " M",
+        "path": "packages/core/src/mailbox.ts",
+        "sha256": "4fb72bc13030d553d84f1b79b71d223099cd68b7c2610491b4c04c716b44f47e",
+        "bytes": 14460
+      },
+      {
+        "status": " M",
+        "path": "packages/core/src/projection.ts",
+        "sha256": "b28648d91c203557b0ab2f87847fe311c939e9b2fc1d0d98dbfbceec2eba14a6",
+        "bytes": 20378
+      },
+      {
+        "status": " M",
+        "path": "packages/core/src/roster.ts",
+        "sha256": "fd515e54370f6553c124bea131a283f943bd9ba13d05b51a1c8d4dcd930c4eda",
+        "bytes": 21130
+      },
+      {
+        "status": " M",
+        "path": "packages/core/src/types.ts",
+        "sha256": "fa07834d0cd6fb473d54ebe385716d947c6e22cec890d2afe25baa95a5052507",
+        "bytes": 14443
+      },
+      {
+        "status": " M",
+        "path": "packages/core/tests/persistence.spec.ts",
+        "sha256": "9b9d9efbe2a205310e7adb3e3f9169c3ea7e941acebd996d7469adee5a4c0fce",
+        "bytes": 22530
+      },
+      {
+        "status": " M",
+        "path": "packages/core/tests/projection-events.spec.ts",
+        "sha256": "f0989b3067e57607cd2df40d31b4971dd32f75828018f15a43c3b57095bbec38",
+        "bytes": 24126
+      },
+      {
+        "status": " M",
+        "path": "packages/core/tests/team.spec.ts",
+        "sha256": "ba47f8fe53f614a463f8f5747e745cb19d4c1a64d61a8be45434d9d231e1d5b1",
+        "bytes": 111825
+      },
+      {
+        "status": " M",
+        "path": "packages/tools/src/index.ts",
+        "sha256": "11ef4b970a5c5e7860dcb44513ace9f2c08f9826b5904e86a9e05948796233c7",
+        "bytes": 36986
+      },
+      {
+        "status": " M",
+        "path": "packages/web/tests/team-action.client.spec.tsx",
+        "sha256": "dbc95423f603a45b5361fbcb9a7e7ce5efdd90c5149c619a8cbfb82bc989148b",
+        "bytes": 13673
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+        "sha256": "d7f049175ec570aedea8fb9fb25f2fe4a6db4e61ee8ec8f2af4092c1cbeb1c29",
+        "bytes": 41279
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-023-implement-binding-prerequisites.md",
+        "sha256": "8d5112ac01ffe0a17999d881190ef6815bf1d992f299ffdca102e5c7182bec44",
+        "bytes": 22042
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/tests/__pycache__/test_typescript_wiki_builder.cpython-312.pyc",
+        "sha256": "85ca63cae23f44bf2078ae55ac0d7fe705bb808aa5e3a7d05291c151c02d9e63",
+        "bytes": 4913
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/tooling/__pycache__/build_typescript_wiki_metas.cpython-312.pyc",
+        "sha256": "b9d63ad1f4c3f2cb3da7b4517a3dcb77d198c77eb6686ded51305e414bbad83c",
+        "bytes": 18894
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/.current_step.json",
+        "sha256": "e9960738434948436b31fb34bdf9d8d411d1db247f98dcd61d330414c2d7d743",
+        "bytes": 213
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/00_task_brief.md",
+        "sha256": "ef5b42efad5a14600517439189051873e7dc3ca283552b42ea7094659eca6dc2",
+        "bytes": 857
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/00b_active_aip.md",
+        "sha256": "39179663d873b9bf0cdc02d34e96ad851d839564b144d5abbcc1683a30983d64",
+        "bytes": 196
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md",
+        "sha256": "c29c9b626c7c39ba48ba6bfa72ef61795ccbe056eb41043e602cb7f970dff504",
+        "bytes": 14025
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/02_runtime_queue.jsonl",
+        "sha256": "c059cd99ac81b7d04ce61413c79a85172743bf7645ef8b4acf6fa4cdab379b8d",
+        "bytes": 1379
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/04_findings.md",
+        "sha256": "d3f0e67b414f6179a9a1c28ea2e7e4aa65d23f158ae372b728190c48d08ea9c6",
+        "bytes": 4114
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/05_open_questions.md",
+        "sha256": "04bd68435a36df8cd764b15ece413f04e218a4ce2aa45ed90082b72e6e20239f",
+        "bytes": 1370
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/07_output_draft.md",
+        "sha256": "e1ffdd18c4de5b64a69b166bd864a7850b3eec048cd93621576131d01d27ec2e",
+        "bytes": 308
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/08_capture_inbox.jsonl",
+        "sha256": "6a06ec4e339951d6c3c82cab5aa28d0a1985b7f17fbe8b8247c959337e0e2698",
+        "bytes": 4987
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/11_output_final.md",
+        "sha256": "0bafbea69f7f7b42cbb12114e9a88edf23d2d48083ac9e380f3ba7d2a93b87d6",
+        "bytes": 56
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/acceptance-matrix.md",
+        "sha256": "f3c7e3abcd051ea3668757604d5e85165afe1e5c2188a8a823d2ddd937b35059",
+        "bytes": 5813
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/approved-decisions.md",
+        "sha256": "a9743d8343d0bb101fbde1d6588284585b449b3cdf31b8c0c405a6988b1d4a49",
+        "bytes": 2006
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/baseline.json",
+        "sha256": "b2c4f0c5b8ab1e529cd0f673f5772971549a5a5efaf4913454d9930c59db7d28",
+        "bytes": 8048
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/baseline.md",
+        "sha256": "bef7c98981c78c1a917e0a3d1cc1ad6ab75a7181fddafc460b916ddf8ed97fa7",
+        "bytes": 602
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/dependency-qualification.md",
+        "sha256": "278fe4c90966c1b67be4b25e50458d153df95f54d069669f5db3bd0d164b89ae",
+        "bytes": 5689
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/design-source-test-matrix.md",
+        "sha256": "4c4a07b5df172b9234211451a5a6818cd643c8db83b782eefa13c9715b319719",
+        "bytes": 1998
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/implementation-handoff.md",
+        "sha256": "7437d4c1770fdbb3cff82f3e749eaefde20d04d5519a0a6f8814371a74414446",
+        "bytes": 2609
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/independent-review.md",
+        "sha256": "ba68ab23e63732905a6914948868120d59840fadd8ee9e63a8a19171656eef64",
+        "bytes": 1199
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/source-design-consistency.md",
+        "sha256": "8112e80e7ae9432ae800af111ffc1400a3ea340fce98b4056c2a7796dc359a42",
+        "bytes": 4044
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step-status.md",
+        "sha256": "096419fc2c600741484c44c829863f41ac23ccb3455ce0ac7cfa8f544ce80b3b",
+        "bytes": 1401
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-00.md",
+        "sha256": "b7a98905c75063314b72d452010c4f1a522087f4802a4fa54c1467f303b3e638",
+        "bytes": 13310
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-01.md",
+        "sha256": "114030e1d721ebeaed485ac96d60ee3dac035260787795ac65239ad323eb0893",
+        "bytes": 13525
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-02.md",
+        "sha256": "aa361669b6be8585c38aec11d8fcf5e3876b826a6269738fe414fc6b0b5a3d20",
+        "bytes": 13722
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-03.md",
+        "sha256": "b510cda5665f5c14be43a99e2b5ee003c746c164d60226064e7636649a7260d3",
+        "bytes": 13621
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-04.md",
+        "sha256": "22a7cc35376d097239dac44a6307496b766b6bffc0d7663ffb68b6810268ecad",
+        "bytes": 13992
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-05.md",
+        "sha256": "b5415fddf34c162bd1b814d7d000b6f0cea4bea7319a419dc56ff480ae2812c4",
+        "bytes": 13893
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-06.md",
+        "sha256": "c9a38a5804088b49a84e8b210d642cccebde613cd345d464c9ed7dc28e1ee25f",
+        "bytes": 13984
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-07.md",
+        "sha256": "c29c9b626c7c39ba48ba6bfa72ef61795ccbe056eb41043e602cb7f970dff504",
+        "bytes": 14025
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-08.md",
+        "sha256": "f354ae14a2a13854b5d3c78dde6fe68cdfd09334d6080f7d24e4ae6045f6b955",
+        "bytes": 15447
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/README.md",
+        "sha256": "097448485b15879ac9045bba2b5be6907be55e26ec66799949e3a8bc7fa097cd",
+        "bytes": 1078
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-00.meta.yml",
+        "sha256": "6eeb6c3b7c0470f0d38105b7b0cb01811378f58757cdd560478f8012b79957f2",
+        "bytes": 491
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-01.meta.yml",
+        "sha256": "f7aff6f56a3a82f19e3c2e474b050c721dc2ce1a16ff4928e3bed9ef0d294978",
+        "bytes": 419
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-02.meta.yml",
+        "sha256": "306da81efdde5959550075ae330f40d3b65fc38072cdcc8e7b21d70253930ece",
+        "bytes": 451
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-03.meta.yml",
+        "sha256": "8b222a87856a6902326d3e79b967a47633130e54e81cc99d30a98b39347f3ea6",
+        "bytes": 443
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-04.meta.yml",
+        "sha256": "41dd2f3660db89e382a778d0499af5e2469acdd80c6c8342f7c318e974f5b615",
+        "bytes": 494
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-05.meta.yml",
+        "sha256": "b328a8ebc3a8de22d1bc67850574156a20f1de51eeea82b291b478e3e7e0f48d",
+        "bytes": 468
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-06.meta.yml",
+        "sha256": "2c68c4f9aca15a5121186dad357b0b4d24d8c22aa51f7e472203ddfb92127dce",
+        "bytes": 513
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-07.meta.yml",
+        "sha256": "a4539626f29604f853b5be5ed38ab64a441e18a58c42bac9666dd502f03a8a75",
+        "bytes": 531
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-08.meta.yml",
+        "sha256": "c1a93d9b4b8f0058cc21c410cf58a03aac55c10b82a7f3447f980c9002b27312",
+        "bytes": 484
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-NN.meta.yml.template",
+        "sha256": "e02a25afa9ff2aab1bad339e9176303d27b21c07e25f8a9661fecd700496c2d9",
+        "bytes": 428
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/index.jsonl",
+        "sha256": "b3ea430d144ff5c1d36ba7958e9f06a468d0fa05f9a6722ff640254af8bb635f",
+        "bytes": 5801
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/task-understanding.md",
+        "sha256": "6e2fa404bb541bcdaeca42784da334791f0c46a3466ea17c9400afdbb1c132e8",
+        "bytes": 1188
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/README.md",
+        "sha256": "da433eec24b0a2cac4246f0f0f004948c66d53af6888c495a20d37d0fbd9e315",
+        "bytes": 4541
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/artifact-hashes.json",
+        "sha256": "35d137122e5d9781c8a98d4438b2ff6d6058ea5de02aeaa9efd630546c1846cb",
+        "bytes": 811
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/asc-refresh.json",
+        "sha256": "6cd8318097955295c71fbe0aa09cf0c02fcfab1458d8e01a764a6c088ee4de19",
+        "bytes": 12417
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/browser.log",
+        "sha256": "e9ef0844e49df2358c5c20845df17a19536634a78cbe6f1c858730f6ce50929a",
+        "bytes": 2391
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/built-adapter-smoke.log",
+        "sha256": "55091d140249daa1e487a8b017cd2e834b1586ea4f4b5e547686e049dcd2ca01",
+        "bytes": 114
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/built-core-smoke.log",
+        "sha256": "9829bf09d1499af8825d5ffcb6c95c8e7e3785a493d8834cc67af804f837238e",
+        "bytes": 436
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/built-entry.mjs",
+        "sha256": "0b0c55c1d351aa4228da585b7c591e774d264a3a4f3601798404e474cc7c94e2",
+        "bytes": 1349
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/client-bundle.log",
+        "sha256": "3c9deeded5d20bcde33cab5ce9643e9974179250c0be8abc60d5a0024d21d1f8",
+        "bytes": 118049
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/client-types.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/host-bundle.log",
+        "sha256": "28912a079b58453d1852a143a33fb3dc550450c3ce83fd5d51aeb49a7270d70d",
+        "bytes": 160587
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/host-types.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/install-dry.log",
+        "sha256": "8ca90a55662da26178133ae0532b178d448b39af278ef5bb8b5dc76a67629ff1",
+        "bytes": 1154
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/install-status.log",
+        "sha256": "797fb6fdf905ced777493f2b74b53c3e4bb22a235435edc79630cc74e0aa2676",
+        "bytes": 774
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/install.log",
+        "sha256": "e8db4f424e546bfc2a6622254bfd0eafe0783a82e55337305b6b61d54b680fe3",
+        "bytes": 285
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/installer-tests.log",
+        "sha256": "ed59be860bd45d246d73b846a8ed8db83ba67d1b6537bfbe5ed1ef2d89749e70",
+        "bytes": 2771
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/log-hashes.json",
+        "sha256": "7b89484e32174136d3aaf9f79d10df5fdbe92cdc8f395b1634a13804e14b5f3b",
+        "bytes": 2263
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/rollback.log",
+        "sha256": "f1533f5d867c144403ecd8f63a0b84848325d01346cbd2f5dab3ffd9006fb0a5",
+        "bytes": 204
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/source-tests.log",
+        "sha256": "810f2f9c801fbe7928e646e48a0c459b85df38cad2533de7ef0ed1966dc50e80",
+        "bytes": 4613
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/task-strict-lint.log",
+        "sha256": "8c6358d2a796195bfd732d7251c5f51aa3b3fd9095a241f838f0a72daaf1d894",
+        "bytes": 409
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/tested-source-hashes.json",
+        "sha256": "ef53f38cc3e24982c7e39123141473a0635528144de951c410ca00ae7bf0b689",
+        "bytes": 15688
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/web-build.log",
+        "sha256": "020f82e58c8f5022049b395201528aa55c2223d86bf0f0c2f3ef307b291a578b",
+        "bytes": 7834
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/whole-tree-strict-lint.log",
+        "sha256": "435674425545143e415ce3594255e914ca70412ef65dbac5c3be3f2b8e1b8c28",
+        "bytes": 706971
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/.current_step.json",
+        "sha256": "1a1a2e114918e2b437b707f04a3135707e53e7a44224b4121fdad5ea02787e97",
+        "bytes": 213
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/00_task_brief.md",
+        "sha256": "746b871680cb55c590a08db2cf6c87887a5dc4088dadbb9443e7c2dd7cd01fc5",
+        "bytes": 869
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/00b_active_aip.md",
+        "sha256": "112b55d73dccdd33e4fc41d54bb238143cc890a7d0c939158e2af0f3d59c17cf",
+        "bytes": 196
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/00c_active_step_context.md",
+        "sha256": "7b5b2a8c67f4e335e48de93d7f24473d63fc5cd67b2b231ab07cfcb51f7f400b",
+        "bytes": 8472
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/02_runtime_queue.jsonl",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/04_findings.md",
+        "sha256": "e7e127e4be1dc31a9f3dfad7d53daf13636f02da4d932bfecb9bb5e31da3cd4f",
+        "bytes": 137
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/05_open_questions.md",
+        "sha256": "08a6feb5660fcafd16b20ee8134c0bd684643b2822af58057d3e9ac25b64c343",
+        "bytes": 3214
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/07_output_draft.md",
+        "sha256": "bb7068abfdfa47e79fd021fbff634bb2860e11d7143574b8fc2b98af0e5376cb",
+        "bytes": 124
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/08_capture_inbox.jsonl",
+        "sha256": "9e4110cc0836d47d6f24ae4742a37fa8c78fc83000d5c55b51e94edbb814b8f1",
+        "bytes": 1852
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/11_output_final.md",
+        "sha256": "0bafbea69f7f7b42cbb12114e9a88edf23d2d48083ac9e380f3ba7d2a93b87d6",
+        "bytes": 56
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/step_outputs/README.md",
+        "sha256": "097448485b15879ac9045bba2b5be6907be55e26ec66799949e3a8bc7fa097cd",
+        "bytes": 1078
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/step_outputs/STEP-NN.meta.yml.template",
+        "sha256": "e02a25afa9ff2aab1bad339e9176303d27b21c07e25f8a9661fecd700496c2d9",
+        "bytes": 428
+      },
+      {
+        "status": "??",
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/step_outputs/index.jsonl",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "status": "??",
+        "path": "docs/gat-design/DURABLE_AGENT_BINDING_PROPOSAL.md",
+        "sha256": "6a2bb4aa8e867f52c162e8e53cedce1d5988be54092ef0ff3986f6ece192bb0b",
+        "bytes": 59787
+      },
+      {
+        "status": "??",
+        "path": "packages/core/src/attachments.ts",
+        "sha256": "88ba0ef671523e389f5822941eb462fd627c2fe43a04e7c72be7d33e6dfe3402",
+        "bytes": 6641
+      },
+      {
+        "status": "??",
+        "path": "packages/core/src/binding-deadline.ts",
+        "sha256": "bcea7f9d689fff8a4c171f70c11c943bbdb21f1e46295e400b4b0eca9f720755",
+        "bytes": 2292
+      },
+      {
+        "status": "??",
+        "path": "packages/core/src/member-binders.ts",
+        "sha256": "d987abecb70d86dca9b36c77de5e25316a6974d6bb2d3087cf530fbbe09cd46c",
+        "bytes": 11622
+      },
+      {
+        "status": "??",
+        "path": "packages/core/src/member-binding.ts",
+        "sha256": "657276e41f170bc712475e07c3a814c3c94e8c9272065efcce36dc1f10a25824",
+        "bytes": 16145
+      },
+      {
+        "status": "??",
+        "path": "packages/core/tests/binding-enable.spec.ts",
+        "sha256": "b77a8b728a3287cb6fcf4dacc47478fe8ce025678e12e02dd260d2befbb796a1",
+        "bytes": 3142
+      },
+      {
+        "status": "??",
+        "path": "packages/core/tests/member-attachments.spec.ts",
+        "sha256": "cfaef2cf3b91e3ac7cc693a6ea13d0dd72c8919e5bd1e6a6cdc551d048e6a7d1",
+        "bytes": 12598
+      },
+      {
+        "status": "??",
+        "path": "packages/core/tests/member-binding.spec.ts",
+        "sha256": "ff397d063ca840ddb4654d588fbe789b340d6280dec3294e0791996323576277",
+        "bytes": 26105
+      },
+      {
+        "status": "??",
+        "path": "packages/core/tests/member-replay.spec.ts",
+        "sha256": "124667f7f1af47f5e8ef49c1611bceacd7999e31c057fccb8b6882fa18efe66d",
+        "bytes": 7245
+      },
+      {
+        "status": "??",
+        "path": "packages/durable-agent/README.md",
+        "sha256": "b17eb472f22fd964289f5659c9f3869597a6dea22ce19bfb8e81a0fae5a648db",
+        "bytes": 2398
+      },
+      {
+        "status": "??",
+        "path": "packages/durable-agent/package.json",
+        "sha256": "e9a0e626618988f4b2673faf84ce79b88bf7ac00d9245fa3ac696ee76fb71100",
+        "bytes": 668
+      },
+      {
+        "status": "??",
+        "path": "packages/durable-agent/src/binder.ts",
+        "sha256": "a66e935d50c02812daa2d543a07520b9ba77a5c6741254106bc44ed2588a3aaa",
+        "bytes": 11227
+      },
+      {
+        "status": "??",
+        "path": "packages/durable-agent/src/index.ts",
+        "sha256": "e345b8a9e7f766f1453146a9cbaf8b1f43b94baac2d902ba8b1dbb3488c36c8c",
+        "bytes": 419
+      },
+      {
+        "status": "??",
+        "path": "packages/durable-agent/src/initializer.ts",
+        "sha256": "e87d65a34990ef7b06cd234f25f6a71a10cbbd16c912dd31437ad633c748144d",
+        "bytes": 8733
+      },
+      {
+        "status": "??",
+        "path": "packages/durable-agent/src/ownership.ts",
+        "sha256": "4bb19a667a661e21adfb6ffaaddb78e141957d1cd0e074f5bb838e8b20b0e949",
+        "bytes": 1054
+      },
+      {
+        "status": "??",
+        "path": "packages/durable-agent/src/tools.ts",
+        "sha256": "21c7fd9a05e11236b8356be7a0ac3558eb79af50e8d7a5a2634823711bd30204",
+        "bytes": 8674
+      },
+      {
+        "status": "??",
+        "path": "packages/durable-agent/tests/binder.spec.ts",
+        "sha256": "1a90ff1449a3d6963b0bae64f1ea17d2969a61ca38d846972f3b7d379dcae7ca",
+        "bytes": 22389
+      },
+      {
+        "status": "??",
+        "path": "packages/durable-agent/tests/initializer.spec.ts",
+        "sha256": "265de4d8c48d1c3734e72e9c313537220f7261a1b0d765d2551a81da226557f4",
+        "bytes": 6105
+      },
+      {
+        "status": "??",
+        "path": "packages/durable-agent/tests/public-provider.spec.ts",
+        "sha256": "5ddcd08c94376c5868727815d44f89a3f543f1a59d320c2e939f0bc6a7d6658f",
+        "bytes": 4696
+      },
+      {
+        "status": "??",
+        "path": "packages/durable-agent/tests/tools.spec.ts",
+        "sha256": "9b753f4145dc4ada1508468e0ddcf86c7a69357c490573a8da4fbff2672bd942",
+        "bytes": 5434
+      },
+      {
+        "status": "??",
+        "path": "packages/durable-agent/tsconfig.json",
+        "sha256": "46e1221a6e1b23d834da7aee34aa3f0f3d8bef6365b820eeb6b5d0475a00a8fa",
+        "bytes": 212
+      },
+      {
+        "status": "??",
+        "path": "packages/tools/tests/binding-views.spec.ts",
+        "sha256": "a6da6bc02f52e6bc21175cfb3a91b0bad8b19cd433747567f40682ad10016a78",
+        "bytes": 4904
+      }
+    ]
+  },
+  {
+    "id": "dsh-original",
+    "root": "/home/hoinv/deepseek-harness",
+    "head": "c1157f7ed448b40c463c1a43fa595b12294fd50d",
+    "dirty": [
+      {
+        "status": " M",
+        "path": ".agents/skills/dsh-wbs-build/SKILL.md",
+        "sha256": "73d997c1a405db7e40e1fe10702f84ddddb4381d63cc20011e5c0937ff58e0ee",
+        "bytes": 17761
+      },
+      {
+        "status": " M",
+        "path": ".agents/skills/dsh-wbs-build/scripts/plan-report.mjs",
+        "sha256": "065e19c64a3be98770c7ae6c5cd3b64e3f5da5e3c13b1b7e7ac998a58c53d2ad",
+        "bytes": 27639
+      },
+      {
+        "status": " M",
+        "path": ".agents/skills/dsh-wbs-progress/SKILL.md",
+        "sha256": "9326fc28d2382395a0237463dfe525341a9864ceeb648bcae9e9935a8e61b04d",
+        "bytes": 10334
+      },
+      {
+        "status": " M",
+        "path": ".agents/skills/dsh-wbs-progress/scripts/progress.mjs",
+        "sha256": "e7d7dc98f8f29078b311a710df3c66cb70e03cff56ea0a95103ee5542c396299",
+        "bytes": 72318
+      },
+      {
+        "status": " M",
+        "path": "AGENTS.md",
+        "sha256": "2e5da6000b53c984a03c99880f84e095dff8bfd3001703e663008d871d98ff3f",
+        "bytes": 19562
+      },
+      {
+        "status": " M",
+        "path": "packages/experimental/gat-tools/src/index.ts",
+        "sha256": "202b841781853eebceaed4025ad7eaf394d1c3afbc16aa5b242edadce8cde7c3",
+        "bytes": 44243
+      },
+      {
+        "status": " M",
+        "path": "packages/experimental/gat-tools/tests/tool-team.spec.ts",
+        "sha256": "f6297855d8f0ad54dc9ee496680d49f32a3ce86762db2b3c3224613992367c14",
+        "bytes": 66206
+      },
+      {
+        "status": " M",
+        "path": "packages/experimental/wbs/src/format.d.mts",
+        "sha256": "3d7cc89c5ebdd078b74b6b8ba0435e7029a6f23be0a15b06bbedcc5e58717acb",
+        "bytes": 22337
+      },
+      {
+        "status": " M",
+        "path": "scripts/wbs-baseline-reports.spec.ts",
+        "sha256": "284cffb357a6d017d5aaddd2c1de250473c23396cbf580a9cea9865642708055",
+        "bytes": 15635
+      },
+      {
+        "status": " M",
+        "path": "wbs-runs/mission-board-regression-execution-02/decisions.json",
+        "sha256": "5cd8026542264314c58d2eac775c1425bfeb3cfc4f1d7ba8db298b4b644ba9c6",
+        "bytes": 2823
+      },
+      {
+        "status": " M",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.json",
+        "sha256": "13687d7adca94fbdf273ed661624ba94f55376b695fd990a3f30973bcd156959",
+        "bytes": 283298
+      },
+      {
+        "status": " M",
+        "path": "wbs-runs/mission-board-regression-execution-02/metrics.json",
+        "sha256": "e981eec5e4b1801659ce72a724376dd693f9dd4d00ea564d48989c7e7e49d19d",
+        "bytes": 2064
+      },
+      {
+        "status": " M",
+        "path": "wbs-runs/mission-board-regression-execution-02/progress.html",
+        "sha256": "b5d6d1d115e19ad9277eabc5bc6cc45cd3afd9c6ae171f1170d4329d7bb71088",
+        "bytes": 6752
+      },
+      {
+        "status": " M",
+        "path": "wbs-runs/mission-board-regression-execution-02/progress.json",
+        "sha256": "9a1a65a22c09533c33e8bebeb03a5dab9a6798590bed840f8fadbb7257841349",
+        "bytes": 626118
+      },
+      {
+        "status": " M",
+        "path": "wbs-runs/mission-board-regression-execution-02/wbs-review.html",
+        "sha256": "b066031496b531e1758aae641808b8f5b70c4d9c8f545b0d4b0b8b37b555b516",
+        "bytes": 200760
+      },
+      {
+        "status": "??",
+        "path": ".agents/skills/team-learning/scripts/codec.mjs",
+        "sha256": "45f694862742c18e8fbee0763589582d366749c0b8005232461dc5522b0f7649",
+        "bytes": 8877
+      },
+      {
+        "status": "??",
+        "path": ".agents/skills/team-learning/scripts/evaluation.mjs",
+        "sha256": "465c2c5631a92e79cf5093fcbfac1449458ef0620d541893e41c6fe7e8e28fa4",
+        "bytes": 32526
+      },
+      {
+        "status": "??",
+        "path": ".agents/skills/team-learning/scripts/lessons.mjs",
+        "sha256": "9cbf42e9138163dac3f4b5bf10ff4ecda017a11378702ad0340ce4176be90cfd",
+        "bytes": 1558
+      },
+      {
+        "status": "??",
+        "path": ".agents/skills/team-learning/scripts/schema.mjs",
+        "sha256": "dc6dfcc690730a7cd4c35b3c72a6e602a74e4d54ecf24b83f3c35243afab8600",
+        "bytes": 36648
+      },
+      {
+        "status": "??",
+        "path": ".agents/skills/team-learning/scripts/state.mjs",
+        "sha256": "aa8f9e3ac80393efa79ab2dd1b75c8e296ebad7b4d056e1ea47a93f33ec76ec7",
+        "bytes": 29858
+      },
+      {
+        "status": "??",
+        "path": "scripts/team-learning.spec.ts",
+        "sha256": "57f04cdaf1daf58b4f14ffa00afdafdfafb0a3d2e53092d3559eab24aaaa4c23",
+        "bytes": 102598
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/gat-execution-closing-diagnosis/DURABLE_AGENT_CLOSING_COMPATIBILITY_PROPOSAL.md",
+        "sha256": "290e4b8f5f4916a389386fa5280e7108ae9977d8fe16585a5ff07b8639166773",
+        "bytes": 13436
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/gat-execution-closing-diagnosis/GAT_CLOSING_EXECUTION_RCA_AND_FIX_PROPOSAL.md",
+        "sha256": "d6ab0707d163247f7b44f8c9fe49db42392e37259a6f073ab577508e58cbb834",
+        "bytes": 13830
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/gat-execution-closing-diagnosis/document-checks.json",
+        "sha256": "c687c8e5ff419461a7efabf4e01dd84ade9fb919d199fd13174d205100b528d4",
+        "bytes": 694
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/gat-execution-closing-diagnosis/durable-assessment.md",
+        "sha256": "0028823087ebdccf649cd6a29c7d3e28c2a0b1aafeb64903b7418c015180f8f5",
+        "bytes": 18033
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/gat-execution-closing-diagnosis/gat-assessment.md",
+        "sha256": "d8dffe230833a1f1d8b5f4d3310c7c9f98f746d8d00c8a63ac0d164c432b9741",
+        "bytes": 17503
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/gat-execution-closing-diagnosis/source-observation.json",
+        "sha256": "d3056f10535e6165523f4e112771b4d53e603c5a1d5a7036033eb334ca58d199",
+        "bytes": 2651
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/discovery/linux/correction-2/report.md",
+        "sha256": "1589da86fb89378a780abab827e77089f768e89bde2fdb7b618a828a1d62059a",
+        "bytes": 3844
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/discovery/linux/correction-3/report.md",
+        "sha256": "7da2379bb3120d5330dc7b2bd3f7aa7be327f68ef6c5c7981ac60cb18651e239",
+        "bytes": 1987
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/discovery/linux/primitive-spec-accepted.ts",
+        "sha256": "18889c4d208cd40485b42bfdfae1f25d158058844412188a561839f638d675a8",
+        "bytes": 10426
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/discovery/linux/report.md",
+        "sha256": "d0a9a15102ecfbf5c3e816aff0467f7554b8c49444dfb965aaa628cf4897ff62",
+        "bytes": 3355
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/evaluation/candidate-2/frozen-fixtures.json",
+        "sha256": "9caac1d2474fa3f6334240db5517e39d5643baba188c640ac27c541d409d1647",
+        "bytes": 33900
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/evaluation/frozen-fixtures.json",
+        "sha256": "1f38222a14eaadd5478125c70c4b5b76312b8ec227523cfb1014ce4fd7471b75",
+        "bytes": 6155
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation-handoff.md",
+        "sha256": "d8e6f0aaabf181b62083eb7c1cb319d628c7c56bc194e10db48a039c123ceff9",
+        "bytes": 30684
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-api.md",
+        "sha256": "32fb48d559188d0958d7180f3787552b1f8c65b7d2086244a2ddea546d96bb2f",
+        "bytes": 13961
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-candidate-1/codec.mjs",
+        "sha256": "5559d60443013743684587f24c52e6b90849b7d65c3ed117e003a0c3fbbcb6bb",
+        "bytes": 7866
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-candidate-1/core-api.md",
+        "sha256": "35f92c906ef711de2b9de19e324f7686e6960c02b7e0dd0079283ffc5eb10663",
+        "bytes": 9181
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-candidate-1/evaluation.mjs",
+        "sha256": "bf683e7395c796277c9deee72242a0775b9df698967bac3534be9c4e3307d0d7",
+        "bytes": 13295
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-candidate-1/lessons.mjs",
+        "sha256": "a6a26367d400a7a5565c3f1919e165ff4c7047078e6259e1294d1b1c18965cee",
+        "bytes": 1443
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-candidate-1/schema.mjs",
+        "sha256": "81aa11672d07ea55e383dc99850316bb247fc5ca9bd4f4ab824cfd3b00a83889",
+        "bytes": 25977
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-candidate-1/state.mjs",
+        "sha256": "c2cef5ff86b390774146780795a675650f16a9df74c8adf68e0a8ad4711c70b6",
+        "bytes": 19072
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-2/codec.mjs",
+        "sha256": "45f694862742c18e8fbee0763589582d366749c0b8005232461dc5522b0f7649",
+        "bytes": 8877
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-2/core-api.md",
+        "sha256": "479a63510286c009972352fb8dd696c4d37002570e8a478c583000ff5bd25a2a",
+        "bytes": 11637
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-2/evaluation.mjs",
+        "sha256": "80cc1afb7329ad3d09195d8f698050a470686cb43b1ae38433c89e8d842d35f4",
+        "bytes": 24903
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-2/lessons.mjs",
+        "sha256": "9cbf42e9138163dac3f4b5bf10ff4ecda017a11378702ad0340ce4176be90cfd",
+        "bytes": 1558
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-2/report.md",
+        "sha256": "74718c1513455c6d4353fc14f578c29ad2ead2e28c01ef90df9828eb9d7b75ad",
+        "bytes": 9299
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-2/schema.mjs",
+        "sha256": "06b547a60be72cb6bccba02b95aa450a2bc6910050387301263ce884a77c1b26",
+        "bytes": 36640
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-2/state.mjs",
+        "sha256": "a296584f1d100dd134bfb95114038304628b2ef67e59008238f5cae9a7315534",
+        "bytes": 29553
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-3/codec.mjs",
+        "sha256": "45f694862742c18e8fbee0763589582d366749c0b8005232461dc5522b0f7649",
+        "bytes": 8877
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-3/core-api.md",
+        "sha256": "e25d9a280578102e26180a68be19c0ba0578c03431e947829f26be3761c848c7",
+        "bytes": 12122
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-3/evaluation.mjs",
+        "sha256": "b3fe9354b9ce1403cd2e182ba852fc5a75dcba6680e25790399f8f63c02eacf9",
+        "bytes": 26005
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-3/lessons.mjs",
+        "sha256": "9cbf42e9138163dac3f4b5bf10ff4ecda017a11378702ad0340ce4176be90cfd",
+        "bytes": 1558
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-3/report.md",
+        "sha256": "cb437e57589fafa3d0a05ce06a0b2f741a228915e69f17c86724819b81056787",
+        "bytes": 6438
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-3/schema.mjs",
+        "sha256": "06b547a60be72cb6bccba02b95aa450a2bc6910050387301263ce884a77c1b26",
+        "bytes": 36640
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-3/state.mjs",
+        "sha256": "1ce764d0a4ecfafa98b1e6d46205b3801fe47520d833e6add202713ec226c634",
+        "bytes": 29689
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-4/codec.mjs",
+        "sha256": "45f694862742c18e8fbee0763589582d366749c0b8005232461dc5522b0f7649",
+        "bytes": 8877
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-4/core-api.md",
+        "sha256": "f80ae244a3485874572bbaf829ee4c3bb594f0f603a04474065e294d1cb6979c",
+        "bytes": 13758
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-4/evaluation.mjs",
+        "sha256": "b76e990f0275e27f3ca421014b621fd4513af4503796cdaaa611769a4e5cfa8f",
+        "bytes": 32351
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-4/lessons.mjs",
+        "sha256": "9cbf42e9138163dac3f4b5bf10ff4ecda017a11378702ad0340ce4176be90cfd",
+        "bytes": 1558
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-4/report.md",
+        "sha256": "580c7732ee31046867b922ab16e446fde0354b9c0df07bc6ea021ee028afe2ff",
+        "bytes": 6923
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-4/schema.mjs",
+        "sha256": "dc6dfcc690730a7cd4c35b3c72a6e602a74e4d54ecf24b83f3c35243afab8600",
+        "bytes": 36648
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-4/smoke.mjs",
+        "sha256": "21f5c526e89cbe1e2e4efbeb9a2a97367bab49e96ecc7e32cf3a435cace6153a",
+        "bytes": 16813
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-4/state.mjs",
+        "sha256": "1ce764d0a4ecfafa98b1e6d46205b3801fe47520d833e6add202713ec226c634",
+        "bytes": 29689
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-5/codec.mjs",
+        "sha256": "45f694862742c18e8fbee0763589582d366749c0b8005232461dc5522b0f7649",
+        "bytes": 8877
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-5/core-api.md",
+        "sha256": "32fb48d559188d0958d7180f3787552b1f8c65b7d2086244a2ddea546d96bb2f",
+        "bytes": 13961
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-5/evaluation.mjs",
+        "sha256": "465c2c5631a92e79cf5093fcbfac1449458ef0620d541893e41c6fe7e8e28fa4",
+        "bytes": 32526
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-5/lessons.mjs",
+        "sha256": "9cbf42e9138163dac3f4b5bf10ff4ecda017a11378702ad0340ce4176be90cfd",
+        "bytes": 1558
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-5/report.md",
+        "sha256": "0e47496eaed6c537fc8233c7f8916aa1d63837df19d5c32ca4a9f6ba34ea37ae",
+        "bytes": 4171
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-5/schema.mjs",
+        "sha256": "dc6dfcc690730a7cd4c35b3c72a6e602a74e4d54ecf24b83f3c35243afab8600",
+        "bytes": 36648
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-5/smoke.mjs",
+        "sha256": "5799433f1c3d316bff817a7fb5ae0549c52c968e3880fe8fa6ef74722de1e132",
+        "bytes": 13808
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-correction-5/state.mjs",
+        "sha256": "aa8f9e3ac80393efa79ab2dd1b75c8e296ebad7b4d056e1ea47a93f33ec76ec7",
+        "bytes": 29858
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-tests/candidate-1/frozen-fixtures.json",
+        "sha256": "1f38222a14eaadd5478125c70c4b5b76312b8ec227523cfb1014ce4fd7471b75",
+        "bytes": 6155
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-tests/candidate-1/inventory.md",
+        "sha256": "fc2e4f7cf7e5aab0040e55f16a2194103c4c43422c5c47571866bdf69dabd361",
+        "bytes": 3261
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-tests/candidate-1/spec.ts",
+        "sha256": "327ee1c73a72e5c86aa74114d26613a68468d7498a5711278ebbe280828ff6ec",
+        "bytes": 19197
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-tests/candidate-2/inventory.md",
+        "sha256": "f1c5774fcae1ee69201f66527f59423c640aece5971b92166cd4fe8833a07560",
+        "bytes": 6999
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-tests/candidate-2/spec.ts",
+        "sha256": "05da6de4fe122b54e363568940719fe34359c3cf25633da9fa77853ca01539c3",
+        "bytes": 61146
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-tests/candidate-3/inventory.md",
+        "sha256": "2c4ace62017d79558972204364b22e8c7569f203a31764a3c6935dcc8662eb8e",
+        "bytes": 7283
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-tests/candidate-3/spec.ts",
+        "sha256": "243244b5323da6b5a556cc6dd2460fbca8900e8ea47ddb6c57134871247b6e98",
+        "bytes": 76422
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-tests/candidate-4/inventory.md",
+        "sha256": "ea30c02192919c16cf17147a94b2c50bedd71c3b809b32dedf6d043860c42f7b",
+        "bytes": 8545
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-tests/candidate-4/spec.ts",
+        "sha256": "3c7093ed0b24ec7546b19346784d6cedce3112629edb099b5cb4004a46d7bb84",
+        "bytes": 306
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/implementation/core-tests/inventory.md",
+        "sha256": "fc2e4f7cf7e5aab0040e55f16a2194103c4c43422c5c47571866bdf69dabd361",
+        "bytes": 3261
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-progress.html",
+        "sha256": "d7bce9f4f123d3165c87154ce0ebdfe0922a527e469d13d3381a2f96d7349669",
+        "bytes": 11362
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-progress.json",
+        "sha256": "8196cd950e1982c8856fa930b7154422c59a9b8f5e2f44b81940ce0d9e8091e6",
+        "bytes": 30007
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-review/core-candidate-1/review.md",
+        "sha256": "8090283fc3da03c6fe009affeee2e3ba710d4f5709f1bfcc67e01424e6377cfc",
+        "bytes": 6729
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-review/core-candidate-2/review.md",
+        "sha256": "dfd01cc03af83fa5d756d4f9ef649b932c74e70ab27767d7807148d0a368acef",
+        "bytes": 6601
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-review/core-candidate-3/review.md",
+        "sha256": "d786cbc43b736a4e66950cbfdf4870b5ca55e8f4acea73faf9aa7f4bfb2fc2ce",
+        "bytes": 6753
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-review/core-candidate-4/review.md",
+        "sha256": "f12934aae8f38f92d7fd602cad46989e9cc63e2d7329d85b26008bd0d4225f36",
+        "bytes": 5626
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-review/core-oracle-2/review.md",
+        "sha256": "53771aea340a8272b5deb8f8b22e37940b8db92be8ebb6d43dbb5d9a74ce3542",
+        "bytes": 7472
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-review/core-oracle-3/review.md",
+        "sha256": "28e0c0dec1e9fbb64d5f397421d36d3f51bfc7134d9d9bec99b84944342b1c3a",
+        "bytes": 10329
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-review/installation-proposal-2/review.md",
+        "sha256": "caa6b7e16fb546db0723246a6dce6e3f36644aaabd1831c49f3a4147c7e6b081",
+        "bytes": 4376
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-review/linux-primitive-1/review.md",
+        "sha256": "447a48a96b460a27d2d2c8da28ceb481382eb1ce2c98b6f3a3e66579cd154154",
+        "bytes": 13093
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-review/linux-primitive-2/review.md",
+        "sha256": "f37ef437201acbce62937b69549b25eaf4550700403b162ebf3f62b6ef83be4f",
+        "bytes": 9455
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-review/linux-primitive-3/review.md",
+        "sha256": "e30cff4c0962a288a5a503592faeab6d14b7bf865b1347d86bdf93239b83806b",
+        "bytes": 11186
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/native-review/staged-workflow-1/review.md",
+        "sha256": "d24d1337c0e9706b48483791e15e2e4a5d6506b001a62e5a547a736ea7112f7d",
+        "bytes": 3930
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/render-native-progress.mjs",
+        "sha256": "28ba89cd5f8fbc45afc660fbc3be1f5459652a28128b44a2f698e91ed51732bd",
+        "bytes": 6459
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/README.md",
+        "sha256": "8c8b18d0fb811332654d2279c737fa0b6caa7e8abad3eba217c4277ab6c0f6a7",
+        "bytes": 2675
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/installation-proposal/README.md",
+        "sha256": "4f0da5e52dd1ab784b064bf55ec4a73a35cb14cb093aadc10736a2f62438f722",
+        "bytes": 2963
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/installation-proposal/after/.agents/skills/team-learning/SKILL.md",
+        "sha256": "a9953377d782044722bc3e65043549eb3c2e5aa738ea1c21bd185aa57f3e119a",
+        "bytes": 4727
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/installation-proposal/after/.agents/skills/team-learning/references/operator.md",
+        "sha256": "167c1ffb6e4a220dd31f64fee6988f65acd383149e1864be58bd14ce31ac5b85",
+        "bytes": 3376
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/installation-proposal/after/.agents/skills/team-learning/templates/candidate.md",
+        "sha256": "b8fbec728c1ee61587e393919fce06f60abd83207bacee16b4e9514060f3c549",
+        "bytes": 1910
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/installation-proposal/after/.agents/team/AGENTS.md",
+        "sha256": "a060078046e2e5428937eedb6b5c7b7f83845d9d616c4b5a0fefc65aeb27f6cc",
+        "bytes": 2206
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/installation-proposal/after/.agents/team/advisor/SOUL.md",
+        "sha256": "1c5ea256cd12f302200d0aece0b2b8d8be52aac298fa875ad55f23c1c182490f",
+        "bytes": 1588
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/installation-proposal/after/.agents/team/dev/SOUL.md",
+        "sha256": "8af6c179b161d20736ed623af14428ec5130a3619b23bd3889dcbcc7e3fae1bc",
+        "bytes": 1565
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/installation-proposal/after/.agents/team/junior-dev/SOUL.md",
+        "sha256": "ab424b4c863acc1a397712ba3b522dde4fdca1b907b9f3c369ab8e3139c69739",
+        "bytes": 1589
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/installation-proposal/after/.agents/team/senior-dev/SOUL.md",
+        "sha256": "cbe186f7b70e5b8240e768be7d1a546d94ad5b5b338cc25eceb746d723888a41",
+        "bytes": 1601
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/installation-proposal/diff.txt",
+        "sha256": "a36dced10d1266373eeab8c9039a74800b16d03b58792e8a01fe0d2f7169520f",
+        "bytes": 26386
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/installation-proposal/manifest.json",
+        "sha256": "e9ea9032f641bddfc0c24f5634c201c0210946083df60e4c22fab642e6cbb45f",
+        "bytes": 4618
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/instructions/after/.agents/team/AGENTS.md",
+        "sha256": "a060078046e2e5428937eedb6b5c7b7f83845d9d616c4b5a0fefc65aeb27f6cc",
+        "bytes": 2206
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/instructions/after/.agents/team/advisor/SOUL.md",
+        "sha256": "1c5ea256cd12f302200d0aece0b2b8d8be52aac298fa875ad55f23c1c182490f",
+        "bytes": 1588
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/instructions/after/.agents/team/dev/SOUL.md",
+        "sha256": "8af6c179b161d20736ed623af14428ec5130a3619b23bd3889dcbcc7e3fae1bc",
+        "bytes": 1565
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/instructions/after/.agents/team/junior-dev/SOUL.md",
+        "sha256": "ab424b4c863acc1a397712ba3b522dde4fdca1b907b9f3c369ab8e3139c69739",
+        "bytes": 1589
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/instructions/after/.agents/team/senior-dev/SOUL.md",
+        "sha256": "cbe186f7b70e5b8240e768be7d1a546d94ad5b5b338cc25eceb746d723888a41",
+        "bytes": 1601
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/instructions/before/.agents/team/AGENTS.md",
+        "sha256": "2a0e4c1146ef5306b055d8f2750cd0639381ea29cb497fb76238f4bd72c23033",
+        "bytes": 1691
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/instructions/before/.agents/team/advisor/SOUL.md",
+        "sha256": "c2165cb063bc8f31017d697ccb81bf7add1616b6354a8198247ed23a10d9760e",
+        "bytes": 1344
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/instructions/before/.agents/team/dev/SOUL.md",
+        "sha256": "44bcb730834d003bad78e35880b4f613d37360fd787e4f6fddb021ea5f0d6e77",
+        "bytes": 1321
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/instructions/before/.agents/team/junior-dev/SOUL.md",
+        "sha256": "0da7c046d50a028777b7d6db21af9be23a21f7f7c18a6a4de7d2fbe6a121204c",
+        "bytes": 1345
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/instructions/before/.agents/team/senior-dev/SOUL.md",
+        "sha256": "9b64ef6e6bd5db7172ffc9c0045d87b7e57e795484243562f70f6d18f83290dc",
+        "bytes": 1357
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/instructions/manifest.json",
+        "sha256": "8be2074c7e6014f3fc1af7a5fd88e6f304f57df6bd7090b54ff7372d6311555f",
+        "bytes": 1291
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/team-learning/SKILL.md",
+        "sha256": "6db7c0cad1cd57a2b623700e8d5cdf15223e2790c77d5634549de38b68fb84b1",
+        "bytes": 4675
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/team-learning/references/operator.md",
+        "sha256": "2534a05544356b031a1eee2b1f19364c7d2e3b2573df8bff57b7cd685a6f5f0a",
+        "bytes": 3335
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/human-reviewed-agent-lessons/staged/team-learning/templates/candidate.md",
+        "sha256": "d750122e927ab4c8120533469640db98ba37b7761a9c9e2d3016fe9e6bd9c195",
+        "bytes": 1828
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/design/basic-design.md",
+        "sha256": "d2a20f27be8db30134c9584ed1b7c71ffa75940b3b42cb89a22a3e2629d38e74",
+        "bytes": 30145
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/design/detail/describe-board-item.md",
+        "sha256": "e4ffe2b3b34ff05e5cebcb29c5daa5f11299a166e16c96630589a4d654197e85",
+        "bytes": 12471
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/design/detail/load-board-snapshot.md",
+        "sha256": "cca58ae2ec7cf2cfda6a9f96232608c5b0f0b7bcdad93e732a42a9f56fa3fd08",
+        "bytes": 29147
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/design/detail/render-board-view.md",
+        "sha256": "2fcc8fc8a5a7a72b590cf10085afec4bd8e29b173640dd984d25cf4561aa75ff",
+        "bytes": 13591
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/design/detail/select-board-tasks.md",
+        "sha256": "033f59e67156c90d86d48cc0fb24d538c75f135fe74f8a4649030f3cfe6407ce",
+        "bytes": 8290
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/design/detail/summarize-board-progress.md",
+        "sha256": "5a2ca35cf5791316e0de21fb779cce6c69d8a5eb0626dbd1205456570e5291c6",
+        "bytes": 18040
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-1/human-pause.json",
+        "sha256": "1e179d7f5e9e2a30b90f90568d5ba6b06825143fbf4843f035f94bda3a5834f3",
+        "bytes": 574
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/additional-inputs.json",
+        "sha256": "91e43b43c846f5e42a88358026c7d7089017d28af2594d95b78db107d28c0b69",
+        "bytes": 2519
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/candidates/basic-design-02-c1/additional-inputs.json",
+        "sha256": "91e43b43c846f5e42a88358026c7d7089017d28af2594d95b78db107d28c0b69",
+        "bytes": 2519
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/candidates/basic-design-02-c1/artifact-manifest.json",
+        "sha256": "f25227c4b483c669f9c3446088d3058aaeae0b71ee0b3295caa89da3aa9ff8d0",
+        "bytes": 7205
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/candidates/basic-design-02-c1/basic-design.md",
+        "sha256": "d2a20f27be8db30134c9584ed1b7c71ffa75940b3b42cb89a22a3e2629d38e74",
+        "bytes": 30145
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/candidates/basic-design-02-c1/supplemental-inputs-frozen.json",
+        "sha256": "9e40e1a82441893311f6607ee1b57e6b1f0bca7aa42749e0402ecb0de9a57362",
+        "bytes": 5505
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/candidates/basic-design-02-c1/worker-submission.json",
+        "sha256": "af658c70d2806f35126b2e3c7a6e56a3ac92f2a42b942ba0cf6303fbf1097874",
+        "bytes": 11613
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/context.json",
+        "sha256": "983ef24bb51f42c26b25b594a629962caf47980f466b284b50d060adb3607c30",
+        "bytes": 6241
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/inputs.json",
+        "sha256": "1f51a12fe2806210c82fd6f11fd5ebd5334741fbe1afd6bd94b5b81b0552f26a",
+        "bytes": 7683
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/docs/architecture.md",
+        "sha256": "bae3ba9c3a3752e5fe12f568d5716a3c414f79da874402bf790a6c0993015ed7",
+        "bytes": 18754
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/docs/testing.md",
+        "sha256": "70376b253e8d339f4a9cef5bb3ce6c5ba74fc7b52776388dc1cb62b026169df0",
+        "bytes": 10854
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/packages/experimental/client-ui-wbs/src/client/WbsAction.module.css",
+        "sha256": "bc026eacc2b957aac905115b6005258ac09c9e104ec83392e2b88c41d008fdcf",
+        "bytes": 2568
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/packages/experimental/client-ui-wbs/src/client/WbsAction.tsx",
+        "sha256": "58f8c1ec172e4d81a74d1fd3c20a47b2c5d821a4326b2282a75de2bce0cf8824",
+        "bytes": 11435
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/packages/experimental/client-ui-wbs/src/client/index.ts",
+        "sha256": "e6245f32f1629922ffa184c44e526525bedb3ea0546cc0e57a27ef7f1ae0437a",
+        "bytes": 507
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/packages/experimental/client-ui-wbs/src/client/lifecycle.ts",
+        "sha256": "b50627bca5f6fdd72eafe2d3b8fde098ce516894e58c5a105726efee7ff12eb5",
+        "bytes": 757
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/packages/experimental/client-ui-wbs/src/client/mount.ts",
+        "sha256": "91ae57eb18dbb52b763df5e41bc2e5d56b31812eef1b78b9ee9d442fb2e21d66",
+        "bytes": 1513
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/packages/experimental/client-ui-wbs/src/client/view-model.ts",
+        "sha256": "0688436409df7b629545851c9b332b6312ec654dfd06592080393ec1b6620994",
+        "bytes": 299
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/packages/experimental/client-ui-wbs/src/css-modules.d.ts",
+        "sha256": "d2826ee23cc360de0b5331c4870077374313a723facc7e1b79eaeaeb68d9ccf1",
+        "bytes": 106
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/packages/experimental/client-ui-wbs/src/index.ts",
+        "sha256": "16ecb3cf22db67f06a6e03cd41b05c8150f0701b25726f05f6d53b4512926530",
+        "bytes": 174
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/packages/experimental/wbs/src/client.ts",
+        "sha256": "519daca5e1ed6285395fa8c2b511a9ce231f9bcb2427679aa89c458d5e0ca263",
+        "bytes": 9710
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/wbs-runs/mission-board-regression-execution-02/design/feasibility.md",
+        "sha256": "1c1afc414ec3a483ea729fadf8b6f02b16ce77cfd42fd4c0064bbe89719e958b",
+        "bytes": 16593
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/wbs-runs/mission-board-regression-execution-02/mission.source.md",
+        "sha256": "5dfb7d070e72e6273c21bf82c1f19c7b059990ca67d8b57904fc53bdcdcff222",
+        "bytes": 9538
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/wbs-runs/mission-board-regression-execution-02/task-contract.md",
+        "sha256": "17bf64fd13220c03263a8efe9c3463c73b559017d2a280569320338f6b031c5f",
+        "bytes": 5230
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/preimages/wbs-runs/mission-board-regression-execution-02/verification-lanes.md",
+        "sha256": "cfae03cb2118c52357e9c2cdf53e07c3dff33ef557491e4d0a6738af9c4fa6bb",
+        "bytes": 6997
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-inputs-frozen.json",
+        "sha256": "9e40e1a82441893311f6607ee1b57e6b1f0bca7aa42749e0402ecb0de9a57362",
+        "bytes": 5505
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/.agents/skills/dsh-client-ui-ux/SKILL.md",
+        "sha256": "2b00d1e4d079a45beda500fbfff9d7f1e2f8f0ea0e10b0f6ad8a9d660a7036ff",
+        "bytes": 7776
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/.agents/skills/dsh-doc/SKILL.md",
+        "sha256": "95cb1776f8a124c1558f06ccb3e3fb2e207cad2b460ac7f19484adafc3de21d3",
+        "bytes": 17350
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/.agents/skills/dsh-prose-standard/SKILL.md",
+        "sha256": "b7792bc4b1d153a43e2075df9b87c6d67959979f8eb6a5d12507a201516c45f5",
+        "bytes": 9510
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/.agents/skills/team-advisor-design/SKILL.md",
+        "sha256": "504ae7f5d77f90fc2ea35461ffd82b26be342a2ca212711163a2cd4335c1542a",
+        "bytes": 1020
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/docs/AGENTS.md",
+        "sha256": "d5d8888fd4330b358e9cfded07975300be715504ece7a7e7b54c2d163fee0f6d",
+        "bytes": 10661
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/packages/api/workspace-files/src/index.ts",
+        "sha256": "44d7596af49321099a3b0cd77d994eb3f57eeffc6457ba276352ab95345208ce",
+        "bytes": 20608
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/packages/client/ui-sidebar-documentpreview/src/client/index.ts",
+        "sha256": "f487b83f40bba076b6e83f5c72c4dc7210334ce8df37f65d52dced7ef4f21cac",
+        "bytes": 6407
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/packages/client/ui-sidebar-right/src/client/service.ts",
+        "sha256": "73bef3bfb324a622d1ad1dd590c001e0fdcbe7c24b1afb15e698f16e76c3710b",
+        "bytes": 33108
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/packages/experimental/wbs/src/format.d.mts",
+        "sha256": "3d7cc89c5ebdd078b74b6b8ba0435e7029a6f23be0a15b06bbedcc5e58717acb",
+        "bytes": 22337
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/packages/experimental/wbs/src/format.mjs",
+        "sha256": "42c3cc248498f9ff9d9f51b9a01e89c703e74a47cc9727195e4ef9b27809fa77",
+        "bytes": 221500
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/packages/experimental/wbs/src/host.ts",
+        "sha256": "edaf000a8f653c2a9be34dc44e872ad6a4f2475d144ab488c90ddfc9d4a3d3b9",
+        "bytes": 23958
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/packages/experimental/wbs/src/index.ts",
+        "sha256": "be1c64d97788816f1bdaad0a1ce51f3a62db454962525232dfc35aee63d65497",
+        "bytes": 12339
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/supplemental-preimages/packages/util/workspace-path/src/index.ts",
+        "sha256": "0e3c4a10337288f51459d3ef72f443424cef929ffb9507e1bdc51d67734c1392",
+        "bytes": 5967
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/team-assignment.json",
+        "sha256": "a9ff9a6a5c47da654917c032815776b232307b1d52eaed0a83d2ae8454f95bc9",
+        "bytes": 560
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/worker-submission.json",
+        "sha256": "af658c70d2806f35126b2e3c7a6e56a3ac92f2a42b942ba0cf6303fbf1097874",
+        "bytes": 11613
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/additional-inputs.json",
+        "sha256": "4472387ef40ce8a32daeaeb9f9e55d33a722aafb1cdc5c236249c64bf8c69d81",
+        "bytes": 1267
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/candidates/item-dd-02-c1/additional-inputs.json",
+        "sha256": "4472387ef40ce8a32daeaeb9f9e55d33a722aafb1cdc5c236249c64bf8c69d81",
+        "bytes": 1267
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/candidates/item-dd-02-c1/artifact-manifest.json",
+        "sha256": "4b1c9fd57378625d93aa24bab53da317be0a52c0ec1a790e87b4bdc56d782992",
+        "bytes": 4817
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/candidates/item-dd-02-c1/describe-board-item.md",
+        "sha256": "e4ffe2b3b34ff05e5cebcb29c5daa5f11299a166e16c96630589a4d654197e85",
+        "bytes": 12471
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/candidates/item-dd-02-c1/supplemental-inputs-frozen.json",
+        "sha256": "104d8270ed9121aaa24b749d6dafb52bd6e1cfa9550db62df4ae9b2a97d6ab69",
+        "bytes": 2039
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/candidates/item-dd-02-c1/team-assignment.json",
+        "sha256": "f9ff93eda9ed0b826f109c34aa36d8e731405014980202ddcd551036099e64ab",
+        "bytes": 499
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/candidates/item-dd-02-c1/worker-submission.json",
+        "sha256": "af0603f58bf187b82469ba256e5766c13cd2c358d204dee09643a6663dcf0d15",
+        "bytes": 4928
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/context.json",
+        "sha256": "971d3ac199ffd11403883fea1ec2dd36c81b86246823a25b731e91705132656a",
+        "bytes": 7471
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/inputs.json",
+        "sha256": "e9f43848ec445267a1b93eb2b3b8ab628371afec5421e7518734b8601773414e",
+        "bytes": 6738
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/docs/testing.md",
+        "sha256": "70376b253e8d339f4a9cef5bb3ce6c5ba74fc7b52776388dc1cb62b026169df0",
+        "bytes": 10854
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/WbsAction.module.css",
+        "sha256": "bc026eacc2b957aac905115b6005258ac09c9e104ec83392e2b88c41d008fdcf",
+        "bytes": 2568
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/WbsAction.tsx",
+        "sha256": "58f8c1ec172e4d81a74d1fd3c20a47b2c5d821a4326b2282a75de2bce0cf8824",
+        "bytes": 11435
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/index.ts",
+        "sha256": "e6245f32f1629922ffa184c44e526525bedb3ea0546cc0e57a27ef7f1ae0437a",
+        "bytes": 507
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/lifecycle.ts",
+        "sha256": "b50627bca5f6fdd72eafe2d3b8fde098ce516894e58c5a105726efee7ff12eb5",
+        "bytes": 757
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/mount.ts",
+        "sha256": "91ae57eb18dbb52b763df5e41bc2e5d56b31812eef1b78b9ee9d442fb2e21d66",
+        "bytes": 1513
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/view-model.ts",
+        "sha256": "0688436409df7b629545851c9b332b6312ec654dfd06592080393ec1b6620994",
+        "bytes": 299
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/css-modules.d.ts",
+        "sha256": "d2826ee23cc360de0b5331c4870077374313a723facc7e1b79eaeaeb68d9ccf1",
+        "bytes": 106
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/index.ts",
+        "sha256": "16ecb3cf22db67f06a6e03cd41b05c8150f0701b25726f05f6d53b4512926530",
+        "bytes": 174
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/packages/experimental/wbs/src/client.ts",
+        "sha256": "519daca5e1ed6285395fa8c2b511a9ce231f9bcb2427679aa89c458d5e0ca263",
+        "bytes": 9710
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/design/basic-design.md",
+        "sha256": "d2a20f27be8db30134c9584ed1b7c71ffa75940b3b42cb89a22a3e2629d38e74",
+        "bytes": 30145
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/mission.source.md",
+        "sha256": "5dfb7d070e72e6273c21bf82c1f19c7b059990ca67d8b57904fc53bdcdcff222",
+        "bytes": 9538
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/task-contract.md",
+        "sha256": "17bf64fd13220c03263a8efe9c3463c73b559017d2a280569320338f6b031c5f",
+        "bytes": 5230
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/verification-lanes.md",
+        "sha256": "cfae03cb2118c52357e9c2cdf53e07c3dff33ef557491e4d0a6738af9c4fa6bb",
+        "bytes": 6997
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/supplemental-inputs-frozen.json",
+        "sha256": "104d8270ed9121aaa24b749d6dafb52bd6e1cfa9550db62df4ae9b2a97d6ab69",
+        "bytes": 2039
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/supplemental-preimages/.agents/skills/dsh-prose-standard/SKILL.md",
+        "sha256": "b7792bc4b1d153a43e2075df9b87c6d67959979f8eb6a5d12507a201516c45f5",
+        "bytes": 9510
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/supplemental-preimages/.agents/skills/dsh-wbs-run/SKILL.md",
+        "sha256": "538d3ad79cbeddef1af2cad79871913708f07cd4b8120e6932cfb9cebc0dcfb1",
+        "bytes": 20588
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/supplemental-preimages/.agents/skills/team-advisor-design/SKILL.md",
+        "sha256": "504ae7f5d77f90fc2ea35461ffd82b26be342a2ca212711163a2cd4335c1542a",
+        "bytes": 1020
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/supplemental-preimages/docs/AGENTS.md",
+        "sha256": "d5d8888fd4330b358e9cfded07975300be715504ece7a7e7b54c2d163fee0f6d",
+        "bytes": 10661
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/supplemental-preimages/wbs-runs/mission-board-regression-execution-02/evidence/basic-design/basic-design-02-run-2/candidates/basic-design-02-c1/additional-inputs.json",
+        "sha256": "91e43b43c846f5e42a88358026c7d7089017d28af2594d95b78db107d28c0b69",
+        "bytes": 2519
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/team-assignment.json",
+        "sha256": "f9ff93eda9ed0b826f109c34aa36d8e731405014980202ddcd551036099e64ab",
+        "bytes": 499
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/describe-board-item/item-dd-02-run-1/worker-submission.json",
+        "sha256": "af0603f58bf187b82469ba256e5766c13cd2c358d204dee09643a6663dcf0d15",
+        "bytes": 4928
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/additional-inputs.json",
+        "sha256": "a304001b02eabbd798a6061ab848d4d3b19d1a6f98d8277e4772351d6a6045ec",
+        "bytes": 3126
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/candidates/load-dd-02-c1/additional-inputs.json",
+        "sha256": "a304001b02eabbd798a6061ab848d4d3b19d1a6f98d8277e4772351d6a6045ec",
+        "bytes": 3126
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/candidates/load-dd-02-c1/artifact-manifest.json",
+        "sha256": "e158ff269e174b66c46d5c1f6c78509eca465dfbefbe3257ba3d697899509329",
+        "bytes": 7549
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/candidates/load-dd-02-c1/load-board-snapshot.md",
+        "sha256": "cca58ae2ec7cf2cfda6a9f96232608c5b0f0b7bcdad93e732a42a9f56fa3fd08",
+        "bytes": 29147
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/candidates/load-dd-02-c1/supplemental-inputs-frozen.json",
+        "sha256": "a572cd5c1647111c25e9f0c3f6698a0f301bec91c0cc36122deefee8903a09ae",
+        "bytes": 5122
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/candidates/load-dd-02-c1/team-assignment.json",
+        "sha256": "6b0619e17574909a1ba71edd2790a048e0e00db846e6363522604c35621109ae",
+        "bytes": 503
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/candidates/load-dd-02-c1/worker-submission.json",
+        "sha256": "25200dfbfe69371faf045b106a2fecaad27c4c8c31cbb072e655857c48e1ea29",
+        "bytes": 10871
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/context.json",
+        "sha256": "5750a0af02202a9337e23e6a0641d3995a840b404c83a533d941424643928659",
+        "bytes": 7467
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/inputs.json",
+        "sha256": "039fe0e1810ce50ffc8926712d7c3e8101c64af02312262a060eca386ae763bb",
+        "bytes": 6738
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/docs/testing.md",
+        "sha256": "70376b253e8d339f4a9cef5bb3ce6c5ba74fc7b52776388dc1cb62b026169df0",
+        "bytes": 10854
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/WbsAction.module.css",
+        "sha256": "bc026eacc2b957aac905115b6005258ac09c9e104ec83392e2b88c41d008fdcf",
+        "bytes": 2568
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/WbsAction.tsx",
+        "sha256": "58f8c1ec172e4d81a74d1fd3c20a47b2c5d821a4326b2282a75de2bce0cf8824",
+        "bytes": 11435
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/index.ts",
+        "sha256": "e6245f32f1629922ffa184c44e526525bedb3ea0546cc0e57a27ef7f1ae0437a",
+        "bytes": 507
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/lifecycle.ts",
+        "sha256": "b50627bca5f6fdd72eafe2d3b8fde098ce516894e58c5a105726efee7ff12eb5",
+        "bytes": 757
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/mount.ts",
+        "sha256": "91ae57eb18dbb52b763df5e41bc2e5d56b31812eef1b78b9ee9d442fb2e21d66",
+        "bytes": 1513
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/view-model.ts",
+        "sha256": "0688436409df7b629545851c9b332b6312ec654dfd06592080393ec1b6620994",
+        "bytes": 299
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/css-modules.d.ts",
+        "sha256": "d2826ee23cc360de0b5331c4870077374313a723facc7e1b79eaeaeb68d9ccf1",
+        "bytes": 106
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/index.ts",
+        "sha256": "16ecb3cf22db67f06a6e03cd41b05c8150f0701b25726f05f6d53b4512926530",
+        "bytes": 174
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/packages/experimental/wbs/src/client.ts",
+        "sha256": "519daca5e1ed6285395fa8c2b511a9ce231f9bcb2427679aa89c458d5e0ca263",
+        "bytes": 9710
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/design/basic-design.md",
+        "sha256": "d2a20f27be8db30134c9584ed1b7c71ffa75940b3b42cb89a22a3e2629d38e74",
+        "bytes": 30145
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/mission.source.md",
+        "sha256": "5dfb7d070e72e6273c21bf82c1f19c7b059990ca67d8b57904fc53bdcdcff222",
+        "bytes": 9538
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/task-contract.md",
+        "sha256": "17bf64fd13220c03263a8efe9c3463c73b559017d2a280569320338f6b031c5f",
+        "bytes": 5230
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/verification-lanes.md",
+        "sha256": "cfae03cb2118c52357e9c2cdf53e07c3dff33ef557491e4d0a6738af9c4fa6bb",
+        "bytes": 6997
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-inputs-frozen.json",
+        "sha256": "a572cd5c1647111c25e9f0c3f6698a0f301bec91c0cc36122deefee8903a09ae",
+        "bytes": 5122
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/.agents/skills/dsh-ci-test-reliability/SKILL.md",
+        "sha256": "58e5de5c9cf7061eb4f39240dfcadc2e2e4a0cbf124f9c268f7e878bbf451dc1",
+        "bytes": 9434
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/.agents/skills/dsh-doc/SKILL.md",
+        "sha256": "95cb1776f8a124c1558f06ccb3e3fb2e207cad2b460ac7f19484adafc3de21d3",
+        "bytes": 17350
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/.agents/skills/dsh-prose-standard/SKILL.md",
+        "sha256": "b7792bc4b1d153a43e2075df9b87c6d67959979f8eb6a5d12507a201516c45f5",
+        "bytes": 9510
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/.agents/skills/team-advisor-design/SKILL.md",
+        "sha256": "504ae7f5d77f90fc2ea35461ffd82b26be342a2ca212711163a2cd4335c1542a",
+        "bytes": 1020
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/docs/AGENTS.md",
+        "sha256": "d5d8888fd4330b358e9cfded07975300be715504ece7a7e7b54c2d163fee0f6d",
+        "bytes": 10661
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/docs/defensive-patterns.md",
+        "sha256": "919d27a033c655ea6187496872caa4aa9babf08d87179562ca23545301108bb1",
+        "bytes": 3653
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/packages/api/remotes/src/client/index.d.ts",
+        "sha256": "ab5e2eccc897bcd34035750fc50cab20ab7c98ce3f6f966d93736f85e3f3e2b7",
+        "bytes": 6012
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/packages/api/remotes/src/client/index.ts",
+        "sha256": "b3517b516f55bbca0e680f92d19e0a748992b2e4ccb7c9ad29b56603179ec578",
+        "bytes": 9973
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/packages/experimental/wbs/src/host.ts",
+        "sha256": "edaf000a8f653c2a9be34dc44e872ad6a4f2475d144ab488c90ddfc9d4a3d3b9",
+        "bytes": 23958
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/packages/experimental/wbs/src/index.ts",
+        "sha256": "be1c64d97788816f1bdaad0a1ce51f3a62db454962525232dfc35aee63d65497",
+        "bytes": 12339
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/packages/typert/generator/tests/fixtures/remote-model/typert-protocol.d.ts",
+        "sha256": "1efacb92b9792c96171d3b16478bd28e4eb265c55e708c4b38c9183ed73d2d51",
+        "bytes": 2660
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/packages/typert/protocol/src/types.d.ts",
+        "sha256": "12860c44c37d8208faa916274665dcfcecf788b1d201fd43dc66604d10c93dc4",
+        "bytes": 28279
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/supplemental-preimages/packages/typert/protocol/src/types.ts",
+        "sha256": "5ffb787a9d0751c7296723de83a4ec54abaf814bc41dbc7dd62d2de30cb32e94",
+        "bytes": 28332
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/team-assignment.json",
+        "sha256": "6b0619e17574909a1ba71edd2790a048e0e00db846e6363522604c35621109ae",
+        "bytes": 503
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/load-board-snapshot/load-dd-02-run-1/worker-submission.json",
+        "sha256": "25200dfbfe69371faf045b106a2fecaad27c4c8c31cbb072e655857c48e1ea29",
+        "bytes": 10871
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/additional-inputs.json",
+        "sha256": "db769c9888b648f915c68c86624dcd7191dd48b2927674cb22e7dd6a9f790050",
+        "bytes": 596
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/candidates/render-dd-02-c1/additional-inputs.json",
+        "sha256": "db769c9888b648f915c68c86624dcd7191dd48b2927674cb22e7dd6a9f790050",
+        "bytes": 596
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/candidates/render-dd-02-c1/artifact-manifest.json",
+        "sha256": "5a368d1401163f47eaef391bb80f9a4939e230691ceecc33feb926b80c9d1a62",
+        "bytes": 4785
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/candidates/render-dd-02-c1/render-board-view.md",
+        "sha256": "2fcc8fc8a5a7a72b590cf10085afec4bd8e29b173640dd984d25cf4561aa75ff",
+        "bytes": 13591
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/candidates/render-dd-02-c1/supplemental-inputs-frozen.json",
+        "sha256": "a36a7cde37980d697078f4c7a277d1c5956177ee3427428ea84a56ae956cb647",
+        "bytes": 2041
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/candidates/render-dd-02-c1/team-assignment.json",
+        "sha256": "2604fac01011f8b706315d984e85500017dd9ccf9bb5dc2042009c34f5896ee3",
+        "bytes": 501
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/candidates/render-dd-02-c1/worker-submission.json",
+        "sha256": "c578b8477371be8d50e865919da1dd7e54ac938a20e393e63f685ee8aba931d2",
+        "bytes": 4381
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/context.json",
+        "sha256": "64da9520000bdd8776b0897d189c127e6438e05420f5bb46f6e4c2d28dd687be",
+        "bytes": 7360
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/inputs.json",
+        "sha256": "2137ea9528059b9d45a3f31f975542b7206b39e609695bf35f031d46a362bf58",
+        "bytes": 6738
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/docs/testing.md",
+        "sha256": "70376b253e8d339f4a9cef5bb3ce6c5ba74fc7b52776388dc1cb62b026169df0",
+        "bytes": 10854
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/WbsAction.module.css",
+        "sha256": "bc026eacc2b957aac905115b6005258ac09c9e104ec83392e2b88c41d008fdcf",
+        "bytes": 2568
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/WbsAction.tsx",
+        "sha256": "58f8c1ec172e4d81a74d1fd3c20a47b2c5d821a4326b2282a75de2bce0cf8824",
+        "bytes": 11435
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/index.ts",
+        "sha256": "e6245f32f1629922ffa184c44e526525bedb3ea0546cc0e57a27ef7f1ae0437a",
+        "bytes": 507
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/lifecycle.ts",
+        "sha256": "b50627bca5f6fdd72eafe2d3b8fde098ce516894e58c5a105726efee7ff12eb5",
+        "bytes": 757
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/mount.ts",
+        "sha256": "91ae57eb18dbb52b763df5e41bc2e5d56b31812eef1b78b9ee9d442fb2e21d66",
+        "bytes": 1513
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/view-model.ts",
+        "sha256": "0688436409df7b629545851c9b332b6312ec654dfd06592080393ec1b6620994",
+        "bytes": 299
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/css-modules.d.ts",
+        "sha256": "d2826ee23cc360de0b5331c4870077374313a723facc7e1b79eaeaeb68d9ccf1",
+        "bytes": 106
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/index.ts",
+        "sha256": "16ecb3cf22db67f06a6e03cd41b05c8150f0701b25726f05f6d53b4512926530",
+        "bytes": 174
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/packages/experimental/wbs/src/client.ts",
+        "sha256": "519daca5e1ed6285395fa8c2b511a9ce231f9bcb2427679aa89c458d5e0ca263",
+        "bytes": 9710
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/design/basic-design.md",
+        "sha256": "d2a20f27be8db30134c9584ed1b7c71ffa75940b3b42cb89a22a3e2629d38e74",
+        "bytes": 30145
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/mission.source.md",
+        "sha256": "5dfb7d070e72e6273c21bf82c1f19c7b059990ca67d8b57904fc53bdcdcff222",
+        "bytes": 9538
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/task-contract.md",
+        "sha256": "17bf64fd13220c03263a8efe9c3463c73b559017d2a280569320338f6b031c5f",
+        "bytes": 5230
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/verification-lanes.md",
+        "sha256": "cfae03cb2118c52357e9c2cdf53e07c3dff33ef557491e4d0a6738af9c4fa6bb",
+        "bytes": 6997
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/supplemental-inputs-frozen.json",
+        "sha256": "a36a7cde37980d697078f4c7a277d1c5956177ee3427428ea84a56ae956cb647",
+        "bytes": 2041
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/supplemental-preimages/packages/client/ui-primitives/src/Button.tsx",
+        "sha256": "514c31404c5c8fb21ad906e92631b9c554c08d23c77437009e3443cef3a94e9c",
+        "bytes": 1394
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/supplemental-preimages/packages/client/ui-primitives/src/SegmentedControl.tsx",
+        "sha256": "0fefb3b4f2d4f61d0d1bb484cdb7833b3b63a498f06b142806a5b5feb2f992cd",
+        "bytes": 5433
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/supplemental-preimages/packages/client/ui-sidebar-right/src/client/service.ts",
+        "sha256": "73bef3bfb324a622d1ad1dd590c001e0fdcbe7c24b1afb15e698f16e76c3710b",
+        "bytes": 33108
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/supplemental-preimages/packages/experimental/client-ui-agent-team/src/client/locales.ts",
+        "sha256": "34b8ff27510413acd75df87ccaf527febb52623fbe97ecb1f23a9b38c73658ba",
+        "bytes": 3040
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/supplemental-preimages/packages/experimental/client-ui-agent-team/src/client/mount.ts",
+        "sha256": "5469fc7de443b1acb957769d62e03329fa8eb3ed43b2f1b1b1b34d3d7fd57d27",
+        "bytes": 2459
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/team-assignment.json",
+        "sha256": "2604fac01011f8b706315d984e85500017dd9ccf9bb5dc2042009c34f5896ee3",
+        "bytes": 501
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/render-board-view/render-dd-02-run-1/worker-submission.json",
+        "sha256": "c578b8477371be8d50e865919da1dd7e54ac938a20e393e63f685ee8aba931d2",
+        "bytes": 4381
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/candidates/select-dd-02-c1/artifact-manifest.json",
+        "sha256": "f04f552c94c733076363b49ad9ee7be7916a60faa5e36cfc041303275a046ae2",
+        "bytes": 1796
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/candidates/select-dd-02-c1/select-board-tasks.md",
+        "sha256": "033f59e67156c90d86d48cc0fb24d538c75f135fe74f8a4649030f3cfe6407ce",
+        "bytes": 8290
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/candidates/select-dd-02-c1/team-assignment.json",
+        "sha256": "0c59a4149e5d8382ef2aef7d7c84bf26932b2114a630068288fa66ce341dd02c",
+        "bytes": 553
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/candidates/select-dd-02-c1/worker-submission.json",
+        "sha256": "343eef7810883742518d8a260933b5dd4dfa478bbe2159fb111a0923ae9ff617",
+        "bytes": 4244
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/context.json",
+        "sha256": "e956fdbd2782a42ea116155a7e6beb979ee6d57c42f6dd2dc2e19b1b299ea3ab",
+        "bytes": 7636
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/inputs.json",
+        "sha256": "947900326215c70c5a674444b8c34a54a2a601b8cd63a1daf6a4b68e15e68c51",
+        "bytes": 6753
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/docs/testing.md",
+        "sha256": "70376b253e8d339f4a9cef5bb3ce6c5ba74fc7b52776388dc1cb62b026169df0",
+        "bytes": 10854
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/WbsAction.module.css",
+        "sha256": "bc026eacc2b957aac905115b6005258ac09c9e104ec83392e2b88c41d008fdcf",
+        "bytes": 2568
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/WbsAction.tsx",
+        "sha256": "58f8c1ec172e4d81a74d1fd3c20a47b2c5d821a4326b2282a75de2bce0cf8824",
+        "bytes": 11435
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/index.ts",
+        "sha256": "e6245f32f1629922ffa184c44e526525bedb3ea0546cc0e57a27ef7f1ae0437a",
+        "bytes": 507
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/lifecycle.ts",
+        "sha256": "b50627bca5f6fdd72eafe2d3b8fde098ce516894e58c5a105726efee7ff12eb5",
+        "bytes": 757
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/mount.ts",
+        "sha256": "91ae57eb18dbb52b763df5e41bc2e5d56b31812eef1b78b9ee9d442fb2e21d66",
+        "bytes": 1513
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/view-model.ts",
+        "sha256": "0688436409df7b629545851c9b332b6312ec654dfd06592080393ec1b6620994",
+        "bytes": 299
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/css-modules.d.ts",
+        "sha256": "d2826ee23cc360de0b5331c4870077374313a723facc7e1b79eaeaeb68d9ccf1",
+        "bytes": 106
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/index.ts",
+        "sha256": "16ecb3cf22db67f06a6e03cd41b05c8150f0701b25726f05f6d53b4512926530",
+        "bytes": 174
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/packages/experimental/wbs/src/client.ts",
+        "sha256": "519daca5e1ed6285395fa8c2b511a9ce231f9bcb2427679aa89c458d5e0ca263",
+        "bytes": 9710
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/design/basic-design.md",
+        "sha256": "d2a20f27be8db30134c9584ed1b7c71ffa75940b3b42cb89a22a3e2629d38e74",
+        "bytes": 30145
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/mission.source.md",
+        "sha256": "5dfb7d070e72e6273c21bf82c1f19c7b059990ca67d8b57904fc53bdcdcff222",
+        "bytes": 9538
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/task-contract.md",
+        "sha256": "17bf64fd13220c03263a8efe9c3463c73b559017d2a280569320338f6b031c5f",
+        "bytes": 5230
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/verification-lanes.md",
+        "sha256": "cfae03cb2118c52357e9c2cdf53e07c3dff33ef557491e4d0a6738af9c4fa6bb",
+        "bytes": 6997
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/team-assignment.json",
+        "sha256": "0c59a4149e5d8382ef2aef7d7c84bf26932b2114a630068288fa66ce341dd02c",
+        "bytes": 553
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/select-board-tasks/select-dd-02-run-1/worker-submission.json",
+        "sha256": "343eef7810883742518d8a260933b5dd4dfa478bbe2159fb111a0923ae9ff617",
+        "bytes": 4244
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/additional-inputs.json",
+        "sha256": "a1a38b5e091bd6ace469e6b5523394c6be2858f18624cac94e0254744e7dba02",
+        "bytes": 1160
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/candidates/summary-dd-02-c1/additional-inputs.json",
+        "sha256": "a1a38b5e091bd6ace469e6b5523394c6be2858f18624cac94e0254744e7dba02",
+        "bytes": 1160
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/candidates/summary-dd-02-c1/artifact-manifest.json",
+        "sha256": "02bcb897322f8a74b525080630c0aca499abd6efc062555826664c6aa1c2fa26",
+        "bytes": 4171
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/candidates/summary-dd-02-c1/summarize-board-progress.md",
+        "sha256": "5a2ca35cf5791316e0de21fb779cce6c69d8a5eb0626dbd1205456570e5291c6",
+        "bytes": 18040
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/candidates/summary-dd-02-c1/supplemental-inputs-frozen.json",
+        "sha256": "174aae3a45ea97d0376c738bdebca6c250405fe2a0523787743c0ecc9834d757",
+        "bytes": 1517
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/candidates/summary-dd-02-c1/team-assignment.json",
+        "sha256": "52f67a07f70d8d7398f3b2aebf0cb08cd611f896b7658f5609ff07628522d138",
+        "bytes": 514
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/candidates/summary-dd-02-c1/worker-submission.json",
+        "sha256": "80e291b16cfc91970c5da25db7bf053e769518f7cab1dd3c95f7eb0c9bd6aab8",
+        "bytes": 9436
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/context.json",
+        "sha256": "93180ca63a8933392e856294ea30dd9226ace05dc2543d3f88dec329a48af4fa",
+        "bytes": 7258
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/inputs.json",
+        "sha256": "594a5a28bde29c65ff909b201f9ea86908db3d29ea38793beaf837f1ca3b9cf4",
+        "bytes": 6858
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/docs/testing.md",
+        "sha256": "70376b253e8d339f4a9cef5bb3ce6c5ba74fc7b52776388dc1cb62b026169df0",
+        "bytes": 10854
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/WbsAction.module.css",
+        "sha256": "bc026eacc2b957aac905115b6005258ac09c9e104ec83392e2b88c41d008fdcf",
+        "bytes": 2568
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/WbsAction.tsx",
+        "sha256": "58f8c1ec172e4d81a74d1fd3c20a47b2c5d821a4326b2282a75de2bce0cf8824",
+        "bytes": 11435
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/index.ts",
+        "sha256": "e6245f32f1629922ffa184c44e526525bedb3ea0546cc0e57a27ef7f1ae0437a",
+        "bytes": 507
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/lifecycle.ts",
+        "sha256": "b50627bca5f6fdd72eafe2d3b8fde098ce516894e58c5a105726efee7ff12eb5",
+        "bytes": 757
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/mount.ts",
+        "sha256": "91ae57eb18dbb52b763df5e41bc2e5d56b31812eef1b78b9ee9d442fb2e21d66",
+        "bytes": 1513
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/client/view-model.ts",
+        "sha256": "0688436409df7b629545851c9b332b6312ec654dfd06592080393ec1b6620994",
+        "bytes": 299
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/css-modules.d.ts",
+        "sha256": "d2826ee23cc360de0b5331c4870077374313a723facc7e1b79eaeaeb68d9ccf1",
+        "bytes": 106
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/packages/experimental/client-ui-wbs/src/index.ts",
+        "sha256": "16ecb3cf22db67f06a6e03cd41b05c8150f0701b25726f05f6d53b4512926530",
+        "bytes": 174
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/packages/experimental/wbs/src/client.ts",
+        "sha256": "519daca5e1ed6285395fa8c2b511a9ce231f9bcb2427679aa89c458d5e0ca263",
+        "bytes": 9710
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/design/basic-design.md",
+        "sha256": "d2a20f27be8db30134c9584ed1b7c71ffa75940b3b42cb89a22a3e2629d38e74",
+        "bytes": 30145
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/mission.source.md",
+        "sha256": "5dfb7d070e72e6273c21bf82c1f19c7b059990ca67d8b57904fc53bdcdcff222",
+        "bytes": 9538
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/task-contract.md",
+        "sha256": "17bf64fd13220c03263a8efe9c3463c73b559017d2a280569320338f6b031c5f",
+        "bytes": 5230
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/preimages/wbs-runs/mission-board-regression-execution-02/verification-lanes.md",
+        "sha256": "cfae03cb2118c52357e9c2cdf53e07c3dff33ef557491e4d0a6738af9c4fa6bb",
+        "bytes": 6997
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/supplemental-inputs-frozen.json",
+        "sha256": "174aae3a45ea97d0376c738bdebca6c250405fe2a0523787743c0ecc9834d757",
+        "bytes": 1517
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/supplemental-preimages/.agents/skills/dsh-doc/SKILL.md",
+        "sha256": "95cb1776f8a124c1558f06ccb3e3fb2e207cad2b460ac7f19484adafc3de21d3",
+        "bytes": 17350
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/supplemental-preimages/.agents/skills/dsh-prose-standard/SKILL.md",
+        "sha256": "b7792bc4b1d153a43e2075df9b87c6d67959979f8eb6a5d12507a201516c45f5",
+        "bytes": 9510
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/supplemental-preimages/.agents/skills/team-advisor-design/SKILL.md",
+        "sha256": "504ae7f5d77f90fc2ea35461ffd82b26be342a2ca212711163a2cd4335c1542a",
+        "bytes": 1020
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/supplemental-preimages/docs/AGENTS.md",
+        "sha256": "d5d8888fd4330b358e9cfded07975300be715504ece7a7e7b54c2d163fee0f6d",
+        "bytes": 10661
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/team-assignment.json",
+        "sha256": "52f67a07f70d8d7398f3b2aebf0cb08cd611f896b7658f5609ff07628522d138",
+        "bytes": 514
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/detail-design/summarize-board-progress/summary-dd-02-run-1/worker-submission.json",
+        "sha256": "80e291b16cfc91970c5da25db7bf053e769518f7cab1dd3c95f7eb0c9bd6aab8",
+        "bytes": 9436
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/gat-runtime-activation-round-5.json",
+        "sha256": "4b38f4715b6c4fea275e53b2551632882e1f4ef85cee70f982dde42e79eb9b8d",
+        "bytes": 3362
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/measurement-coverage-gap.json",
+        "sha256": "386c3920aeadad283529a0a61f3078d60144ed952f7f4b53bdf44db0902829bc",
+        "bytes": 983
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/pause-collect-designs-metrics-event.json",
+        "sha256": "5d0c063149476b566f828ce6596588a66ab9dbdc47ef973abd66e752c38c78da",
+        "bytes": 428
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/preflight/user-pause.event.json",
+        "sha256": "444a63cbd20564b5ff03b5fa30c50c8cc32a8f2784ab96f3cc68b00235029bc0",
+        "bytes": 312
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/resume-team-metrics-event.json",
+        "sha256": "963174292960a717d76d37d1429db719be6e241b2702b18a1de1f6e5742a9760",
+        "bytes": 317
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/review-basic-design/basic-review-02-run-1/command-observations.json",
+        "sha256": "30e47789b083d91336bcab9d5a3d21323e52f96c014ad411982f8c9366c53cc9",
+        "bytes": 4152
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/review-basic-design/basic-review-02-run-1/context.json",
+        "sha256": "6a70f32e8bb0c5318cdf149a96eaeef51a976d4c728492b113a85cae50bfe4a9",
+        "bytes": 35090
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/review-basic-design/basic-review-02-run-1/inputs.json",
+        "sha256": "2b79167677723c8d4eae164e931200a845d723a6b4de7381353976e17754b611",
+        "bytes": 12743
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/review-basic-design/basic-review-02-run-1/review-receipt.json",
+        "sha256": "07d436c97b6527ae362333f2f4957a88cc342630ac1a527df99ff53e2a50b3b9",
+        "bytes": 21826
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/review-basic-design/basic-review-02-run-1/team-assignment.json",
+        "sha256": "7e80c9e62488132682451cbf5b1812585f8c857b61f8e75c21fadc64f5720756",
+        "bytes": 523
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/review-basic-design/verification-inputs.json",
+        "sha256": "88add57b3f8cb2aff68d3a44bc19bd3fc838a92fae3a7e1c23938e447ac2e69e",
+        "bytes": 25967
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/review-detail-design/function-review-02-run-1/context.json",
+        "sha256": "69909ba7eb8401681fa90649d4e27f5cac107d84f4284568a62e4bd61335db64",
+        "bytes": 99486
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/review-detail-design/function-review-02-run-1/inputs.json",
+        "sha256": "b8e25aad95eebbf761c91ce04578cd13da7d6cea3065c400c5786b6940356cdd",
+        "bytes": 43814
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/review-detail-design/function-review-02-run-1/source-version-aliases.json",
+        "sha256": "a73f75663c703ed91edc8b8efd74db218e9ba30232391fd3baa7937fb48c2e10",
+        "bytes": 33993
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/review-detail-design/verification-inputs.json",
+        "sha256": "3d432c4ac7376ad75c6ad5813e6006c604d47bacb0a5a539f459fb5be49efcd5",
+        "bytes": 43440
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/team-basic-design-batch-summary.json",
+        "sha256": "4cadcb053e48a86ab4b69c6ae7c86c133deec9da825c68db8a2d178326ea4552",
+        "bytes": 916
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/evidence/team-dd-round-1-summary.json",
+        "sha256": "fa7fa1e4e5da7e3a7efd1e4616b698ee3a30a26361b3c7bac437f295120b57d0",
+        "bytes": 916
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.basic-review-allocated.proposed.json",
+        "sha256": "3fb60545441e3a4e67b0293351f9706b9df6d39c621868cc998055fd44c68039",
+        "bytes": 100097
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.basic-review-settled.proposed.json",
+        "sha256": "6cac60e0cccedf3716720acc2e10f8a596940be6d2774ac205a67dc1ba2caf32",
+        "bytes": 101803
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.basic-review-team-bound.proposed.json",
+        "sha256": "72086757eff1116f1e72814b63044fa7483445bb91b3863078e721d2dde0dc58",
+        "bytes": 100628
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.basic-run-2.proposed.json",
+        "sha256": "88fe5e2dd05265c0dffacd8e16440ba6b68faeae1f8b4046597fc6b496285f8c",
+        "bytes": 59559
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.basic-settled.proposed.json",
+        "sha256": "6538f45c8785fd8518811666ddbd5f1d1d038b8de0f608f2fe4f80ab8993d308",
+        "bytes": 85863
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.basic-team-bound.proposed.json",
+        "sha256": "f8bb21b2941f1e20988fee42434ee5fd6d23c1ebc7ba265172b4a86d56868fd3",
+        "bytes": 60080
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.collect-designs.paused.proposed.json",
+        "sha256": "13687d7adca94fbdf273ed661624ba94f55376b695fd990a3f30973bcd156959",
+        "bytes": 283298
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.collect-designs.pausing.proposed.json",
+        "sha256": "45f15987f8b0b8fd4166be286653b7b6765927971e914dec04fcdf5b49d72045",
+        "bytes": 282853
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.function-review-1.allocated.proposed.json",
+        "sha256": "f13216d1e4459ad5e9609f3d1d60e4b9f180198816adc67a2982f8d24e771dcf",
+        "bytes": 328726
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.human-paused.json",
+        "sha256": "55c7ef4b80a0319bbad466bd795f09dd9be6e1fd8c2df96c869b2b32ac66cab8",
+        "bytes": 51686
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.human-pausing.json",
+        "sha256": "c7ce493f6b685ba80534d31d1f8a97671ba060e6c27fc36b19547f2efd5a8073",
+        "bytes": 51808
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.item-dd-1.allocated.proposed.json",
+        "sha256": "0295132e683b9f7d6f170938718aa7b6ceac601e48456f370e5aeeabe9f41d32",
+        "bytes": 181277
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.item-dd-1.bound.proposed.json",
+        "sha256": "9430336981ee261e324ac157d9c330293f87024b7b1f9408b46a43572cdf7c26",
+        "bytes": 181798
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.item-dd-1.settled.proposed.json",
+        "sha256": "21f8895b43a8e3df53c2dd5a6bbfaa4665b819945298993c8ef3dff8c8a989ab",
+        "bytes": 209879
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.load-dd-1.allocated.proposed.json",
+        "sha256": "e100e3646afc4512c795a31ee2586037c295ec5c4755631871310bf2f2951513",
+        "bytes": 217578
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.load-dd-1.bound.proposed.json",
+        "sha256": "0df724a5d074c2dd5d1504729fc4b63e55e2373da89f86643807f78c481ce6d7",
+        "bytes": 218099
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.load-dd-1.settled.proposed.json",
+        "sha256": "bb958fe563c9d86f9bee2aad090fe0eab1804d3c138d78ebd8774bb83f42d90f",
+        "bytes": 246532
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.render-dd-1.allocated.proposed.json",
+        "sha256": "e42b25c21ba58ea775d0f029c3e3480ad54b7bf468c5768c810b313bcbe16d89",
+        "bytes": 254234
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.render-dd-1.bound.proposed.json",
+        "sha256": "2a246e95e6286d9bc9ec967cde23c4702e8110072b3344e7d154606392cb7ff6",
+        "bytes": 254757
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.render-dd-1.settled.proposed.json",
+        "sha256": "532fcb103fb1e4040e0b769d05668842bd6fd859146641407c179b5dfde0f11a",
+        "bytes": 282730
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.resume-team.proposed.json",
+        "sha256": "889a1bf91f0df79c7f979aa9cd534a311c1624e805c9c27006e1a3078c6ff3aa",
+        "bytes": 52087
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.select-dd-1.allocated.proposed.json",
+        "sha256": "849e0b0d1fd60f84020c930b749a94d0585e64735a716157bd17ee8c95dfa890",
+        "bytes": 109523
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.select-dd-1.bound.proposed.json",
+        "sha256": "1fb1ba5aa171b0a6c29dd5bc0e063486425ba0de834fb86c9fd3e51c49037889",
+        "bytes": 110048
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.select-dd-1.settled.proposed.json",
+        "sha256": "3c86ad55fca94658f4cc8c4d9957d2396726ffa56c6243fab9d880694df6fa5b",
+        "bytes": 136991
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.summary-dd-1.allocated.proposed.json",
+        "sha256": "5d7ffc06e9ad4a0fc2e814d58407f272d61a1392f22961e32be41ab91b365c31",
+        "bytes": 144845
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.summary-dd-1.bound.proposed.json",
+        "sha256": "bbffcd8784513c44be6f0b5a31aa98f5e5975369ebc3de9f687017d0571072c6",
+        "bytes": 145385
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/execution.summary-dd-1.settled.proposed.json",
+        "sha256": "62b74c6e2be810458c510d04e06e08072a1f6da90323c834be8215238d6dba4b",
+        "bytes": 173578
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/gat-fix-verification-feedback.md",
+        "sha256": "01c8e1b5e29bb040b79c4663d98b908d7e68fe967ac41069ee1956c40a770fb0",
+        "bytes": 5919
+      },
+      {
+        "status": "??",
+        "path": "wbs-runs/mission-board-regression-execution-02/gat-runtime-bug-report.md",
+        "sha256": "0eba6944d60e9370b7646df32efb9ac365291cbf048759eb94fd7f6afd46be55",
+        "bytes": 13116
+      }
+    ]
+  },
+  {
+    "id": "dsh-prerequisites",
+    "root": "/home/hoinv/work/dsh-binding-prerequisites",
+    "head": "c291e7961a515f6d7af9304e7fd1d257929aef26",
+    "dirty": []
+  }
+]

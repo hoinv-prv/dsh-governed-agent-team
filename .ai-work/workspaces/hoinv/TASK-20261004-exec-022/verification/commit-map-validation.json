@@ -1,0 +1,157 @@
+{
+  "format": "gat-commit-map-validation-v1",
+  "scope": {
+    "markdown": "docs/gat-design/SOURCE_CODE_MAP.md",
+    "json": "docs/gat-design/source-code-map.json",
+    "workspace_owner": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022",
+    "design_rows_including_future": 18,
+    "qualification_status_changed": false,
+    "prior_qualification_receipt_preserved": true
+  },
+  "counts": {
+    "design_rows": 18,
+    "source_declarations": 180,
+    "source_anchors_checked": 180,
+    "source_anchor_updates": 17,
+    "test_paths_checked": 73,
+    "markdown_links_checked": 142,
+    "markdown_line_anchors_checked": 61,
+    "markdown_line_link_updates": 5
+  },
+  "missing_paths": [],
+  "invalid_source_anchors": [],
+  "invalid_test_paths": [],
+  "invalid_markdown_links": [],
+  "row_results": [
+    {
+      "detail_id": "DD-01",
+      "status": "Current",
+      "source_files": 3,
+      "declarations": 5,
+      "test_files": 3
+    },
+    {
+      "detail_id": "DD-02",
+      "status": "Current",
+      "source_files": 1,
+      "declarations": 4,
+      "test_files": 2
+    },
+    {
+      "detail_id": "DD-03",
+      "status": "Current",
+      "source_files": 3,
+      "declarations": 6,
+      "test_files": 2
+    },
+    {
+      "detail_id": "DD-04",
+      "status": "Current",
+      "source_files": 3,
+      "declarations": 6,
+      "test_files": 2
+    },
+    {
+      "detail_id": "DD-05",
+      "status": "Current",
+      "source_files": 3,
+      "declarations": 6,
+      "test_files": 2
+    },
+    {
+      "detail_id": "DD-06",
+      "status": "Current",
+      "source_files": 4,
+      "declarations": 5,
+      "test_files": 2
+    },
+    {
+      "detail_id": "DD-07",
+      "status": "Current",
+      "source_files": 2,
+      "declarations": 5,
+      "test_files": 2
+    },
+    {
+      "detail_id": "DD-08",
+      "status": "Current",
+      "source_files": 5,
+      "declarations": 6,
+      "test_files": 2
+    },
+    {
+      "detail_id": "DD-09",
+      "status": "Current",
+      "source_files": 1,
+      "declarations": 5,
+      "test_files": 1
+    },
+    {
+      "detail_id": "DD-10",
+      "status": "Current",
+      "source_files": 3,
+      "declarations": 4,
+      "test_files": 2
+    },
+    {
+      "detail_id": "DD-11",
+      "status": "Current",
+      "source_files": 5,
+      "declarations": 5,
+      "test_files": 5
+    },
+    {
+      "detail_id": "DD-12",
+      "status": "Standalone",
+      "source_files": 2,
+      "declarations": 9,
+      "test_files": 4
+    },
+    {
+      "detail_id": "DD-13",
+      "status": "Standalone",
+      "source_files": 2,
+      "declarations": 3,
+      "test_files": 2
+    },
+    {
+      "detail_id": "DD-14",
+      "status": "Standalone",
+      "source_files": 5,
+      "declarations": 4,
+      "test_files": 3
+    },
+    {
+      "detail_id": "DD-15",
+      "status": "External + Adapter; production gated",
+      "source_files": 8,
+      "declarations": 13,
+      "test_files": 9
+    },
+    {
+      "detail_id": "DD-16",
+      "status": "Foundation + Adapter; production gated",
+      "source_files": 14,
+      "declarations": 43,
+      "test_files": 9
+    },
+    {
+      "detail_id": "DD-17",
+      "status": "Prerequisite implementation mapped; qualification pending",
+      "source_files": 16,
+      "declarations": 51,
+      "test_files": 21
+    },
+    {
+      "detail_id": "DD-18",
+      "status": "Target / future",
+      "source_files": 0,
+      "declarations": 0,
+      "test_files": 0
+    }
+  ],
+  "result": "pass",
+  "limitations": [
+    "Source mapping and link validation only; no behavioral tests or qualification status changes are claimed."
+  ]
+}

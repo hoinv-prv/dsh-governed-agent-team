@@ -1,0 +1,71 @@
+{
+  "files": [
+    {
+      "file": "packages/api/gateway/src/index.ts",
+      "directivesBefore": [],
+      "directivesAfter": [],
+      "unchanged": true
+    },
+    {
+      "file": "packages/api/gateway/tests/gateway.host.spec.ts",
+      "directivesBefore": [],
+      "directivesAfter": [],
+      "unchanged": true
+    },
+    {
+      "file": "packages/client/connection/src/rpc-host.ts",
+      "directivesBefore": [],
+      "directivesAfter": [],
+      "unchanged": true
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "directivesBefore": [],
+      "directivesAfter": [],
+      "unchanged": true
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "directivesBefore": [],
+      "directivesAfter": [],
+      "unchanged": true
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authorized-team-fixture.ts",
+      "directivesBefore": [],
+      "directivesAfter": [],
+      "unchanged": true
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "directivesBefore": [],
+      "directivesAfter": [],
+      "unchanged": true
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "directivesBefore": [],
+      "directivesAfter": [],
+      "unchanged": true
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/projection-events.spec.ts",
+      "directivesBefore": [],
+      "directivesAfter": [],
+      "unchanged": true
+    },
+    {
+      "file": "packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts",
+      "directivesBefore": [],
+      "directivesAfter": [],
+      "unchanged": true
+    },
+    {
+      "file": "packages/experimental/gat-tools/tests/tool-team.spec.ts",
+      "directivesBefore": [],
+      "directivesAfter": [],
+      "unchanged": true
+    }
+  ],
+  "allUnchanged": true
+}

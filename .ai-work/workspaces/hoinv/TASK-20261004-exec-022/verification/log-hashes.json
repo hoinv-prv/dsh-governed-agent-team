@@ -1,0 +1,82 @@
+[
+  {
+    "path": "browser.log",
+    "sha256": "e9ef0844e49df2358c5c20845df17a19536634a78cbe6f1c858730f6ce50929a",
+    "bytes": 2391
+  },
+  {
+    "path": "built-adapter-smoke.log",
+    "sha256": "55091d140249daa1e487a8b017cd2e834b1586ea4f4b5e547686e049dcd2ca01",
+    "bytes": 114
+  },
+  {
+    "path": "built-core-smoke.log",
+    "sha256": "9829bf09d1499af8825d5ffcb6c95c8e7e3785a493d8834cc67af804f837238e",
+    "bytes": 436
+  },
+  {
+    "path": "client-bundle.log",
+    "sha256": "3c9deeded5d20bcde33cab5ce9643e9974179250c0be8abc60d5a0024d21d1f8",
+    "bytes": 118049
+  },
+  {
+    "path": "client-types.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "host-bundle.log",
+    "sha256": "28912a079b58453d1852a143a33fb3dc550450c3ce83fd5d51aeb49a7270d70d",
+    "bytes": 160587
+  },
+  {
+    "path": "host-types.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "install-dry.log",
+    "sha256": "8ca90a55662da26178133ae0532b178d448b39af278ef5bb8b5dc76a67629ff1",
+    "bytes": 1154
+  },
+  {
+    "path": "install-status.log",
+    "sha256": "797fb6fdf905ced777493f2b74b53c3e4bb22a235435edc79630cc74e0aa2676",
+    "bytes": 774
+  },
+  {
+    "path": "install.log",
+    "sha256": "e8db4f424e546bfc2a6622254bfd0eafe0783a82e55337305b6b61d54b680fe3",
+    "bytes": 285
+  },
+  {
+    "path": "installer-tests.log",
+    "sha256": "ed59be860bd45d246d73b846a8ed8db83ba67d1b6537bfbe5ed1ef2d89749e70",
+    "bytes": 2771
+  },
+  {
+    "path": "rollback.log",
+    "sha256": "f1533f5d867c144403ecd8f63a0b84848325d01346cbd2f5dab3ffd9006fb0a5",
+    "bytes": 204
+  },
+  {
+    "path": "source-tests.log",
+    "sha256": "810f2f9c801fbe7928e646e48a0c459b85df38cad2533de7ef0ed1966dc50e80",
+    "bytes": 4613
+  },
+  {
+    "path": "task-strict-lint.log",
+    "sha256": "8c6358d2a796195bfd732d7251c5f51aa3b3fd9095a241f838f0a72daaf1d894",
+    "bytes": 409
+  },
+  {
+    "path": "web-build.log",
+    "sha256": "020f82e58c8f5022049b395201528aa55c2223d86bf0f0c2f3ef307b291a578b",
+    "bytes": 7834
+  },
+  {
+    "path": "whole-tree-strict-lint.log",
+    "sha256": "435674425545143e415ce3594255e914ca70412ef65dbac5c3be3f2b8e1b8c28",
+    "bytes": 706971
+  }
+]

@@ -35,12 +35,16 @@ function assertTaskId(value: unknown, field: string): asserts value is TeamTaskI
  * Mission tasks are snapshots rather than mutable global Team tasks. They must
  * therefore all be new, pending, unowned revision-one tasks whose complete
  * dependency graph is valid before the mission event is committed or replayed.
+ * @param tasks Initial task snapshots to validate as one mission plan.
  */
+
 export function assertInitialMissionTaskPlan(tasks: readonly TeamTaskSnapshot[]): void {
-  if (!Array.isArray(tasks)) invalid('tasks must be an array')
+  const taskInput: unknown = tasks
+  if (!Array.isArray(taskInput)) invalid('tasks must be an array')
 
   const ids = new Set<TeamTaskId>()
-  for (const [index, task] of tasks.entries()) {
+  for (const [index, typedTask] of tasks.entries()) {
+    const task: unknown = typedTask
     const path = `tasks[${index}]`
     if (task === null || typeof task !== 'object' || Array.isArray(task)) invalid(`${path} must be an object`)
     const record = task as unknown as Record<string, unknown>
@@ -59,7 +63,7 @@ export function assertInitialMissionTaskPlan(tasks: readonly TeamTaskSnapshot[])
       invalid(`${path}.description must be normalized non-empty text`)
     }
     if (!Array.isArray(record.blockedBy)) invalid(`${path}.blockedBy must be an array`)
-    record.blockedBy.forEach((blocker, blockerIndex) => assertTaskId(blocker, `${path}.blockedBy[${blockerIndex}]`))
+    record.blockedBy.forEach((blocker, blockerIndex) => { assertTaskId(blocker, `${path}.blockedBy[${blockerIndex}]`) })
     if (!Array.isArray(record.writeScopes)) invalid(`${path}.writeScopes must be an array`)
     const scopes = new Set<string>()
     record.writeScopes.forEach((scope, scopeIndex) => {

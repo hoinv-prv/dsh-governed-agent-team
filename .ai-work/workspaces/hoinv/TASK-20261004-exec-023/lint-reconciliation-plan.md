@@ -1,0 +1,1 @@
+Read formal DETAIL_DESIGN.md §7 Prerequisite source lint reconciliation before edits. Preserve runtime guards, rejection identities, cleanup order and ownership with explicit unknown input/error views and local narrowing; formatting and assertion removal only. Scoped source lint and 17-file GAT behavior qualify final source. No rule suppression or contract behavior changes.

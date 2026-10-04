@@ -4,16 +4,14 @@ import { randomUUID } from 'node:crypto'
 import type { Context } from '@deepseek-ai/cordis'
 import { brandString } from '@deepseek-ai/dsh-brand'
 import type { Agent } from '@deepseek-ai/dsh-agent'
-import type { MessageId } from '@deepseek-ai/dsh-llm'
 import type { SessionId } from '@deepseek-ai/dsh-session'
 import { foldSubagentDescriptor } from '@deepseek-ai/dsh-subagent'
-import type { ContinuableStart } from '@deepseek-ai/dsh-subagent'
+import type { ReservedContinuable } from '@deepseek-ai/dsh-subagent'
 import { errorMessage, TeamError } from './error.ts'
 import type { TeamJournal } from './journal.ts'
 import type { TeamRuntimeLifecycle } from './lifecycle.ts'
 import { readPersistedSession } from './persisted.ts'
 import type { TeamState } from './projection.ts'
-import { messageAccepted } from './session-message.ts'
 import { TeamId } from './types.ts'
 import type {
   SpawnTeammateRequest,
@@ -22,6 +20,7 @@ import type {
   TeamMemberView,
 } from './types.ts'
 import { requiredText } from './validation.ts'
+import { validateAttachmentRequests } from './attachments.ts'
 
 const MEMBER_NAME = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u
 
@@ -48,6 +47,7 @@ export function resolveActiveMember(
   const name = rawName.trim()
   if (name === 'lead') return { id: root.id, name }
   const member = state.members.find(candidate => candidate.name === name)
+  if (member?.attachments.length) throw new TeamError('required member bindings unavailable', 'TEAM_BINDING_UNAVAILABLE')
   if (member === undefined || member.phase !== 'active') {
     throw new TeamError(`active teammate "${name}" not found`, 'TEAM_MEMBER_NOT_FOUND')
   }
@@ -56,7 +56,11 @@ export function resolveActiveMember(
 
 /** Owns Team identities and the lifecycle of rostered continuable children. */
 export class TeamRoster {
+  private readonly reservations = new Map<SessionId, ReservedContinuable>()
+  private readonly releasedReservations = new WeakSet<ReservedContinuable>()
   private readonly inFlightCreations = new Set<Promise<unknown>>()
+  private readonly inFlightCleanups = new Set<Promise<unknown>>()
+  private readonly cleanupFailures: unknown[] = []
 
   /**
    * @param ctx - Team service context with Agent, Session, persistence, and subagent services.
@@ -69,6 +73,8 @@ export class TeamRoster {
     private readonly journal: TeamJournal,
     private readonly lifecycle: TeamRuntimeLifecycle,
     private readonly maxMembers: number,
+    private readonly assertExecution: (agent: Agent) => void,
+    private readonly consumeMemberAdd: (caller: Agent, request: SpawnTeammateRequest) => void,
   ) {}
 
   /**
@@ -97,6 +103,7 @@ export class TeamRoster {
         const root = this.ctx.agents.get(parentId)
         if (root !== undefined) {
           const member = this.journal.state(root).members.find(candidate => candidate.id === agent.id)
+          if (member?.attachments.length) return undefined
           if (member?.phase === 'active' || member?.phase === 'provisioning') {
             return { root, id: TeamId(root.id), role: 'teammate', name: member.name }
           }
@@ -139,7 +146,7 @@ export class TeamRoster {
     }]
     for (const member of state.members) {
       const live = this.ctx.agents.get(member.id)
-      const model = live?.options.model ?? root.options.model
+      const model = live?.options.model ?? member.model
       result.push({
         id: member.id,
         name: member.name,
@@ -148,12 +155,13 @@ export class TeamRoster {
           ? 'failed'
           : member.phase === 'provisioning'
             ? 'provisioning'
-            : live?.status ?? 'inactive',
+            : member.attachments.length > 0 ? 'inactive' : live?.status ?? 'inactive',
         description: member.description,
         provider: member.provider,
         context: member.context,
         ...model === undefined ? {} : { model },
         diagnostics: member.error === undefined ? [] : [member.error],
+        ...member.attachments.length === 0 ? {} : { bindings: member.attachments.map(record => ({ binderId: record.binderId, protocolVersion: record.protocolVersion, readiness: member.phase === 'failed' ? 'failed' as const : 'unavailable' as const })) },
       })
     }
     return result
@@ -181,8 +189,39 @@ export class TeamRoster {
    * @returns detached snapshot ordered only by Set insertion.
    */
   pendingCreations(): readonly Promise<unknown>[] {
-    return [...this.inFlightCreations]
+    return [...this.inFlightCreations, ...this.inFlightCleanups]
   }
+
+  /** Close every reserved child gate synchronously before runtime drain awaits. */
+  cutoffRuntime(): void {
+    const failures: unknown[] = []
+    for (const reserved of this.reservations.values()) {
+      let disposal: Promise<void>
+      try { disposal = reserved.dispose() } catch (error: unknown) {
+        const rejection = error as Error
+        disposal = Promise.reject(rejection)
+      }
+      this.inFlightCleanups.add(disposal)
+      void disposal.then(() => this.inFlightCleanups.delete(disposal), (error: unknown) => {
+        this.inFlightCleanups.delete(disposal)
+        this.cleanupFailures.push(error)
+        this.ctx.logger.warn(`reserved child disposal: ${errorMessage(error)}`)
+      })
+    }
+    for (const [root, ids] of this.liveChildrenByRoot()) {
+      for (const id of ids) {
+        try { this.ctx.subagents.interrupt(id, { kind: 'ancestor', agent: root }) } catch (error) { failures.push(error) }
+      }
+    }
+    if (failures.length) throw new AggregateError(failures, 'synchronous Team child cutoff failed')
+  }
+
+  /**
+   * Retain physically settled cleanup failures even when their deadline returned first.
+   * @returns Cleanup failures accumulated by prior roster operations.
+   */
+
+  takeCleanupFailures(): unknown[] { return this.cleanupFailures.splice(0) }
 
   /**
    * Reconcile provisioning state when one Team member Session starts.
@@ -193,6 +232,44 @@ export class TeamRoster {
     signal.throwIfAborted()
     const membership = this.tryMembership(agent)
     if (membership?.role === 'lead') await this.reconcileProvisioning(membership.root, signal)
+  }
+
+  /**
+   * Reconstruct one exact roster child with its host gate closed and no model admission.
+   * @param root Authoritative Team projection root.
+   * @param childId Durable child Session id reserved for this Team member.
+   * @param signal Cancellation signal for the operation.
+   * @returns The recovered Agent for the exact durable child.
+   */
+
+  async recoverMember(root: Agent, childId: SessionId, signal: AbortSignal): Promise<Agent> {
+    const member = this.journal.state(root).members.find(value => value.id === childId)
+    if (!member || member.phase !== 'active' || member.attachments.length) throw new TeamError('exact active member is unavailable', 'TEAM_MEMBER_NOT_FOUND')
+    const existing = this.reservations.get(childId)
+    if (existing && this.ctx.agents.get(childId) === existing.agent) return existing.agent
+    const reserved = await this.ctx.subagents.recoverContinuable({ childId, parent: root, provider: member.provider, signal })
+    this.reservations.set(childId, reserved)
+    return reserved.agent
+  }
+
+  /**
+   * Activate an already-persisted initial item only after exact target authorization.
+   * @param agent Live Agent generation whose authority is checked.
+   * @param signal Cancellation signal for the operation.
+   * @returns A promise that resolves after the selected member can be released.
+   */
+
+  async activateMember(agent: Agent, signal: AbortSignal): Promise<void> {
+    this.assertExecution(agent)
+    const reserved = this.reservations.get(agent.id)
+    if (reserved) {
+      if (reserved.agent !== agent) throw new TeamError('reserved child generation changed', 'TEAM_EXECUTION_DENIED')
+      this.assertExecution(agent)
+      if (!this.releasedReservations.has(reserved)) {
+        await reserved.activate(signal)
+        this.releasedReservations.add(reserved)
+      }
+    }
   }
 
   /**
@@ -253,6 +330,9 @@ export class TeamRoster {
     }
     const signal = AbortSignal.any([request.signal, this.lifecycle.signal])
     signal.throwIfAborted()
+    if (validateAttachmentRequests(request.attachments ?? []).length > 0) {
+      throw new TeamError('required attachments need a qualified reserved-child host', 'TEAM_BINDER_UNAVAILABLE')
+    }
     const root = membership.root
     const name = this.memberName(request.name)
     const description = requiredText(request.description, 'description', 200)
@@ -263,7 +343,9 @@ export class TeamRoster {
       description,
       provider: requiredText(request.provider, 'provider', 200),
       context: request.context,
+      ...request.agentOptions?.model === undefined ? {} : { model: request.agentOptions.model },
       phase: 'provisioning',
+      attachments: [],
     }
 
     await this.journal.transact(root.id, async () => {
@@ -274,24 +356,51 @@ export class TeamRoster {
       if (state.members.length >= this.maxMembers) {
         throw new TeamError(`Team member limit ${this.maxMembers} reached`, 'TEAM_MEMBER_LIMIT')
       }
-      await this.journal.appendAndFlush(root, 'team/member', { version: 2, teamId: TeamId(root.id), member })
+      this.consumeMemberAdd(caller, request)
+      await this.journal.appendAndFlush(root, 'team/member', { version: 3, teamId: TeamId(root.id), member })
     })
 
-    let started: ContinuableStart
+    let reserved: ReservedContinuable | undefined
     try {
-      started = await this.ctx.subagents.startContinuable({
+      reserved = await this.ctx.subagents.materializeContinuable({
         childId,
         provider: request.provider,
         label: description,
         request: {
-          prompt: request.prompt,
           parent: root,
           ...request.agentOptions === undefined ? {} : { agentOptions: request.agentOptions },
         },
         signal,
       })
-      await this.checkpointInitialPrompt(childId, started.messageId, signal)
+      this.reservations.set(childId, reserved)
+      await reserved.persistInitialPrompt(request.prompt, `gat:${root.id}:${childId}:initial`, signal)
     } catch (error: unknown) {
+      const cleanupFailures: unknown[] = []
+      if (reserved) {
+        const failedChild = reserved
+        const deadline = this.lifecycle.cleanupDeadline()
+        // Both host methods close their gate synchronously, before any awaited lock/flush.
+        const invoke = (operation: () => Promise<void>): Promise<void> => {
+          try { return operation() } catch (failure: unknown) { const rejection = failure as Error; return Promise.reject(rejection) }
+        }
+        const aborting = invoke(() => failedChild.abort(deadline.signal))
+        // Observe the unbounded host disposal promise separately from our total
+        // deadline so late physical completion or failure retains an owner.
+        const disposing = invoke(() => failedChild.dispose())
+        const physical = Promise.allSettled([aborting, disposing]).then((outcomes) => {
+          const failures: unknown[] = outcomes.flatMap(outcome => outcome.status === 'rejected' ? [outcome.reason as unknown] : [])
+          if (failures.length) throw new AggregateError(failures, 'failed child physical cleanup failed')
+        })
+        this.inFlightCleanups.add(physical)
+        void physical.then(() => this.inFlightCleanups.delete(physical), (failure: unknown) => {
+          this.inFlightCleanups.delete(physical)
+          this.cleanupFailures.push(failure)
+          this.ctx.logger.warn(`failed child cleanup: ${errorMessage(failure)}`)
+        })
+        try { await deadline.run(() => physical) } catch (failure) { cleanupFailures.push(failure) }
+        finally { deadline.finish() }
+        this.reservations.delete(childId)
+      }
       const failed: TeamMemberSnapshot = {
         ...member,
         phase: 'failed',
@@ -299,7 +408,7 @@ export class TeamRoster {
       }
       try {
         const phase = await this.settleProvisioning(root, failed)
-        await this.stopTeammates(root, [childId])
+        if (!reserved) await this.stopTeammates(root, [childId])
         if (phase === 'active') {
           throw new TeamError(
             `teammate "${name}" became active while its creator reported failure`,
@@ -308,15 +417,16 @@ export class TeamRoster {
           )
         }
       } catch (recordError: unknown) {
-        throw new AggregateError([error, recordError], 'teammate creation and durable failure recording both failed')
+        throw new AggregateError([error, ...cleanupFailures, recordError], 'teammate creation and durable failure recording both failed')
       }
+      if (cleanupFailures.length) throw new AggregateError([error, ...cleanupFailures], `teammate creation failed: ${errorMessage(error)}; cleanup failed`)
       throw error
     }
     const active = {
       ...member,
       phase: 'active' as const,
     } satisfies TeamMemberSnapshot
-    // Once the continuation accepted its first prompt, it is a real child. If
+    // The initial item is durably quarantined. If
     // this checkpoint fails, keep the in-memory active edge instead of inventing
     // an impossible active -> failed transition; restart reconciliation covers
     // the provisioning-only durable prefix.
@@ -337,63 +447,12 @@ export class TeamRoster {
     return { member: this.memberView(active) }
   }
 
-  /** Flush the accepted initial inbox item before the Lead can commit `active`. */
-  private async checkpointInitialPrompt(
-    childId: SessionId,
-    messageId: MessageId,
-    signal: AbortSignal,
-  ): Promise<void> {
-    while (true) {
-      signal.throwIfAborted()
-      const session = this.ctx.sessions.get(childId)
-      if (session === undefined) {
-        const stored = await readPersistedSession(this.ctx.sessionPersistence, childId, signal)
-        const suffix = stored.events.slice(stored.inheritedEventCount)
-        if (messageAccepted(suffix, message => message.id === messageId)) return
-        throw new TeamError(
-          `teammate "${childId}" initial prompt was not durably accepted`,
-          'TEAM_PROVISIONING_CONFLICT',
-        )
-      }
-
-      const progress = Promise.withResolvers<void>()
-      // Abort can win while the durability flush is still pending; mark the
-      // later-awaited rejection handled without changing its eventual result.
-      void progress.promise.catch(() => undefined)
-      const stopEvent = this.ctx.on('session/event', (candidate) => {
-        if (candidate === session) progress.resolve()
-      })
-      const stopDisposed = this.ctx.on('session/disposed', (candidate) => {
-        if (candidate === session) progress.resolve()
-      })
-      const onAbort = (): void => {
-        const reason: unknown = signal.reason
-        progress.reject(reason instanceof Error
-          ? reason
-          : new TeamError(`teammate creation aborted: ${errorMessage(reason)}`, 'TEAM_DISPOSED'))
-      }
-      signal.addEventListener('abort', onAbort, { once: true })
-      try {
-        signal.throwIfAborted()
-        await this.ctx.sessions.flush(session)
-        // oxlint-disable-next-line typescript/no-deprecated -- Existing Session history read; migration deferred.
-        const suffix = session.snapshotEvents(session.inheritedEventCount)
-        if (messageAccepted(suffix, message => message.id === messageId)) return
-        if (this.ctx.sessions.get(childId) !== session) continue
-        await progress.promise
-      } finally {
-        signal.removeEventListener('abort', onAbort)
-        stopDisposed()
-        stopEvent()
-      }
-    }
-  }
-
   /** Settle provisioning-only members from their independently durable child Sessions. */
   private async reconcileProvisioning(root: Agent, signal: AbortSignal): Promise<void> {
     const provisioning = this.journal.state(root).members.filter(member => member.phase === 'provisioning')
     for (const member of provisioning) {
       signal.throwIfAborted()
+      if (member.attachments.length > 0) continue
       // A live child means creation is still completing in this process. Its
       // creator owns the terminal member edge.
       if (this.ctx.agents.get(member.id) !== undefined) continue
@@ -403,7 +462,11 @@ export class TeamRoster {
         const loaded = await readPersistedSession(this.ctx.sessionPersistence, member.id, signal)
         const suffix = loaded.events.slice(loaded.inheritedEventCount)
         const descriptor = foldSubagentDescriptor(suffix)
-        const acceptedInitialPrompt = messageAccepted(suffix, message => message.source.kind === 'user')
+        const recovered = await this.ctx.subagents.recoverContinuable({
+          childId: member.id, parent: root, provider: member.provider, signal,
+        })
+        this.reservations.set(member.id, recovered)
+        const acceptedInitialPrompt = recovered.initialMessageId !== undefined && recovered.state !== 'aborted' && recovered.state !== 'disposed'
         if (loaded.header.parentSession === root.id
           && descriptor?.mode === 'continuable'
           && descriptor.provider === member.provider
@@ -426,7 +489,7 @@ export class TeamRoster {
           ...phase === 'failed' ? { error: failure } : {},
         }
         await this.journal.appendAndFlush(root, 'team/member', {
-          version: 2,
+          version: 3,
           teamId: TeamId(root.id),
           member: settled,
         })
@@ -437,6 +500,7 @@ export class TeamRoster {
   /** Build one runtime member row after successful creation. */
   private memberView(member: TeamMemberSnapshot & { readonly phase: 'active' }): TeamMemberView {
     const live = this.ctx.agents.get(member.id)
+    const model = live?.options.model ?? member.model
     return {
       id: member.id,
       name: member.name,
@@ -445,7 +509,7 @@ export class TeamRoster {
       description: member.description,
       provider: member.provider,
       context: member.context,
-      ...live?.options.model === undefined ? {} : { model: live.options.model },
+      ...model === undefined ? {} : { model },
       diagnostics: [],
     }
   }
@@ -474,7 +538,7 @@ export class TeamRoster {
       }
       if (current.phase !== 'provisioning') return current.phase
       await this.journal.appendAndFlush(root, 'team/member', {
-        version: 2,
+        version: 3,
         teamId: TeamId(root.id),
         member: terminal,
       })

@@ -1,0 +1,26 @@
+[WARN] GAT source tree contains local modifications; source hashes are advisory.
+{
+  "status": "installed",
+  "gat": {
+    "version": "0.1.0",
+    "source": {
+      "root": "/home/hoinv/work/dsh-governed-agent-team",
+      "commit": "8121d8c13640afa234496af34fdeac727312c5b1",
+      "dirty": true,
+      "expectedCommit": null,
+      "commitDiffers": false
+    }
+  },
+  "dsh": {
+    "target": "/tmp/gat-exec022-install",
+    "commit": "c291e7961a515f6d7af9304e7fd1d257929aef26",
+    "version": "0.1.5-rc.2",
+    "compatibility": "SUPPORTED",
+    "reason": "DSH 0.1.5-rc.2 at c291e7961a515f6d7af9304e7fd1d257929aef26 is tested"
+  },
+  "installation": {
+    "files": 94,
+    "structuralVerification": "PASS",
+    "sourceRoot": "/home/hoinv/work/dsh-governed-agent-team"
+  }
+}

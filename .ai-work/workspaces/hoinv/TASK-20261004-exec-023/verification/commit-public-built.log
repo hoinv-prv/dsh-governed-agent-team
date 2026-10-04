@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "imports": [
+    {
+      "name": "@deepseek-ai/cordis",
+      "entry": "/home/hoinv/work/dsh-binding-prerequisites/vendor/cordis/lib/index.js"
+    },
+    {
+      "name": "@deepseek-ai/dsh-agent-loop-testkit",
+      "entry": "/home/hoinv/work/dsh-binding-prerequisites/packages/test-support/agent-loop-testkit/lib/index.js"
+    },
+    {
+      "name": "@deepseek-ai/dsh-agent-loop",
+      "entry": "/home/hoinv/work/dsh-binding-prerequisites/packages/core/agent-loop/lib/index.js"
+    },
+    {
+      "name": "@deepseek-ai/dsh-session-persistence-jsonl",
+      "entry": "/home/hoinv/work/dsh-binding-prerequisites/packages/session/session-persistence-jsonl/lib/index.js"
+    },
+    {
+      "name": "@deepseek-ai/dsh-subagent",
+      "entry": "/home/hoinv/work/dsh-binding-prerequisites/packages/subagent/subagent/lib/index.js"
+    },
+    {
+      "name": "@deepseek-ai/dsh-subagent-spawn-in-process",
+      "entry": "/home/hoinv/work/dsh-binding-prerequisites/packages/subagent/subagent-spawn-in-process/lib/index.js"
+    },
+    {
+      "name": "@deepseek-ai/dsh-session",
+      "entry": "/home/hoinv/work/dsh-binding-prerequisites/packages/core/session/lib/index.js"
+    },
+    {
+      "name": "@deepseek-ai/dsh-llm",
+      "entry": "/home/hoinv/work/dsh-binding-prerequisites/packages/llm/llm/lib/index.js"
+    },
+    {
+      "name": "@deepseek-ai/dsh-tools",
+      "entry": "/home/hoinv/work/dsh-binding-prerequisites/packages/core/tools/lib/index.js"
+    },
+    {
+      "name": "@vuhoi/gat-core",
+      "entry": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/lib/index.js"
+    },
+    {
+      "name": "@vuhoi/gat-tools",
+      "entry": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-tools/lib/index.js"
+    }
+  ],
+  "observations": {
+    "requests": 2,
+    "refreshes": 1,
+    "effects": 0,
+    "canonicalTask": true,
+    "draftLeaseDenied": true
+  }
+}

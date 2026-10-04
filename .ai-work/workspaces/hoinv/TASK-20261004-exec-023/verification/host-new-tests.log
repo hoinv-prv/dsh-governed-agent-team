@@ -1,0 +1,29 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ |thread-safe| packages/core/agent-loop/tests/system-prompt-admission.spec.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/core/agent-loop/tests/system-prompt-admission.spec.ts [ packages/core/agent-loop/tests/system-prompt-admission.spec.ts ]
+Error: Failed to resolve entry for package "@deepseek-ai/dsh-brand". The package may have incorrect main/module/exports specified in its package.json.
+ ❯ packages/credentials/credentials/src/index.ts:12:1
+ ❯ packages/llm/llm-pi-ai/src/config.ts:18:1
+     16| import type { CacheRetention, ChatTemplateKwargValue, ModelThinkingLev…
+     17| import z from '@deepseek-ai/schemastery'
+     18| import { credentialRef } from '@deepseek-ai/dsh-credentials'
+       | ^
+     19| import type { CredentialRef } from '@deepseek-ai/dsh-credentials'
+     20| import { MAX_TIMER_DELAY_MS } from '@deepseek-ai/dsh-timeout'
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  5 passed (5)
+   Start at  11:08:02
+   Duration  1.48s (transform 1.19s, setup 297ms, import 843ms, tests 403ms, environment 0ms)
+

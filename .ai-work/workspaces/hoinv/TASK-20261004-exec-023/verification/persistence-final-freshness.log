@@ -1,0 +1,1 @@
+gen-persistence-catalog: docs/persistence-catalog.md stale. Run `pnpm run gen-persistence-catalog` and commit the result.

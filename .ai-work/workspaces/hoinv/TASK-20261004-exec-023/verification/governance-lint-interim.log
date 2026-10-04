@@ -1,0 +1,3 @@
+lint target: /home/hoinv/work/dsh-governed-agent-team/.ai-work
+  [WARNING] capture_target: suggested_target 'verification tooling' not in known values ['aip_template', 'discard', 'future_backlog', 'guideline', 'history_only', 'knowledge_hub_curated', 'knowledge_hub_reference', 'notebook', 'operating_memory', 'playbook', 'run_aip', 'skill', 'tooling', 'truth', 'wiki_curated', 'wiki_meta', 'wiki_reference'] @ line 4 (/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-023/08_capture_inbox.jsonl)
+summary: errors=0 warnings=1 info=0

@@ -1,0 +1,21 @@
+packages/core/scope/tests/invariant.spec.ts(77,7): error TS1360: Type '{ 'agent/created': [{ agent: Agent; }]; 'agent/disposed': [{ agent: Agent; }]; 'agent/status': [{ agent: Agent; status: "idle"; }]; 'agent/inbox/inserted': [{ agent: Agent; message: { ...; }; }]; ... 8 more ...; 'agent/error': [...]; }' does not satisfy the expected type '{ "agent/created": [payload: { agent: Agent; }]; "agent/disposed": [payload: { agent: Agent; }]; "agent/status": [payload: { agent: Agent; status: AgentStatus; }]; "agent/inbox/inserted": [payload: { ...; }]; ... 10 more ...; "agent/error": [payload: ...]; }'.
+  Type '{ 'agent/created': [{ agent: Agent; }]; 'agent/disposed': [{ agent: Agent; }]; 'agent/status': [{ agent: Agent; status: "idle"; }]; 'agent/inbox/inserted': [{ agent: Agent; message: { ...; }; }]; ... 8 more ...; 'agent/error': [...]; }' is missing the following properties from type '{ "agent/created": [payload: { agent: Agent; }]; "agent/disposed": [payload: { agent: Agent; }]; "agent/status": [payload: { agent: Agent; status: AgentStatus; }]; "agent/inbox/inserted": [payload: { ...; }]; ... 10 more ...; "agent/error": [payload: ...]; }': "agent/prepare-prompt", "agent/model-admission"
+packages/experimental/gat-core/tests/team.spec.ts(17,57): error TS6133: 'TeamMissionId' is declared but its value is never read.
+packages/experimental/gat-core/tests/team.spec.ts(22,72): error TS6133: 'authorizedReport' is declared but its value is never read.
+packages/experimental/gat-core/tests/team.spec.ts(22,90): error TS6133: 'humanAction' is declared but its value is never read.
+packages/experimental/gat-core/tests/team.spec.ts(1213,33): error TS2554: Expected 2 arguments, but got 1.
+packages/experimental/gat-core/tests/team.spec.ts(1246,40): error TS2554: Expected 2 arguments, but got 1.
+packages/experimental/gat-core/tests/team.spec.ts(1262,33): error TS2554: Expected 2 arguments, but got 1.
+packages/experimental/gat-core/tests/team.spec.ts(1272,40): error TS2554: Expected 2 arguments, but got 1.
+packages/experimental/gat-core/tests/team.spec.ts(1282,37): error TS2554: Expected 2 arguments, but got 1.
+packages/experimental/gat-core/tests/team.spec.ts(1298,33): error TS2554: Expected 2 arguments, but got 1.
+packages/experimental/gat-core/tests/team.spec.ts(1309,41): error TS2554: Expected 2 arguments, but got 1.
+packages/experimental/gat-core/tests/team.spec.ts(1322,35): error TS2554: Expected 2 arguments, but got 1.
+packages/fs/tool-fs-search/tests/tools.spec.ts(217,44): error TS2379: Argument of type '{ parent: ToolExecutionToken; agent: Agent | undefined; signal: AbortSignal; }' is not assignable to parameter of type '{ agent?: object; signal?: AbortSignal; parent?: ToolExecutionToken; }' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'agent' are incompatible.
+    Type 'Agent | undefined' is not assignable to type 'object'.
+      Type 'undefined' is not assignable to type 'object'.
+packages/spill/spill-policy/tests/spill-policy.spec.ts(471,42): error TS2379: Argument of type '{ parent: ToolExecutionToken; agent: Agent | undefined; signal: AbortSignal; capabilities: readonly string[]; rootCallId: ToolCallId; token: ToolExecutionToken; callId: ToolCallId; name: string; arguments: unknown; }' is not assignable to parameter of type 'ToolExecutionInput' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'agent' are incompatible.
+    Type 'Agent | undefined' is not assignable to type 'Agent'.
+      Type 'undefined' is not assignable to type 'Agent'.

@@ -1,0 +1,17 @@
+/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/analyzer.ts:2646
+    throw new TypertAnalysisError(
+          ^
+
+TypertAnalysisError: typert(host): packages/core/agent-loop/src/index.ts:360:3: public property is missing an explicit type annotation
+    at FaceAnalyzer.fail (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/analyzer.ts:2646:11)
+    at FaceAnalyzer.requiredType (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/analyzer.ts:2285:12)
+    at FaceAnalyzer.members (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/analyzer.ts:2145:27)
+    at FaceAnalyzer.ensureDeclaration (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/analyzer.ts:2085:16)
+    at FaceAnalyzer.collectServices (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/analyzer.ts:985:26)
+    at FaceAnalyzer.analyzePackage (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/analyzer.ts:687:35)
+    at <anonymous> (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/analyzer.ts:658:33)
+    at Array.map (<anonymous>)
+    at FaceAnalyzer.analyze (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/analyzer.ts:658:8)
+    at WorkspaceAnalyzer.analyze (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/analyzer.ts:351:12)
+
+Node.js v22.23.1

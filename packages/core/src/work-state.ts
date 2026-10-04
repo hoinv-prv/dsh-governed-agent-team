@@ -17,7 +17,7 @@ function isWorkState(state: string): state is ReportTeamWorkRequest['state'] {
 
 /** Owns validation and durable replacement of each Team member's current work state. */
 export class TeamWorkBoard {
-  constructor(private readonly journal: TeamJournal) {}
+  constructor(private readonly journal: TeamJournal, private readonly assertExecution: (caller: Agent, taskId?: import('./types.ts').TeamTaskId) => void) {}
 
   /**
    * Validate, append, flush, then return the complete committed work view.
@@ -33,6 +33,7 @@ export class TeamWorkBoard {
   ): Promise<TeamWorkView> {
     return this.journal.transact(membership.root.id, async () => {
       const state = this.journal.state(membership.root)
+      if (request.state === 'working' || request.state === 'done') this.assertExecution(caller, request.taskId)
       if (membership.role === 'teammate'
         && !state.members.some(member => member.id === caller.id && member.phase === 'active')) {
         throw new TeamError(`work reporter "${membership.name}" is not active`, 'TEAM_NOT_MEMBER')

@@ -1,0 +1,243 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ |thread-safe| packages/experimental/gat-core/tests/team.spec.ts (66 tests | 11 failed) 10902ms
+     × enforces CAS, ownership, dependencies, transitions, and write-scope warnings 180ms
+     × supports Lead reassignment, completion, reopen, and deletion permissions 102ms
+     × covers partial edits, Lead ownership, unassignment, and blocked reassignment 5003ms
+     × imports, de-duplicates, and approves the exact post-import plan revision in one flush 36ms
+     × acknowledges steered messages persisted by a busy Lead before model claim 122ms
+     × flushes a live pending receipt before acknowledgement without inserting a duplicate 113ms
+     × acknowledges steered messages accepted by a busy target inbox 99ms
+     × serializes concurrent Steer delivery admission for one target 144ms
+     × delivers persisted mail before the later message that cold-resumes its target 187ms
+     × queues an inactive sibling until explicit host recovery, preserving sender attribution 214ms
+     × interrupts only the current turn and retains an already accepted follow-up 102ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team shared task DAG > enforces CAS, ownership, dependencies, transitions, and write-scope warnings
+AssertionError: expected TeamError: execution lease is bound to a … { code: '…' } to match object { code: 'TEAM_TASK_STALE_REVISION' }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "TEAM_TASK_STALE_REVISION",
++ TeamError {
++   "code": "TEAM_EXECUTION_DENIED",
+  }
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:633:7
+    631|       expectedRevision: first.revision,
+    632|       action: 'complete',
+    633|     })).rejects.toMatchObject({ code: 'TEAM_TASK_STALE_REVISION' })
+       |       ^
+    634|
+    635|     const completed = await authorizedUpdate(ctx, alpha, {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team shared task DAG > supports Lead reassignment, completion, reopen, and deletion permissions
+AssertionError: expected TeamError: execution lease is bound to a … { code: '…' } to match object { code: 'TEAM_LEAD_REQUIRED' }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "TEAM_LEAD_REQUIRED",
++ TeamError {
++   "code": "TEAM_EXECUTION_DENIED",
+  }
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:751:7
+    749|       action: 'reassign',
+    750|       owner: 'lead',
+    751|     })).rejects.toMatchObject({ code: 'TEAM_LEAD_REQUIRED' })
+       |       ^
+    752|     const complete = await authorizedUpdate(ctx, owner, {
+    753|       taskId: task.id,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team shared task DAG > covers partial edits, Lead ownership, unassignment, and blocked reassignment
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:791:3
+    789|   })
+    790|
+    791|   it('covers partial edits, Lead ownership, unassignment, and blocked …
+       |   ^
+    792|     const { ctx, lead } = await setup(['hang'])
+    793|     const started = await spawn(ctx, lead, 'editor', { activate: false…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team Remote API > imports, de-duplicates, and approves the exact post-import plan revision in one flush
+AssertionError: expected { ok: true, value: { …(4) } } to deeply equal { ok: true, …(1) }
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+    "value": {
+      "approvedRevision": 2,
++     "digest": "a86c6a5000030410e2ec5114d3a4556a76090b2089fb7ee5b11433d61fbe347c",
++     "eventId": "90e8b722-2b7a-43d3-b1f7-7f7cb2550589",
++     "humanSessionId": "lead",
+    },
+  }
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1135:123
+    1133|     const before = lead.session.snapshotEvents().length
+    1134|
+    1135|     await expect(humanBusinessAction(ctx, lead, 'importApprovedPlan', …
+       |                                                                                                                           ^
+    1136|       ok: true,
+    1137|       value: { approvedRevision: 2 },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > acknowledges steered messages persisted by a busy Lead before model claim
+TeamError: agent "d4894a95-1f9a-4550-8061-29ab41a5c1a7" is not a member of an active Agent Team
+ ❯ TeamRoster.membership packages/experimental/gat-core/src/roster.ts:85:13
+     83|     const membership = this.tryMembership(agent)
+     84|     if (membership === undefined) {
+     85|       throw new TeamError(`agent "${agent.id}" is not a member of an a…
+       |             ^
+     86|     }
+     87|     return membership
+ ❯ TeamMailbox.sendAdmitted packages/experimental/gat-core/src/mailbox.ts:114:36
+ ❯ TeamMailbox.send packages/experimental/gat-core/src/mailbox.ts:58:28
+ ❯ Proxy.sendMessage packages/experimental/gat-core/src/index.ts:352:31
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1408:41
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/11]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > flushes a live pending receipt before acknowledgement without inserting a duplicate
+AssertionError: expected 'queued' to be 'accepted' // Object.is equality
+
+Expected: "accepted"
+Received: "queued"
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1457:30
+    1455|       signal: SIGNAL,
+    1456|     })
+    1457|     expect(immediate.status).toBe('accepted')
+       |                              ^
+    1458|     expect(durable(lead).pendingMessages).toEqual([])
+    1459|     expect(target.inbox.nextStep.some(item => item.source.kind === 'te…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/11]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > acknowledges steered messages accepted by a busy target inbox
+AssertionError: expected 'queued' to be 'accepted' // Object.is equality
+
+Expected: "accepted"
+Received: "queued"
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1549:26
+    1547|     })
+    1548|
+    1549|     expect(first.status).toBe('accepted')
+       |                          ^
+    1550|     expect(flushed).toEqual([lead.id, target.id, lead.id])
+    1551|     expect(durable(lead).pendingMessages).toEqual([])
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/11]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > serializes concurrent Steer delivery admission for one target
+AssertionError: expected [ { …(2) }, { …(2) } ] to match object [ { status: 'accepted' }, …(1) ]
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  [
+    {
+-     "status": "accepted",
++     "status": "queued",
+    },
+    {
+-     "status": "accepted",
++     "status": "queued",
+    },
+  ]
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1606:46
+    1604|
+    1605|     release.resolve(undefined)
+    1606|     await expect(Promise.all([first, second])).resolves.toMatchObject([
+       |                                              ^
+    1607|       { status: 'accepted' },
+    1608|       { status: 'accepted' },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/11]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > delivers persisted mail before the later message that cold-resumes its target
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1641:79
+    1639|     await recoverFixtureMember(ctx, lead, 'reordered-target')
+    1640|     const pending = durable(lead).pendingMessages.find(item => item.id…
+    1641|     await expect(teamInternals(ctx).mailbox.tryDispatch(lead, pending,…
+       |                                                                               ^
+    1642|     const target = await waitRunning(ctx, started.member.id)
+    1643|     await vi.waitFor(() => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/11]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > queues an inactive sibling until explicit host recovery, preserving sender attribution
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1776:79
+    1774|     await recoverFixtureMember(ctx, lead, 'beta')
+    1775|     const pending = durable(lead).pendingMessages.find(item => item.id…
+    1776|     await expect(teamInternals(ctx).mailbox.tryDispatch(lead, pending,…
+       |                                                                               ^
+    1777|     await waitNoAgent(ctx, betaStarted.member.id)
+    1778|     await vi.waitFor(() => { expect(durable(lead).pendingMessages).toE…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/11]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > interrupts only the current turn and retains an already accepted follow-up
+AssertionError: expected 'queued' to be 'accepted' // Object.is equality
+
+Expected: "accepted"
+Received: "queued"
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1841:29
+    1839|       target: 'worker', content: content('retained follow-up'), signal…
+    1840|     })
+    1841|     expect(followup.status).toBe('accepted')
+       |                             ^
+    1842|     expect(ctx.agentTeams.interrupt(lead, 'worker')).toEqual({ previou…
+    1843|     await vi.waitFor(() => { expect(worker.status).toBe('idle') })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/11]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  11 failed | 55 passed (66)
+   Start at  11:33:04
+   Duration  12.43s (transform 1.11s, setup 188ms, import 1.23s, tests 10.90s, environment 0ms)
+

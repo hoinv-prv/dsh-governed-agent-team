@@ -1,0 +1,287 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ |thread-safe| packages/experimental/gat-core/tests/persistence.spec.ts (6 tests | 2 failed) 1433ms
+     × reconciles a persisted child to active and a missing child to durable failed 493ms
+     × acknowledges target-recorded mail after restart without delivering it twice 194ms
+(node:2832733) Warning: Closing file descriptor 41 on garbage collection
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2832733) [DEP0137] DeprecationWarning: Closing a FileHandle object on garbage collection is deprecated. Please close FileHandle objects explicitly using FileHandle.prototype.close(). In the future, an error will be thrown if a file descriptor is closed during garbage collection.
+ ❯ |thread-safe| packages/experimental/gat-tools/tests/tool-team.spec.ts (26 tests | 1 failed) 10909ms
+     × reinstalls Team scope before a cold-resumed teammate request 5006ms
+ ❯ |thread-safe| packages/experimental/gat-profile/tests/profile.spec.ts (2 tests | 1 failed) 106ms
+     × composes the governed lifecycle and replays its persisted plan and work projection 100ms
+ ❯ |thread-safe| packages/experimental/gat-core/tests/team.spec.ts (66 tests | 9 failed) 13605ms
+     × acknowledges steered messages persisted by a busy Lead before model claim 199ms
+     × flushes a live pending receipt before acknowledgement without inserting a duplicate 194ms
+     × acknowledges steered messages accepted by a busy target inbox 220ms
+     × serializes concurrent Steer delivery admission for one target 246ms
+     × interrupts only the current turn and retains an already accepted follow-up 213ms
+     × closes creation admission and drains an in-flight spawn before unload completes 48ms
+     × aborts and awaits an admitted explicitly recovered mailbox dispatch during disposal 5005ms
+     × awaits an admitted asynchronous acknowledgement before disposal completes 51ms
+     × bounds Team runtime disposal when a continuation drain never settles 162ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/persistence.spec.ts > JSONL Agent Teams recovery > reconciles a persisted child to active and a missing child to durable failed
+AssertionError: expected 'queued' to be 'accepted' // Object.is equality
+
+Expected: "accepted"
+Received: "queued"
+
+ ❯ packages/experimental/gat-core/tests/persistence.spec.ts:219:30
+    217|         signal: SIGNAL,
+    218|       })
+    219|       expect(receipt.status).toBe('accepted')
+       |                              ^
+    220|       await vi.waitFor(() => { expect(second.ctx.agents.get(childId)).…
+    221|       await vi.waitFor(() => { expect(durable(activeHandle.agent).pend…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/persistence.spec.ts > JSONL Agent Teams recovery > acknowledges target-recorded mail after restart without delivering it twice
+Error: CONTINUABLE_STATE_CONFLICT: reserved execution requires owner recovery
+ ❯ packages/core/agent-loop/src/index.ts:920:19
+    918|             || (reservedData.recovery !== 'explicit' && reservedData.r…
+    919|             || (reservedData.recovery === 'explicit' && options.deferE…
+    920|             throw new Error('CONTINUABLE_STATE_CONFLICT: reserved exec…
+       |                   ^
+    921|           }
+    922|           preparation = SessionPreparation.create(this.runtime.ctx.ses…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > acknowledges steered messages persisted by a busy Lead before model claim
+TeamError: agent "f4959b8e-cfd8-4fd2-8998-c24d7985fba7" is not a member of an active Agent Team
+ ❯ TeamRoster.membership packages/experimental/gat-core/src/roster.ts:88:13
+     86|     const membership = this.tryMembership(agent)
+     87|     if (membership === undefined) {
+     88|       throw new TeamError(`agent "${agent.id}" is not a member of an a…
+       |             ^
+     89|     }
+     90|     return membership
+ ❯ TeamMailbox.sendAdmitted packages/experimental/gat-core/src/mailbox.ts:112:36
+ ❯ TeamMailbox.send packages/experimental/gat-core/src/mailbox.ts:56:28
+ ❯ Proxy.sendMessage packages/experimental/gat-core/src/index.ts:364:31
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1406:41
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > flushes a live pending receipt before acknowledgement without inserting a duplicate
+AssertionError: team message "team-message-77d02cfd-0938-45d1-9d80-9ea7e42fadc6" remains queued: session "b14b4e0f-07e8-42cd-9181-6fc66e6ac276": flush on a closed handle
+Team message "team-message-77d02cfd-0938-45d1-9d80-9ea7e42fadc6" acknowledgement failed: session "b14b4e0f-07e8-42cd-9181-6fc66e6ac276": flush on a closed handle: expected 'queued' to be 'accepted' // Object.is equality
+
+Expected: "accepted"
+Received: "queued"
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1457:59
+    1455|       signal: SIGNAL,
+    1456|     })
+    1457|     expect(immediate.status, deliveryWarnings.join('\n')).toBe('accept…
+       |                                                           ^
+    1458|     expect(durable(lead).pendingMessages).toEqual([])
+    1459|     expect(target.inbox.nextStep.some(item => item.source.kind === 'te…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > acknowledges steered messages accepted by a busy target inbox
+AssertionError: expected [ 'lead', …(4) ] to deeply equal [ 'lead', …(2) ]
+
+- Expected
++ Received
+
+  [
+    "lead",
+    "3e56524c-ba3d-412d-81a3-b11b927e2702",
++   "3e56524c-ba3d-412d-81a3-b11b927e2702",
++   "3e56524c-ba3d-412d-81a3-b11b927e2702",
+    "lead",
+  ]
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1564:21
+    1562|
+    1563|     expect(first.status).toBe('accepted')
+    1564|     expect(flushed).toEqual([lead.id, target.id, lead.id])
+       |                     ^
+    1565|     expect(durable(lead).pendingMessages).toEqual([])
+    1566|     expect(target.inbox.nextStep.some(message => message.source.kind =…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > serializes concurrent Steer delivery admission for one target
+AssertionError: expected [ 'first steer', 'first steer' ] to deeply equal [ 'first steer' ]
+
+- Expected
++ Received
+
+  [
+    "first steer",
++   "first steer",
+  ]
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1620:22
+    1618|     }).finally(() => { secondSettled = true })
+    1619|     await vi.waitFor(() => { expect(durable(lead).pendingMessages).toH…
+    1620|     expect(admitted).toEqual(['first steer'])
+       |                      ^
+    1621|     expect(secondSettled).toBe(false)
+    1622|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/13]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > interrupts only the current turn and retains an already accepted follow-up
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1863:60
+    1861|     await vi.waitFor(() => { expect(worker.status).toBe('idle') })
+    1862|     expect(worker.inbox.nextStep.some(message => message.source.kind =…
+    1863|       && message.source.messageId === followup.messageId)).toBe(true)
+       |                                                            ^
+    1864|     worker.cancel({ kind: 'parent' })
+    1865|     await waitNoAgent(ctx, worker.id)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/13]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > closes creation admission and drains an in-flight spawn before unload completes
+AssertionError: expected AggregateError: teammate creation and dur… { errors: [ …(2) ] } to match object { code: 'TEAM_DISPOSED' }
+
+- Expected
++ Received
+
+- {
++ AggregateError {
++   "message": "teammate creation and durable failure recording both failed",
++   "errors": [
++     TeamError {
++       "message": "Agent Teams service disposed",
++       "code": "TEAM_DISPOSED",
++       "name": "TeamError",
++     },
++     TeamError {
++       "message": "Agent Teams service disposed",
+        "code": "TEAM_DISPOSED",
++       "name": "TeamError",
++     },
++   ],
+  }
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1971:37
+    1969|     })
+    1970|     const spawning = spawn(ctx, lead, 'disposing-worker')
+    1971|     const rejected = expect(spawning).rejects.toMatchObject({ code: 'T…
+       |                                     ^
+    1972|     await entered.promise
+    1973|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > aborts and awaits an admitted explicitly recovered mailbox dispatch during disposal
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:2214:3
+    2212|   })
+    2213|
+    2214|   it('aborts and awaits an admitted explicitly recovered mailbox dispa…
+       |   ^
+    2215|     const { ctx, lead } = await setup([textResponse('worker done')])
+    2216|     const started = await spawn(ctx, lead, 'mailbox-worker')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/13]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > awaits an admitted asynchronous acknowledgement before disposal completes
+AssertionError: expected [ { id: 'dispose-ack-message', …(4) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "content": [
++       {
++         "text": "acknowledge before disposal",
++         "type": "text",
++       },
++     ],
++     "id": "dispose-ack-message",
++     "senderId": "sender",
++     "senderName": "sender",
++     "targetId": "lead",
++   },
++ ]
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:2305:43
+    2303|     expect(disposedBeforeRelease).toBe(false)
+    2304|     expect(disposed).toBe(true)
+    2305|     expect(durable(lead).pendingMessages).toEqual([])
+       |                                           ^
+    2306|     flushSpy.mockRestore()
+    2307|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/13]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > bounds Team runtime disposal when a continuation drain never settles
+AssertionError: expected "drainContinuableChildren" to be called with arguments: [ ReactLoopAgent{ …(18) }, …(1) ]
+
+Number of calls: 0
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:2321:19
+    2319|     ])
+    2320|     expect(outcome).toBe('disposed')
+    2321|     expect(drain).toHaveBeenCalledWith(lead, [started.member.id])
+       |                   ^
+    2322|     expect(ctx.get('agentTeams')).toBeUndefined()
+    2323|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/13]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-profile/tests/profile.spec.ts > Agent Teams profile bundle > composes the governed lifecycle and replays its persisted plan and work projection
+TeamError: authenticated HUMAN Enable control required
+ ❯ Proxy.enable packages/experimental/gat-core/src/index.ts:596:95
+    594|     const [initializer] = this.initializers
+    595|     if (initializer === undefined) throw new TeamError('Agent Team ini…
+    596|     try { consumeHumanControl('agentTeams/enable', caller, undefined) …
+       |                                                                                               ^
+    597|     const operation = this.lifecycle.admitMutation(async () => {
+    598|       const combined = AbortSignal.any([signal, this.lifecycle.signal])
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ packages/experimental/gat-profile/tests/profile.spec.ts:248:28
+
+Caused by: Error: HUMAN_CONTROL_REQUIRED: exact authenticated action/session/revision receipt required
+ ❯ consumeHumanControl packages/client/connection/src/rpc-host.ts:378:11
+ ❯ Proxy.enable packages/experimental/gat-core/src/index.ts:596:11
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ packages/experimental/gat-profile/tests/profile.spec.ts:248:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/13]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-tools/tests/tool-team.spec.ts > dsh-tool-team > reinstalls Team scope before a cold-resumed teammate request
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/experimental/gat-tools/tests/tool-team.spec.ts:1197:3
+    1195|   })
+    1196|
+    1197|   it('reinstalls Team scope before a cold-resumed teammate request', a…
+       |   ^
+    1198|     const { ctx, lead } = await setup([textResponse('first'), 'hang'])
+    1199|     await approveCurrentPlan(ctx, lead)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/13]⎯
+
+
+ Test Files  4 failed | 12 passed (16)
+      Tests  13 failed | 194 passed (207)
+   Start at  11:42:38
+   Duration  16.43s (transform 8.92s, setup 1.88s, import 13.88s, tests 30.31s, environment 1.05s)
+

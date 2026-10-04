@@ -1,0 +1,203 @@
+verify-export-jsdoc: 202 JSDoc completeness violation(s) (see AGENTS.md):
+  exported function 'normalizedTaskSubject' (packages/experimental/gat-core/src/approved-plan-import.ts:15) is missing @param value.
+  exported function 'normalizedTaskSubject' (packages/experimental/gat-core/src/approved-plan-import.ts:15) is missing @returns (return type: string).
+  exported function 'parseApprovedPlanTasks' (packages/experimental/gat-core/src/approved-plan-import.ts:47) is missing @param plan.
+  exported function 'parseApprovedPlanTasks' (packages/experimental/gat-core/src/approved-plan-import.ts:47) is missing @returns (return type: string[]).
+  exported function 'approvedPlanTaskSubjects' (packages/experimental/gat-core/src/approved-plan-import.ts:81) is missing @param events.
+  exported function 'approvedPlanTaskSubjects' (packages/experimental/gat-core/src/approved-plan-import.ts:81) is missing @returns (return type: string[]).
+  exported const 'ATTACHMENT_LIMITS' (packages/experimental/gat-core/src/attachments.ts:6) has no JSDoc.
+  exported function 'detachJson' (packages/experimental/gat-core/src/attachments.ts:29) is missing @param value.
+  exported function 'detachJson' (packages/experimental/gat-core/src/attachments.ts:29) is missing @param depth.
+  exported function 'detachJson' (packages/experimental/gat-core/src/attachments.ts:29) is missing @param budget.
+  exported function 'detachJson' (packages/experimental/gat-core/src/attachments.ts:29) is missing @param ancestors.
+  exported function 'detachJson' (packages/experimental/gat-core/src/attachments.ts:29) is missing @returns (return type: JsonValue).
+  exported function 'canonicalJson' (packages/experimental/gat-core/src/attachments.ts:70) is missing @param value.
+  exported function 'canonicalJson' (packages/experimental/gat-core/src/attachments.ts:70) is missing @returns (return type: string).
+  exported function 'payloadSha256' (packages/experimental/gat-core/src/attachments.ts:71) has no JSDoc.
+  exported function 'validateAttachmentRequests' (packages/experimental/gat-core/src/attachments.ts:105) has no JSDoc.
+  exported function 'validateAttachmentRecords' (packages/experimental/gat-core/src/attachments.ts:108) has no JSDoc.
+  exported function 'attachmentRecord' (packages/experimental/gat-core/src/attachments.ts:111) has no JSDoc.
+  exported class method 'TeamExecutionAuthority.configure' (packages/experimental/gat-core/src/authority.ts:31) is missing @param requirePlan.
+  exported class method 'TeamExecutionAuthority.bind' (packages/experimental/gat-core/src/authority.ts:34) is missing @param agent.
+  exported class method 'TeamExecutionAuthority.bind' (packages/experimental/gat-core/src/authority.ts:34) is missing @param membership.
+  exported class method 'TeamExecutionAuthority.bind' (packages/experimental/gat-core/src/authority.ts:34) is missing @param request.
+  exported class method 'TeamExecutionAuthority.bindTask' (packages/experimental/gat-core/src/authority.ts:56) is missing @param agent.
+  exported class method 'TeamExecutionAuthority.bindTask' (packages/experimental/gat-core/src/authority.ts:56) is missing @param membership.
+  exported class method 'TeamExecutionAuthority.bindTask' (packages/experimental/gat-core/src/authority.ts:56) is missing @param taskId.
+  exported class method 'TeamExecutionAuthority.assert' (packages/experimental/gat-core/src/authority.ts:67) is missing @param agent.
+  exported class method 'TeamExecutionAuthority.assert' (packages/experimental/gat-core/src/authority.ts:67) is missing @param membership.
+  exported class method 'TeamExecutionAuthority.assert' (packages/experimental/gat-core/src/authority.ts:67) is missing @param taskId.
+  exported class property 'BindingDeadline.signal' (packages/experimental/gat-core/src/binding-deadline.ts:5) has no JSDoc.
+  exported class method 'BindingDeadline.run' (packages/experimental/gat-core/src/binding-deadline.ts:20) has no JSDoc.
+  exported class method 'BindingDeadline.finish' (packages/experimental/gat-core/src/binding-deadline.ts:25) has no JSDoc.
+  exported function 'acquireBindingResource' (packages/experimental/gat-core/src/binding-deadline.ts:29) is missing @param operation.
+  exported function 'acquireBindingResource' (packages/experimental/gat-core/src/binding-deadline.ts:29) is missing @param signal.
+  exported function 'acquireBindingResource' (packages/experimental/gat-core/src/binding-deadline.ts:29) is missing @param late.
+  exported function 'acquireBindingResource' (packages/experimental/gat-core/src/binding-deadline.ts:29) is missing @returns (return type: Promise<T>).
+  exported class method 'TeamService.configureExecutionPolicy' (packages/experimental/gat-core/src/index.ts:181) is missing @param requireCurrentPlan.
+  exported class method 'TeamService.bindExecution' (packages/experimental/gat-core/src/index.ts:184) is missing @param caller.
+  exported class method 'TeamService.bindExecution' (packages/experimental/gat-core/src/index.ts:184) is missing @param request.
+  exported class method 'TeamService.assertExecution' (packages/experimental/gat-core/src/index.ts:189) is missing @param caller.
+  exported class method 'TeamService.assertExecution' (packages/experimental/gat-core/src/index.ts:189) is missing @param taskId.
+  exported class method 'TeamService.activateMember' (packages/experimental/gat-core/src/index.ts:194) is missing @param caller.
+  exported class method 'TeamService.activateMember' (packages/experimental/gat-core/src/index.ts:194) is missing @param signal.
+  exported class method 'TeamService.recoverMember' (packages/experimental/gat-core/src/index.ts:200) is missing @param caller.
+  exported class method 'TeamService.recoverMember' (packages/experimental/gat-core/src/index.ts:200) is missing @param targetName.
+  exported class method 'TeamService.recoverMember' (packages/experimental/gat-core/src/index.ts:200) is missing @param request.
+  exported class method 'TeamService.recoverMember' (packages/experimental/gat-core/src/index.ts:200) is missing @param signal.
+  exported class method 'TeamService.recoverMember' (packages/experimental/gat-core/src/index.ts:200) is missing @returns (return type: Promise<Agent>).
+  exported class method 'TeamService.executionDiagnostic' (packages/experimental/gat-core/src/index.ts:213) is missing @param caller.
+  exported class method 'TeamService.executionDiagnostic' (packages/experimental/gat-core/src/index.ts:213) is missing @returns (return type: string | undefined).
+  exported class method 'TeamService.approveMemberAdd' (packages/experimental/gat-core/src/index.ts:251) is missing @param caller.
+  exported class method 'TeamService.approveMemberAdd' (packages/experimental/gat-core/src/index.ts:251) is missing @param request.
+  exported class method 'TeamService.approveMemberAdd' (packages/experimental/gat-core/src/index.ts:251) is missing @returns (return type: Promise<{ readonly approved: true }>).
+  exported class method 'TeamService.remoteApproveMemberAdd' (packages/experimental/gat-core/src/index.ts:264) is missing @param agent.
+  exported class method 'TeamService.remoteApproveMemberAdd' (packages/experimental/gat-core/src/index.ts:264) is missing @param request.
+  exported class method 'TeamService.remoteApproveMemberAdd' (packages/experimental/gat-core/src/index.ts:264) is missing @returns (return type: Promise<{ readonly approved: true }>).
+  exported class method 'TeamService.createMission' (packages/experimental/gat-core/src/index.ts:290) is missing @param caller.
+  exported class method 'TeamService.createMission' (packages/experimental/gat-core/src/index.ts:290) is missing @param request.
+  exported class method 'TeamService.createMission' (packages/experimental/gat-core/src/index.ts:290) is missing @returns (return type: Promise<TeamMissionView>).
+  exported class method 'TeamService.getMission' (packages/experimental/gat-core/src/index.ts:295) is missing @param caller.
+  exported class method 'TeamService.getMission' (packages/experimental/gat-core/src/index.ts:295) is missing @param id.
+  exported class method 'TeamService.getMission' (packages/experimental/gat-core/src/index.ts:295) is missing @returns (return type: TeamMissionView).
+  exported class method 'TeamService.listMissions' (packages/experimental/gat-core/src/index.ts:300) is missing @param caller.
+  exported class method 'TeamService.listMissions' (packages/experimental/gat-core/src/index.ts:300) is missing @returns (return type: TeamMissionView[]).
+  exported class method 'TeamService.approveMission' (packages/experimental/gat-core/src/index.ts:305) is missing @param caller.
+  exported class method 'TeamService.approveMission' (packages/experimental/gat-core/src/index.ts:305) is missing @param request.
+  exported class method 'TeamService.approveMission' (packages/experimental/gat-core/src/index.ts:305) is missing @returns (return type: Promise<TeamMissionView>).
+  exported class method 'TeamService.closeMission' (packages/experimental/gat-core/src/index.ts:311) is missing @param caller.
+  exported class method 'TeamService.closeMission' (packages/experimental/gat-core/src/index.ts:311) is missing @param request.
+  exported class method 'TeamService.closeMission' (packages/experimental/gat-core/src/index.ts:311) is missing @returns (return type: Promise<TeamMissionView>).
+  exported class method 'TeamService.revokeMission' (packages/experimental/gat-core/src/index.ts:316) is missing @param caller.
+  exported class method 'TeamService.revokeMission' (packages/experimental/gat-core/src/index.ts:316) is missing @param request.
+  exported class method 'TeamService.revokeMission' (packages/experimental/gat-core/src/index.ts:316) is missing @returns (return type: Promise<TeamMissionView>).
+  exported class method 'TeamService.importApprovedPlanAndApprove' (packages/experimental/gat-core/src/index.ts:412) is missing @param caller.
+  exported class method 'TeamService.importApprovedPlanAndApprove' (packages/experimental/gat-core/src/index.ts:412) is missing @param request.
+  exported class method 'TeamService.importApprovedPlanAndApprove' (packages/experimental/gat-core/src/index.ts:412) is missing @returns (return type: Promise<TeamPlanApprovalSnapshot>).
+  exported class method 'TeamService.registerInitializer' (packages/experimental/gat-core/src/index.ts:452) is missing @param initializer.
+  exported class method 'TeamService.registerInitializer' (packages/experimental/gat-core/src/index.ts:452) is missing @returns (return type: () => void).
+  exported class method 'TeamService.enable' (packages/experimental/gat-core/src/index.ts:459) is missing @param caller.
+  exported class method 'TeamService.enable' (packages/experimental/gat-core/src/index.ts:459) is missing @param signal.
+  exported class method 'TeamService.enable' (packages/experimental/gat-core/src/index.ts:459) is missing @returns (return type: Promise<TeamEnableResult>).
+  exported class method 'TeamService.remoteEnable' (packages/experimental/gat-core/src/index.ts:608) is missing @param agent.
+  exported class method 'TeamService.remoteEnable' (packages/experimental/gat-core/src/index.ts:608) is missing @param signal.
+  exported class method 'TeamService.remoteEnable' (packages/experimental/gat-core/src/index.ts:608) is missing @returns (return type: Promise<TeamEnableResult>).
+  exported class method 'TeamService.remoteCreateMission' (packages/experimental/gat-core/src/index.ts:614) is missing @param agent.
+  exported class method 'TeamService.remoteCreateMission' (packages/experimental/gat-core/src/index.ts:614) is missing @param request.
+  exported class method 'TeamService.remoteCreateMission' (packages/experimental/gat-core/src/index.ts:614) is missing @returns (return type: Promise<TeamMissionMutationResult>).
+  exported class method 'TeamService.remoteListMissions' (packages/experimental/gat-core/src/index.ts:620) is missing @param agent.
+  exported class method 'TeamService.remoteListMissions' (packages/experimental/gat-core/src/index.ts:620) is missing @returns (return type: TeamMissionView[]).
+  exported class method 'TeamService.remoteGetMission' (packages/experimental/gat-core/src/index.ts:626) is missing @param agent.
+  exported class method 'TeamService.remoteGetMission' (packages/experimental/gat-core/src/index.ts:626) is missing @param id.
+  exported class method 'TeamService.remoteGetMission' (packages/experimental/gat-core/src/index.ts:626) is missing @returns (return type: TeamMissionView).
+  exported class method 'TeamService.remoteApproveMission' (packages/experimental/gat-core/src/index.ts:632) is missing @param agent.
+  exported class method 'TeamService.remoteApproveMission' (packages/experimental/gat-core/src/index.ts:632) is missing @param request.
+  exported class method 'TeamService.remoteApproveMission' (packages/experimental/gat-core/src/index.ts:632) is missing @returns (return type: Promise<TeamMissionMutationResult>).
+  exported class method 'TeamService.remoteCloseMission' (packages/experimental/gat-core/src/index.ts:638) is missing @param agent.
+  exported class method 'TeamService.remoteCloseMission' (packages/experimental/gat-core/src/index.ts:638) is missing @param request.
+  exported class method 'TeamService.remoteCloseMission' (packages/experimental/gat-core/src/index.ts:638) is missing @returns (return type: Promise<TeamMissionMutationResult>).
+  exported class method 'TeamService.remoteRevokeMission' (packages/experimental/gat-core/src/index.ts:644) is missing @param agent.
+  exported class method 'TeamService.remoteRevokeMission' (packages/experimental/gat-core/src/index.ts:644) is missing @param request.
+  exported class method 'TeamService.remoteRevokeMission' (packages/experimental/gat-core/src/index.ts:644) is missing @returns (return type: Promise<TeamMissionMutationResult>).
+  exported class method 'TeamService.remoteImportApprovedPlan' (packages/experimental/gat-core/src/index.ts:698) is missing @param agent.
+  exported class method 'TeamService.remoteImportApprovedPlan' (packages/experimental/gat-core/src/index.ts:698) is missing @param request.
+  exported class method 'TeamService.remoteImportApprovedPlan' (packages/experimental/gat-core/src/index.ts:698) is missing @returns (return type: Promise<ImportApprovedTeamPlanResult>).
+  exported class method 'TeamJournal.assertCommitted' (packages/experimental/gat-core/src/journal.ts:52) is missing @param root.
+  exported class method 'TeamJournal.appendManyAndFlush' (packages/experimental/gat-core/src/journal.ts:96) is missing @param root.
+  exported class method 'TeamJournal.appendManyAndFlush' (packages/experimental/gat-core/src/journal.ts:96) is missing @param events.
+  exported interface 'BindingIdentity' (packages/experimental/gat-core/src/member-binders.ts:7) has no JSDoc.
+  exported interface 'CapabilityContribution' (packages/experimental/gat-core/src/member-binders.ts:13) has no JSDoc.
+  exported interface 'BinderPrepareInput' (packages/experimental/gat-core/src/member-binders.ts:26) has no JSDoc.
+  exported interface 'BinderBindInput' (packages/experimental/gat-core/src/member-binders.ts:31) has no JSDoc.
+  exported type 'BinderRecoverInput' (packages/experimental/gat-core/src/member-binders.ts:35) has no JSDoc.
+  exported interface 'PreparedAttachment' (packages/experimental/gat-core/src/member-binders.ts:36) has no JSDoc.
+  exported interface 'DisposableBinding' (packages/experimental/gat-core/src/member-binders.ts:41) has no JSDoc.
+  exported interface 'TeamMemberBinder' (packages/experimental/gat-core/src/member-binders.ts:46) has no JSDoc.
+  exported class method 'TeamMemberBinderRegistry.register' (packages/experimental/gat-core/src/member-binders.ts:63) has no JSDoc.
+  exported class method 'TeamMemberBinderRegistry.resolve' (packages/experimental/gat-core/src/member-binders.ts:84) has no JSDoc.
+  exported class method 'TeamMemberBinderRegistry.pin' (packages/experimental/gat-core/src/member-binders.ts:87) has no JSDoc.
+  exported class property 'PreparedMemberAttachment.binder' (packages/experimental/gat-core/src/member-binders.ts:98) has no JSDoc.
+  exported class property 'PreparedMemberAttachment.record' (packages/experimental/gat-core/src/member-binders.ts:99) has no JSDoc.
+  exported class property 'PreparedMemberAttachment.value' (packages/experimental/gat-core/src/member-binders.ts:100) has no JSDoc.
+  exported class method 'PreparedMemberAttachment.transfer' (packages/experimental/gat-core/src/member-binders.ts:108) has no JSDoc.
+  exported class method 'PreparedMemberAttachment.abort' (packages/experimental/gat-core/src/member-binders.ts:113) has no JSDoc.
+  exported function 'abortPrepared' (packages/experimental/gat-core/src/member-binders.ts:124) has no JSDoc.
+  exported interface 'PreparedMember' (packages/experimental/gat-core/src/member-binders.ts:132) has no JSDoc.
+  exported function 'prepareMembers' (packages/experimental/gat-core/src/member-binders.ts:157) is missing @param registry.
+  exported function 'prepareMembers' (packages/experimental/gat-core/src/member-binders.ts:157) is missing @param rawInputs.
+  exported function 'prepareMembers' (packages/experimental/gat-core/src/member-binders.ts:157) is missing @param signal.
+  exported function 'prepareMembers' (packages/experimental/gat-core/src/member-binders.ts:157) is missing @param cleanupTimeoutMs.
+  exported function 'prepareMembers' (packages/experimental/gat-core/src/member-binders.ts:157) is missing @returns (return type: Promise<readonly PreparedMember[]>).
+  exported interface 'ReservedMemberChild' (packages/experimental/gat-core/src/member-binding.ts:10) has no JSDoc.
+  exported interface 'MemberBindingJournal' (packages/experimental/gat-core/src/member-binding.ts:18) has no JSDoc.
+  exported interface 'MemberBindingHost' (packages/experimental/gat-core/src/member-binding.ts:24) has no JSDoc.
+  exported interface 'MemberExecutionAuthority' (packages/experimental/gat-core/src/member-binding.ts:30) has no JSDoc.
+  exported class 'BoundMemberRuntime' (packages/experimental/gat-core/src/member-binding.ts:35) has no JSDoc.
+  exported class property 'BoundMemberRuntime.input' (packages/experimental/gat-core/src/member-binding.ts:36) has no JSDoc.
+  exported class property 'BoundMemberRuntime.records' (packages/experimental/gat-core/src/member-binding.ts:37) has no JSDoc.
+  exported class method 'BoundMemberRuntime.activate' (packages/experimental/gat-core/src/member-binding.ts:52) is missing @param signal.
+  exported class method 'BoundMemberRuntime.releaseMailbox' (packages/experimental/gat-core/src/member-binding.ts:75) is missing @param deliver.
+  exported class method 'BoundMemberRuntime.closeAdmission' (packages/experimental/gat-core/src/member-binding.ts:80) has no JSDoc.
+  exported class method 'BoundMemberRuntime.dispose' (packages/experimental/gat-core/src/member-binding.ts:91) has no JSDoc.
+  exported interface 'MemberBindingPorts' (packages/experimental/gat-core/src/member-binding.ts:111) has no JSDoc.
+  exported function 'provisionPreparedMember' (packages/experimental/gat-core/src/member-binding.ts:132) is missing @param prepared.
+  exported function 'provisionPreparedMember' (packages/experimental/gat-core/src/member-binding.ts:132) is missing @param ports.
+  exported function 'provisionPreparedMember' (packages/experimental/gat-core/src/member-binding.ts:132) is missing @param signal.
+  exported function 'provisionPreparedMember' (packages/experimental/gat-core/src/member-binding.ts:132) is missing @returns (return type: Promise<BoundMemberRuntime>).
+  exported function 'recoverBoundMember' (packages/experimental/gat-core/src/member-binding.ts:187) is missing @param input.
+  exported function 'recoverBoundMember' (packages/experimental/gat-core/src/member-binding.ts:187) is missing @param recordsValue.
+  exported function 'recoverBoundMember' (packages/experimental/gat-core/src/member-binding.ts:187) is missing @param registry.
+  exported function 'recoverBoundMember' (packages/experimental/gat-core/src/member-binding.ts:187) is missing @param ports.
+  exported function 'recoverBoundMember' (packages/experimental/gat-core/src/member-binding.ts:187) is missing @param signal.
+  exported function 'recoverBoundMember' (packages/experimental/gat-core/src/member-binding.ts:187) is missing @returns (return type: Promise<BoundMemberRuntime>).
+  exported class method 'MemberBindingOwner.run' (packages/experimental/gat-core/src/member-binding.ts:245) has no JSDoc.
+  exported class method 'TeamMissionBoard.create' (packages/experimental/gat-core/src/mission-board.ts:16) is missing @param membership.
+  exported class method 'TeamMissionBoard.create' (packages/experimental/gat-core/src/mission-board.ts:16) is missing @param request.
+  exported class method 'TeamMissionBoard.create' (packages/experimental/gat-core/src/mission-board.ts:16) is missing @returns (return type: Promise<TeamMissionView>).
+  exported class method 'TeamMissionBoard.get' (packages/experimental/gat-core/src/mission-board.ts:34) is missing @param membership.
+  exported class method 'TeamMissionBoard.get' (packages/experimental/gat-core/src/mission-board.ts:34) is missing @param id.
+  exported class method 'TeamMissionBoard.get' (packages/experimental/gat-core/src/mission-board.ts:34) is missing @returns (return type: TeamMissionView).
+  exported class method 'TeamMissionBoard.list' (packages/experimental/gat-core/src/mission-board.ts:41) is missing @param membership.
+  exported class method 'TeamMissionBoard.list' (packages/experimental/gat-core/src/mission-board.ts:41) is missing @returns (return type: TeamMissionView[]).
+  exported class method 'TeamMissionBoard.approve' (packages/experimental/gat-core/src/mission-board.ts:46) is missing @param caller.
+  exported class method 'TeamMissionBoard.approve' (packages/experimental/gat-core/src/mission-board.ts:46) is missing @param membership.
+  exported class method 'TeamMissionBoard.approve' (packages/experimental/gat-core/src/mission-board.ts:46) is missing @param request.
+  exported class method 'TeamMissionBoard.approve' (packages/experimental/gat-core/src/mission-board.ts:46) is missing @returns (return type: Promise<TeamMissionView>).
+  exported class method 'TeamMissionBoard.end' (packages/experimental/gat-core/src/mission-board.ts:51) is missing @param caller.
+  exported class method 'TeamMissionBoard.end' (packages/experimental/gat-core/src/mission-board.ts:51) is missing @param membership.
+  exported class method 'TeamMissionBoard.end' (packages/experimental/gat-core/src/mission-board.ts:51) is missing @param request.
+  exported class method 'TeamMissionBoard.end' (packages/experimental/gat-core/src/mission-board.ts:51) is missing @param action.
+  exported class method 'TeamMissionBoard.end' (packages/experimental/gat-core/src/mission-board.ts:51) is missing @returns (return type: Promise<TeamMissionView>).
+  exported function 'assertInitialMissionTaskPlan' (packages/experimental/gat-core/src/mission-plan.ts:39) is missing @param tasks.
+  exported function 'validateInitialTask' (packages/experimental/gat-core/src/projection.ts:79) is missing @param value.
+  exported function 'validateInitialTask' (packages/experimental/gat-core/src/projection.ts:79) is missing @returns (return type: ContentBlock[]).
+  exported class method 'TeamRoster.recoverMember' (packages/experimental/gat-core/src/roster.ts:204) is missing @param root.
+  exported class method 'TeamRoster.recoverMember' (packages/experimental/gat-core/src/roster.ts:204) is missing @param childId.
+  exported class method 'TeamRoster.recoverMember' (packages/experimental/gat-core/src/roster.ts:204) is missing @param signal.
+  exported class method 'TeamRoster.recoverMember' (packages/experimental/gat-core/src/roster.ts:204) is missing @returns (return type: Promise<Agent>).
+  exported class method 'TeamRoster.activateMember' (packages/experimental/gat-core/src/roster.ts:215) is missing @param agent.
+  exported class method 'TeamRoster.activateMember' (packages/experimental/gat-core/src/roster.ts:215) is missing @param signal.
+  exported class method 'TeamTaskBoard.views' (packages/experimental/gat-core/src/task-board.ts:131) is missing @param root.
+  exported class method 'TeamTaskBoard.views' (packages/experimental/gat-core/src/task-board.ts:131) is missing @param state.
+  exported class method 'TeamTaskBoard.views' (packages/experimental/gat-core/src/task-board.ts:131) is missing @returns (return type: TeamTaskView[]).
+  exported class method 'TeamTaskBoard.prepareApprovedPlanImport' (packages/experimental/gat-core/src/task-board.ts:142) is missing @param state.
+  exported class method 'TeamTaskBoard.prepareApprovedPlanImport' (packages/experimental/gat-core/src/task-board.ts:142) is missing @param subjects.
+  exported class method 'TeamTaskBoard.prepareApprovedPlanImport' (packages/experimental/gat-core/src/task-board.ts:142) is missing @param missionId.
+  exported class method 'TeamTaskBoard.prepareApprovedPlanImport' (packages/experimental/gat-core/src/task-board.ts:142) is missing @returns (return type: TeamTaskSnapshot[]).
+  exported function 'TeamMissionId' (packages/experimental/gat-core/src/types.ts:24) is missing @param id.
+  exported function 'TeamMissionId' (packages/experimental/gat-core/src/types.ts:24) is missing @returns (return type: TeamMissionId).
+  exported type 'JsonValue' (packages/experimental/gat-core/src/types.ts:55) has no JSDoc.
+  exported interface 'TeamMemberAttachmentRequest' (packages/experimental/gat-core/src/types.ts:56) has no JSDoc.
+  exported interface 'TeamMemberAttachmentRecord' (packages/experimental/gat-core/src/types.ts:62) has no JSDoc.
+  exported interface 'TeamMemberSpec' (packages/experimental/gat-core/src/types.ts:65) has no JSDoc.
+  exported interface 'TeamInitialization' (packages/experimental/gat-core/src/types.ts:74) has no JSDoc.
+  exported type 'TeamInitializer' (packages/experimental/gat-core/src/types.ts:79) has no JSDoc.
+  exported function 'builtInTeamMembers' (packages/experimental/gat-tools/src/team-config.ts:87) is missing @param provider.
+  exported function 'builtInTeamMembers' (packages/experimental/gat-tools/src/team-config.ts:87) is missing @returns (return type: TeamMemberDefinition[]).
+  exported function 'loadTeamMembers' (packages/experimental/gat-tools/src/team-config.ts:125) is missing @param cwd.
+  exported function 'loadTeamMembers' (packages/experimental/gat-tools/src/team-config.ts:125) is missing @param fallbackProvider.
+  exported function 'loadTeamMembers' (packages/experimental/gat-tools/src/team-config.ts:125) is missing @param maxMembers.
+  exported function 'loadTeamMembers' (packages/experimental/gat-tools/src/team-config.ts:125) is missing @param maxBytes.
+  exported function 'loadTeamMembers' (packages/experimental/gat-tools/src/team-config.ts:125) is missing @returns (return type: Promise<LoadedTeamMembers>).
+  exported class method 'ContinuableActivationRegistry.releaseReservation' (packages/subagent/subagent/src/continuation-activation.ts:521) is missing @param activation.
+  exported class method 'SubagentRuntime.startContinuable' (packages/subagent/subagent/src/index.ts:250) has no JSDoc.

@@ -1,0 +1,59 @@
+[
+  {
+    "id": "gat",
+    "repository": "/home/hoinv/work/dsh-governed-agent-team",
+    "head_unchanged": true,
+    "protected_files": 124,
+    "matching_files": 89,
+    "changed_protected_files": [
+      "docs/gat-design/ARCHITECTURE_DESIGN.md",
+      "docs/gat-design/BASIC_DESIGN.md",
+      "docs/gat-design/DETAIL_DESIGN.md",
+      "docs/gat-design/DURABLE_AGENT_INTEGRATION.md",
+      "docs/gat-design/SOURCE_CODE_MAP.md",
+      "docs/gat-design/design-verification.json",
+      "docs/gat-design/source-baseline.json",
+      "docs/gat-design/source-code-map.json",
+      "packages/core/src/index.ts",
+      "packages/core/src/mailbox.ts",
+      "packages/core/src/projection.ts",
+      "packages/core/src/roster.ts",
+      "packages/core/src/types.ts",
+      "packages/core/tests/persistence.spec.ts",
+      "packages/core/tests/projection-events.spec.ts",
+      "packages/core/tests/team.spec.ts",
+      "packages/tools/src/index.ts",
+      ".ai-work/aip/hoinv/exec/AIP-EXEC-023-implement-binding-prerequisites.md",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/dependency-qualification.md",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/implementation-handoff.md",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/.current_step.json",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/00b_active_aip.md",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/00c_active_step_context.md",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/04_findings.md",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/05_open_questions.md",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/07_output_draft.md",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/08_capture_inbox.jsonl",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/11_output_final.md",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/step_outputs/index.jsonl",
+      "packages/core/src/attachments.ts",
+      "packages/core/src/binding-deadline.ts",
+      "packages/core/src/member-binders.ts",
+      "packages/core/src/member-binding.ts",
+      "packages/core/tests/member-replay.spec.ts",
+      "packages/tools/tests/binding-views.spec.ts"
+    ],
+    "unowned_baseline_changes": [],
+    "sanctioned_aip_change": "AIP-023 status flipped active to done by governed close tool"
+  },
+  {
+    "id": "dsh-original",
+    "repository": "/home/hoinv/deepseek-harness",
+    "head_unchanged": true,
+    "protected_files": 366,
+    "matching_files": 365,
+    "changed_protected_files": [
+      "AGENTS.md"
+    ],
+    "outside_task_agreement": "AGENTS.md observed difference preserved; task issued no edit there"
+  }
+]

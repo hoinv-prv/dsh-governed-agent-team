@@ -1,0 +1,102 @@
+packages/api/gateway/tests/gateway.host.spec.ts:75:38: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/client/connection/src/rpc-host.ts:250:1: error @stylistic(max-len): This line has a length of 150. Maximum allowed is 140.
+packages/client/connection/src/rpc-host.ts:349:1: error @stylistic(max-len): This line has a length of 172. Maximum allowed is 140.
+packages/client/connection/src/rpc-host.ts:351:1: error @stylistic(max-len): This line has a length of 171. Maximum allowed is 140.
+packages/client/connection/src/rpc-host.ts:377:1: error @stylistic(max-len): This line has a length of 185. Maximum allowed is 140.
+packages/experimental/gat-core/tests/authorized-team-fixture.ts:80:1: error @stylistic(max-len): This line has a length of 196. Maximum allowed is 140.
+packages/experimental/gat-core/tests/authorized-team-fixture.ts:99:1: error @stylistic(max-len): This line has a length of 176. Maximum allowed is 140.
+packages/experimental/gat-core/tests/authorized-team-fixture.ts:107:1: error @stylistic(max-len): This line has a length of 147. Maximum allowed is 140.
+packages/experimental/gat-core/src/index.ts:139:1: error @stylistic(max-len): This line has a length of 190. Maximum allowed is 140.
+packages/experimental/gat-core/src/index.ts:302:1: error @stylistic(max-len): This line has a length of 190. Maximum allowed is 140.
+packages/experimental/gat-core/src/index.ts:509:1: error @stylistic(max-len): This line has a length of 186. Maximum allowed is 140.
+packages/experimental/gat-core/src/index.ts:547:1: error @stylistic(max-len): This line has a length of 165. Maximum allowed is 140.
+packages/experimental/gat-core/src/index.ts:654:1: error @stylistic(max-len): This line has a length of 181. Maximum allowed is 140.
+packages/experimental/gat-core/src/index.ts:661:1: error @stylistic(max-len): This line has a length of 186. Maximum allowed is 140.
+packages/experimental/gat-core/src/index.ts:632:37: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/src/index.ts:175:1: error @stylistic(indent): Expected indentation of 10 spaces but found 8.
+packages/experimental/gat-core/src/index.ts:176:1: error @stylistic(indent): Expected indentation of 10 spaces but found 8.
+packages/experimental/gat-core/src/index.ts:177:1: error @stylistic(indent): Expected indentation of 10 spaces but found 8.
+packages/experimental/gat-core/src/index.ts:178:1: error @stylistic(indent): Expected indentation of 10 spaces but found 8.
+packages/experimental/gat-core/src/index.ts:179:1: error @stylistic(indent): Expected indentation of 10 spaces but found 8.
+packages/experimental/gat-core/src/index.ts:180:1: error @stylistic(indent): Expected indentation of 10 spaces but found 8.
+packages/experimental/gat-core/src/index.ts:181:1: error @stylistic(indent): Expected indentation of 10 spaces but found 8.
+packages/experimental/gat-core/src/index.ts:261:1: error @stylistic(indent): Expected indentation of 6 spaces but found 4.
+packages/experimental/gat-core/src/index.ts:262:1: error @stylistic(indent): Expected indentation of 6 spaces but found 4.
+packages/experimental/gat-core/src/index.ts:263:1: error @stylistic(indent): Expected indentation of 6 spaces but found 4.
+packages/experimental/gat-core/src/index.ts:264:1: error @stylistic(indent): Expected indentation of 6 spaces but found 4.
+packages/experimental/gat-core/src/index.ts:265:1: error @stylistic(indent): Expected indentation of 6 spaces but found 4.
+packages/experimental/gat-core/src/index.ts:266:1: error @stylistic(indent): Expected indentation of 6 spaces but found 4.
+packages/experimental/gat-core/src/index.ts:267:1: error @stylistic(indent): Expected indentation of 6 spaces but found 4.
+packages/experimental/gat-core/src/index.ts:268:1: error @stylistic(indent): Expected indentation of 6 spaces but found 4.
+packages/experimental/gat-core/src/index.ts:269:1: error @stylistic(indent): Expected indentation of 6 spaces but found 4.
+packages/api/gateway/src/index.ts:310:1: error @stylistic(max-len): This line has a length of 177. Maximum allowed is 140.
+packages/experimental/gat-core/tests/authority.spec.ts:256:45: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/authority.spec.ts:94:1: error @stylistic(max-len): This line has a length of 161. Maximum allowed is 140.
+packages/experimental/gat-core/tests/authority.spec.ts:258:64: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/authority.spec.ts:283:86: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/authority.spec.ts:289:64: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/authority.spec.ts:302:39: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/authority.spec.ts:317:68: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/projection-events.spec.ts:166:1: error @stylistic(max-len): This line has a length of 172. Maximum allowed is 140.
+packages/experimental/gat-core/tests/projection-events.spec.ts:188:1: error @stylistic(max-len): This line has a length of 183. Maximum allowed is 140.
+packages/experimental/gat-tools/tests/tool-team.spec.ts:108:1: error @stylistic(max-len): This line has a length of 288. Maximum allowed is 140.
+packages/experimental/gat-core/tests/member-binding.spec.ts:124:29: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:125:27: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:201:31: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:202:29: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:234:29: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:235:30: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:267:27: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:298:29: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:299:31: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:320:29: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:339:29: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:358:29: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:390:29: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:414:29: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:440:29: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:441:26: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-binding.spec.ts:95:1: error @stylistic(max-len): This line has a length of 141. Maximum allowed is 140.
+packages/experimental/gat-core/tests/member-binding.spec.ts:96:1: error @stylistic(max-len): This line has a length of 147. Maximum allowed is 140.
+packages/experimental/gat-core/tests/member-binding.spec.ts:205:1: error @stylistic(max-len): This line has a length of 147. Maximum allowed is 140.
+packages/experimental/gat-core/tests/member-binding.spec.ts:237:1: error @stylistic(max-len): This line has a length of 189. Maximum allowed is 140.
+packages/experimental/gat-core/tests/member-binding.spec.ts:444:1: error @stylistic(max-len): This line has a length of 147. Maximum allowed is 140.
+packages/experimental/gat-core/tests/member-binding.spec.ts:114:28: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/member-binding.spec.ts:269:76: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/member-binding.spec.ts:271:59: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/member-binding.spec.ts:273:76: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/member-binding.spec.ts:274:57: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/member-binding.spec.ts:362:54: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/member-binding.spec.ts:363:69: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/member-binding.spec.ts:380:115: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/member-binding.spec.ts:381:144: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/member-binding.spec.ts:443:58: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/member-attachments.spec.ts:224:34: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-attachments.spec.ts:225:35: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/tests/member-attachments.spec.ts:26:34: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-core/tests/member-attachments.spec.ts:181:42: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts:124:43: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts:125:43: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts:160:43: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts:161:43: error typescript(no-invalid-void-type): Use `void` only as a return type or generic type argument. help: Replace this `void` type with an allowed type, or keep `void` only in a valid return position.
+packages/experimental/gat-core/src/roster.ts:551:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/subagent/tool-subagent/src/index.ts:623:7: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/index.ts:1004:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/index.ts:1091:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/index.ts:1197:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:317:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:418:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:448:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:466:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:494:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/experimental/gat-core/src/mailbox.ts:294:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/subagent/subagent/src/index.ts:538:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:553:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:555:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:557:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:559:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:561:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:563:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:565:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent-loop/src/index.ts:181:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent-loop/src/index.ts:761:5: warning: Unused oxlint-disable directive (no problems were reported).

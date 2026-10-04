@@ -1,6 +1,7 @@
 /** Shared admission cutoff and bounded settlement for the Team runtime. */
 
 import { TeamError } from './error.ts'
+import { BindingDeadline } from './binding-deadline.ts'
 
 /** Owns the single Team runtime cancellation fact and disposal timeout. */
 export class TeamRuntimeLifecycle {
@@ -41,6 +42,14 @@ export class TeamRuntimeLifecycle {
     }
     return false
   }
+
+  /** Create one fresh total cleanup deadline independent of a cancelled execution signal.
+   * @returns the configured cleanup budget, owned and finished by its caller.
+   */
+  cleanupDeadline(): BindingDeadline { return new BindingDeadline(this.disposalTimeoutMs) }
+
+  /** Reject admission synchronously after Team withdrawal begins. */
+  assertOpen(): void { if (this.disposed) throw this.reason }
 
   /** Close Team runtime admission and cancel admitted interruptible work. */
   close(): void {

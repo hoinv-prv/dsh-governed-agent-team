@@ -1,0 +1,10 @@
+[
+  {
+    "repository": "/home/hoinv/deepseek-harness",
+    "head_unchanged": true,
+    "protected_files": 366,
+    "changed_protected_files": [
+      "AGENTS.md"
+    ]
+  }
+]

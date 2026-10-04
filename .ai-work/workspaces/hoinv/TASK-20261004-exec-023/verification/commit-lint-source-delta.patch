@@ -1,0 +1,536 @@
+--- before/packages/api/gateway/src/index.ts
++++ after/packages/api/gateway/src/index.ts
+@@ -307,7 +307,8 @@
+     }
+ 
+     try {
+-      return await withControlInvocation(prepared.endpoint, request.args, prepared.args, async () => Reflect.apply(prepared.method, prepared.receiver, prepared.args) as unknown)
++      return await withControlInvocation(prepared.endpoint, request.args, prepared.args,
++        async () => Reflect.apply(prepared.method, prepared.receiver, prepared.args) as unknown)
+     } catch (error) {
+       if (request.signal?.aborted === true) throw remoteCancelled(prepared.endpoint, error)
+       throw error
+--- before/packages/api/gateway/tests/gateway.host.spec.ts
++++ after/packages/api/gateway/tests/gateway.host.spec.ts
+@@ -72,7 +72,7 @@
+     if (request.mode === 'wrong-action') return consumeHumanControl('goals/create', agent, request)
+     if (request.mode === 'nested') return this.ctx.typertGateway.invoke({ namespace: 'goals', method: 'control', args: { agentId: agent.id, request: { mode: 'approve' } } })
+     if (request.mode === 'late-async') {
+-      const gate = new Promise<void>(resolve => { this.lateResume = resolve })
++      const gate = new Promise<void>((resolve) => { this.lateResume = resolve })
+       this.lateTask = gate.then(take)
+       void this.lateTask.catch(() => undefined)
+       return 'retained async scope'
+--- before/packages/client/connection/src/rpc-host.ts
++++ after/packages/client/connection/src/rpc-host.ts
+@@ -247,7 +247,8 @@
+       const rejection = authenticate(request)
+       if (rejection !== undefined) return new Response(rejection === 401 ? 'unauthorized' : 'forbidden', { status: rejection })
+       try {
+-        const result = await authenticatedControl(endpoint, message.payload, request.signal, () => handler(endpoint, message.payload, request.signal))
++        const result = await authenticatedControl(endpoint, message.payload, request.signal,
++          () => handler(endpoint, message.payload, request.signal))
+         return fullResponse(message.rpcId, result)
+       } catch (error) {
+         return new Response(`handler failure: ${String(error)}`, { status: 500 })
+@@ -346,9 +347,12 @@
+  * @param run - invocation retaining this request lifetime.
+  * @returns the business result; unverified calls retain no admission.
+  */
+-export async function withControlInvocation<T>(endpoint: string, args: Readonly<Record<string, unknown>>, resolved: readonly unknown[], run: () => Promise<T>): Promise<T> {
++export async function withControlInvocation<T>(
++  endpoint: string, args: Readonly<Record<string, unknown>>, resolved: readonly unknown[], run: () => Promise<T>,
++): Promise<T> {
+   const admission = admissions.getStore()
+-  if (admission?.active && !admission.signal.aborted && admission.endpoint === endpoint && admission.wireDigest === digest({ args }) && admission.resolved === undefined) {
++  if (admission?.active && !admission.signal.aborted && admission.endpoint === endpoint
++    && admission.wireDigest === digest({ args }) && admission.resolved === undefined) {
+     admission.resolved = Object.freeze([...resolved])
+     admission.requestDigest = digest(resolved[1] === admission.signal ? undefined : resolved[1])
+     return await run()
+@@ -374,7 +378,8 @@
+ export function consumeHumanControl(action: string, caller: { readonly id: string }, request: unknown): HumanControlReceipt {
+   const admission = admissions.getStore()
+   const resolved = admission?.resolved
+-  if (!admission?.active || admission.consumed || admission.signal.aborted || admission.endpoint !== action || resolved?.[0] !== caller || admission.requestDigest !== digest(request)) {
++  if (!admission?.active || admission.consumed || admission.signal.aborted || admission.endpoint !== action
++    || resolved?.[0] !== caller || admission.requestDigest !== digest(request)) {
+     throw new Error('HUMAN_CONTROL_REQUIRED: exact authenticated action/session/revision receipt required')
+   }
+   admission.consumed = true
+--- before/packages/experimental/gat-core/src/index.ts
++++ after/packages/experimental/gat-core/src/index.ts
+@@ -136,7 +136,8 @@
+     this.lifecycle = new TeamRuntimeLifecycle(this.config.disposalTimeoutMs)
+     this.journal = new TeamJournal(ctx, (root) => { this.activity.notify(TeamId(root.id)) }, () => this.lifecycle.assertOpen())
+     this.authority = new TeamExecutionAuthority(this.journal)
+-    this.roster = new TeamRoster(ctx, this.journal, this.lifecycle, this.config.maxMembers, agent => this.assertExecution(agent), (caller, request) => this.consumeMemberAdd(caller, request))
++    this.roster = new TeamRoster(ctx, this.journal, this.lifecycle, this.config.maxMembers,
++      agent => this.assertExecution(agent), (caller, request) => this.consumeMemberAdd(caller, request))
+     this.mailbox = new TeamMailbox(
+       ctx,
+       this.journal,
+@@ -172,13 +173,13 @@
+       let executionRequired = initialMembership !== undefined && this.journal.state(initialMembership.root).members.length > 0
+       ctx.effect(() => {
+         const removeGuard = agent.ctx.agents.guardExecution(agent, () => {
+-        const membership = this.roster.tryMembership(agent)
+-        const parentId = agent.session.header.parentSession
+-        const parent = parentId === undefined ? undefined : this.ctx.agents.get(parentId)
+-        const rostered = parent !== undefined && this.journal.state(parent).members.some(member => member.id === agent.id)
+-        if (rostered || membership && this.journal.state(membership.root).members.length > 0) executionRequired = true
+-        if (executionRequired) this.assertExecution(agent)
+-        return undefined
++          const membership = this.roster.tryMembership(agent)
++          const parentId = agent.session.header.parentSession
++          const parent = parentId === undefined ? undefined : this.ctx.agents.get(parentId)
++          const rostered = parent !== undefined && this.journal.state(parent).members.some(member => member.id === agent.id)
++          if (rostered || membership && this.journal.state(membership.root).members.length > 0) executionRequired = true
++          if (executionRequired) this.assertExecution(agent)
++          return undefined
+         })
+         return async () => {
+           this.lifecycle.close()
+@@ -258,15 +259,15 @@
+   async recoverMember(caller: Agent, targetName: string, request: BindTeamExecutionRequest, signal: AbortSignal): Promise<Agent> {
+     return await this.lifecycle.admitMutation(async () => {
+       const combined = AbortSignal.any([signal, this.lifecycle.signal])
+-    const membership = this.roster.membership(caller)
+-    if (membership.role !== 'lead') throw new TeamError('only Lead host control may recover a member', 'TEAM_LEAD_REQUIRED')
+-    this.assertExecution(caller)
+-    const member = this.journal.state(membership.root).members.find(value => value.name === targetName && value.phase === 'active')
+-    if (!member) throw new TeamError('exact active member is missing', 'TEAM_MEMBER_NOT_FOUND')
+-    const agent = await this.roster.recoverMember(membership.root, member.id, combined)
+-    this.bindExecution(agent, request)
+-    await this.activateMember(agent, combined)
+-    return agent
++      const membership = this.roster.membership(caller)
++      if (membership.role !== 'lead') throw new TeamError('only Lead host control may recover a member', 'TEAM_LEAD_REQUIRED')
++      this.assertExecution(caller)
++      const member = this.journal.state(membership.root).members.find(value => value.name === targetName && value.phase === 'active')
++      if (!member) throw new TeamError('exact active member is missing', 'TEAM_MEMBER_NOT_FOUND')
++      const agent = await this.roster.recoverMember(membership.root, member.id, combined)
++      this.bindExecution(agent, request)
++      await this.activateMember(agent, combined)
++      return agent
+     })
+   }
+ 
+@@ -299,7 +300,8 @@
+ 
+   private memberAddDigest(request: ApproveTeamMemberAddRequest): string {
+     return payloadSha256(JSON.parse(canonicalJson({ name: request.name, description: request.description, prompt: request.prompt,
+-      context: request.context, provider: request.provider, ...(request.agentOptions === undefined ? {} : { agentOptions: request.agentOptions }), attachments: request.attachments ?? [] })))
++      context: request.context, provider: request.provider,
++      ...(request.agentOptions === undefined ? {} : { agentOptions: request.agentOptions }), attachments: request.attachments ?? [] })))
+   }
+ 
+   private grantMemberAdd(caller: Agent, request: ApproveTeamMemberAddRequest): void {
+@@ -506,7 +508,8 @@
+         }
+         let receipt
+         try { receipt = consumeHumanControl('agentTeams/approvePlan', caller, request) } catch (cause) { throw new TeamError('exact HUMAN plan control receipt required', 'TEAM_HUMAN_CONTROL_REQUIRED', { cause }) }
+-        const approval = { approvedRevision: request.approvedRevision, eventId: receipt.id, digest: receipt.digest, humanSessionId: receipt.sessionId } satisfies TeamPlanApprovalSnapshot
++        const approval = { approvedRevision: request.approvedRevision, eventId: receipt.id,
++          digest: receipt.digest, humanSessionId: receipt.sessionId } satisfies TeamPlanApprovalSnapshot
+         await this.journal.appendAndFlush(membership.root, 'team/plan-approved', {
+           version: 3,
+           teamId: TeamId(membership.root.id),
+@@ -544,7 +547,8 @@
+         if (diagnostics.length) throw new TeamError(`Team plan preflight failed: ${diagnostics.join('; ')}`, 'TEAM_PLAN_PREFLIGHT_FAILED')
+         let receipt
+         try { receipt = consumeHumanControl('agentTeams/importApprovedPlan', caller, request) } catch (cause) { throw new TeamError('exact HUMAN import control receipt required', 'TEAM_HUMAN_CONTROL_REQUIRED', { cause }) }
+-        const approval: TeamPlanApprovalSnapshot = { approvedRevision: postRevision, eventId: receipt.id, digest: receipt.digest, humanSessionId: receipt.sessionId }
++        const approval: TeamPlanApprovalSnapshot = { approvedRevision: postRevision, eventId: receipt.id,
++          digest: receipt.digest, humanSessionId: receipt.sessionId }
+         await this.journal.appendManyAndFlush(membership.root, [
+           ...imported.map(task => ({ type: 'team/task' as const, data: { version: 3 as const, teamId: TeamId(membership.root.id), task } })),
+           { type: 'team/plan-approved' as const, data: { version: 3 as const, teamId: TeamId(membership.root.id), approval } },
+@@ -629,7 +633,7 @@
+     }
+     const diagnostics = [...input.diagnostics]
+     const names = new Set<string>()
+-    const specs = input.members.map(spec => {
++    const specs = input.members.map((spec) => {
+       if (!spec || typeof spec.name !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(spec.name) || spec.name.length > 64 || spec.name === 'lead' || names.has(spec.name)) {
+         throw new TeamError('invalid or duplicate normalized member name', 'TEAM_INVALID_MEMBER_NAME')
+       }
+@@ -651,14 +655,16 @@
+       if (this.ctx.subagents.getProvider(continuationProvider) === undefined) {
+         throw new TeamError('normalized continuation provider unavailable', 'TEAM_INVALID_CONFIG')
+       }
+-      return { ...spec, description, continuationProvider, initialTask, attachments, ...spec.agentOptions === undefined ? {} : { agentOptions: structuredClone(spec.agentOptions) } }
++      return { ...spec, description, continuationProvider, initialTask, attachments,
++        ...spec.agentOptions === undefined ? {} : { agentOptions: structuredClone(spec.agentOptions) } }
+     })
+     for (const spec of specs) {
+       signal.throwIfAborted()
+       const provider = spec.agentOptions?.provider ?? lead.options.provider
+       const model = spec.agentOptions?.model ?? lead.options.model
+       if (provider === undefined || model === undefined) throw new TeamError('normalized model route unavailable', 'TEAM_INVALID_CONFIG')
+-      await this.ctx.llm.resolveCallConfig({ provider, model, ...spec.agentOptions?.reasoningEffort === undefined ? {} : { reasoningEffort: spec.agentOptions.reasoningEffort } }, signal)
++      await this.ctx.llm.resolveCallConfig({ provider, model,
++        ...spec.agentOptions?.reasoningEffort === undefined ? {} : { reasoningEffort: spec.agentOptions.reasoningEffort } }, signal)
+     }
+     return { source, diagnostics, members: specs }
+   }
+--- before/packages/experimental/gat-core/tests/authority.spec.ts
++++ after/packages/experimental/gat-core/tests/authority.spec.ts
+@@ -91,7 +91,8 @@
+     try {
+       const mission = await approved(fixture)
+       await expect(ctx.agentTeams[action](lead, { missionId: mission.id, expectedRevision: mission.revision })).rejects.toMatchObject({ code: 'TEAM_HUMAN_CONTROL_REQUIRED' })
+-      expect(await control.call(action, lead.id, { missionId: mission.id, expectedRevision: mission.revision })).toMatchObject({ ok: true, value: { ok: true } })
++      expect(await control.call(action, lead.id, { missionId: mission.id, expectedRevision: mission.revision }))
++        .toMatchObject({ ok: true, value: { ok: true } })
+       expect(() => ctx.agentTeams.assertExecution(lead)).toThrow('closed, or revoked')
+     } finally { await control.close(); await ctx.fiber.dispose() }
+   })
+@@ -253,9 +254,9 @@
+       const mission = await approved(fixture)
+       const child = ctx.agents.get(member.member.id)!
+       ctx.agentTeams.bindExecution(child, { missionId: mission.id, expectedRevision: mission.revision })
+-      const entered = Promise.withResolvers<void>()
++      const entered = Promise.withResolvers<ReturnType<() => void>>()
+       const flush = ctx.sessions.flush.bind(ctx.sessions)
+-      vi.spyOn(ctx.sessions, 'flush').mockImplementation(async session => {
++      vi.spyOn(ctx.sessions, 'flush').mockImplementation(async (session) => {
+         if (session.id === child.id) { entered.resolve(); await release.promise }
+         return flush(session)
+       })
+@@ -280,13 +281,13 @@
+     try {
+       const materialize = ctx.subagents.materializeContinuable.bind(ctx.subagents)
+       let childId: SessionId | undefined
+-      vi.spyOn(ctx.subagents, 'materializeContinuable').mockImplementationOnce(async spec => {
++      vi.spyOn(ctx.subagents, 'materializeContinuable').mockImplementationOnce(async (spec) => {
+         const reserved = await materialize(spec)
+         childId = reserved.childId
+         return { ...reserved, persistInitialPrompt: async () => { throw new Error('initial persistence failed') } }
+       })
+       const flush = ctx.sessions.flush.bind(ctx.sessions)
+-      vi.spyOn(ctx.sessions, 'flush').mockImplementation(async session => {
++      vi.spyOn(ctx.sessions, 'flush').mockImplementation(async (session) => {
+         if (session.id === childId) await release.promise
+         return flush(session)
+       })
+@@ -299,7 +300,7 @@
+       await vi.waitFor(() => expect(ctx.agents.get(childId!)).toBeUndefined())
+     } finally {
+       release.resolve(true); await control.close()
+-      await ctx.fiber.dispose().catch(error => { expect(error).toBeInstanceOf(AggregateError) })
++      await ctx.fiber.dispose().catch((error) => { expect(error).toBeInstanceOf(AggregateError) })
+     }
+   })
+ 
+@@ -314,7 +315,7 @@
+       ctx.agentTeams.bindExecution(lead, { missionId: mission.id, expectedRevision: revision })
+       const service = ctx.agentTeams
+       const flush = ctx.sessions.flush.bind(ctx.sessions)
+-      vi.spyOn(ctx.sessions, 'flush').mockImplementationOnce(async session => { await release.promise; return flush(session) })
++      vi.spyOn(ctx.sessions, 'flush').mockImplementationOnce(async (session) => { await release.promise; return flush(session) })
+       const claim = service.updateTask(lead, { taskId: task.id, expectedRevision: task.revision, action: 'claim' })
+       const failedClaim = expect(claim).rejects.toMatchObject({ code: 'TEAM_DISPOSED' })
+       await vi.waitFor(() => expect(service.getTask(lead, task.id).status).toBe('in_progress'))
+--- before/packages/experimental/gat-core/tests/authorized-team-fixture.ts
++++ after/packages/experimental/gat-core/tests/authorized-team-fixture.ts
+@@ -77,7 +77,8 @@
+   await authorizeFixtureAgent(ctx, caller)
+   if (request.taskId !== undefined) {
+     const task = ctx.root.agentTeams.getTask(caller, request.taskId)
+-    if (task.missionId) ctx.root.agentTeams.bindExecution(caller, { missionId: task.missionId, expectedRevision: ctx.root.agentTeams.getMission(caller, task.missionId).revision, taskId: task.id })
++    if (task.missionId) ctx.root.agentTeams.bindExecution(caller, { missionId: task.missionId,
++      expectedRevision: ctx.root.agentTeams.getMission(caller, task.missionId).revision, taskId: task.id })
+   }
+   return ctx.root.agentTeams.reportWork(caller, request)
+ }
+@@ -96,7 +97,8 @@
+   await authorizeFixtureAgent(ctx, caller)
+   const task = ctx.root.agentTeams.listTasks(caller).find(value => value.id === request.taskId)
+   if (task?.missionId && task.status === 'in_progress' && task.ownerName === ctx.root.agentTeams.membership(caller).name) {
+-    ctx.root.agentTeams.bindExecution(caller, { missionId: task.missionId, expectedRevision: ctx.root.agentTeams.getMission(caller, task.missionId).revision, taskId: task.id })
++    ctx.root.agentTeams.bindExecution(caller, { missionId: task.missionId,
++      expectedRevision: ctx.root.agentTeams.getMission(caller, task.missionId).revision, taskId: task.id })
+   }
+   return ctx.root.agentTeams.updateTask(caller, request)
+ }
+@@ -104,5 +106,6 @@
+ /** Explicit trusted host recovery of the named fixture member; mailbox queues never choose its mission. */
+ export async function recoverFixtureMember(ctx: Context, lead: Agent, name: string) {
+   const mission = await authorizeFixtureAgent(ctx, lead)
+-  return ctx.root.agentTeams.recoverMember(lead, name, { missionId: mission.id, expectedRevision: mission.revision }, new AbortController().signal)
++  return ctx.root.agentTeams.recoverMember(lead, name, { missionId: mission.id, expectedRevision: mission.revision },
++    new AbortController().signal)
+ }
+--- before/packages/experimental/gat-core/tests/member-attachments.spec.ts
++++ after/packages/experimental/gat-core/tests/member-attachments.spec.ts
+@@ -23,7 +23,7 @@
+ 
+ function deferred<T>() {
+   let resolve!: (value: T | PromiseLike<T>) => void
+-  const promise = new Promise<T>(done => { resolve = done })
++  const promise = new Promise<T>((done) => { resolve = done })
+   return { promise, resolve }
+ }
+ 
+@@ -178,7 +178,7 @@
+     for (const id of ['alpha', 'beta', 'gamma']) {
+       const abort = vi.fn(async () => { calls.push(`abort:${id}`) })
+       aborts.set(id, abort)
+-      registry.register(binder(id, async input => {
++      registry.register(binder(id, async (input) => {
+         calls.push(`prepare:${id}`)
+         if (id === 'gamma') throw new Error('injected prepare failure')
+         return { attachment: input.payload, value: id, abort }
+@@ -221,8 +221,8 @@
+   it('pins unresolved prepares through cancellation until late abort settles', async () => {
+     const registry = new TeamMemberBinderRegistry(() => [])
+     const prepareGate = deferred<PreparedAttachment>()
+-    const cleanupGate = deferred<void>()
+-    const abortStarted = deferred<void>()
++    const cleanupGate = deferred<ReturnType<() => void>>()
++    const abortStarted = deferred<ReturnType<() => void>>()
+     let prepareStarted = false
+     const unregister = registry.register(binder('memory', async () => {
+       prepareStarted = true
+--- before/packages/experimental/gat-core/tests/member-binding.spec.ts
++++ after/packages/experimental/gat-core/tests/member-binding.spec.ts
+@@ -92,8 +92,10 @@
+     setValid: (next: boolean) => { valid = next },
+     setAuthorized: (next: boolean) => { authorized = next },
+     setPublishThrows: (next: boolean) => { publishThrows = next },
+-    prepared: async (signal = new AbortController().signal) => (await prepareMembers(registry, [input], signal, ports.cleanupTimeoutMs))[0]!,
+-    records: () => ids.map(binderId => attachmentRecord({ binderId, protocolVersion: 1, required: true, payload: null }, { persisted: binderId })),
++    prepared: async (signal = new AbortController().signal) =>
++      (await prepareMembers(registry, [input], signal, ports.cleanupTimeoutMs))[0]!,
++    records: () => ids.map(binderId =>
++      attachmentRecord({ binderId, protocolVersion: 1, required: true, payload: null }, { persisted: binderId })),
+   }
+ }
+ 
+@@ -111,7 +113,7 @@
+       for (let index = 0; index < offset; index++) await Promise.resolve()
+       cancellation.abort(new Error('handoff cancellation'))
+       let handedOff = 0
+-      await operation.then(resource => { expect(resource.id).toBe(offset); handedOff++ }, () => undefined)
++      await operation.then((resource) => { expect(resource.id).toBe(offset); handedOff++ }, () => undefined)
+       for (let index = 0; index < 12; index++) await Promise.resolve()
+       // Either the caller owns the resource, or the late cleanup owns it. Never neither/both.
+       expect({ offset, owners: handedOff + late.mock.calls.length }).toEqual({ offset, owners: 1 })
+@@ -121,8 +123,8 @@
+   it('keeps the initial item quarantined until the active flush barrier has completed', async () => {
+     const f = fixture()
+     const prepared = await f.prepared()
+-    const entered = barrier<void>()
+-    const flush = barrier<void>()
++    const entered = barrier<ReturnType<() => void>>()
++    const flush = barrier<ReturnType<() => void>>()
+     vi.mocked(f.ports.journal.active).mockImplementation(async () => {
+       f.trace.push('active:entered'); entered.resolve(); await flush.promise
+       f.setPhase('active'); f.trace.push('flush:active')
+@@ -198,11 +200,12 @@
+ 
+   it('rechecks authorization for a concurrent activation retry and marks activation failures unavailable', async () => {
+     const f = fixture()
+-    const admission = barrier<void>()
+-    const entered = barrier<void>()
++    const admission = barrier<ReturnType<() => void>>()
++    const entered = barrier<ReturnType<() => void>>()
+     vi.mocked(f.child.activate).mockImplementation(async () => { entered.resolve(); await admission.promise; throw new Error('wake failed') })
+     f.setPhase('active')
+-    const runtime = new BoundMemberRuntime({ ...f.input, scope: f.child.scope }, f.records(), f.child, [...f.bindings.values()], f.ports.authority)
++    const runtime = new BoundMemberRuntime({ ...f.input, scope: f.child.scope }, f.records(),
++      f.child, [...f.bindings.values()], f.ports.authority)
+     const first = runtime.activate(new AbortController().signal)
+     void first.catch(() => undefined)
+     await entered.promise
+@@ -231,10 +234,13 @@
+   it('serializes simultaneous same-generation recovery and disposes the previous owner before a new generation', async () => {
+     const f = fixture()
+     const owner = new MemberBindingOwner(f.ports)
+-    const entered = barrier<void>()
+-    const creation = barrier<void>()
+-    f.setPhase('active')
+-    const create = vi.fn(async () => { entered.resolve(); await creation.promise; return await recoverBoundMember(f.input, f.records(), f.registry, f.ports, new AbortController().signal) })
++    const entered = barrier<ReturnType<() => void>>()
++    const creation = barrier<ReturnType<() => void>>()
++    f.setPhase('active')
++    const create = vi.fn(async () => {
++      entered.resolve(); await creation.promise
++      return await recoverBoundMember(f.input, f.records(), f.registry, f.ports, new AbortController().signal)
++    })
+     const first = owner.run(f.input, create, new AbortController().signal)
+     await entered.promise
+     const second = owner.run(f.input, create, new AbortController().signal)
+@@ -264,14 +270,14 @@
+   it('uses one total cleanup signal and invokes remaining reverse callbacks after the deadline', async () => {
+     const f = fixture()
+     const runtime = await provisionPreparedMember(await f.prepared(), f.ports, new AbortController().signal)
+-    const never = barrier<void>()
++    const never = barrier<ReturnType<() => void>>()
+     const signals: AbortSignal[] = []
+-    vi.mocked(f.bindings.get('memory-b')!.settle).mockImplementation(async signal => { signals.push(signal); await never.promise })
++    vi.mocked(f.bindings.get('memory-b')!.settle).mockImplementation(async (signal) => { signals.push(signal); await never.promise })
+     for (const [id, binding] of f.bindings) {
+-      vi.mocked(binding.release).mockImplementation(async signal => { signals.push(signal); f.trace.push(`release:${id}`) })
+-    }
+-    vi.mocked(f.bindings.get('memory-a')!.settle).mockImplementation(async signal => { signals.push(signal) })
+-    vi.mocked(f.child.dispose).mockImplementation(async signal => { signals.push(signal); f.trace.push('child:dispose') })
++      vi.mocked(binding.release).mockImplementation(async (signal) => { signals.push(signal); f.trace.push(`release:${id}`) })
++    }
++    vi.mocked(f.bindings.get('memory-a')!.settle).mockImplementation(async (signal) => { signals.push(signal) })
++    vi.mocked(f.child.dispose).mockImplementation(async (signal) => { signals.push(signal); f.trace.push('child:dispose') })
+     vi.useFakeTimers()
+     const disposal = runtime.dispose(10)
+     await vi.advanceTimersByTimeAsync(10)
+@@ -295,8 +301,8 @@
+   it('rejects cancellation promptly, retains the pending registration, and aborts a late prepared resource once', async () => {
+     const f = fixture(['memory-a'])
+     const acquired = barrier<PreparedAttachment>()
+-    const entered = barrier<void>()
+-    const abortDone = barrier<void>()
++    const entered = barrier<ReturnType<() => void>>()
++    const abortDone = barrier<ReturnType<() => void>>()
+     const late: PreparedAttachment = { attachment: { persisted: 'memory-a' }, value: null, abort: vi.fn(async () => { await abortDone.promise }) }
+     vi.mocked(f.binders.get('memory-a')!.prepare).mockImplementation(async () => { entered.resolve(); return await acquired.promise })
+     const cancellation = new AbortController()
+@@ -317,7 +323,7 @@
+   it('tombstones and drains a child that materializes after provisioning cancellation', async () => {
+     const f = fixture(['memory-a'])
+     const childReady = barrier<ReservedMemberChild>()
+-    const entered = barrier<void>()
++    const entered = barrier<ReturnType<() => void>>()
+     vi.mocked(f.ports.host.materialize).mockImplementation(async () => { entered.resolve(); return await childReady.promise })
+     const cancellation = new AbortController()
+     const operation = provisionPreparedMember(await f.prepared(), f.ports, cancellation.signal)
+@@ -336,7 +342,7 @@
+   it('cuts off and releases a binding that arrives after the member acquisition was cancelled', async () => {
+     const f = fixture(['memory-a'])
+     const bindingReady = barrier<DisposableBinding>()
+-    const entered = barrier<void>()
++    const entered = barrier<ReturnType<() => void>>()
+     vi.mocked(f.binders.get('memory-a')!.bind).mockImplementation(async () => { entered.resolve(); return await bindingReady.promise })
+     const cancellation = new AbortController()
+     const operation = provisionPreparedMember(await f.prepared(), f.ports, cancellation.signal)
+@@ -355,12 +361,12 @@
+   it('bounds reverse prepared cleanup and invokes earlier aborts even when the last ignores cancellation', async () => {
+     const f = fixture()
+     const prepared = await f.prepared()
+-    const blocked = barrier<void>()
++    const blocked = barrier<ReturnType<() => void>>()
+     const order: string[] = []
+     const signals: AbortSignal[] = []
+     const last = prepared.leases[1]!
+-    vi.spyOn(last, 'abort').mockImplementation(async signal => { order.push('last'); signals.push(signal); await blocked.promise })
+-    vi.spyOn(prepared.leases[0]!, 'abort').mockImplementation(async signal => { order.push('first'); signals.push(signal) })
++    vi.spyOn(last, 'abort').mockImplementation(async (signal) => { order.push('last'); signals.push(signal); await blocked.promise })
++    vi.spyOn(prepared.leases[0]!, 'abort').mockImplementation(async (signal) => { order.push('first'); signals.push(signal) })
+     const { BindingDeadline } = await import('../src/member-binding.ts')
+     vi.useFakeTimers()
+     const deadline = new BindingDeadline(10)
+@@ -377,8 +383,8 @@
+   it('shares the cleanup deadline for rejected prepared output and all previously prepared resources', async () => {
+     const f = fixture()
+     const signals: AbortSignal[] = []
+-    vi.mocked(f.binders.get('memory-a')!.prepare).mockResolvedValue({ attachment: null, value: null, abort: async signal => { signals.push(signal) } })
+-    vi.mocked(f.binders.get('memory-b')!.prepare).mockResolvedValue({ attachment: undefined as unknown as JsonValue, value: null, abort: async signal => { signals.push(signal) } })
++    vi.mocked(f.binders.get('memory-a')!.prepare).mockResolvedValue({ attachment: null, value: null, abort: async (signal) => { signals.push(signal) } })
++    vi.mocked(f.binders.get('memory-b')!.prepare).mockResolvedValue({ attachment: undefined as unknown as JsonValue, value: null, abort: async (signal) => { signals.push(signal) } })
+     await expect(f.prepared()).rejects.toMatchObject({ code: 'TEAM_INVALID_ATTACHMENT' })
+     expect(signals).toHaveLength(2)
+     expect(signals[0]).toBe(signals[1])
+@@ -387,7 +393,7 @@
+   it('cancels pending cold recovery promptly and drains a late child without tombstoning its active initial item', async () => {
+     const f = fixture(['memory-a'])
+     f.setPhase('active')
+-    const entered = barrier<void>()
++    const entered = barrier<ReturnType<() => void>>()
+     const childReady = barrier<ReservedMemberChild>()
+     vi.mocked(f.ports.host.recover).mockImplementation(async () => { entered.resolve(); return await childReady.promise })
+     const cancellation = new AbortController()
+@@ -411,7 +417,7 @@
+   it('cancels pending binder recovery promptly and releases its late binding without reopening member execution', async () => {
+     const f = fixture(['memory-a'])
+     f.setPhase('active')
+-    const entered = barrier<void>()
++    const entered = barrier<ReturnType<() => void>>()
+     const bindingReady = barrier<DisposableBinding>()
+     vi.mocked(f.binders.get('memory-a')!.recover).mockImplementation(async () => { entered.resolve(); return await bindingReady.promise })
+     const cancellation = new AbortController()
+@@ -437,11 +443,12 @@
+   it('aborts an in-flight activation at synchronous admission cutoff and withholds late success', async () => {
+     const f = fixture()
+     f.setPhase('active')
+-    const entered = barrier<void>()
+-    const wake = barrier<void>()
++    const entered = barrier<ReturnType<() => void>>()
++    const wake = barrier<ReturnType<() => void>>()
+     let activationSignal: AbortSignal | undefined
+-    vi.mocked(f.child.activate).mockImplementation(async signal => { activationSignal = signal; entered.resolve(); await wake.promise })
+-    const runtime = new BoundMemberRuntime({ ...f.input, scope: f.child.scope }, f.records(), f.child, [...f.bindings.values()], f.ports.authority)
++    vi.mocked(f.child.activate).mockImplementation(async (signal) => { activationSignal = signal; entered.resolve(); await wake.promise })
++    const runtime = new BoundMemberRuntime({ ...f.input, scope: f.child.scope }, f.records(),
++      f.child, [...f.bindings.values()], f.ports.authority)
+     const activation = runtime.activate(new AbortController().signal)
+     void activation.catch(() => undefined)
+     await entered.promise
+--- before/packages/experimental/gat-core/tests/projection-events.spec.ts
++++ after/packages/experimental/gat-core/tests/projection-events.spec.ts
+@@ -163,7 +163,8 @@
+     expect(projectTeam(ROOT, [
+       event('team/mission', { version: 2, teamId: TEAM, mission: legacy }, SessionSeq(0)),
+       event('team/mission', { version: 2, teamId: TEAM, mission: authorized }, SessionSeq(1)),
+-    ]).missions).toEqual([legacy, authorized].map(mission => ({ ...mission, plan: { ...mission.plan, taskIds: [] }, authorizationGeneration: 0, revocationGeneration: 0 })))
++    ]).missions).toEqual([legacy, authorized].map(mission => ({ ...mission, plan: { ...mission.plan, taskIds: [] },
++      authorizationGeneration: 0, revocationGeneration: 0 })))
+   })
+ 
+   it('replays independent legacy mission records and isolated approvals', () => {
+@@ -185,7 +186,8 @@
+       event('team/mission', { version: 2, teamId: TEAM, mission: approvedAlpha }, SessionSeq(2)),
+     ])
+ 
+-    expect(state.missions).toEqual([approvedAlpha, beta].map(mission => ({ ...mission, plan: { ...mission.plan, taskIds: [] }, authorizationGeneration: 0, revocationGeneration: 0 })))
++    expect(state.missions).toEqual([approvedAlpha, beta].map(mission => ({ ...mission, plan: { ...mission.plan, taskIds: [] },
++      authorizationGeneration: 0, revocationGeneration: 0 })))
+     expect(state.tasks).toEqual([])
+     expect(() => projectTeam(ROOT, [
+       event('team/mission', { version: 2, teamId: TEAM, mission: alpha }, SessionSeq(0)),
+--- before/packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts
++++ after/packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts
+@@ -121,8 +121,8 @@
+       async execute() { wrapperEffects += 1; return 'wrapper effect' },
+     }))
+     expect((await run('inspection_wrapper')).isError).toBe(true)
+-    const entered = Promise.withResolvers<void>()
+-    const release = Promise.withResolvers<void>()
++    const entered = Promise.withResolvers<ReturnType<() => void>>()
++    const release = Promise.withResolvers<ReturnType<() => void>>()
+     h.ctx.on('tools/pre-execute', async (exec, next) => {
+       if (exec.name === 'effect') { entered.resolve(); await release.promise }
+       return next()
+@@ -157,8 +157,8 @@
+     const h = await harness()
+     const { mission } = await authorize(h)
+     h.ctx.agentTeams.bindExecution(h.child, { missionId: mission.id, expectedRevision: mission.revision })
+-    const entered = Promise.withResolvers<void>()
+-    const release = Promise.withResolvers<void>()
++    const entered = Promise.withResolvers<ReturnType<() => void>>()
++    const release = Promise.withResolvers<ReturnType<() => void>>()
+     const original = h.child.ctx.sessions.flush.bind(h.child.ctx.sessions)
+     const spy = vi.spyOn(h.child.ctx.sessions, 'flush').mockImplementation(async (session) => {
+       if (session.id === h.child.id && session.snapshotEvents().some(event => event.type === 'subagent/initial-admission' && event.data.kind === 'activated')) {
+--- before/packages/experimental/gat-tools/tests/tool-team.spec.ts
++++ after/packages/experimental/gat-tools/tests/tool-team.spec.ts
+@@ -105,7 +105,10 @@
+     const config = fixtureConfigs.get(ctx.root) ?? {}
+     const context = input.context ?? 'fresh'
+     const spec = { name: input.name, description: input.description, prompt: [{ type: 'text', text: input.prompt }], context, provider: context === 'fork' ? config.forkProvider ?? 'fork' : config.freshProvider ?? 'spawn',
+-      ...input.provider === undefined && input.reasoning_effort === undefined ? {} : { agentOptions: { ...input.provider === undefined ? {} : { provider: input.provider, model: input.model }, ...input.reasoning_effort === undefined ? {} : { reasoningEffort: input.reasoning_effort } } } }
++      ...input.provider === undefined && input.reasoning_effort === undefined ? {} : { agentOptions: {
++        ...input.provider === undefined ? {} : { provider: input.provider, model: input.model },
++        ...input.reasoning_effort === undefined ? {} : { reasoningEffort: input.reasoning_effort },
++      } } }
+     await humanAction(ctx, agent, 'approveMemberAdd', spec)
+   }
+   const result = await execute(ctx, agent, name, args, signal)

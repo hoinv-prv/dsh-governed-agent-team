@@ -1,0 +1,619 @@
+--- before/approved-plan-import.ts
++++ final/approved-plan-import.ts
+@@ -28,7 +28,10 @@
+ /** Check that a result event is the one exact, successful result for a call. */
+ function isSuccessfulResultForCall(event: SessionEvent, callId: string): boolean {
+   if (event.type !== 'tool/result') return false
+-  const { message } = event.data
++  const message = event.data.message as unknown as {
++    source: { kind: unknown; callId?: unknown }
++    content: { type: unknown; toolCallId?: unknown; isError?: unknown }[]
++  }
+   const block = message.content[0]
+   return message.source.kind === 'tool'
+     && String(message.source.callId) === callId
+@@ -40,7 +43,10 @@
+ /** Identify result events which claim to belong to a given call, including malformed ones. */
+ function isResultForCall(event: SessionEvent, callId: string): boolean {
+   if (event.type !== 'tool/result') return false
+-  const { message } = event.data
++  const message = event.data.message as unknown as {
++    source: { kind: unknown; callId?: unknown }
++    content: { type: unknown; toolCallId?: unknown }[]
++  }
+   return (message.source.kind === 'tool' && String(message.source.callId) === callId)
+     || message.content.some(block => block.type === 'tool-result' && String(block.toolCallId) === callId)
+ }
+@@ -60,7 +66,7 @@
+ 
+   const subjects: string[] = []
+   for (let index = start + 1; index < lines.length; index += 1) {
+-    const line = lines[index]!
++    const line = lines[index] as string
+     if (SECTION_ENDING_HEADING.test(line)) break
+     if (/^[ \t]*$/u.test(line)) continue
+     if (CHECKLIST_PREFIX.test(line) && !VALID_CHECKLIST.test(line)) {
+@@ -70,7 +76,7 @@
+     if (matched === null) invalid(`malformed task line ${index + 1}`)
+     let subject: string
+     try {
+-      subject = requiredText(matched[1]!.normalize('NFKC').replace(/\s+/gu, ' '), 'task subject', 200)
++      subject = requiredText((matched[1] as string).normalize('NFKC').replace(/\s+/gu, ' '), 'task subject', 200)
+     } catch {
+       invalid(`invalid task subject on line ${index + 1}`)
+     }
+@@ -98,7 +104,7 @@
+   const call = events[callIndex] as Extract<SessionEvent, { type: 'tool/call' }>
+   const callId = String(call.data.callId)
+   const results = events.slice(callIndex + 1).filter(event => isResultForCall(event, callId))
+-  if (results.length !== 1 || !isSuccessfulResultForCall(results[0]!, callId)) {
++  if (results.length !== 1 || !isSuccessfulResultForCall(results[0] as SessionEvent, callId)) {
+     invalid('latest exit_plan_mode call lacks one matching successful result')
+   }
+ 
+--- before/attachments.ts
++++ final/attachments.ts
+@@ -61,7 +61,7 @@
+     const result: Record<string, JsonValue> = {}
+     for (const key of Object.keys(descriptors).sort()) {
+       validString(key)
+-      const entry = descriptors[key]!
++      const entry = descriptors[key] as PropertyDescriptor
+       if (!('value' in entry) || !entry.enumerable) invalid()
+       Object.defineProperty(result, key, { value: detachJson(entry.value, depth + 1, budget, ancestors), enumerable: true })
+     }
+@@ -72,7 +72,7 @@
+ function encode(value: JsonValue): string {
+   if (value === null || typeof value !== 'object') return JSON.stringify(value)
+   if (Array.isArray(value)) return `[${value.map(encode).join(',')}]`
+-  return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${encode(value[key]!)}`).join(',')}}`
++  return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${encode(value[key] as JsonValue)}`).join(',')}}`
+ }
+ 
+ /**
+@@ -129,7 +129,7 @@
+  * @returns A frozen list of validated required attachment requests.
+  */
+ export function validateAttachmentRequests(value: unknown): readonly TeamMemberAttachmentRequest[] {
+-  return validateList(value, false) as readonly TeamMemberAttachmentRequest[]
++  return validateList(value, false)
+ }
+ 
+ /**
+@@ -149,6 +149,9 @@
+  */
+ export function attachmentRecord(request: TeamMemberAttachmentRequest, preparedPayload: unknown): TeamMemberAttachmentRecord {
+   const payload = detachJson(preparedPayload)
+-  const record = { binderId: request.binderId, protocolVersion: request.protocolVersion, required: true, payload, payloadSha256: payloadSha256(payload) }
+-  return validateAttachmentRecords([record])[0]!
++  const record = {
++    binderId: request.binderId, protocolVersion: request.protocolVersion,
++    required: true, payload, payloadSha256: payloadSha256(payload),
++  }
++  return validateAttachmentRecords([record])[0] as TeamMemberAttachmentRecord
+ }
+--- before/authority.ts
++++ final/authority.ts
+@@ -61,8 +61,12 @@
+     }
+     this.assertPlan(membership)
+     this.leases.set(agent, Object.freeze({ ...request, teamId: state.id, eventId: approval.eventId, digest: approval.digest,
+-      issuanceGeneration: this.nextIssuanceGeneration++, authorizationGeneration: mission.authorizationGeneration ?? 0, revocationGeneration: mission.revocationGeneration ?? 0,
+-      ...this.requirePlan ? { planRevision: state.planRevision, planEventId: state.planApproval!.eventId } : {} }))
++      issuanceGeneration: this.nextIssuanceGeneration++, authorizationGeneration: mission.authorizationGeneration ?? 0,
++      revocationGeneration: mission.revocationGeneration ?? 0,
++      ...this.requirePlan ? {
++        planRevision: state.planRevision, planEventId: (state.planApproval as NonNullable<typeof state.planApproval>).eventId,
++      } : {},
++    }))
+   }
+ 
+   /**
+@@ -134,7 +138,7 @@
+     const mission = state.missions.find(value => value.id === lease?.missionId)
+     if (!lease || lease.teamId !== state.id || !mission || mission.status !== 'approved'
+       || lease.expectedRevision !== mission.revision || lease.eventId !== mission.approval?.eventId
+-      || lease.digest !== mission.approval?.digest || lease.authorizationGeneration !== (mission.authorizationGeneration ?? 0)
++      || lease.digest !== mission.approval.digest || lease.authorizationGeneration !== (mission.authorizationGeneration ?? 0)
+       || lease.revocationGeneration !== (mission.revocationGeneration ?? 0)
+       || mission.approval.approvedRevision !== mission.revision) {
+       throw new TeamError('exact Agent mission lease is absent, stale, closed, or revoked', 'TEAM_EXECUTION_DENIED')
+--- before/binding-deadline.ts
++++ final/binding-deadline.ts
+@@ -46,7 +46,9 @@
+  * @returns The acquired resource after cancellation checks; late resources are passed to cleanup.
+  */
+ 
+-export function acquireBindingResource<T>(operation: () => Promise<T>, signal: AbortSignal, late: (resource: T) => Promise<void>): Promise<T> {
++export function acquireBindingResource<T>(
++  operation: () => Promise<T>, signal: AbortSignal, late: (resource: T) => Promise<void>,
++): Promise<T> {
+   signal.throwIfAborted()
+   return new Promise<T>((resolve, reject) => {
+     let settled = false
+@@ -54,21 +56,24 @@
+       if (settled) return
+       settled = true
+       signal.removeEventListener('abort', onAbort)
+-      reject(signal.reason)
++      const reason: unknown = signal.reason
++      const rejection = reason as Error
++      reject(rejection)
+     }
+     signal.addEventListener('abort', onAbort, { once: true })
+-    const observed = Promise.resolve().then(operation).then(resource => {
++    const observed = Promise.resolve().then(operation).then((resource) => {
+       if (signal.aborted && !settled) onAbort()
+       if (settled) return Promise.resolve().then(() => late(resource))
+       // Ownership handoff and promise resolution occur in the same synchronous edge.
+       settled = true
+       signal.removeEventListener('abort', onAbort)
+       resolve(resource)
+-    }, error => {
++    }, (error: unknown) => {
+       if (!settled) {
+         settled = true
+         signal.removeEventListener('abort', onAbort)
+-        reject(error)
++        const rejection = error as Error
++        reject(rejection)
+       }
+     })
+     void observed.catch(() => undefined)
+--- before/member-binders.ts
++++ final/member-binders.ts
+@@ -139,7 +139,7 @@
+     const key = this.key(request.binderId, request.protocolVersion)
+     this.pins.set(key, (this.pins.get(key) ?? 0) + 1)
+     let released = false
+-    return () => { if (released) return; released = true; this.pins.set(key, this.pins.get(key)! - 1) }
++    return () => { if (released) return; released = true; this.pins.set(key, (this.pins.get(key) as number) - 1) }
+   }
+ }
+ 
+@@ -160,7 +160,12 @@
+   private state: 'prepared' | 'transferred' | 'aborted' = 'prepared'
+   private abortPromise?: Promise<void>
+   private readonly abortCallback: (signal: AbortSignal) => Promise<void>
+-  constructor(binder: TeamMemberBinder, record: TeamMemberAttachmentRecord, prepared: PreparedAttachment, private readonly unpin: () => void = () => {}) {
++  constructor(
++    binder: TeamMemberBinder,
++    record: TeamMemberAttachmentRecord,
++    prepared: PreparedAttachment,
++    private readonly unpin: () => void = () => {},
++  ) {
+     this.binder = binder; this.record = record; this.value = prepared.value
+     this.abortCallback = prepared.abort.bind(prepared)
+   }
+@@ -197,10 +202,16 @@
+  * @param deadline Shared cleanup deadline used by the lease abort callbacks.
+  * @returns A promise that resolves after all untransferred leases are aborted.
+  */
+-export async function abortPrepared(leases: readonly PreparedMemberAttachment[], signal: AbortSignal, deadline?: BindingDeadline): Promise<void> {
++export async function abortPrepared(
++  leases: readonly PreparedMemberAttachment[],
++  signal: AbortSignal,
++  deadline?: BindingDeadline,
++): Promise<void> {
+   const failures: unknown[] = []
+   for (const lease of [...leases].reverse()) {
+-    try { await (deadline ? deadline.run(remaining => lease.abort(remaining)) : lease.abort(signal)) } catch (error) { failures.push(error) }
++    try {
++      await (deadline ? deadline.run(remaining => lease.abort(remaining)) : lease.abort(signal))
++    } catch (error) { failures.push(error) }
+   }
+   if (failures.length) throw new AggregateError(failures, 'required attachment preparation cleanup failed')
+ }
+@@ -209,14 +220,18 @@
+ /**
+  * Hold a normalized member input, canonical records, and prepared leases.
+  */
+-export interface PreparedMember { readonly input: BinderPrepareInput; readonly leases: readonly PreparedMemberAttachment[]; readonly records: readonly TeamMemberAttachmentRecord[] }
++export interface PreparedMember {
++  readonly input: BinderPrepareInput
++  readonly leases: readonly PreparedMemberAttachment[]
++  readonly records: readonly TeamMemberAttachmentRecord[]
++}
+ 
+ /** Normalized spec detachment is independent of attachment envelope depth/node/string limits. */
+ function freezeSpec<T>(value: T, ancestors = new Set<object>()): T {
+   if (value === null || value === undefined || typeof value === 'string' || typeof value === 'boolean') return value
+   if (typeof value === 'number' && Number.isFinite(value)) return value
+   if (typeof value !== 'object' || ancestors.has(value)) throw new TeamError('invalid normalized binding spec', 'TEAM_INVALID_CONFIG')
+-  const prototype = Object.getPrototypeOf(value)
++  const prototype: unknown = Object.getPrototypeOf(value)
+   if (Array.isArray(value) ? prototype !== Array.prototype : prototype !== Object.prototype && prototype !== null) throw new TeamError('invalid normalized binding spec', 'TEAM_INVALID_CONFIG')
+   ancestors.add(value)
+   try {
+@@ -225,7 +240,7 @@
+     const result = Array.isArray(value) ? [] : {}
+     for (const key of Object.keys(descriptors)) {
+       if (Array.isArray(value) && key === 'length') continue
+-      const entry = descriptors[key]!
++      const entry = descriptors[key] as PropertyDescriptor
+       if (!('value' in entry) || !entry.enumerable) throw new TeamError('invalid normalized binding spec', 'TEAM_INVALID_CONFIG')
+       Object.defineProperty(result, key, { value: freezeSpec(entry.value, ancestors), enumerable: true })
+     }
+@@ -242,24 +257,31 @@
+  * @returns A frozen ordered list of prepared members with validated persisted records.
+  */
+ 
+-export async function prepareMembers(registry: TeamMemberBinderRegistry, rawInputs: readonly Omit<BinderPrepareInput, 'payload'>[], signal: AbortSignal, cleanupTimeoutMs = 5_000): Promise<readonly PreparedMember[]> {
++export async function prepareMembers(
++  registry: TeamMemberBinderRegistry,
++  rawInputs: readonly Omit<BinderPrepareInput, 'payload'>[],
++  signal: AbortSignal,
++  cleanupTimeoutMs = 5_000,
++): Promise<readonly PreparedMember[]> {
+   const inputs = rawInputs.map(input => Object.freeze({ ...input, spec: freezeSpec(input.spec) }))
+-  const requested = inputs.map(input => validateAttachmentRequests(input.spec.attachments ?? []).map(request => ({ request, binder: registry.resolve(request) })))
++  const requested = inputs.map(input => validateAttachmentRequests(input.spec.attachments ?? []).map(request => ({
++    request, binder: registry.resolve(request),
++  })))
+   const leases: PreparedMemberAttachment[] = []
+   const members: PreparedMember[] = []
+   let cleanupDeadline: BindingDeadline | undefined
+   const cleanup = () => cleanupDeadline ??= new BindingDeadline(cleanupTimeoutMs)
+   try {
+     for (let index = 0; index < inputs.length; index++) {
+-      const input = inputs[index]!
++      const input = inputs[index] as (typeof inputs)[number]
+       const memberLeases: PreparedMemberAttachment[] = []
+-      for (const { request, binder } of requested[index]!) {
++      for (const { request, binder } of requested[index] as (typeof requested)[number]) {
+         signal.throwIfAborted()
+         const unpin = registry.pin(request)
+-        let acquired = false
++        const acquisition = { acquired: false }
+         const lateAbort = async (prepared: PreparedAttachment, shared?: BindingDeadline) => {
+           const deadline = shared ?? new BindingDeadline(cleanupTimeoutMs)
+-          try { await deadline.run(remaining => {
++          try { await deadline.run((remaining) => {
+             const pending = Promise.resolve().then(() => prepared.abort(remaining)).finally(unpin)
+             void pending.catch(() => undefined)
+             return pending
+@@ -267,16 +289,23 @@
+         }
+         let prepared: PreparedAttachment
+         try {
+-          prepared = await acquireBindingResource(() => Promise.resolve().then(() => binder.prepare({ ...input, payload: request.payload }, signal)).then(value => { acquired = true; return value }, error => { unpin(); throw error }), signal, value => lateAbort(value))
++          prepared = await acquireBindingResource(
++            () => Promise.resolve().then(() => binder.prepare({ ...input, payload: request.payload }, signal)).then(
++              (value) => { acquisition.acquired = true; return value }, (error: unknown) => { unpin(); throw error },
++            ), signal, value => lateAbort(value),
++          )
+         } catch (error) {
+           // A cancelled unresolved participant retains its registration until it really settles.
+-          if (!signal.aborted && !acquired) unpin()
++          if (!signal.aborted && !acquisition.acquired) unpin()
+           throw error
+         }
+         // Track raw successful lease BEFORE validating its returned payload.
+         let record: TeamMemberAttachmentRecord
+         try {
+-          if (!prepared || typeof prepared.abort !== 'function') throw new TeamError('invalid prepared binding resource', 'TEAM_BINDING_CONFLICT')
++          const candidate = prepared as unknown as Partial<PreparedAttachment> | null | undefined
++          if (!candidate || typeof candidate.abort !== 'function') {
++            throw new TeamError('invalid prepared binding resource', 'TEAM_BINDING_CONFLICT')
++          }
+           record = attachmentRecord(request, prepared.attachment)
+         } catch (error) {
+           try { await lateAbort(prepared, cleanup()) } catch (failure) { throw new AggregateError([error, failure], 'prepared output rejected and abort failed') }
+--- before/member-binding.ts
++++ final/member-binding.ts
+@@ -71,7 +71,13 @@
+   private readonly cancellation = new AbortController()
+   /** Host-only failure evidence; callers must redact before any model/view exposure. */
+   lastFailure: unknown
+-  constructor(input: BinderBindInput, records: readonly TeamMemberAttachmentRecord[], child: ReservedMemberChild, bindings: readonly DisposableBinding[], authority: MemberExecutionAuthority) {
++  constructor(
++    input: BinderBindInput,
++    records: readonly TeamMemberAttachmentRecord[],
++    child: ReservedMemberChild,
++    bindings: readonly DisposableBinding[],
++    authority: MemberExecutionAuthority,
++  ) {
+     this.input = input; this.records = records; this.child = child; this.bindings = bindings; this.authority = authority
+   }
+   /**
+@@ -93,7 +99,7 @@
+       combined.throwIfAborted()
+       if (!this.child.isValid() || !this.input.scope.isCurrent()) throw new TeamError('binding reconstruction required', 'TEAM_BINDING_UNAVAILABLE')
+       this.activated = true; this.lastFailure = undefined
+-    }).catch(error => {
++    }).catch((error: unknown) => {
+       this.lastFailure = error
+       try { this.authority.publish(this.input, 'unavailable') } catch { /* admission remains gated by host authority */ }
+       throw error
+@@ -157,9 +163,20 @@
+ /**
+  * Collect journal, host, authority, and cleanup dependencies.
+  */
+-export interface MemberBindingPorts { readonly journal: MemberBindingJournal; readonly host: MemberBindingHost; readonly authority: MemberExecutionAuthority; readonly cleanupTimeoutMs: number }
+-
+-async function rollback(prepared: PreparedMember, child: ReservedMemberChild | undefined, bindings: readonly DisposableBinding[], ports: MemberBindingPorts, abortChild = true): Promise<void> {
++export interface MemberBindingPorts {
++  readonly journal: MemberBindingJournal
++  readonly host: MemberBindingHost
++  readonly authority: MemberExecutionAuthority
++  readonly cleanupTimeoutMs: number
++}
++
++async function rollback(
++  prepared: PreparedMember,
++  child: ReservedMemberChild | undefined,
++  bindings: readonly DisposableBinding[],
++  ports: MemberBindingPorts,
++  abortChild = true,
++): Promise<void> {
+   const failures: unknown[] = []
+   // Cut off all bindings synchronously before awaiting a tombstone or provider operation.
+   for (const binding of [...bindings].reverse()) { try { binding.closeAdmission() } catch (error) { failures.push(error) } }
+@@ -185,7 +202,11 @@
+  * @returns The active or runtime-unavailable member owner retained for explicit retry.
+  */
+ 
+-export async function provisionPreparedMember(prepared: PreparedMember, ports: MemberBindingPorts, signal: AbortSignal): Promise<BoundMemberRuntime> {
++export async function provisionPreparedMember(
++  prepared: PreparedMember,
++  ports: MemberBindingPorts,
++  signal: AbortSignal,
++): Promise<BoundMemberRuntime> {
+   let child: ReservedMemberChild | undefined
+   const bindings: DisposableBinding[] = []
+   let runtime: BoundMemberRuntime | undefined
+@@ -193,15 +214,18 @@
+     signal.throwIfAborted()
+     await ports.journal.provisioning(prepared.input, prepared.records)
+     signal.throwIfAborted()
+-    child = await acquireBindingResource(() => ports.host.materialize(prepared.input, signal), signal, late => rollback(prepared, late, [], ports))
++    child = await acquireBindingResource(
++      () => ports.host.materialize(prepared.input, signal), signal, late => rollback(prepared, late, [], ports),
++    )
+     signal.throwIfAborted()
+     const input = { ...prepared.input, scope: child.scope }
+     for (const lease of prepared.leases) {
+       signal.throwIfAborted()
+-      const binding = await acquireBindingResource(() => lease.binder.bind(input, lease.record.payload, lease.value, signal), signal, async late => {
+-        const validated = await acceptBinding(late, ports.cleanupTimeoutMs)
+-        await rollback(prepared, undefined, [validated], ports, false)
+-      })
++      const binding = await acquireBindingResource(
++        () => lease.binder.bind(input, lease.record.payload, lease.value, signal), signal, async (late) => {
++          const validated = await acceptBinding(late, ports.cleanupTimeoutMs)
++          await rollback(prepared, undefined, [validated], ports, false)
++        })
+       await acceptBinding(binding, ports.cleanupTimeoutMs)
+       bindings.push(binding); lease.transfer()
+       signal.throwIfAborted()
+@@ -219,7 +243,9 @@
+     }
+     if (phase === 'active' && child && child.isValid() && child.scope.isCurrent()) {
+       // Uncertain active flush actually committed: preserve ownership for explicit live retry.
+-      runtime = new BoundMemberRuntime({ ...prepared.input, scope: child.scope }, prepared.records, child, Object.freeze(bindings), ports.authority)
++      runtime = new BoundMemberRuntime(
++        { ...prepared.input, scope: child.scope }, prepared.records, child, Object.freeze(bindings), ports.authority,
++      )
+       runtime.lastFailure = error
+       try { ports.authority.publish(prepared.input, 'unavailable') } catch { /* activation has not occurred */ }
+       return runtime
+@@ -249,7 +275,13 @@
+  * @returns The reconstructed runtime after required binders are recovered and activation is attempted.
+  */
+ 
+-export async function recoverBoundMember(input: Omit<BinderBindInput, 'scope'>, recordsValue: unknown, registry: import('./member-binders.ts').TeamMemberBinderRegistry, ports: MemberBindingPorts, signal: AbortSignal): Promise<BoundMemberRuntime> {
++export async function recoverBoundMember(
++  input: Omit<BinderBindInput, 'scope'>,
++  recordsValue: unknown,
++  registry: import('./member-binders.ts').TeamMemberBinderRegistry,
++  ports: MemberBindingPorts,
++  signal: AbortSignal,
++): Promise<BoundMemberRuntime> {
+   const records = validateAttachmentRecords(recordsValue)
+   const binders = records.map(record => registry.resolve(record))
+   signal.throwIfAborted()
+@@ -263,18 +295,21 @@
+   try {
+     for (let i = 0; i < records.length; i++) {
+       signal.throwIfAborted()
+-      const binding = await acquireBindingResource(() => binders[i]!.recover({ ...input, scope: child.scope }, records[i]!.payload, signal), signal, async late => {
++      const binding = await acquireBindingResource(
++        () => (binders[i] as (typeof binders)[number]).recover(
++          { ...input, scope: child.scope }, (records[i] as (typeof records)[number]).payload, signal,
++        ), signal, async (late) => {
+         // The cancellation catch already drains this child; the late callback owns only its resource.
+-        const binding = await acceptBinding(late, ports.cleanupTimeoutMs)
+-        const deadline = new BindingDeadline(ports.cleanupTimeoutMs)
+-        const failures: unknown[] = []
+-        try {
+-          try { binding.closeAdmission() } catch (error) { failures.push(error) }
+-          try { await deadline.run(remaining => binding.settle(remaining)) } catch (error) { failures.push(error) }
+-          try { await deadline.run(remaining => binding.release(remaining)) } catch (error) { failures.push(error) }
+-        } finally { deadline.finish() }
+-        if (failures.length) throw new AggregateError(failures, 'late recovered binding cleanup failed')
+-      })
++          const binding = await acceptBinding(late, ports.cleanupTimeoutMs)
++          const deadline = new BindingDeadline(ports.cleanupTimeoutMs)
++          const failures: unknown[] = []
++          try {
++            try { binding.closeAdmission() } catch (error) { failures.push(error) }
++            try { await deadline.run(remaining => binding.settle(remaining)) } catch (error) { failures.push(error) }
++            try { await deadline.run(remaining => binding.release(remaining)) } catch (error) { failures.push(error) }
++          } finally { deadline.finish() }
++          if (failures.length) throw new AggregateError(failures, 'late recovered binding cleanup failed')
++        })
+       bindings.push(await acceptBinding(binding, ports.cleanupTimeoutMs))
+       signal.throwIfAborted()
+     }
+@@ -288,18 +323,19 @@
+   }
+ }
+ 
+-async function acceptBinding(value: DisposableBinding, timeoutMs: number): Promise<DisposableBinding> {
++async function acceptBinding(rawValue: unknown, timeoutMs: number): Promise<DisposableBinding> {
++  const value = rawValue as Partial<DisposableBinding> | null | undefined
+   if (!value || typeof value.closeAdmission !== 'function' || typeof value.settle !== 'function' || typeof value.release !== 'function') {
+     const failures: unknown[] = [new TeamError('invalid disposable binding resource', 'TEAM_BINDING_CONFLICT')]
+     const deadline = new BindingDeadline(timeoutMs)
+     try {
+       if (typeof value?.closeAdmission === 'function') { try { value.closeAdmission() } catch (error) { failures.push(error) } }
+-      if (typeof value?.settle === 'function') { try { await deadline.run(signal => value.settle(signal)) } catch (error) { failures.push(error) } }
+-      if (typeof value?.release === 'function') { try { await deadline.run(signal => value.release(signal)) } catch (error) { failures.push(error) } }
++      if (typeof value?.settle === 'function') { try { await deadline.run(signal => (value.settle as DisposableBinding['settle'])(signal)) } catch (error) { failures.push(error) } }
++      if (typeof value?.release === 'function') { try { await deadline.run(signal => (value.release as DisposableBinding['release'])(signal)) } catch (error) { failures.push(error) } }
+     } finally { deadline.finish() }
+     throw new AggregateError(failures, 'invalid disposable binding resource')
+   }
+-  return value
++  return value as DisposableBinding
+ }
+ 
+ /** GAT-owned serialization: live retry does not reinstall; reconstruction settles the prior owner. */
+--- before/mission-board.ts
++++ final/mission-board.ts
+@@ -101,7 +101,10 @@
+       const generation = (current.authorizationGeneration ?? 0) + 1
+       const mission: TeamMissionSnapshot = action === 'approveMission'
+         ? { ...current, status: 'approved', authorizationGeneration: generation,
+-          approval: { approvedRevision: current.revision, eventId: receipt.id, digest: receipt.digest, humanSessionId: receipt.sessionId, generation } }
++          approval: {
++            approvedRevision: current.revision, eventId: receipt.id, digest: receipt.digest,
++            humanSessionId: receipt.sessionId, generation,
++          } }
+         : { ...withoutApproval, revision: current.revision + 1, status: action === 'closeMission' ? 'closed' : 'revoked',
+           revocationGeneration: (current.revocationGeneration ?? 0) + 1 }
+       await this.journal.appendAndFlush(root, 'team/mission', { version: 3, teamId: TeamId(root.id), mission })
+--- before/mission-plan.ts
++++ final/mission-plan.ts
+@@ -39,10 +39,12 @@
+  */
+ 
+ export function assertInitialMissionTaskPlan(tasks: readonly TeamTaskSnapshot[]): void {
+-  if (!Array.isArray(tasks)) invalid('tasks must be an array')
++  const taskInput: unknown = tasks
++  if (!Array.isArray(taskInput)) invalid('tasks must be an array')
+ 
+   const ids = new Set<TeamTaskId>()
+-  for (const [index, task] of tasks.entries()) {
++  for (const [index, typedTask] of tasks.entries()) {
++    const task: unknown = typedTask
+     const path = `tasks[${index}]`
+     if (task === null || typeof task !== 'object' || Array.isArray(task)) invalid(`${path} must be an object`)
+     const record = task as unknown as Record<string, unknown>
+@@ -61,7 +63,7 @@
+       invalid(`${path}.description must be normalized non-empty text`)
+     }
+     if (!Array.isArray(record.blockedBy)) invalid(`${path}.blockedBy must be an array`)
+-    record.blockedBy.forEach((blocker, blockerIndex) => assertTaskId(blocker, `${path}.blockedBy[${blockerIndex}]`))
++    record.blockedBy.forEach((blocker, blockerIndex) => { assertTaskId(blocker, `${path}.blockedBy[${blockerIndex}]`) })
+     if (!Array.isArray(record.writeScopes)) invalid(`${path}.writeScopes must be an array`)
+     const scopes = new Set<string>()
+     record.writeScopes.forEach((scope, scopeIndex) => {
+--- before/projection.ts
++++ final/projection.ts
+@@ -125,7 +125,10 @@
+   revocationGeneration: nonNegativeSafeInteger.optional(),
+   status: z.enum(['draft', 'approved', 'active', 'completed', 'closed', 'revoked']),
+   plan: z.object({ tasks: z.array(teamTaskSnapshotSchema), taskIds: z.array(teamTaskIdSchema).optional() }).strict(),
+-  approval: z.object({ approvedRevision: positiveSafeInteger, eventId: z.string().min(1).optional(), digest: z.string().min(1).optional(), humanSessionId: z.string().min(1).optional(), generation: nonNegativeSafeInteger.optional() }).strict().optional(),
++  approval: z.object({
++    approvedRevision: positiveSafeInteger, eventId: z.string().min(1).optional(), digest: z.string().min(1).optional(),
++    humanSessionId: z.string().min(1).optional(), generation: nonNegativeSafeInteger.optional(),
++  }).strict().optional(),
+ }).strict().superRefine((mission, ctx) => {
+   if ((mission.status === 'approved') !== (mission.approval?.approvedRevision === mission.revision)) {
+     ctx.addIssue({ code: 'custom', message: 'mission status must be approved exactly when approval matches revision' })
+@@ -165,7 +168,10 @@
+ const teamPlanApprovedEventSchema = z.object({
+   version: z.union([z.literal(2), z.literal(3)]),
+   teamId: teamIdSchema,
+-  approval: z.object({ approvedRevision: nonNegativeSafeInteger, eventId: z.string().optional(), digest: z.string().optional(), humanSessionId: z.string().optional() }).strict(),
++  approval: z.object({
++    approvedRevision: nonNegativeSafeInteger, eventId: z.string().optional(), digest: z.string().optional(),
++    humanSessionId: z.string().optional(),
++  }).strict(),
+ }).strict() as z.ZodType<SessionEventMap['team/plan-approved']>
+ 
+ const teamWorkSnapshotObject = z.object({
+@@ -260,7 +266,10 @@
+   id: teamIdSchema,
+   planRevision: nonNegativeSafeInteger,
+   planPhase: z.enum(['draft', 'approved']),
+-  planApproval: z.object({ approvedRevision: nonNegativeSafeInteger, eventId: z.string().optional(), digest: z.string().optional(), humanSessionId: z.string().optional() }).strict().optional(),
++  planApproval: z.object({
++    approvedRevision: nonNegativeSafeInteger, eventId: z.string().optional(), digest: z.string().optional(),
++    humanSessionId: z.string().optional(),
++  }).strict().optional(),
+   work: z.array(teamWorkViewSchema),
+   members: z.array(teamMemberSnapshotSchema),
+   missions: z.array(teamMissionSnapshotSchema),
+@@ -391,8 +400,10 @@
+       const rawMission = event.data.mission
+       // Explicit adjacent v2 adapter retains historical snapshots but discards legacy self-approval authority.
+       const mission: TeamMissionSnapshot = event.data.version === 2
+-        ? { ...rawMission, ...rawMission.approval === undefined ? {} : { approval: { approvedRevision: rawMission.approval.approvedRevision } },
+-          plan: { tasks: rawMission.plan.tasks, taskIds: [] }, authorizationGeneration: 0, revocationGeneration: 0 }
++        ? { ...rawMission, ...rawMission.approval === undefined ? {} : {
++          approval: { approvedRevision: rawMission.approval.approvedRevision },
++        },
++        plan: { tasks: rawMission.plan.tasks, taskIds: [] }, authorizationGeneration: 0, revocationGeneration: 0 }
+         : rawMission
+       if (event.data.version === 3 && (mission.plan.tasks.length !== 0 || mission.plan.taskIds === undefined)) throw new Error('v3 mission requires canonical task references')
+       if (event.data.version === 3 && mission.status === 'approved' && (!mission.approval?.eventId || !mission.approval.digest || !mission.approval.humanSessionId)) throw new Error('v3 mission approval requires HUMAN receipt evidence')
+--- before/roster.ts
++++ final/roster.ts
+@@ -197,9 +197,12 @@
+     const failures: unknown[] = []
+     for (const reserved of this.reservations.values()) {
+       let disposal: Promise<void>
+-      try { disposal = reserved.dispose() } catch (error) { disposal = Promise.reject(error) }
++      try { disposal = reserved.dispose() } catch (error: unknown) {
++        const rejection = error as Error
++        disposal = Promise.reject(rejection)
++      }
+       this.inFlightCleanups.add(disposal)
+-      void disposal.then(() => this.inFlightCleanups.delete(disposal), error => {
++      void disposal.then(() => this.inFlightCleanups.delete(disposal), (error: unknown) => {
+         this.inFlightCleanups.delete(disposal)
+         this.cleanupFailures.push(error)
+         this.ctx.logger.warn(`reserved child disposal: ${errorMessage(error)}`)
+@@ -374,21 +377,22 @@
+     } catch (error: unknown) {
+       const cleanupFailures: unknown[] = []
+       if (reserved) {
++        const failedChild = reserved
+         const deadline = this.lifecycle.cleanupDeadline()
+         // Both host methods close their gate synchronously, before any awaited lock/flush.
+         const invoke = (operation: () => Promise<void>): Promise<void> => {
+-          try { return operation() } catch (failure) { return Promise.reject(failure) }
++          try { return operation() } catch (failure: unknown) { const rejection = failure as Error; return Promise.reject(rejection) }
+         }
+-        const aborting = invoke(() => reserved!.abort(deadline.signal))
++        const aborting = invoke(() => failedChild.abort(deadline.signal))
+         // Observe the unbounded host disposal promise separately from our total
+         // deadline so late physical completion or failure retains an owner.
+-        const disposing = invoke(() => reserved!.dispose())
+-        const physical = Promise.allSettled([aborting, disposing]).then(outcomes => {
+-          const failures = outcomes.flatMap(outcome => outcome.status === 'rejected' ? [outcome.reason] : [])
++        const disposing = invoke(() => failedChild.dispose())
++        const physical = Promise.allSettled([aborting, disposing]).then((outcomes) => {
++          const failures: unknown[] = outcomes.flatMap(outcome => outcome.status === 'rejected' ? [outcome.reason as unknown] : [])
+           if (failures.length) throw new AggregateError(failures, 'failed child physical cleanup failed')
+         })
+         this.inFlightCleanups.add(physical)
+-        void physical.then(() => this.inFlightCleanups.delete(physical), failure => {
++        void physical.then(() => this.inFlightCleanups.delete(physical), (failure: unknown) => {
+           this.inFlightCleanups.delete(physical)
+           this.cleanupFailures.push(failure)
+           this.ctx.logger.warn(`failed child cleanup: ${errorMessage(failure)}`)
+@@ -458,7 +462,9 @@
+         const loaded = await readPersistedSession(this.ctx.sessionPersistence, member.id, signal)
+         const suffix = loaded.events.slice(loaded.inheritedEventCount)
+         const descriptor = foldSubagentDescriptor(suffix)
+-        const recovered = await this.ctx.subagents.recoverContinuable({ childId: member.id, parent: root, provider: member.provider, signal })
++        const recovered = await this.ctx.subagents.recoverContinuable({
++          childId: member.id, parent: root, provider: member.provider, signal,
++        })
+         this.reservations.set(member.id, recovered)
+         const acceptedInitialPrompt = recovered.initialMessageId !== undefined && recovered.state !== 'aborted' && recovered.state !== 'disposed'
+         if (loaded.header.parentSession === root.id

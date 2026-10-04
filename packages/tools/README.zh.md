@@ -65,7 +65,7 @@ kind: "package-reference"
 十个工具分为五类能力：
 
 - **创建 teammate**——`spawn_teammate` 接收名字、描述与初始任务；只有 Lead 可以调用它。
-- **发送消息**——`send_message` 在最近的步骤边界对运行中的成员进行 steering（中途引导）、启动空闲成员，并冷恢复非活动 teammate。
+- **发送消息**——`send_message` 在最近的步骤边界对获得精确授权的 live 成员进行 steering（中途引导），或启动其 idle 轮次。其他 target 保持排队，直到受信任的 host 恢复并授予精确授权。
 - **查看与等待**——`list_agents` 展示包含 live status 的 roster；`wait_agent` 等待下一次 Team 变化；`interrupt_agent` 停止 teammate 当前轮次（仅 Lead）。
 - **报告持久工作状态**——`report_team_status` 独立于短暂 runtime status 记录 `working`、`blocked`、`review_required` 或 `done`。
 - **管理任务板**——`team_task_create`、`team_task_list`、`team_task_get` 与 `team_task_update` 用于添加、浏览、读取和更新共享任务。
@@ -165,3 +165,5 @@ Team 插件 generation、配置、member role／name 与 schema 不变时，前�
 无。
 
 </details>
+
+Team 执行将不可变 capability 元数据与兼容的外部委派名称拒绝列表结合。任何 alias 或嵌套 union 带有 external-delegation，启用 Team 后都必须在 effect 前拒绝。检查、HUMAN 提问和明确结构/控制类别只豁免自身控制操作；未知或有 effect 的 descendant 会移除豁免。run_code 只是嵌套传输，每个真实 child 再次检查。两个 simpleMode 设置都要求精确当前 Agent mission lease；simpleMode=false 另外要求当前 HUMAN Team-plan 批准。Bootstrap/member-add 及消息排队豁免不允许模型 wake。

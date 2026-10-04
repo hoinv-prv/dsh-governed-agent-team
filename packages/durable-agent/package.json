@@ -1,0 +1,14 @@
+{
+  "name": "@vuhoi/gat-durable-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Opt-in WK Durable Agent binding over qualified GAT host ports",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": { ".": { "types": "./lib/types/index.d.ts", "default": "./lib/index.js" }, "./src/*": "./src/*", "./package.json": "./package.json" },
+  "files": ["lib", "README.md"],
+  "dependencies": { "yaml": "2.9.1" },
+  "peerDependencies": { "@vuhoi/gat-core": "workspace:^", "@deepseek-ai/dsh-durable-agent": "0.1.0", "@deepseek-ai/dsh-agent": "workspace:^", "@deepseek-ai/dsh-llm": "workspace:^" },
+  "license": "MIT"
+}

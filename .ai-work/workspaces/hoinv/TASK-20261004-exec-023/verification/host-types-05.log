@@ -1,0 +1,2 @@
+packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts(178,20): error TS2339: Property 'phase' does not exist on type 'Agent'.
+scripts/gen-tool-catalog.ts(10,10): error TS6133: 'globSync' is declared but its value is never read.

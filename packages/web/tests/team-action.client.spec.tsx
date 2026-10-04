@@ -163,6 +163,23 @@ describe('TeamAction', () => {
     expect(listMissions).toHaveBeenCalledWith(SESSION)
   })
 
+  it('renders each member model without substituting the lead model', async () => {
+    const dashboard: TeamView = {
+      ...view,
+      members: [
+        { ...view.members[0]!, model: 'gpt-5.6-terra' },
+        { ...view.members[1]!, model: 'gpt-5.6-luna' },
+        { id: 'unknown-model' as SessionId, name: 'unknown', role: 'teammate', status: 'inactive', diagnostics: [] },
+      ],
+    }
+    openDashboard(actions({ load: () => Promise.resolve({ ok: true, value: dashboard }) }))
+
+    expect(await screen.findByText(new RegExp(`${zh.model}: gpt-5\\.6-terra`, 'u'))).toBeTruthy()
+    expect(screen.getByText(new RegExp(`${zh.model}: gpt-5\\.6-luna`, 'u'))).toBeTruthy()
+    const unknown = screen.getByRole('button', { name: /^unknown\b/u })
+    expect(unknown.textContent).not.toContain(`${zh.model}:`)
+  })
+
   it('renders roster status, diagnostics, durable work, and suspected stalls separately', async () => {
     vi.setSystemTime(new Date('2026-09-12T12:00:00.000Z'))
     const now = Date.now()

@@ -1,0 +1,46 @@
+native/system/packages/darwin-arm64      | [WARN] Unsupported platform: wanted: {"cpu":["arm64"],"os":["darwin"],"libc":["any"]} (current: {"os":"linux","cpu":"x64","libc":"glibc"})
+native/system/packages/darwin-x64        | [WARN] Unsupported platform: wanted: {"cpu":["x64"],"os":["darwin"],"libc":["any"]} (current: {"os":"linux","cpu":"x64","libc":"glibc"})
+native/system/packages/linux-arm64       | [WARN] Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["any"]} (current: {"os":"linux","cpu":"x64","libc":"glibc"})
+Scope: all 296 workspace projects
+[WARN] There are cyclic workspace dependencies: /home/hoinv/work/dsh-binding-prerequisites/apps/web, /home/hoinv/work/dsh-binding-prerequisites/packages/client/web, /home/hoinv/work/dsh-binding-prerequisites/packages/client/ui-renderer, /home/hoinv/work/dsh-binding-prerequisites/packages/test-support/client-runtime, /home/hoinv/work/dsh-binding-prerequisites/packages/bundle/web-app; /home/hoinv/work/dsh-binding-prerequisites/packages/api/gateway, /home/hoinv/work/dsh-binding-prerequisites/packages/client/connection, /home/hoinv/work/dsh-binding-prerequisites/packages/api/session-controller, /home/hoinv/work/dsh-binding-prerequisites/packages/client/file-upload, /home/hoinv/work/dsh-binding-prerequisites/packages/api/remotes, /home/hoinv/work/dsh-binding-prerequisites/packages/api/workspace-controller; /home/hoinv/work/dsh-binding-prerequisites/packages/client/ui-conversation, /home/hoinv/work/dsh-binding-prerequisites/packages/client/ui-workspace; /home/hoinv/work/dsh-binding-prerequisites/packages/core/agent-loop, /home/hoinv/work/dsh-binding-prerequisites/packages/llm/llm-pi-ai, /home/hoinv/work/dsh-binding-prerequisites/packages/llm/llm-deepseek, /home/hoinv/work/dsh-binding-prerequisites/packages/session/session-log-deepseek, /home/hoinv/work/dsh-binding-prerequisites/packages/feedback/command-feedback, /home/hoinv/work/dsh-binding-prerequisites/packages/test-support/agent-loop-testkit; /home/hoinv/work/dsh-binding-prerequisites/packages/e2b/e2b, /home/hoinv/work/dsh-binding-prerequisites/packages/e2b/fs-e2b; /home/hoinv/work/dsh-binding-prerequisites/packages/sandbox/sandbox-local, /home/hoinv/work/dsh-binding-prerequisites/packages/sandbox/sandbox-windows-acl; /home/hoinv/work/dsh-binding-prerequisites/packages/subagent/subagent-spawn-in-process, /home/hoinv/work/dsh-binding-prerequisites/packages/subagent/tool-subagent; /home/hoinv/work/dsh-binding-prerequisites/vendor/cordis, /home/hoinv/work/dsh-binding-prerequisites/vendor/include
+✓ Lockfile passes supply-chain policies (verified 7d ago)
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +52 -175
+++++++++++++++++++--------------------------------------------------------------
+Progress: resolved 52, reused 52, downloaded 0, added 47, done
+[WARN] Failed to create bin at /home/hoinv/work/dsh-binding-prerequisites/apps/desktop-host/node_modules/.bin/dsh. ENOENT: no such file or directory, open '/home/hoinv/work/dsh-binding-prerequisites/apps/cli/lib/bin.js'
+[WARN] Failed to create bin at /home/hoinv/work/dsh-binding-prerequisites/packages/sdk/client/node_modules/.bin/dsh. ENOENT: no such file or directory, open '/home/hoinv/work/dsh-binding-prerequisites/apps/cli/lib/bin.js'
+[WARN] Failed to create bin at /home/hoinv/work/dsh-binding-prerequisites/python/sdk-runtime/node_modules/.bin/dsh. ENOENT: no such file or directory, open '/home/hoinv/work/dsh-binding-prerequisites/apps/cli/lib/bin.js'
+
+devDependencies:
+- @deepseek-ai/dsh-browser-use
+- @deepseek-ai/dsh-computer-use
+- @deepseek-ai/dsh-experimental-browser-use-chrome-devtools-mcp
+- @deepseek-ai/dsh-experimental-browser-use-playwright-mcp
+- @deepseek-ai/dsh-experimental-browser-use-runtime
+- @deepseek-ai/dsh-experimental-browser-use-stagehand-native
+- @deepseek-ai/dsh-experimental-computer-use-cua-driver-mcp
+- @deepseek-ai/dsh-experimental-computer-use-cua-driver-native
+- @deepseek-ai/dsh-llm-replay 0.1.5-rc.2
+- @deepseek-ai/dsh-mcp-client 0.1.5-rc.2
+- @deepseek-ai/dsh-skill-office
+- @deepseek-ai/dsh-tool-workspace-dependencies
+- @testing-library/dom 10.4.2
++ @testing-library/dom 10.4.1
+- extract-zip 2.0.1
+- fflate 0.8.3
+- pnpm 11.7.0
+- tar 7.5.22
+
+packages/subprocess/subprocess-local postinstall$ node scripts/ensure-spawn-helper.mjs
+packages/subprocess/subprocess-local postinstall: Done
+. postinstall$ node scripts/install-lefthook.mjs
+. postinstall: sync hooks: ✔️(pre-merge-commit, pre-commit, pre-push)
+. postinstall: Done
+[WARN] Failed to create bin at /home/hoinv/work/dsh-binding-prerequisites/packages/sdk/client/node_modules/.bin/dsh. ENOENT: no such file or directory, open '/home/hoinv/work/dsh-binding-prerequisites/packages/sdk/client/node_modules/@deepseek-ai/dsh/lib/bin.js'
+[WARN] Failed to create bin at /home/hoinv/work/dsh-binding-prerequisites/apps/desktop-host/node_modules/.bin/dsh. ENOENT: no such file or directory, open '/home/hoinv/work/dsh-binding-prerequisites/apps/desktop-host/node_modules/@deepseek-ai/dsh/lib/bin.js'
+[WARN] Failed to create bin at /home/hoinv/work/dsh-binding-prerequisites/python/sdk-runtime/node_modules/.bin/dsh. ENOENT: no such file or directory, open '/home/hoinv/work/dsh-binding-prerequisites/python/sdk-runtime/node_modules/@deepseek-ai/dsh/lib/bin.js'
+Done in 3.4s using pnpm v11.7.0
+$ tsx native/system/scripts/build.ts --host-addon-only
+build: built linux-x64/bin/glibc/system.node

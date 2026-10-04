@@ -1,0 +1,10 @@
+output_id: "OUT-022-01-01"
+result_type: "output"
+working_aip_ref: "AIP-EXEC-022"
+step_id: "STEP-01"
+output_locator: "design-source-test-matrix.md"
+created_at: "2026-10-04T10:40:00"
+review_status: "reviewed"
+verification_level: "source_inspected"
+source_refs: ["docs/gat-design/DETAIL_DESIGN.md", "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md"]
+notes: "Formal intended delta preceded source; prior dirty edits preserved."

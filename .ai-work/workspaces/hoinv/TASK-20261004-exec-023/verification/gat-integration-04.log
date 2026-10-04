@@ -1,0 +1,524 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ |thread-safe| packages/experimental/gat-core/tests/team.spec.ts (66 tests | 27 failed) 19893ms
+     × supports direct-constructor defaults and recovers roots that already exist 8ms
+     × drains a materialized child when its initial durable prompt fails 90ms
+     × enforces CAS, ownership, dependencies, transitions, and write-scope warnings 149ms
+     × supports Lead reassignment, completion, reopen, and deletion permissions 98ms
+     × covers partial edits, Lead ownership, unassignment, and blocked reassignment 134ms
+     × rejects provisioning teammate reports before append while the Lead remains eligible 27ms
+     × imports, de-duplicates, and approves the exact post-import plan revision in one flush 9ms
+     × approves a no-op import at the current unapproved revision and leaves failures unmutated 36ms
+     × fails closed for malformed source input, preflights, and non-Leads without a partial import 40ms
+     × rejects a later incomplete or rejected plan call without importing the older plan 9ms
+     × maps empty and overlong imported task subjects to typed import rejections without mutation 12ms
+     × exports Team views and task mutations from the owning service 34ms
+     × steers a message addressed to the Lead and checkpoints its receipt 16ms
+     × acknowledges steered messages persisted by a busy Lead before model claim 150ms
+     × flushes a live pending receipt before acknowledgement without inserting a duplicate 96ms
+     × acknowledges steered messages accepted by a busy target inbox 90ms
+     × serializes concurrent Steer delivery admission for one target 151ms
+     × delivers persisted mail before the later message that cold-resumes its target 149ms
+     × deduplicates live target history and contains inspection and delivery failures 265ms
+     × cold-resumes an inactive sibling with sender attribution 193ms
+     × interrupts only the current turn and retains an already accepted follow-up 85ms
+     × drains an admitted plan approval before projection teardown and rejects late approval 43ms
+     × drains an admitted work report before projection teardown and rejects late work 5001ms
+     × keeps the projection registered after mutation disposal times out until the mutation settles 5000ms
+     × disposes a live child even after its durable member edge becomes failed 41ms
+     × aborts and awaits an admitted cold mailbox dispatch during disposal 5002ms
+     × reconciles mismatched persisted children and ignores a concurrently settled member 44ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 27 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team identity and provisioning > supports direct-constructor defaults and recovers roots that already exist
+Error: Agent Teams projection is not registered
+ ❯ TeamJournal.state packages/experimental/gat-core/src/journal.ts:46:41
+     44|   state(root: Agent): TeamState {
+     45|     const projection = this.ctx.sessionProjections.stateOf(root.sessio…
+     46|     if (projection === undefined) throw new Error('Agent Teams project…
+       |                                         ^
+     47|     if (projection.failure !== undefined) throw new Error(projection.f…
+     48|     return projection
+ ❯ installExecutionGuard packages/experimental/gat-core/src/index.ts:161:79
+ ❯ new TeamService packages/experimental/gat-core/src/index.ts:173:44
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:217:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team identity and provisioning > drains a materialized child when its initial durable prompt fails
+AssertionError: expected [Function] to throw error including 'checkpoint failed' but got 'Cannot redefine property: persistInit…'
+
+Expected: "checkpoint failed"
+Received: "Cannot redefine property: persistInitialPrompt"
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:313:56
+    311|       return reserved
+    312|     })
+    313|     await expect(spawn(ctx, lead, 'checkpoint-failure')).rejects.toThr…
+       |                                                        ^
+    314|     const member = durable(lead).members[0]
+    315|     expect(member).toMatchObject({ phase: 'failed', error: 'checkpoint…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team shared task DAG > enforces CAS, ownership, dependencies, transitions, and write-scope warnings
+TeamError: agent "48aaec5d-a571-40ce-a20a-a5eaf1dacb14" is not a member of an active Agent Team
+ ❯ TeamRoster.membership packages/experimental/gat-core/src/roster.ts:85:13
+     83|     const membership = this.tryMembership(agent)
+     84|     if (membership === undefined) {
+     85|       throw new TeamError(`agent "${agent.id}" is not a member of an a…
+       |             ^
+     86|     }
+     87|     return membership
+ ❯ Proxy.membership packages/experimental/gat-core/src/index.ts:244:24
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ fixtureMission packages/experimental/gat-core/tests/authorized-team-fixture.ts:31:31
+ ❯ authorizedTask packages/experimental/gat-core/tests/authorized-team-fixture.ts:54:25
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:597:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team shared task DAG > supports Lead reassignment, completion, reopen, and deletion permissions
+TeamError: agent "9125232f-a7f5-4129-8821-dda7733fa4fd" is not a member of an active Agent Team
+ ❯ TeamRoster.membership packages/experimental/gat-core/src/roster.ts:85:13
+     83|     const membership = this.tryMembership(agent)
+     84|     if (membership === undefined) {
+     85|       throw new TeamError(`agent "${agent.id}" is not a member of an a…
+       |             ^
+     86|     }
+     87|     return membership
+ ❯ Proxy.bindExecution packages/experimental/gat-core/src/index.ts:206:45
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ authorizeFixtureAgent packages/experimental/gat-core/tests/authorized-team-fixture.ts:48:18
+ ❯ authorizedTask packages/experimental/gat-core/tests/authorized-team-fixture.ts:56:3
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:737:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team shared task DAG > covers partial edits, Lead ownership, unassignment, and blocked reassignment
+TeamError: execution lease is bound to a different task
+ ❯ TeamExecutionAuthority.assert packages/experimental/gat-core/src/authority.ts:106:64
+    104|     }
+    105|     const selectedTask = taskId ?? lease.taskId
+    106|     if (taskId !== undefined && lease.taskId !== taskId) throw new Tea…
+       |                                                                ^
+    107|     if (selectedTask !== undefined) {
+    108|       const task = state.tasks.find(value => value.id === selectedTask)
+ ❯ TeamExecutionAuthority.assertTaskOperation packages/experimental/gat-core/src/authority.ts:78:10
+ ❯ TeamTaskBoard.assertExecution packages/experimental/gat-core/src/index.ts:151:42
+ ❯ packages/experimental/gat-core/src/task-board.ts:206:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team Remote API > rejects provisioning teammate reports before append while the Lead remains eligible
+AssertionError: expected { ok: false, error: { …(2) } } to deeply equal { ok: false, error: { …(2) } }
+
+- Expected
++ Received
+
+  {
+    "error": {
+      "code": "team-rejected",
+-     "message": "work reporter \"provisioning-reporter\" is not active",
++     "message": "exact Agent mission lease is absent, stale, closed, or revoked",
+    },
+    "ok": false,
+  }
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1075:7
+    1073|       summary: 'too early',
+    1074|       files: [],
+    1075|     })).resolves.toEqual({
+       |       ^
+    1076|       ok: false,
+    1077|       error: { code: 'team-rejected', message: 'work reporter "provisi…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team Remote API > imports, de-duplicates, and approves the exact post-import plan revision in one flush
+Error: cannot get property "agentTeams" without inject
+ ❯ fixtureMission packages/experimental/gat-core/tests/authorized-team-fixture.ts:31:20
+     29| /** Select the named fixture mission explicitly; no production list/cu…
+     30| export async function fixtureMission(ctx: Context, caller: Agent): Pro…
+     31|   const lead = ctx.agentTeams.membership(caller).root
+       |                    ^
+     32|   let mission = missions.get(ctx.root)
+     33|   if (!mission) {
+ ❯ appendApprovedPlan packages/experimental/gat-core/tests/team.spec.ts:107:9
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1126:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team Remote API > approves a no-op import at the current unapproved revision and leaves failures unmutated
+Error: cannot get property "agentTeams" without inject
+ ❯ fixtureMission packages/experimental/gat-core/tests/authorized-team-fixture.ts:31:20
+     29| /** Select the named fixture mission explicitly; no production list/cu…
+     30| export async function fixtureMission(ctx: Context, caller: Agent): Pro…
+     31|   const lead = ctx.agentTeams.membership(caller).root
+       |                    ^
+     32|   let mission = missions.get(ctx.root)
+     33|   if (!mission) {
+ ❯ appendApprovedPlan packages/experimental/gat-core/tests/team.spec.ts:107:9
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1149:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team Remote API > fails closed for malformed source input, preflights, and non-Leads without a partial import
+Error: cannot get property "agentTeams" without inject
+ ❯ fixtureMission packages/experimental/gat-core/tests/authorized-team-fixture.ts:31:20
+     29| /** Select the named fixture mission explicitly; no production list/cu…
+     30| export async function fixtureMission(ctx: Context, caller: Agent): Pro…
+     31|   const lead = ctx.agentTeams.membership(caller).root
+       |                    ^
+     32|   let mission = missions.get(ctx.root)
+     33|   if (!mission) {
+ ❯ appendApprovedPlan packages/experimental/gat-core/tests/team.spec.ts:107:9
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1186:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team Remote API > rejects a later incomplete or rejected plan call without importing the older plan
+Error: cannot get property "agentTeams" without inject
+ ❯ fixtureMission packages/experimental/gat-core/tests/authorized-team-fixture.ts:31:20
+     29| /** Select the named fixture mission explicitly; no production list/cu…
+     30| export async function fixtureMission(ctx: Context, caller: Agent): Pro…
+     31|   const lead = ctx.agentTeams.membership(caller).root
+       |                    ^
+     32|   let mission = missions.get(ctx.root)
+     33|   if (!mission) {
+ ❯ appendApprovedPlan packages/experimental/gat-core/tests/team.spec.ts:107:9
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1211:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team Remote API > maps empty and overlong imported task subjects to typed import rejections without mutation
+Error: cannot get property "agentTeams" without inject
+ ❯ fixtureMission packages/experimental/gat-core/tests/authorized-team-fixture.ts:31:20
+     29| /** Select the named fixture mission explicitly; no production list/cu…
+     30| export async function fixtureMission(ctx: Context, caller: Agent): Pro…
+     31|   const lead = ctx.agentTeams.membership(caller).root
+       |                    ^
+     32|   let mission = missions.get(ctx.root)
+     33|   if (!mission) {
+ ❯ appendApprovedPlan packages/experimental/gat-core/tests/team.spec.ts:107:9
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1238:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team Remote API > exports Team views and task mutations from the owning service
+AssertionError: expected { ok: false, error: { …(2) } } to match object { ok: true, …(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "ok": true,
+-   "value": {
+-     "id": "task-1",
+-     "ownerName": "lead",
+-     "revision": 2,
+-   },
++   "ok": false,
+  }
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1326:7
+    1324|       expectedRevision: created.revision,
+    1325|       action: 'claim',
+    1326|     })).resolves.toMatchObject({
+       |       ^
+    1327|       ok: true,
+    1328|       value: { id: created.id, revision: 2, ownerName: 'lead' },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > steers a message addressed to the Lead and checkpoints its receipt
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1381:79
+    1379|     })
+    1380|
+    1381|     await expect(teamInternals(ctx).mailbox.tryDispatch(lead, message,…
+       |                                                                               ^
+    1382|     expect(lead.session.snapshotEvents().some(event => event.type === …
+    1383|       && event.data.inserted.some(input => input.source.kind === 'team…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > acknowledges steered messages persisted by a busy Lead before model claim
+TeamError: agent "2563c345-6273-45f6-93a5-ad024e07aea4" is not a member of an active Agent Team
+ ❯ TeamRoster.membership packages/experimental/gat-core/src/roster.ts:85:13
+     83|     const membership = this.tryMembership(agent)
+     84|     if (membership === undefined) {
+     85|       throw new TeamError(`agent "${agent.id}" is not a member of an a…
+       |             ^
+     86|     }
+     87|     return membership
+ ❯ TeamMailbox.sendAdmitted packages/experimental/gat-core/src/mailbox.ts:114:36
+ ❯ TeamMailbox.send packages/experimental/gat-core/src/mailbox.ts:58:28
+ ❯ Proxy.sendMessage packages/experimental/gat-core/src/index.ts:308:31
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1400:41
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > flushes a live pending receipt before acknowledgement without inserting a duplicate
+AssertionError: expected 'queued' to be 'accepted' // Object.is equality
+
+Expected: "accepted"
+Received: "queued"
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1449:30
+    1447|       signal: SIGNAL,
+    1448|     })
+    1449|     expect(immediate.status).toBe('accepted')
+       |                              ^
+    1450|     expect(durable(lead).pendingMessages).toEqual([])
+    1451|     expect(target.inbox.nextStep.some(item => item.source.kind === 'te…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > acknowledges steered messages accepted by a busy target inbox
+AssertionError: expected 'queued' to be 'accepted' // Object.is equality
+
+Expected: "accepted"
+Received: "queued"
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1541:26
+    1539|     })
+    1540|
+    1541|     expect(first.status).toBe('accepted')
+       |                          ^
+    1542|     expect(flushed).toEqual([lead.id, target.id, lead.id])
+    1543|     expect(durable(lead).pendingMessages).toEqual([])
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > serializes concurrent Steer delivery admission for one target
+AssertionError: expected [ { …(2) }, { …(2) } ] to match object [ { status: 'accepted' }, …(1) ]
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  [
+    {
+-     "status": "accepted",
++     "status": "queued",
+    },
+    {
+-     "status": "accepted",
++     "status": "queued",
+    },
+  ]
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1598:46
+    1596|
+    1597|     release.resolve(undefined)
+    1598|     await expect(Promise.all([first, second])).resolves.toMatchObject([
+       |                                              ^
+    1599|       { status: 'accepted' },
+    1600|       { status: 'accepted' },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > delivers persisted mail before the later message that cold-resumes its target
+AssertionError: expected 'queued' to be 'accepted' // Object.is equality
+
+Expected: "accepted"
+Received: "queued"
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1630:26
+    1628|       target: 'reordered-target', content: content('later steer'), sig…
+    1629|     })
+    1630|     expect(later.status).toBe('accepted')
+       |                          ^
+    1631|     const target = await waitRunning(ctx, started.member.id)
+    1632|     await vi.waitFor(() => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > deduplicates live target history and contains inspection and delivery failures
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1743:76
+    1741|     })
+    1742|     expect(failed.status).toBe('queued')
+    1743|     expect(warnings.some(warning => warning.includes('read unavailable…
+       |                                                                            ^
+    1744|     expect(warnings.some(warning => warning.includes('delivery unavail…
+    1745|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > cold-resumes an inactive sibling with sender attribution
+AssertionError: expected 'queued' to be 'accepted' // Object.is equality
+
+Expected: "accepted"
+Received: "queued"
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1762:26
+    1760|       target: 'beta', content: content('first update'), signal: SIGNAL,
+    1761|     })
+    1762|     expect(first.status).toBe('accepted')
+       |                          ^
+    1763|     await waitNoAgent(ctx, betaStarted.member.id)
+    1764|     await vi.waitFor(() => { expect(durable(lead).pendingMessages).toE…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > interrupts only the current turn and retains an already accepted follow-up
+AssertionError: expected 'queued' to be 'accepted' // Object.is equality
+
+Expected: "accepted"
+Received: "queued"
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1827:29
+    1825|       target: 'worker', content: content('retained follow-up'), signal…
+    1826|     })
+    1827|     expect(followup.status).toBe('accepted')
+       |                             ^
+    1828|     expect(ctx.agentTeams.interrupt(lead, 'worker')).toEqual({ previou…
+    1829|     await vi.waitFor(() => { expect(worker.status).toBe('idle') })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > drains an admitted plan approval before projection teardown and rejects late approval
+AssertionError: expected { status: 'rejected', …(1) } to deeply equal { status: 'fulfilled', …(1) }
+
+- Expected
++ Received
+
+  {
+-   "status": "fulfilled",
+-   "value": {
+-     "error": {
+-       "code": "team-rejected",
+-       "message": "Agent Teams service disposed",
++   "reason": Error {
++     "message": "control HTTP 404",
+    },
+-     "ok": false,
+-   },
++   "status": "rejected",
+  }
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:1999:25
+    1997|       value: { ok: true, value: { approvedRevision: task.revision } },
+    1998|     })
+    1999|     expect(lateOutcome).toEqual({
+       |                         ^
+    2000|       status: 'fulfilled',
+    2001|       value: { ok: false, error: { code: 'team-rejected', message: 'Ag…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > drains an admitted work report before projection teardown and rejects late work
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:2007:3
+    2005|   })
+    2006|
+    2007|   it('drains an admitted work report before projection teardown and re…
+       |   ^
+    2008|     const { ctx, lead, teamFiber } = await setup([])
+    2009|     const service = ctx.agentTeams
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > keeps the projection registered after mutation disposal times out until the mutation settles
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:2048:3
+    2046|   })
+    2047|
+    2048|   it('keeps the projection registered after mutation disposal times ou…
+       |   ^
+    2049|     let projectionDisposals = 0
+    2050|     const { ctx, lead, teamFiber } = await setup([], { disposalTimeout…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > disposes a live child even after its durable member edge becomes failed
+SubagentError: continuable activation failed
+ ❯ packages/subagent/subagent/src/reserved.ts:235:15
+    233|       } catch (cause: unknown) {
+    234|         if (signal.aborted) throw cause
+    235|         throw new SubagentError('continuable activation failed', 'CONT…
+       |               ^
+    236|       }
+    237|     }),
+
+Caused by: TeamError: exact Agent mission lease is absent, stale, closed, or revoked
+ ❯ TeamExecutionAuthority.assert packages/experimental/gat-core/src/authority.ts:103:13
+ ❯ TeamService.assertExecution packages/experimental/gat-core/src/index.ts:211:20
+ ❯ packages/experimental/gat-core/src/index.ts:168:37
+ ❯ registration packages/core/agent/src/index.ts:310:81
+ ❯ Proxy.assertExecutionAdmission packages/core/agent/src/index.ts:328:69
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Object.releaseExecution packages/core/agent-loop/src/index.ts:683:30
+ ❯ packages/subagent/subagent/src/reserved.ts:229:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'TEAM_EXECUTION_DENIED' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > aborts and awaits an admitted cold mailbox dispatch during disposal
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:2184:3
+    2182|   })
+    2183|
+    2184|   it('aborts and awaits an admitted cold mailbox dispatch during dispo…
+       |   ^
+    2185|     const { ctx, lead } = await setup([textResponse('worker done')])
+    2186|     const started = await spawn(ctx, lead, 'mailbox-worker')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/27]⎯
+
+ FAIL  |thread-safe| packages/experimental/gat-core/tests/team.spec.ts > Team mailbox and waiting > reconciles mismatched persisted children and ignores a concurrently settled member
+AssertionError: expected { id: 'live-provisioning-child', …(7) } to match object { phase: 'failed', …(1) }
+(6 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": "persisted child Session does not match the provisioned continuation",
++   "error": "child Session recovery failed: reserved continuation payload must be a record",
+    "phase": "failed",
+  }
+
+ ❯ packages/experimental/gat-core/tests/team.spec.ts:2399:44
+    2397|     await live.dispose()
+    2398|     await reconcileFirst.reconcileProvisioning(first.lead, SIGNAL)
+    2399|     expect(durable(first.lead).members[0]).toMatchObject({
+       |                                            ^
+    2400|       phase: 'failed',
+    2401|       error: 'persisted child Session does not match the provisioned c…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/27]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  27 failed | 53 passed (80)
+   Start at  11:28:57
+   Duration  21.51s (transform 3.52s, setup 529ms, import 4.09s, tests 21.49s, environment 0ms)
+

@@ -1,0 +1,11 @@
+/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-tool-catalog.ts:662
+  throw new Error(
+        ^
+
+Error: gen-tool-catalog: @vuhoi/gat-tools booted without registering a single tool. Its plugin is most likely PENDING on a service this manifest entry does not mount — compare the plugin's inject with mount() and requires: ctx.tools, ctx.systemPrompt, ctx.agentTeams, an exact live Team member Agent.
+    at assertToolsHarvested (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-tool-catalog.ts:662:9)
+    at collectToolCatalog (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-tool-catalog.ts:689:7)
+    at async main (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-tool-catalog.ts:777:26)
+    at async <anonymous> (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-tool-catalog.ts:811:3)
+
+Node.js v22.23.1

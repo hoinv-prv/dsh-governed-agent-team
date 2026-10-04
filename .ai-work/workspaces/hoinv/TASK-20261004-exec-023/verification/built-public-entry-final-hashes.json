@@ -1,0 +1,58 @@
+{
+  "entries": {
+    "@deepseek-ai/cordis": {
+      "path": "/home/hoinv/work/dsh-binding-prerequisites/vendor/cordis/lib/index.js",
+      "sha256": "1729cdbf8ee40b17c8839e06bf96491490548559e11ef7e411271e0754e751c5"
+    },
+    "@deepseek-ai/dsh-agent-loop-testkit": {
+      "path": "/home/hoinv/work/dsh-binding-prerequisites/packages/test-support/agent-loop-testkit/lib/index.js",
+      "sha256": "161019aff77feb344d0542e88dde4dbcd96ea5ecd0dfd19287731fd7e254ff07"
+    },
+    "@deepseek-ai/dsh-agent-loop": {
+      "path": "/home/hoinv/work/dsh-binding-prerequisites/packages/core/agent-loop/lib/index.js",
+      "sha256": "0326a8f0520035249efe85872b335f44e6d4705c4cd694e178f4e1f1f225a788"
+    },
+    "@deepseek-ai/dsh-session-persistence-jsonl": {
+      "path": "/home/hoinv/work/dsh-binding-prerequisites/packages/session/session-persistence-jsonl/lib/index.js",
+      "sha256": "7d0640c9fc4be6c703b77605fdee6af519c542fae28a6cd4489353309812f062"
+    },
+    "@deepseek-ai/dsh-subagent": {
+      "path": "/home/hoinv/work/dsh-binding-prerequisites/packages/subagent/subagent/lib/index.js",
+      "sha256": "a9ff01f68cd45314e2e4bbbbc7d89e782d6be749daed895f26e41984fa834dc4"
+    },
+    "@deepseek-ai/dsh-subagent-spawn-in-process": {
+      "path": "/home/hoinv/work/dsh-binding-prerequisites/packages/subagent/subagent-spawn-in-process/lib/index.js",
+      "sha256": "11c92108dd145957f8251a81fc9bfb8a30e7f6f25d96e34a5cb8581a4be4be06"
+    },
+    "@deepseek-ai/dsh-session": {
+      "path": "/home/hoinv/work/dsh-binding-prerequisites/packages/core/session/lib/index.js",
+      "sha256": "0be28c47faf269a5489d7640bbcf0ef3d659dab4e4696f49a274f11460aad5b6"
+    },
+    "@deepseek-ai/dsh-llm": {
+      "path": "/home/hoinv/work/dsh-binding-prerequisites/packages/llm/llm/lib/index.js",
+      "sha256": "f54d86572d4c0e8d9348cdc65e4c4684a4956a91162815d3c52ee7c0c58225ed"
+    },
+    "@deepseek-ai/dsh-tools": {
+      "path": "/home/hoinv/work/dsh-binding-prerequisites/packages/core/tools/lib/index.js",
+      "sha256": "540cf4ad7c5dfb3ebd5b8177e0919a993599c013f9c17230d412bf83054e0720"
+    },
+    "@vuhoi/gat-core": {
+      "path": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/lib/index.js",
+      "sha256": "3430450f2cd9eff07eb32765ed09e6269d7cdbae9d24b4e6383ab5d4085655c1"
+    },
+    "@vuhoi/gat-tools": {
+      "path": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-tools/lib/index.js",
+      "sha256": "ee059c071782e889f1411a109cf8824e722ee15c2aeea90df4424d5212802e6d"
+    }
+  },
+  "sdkRuntimeUnchanged": true,
+  "sdkEntries": {
+    "apps/cli/lib/bin.js": "0ff7f1d72c4e0cbe14001709c81e20a04b70464118a7f78568952988e28f2ac5",
+    "packages/core/agent/lib/index.js": "8639f4a0a0fa1b6cb9e25a3097d751ffb05cbc6651bee4b0985504330b9f2d93",
+    "packages/core/agent-loop/lib/index.js": "0326a8f0520035249efe85872b335f44e6d4705c4cd694e178f4e1f1f225a788",
+    "packages/subagent/subagent/lib/index.js": "a9ff01f68cd45314e2e4bbbbc7d89e782d6be749daed895f26e41984fa834dc4",
+    "packages/core/tools/lib/index.js": "540cf4ad7c5dfb3ebd5b8177e0919a993599c013f9c17230d412bf83054e0720",
+    "packages/sdk/client/lib/index.js": "3e936345f36c1845ad07a66084a126cd0a9b511aa192501932874d7e09b9e7b8",
+    "packages/sdk/server/lib/index.js": "7b19ef78260b4a9287b9712074d9df63271a67bae752e5a26deb1fd17067340e"
+  }
+}

@@ -1,0 +1,4 @@
+packages/subagent/subagent/tests/reserved.spec.ts:253:54: error @stylistic(arrow-parens): Expected parentheses around arrow function argument having a body with curly braces.
+packages/core/agent/src/index.ts:307:12: error typescript(no-misused-promises): Promise-returning function provided to return value where a void return was expected.
+packages/core/agent/src/index.ts:310:79: error typescript(no-confusing-void-expression): Returning a void expression from an arrow function shorthand is forbidden. help: Add braces to the arrow function.
+packages/subagent/subagent/tests/reserved.spec.ts:217:49: error typescript(no-deprecated): `toThrowError` is deprecated. Use `toThrow` instead

@@ -1,0 +1,31 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ snapshots/sdk/sdk.snapshot.ts (19 tests | 1 failed | 18 skipped) 850ms
+     × refreshs subagent-send-message through dsh --profile sdk 849ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  snapshots/sdk/sdk.snapshot.ts > TypeScript SDK snapshots over the jsonrpc runtime > refreshs subagent-send-message through dsh --profile sdk
+AssertionError: child send_message result: expected '[{"type":"tool/result","seq":19,"time…' to contain 'message delivered to agent'
+
+Expected: "message delivered to agent"
+Received: "[{"type":"tool/result","seq":19,"time":1791081480672,"data":{"turn":1,"step":1,"message":{"source":{"kind":"tool","callId":"call_send_message_1"},"content":[{"type":"tool-result","toolCallId":"call_send_message_1","content":[{"type":"text","text":"Error: tool execution parent is unavailable or belongs to another Agent"}],"isError":true}],"role":"user","id":"68b8b6fc-fb62-4fb1-8818-31cfeff409e5"},"error":{"name":"HarnessError","code":"INVALID_TOOL_PARENT"}},"sourceEventSeqs":[18],"surfaceOp":"append"}]"
+
+ ❯ snapshots/sdk/sdk.snapshot.ts:831:73
+    829|           if (parent === undefined) throw new Error(`${scenario.name}:…
+    830|           const delivery = childEvents.filter(event => event.type === …
+    831|           expect(JSON.stringify(delivery), 'child send_message result'…
+       |                                                                         ^
+    832|           expect(JSON.stringify(delivery), 'child send_message succeed…
+    833|           expect(records(parent.content).some(event => event.type === …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 18 skipped (19)
+   Start at  11:37:59
+   Duration  1.80s (transform 609ms, setup 186ms, import 667ms, tests 850ms, environment 0ms)
+

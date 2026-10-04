@@ -1,0 +1,13 @@
+output_id: OUT-023-06-01
+result_type: output
+working_aip_ref: AIP-EXEC-023
+step_id: STEP-06
+output_locator: qualification-receipt.json
+created_at: 2026-10-04T13:00:32+09:00
+review_status: reviewed
+verification_level: behavior_verified
+source_refs:
+  - independent-review.md
+  - source-design-consistency.md
+  - conformance.md
+notes: "Qualified exact source/build/docs/SDK receipts; production composition and deployment remain separate."

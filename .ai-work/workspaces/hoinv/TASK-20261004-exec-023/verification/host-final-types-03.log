@@ -1,0 +1,1 @@
+packages/experimental/gat-core/src/task-board.ts(128,5): error TS2322: Type 'undefined' is not assignable to type 'TeamTaskView[]'.

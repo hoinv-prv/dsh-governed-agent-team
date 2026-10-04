@@ -1,0 +1,42 @@
+verify-type-equiv: type-equiv verification failed:
+  type-equiv block AgentHandle (docs/subsystems/core.zh.md:30) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block Agent (docs/subsystems/core.zh.md:63) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block AgentStatus (docs/subsystems/core.zh.md:148) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block AssistantStreamFrame (docs/subsystems/core.zh.md:159) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block AgentOptions (docs/subsystems/core.zh.md:199) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block Inbox (docs/subsystems/core.zh.md:217) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block InboxTarget (docs/subsystems/core.zh.md:274) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block CancelOptions (docs/subsystems/core.zh.md:283) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block AgentCancelCause (docs/subsystems/core.zh.md:295) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block PreStepDecision (docs/subsystems/core.zh.md:326) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block RequestErrorAction (docs/subsystems/core.zh.md:340) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block SessionStartSource (docs/subsystems/core.zh.md:349) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block Branded (docs/subsystems/core.zh.md:415) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolOutputDefinition (docs/subsystems/tools.zh.md:15) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolDefinition (docs/subsystems/tools.zh.md:27) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ValueSchemaSpec (docs/subsystems/tools.zh.md:110) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ParameterPropertySpec (docs/subsystems/tools.zh.md:124) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ParameterSchemaSpec (docs/subsystems/tools.zh.md:129) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block InferValue (docs/subsystems/tools.zh.md:142) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block InferArgs (docs/subsystems/tools.zh.md:150) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolRestriction (docs/subsystems/tools.zh.md:163) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolExecutionToken (docs/subsystems/tools.zh.md:180) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolExecutionInput (docs/subsystems/tools.zh.md:185) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolRunContext (docs/subsystems/tools.zh.md:220) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolExecutionMode (docs/subsystems/tools.zh.md:251) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block PtcDispatchLog (docs/subsystems/tools.zh.md:263) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolExecution (docs/subsystems/tools.zh.md:289) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolDispatchExecution (docs/subsystems/tools.zh.md:307) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolGuard (docs/subsystems/tools.zh.md:323) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolFailure (docs/subsystems/tools.zh.md:335) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolExecutionSuccess (docs/subsystems/tools.zh.md:345) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolExecutionFailure (docs/subsystems/tools.zh.md:360) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ToolExecutionResult (docs/subsystems/tools.zh.md:373) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block PreToolDecision (docs/subsystems/tools.zh.md:386) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block PostToolDecision (docs/subsystems/tools.zh.md:399) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block JsonSchemaScalar (docs/subsystems/tools.zh.md:418) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block JsonSchemaType (docs/subsystems/tools.zh.md:423) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block JsonSchemaNode (docs/subsystems/tools.zh.md:428) has no manifest entry — add one to scripts/type-equiv.manifest.json
+  type-equiv block ObjectJsonSchema (docs/subsystems/tools.zh.md:462) has no manifest entry — add one to scripts/type-equiv.manifest.json
+
+(checked 458 primary block(s) across 49 doc(s), 380 paired derivative(s); manifest at scripts/type-equiv.manifest.json)

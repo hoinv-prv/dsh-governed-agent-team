@@ -1,0 +1,2 @@
+gen-persistence-catalog: wrote docs/persistence-catalog.md.
+gen-persistence-catalog: wrote packages/core/session/src/known-event-types.ts.

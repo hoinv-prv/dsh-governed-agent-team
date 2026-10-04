@@ -1,0 +1,731 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ |thread-safe| packages/core/agent-loop/tests/system-prompt-admission.spec.ts (15 tests | 2 failed) 244ms
+     × reconciles compaction retries without replaying admission, older tail survives=false 22ms
+     × reconciles compaction retries without replaying admission, older tail survives=true 15ms
+ ❯ |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts (136 tests | 34 failed) 50324ms
+     × uses a caller-reserved child identity and rejects a duplicate reservation 182ms
+     × rejects without ids when the provider has no prepareContinuable capability 9ms
+     × releases the Activation when the parent catalog append fails 29ms
+     × preserves prompt admission failure when Activation disposal also fails 44ms
+     × rolls an unpublished Activation back when lifecycle publication fails 26ms
+     × wakes a waiting Activation instead of cold-resuming it 194ms
+     × rechecks direct Agent inbox work accepted during the final flush 5008ms
+     × retries after Session-only work completes during the final flush 5006ms
+     × keeps a child acquired during the final flush before settling 5009ms
+     × lets explicit disposal win while the natural final flush is pending 5011ms
+     × rechecks maintenance that claims the Agent during the final flush 5010ms
+     × logs a failed final flush after every listener settles without failing the Activation 68ms
+     × releases only selected direct children 258ms
+     × awaits and rolls back an admitted materialization below a scoped root 32ms
+     × rejects an initial prompt when drain starts after materialization 45ms
+     × waits for a published materialization to finish rollback before drain resolves 24ms
+     × steers an idle direct parent and preserves sender attribution 1193ms
+     × tells the parent what the child finished with, without being asked 1098ms
+     × delivers settlement even when the child already sent a message 1097ms
+     × delivers the terminal reason when the child never had a chance to report 1094ms
+     × tells the parent a policy-rejected delivery was declined, not finished 1098ms
+     × reports a child stopped before it ever reached the model as stopped 1044ms
+     × reports a child an ancestor interrupted before its first step as stopped 1096ms
+     × withholds an outcome the harness could not durably release 1092ms
+     × gives an idle parent one ordinary turn on the notice 1097ms
+     × batches simultaneous notices into one step of a busy parent 151ms
+     × holds a maintaining parent live until it can read the notice 1209ms
+     × delivers before releasing the ownership that lets the parent settle 155ms
+     × does not wake a parent whose own teardown already began 66ms
+     × does not wake a parent below a scoped teardown root 68ms
+     × records but cannot deliver a teardown notice once the parent is disposed too 70ms
+     × logs a rejected notice instead of failing the child's teardown 115ms
+     × stays silent about a child the caller was told does not exist 50ms
+     × rolls the transfer back when the parent begins disposal during materialization 83ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 36 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| packages/core/agent-loop/tests/system-prompt-admission.spec.ts > prepared-route prompt admission > reconciles compaction retries without replaying admission, older tail survives=false
+ FAIL  |thread-safe| packages/core/agent-loop/tests/system-prompt-admission.spec.ts > prepared-route prompt admission > reconciles compaction retries without replaying admission, older tail survives=true
+AssertionError: expected 3 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 3
+
+ ❯ packages/core/agent-loop/tests/system-prompt-admission.spec.ts:163:24
+    161|     await send(h.agent, 'third')
+    162|     expect(adapter.requests).toHaveLength(5)
+    163|     expect(assemblies).toBe(1)
+       |                        ^
+    164|     expect(preSteps).toBe(1)
+    165|     expect(resolve).toHaveBeenCalledTimes(5)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > SubagentRuntime.startContinuable > uses a caller-reserved child identity and rejects a duplicate reservation
+AssertionError: expected SubagentError: continuable materializatio… { code: '…' } to match object { code: 'DUPLICATE_CHILD' }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "DUPLICATE_CHILD",
++ SubagentError {
++   "code": "CONTINUABLE_MATERIALIZE_FAILED",
+  }
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:305:7
+    303|       ...startSpec(parent),
+    304|       childId: reservedId,
+    305|     })).rejects.toMatchObject({ code: 'DUPLICATE_CHILD' })
+       |       ^
+    306|     expect(ctx.agents.get(reservedId)).toBeUndefined()
+    307|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > SubagentRuntime.startContinuable > rejects without ids when the provider has no prepareContinuable capability
+AssertionError: expected [Function] to throw error matching /does not support continuable children/ but got 'continuable materialization failed'
+
+- Expected:
+/does not support continuable children/
+
++ Received:
+"continuable materialization failed"
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:319:79
+    317|     })
+    318|
+    319|     await expect(ctx.subagents.startContinuable(startSpec(parent, 'one…
+       |                                                                               ^
+    320|       .rejects.toThrow(/does not support continuable children/)
+    321|     expect(start).not.toHaveBeenCalled()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > SubagentRuntime.startContinuable > releases the Activation when the parent catalog append fails
+AssertionError: expected SubagentError: continuable materializatio… { code: '…' } to be Error: catalog append failed // Object.is equality
+
+- Expected
++ Received
+
+- Error {
+-   "message": "catalog append failed",
++ SubagentError {
++   "message": "continuable materialization failed",
++   "code": "CONTINUABLE_MATERIALIZE_FAILED",
++   "name": "SubagentError",
+  }
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:450:7
+    448|       ...startSpec(parent),
+    449|       childId,
+    450|     })).rejects.toBe(catalogFailure)
+       |       ^
+    451|
+    452|     await vi.waitFor(() => { expect(ctx.agents.get(childId)).toBeUndef…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > SubagentRuntime.startContinuable > preserves prompt admission failure when Activation disposal also fails
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:482:9
+    480|     expect(warnings.some(warning => warning.startsWith(
+    481|       'subagent continuation: disposal after admission or catalog appe…
+    482|     ))).toBe(true)
+       |         ^
+    483|   })
+    484|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > SubagentRuntime.startContinuable > rolls an unpublished Activation back when lifecycle publication fails
+AssertionError: expected [Function] to throw error matching /start publication failed/ but got 'continuable materialization failed'
+
+- Expected:
+/start publication failed/
+
++ Received:
+"continuable materialization failed"
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:493:67
+    491|     }, { global: true })
+    492|
+    493|     await expect(ctx.subagents.startContinuable(startSpec(parent)))
+       |                                                                   ^
+    494|       .rejects.toThrow(/start publication failed/)
+    495|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > direct-child Queue residency routing > wakes a waiting Activation instead of cold-resuming it
+AssertionError: expected '' to contain 'finished and will do no further work'
+
+- Expected
++ Received
+
+- finished and will do no further work
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:911:58
+    909|     // an ordinary later user message in its log.
+    910|     expect(userTexts(loaded.events).slice(0, 2)).toEqual(['child task'…
+    911|     expect(userTexts(loaded.events).slice(2).join('\n')).toContain('fi…
+       |                                                          ^
+    912|   })
+    913|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > rechecks direct Agent inbox work accepted during the final flush
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1130:3
+    1128|
+    1129| describe('continuable durability and teardown', () => {
+    1130|   it('rechecks direct Agent inbox work accepted during the final flush…
+       |   ^
+    1131|     const releaseFirstTurn = Promise.withResolvers<undefined>()
+    1132|     const adapter = new GatedAdapter([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > retries after Session-only work completes during the final flush
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1170:3
+    1168|   })
+    1169|
+    1170|   it('retries after Session-only work completes during the final flush…
+       |   ^
+    1171|     const releaseFirstTurn = Promise.withResolvers<undefined>()
+    1172|     const adapter = new GatedAdapter([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > keeps a child acquired during the final flush before settling
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1204:3
+    1202|   })
+    1203|
+    1204|   it('keeps a child acquired during the final flush before settling', …
+       |   ^
+    1205|     const releaseFirstTurn = Promise.withResolvers<undefined>()
+    1206|     const releaseGrandchild = Promise.withResolvers<undefined>()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > lets explicit disposal win while the natural final flush is pending
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1239:3
+    1237|   })
+    1238|
+    1239|   it('lets explicit disposal win while the natural final flush is pend…
+       |   ^
+    1240|     const releaseFirstTurn = Promise.withResolvers<undefined>()
+    1241|     const adapter = new GatedAdapter([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > rechecks maintenance that claims the Agent during the final flush
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1267:3
+    1265|   })
+    1266|
+    1267|   it('rechecks maintenance that claims the Agent during the final flus…
+       |   ^
+    1268|     const releaseFirstTurn = Promise.withResolvers<undefined>()
+    1269|     const adapter = new GatedAdapter([{ chunks: textResponse('answer')…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > logs a failed final flush after every listener settles without failing the Activation
+SubagentError: initial admission persistence failed
+ ❯ packages/subagent/subagent/src/reserved.ts:163:15
+    161|         await flush()
+    162|       } catch (cause: unknown) {
+    163|         throw new SubagentError('initial admission persistence failed'…
+       |               ^
+    164|       }
+    165|       assertOpen()
+
+Caused by: Error: disk full
+ ❯ Object.<anonymous> packages/subagent/subagent/tests/continuation.spec.ts:1341:61
+ ❯ Object.apply vendor/cordis/src/reflect.ts:411:24
+ ❯ packages/core/session/src/index.ts:1150:16
+ ❯ Proxy.flush packages/core/session/src/index.ts:1148:56
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ flush packages/subagent/subagent/src/reserved.ts:121:35
+ ❯ packages/subagent/subagent/src/reserved.ts:161:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > releases only selected direct children
+AssertionError: expected "cancel" to be called with arguments: [ { kind: 'parent' } ]
+
+Received:
+
+  1st cancel call:
+
+  [
+    {
+      "kind": "parent",
+    },
++   {
++     "keepInbox": false,
++   },
+  ]
+
+
+Number of calls: 1
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1525:20
+    1523|     )
+    1524|
+    1525|     expect(cancel).toHaveBeenCalledWith({ kind: 'parent' })
+       |                    ^
+    1526|     expect(ctx.agents.get(sibling.childId)).toBe(siblingAgent)
+    1527|     releaseTarget.resolve(undefined)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > awaits and rolls back an admitted materialization below a scoped root
+AssertionError: expected SubagentError: continuable materializatio… { code: '…' } to match object { code: 'DRAINING' }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "DRAINING",
++ SubagentError {
++   "code": "CONTINUABLE_MATERIALIZE_FAILED",
+  }
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1650:28
+    1648|
+    1649|       releaseMaterialization.resolve(undefined)
+    1650|       await expect(starting).rejects.toMatchObject({ code: 'DRAINING' …
+       |                            ^
+    1651|       await drained
+    1652|       expect(ctx.agents.get(childId)).toBeUndefined()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > rejects an initial prompt when drain starts after materialization
+AssertionError: expected SubagentError: continuable reservation is… { code: '…' } to match object { code: 'DRAINING' }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "DRAINING",
++ SubagentError {
++   "code": "CONTINUABLE_CLOSED",
+  }
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1710:67
+    1708|     ctx.on('agent/inbox/inserted', ({ message }) => { accepted.push(me…
+    1709|
+    1710|     await expect(ctx.subagents.startContinuable(startSpec(parent)))
+       |                                                                   ^
+    1711|       .rejects.toMatchObject({ code: 'DRAINING' })
+    1712|     await Promise.all(drains)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable durability and teardown > waits for a published materialization to finish rollback before drain resolves
+AssertionError: expected SubagentError: continuable materializatio… { code: '…' } to match object { code: 'DRAINING' }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "DRAINING",
++ SubagentError {
++   "code": "CONTINUABLE_MATERIALIZE_FAILED",
+  }
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:1733:67
+    1731|     // `agent/created` runs after registry publication but before mate…
+    1732|     // receives the handle and installs the Activation.
+    1733|     await expect(ctx.subagents.startContinuable(startSpec(parent)))
+       |                                                                   ^
+    1734|       .rejects.toMatchObject({ code: 'DRAINING' })
+    1735|     await Promise.all(drains)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable adjacent-Agent delivery > steers an idle direct parent and preserves sender attribution
+AssertionError: expected [ { provider: 'mock', …(4) } ] to have a length of 2 but got 1
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2424:83
+    2422|     await waitNoActivation(ctx, started.childId)
+    2423|     await vi.waitFor(() => {
+    2424|       expect(adapter.requests.filter(request => request.sessionId === …
+       |                                                                                   ^
+    2425|     })
+    2426|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > tells the parent what the child finished with, without being asked
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2484:64
+    2482|     await waitNoActivation(ctx, started.childId)
+    2483|
+    2484|     await vi.waitFor(() => { expect(settlementNotices(parent)).toHaveL…
+       |                                                                ^
+    2485|     const notice = settlementNotices(parent)[0]!
+    2486|     expect(notice.sender).toBe(started.childId)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > delivers settlement even when the child already sent a message
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2513:64
+    2511|     // description can promise it; bookkeeping "did it report?" would …
+    2512|     // promise conditional on a channel this manager does not own.
+    2513|     await vi.waitFor(() => { expect(settlementNotices(parent)).toHaveL…
+       |                                                                ^
+    2514|   })
+    2515|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > delivers the terminal reason when the child never had a chance to report
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2521:64
+    2519|     await waitNoActivation(ctx, started.childId)
+    2520|
+    2521|     await vi.waitFor(() => { expect(settlementNotices(parent)).toHaveL…
+       |                                                                ^
+    2522|     expect(settlementNotices(parent)[0]!.text).toBe(
+    2523|       `Background subagent ${started.childId} ran out of room before i…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > tells the parent a policy-rejected delivery was declined, not finished
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2540:64
+    2538|     await waitNoActivation(ctx, started.childId)
+    2539|
+    2540|     await vi.waitFor(() => { expect(settlementNotices(parent)).toHaveL…
+       |                                                                ^
+    2541|     expect(settlementNotices(parent)[0]!.text).toBe(
+    2542|       `Background subagent ${started.childId} declined the task.`
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > reports a child stopped before it ever reached the model as stopped
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2634:64
+    2632|     // nothing to report"; only the interruption distinguishes it from…
+    2633|     // that genuinely finished with no output.
+    2634|     await vi.waitFor(() => { expect(settlementNotices(parent)).toHaveL…
+       |                                                                ^
+    2635|     expect(settlementNotices(parent)[0]!.text).toBe(
+    2636|       `Background subagent ${started.childId} was stopped before it fi…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > reports a child an ancestor interrupted before its first step as stopped
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2661:64
+    2659|     await waitNoActivation(ctx, started.childId)
+    2660|
+    2661|     await vi.waitFor(() => { expect(settlementNotices(parent)).toHaveL…
+       |                                                                ^
+    2662|     expect(settlementNotices(parent)[0]!.text).toBe(
+    2663|       `Background subagent ${started.childId} was stopped before it fi…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > withholds an outcome the harness could not durably release
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2725:64
+    2723|
+    2724|     await waitNoActivation(ctx, started.childId)
+    2725|     await vi.waitFor(() => { expect(settlementNotices(parent)).toHaveL…
+       |                                                                ^
+    2726|     expect(settlementNotices(parent)[0]!.text).toBe(
+    2727|       `Background subagent ${started.childId} failed before it finishe…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > gives an idle parent one ordinary turn on the notice
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2741:83
+    2739|     await waitNoActivation(ctx, started.childId)
+    2740|     await vi.waitFor(() => {
+    2741|       expect(adapter.requests.filter(request => request.sessionId === …
+       |                                                                                   ^
+    2742|     })
+    2743|     expect(turnStarts).toEqual([1])
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > batches simultaneous notices into one step of a busy parent
+AssertionError: expected [] to have a length of 2 but got +0
+
+- Expected
++ Received
+
+- 2
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2767:35
+    2765|
+    2766|     // Both notices are waiting for the same step boundary, not two tu…
+    2767|     expect(parent.inbox.nextStep).toHaveLength(2)
+       |                                   ^
+    2768|     expect(parent.inbox.nextTurn).toHaveLength(0)
+    2769|     const turnStarts: number[] = []
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > holds a maintaining parent live until it can read the notice
+AssertionError: expected [] to have a length of 2 but got +0
+
+- Expected
++ Received
+
+- 2
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2814:64
+    2812|     maintaining.resolve(undefined)
+    2813|     await maintenance
+    2814|     await vi.waitFor(() => { expect(settlementNotices(middle)).toHaveL…
+       |                                                                ^
+    2815|     expect(settlementNotices(middle).map(entry => entry.sender))
+    2816|       .toEqual([first.childId, second.childId])
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[28/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > delivers before releasing the ownership that lets the parent settle
+AssertionError: expected undefined to deeply equal [ Array(1) ]
+
+- Expected:
+[
+  "b83ed140-19be-4be0-84e8-cb7d3c9836df",
+]
+
++ Received:
+undefined
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2847:29
+    2845|     // Still owned at delivery: the parent is structurally unable to s…
+    2846|     // the window the notice crosses, rather than winning a race again…
+    2847|     expect(ownedAtDelivery).toEqual([inner.childId])
+       |                             ^
+    2848|     await waitNoActivation(ctx, outer.childId)
+    2849|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[29/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > does not wake a parent whose own teardown already began
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2865:39
+    2863|     // about to dispose spends a model request nothing reads. What hap…
+    2864|     // message when that parent is disposed next is pinned by the test…
+    2865|     expect(settlementNotices(parent)).toHaveLength(1)
+       |                                       ^
+    2866|     expect(settlementNotices(parent)[0]!.text).toBe(
+    2867|       `Background subagent ${started.childId} was stopped before it fi…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[30/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > does not wake a parent below a scoped teardown root
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2886:39
+    2884|     await drained
+    2885|
+    2886|     expect(settlementNotices(parent)).toHaveLength(1)
+       |                                       ^
+    2887|     expect(parent.session.snapshotEvents().some(event => event.type ==…
+    2888|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[31/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > records but cannot deliver a teardown notice once the parent is disposed too
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2905:43
+    2903|     hold.resolve(undefined)
+    2904|     await drained
+    2905|     expect(settlementNotices(host.agent)).toHaveLength(1)
+       |                                           ^
+    2906|
+    2907|     // Disposal is a `keepInbox: false` cancel, so it durably cancels …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[32/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > logs a rejected notice instead of failing the child's teardown
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2960:95
+    2958|     await vi.waitFor(() => { expect(ends).toHaveLength(1) })
+    2959|     expect(ends[0]!.stopReason).toBe('completed')
+    2960|     expect(warnings.some(warning => warning.includes('settlement notic…
+       |                                                                                               ^
+    2961|   })
+    2962|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[33/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable settlement delivery > stays silent about a child the caller was told does not exist
+AssertionError: expected SubagentError: continuable reservation is… { code: '…' } to match object { code: 'DRAINING' }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "DRAINING",
++ SubagentError {
++   "code": "CONTINUABLE_CLOSED",
+  }
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:2968:67
+    2966|     ctx.on('subagent/start', () => { drains.push(drainManager(ctx)) })
+    2967|
+    2968|     await expect(ctx.subagents.startContinuable(startSpec(parent)))
+       |                                                                   ^
+    2969|       .rejects.toMatchObject({ code: 'DRAINING' })
+    2970|     await Promise.all(drains)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[34/36]⎯
+
+ FAIL  |thread-safe| packages/subagent/subagent/tests/continuation.spec.ts > continuable errors > rolls the transfer back when the parent begins disposal during materialization
+AssertionError: expected SubagentError: continuable materializatio… { code: '…' } to match object { code: 'ACTIVATION_CLOSING' }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "ACTIVATION_CLOSING",
++ SubagentError {
++   "code": "CONTINUABLE_MATERIALIZE_FAILED",
+  }
+
+ ❯ packages/subagent/subagent/tests/continuation.spec.ts:3216:66
+    3214|     })
+    3215|
+    3216|     await expect(ctx.subagents.startContinuable(startSpec(child)))
+       |                                                                  ^
+    3217|       .rejects.toMatchObject({ code: 'ACTIVATION_CLOSING' })
+    3218|     await vi.waitFor(() => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[35/36]⎯
+
+
+ Test Files  2 failed | 2 passed (4)
+      Tests  36 failed | 168 passed (204)
+   Start at  11:05:36
+   Duration  51.61s (transform 2.53s, setup 652ms, import 2.77s, tests 51.13s, environment 0ms)
+

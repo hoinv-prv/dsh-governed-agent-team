@@ -1,0 +1,82 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ snapshots/sdk/sdk.snapshot.ts (19 tests | 1 failed | 18 skipped) 192ms
+     × refreshs request-refresh through dsh --profile sdk 191ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  snapshots/sdk/sdk.snapshot.ts > TypeScript SDK snapshots over the jsonrpc runtime > refreshs request-refresh through dsh --profile sdk
+TransportClosedError: dsh profile "sdk": JSON-RPC input closed
+exit code: 1
+stderr tail:
+file:///home/hoinv/work/dsh-binding-prerequisites/packages/boot/app-boot/lib/index.js:1545
+		throw new Error(`${binName}: ${stage}: ${detail}${stack}`, { cause });
+		      ^
+Error: dsh: plugin tree failed to load: failed to apply loader entry include (cordis:include): duplicate loader entry id: in-history-prompt-update
+TypeError: duplicate loader entry id: in-history-prompt-update
+    at EntryGroup.update (file:///home/hoinv/work/dsh-binding-prerequisites/vendor/loader/lib/index.js:91:28)
+    at Include._apply (file:///home/hoinv/work/dsh-binding-prerequisites/packages/boot/app-boot/lib/index.js:240:19)
+    at file:///home/hoinv/work/dsh-binding-prerequisites/packages/boot/app-boot/lib/index.js:236:34
+    at boot (file:///home/hoinv/work/dsh-binding-prerequisites/packages/boot/app-boot/lib/index.js:1545:9)
+    at async runProfile (file:///home/hoinv/work/dsh-binding-prerequisites/apps/cli/lib/profile-boot-Dk-7KqJc.js:311:14)
+    at async runCli (file:///home/hoinv/work/dsh-binding-prerequisites/apps/cli/lib/bin.js:146:4)
+    at async file:///home/hoinv/work/dsh-binding-prerequisites/apps/cli/lib/bin.js:168:23 {
+  [cause]: Error: failed to apply loader entry include (cordis:include): duplicate loader entry id: in-history-prompt-update
+      at updateError (file:///home/hoinv/work/dsh-binding-prerequisites/vendor/loader/lib/index.js:309:9)
+      at Entry._init (file:///home/hoinv/work/dsh-binding-prerequisites/vendor/loader/lib/index.js:529:10)
+      at async Entry.init (file:///home/hoinv/work/dsh-binding-prerequisites/vendor/loader/lib/index.js:505:4)
+      at async Entry.update (file:///home/hoinv/work/dsh-binding-prerequisites/vendor/loader/lib/index.js:426:37)
+      at async EntryGroup.create (file:///home/hoinv/work/dsh-binding-prerequisites/vendor/loader/lib/index.js:65:4)
+      at async Proxy.create (file:///home/hoinv/work/dsh-binding-prerequisites/vendor/loader/lib/index.js:227:14)
+      at async mountRootInclude (file:///home/hoinv/work/dsh-binding-prerequisites/packages/boot/app-boot/lib/index.js:1343:20)
+      at async boot (file:///home/hoinv/work/dsh-binding-prerequisites/packages/boot/app-boot/lib/index.js:1534:3)
+      at async runProfile (file:///home/hoinv/work/dsh-binding-prerequisites/apps/cli/lib/profile-boot-Dk-7KqJc.js:311:14)
+      at async runCli (file:///home/hoinv/work/dsh-binding-prerequisites/apps/cli/lib/bin.js:146:4) {
+    [cause]: TypeError: duplicate loader entry id: in-history-prompt-update
+        at EntryGroup.update (file:///home/hoinv/work/dsh-binding-prerequisites/vendor/loader/lib/index.js:91:28)
+        at Include._apply (file:///home/hoinv/work/dsh-binding-prerequisites/packages/boot/app-boot/lib/index.js:240:19)
+        at file:///home/hoinv/work/dsh-binding-prerequisites/packages/boot/app-boot/lib/index.js:236:34
+  }
+}
+Node.js v22.23.1
+ ❯ EntryGroup.update vendor/loader/lib/index.js:91:28
+ ❯ Include._apply packages/boot/app-boot/lib/index.js:240:19
+ ❯ packages/boot/app-boot/lib/index.js:236:34
+ ❯ boot packages/boot/app-boot/lib/index.js:1545:9
+ ❯ runProfile apps/cli/lib/profile-boot-Dk-7KqJc.js:311:14
+ ❯ runCli apps/cli/lib/bin.js:146:4
+ ❯ updateError vendor/loader/lib/index.js:309:9
+ ❯ Entry._init vendor/loader/lib/index.js:529:10
+ ❯ Entry.init vendor/loader/lib/index.js:505:4
+ ❯ Entry.update vendor/loader/lib/index.js:426:37
+ ❯ EntryGroup.create vendor/loader/lib/index.js:65:4
+ ❯ Proxy.create vendor/loader/lib/index.js:227:14
+ ❯ mountRootInclude packages/boot/app-boot/lib/index.js:1343:20
+ ❯ boot packages/boot/app-boot/lib/index.js:1534:3
+ ❯ runProfile apps/cli/lib/profile-boot-Dk-7KqJc.js:311:14
+ ❯ EntryGroup.update vendor/loader/lib/index.js:91:28
+ ❯ Include._apply packages/boot/app-boot/lib/index.js:240:19
+ ❯ packages/boot/app-boot/lib/index.js:236:34
+ ❯ HarnessClient.closedError packages/sdk/client/src/client.ts:465:12
+    463|     if (this.exitCode !== undefined) parts.push(`exit code: ${String(t…
+    464|     if (this.stderrTail.length > 0) parts.push(`stderr tail:\n${this.s…
+    465|     return new TransportClosedError(parts.join('\n'))
+       |            ^
+    466|   }
+    467| }
+ ❯ HarnessClient.request packages/sdk/client/src/client.ts:340:18
+ ❯ HarnessClient.initialize packages/sdk/client/src/client.ts:277:20
+ ❯ packages/sdk/client/src/api.ts:73:9
+ ❯ runScenario snapshots/sdk/sdk.snapshot.ts:602:5
+ ❯ snapshots/sdk/sdk.snapshot.ts:804:104
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 18 skipped (19)
+   Start at  11:33:24
+   Duration  1.29s (transform 666ms, setup 178ms, import 805ms, tests 192ms, environment 0ms)
+

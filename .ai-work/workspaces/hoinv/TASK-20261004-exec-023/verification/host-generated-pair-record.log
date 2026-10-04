@@ -1,0 +1,3 @@
+verify-translation-pairing: recorded docs/architecture.i18n.yaml
+verify-translation-pairing: recorded docs/subsystems/core.i18n.yaml
+verify-translation-pairing: 2 record(s) written; run the check to validate the pairs.

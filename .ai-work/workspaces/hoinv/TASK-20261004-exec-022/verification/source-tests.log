@@ -1,0 +1,57 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /tmp/gat-exec022-verify
+
+(node:2796915) Warning: Closing file descriptor 22 on garbage collection
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2796915) [DEP0137] DeprecationWarning: Closing a FileHandle object on garbage collection is deprecated. Please close FileHandle objects explicitly using FileHandle.prototype.close(). In the future, an error will be thrown if a file descriptor is closed during garbage collection.
+(node:2796915) Warning: Closing file descriptor 25 on garbage collection
+(node:2796915) Warning: Closing file descriptor 24 on garbage collection
+(node:2796915) Warning: Closing file descriptor 23 on garbage collection
+(node:2796915) Warning: Closing file descriptor 46 on garbage collection
+(node:2796915) Warning: Closing file descriptor 48 on garbage collection
+(node:2796915) Warning: Closing file descriptor 24 on garbage collection
+(node:2796914) Warning: Closing file descriptor 70 on garbage collection
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2796914) [DEP0137] DeprecationWarning: Closing a FileHandle object on garbage collection is deprecated. Please close FileHandle objects explicitly using FileHandle.prototype.close(). In the future, an error will be thrown if a file descriptor is closed during garbage collection.
+(node:2796914) Warning: Closing file descriptor 57 on garbage collection
+(node:2796914) Warning: Closing file descriptor 48 on garbage collection
+(node:2796914) Warning: Closing file descriptor 55 on garbage collection
+(node:2796914) Warning: Closing file descriptor 44 on garbage collection
+(node:2796914) Warning: Closing file descriptor 62 on garbage collection
+(node:2796914) Warning: Closing file descriptor 46 on garbage collection
+(node:2796914) Warning: Closing file descriptor 22 on garbage collection
+(node:2796914) Warning: Closing file descriptor 59 on garbage collection
+(node:2796914) Warning: Closing file descriptor 26 on garbage collection
+(node:2796914) Warning: Closing file descriptor 23 on garbage collection
+(node:2796914) Warning: Closing file descriptor 34 on garbage collection
+(node:2796914) Warning: Closing file descriptor 40 on garbage collection
+(node:2796914) Warning: Closing file descriptor 53 on garbage collection
+(node:2796914) Warning: Closing file descriptor 42 on garbage collection
+(node:2796914) Warning: Closing file descriptor 60 on garbage collection
+(node:2796914) Warning: Closing file descriptor 68 on garbage collection
+(node:2796914) Warning: Closing file descriptor 47 on garbage collection
+(node:2796914) Warning: Closing file descriptor 58 on garbage collection
+(node:2796914) Warning: Closing file descriptor 50 on garbage collection
+(node:2796914) Warning: Closing file descriptor 41 on garbage collection
+(node:2796914) Warning: Closing file descriptor 36 on garbage collection
+(node:2796914) Warning: Closing file descriptor 38 on garbage collection
+(node:2796914) Warning: Closing file descriptor 39 on garbage collection
+(node:2796914) Warning: Closing file descriptor 52 on garbage collection
+(node:2796914) Warning: Closing file descriptor 51 on garbage collection
+(node:2796914) Warning: Closing file descriptor 49 on garbage collection
+(node:2796914) Warning: Closing file descriptor 54 on garbage collection
+(node:2796914) Warning: Closing file descriptor 43 on garbage collection
+(node:2796914) Warning: Closing file descriptor 37 on garbage collection
+(node:2796914) Warning: Closing file descriptor 56 on garbage collection
+(node:2796914) Warning: Closing file descriptor 63 on garbage collection
+(node:2796914) Warning: Closing file descriptor 66 on garbage collection
+(node:2796914) Warning: Closing file descriptor 29 on garbage collection
+
+ Test Files  19 passed (19)
+      Tests  235 passed (235)
+   Start at  10:47:36
+   Duration  7.77s (transform 16.41s, setup 2.75s, import 23.23s, tests 12.85s, environment 869ms)
+

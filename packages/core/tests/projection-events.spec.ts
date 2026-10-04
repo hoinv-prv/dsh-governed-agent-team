@@ -5,7 +5,7 @@ import { emptyTeamState, teamProjectionDefinition } from '../src/projection.ts'
 import type { TeamProjectionState, TeamState } from '../src/projection.ts'
 import { isStructuralTaskMutation } from '../src/task-board.ts'
 import { TeamId, TeamMessageId, TeamMissionId, TeamTaskId } from '../src/types.ts'
-import type { TeamMemberSnapshot, TeamMessageSnapshot, TeamMissionSnapshot, TeamTaskSnapshot } from '../src/types.ts'
+import type { LegacyTeamMemberSnapshot, TeamMessageSnapshot, TeamMissionSnapshot, TeamTaskSnapshot } from '../src/types.ts'
 
 const ROOT = SessionId('team-root')
 const TEAM = TeamId(ROOT)
@@ -46,7 +46,7 @@ function isEmptyState(state: TeamState): boolean {
     && state.messages.length === 0 && state.delivered.length === 0
 }
 
-function member(overrides: Partial<TeamMemberSnapshot> = {}): TeamMemberSnapshot {
+function member(overrides: Partial<LegacyTeamMemberSnapshot> = {}): LegacyTeamMemberSnapshot {
   return {
     id: CHILD,
     name: 'worker-a',
@@ -152,7 +152,7 @@ describe('Agent Teams projection events', () => {
     expect(state.planRevision).toBe(2)
   })
 
-  it('accepts immediately authorized missions while retaining legacy draft replay', () => {
+  it('adapts historical self-approved and draft missions without granting HUMAN authority', () => {
     const legacy = mission()
     const authorized = mission({
       id: TeamMissionId('mission-2'),
@@ -163,7 +163,8 @@ describe('Agent Teams projection events', () => {
     expect(projectTeam(ROOT, [
       event('team/mission', { version: 2, teamId: TEAM, mission: legacy }, SessionSeq(0)),
       event('team/mission', { version: 2, teamId: TEAM, mission: authorized }, SessionSeq(1)),
-    ]).missions).toEqual([legacy, authorized])
+    ]).missions).toEqual([legacy, authorized].map(mission => ({ ...mission, plan: { ...mission.plan, taskIds: [] },
+      authorizationGeneration: 0, revocationGeneration: 0 })))
   })
 
   it('replays independent legacy mission records and isolated approvals', () => {
@@ -185,7 +186,8 @@ describe('Agent Teams projection events', () => {
       event('team/mission', { version: 2, teamId: TEAM, mission: approvedAlpha }, SessionSeq(2)),
     ])
 
-    expect(state.missions).toEqual([approvedAlpha, beta])
+    expect(state.missions).toEqual([approvedAlpha, beta].map(mission => ({ ...mission, plan: { ...mission.plan, taskIds: [] },
+      authorizationGeneration: 0, revocationGeneration: 0 })))
     expect(state.tasks).toEqual([])
     expect(() => projectTeam(ROOT, [
       event('team/mission', { version: 2, teamId: TEAM, mission: alpha }, SessionSeq(0)),

@@ -1,0 +1,13 @@
+[
+  "packages/api/gateway/src/index.ts",
+  "packages/api/gateway/tests/gateway.host.spec.ts",
+  "packages/client/connection/src/rpc-host.ts",
+  "packages/experimental/gat-core/src/index.ts",
+  "packages/experimental/gat-core/tests/authority.spec.ts",
+  "packages/experimental/gat-core/tests/authorized-team-fixture.ts",
+  "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+  "packages/experimental/gat-core/tests/member-binding.spec.ts",
+  "packages/experimental/gat-core/tests/projection-events.spec.ts",
+  "packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts",
+  "packages/experimental/gat-tools/tests/tool-team.spec.ts"
+]

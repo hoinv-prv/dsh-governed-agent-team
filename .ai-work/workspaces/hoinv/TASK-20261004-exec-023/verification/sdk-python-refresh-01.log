@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/hoinv/work/dsh-binding-prerequisites/scripts/smoke-python-runtime.py", line 2448, in <module>
+    main()
+  File "/home/hoinv/work/dsh-binding-prerequisites/scripts/smoke-python-runtime.py", line 797, in main
+    smoke_sdk_minimal(model.url, args.exe.resolve(), args.update_snapshots, in_history=True, request_refresh=True)
+  File "/home/hoinv/work/dsh-binding-prerequisites/scripts/smoke-python-runtime.py", line 1053, in smoke_sdk_minimal
+    from deepseek_harness import DeepSeekHarness
+  File "/home/hoinv/work/dsh-binding-prerequisites/python/sdk/src/deepseek_harness/__init__.py", line 1, in <module>
+    from .api import DeepSeekHarness, DeepSeekHarnessConfig, RunResult, Session
+  File "/home/hoinv/work/dsh-binding-prerequisites/python/sdk/src/deepseek_harness/api.py", line 8, in <module>
+    from .client import HarnessClient, HarnessConfig
+  File "/home/hoinv/work/dsh-binding-prerequisites/python/sdk/src/deepseek_harness/client.py", line 15, in <module>
+    from pydantic import BaseModel
+ModuleNotFoundError: No module named 'pydantic'

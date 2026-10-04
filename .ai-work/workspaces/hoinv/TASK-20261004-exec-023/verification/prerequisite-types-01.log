@@ -1,0 +1,143 @@
+packages/subagent/subagent/src/continuation-activation.ts(599,43): error TS2379: Argument of type '{ resumeSessionId: SessionId; parentAgent: Agent; agentOptions: AgentOptions; signal: AbortSignal; deferExecution: { owner: string; recovery: "explicit" | "automatic"; } | undefined; setup: (childCtx: Context, child: Agent) => void; }' is not assignable to parameter of type 'ResumeAgentOptions' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'deferExecution' are incompatible.
+    Type '{ owner: string; recovery: "explicit" | "automatic"; } | undefined' is not assignable to type '{ readonly owner: string; readonly recovery: "explicit" | "automatic"; }'.
+      Type 'undefined' is not assignable to type '{ readonly owner: string; readonly recovery: "explicit" | "automatic"; }'.
+packages/subagent/subagent/src/continuation-activation.ts(607,43): error TS2379: Argument of type '{ inheritedEventCount: SessionLogOffsetType; agentOptions: AgentOptions; signal: AbortSignal; deferExecution: { owner: string; recovery: "explicit" | "automatic"; } | undefined; ... 4 more ...; meta: { ...; }; }' is not assignable to parameter of type 'CreateAgentOptions' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'deferExecution' are incompatible.
+    Type '{ owner: string; recovery: "explicit" | "automatic"; } | undefined' is not assignable to type '{ readonly owner: string; readonly recovery: "explicit" | "automatic"; }'.
+      Type 'undefined' is not assignable to type '{ readonly owner: string; readonly recovery: "explicit" | "automatic"; }'.
+packages/client/connection/src/rpc-host.ts(14,38): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/control-admission.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/tsconfig.host.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via './control-admission.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+    Imported via './control-admission.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './control-admission.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+packages/client/connection/src/api-request-trust.ts(16,36): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/loopback-hostname.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+packages/client/connection/src/api-request-trust.ts(16,36): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/loopback-hostname.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+packages/client/connection/src/http-bridge.ts(8,45): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/http-bridge.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/api-request-trust.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/browser-auth.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-schema.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+packages/client/connection/src/http-bridge.ts(8,45): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/http-bridge.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/api-request-trust.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/browser-auth.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-schema.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './rpc.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+packages/client/connection/src/index.ts(5,21): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/credentials/credentials/src/index.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via '@deepseek-ai/dsh-credentials' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via '@deepseek-ai/dsh-credentials' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/browser-auth.ts'
+    Imported via '@deepseek-ai/dsh-credentials' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/browser-auth.ts'
+packages/client/connection/src/index.ts(5,21): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/credentials/credentials/src/index.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via '@deepseek-ai/dsh-credentials' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via '@deepseek-ai/dsh-credentials' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/browser-auth.ts'
+    Imported via '@deepseek-ai/dsh-credentials' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/browser-auth.ts'
+packages/client/connection/src/index.ts(7,31): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/host/webserver/src/index.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via '@deepseek-ai/dsh-host-webserver' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via '@deepseek-ai/dsh-host-webserver' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+packages/client/connection/src/index.ts(7,31): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/host/webserver/src/index.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via '@deepseek-ai/dsh-host-webserver' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via '@deepseek-ai/dsh-host-webserver' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+packages/client/connection/src/index.ts(8,26): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/api-path.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via './api-path.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './api-path.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+    Imported via './api-path.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+packages/client/connection/src/index.ts(8,26): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/api-path.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via './api-path.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './api-path.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+    Imported via './api-path.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+packages/client/connection/src/index.ts(9,56): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/http-bridge.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via './http-bridge.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './http-bridge.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+packages/client/connection/src/index.ts(9,56): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/http-bridge.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via './http-bridge.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './http-bridge.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+packages/client/connection/src/index.ts(10,40): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/api-request-trust.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via './api-request-trust.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './api-request-trust.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+packages/client/connection/src/index.ts(10,40): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/api-request-trust.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via './api-request-trust.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './api-request-trust.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+packages/client/connection/src/index.ts(11,29): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/browser-auth.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via './browser-auth.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './browser-auth.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+packages/client/connection/src/index.ts(11,29): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/browser-auth.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via './browser-auth.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './browser-auth.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+packages/client/connection/src/index.ts(12,39): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via './rpc-host.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './rpc-host.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+packages/client/connection/src/index.ts(12,39): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via './rpc-host.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './rpc-host.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+packages/client/connection/src/index.ts(13,104): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/recovery-config.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+packages/client/connection/src/index.ts(13,104): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/recovery-config.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+packages/client/connection/src/rpc-host.ts(10,37): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-schema.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via './rpc-schema.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+    Imported via './rpc-schema.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+packages/client/connection/src/rpc-host.ts(10,37): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-schema.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via './rpc-schema.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+    Imported via './rpc-schema.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+packages/client/connection/src/rpc-host.ts(14,38): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/control-admission.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via './control-admission.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+    Imported via './control-admission.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './control-admission.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+packages/client/connection/src/rpc-host.ts(14,38): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/control-admission.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via './control-admission.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/rpc-host.ts'
+    Imported via './control-admission.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+    Imported via './control-admission.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts'
+packages/credentials/credentials/src/index.ts(13,85): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/credentials/credentials/src/types.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via './types.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/credentials/credentials/src/index.ts'
+    Imported via './types.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/credentials/credentials/src/index.ts'
+packages/credentials/credentials/src/index.ts(13,85): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/credentials/credentials/src/types.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via './types.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/credentials/credentials/src/index.ts'
+    Imported via './types.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/credentials/credentials/src/index.ts'
+packages/experimental/gat-core/src/index.ts(8,37): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via '@deepseek-ai/dsh-client-connection' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/index.ts'
+    Imported via '@deepseek-ai/dsh-client-connection' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/mission-board.ts'
+packages/experimental/gat-core/src/index.ts(8,37): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/client/connection/src/index.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via '@deepseek-ai/dsh-client-connection' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/index.ts'
+    Imported via '@deepseek-ai/dsh-client-connection' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/mission-board.ts'
+packages/experimental/gat-core/src/index.ts(149,36): error TS2345: Argument of type '(this: Scoped<Agent>, { agent }: { agent: Agent; turn: number; step: number; attempt: number; signal: AbortSignal; }) => void' is not assignable to parameter of type '(this: Scoped<Agent>, payload: { agent: Agent; turn: number; step: number; attempt: number; signal: AbortSignal; }) => Promise<void>'.
+  Type 'void' is not assignable to type 'Promise<void>'.
+packages/host/webserver/src/index.ts(17,60): error TS6059: File '/home/hoinv/work/dsh-binding-prerequisites/packages/host/webserver/src/injections.ts' is not under 'rootDir' '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Imported via './injections.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/host/webserver/src/index.ts'
+    Imported via './injections.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/host/webserver/src/index.ts'
+    Imported via './injections.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/host/webserver/src/index.ts'
+packages/host/webserver/src/index.ts(17,60): error TS6307: File '/home/hoinv/work/dsh-binding-prerequisites/packages/host/webserver/src/injections.ts' is not listed within the file list of project '/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+  The file is in the program because:
+    Imported via './injections.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/host/webserver/src/index.ts'
+    Imported via './injections.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/host/webserver/src/index.ts'
+    Imported via './injections.ts' from file '/home/hoinv/work/dsh-binding-prerequisites/packages/host/webserver/src/index.ts'

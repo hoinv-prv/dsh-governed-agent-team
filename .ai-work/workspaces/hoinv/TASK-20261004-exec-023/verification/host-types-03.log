@@ -1,0 +1,4 @@
+packages/experimental/gat-core/tests/team.spec.ts(10,44): error TS6133: 'Session' is declared but its value is never read.
+packages/experimental/gat-core/tests/team.spec.ts(17,57): error TS6133: 'TeamMissionId' is declared but its value is never read.
+packages/experimental/gat-core/tests/team.spec.ts(22,95): error TS6133: 'authorizedReport' is declared but its value is never read.
+packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts(178,20): error TS2339: Property 'phase' does not exist on type 'Agent'.

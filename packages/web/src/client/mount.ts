@@ -91,8 +91,8 @@ function registerUi(ctx: ClientContext, config: Config): void {
     async approveMission(sessionId, input) {
       return await ctx.remote.agentTeams.approveMission(leadSessionId(sessionId), input)
     },
-    async importApprovedPlan(sessionId) {
-      return await ctx.remote.agentTeams.importApprovedPlan(leadSessionId(sessionId))
+    async importApprovedPlan(sessionId, input) {
+      return await ctx.remote.agentTeams.importApprovedPlan(leadSessionId(sessionId), input)
     },
     async createTask(sessionId, input): Promise<TeamTaskActionResult> {
       return await ctx.remote.agentTeams.createTask(leadSessionId(sessionId), input)

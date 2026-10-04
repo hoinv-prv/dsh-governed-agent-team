@@ -27,6 +27,7 @@ import { assertInitialMissionTaskPlan } from './mission-plan.ts'
 import { assertTaskGraphCandidate } from './task-graph.ts'
 import { isStructuralTaskMutation } from './task-board.ts'
 import { writeScope } from './validation.ts'
+import { validateAttachmentRecords } from './attachments.ts'
 
 const nonNegativeSafeInteger = z.number().int().nonnegative().max(Number.MAX_SAFE_INTEGER)
 const positiveSafeInteger = nonNegativeSafeInteger.min(1)
@@ -74,18 +75,38 @@ const contentBlockSchema: z.ZodType<ContentBlock> = z.lazy(() => z.union([
   ),
 ])) as z.ZodType<ContentBlock>
 
-const teamMemberSnapshotSchema = z.object({
+/**
+ * Shared initializer/replay contract; preflight all members before creating any row.
+ * @param value Value to validate or normalize.
+ * @returns The validate initial task result.
+ */
+
+export function validateInitialTask(value: unknown): ContentBlock[] {
+  return z.array(contentBlockSchema).min(1).parse(value)
+}
+
+const legacyTeamMemberSnapshotObject = z.object({
   id: sessionIdSchema,
   name: z.string(),
   description: z.string(),
   provider: z.string(),
   context: z.enum(['fresh', 'fork']),
+  model: z.string().optional(),
   phase: z.enum(['provisioning', 'active', 'failed']),
   error: z.string().optional(),
+}).strict()
+const teamMemberSnapshotSchema = legacyTeamMemberSnapshotObject.extend({
+  attachments: z.unknown().transform((value, ctx) => {
+    try { return validateAttachmentRecords(value) } catch {
+      ctx.addIssue({ code: 'custom', message: 'invalid required member attachment records' })
+      return z.NEVER
+    }
+  }),
 }).strict() as z.ZodType<TeamMemberSnapshot>
 
 const teamTaskSnapshotSchema = z.object({
   id: teamTaskIdSchema,
+  missionId: teamMissionIdSchema.optional(),
   revision: positiveSafeInteger,
   subject: z.string(),
   description: z.string(),
@@ -100,9 +121,14 @@ const teamMissionSnapshotSchema = z.object({
   revision: positiveSafeInteger,
   title: z.string().min(1),
   objective: z.string().min(1),
-  status: z.enum(['draft', 'approved', 'active', 'completed']),
-  plan: z.object({ tasks: z.array(teamTaskSnapshotSchema) }).strict(),
-  approval: z.object({ approvedRevision: positiveSafeInteger }).strict().optional(),
+  authorizationGeneration: nonNegativeSafeInteger.optional(),
+  revocationGeneration: nonNegativeSafeInteger.optional(),
+  status: z.enum(['draft', 'approved', 'active', 'completed', 'closed', 'revoked']),
+  plan: z.object({ tasks: z.array(teamTaskSnapshotSchema), taskIds: z.array(teamTaskIdSchema).optional() }).strict(),
+  approval: z.object({
+    approvedRevision: positiveSafeInteger, eventId: z.string().min(1).optional(), digest: z.string().min(1).optional(),
+    humanSessionId: z.string().min(1).optional(), generation: nonNegativeSafeInteger.optional(),
+  }).strict().optional(),
 }).strict().superRefine((mission, ctx) => {
   if ((mission.status === 'approved') !== (mission.approval?.approvedRevision === mission.revision)) {
     ctx.addIssue({ code: 'custom', message: 'mission status must be approved exactly when approval matches revision' })
@@ -122,28 +148,30 @@ const teamEventSelectorSchema = z.object({
   teamId: teamIdSchema,
 }).loose()
 
-const teamMemberEventSchema = z.object({
-  version: z.literal(2),
-  teamId: teamIdSchema,
-  member: teamMemberSnapshotSchema,
-}).strict() as z.ZodType<SessionEventMap['team/member']>
+const teamMemberEventSchema = z.union([
+  z.object({ version: z.literal(2), teamId: teamIdSchema, member: legacyTeamMemberSnapshotObject }).strict(),
+  z.object({ version: z.literal(3), teamId: teamIdSchema, member: teamMemberSnapshotSchema }).strict(),
+]) as z.ZodType<SessionEventMap['team/member']>
 
 const teamTaskEventSchema = z.object({
-  version: z.literal(2),
+  version: z.union([z.literal(2), z.literal(3)]),
   teamId: teamIdSchema,
   task: teamTaskSnapshotSchema,
 }).strict() as z.ZodType<SessionEventMap['team/task']>
 
 const teamMissionEventSchema = z.object({
-  version: z.literal(2),
+  version: z.union([z.literal(2), z.literal(3)]),
   teamId: teamIdSchema,
   mission: teamMissionSnapshotSchema,
 }).strict() as z.ZodType<SessionEventMap['team/mission']>
 
 const teamPlanApprovedEventSchema = z.object({
-  version: z.literal(2),
+  version: z.union([z.literal(2), z.literal(3)]),
   teamId: teamIdSchema,
-  approval: z.object({ approvedRevision: nonNegativeSafeInteger }).strict(),
+  approval: z.object({
+    approvedRevision: nonNegativeSafeInteger, eventId: z.string().optional(), digest: z.string().optional(),
+    humanSessionId: z.string().optional(),
+  }).strict(),
 }).strict() as z.ZodType<SessionEventMap['team/plan-approved']>
 
 const teamWorkSnapshotObject = z.object({
@@ -238,7 +266,10 @@ const teamProjectionEntrySchema = z.object({
   id: teamIdSchema,
   planRevision: nonNegativeSafeInteger,
   planPhase: z.enum(['draft', 'approved']),
-  planApproval: z.object({ approvedRevision: nonNegativeSafeInteger }).strict().optional(),
+  planApproval: z.object({
+    approvedRevision: nonNegativeSafeInteger, eventId: z.string().optional(), digest: z.string().optional(),
+    humanSessionId: z.string().optional(),
+  }).strict().optional(),
   work: z.array(teamWorkViewSchema),
   members: z.array(teamMemberSnapshotSchema),
   missions: z.array(teamMissionSnapshotSchema),
@@ -325,7 +356,7 @@ function applyProjectionEvent(state: TeamProjectionState, event: SessionEvent): 
   try {
     const selector = parsePersisted(event.type, teamEventSelectorSchema, event.data)
     if (selector.teamId !== state.id) return
-    if (selector.version !== 2) {
+    if (['team/member', 'team/task', 'team/mission', 'team/plan-approved'].includes(event.type) ? selector.version !== 2 && selector.version !== 3 : selector.version !== 2) {
       throw new Error(`unsupported Agent Teams event version ${String(selector.version)}`)
     }
     applyCurrentTeamEvent(state, parseCurrentTeamEvent(event))
@@ -338,7 +369,9 @@ function applyProjectionEvent(state: TeamProjectionState, event: SessionEvent): 
 function applyCurrentTeamEvent(state: TeamState, event: TeamSessionEvent): void {
   switch (event.type) {
     case 'team/member': {
-      const member = event.data.member
+      const member: TeamMemberSnapshot = event.data.version === 2
+        ? { ...event.data.member, attachments: [] }
+        : event.data.member
       const index = state.members.findIndex(candidate => candidate.id === member.id)
       const prior = state.members[index]
       const named = state.members.find(candidate => candidate.name === member.name)
@@ -348,7 +381,11 @@ function applyCurrentTeamEvent(state: TeamState, event: TeamSessionEvent): void 
       if (prior === undefined) {
         if (member.phase !== 'provisioning') throw new Error(`teammate "${member.name}" must begin provisioning`)
       } else {
-        if (prior.name !== member.name || prior.provider !== member.provider || prior.context !== member.context) {
+        if (prior.name !== member.name
+          || prior.provider !== member.provider
+          || prior.context !== member.context
+          || prior.model !== member.model
+          || JSON.stringify(prior.attachments) !== JSON.stringify(member.attachments)) {
           throw new Error(`teammate "${member.id}" changed immutable identity fields`)
         }
         if (prior.phase !== 'provisioning' || member.phase === 'provisioning') {
@@ -360,7 +397,16 @@ function applyCurrentTeamEvent(state: TeamState, event: TeamSessionEvent): void 
       break
     }
     case 'team/mission': {
-      const mission = event.data.mission
+      const rawMission = event.data.mission
+      // Explicit adjacent v2 adapter retains historical snapshots but discards legacy self-approval authority.
+      const mission: TeamMissionSnapshot = event.data.version === 2
+        ? { ...rawMission, ...rawMission.approval === undefined ? {} : {
+          approval: { approvedRevision: rawMission.approval.approvedRevision },
+        },
+        plan: { tasks: rawMission.plan.tasks, taskIds: [] }, authorizationGeneration: 0, revocationGeneration: 0 }
+        : rawMission
+      if (event.data.version === 3 && (mission.plan.tasks.length !== 0 || mission.plan.taskIds === undefined)) throw new Error('v3 mission requires canonical task references')
+      if (event.data.version === 3 && mission.status === 'approved' && (!mission.approval?.eventId || !mission.approval.digest || !mission.approval.humanSessionId)) throw new Error('v3 mission approval requires HUMAN receipt evidence')
       assertInitialMissionTaskPlan(mission.plan.tasks)
       const index = state.missions.findIndex(candidate => candidate.id === mission.id)
       const prior = state.missions[index]
@@ -370,7 +416,7 @@ function applyCurrentTeamEvent(state: TeamState, event: TeamSessionEvent): void 
         if (mission.revision !== 1 || (!legacyDraft && !authorized)) {
           throw new Error(`team mission "${mission.id}" must begin as revision 1`)
         }
-      } else if (mission.revision !== prior.revision + 1) {
+      } else if (mission.revision !== prior.revision + 1 && !(event.data.version === 3 && mission.revision === prior.revision && prior.status === 'draft' && mission.status === 'approved')) {
         throw new Error(`team mission "${mission.id}" revision is not contiguous`)
       }
       if (index < 0) state.missions.push(mission)
@@ -378,7 +424,9 @@ function applyCurrentTeamEvent(state: TeamState, event: TeamSessionEvent): void 
       break
     }
     case 'team/task': {
-      const task = event.data.task
+      const { missionId: _legacyMissionId, ...historicalTask } = event.data.task
+      const task: TeamTaskSnapshot = event.data.version === 2 ? historicalTask : event.data.task
+      if (event.data.version === 3 && !task.missionId) throw new Error('v3 task requires canonical mission association')
       const index = state.tasks.findIndex(candidate => candidate.id === task.id)
       const prior = state.tasks[index]
       if (prior === undefined && task.revision !== 1) {
@@ -387,10 +435,21 @@ function applyCurrentTeamEvent(state: TeamState, event: TeamSessionEvent): void 
       if (prior !== undefined && task.revision !== prior.revision + 1) {
         throw new Error(`team task "${task.id}" revision is not contiguous`)
       }
+      if (prior !== undefined && prior.missionId !== task.missionId) throw new Error('canonical task mission association is immutable')
       assertTaskGraphCandidate(state.tasks, task)
       if (isStructuralTaskMutation(prior, task)) {
         state.planRevision += 1
         state.planPhase = 'draft'
+        if (task.missionId !== undefined) {
+          const missionIndex = state.missions.findIndex(value => value.id === task.missionId)
+          const mission = state.missions[missionIndex]
+          if (!mission) throw new Error('canonical task mission does not exist')
+          if (mission.status === 'closed' || mission.status === 'revoked') throw new Error('closed mission cannot accept structural task mutation')
+          const { approval: _approval, ...draft } = mission
+          state.missions[missionIndex] = { ...draft, revision: mission.revision + 1, status: 'draft',
+            revocationGeneration: (mission.revocationGeneration ?? 0) + 1,
+            plan: { tasks: [], taskIds: [...new Set([...(mission.plan.taskIds ?? []), task.id])] } }
+        }
       }
       const match = numericTaskIdPattern.exec(task.id)
       if (match !== null) {
@@ -405,7 +464,7 @@ function applyCurrentTeamEvent(state: TeamState, event: TeamSessionEvent): void 
       break
     }
     case 'team/plan-approved': {
-      const approval = event.data.approval
+      const approval = event.data.version === 2 ? { approvedRevision: event.data.approval.approvedRevision } : event.data.approval
       if (!state.tasks.some(task => task.status !== 'deleted')) {
         throw new Error('an empty Team plan cannot be approved')
       }
@@ -470,7 +529,7 @@ function applyCurrentTeamEvent(state: TeamState, event: TeamSessionEvent): void 
 /** Host-only Team projection selected by the projected Session identity. */
 export const teamProjectionDefinition = {
   key: 'agentTeam',
-  stateVersion: 6,
+  stateVersion: 9,
   stateSchema: teamProjectionEntrySchema,
   init: header => emptyTeamState(header.id),
   apply: (state, event) => {

@@ -1,0 +1,4 @@
+packages/experimental/gat-core/tests/persistence.spec.ts(345,21): error TS2341: Property 'tryDispatch' is private and only accessible within class 'TeamMailbox'.
+packages/experimental/gat-core/tests/persistence.spec.ts(435,22): error TS2341: Property 'tryDispatch' is private and only accessible within class 'TeamMailbox'.
+packages/experimental/gat-core/tests/persistence.spec.ts(526,21): error TS2341: Property 'tryDispatch' is private and only accessible within class 'TeamMailbox'.
+packages/experimental/gat-tools/tests/tool-team.spec.ts(1215,19): error TS2341: Property 'tryDispatch' is private and only accessible within class 'TeamMailbox'.

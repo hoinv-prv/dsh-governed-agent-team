@@ -6,8 +6,8 @@ import type { Agent, AgentOptions } from '@deepseek-ai/dsh-agent'
 import { ReasoningEffortId } from '@deepseek-ai/dsh-llm'
 import { parentAgentOptionsForDelegation } from '@deepseek-ai/dsh-subagent'
 import type { SessionId } from '@deepseek-ai/dsh-session'
-import { scopesOverlap, TeamTaskId } from '@vuhoi/gat-core'
-import type { TeamEnableResult, TeamMemberView, TeamView } from '@vuhoi/gat-core'
+import { scopesOverlap, TeamTaskId, TeamMissionId } from '@vuhoi/gat-core'
+import type { TeamInitialization, TeamMemberSpec, TeamMemberView, TeamView } from '@vuhoi/gat-core'
 import { defineTool } from '@deepseek-ai/dsh-tools'
 import type { InferValue, ValueSchemaSpec } from '@deepseek-ai/dsh-tools'
 import { loadTeamMembers } from './team-config.ts'
@@ -51,17 +51,20 @@ const POLICY = `Agent Teams is available in this session, but create teammates o
 
 Once Agent Team is enabled, do not use subagent, subagent_fork, workflow, Ralph, or any other external sub-agent delegation path. Delegate only to members of the current Team. If the Team lacks a required skill or capability, ask the HUMAN to approve adding a suitable member; after approval, create that member with spawn_teammate, then assign the task to that member.
 
+Each effect requires an exact current HUMAN-authorized mission lease bound by the host to this Agent; model tool arguments cannot grant it. Structural task edits invalidate mission approval. Messages may remain queued until the target has an exact lease.
+
 The Team Lead and all teammates share the same working directory and filesystem. Edits are immediately visible to every member. Split write work into disjoint scopes, record expected write scopes on shared tasks, and use task dependencies when work must be ordered. Write-scope overlap is advisory, not a lock.
 
 Prefer read/edit/write for file changes. If a file operation returns FS_STALE_VERSION, read the current file, rebase your intended change onto the new content, and retry. Bash, formatters, code generators, and scripts are not fully protected by the filesystem version guard; coordinate them explicitly and have the Lead review the final diff and run tests.
 
-send_message steers a running target at its nearest step boundary, starts an idle target, and cold-resumes an inactive teammate. A delivered peer item starts with its stable message id and sender name. A successful send is already durable even when its result says queued; do not resend it. Shared-task workflow is list, get, claim with the current revision, perform the work, then complete. Task readiness never starts an owner. Before wait_agent, use list_agents and make sure another required member is running or provisioning; use send_message first when the required member is inactive. wait_agent observes only changes after that call starts, never wakes a member, and returns noProgress immediately when no other member can produce a change. Re-list after wakeup or timeout. The Lead must wait for required teammates before giving the final answer.`
+send_message steers an exactly authorized live target at its nearest step boundary or starts its idle turn. An inactive or unauthorized target stays queued until trusted host recovery and exact execution authorization. A delivered peer item starts with its stable message id and sender name. A successful send is already durable even when its result says queued; do not resend it. Shared-task workflow is list, get, claim with the current revision, perform the work, then complete. Task readiness never starts an owner. Before wait_agent, use list_agents and make sure another required member is running or provisioning; ask the HUMAN for trusted host recovery and exact authorization when the required member is inactive; a queued message never supplies wake authority. wait_agent observes only changes after that call starts, never wakes a member, and returns noProgress immediately when no other member can produce a change. Re-list after wakeup or timeout. The Lead must wait for required teammates before giving the final answer.`
 
 const ACTIVE_WAIT_STATUSES: ReadonlySet<TeamMemberView['status']> = new Set(['running', 'provisioning'])
 const OWN_RESTRICTED_TOOLS = new Set([
   'list_agents',
   'wait_agent',
   'send_message',
+  'interrupt_agent',
   'team_task_create',
   'team_task_list',
   'team_task_get',
@@ -69,12 +72,13 @@ const OWN_RESTRICTED_TOOLS = new Set([
 const RESTRICTED_REPORT_STATES = new Set(['blocked', 'review_required'])
 const STRUCTURAL_TASK_ACTIONS = new Set(['edit', 'set_dependencies', 'delete'])
 const EXTERNAL_SUBAGENT_TOOLS = new Set(['subagent', 'subagent_fork', 'workflow', 'ralph'])
-const NO_ACTIVE_PEER_MESSAGE = 'No other Team member is running or provisioning. wait_agent cannot make progress or wake inactive teammates. Re-list with list_agents and team_task_list, then use send_message to wake each required inactive teammate before waiting again.'
+const NO_ACTIVE_PEER_MESSAGE = 'No other Team member is running or provisioning. wait_agent cannot make progress or wake inactive teammates. Re-list with list_agents and team_task_list, then ask the HUMAN for trusted host recovery and exact authorization of each required inactive teammate before waiting again. Queued messages never supply wake authority.'
 
 /** Count durable teammate rows without treating runtime idleness as removal. */
 function durableActiveTeammates(view: TeamView): number {
   return view.members.filter(member => member.role === 'teammate'
-    && member.status !== 'provisioning' && member.status !== 'failed').length
+    && member.status !== 'provisioning' && member.status !== 'failed'
+    && (member.bindings === undefined || member.bindings.every(binding => binding.readiness === 'ready'))).length
 }
 
 interface ModelSelection {
@@ -130,7 +134,7 @@ function approvalFailure(view: TeamView): string | undefined {
 /** Describe the active readiness contract without hiding the legacy approval gate. */
 function executionRequirement(config: Required<Config>): string {
   const members = `at least ${config.minExecutionMembers} durable active teammates`
-  return config.simpleMode ? members : `an exact current Team plan approved by HUMAN and ${members}`
+  return config.simpleMode ? `an exact current HUMAN-authorized mission lease and ${members}` : `an exact current Team plan approved by HUMAN and ${members}`
 }
 
 /** Read the canonical Team view and convert projection failures into one stable denial. */
@@ -188,6 +192,7 @@ function completeEnvelopeDiagnostics(
 /** Canonical complete-envelope evaluation shared by preflight and dispatch enforcement. */
 function readiness(current: TeamView, agent: Agent, ctx: Context, config: Required<Config>) {
   const approvalDiagnostic = config.simpleMode ? undefined : approvalFailure(current)
+  const authorityDiagnostic = ctx.agentTeams.executionDiagnostic(agent)
   const durableCount = durableActiveTeammates(current)
   const memberDiagnostic = durableCount < config.minExecutionMembers
     ? `only ${durableCount} durable active teammate(s); ${config.minExecutionMembers} required`
@@ -200,6 +205,7 @@ function readiness(current: TeamView, agent: Agent, ctx: Context, config: Requir
       ...(approvalDiagnostic === undefined ? [] : [approvalDiagnostic]),
     ],
     diagnostics: [
+      ...(authorityDiagnostic === undefined ? [] : [authorityDiagnostic]),
       ...(approvalDiagnostic === undefined ? [] : [approvalDiagnostic]),
       ...(memberDiagnostic === undefined ? [] : [memberDiagnostic]),
       ...envelopeDiagnostics,
@@ -242,6 +248,18 @@ const MEMBER_VIEW_SCHEMA = {
     context: { type: 'string', enum: ['fresh', 'fork'] },
     model: { type: 'string' },
     diagnostics: { type: 'array', required: true, items: { type: 'string' } },
+    bindings: {
+      type: 'array',
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        properties: {
+          binderId: { type: 'string', required: true },
+          protocolVersion: { type: 'integer', required: true },
+          readiness: { type: 'string', required: true, enum: ['ready', 'unavailable', 'failed'] },
+        },
+      },
+    },
   },
 } as const
 
@@ -251,6 +269,7 @@ const TASK_VIEW_SCHEMA = {
   additionalProperties: false,
   properties: {
     id: { type: 'string', required: true },
+    missionId: { type: 'string' },
     revision: { type: 'integer', required: true },
     subject: { type: 'string', required: true },
     description: { type: 'string', required: true },
@@ -376,19 +395,20 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
   const { role, name: memberName, id: teamId } = ctx.agentTeams.membership(agent)
   const disposers: Array<() => unknown> = []
   const register = (disposer: () => unknown): void => { disposers.push(disposer) }
-  const externalRestrictedTools = new Set(config.externalRestrictedTools)
   try {
     register(scoped.tools.guard((exec) => {
       const current = guardedTeamView(ctx, agent)
       if (typeof current === 'string') return `Team execution denied: ${current}`
-      if (EXTERNAL_SUBAGENT_TOOLS.has(exec.name) && current.enabled) {
+      if ((EXTERNAL_SUBAGENT_TOOLS.has(exec.name) || exec.capabilities.includes('external-delegation')) && current.enabled) {
         return `External sub-agent delegation denied for tool "${exec.name}": Agent Team is enabled for this session. Use an existing Team member. If the required skill or capability is missing, ask the HUMAN to approve adding a member, create it with spawn_teammate, then assign the task to that member.`
       }
       const evaluation = readiness(current, agent, ctx, config)
       const active = evaluation.durableCount
 
       if (exec.name === 'spawn_teammate') {
-        const failure = evaluation.mandatoryDiagnostics[0]
+        if ((!exec.capabilities.length || !exec.capabilities.every(key => ['team-bootstrap', 'nested-dispatch'].includes(key)))
+          && ctx.agentTeams.executionDiagnostic(agent) !== undefined) return 'Team spawn denied: nested capability union requires an exact execution lease'
+        const failure = completeEnvelopeDiagnostics(current, agent, ctx, config)[0]
         if (failure !== undefined) return `Team spawn denied: ${failure}`
         if (active >= config.maxExecutionMembers) {
           return `Team spawn denied: durable teammate cap of ${config.maxExecutionMembers} reached; found ${active}`
@@ -397,16 +417,19 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
       }
 
       if (evaluation.diagnostics.length === 0) return undefined
+      const controlKeys = new Set(['team-inspection', 'human-question', 'team-structure', 'team-coordination', 'team-safety', 'team-report-restricted', 'nested-dispatch'])
+      const controlOnly = exec.capabilities.length > 0 && exec.capabilities.every(key => controlKeys.has(key))
+      if (exec.capabilities.length === 1 && exec.capabilities[0] === 'nested-dispatch') return undefined
       if (exec.name === 'team_task_update') {
         const args = exec.arguments
         const action = typeof args === 'object' && args !== null && 'action' in args
           ? (args as { action?: unknown }).action
           : undefined
-        if (typeof action === 'string' && STRUCTURAL_TASK_ACTIONS.has(action)) return undefined
+        if (controlOnly && typeof action === 'string' && STRUCTURAL_TASK_ACTIONS.has(action)) return undefined
         return `Team task action ${JSON.stringify(action)} is unavailable while Team execution is restricted; use edit, set_dependencies, or delete`
       }
       const ownAdmission = restrictedOwnToolAdmission(exec.name, exec.arguments)
-      if (ownAdmission === true || externalRestrictedTools.has(exec.name)) return undefined
+      if (controlOnly && (ownAdmission === true || exec.capabilities.every(key => ['team-inspection', 'human-question', 'nested-dispatch'].includes(key)))) return undefined
       if (typeof ownAdmission === 'string') return ownAdmission
       const condition = evaluation.mandatoryDiagnostics[0]
         ?? `Team execution requires ${executionRequirement(config)}; found ${active}`
@@ -421,6 +444,7 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
 
     register(scoped.tools.register(defineTool({
       name: 'spawn_teammate',
+      capabilities: ['team-bootstrap'],
       description: 'Create one named, durable teammate. Only the Team Lead may call this tool. For a missing skill or capability, obtain explicit HUMAN approval before adding the member, then assign work to that member.',
       parameters: {
         name: { type: 'string', required: true, description: 'Unique lower-kebab-case teammate name.' },
@@ -454,6 +478,7 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
 
     register(scoped.tools.register(defineTool({
       name: 'report_team_status',
+      capabilities: ['team-report-restricted'],
       description: 'Commit your current durable Team work state and return the complete authoritative work view.',
       parameters: {
         state: { type: 'string', required: true, enum: ['working', 'blocked', 'review_required', 'done'] },
@@ -477,7 +502,8 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
 
     register(scoped.tools.register(defineTool({
       name: 'send_message',
-      description: 'Send one durable message to another Team member. A running target receives it at the nearest step boundary; an idle target starts a turn; an inactive teammate cold-resumes.',
+      capabilities: ['team-coordination'],
+      description: 'Send one durable message to another Team member. An exactly authorized live target receives it at the nearest step boundary or starts a turn. Other targets remain queued until trusted host recovery and exact authorization.',
       parameters: {
         target: { type: 'string', required: true, description: 'Team member name, or lead.' },
         message: { type: 'string', required: true, description: 'Self-contained message for the target.' },
@@ -494,6 +520,7 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
 
     register(scoped.tools.register(defineTool({
       name: 'list_agents',
+      capabilities: ['team-inspection'],
       description: 'List the Lead and every durable teammate with current runtime status.',
       parameters: {},
       output: jsonOutput(MEMBER_LIST_VALUE_SCHEMA),
@@ -504,6 +531,7 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
 
     register(scoped.tools.register(defineTool({
       name: 'wait_agent',
+      capabilities: ['team-coordination'],
       description: 'Wait for the next teammate status, mailbox, or shared-task change after this call starts. This never wakes inactive members and returns noProgress immediately when no other member is running or provisioning. Re-list after wakeup or timeout instead of polling.',
       parameters: {
         timeout_ms: {
@@ -539,6 +567,7 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
 
     register(scoped.tools.register(defineTool({
       name: 'interrupt_agent',
+      capabilities: ['team-safety'],
       description: 'Interrupt one teammate\'s current turn while preserving its pending inbox. Team Lead only.',
       parameters: {
         target: { type: 'string', required: true, description: 'Teammate name.' },
@@ -554,8 +583,10 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
 
     register(scoped.tools.register(defineTool({
       name: 'team_task_create',
+      capabilities: ['team-structure'],
       description: 'Create one unowned pending task on the shared Team task board.',
       parameters: {
+        mission_id: { type: 'string', required: true, description: 'Explicit canonical mission identity; list order never grants authority.' },
         subject: { type: 'string', required: true, description: 'Concise task title.' },
         description: { type: 'string', required: true, description: 'Complete task details and acceptance criteria.' },
         blocked_by: { type: 'array', items: { type: 'string' }, description: 'Task ids that must complete first.' },
@@ -568,6 +599,7 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
       output: jsonOutput(TASK_VIEW_SCHEMA),
       async execute(args, exec) {
         return await ctx.agentTeams.createTask(callingAgent(exec.agent, 'team_task_create'), {
+          missionId: TeamMissionId(args.mission_id),
           subject: args.subject,
           description: args.description,
           ...args.blocked_by === undefined ? {} : { blockedBy: args.blocked_by.map(TeamTaskId) },
@@ -578,6 +610,7 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
 
     register(scoped.tools.register(defineTool({
       name: 'team_task_list',
+      capabilities: ['team-inspection'],
       description: 'List shared tasks, including readiness, owner, revision, blockers, and write-scope warnings.',
       parameters: {
         status: {
@@ -611,6 +644,7 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
 
     register(scoped.tools.register(defineTool({
       name: 'team_task_get',
+      capabilities: ['team-inspection'],
       description: 'Read the complete latest value of one shared task before changing or executing it.',
       parameters: {
         task_id: { type: 'string', required: true, description: 'Shared task id.' },
@@ -626,6 +660,7 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
 
     register(scoped.tools.register(defineTool({
       name: 'team_task_update',
+      capabilities: ['team-structure'],
       description: 'Compare-and-set a shared task action using the latest revision from team_task_get or team_task_list.',
       parameters: {
         task_id: { type: 'string', required: true, description: 'Shared task id.' },
@@ -689,6 +724,7 @@ export function apply(ctx: Context, config: Config = {}): void {
   if (resolved.maxExecutionMembers < resolved.minExecutionMembers) {
     throw new RangeError('maxExecutionMembers must be greater than or equal to minExecutionMembers')
   }
+  ctx.agentTeams.configureExecutionPolicy(!resolved.simpleMode)
   ctx.effect(() => ctx.agentTeams.registerApprovalPreflight((agent, view) => (
     completeEnvelopeDiagnostics(view, agent, ctx, resolved)
   )), 'tool-team.approvalPreflight()')
@@ -698,64 +734,38 @@ export function apply(ctx: Context, config: Config = {}): void {
     if (resolved.simpleMode && !ctx.agentTeams.remoteView(agent).enabled) return
     installed.set(agent.id, install(agent, ctx, resolved))
   }
-  const enabling = new Map<SessionId, Promise<TeamEnableResult>>()
-  ctx.effect(() => ctx.agentTeams.registerInitializer((lead, signal) => {
-    const current = ctx.agentTeams.remoteView(lead)
-    if (current.enabled) {
-      return Promise.resolve({
-        enabled: true,
-        alreadyEnabled: true,
-        source: 'existing',
-        diagnostics: [],
-        members: current.members.filter(member => member.role === 'teammate'),
-      })
+  ctx.effect(() => ctx.agentTeams.registerInitializer(async (lead, signal): Promise<TeamInitialization> => {
+    const parent = parentAgentOptionsForDelegation(lead)
+    if (parent.provider === undefined) throw new Error('cannot build the default Team without the Lead LLM provider')
+    const loaded = await loadTeamMembers(
+      lead.session.header.cwd,
+      parent.provider,
+      resolved.maxExecutionMembers,
+      resolved.teamMembersMaxBytes,
+    )
+    const prepared = await Promise.all(loaded.members.map(async member => ({
+      member,
+      agentOptions: await childAgentOptions(ctx, lead, {
+        provider: member.provider,
+        model: member.model,
+        ...member.reasoningEffort === undefined ? {} : { reasoning_effort: member.reasoningEffort },
+      }, signal),
+    })))
+    signal.throwIfAborted()
+    const members: TeamMemberSpec[] = prepared.map(({ member, agentOptions }) => ({
+      name: member.name,
+      description: member.description,
+      initialTask: [{ type: 'text', text: member.prompt }],
+      context: member.context,
+      continuationProvider: member.context === 'fork' ? resolved.forkProvider : resolved.freshProvider,
+      ...(agentOptions === undefined ? {} : { agentOptions }),
+      attachments: [],
+    }))
+    return {
+      source: loaded.source,
+      diagnostics: [...loaded.diagnostics],
+      members,
     }
-    const active = enabling.get(lead.id)
-    if (active !== undefined) return active
-    const operation = (async (): Promise<TeamEnableResult> => {
-      const parent = parentAgentOptionsForDelegation(lead)
-      if (parent.provider === undefined) throw new Error('cannot build the default Team without the Lead LLM provider')
-      const loaded = await loadTeamMembers(
-        lead.session.header.cwd,
-        parent.provider,
-        resolved.maxExecutionMembers,
-        resolved.teamMembersMaxBytes,
-      )
-      const prepared = await Promise.all(loaded.members.map(async member => ({
-        member,
-        agentOptions: await childAgentOptions(ctx, lead, {
-          provider: member.provider,
-          model: member.model,
-          ...member.reasoningEffort === undefined ? {} : { reasoning_effort: member.reasoningEffort },
-        }, signal),
-      })))
-      signal.throwIfAborted()
-      const members: TeamMemberView[] = []
-      for (const item of prepared) {
-        const member = item.member
-        const spawned = await ctx.agentTeams.spawnTeammate(lead, {
-          name: member.name,
-          description: member.description,
-          prompt: [{ type: 'text', text: member.prompt }],
-          context: member.context,
-          provider: member.context === 'fork' ? resolved.forkProvider : resolved.freshProvider,
-          ...item.agentOptions === undefined ? {} : { agentOptions: item.agentOptions },
-          signal,
-        })
-        members.push(spawned.member)
-      }
-      maybeInstall(lead)
-      return {
-        enabled: true,
-        alreadyEnabled: false,
-        source: loaded.source,
-        diagnostics: loaded.diagnostics,
-        members,
-      }
-    })()
-    enabling.set(lead.id, operation)
-    void operation.finally(() => { enabling.delete(lead.id) }).catch(() => undefined)
-    return operation
   }), 'tool-team.initializer()')
   for (const agent of ctx.agents.list()) maybeInstall(agent)
   ctx.on('agent/created', ({ agent }) => { maybeInstall(agent) })
@@ -767,11 +777,9 @@ export function apply(ctx: Context, config: Config = {}): void {
   ctx.on('agent/disposed', ({ agent }) => {
     installed.get(agent.id)?.()
     installed.delete(agent.id)
-    enabling.delete(agent.id)
   })
   ctx.effect(() => () => {
     for (const dispose of installed.values()) dispose()
     installed.clear()
-    enabling.clear()
   }, 'tool-team.scopedTools()')
 }

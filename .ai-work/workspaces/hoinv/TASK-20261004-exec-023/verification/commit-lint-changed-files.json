@@ -1,0 +1,61 @@
+{
+  "hostChangedFiles": 11,
+  "rootSyncedFiles": 8,
+  "files": [
+    {
+      "hostPath": "packages/api/gateway/src/index.ts",
+      "changed": true,
+      "rootPath": null
+    },
+    {
+      "hostPath": "packages/api/gateway/tests/gateway.host.spec.ts",
+      "changed": true,
+      "rootPath": null
+    },
+    {
+      "hostPath": "packages/client/connection/src/rpc-host.ts",
+      "changed": true,
+      "rootPath": null
+    },
+    {
+      "hostPath": "packages/experimental/gat-core/src/index.ts",
+      "changed": true,
+      "rootPath": "packages/core/src/index.ts"
+    },
+    {
+      "hostPath": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "changed": true,
+      "rootPath": "packages/core/tests/authority.spec.ts"
+    },
+    {
+      "hostPath": "packages/experimental/gat-core/tests/authorized-team-fixture.ts",
+      "changed": true,
+      "rootPath": "packages/core/tests/authorized-team-fixture.ts"
+    },
+    {
+      "hostPath": "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "changed": true,
+      "rootPath": "packages/core/tests/member-attachments.spec.ts"
+    },
+    {
+      "hostPath": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "changed": true,
+      "rootPath": "packages/core/tests/member-binding.spec.ts"
+    },
+    {
+      "hostPath": "packages/experimental/gat-core/tests/projection-events.spec.ts",
+      "changed": true,
+      "rootPath": "packages/core/tests/projection-events.spec.ts"
+    },
+    {
+      "hostPath": "packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts",
+      "changed": true,
+      "rootPath": "packages/tools/tests/prerequisite-composition.spec.ts"
+    },
+    {
+      "hostPath": "packages/experimental/gat-tools/tests/tool-team.spec.ts",
+      "changed": true,
+      "rootPath": "packages/tools/tests/tool-team.spec.ts"
+    }
+  ]
+}

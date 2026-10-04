@@ -1,0 +1,19 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+·······················································································································································································stderr | packages/client/connection/tests/connection.client.spec.ts > connection lifecycle > replaces an active generation immediately when reconnect is requested
+[connection] connection lost, retry #1
+
+················································································································stderr | packages/client/connection/tests/client-apply.client.spec.ts > connection client apply > publishes connection state directly on the service and isolates subscribers
+[connection] connection lost, retry #1
+
+····························································································································································
+
+ Test Files  22 passed (22)
+      Tests  451 passed (451)
+   Start at  13:11:30
+   Duration  3.96s (transform 8.46s, setup 3.25s, import 8.49s, tests 13.03s, environment 2ms)
+

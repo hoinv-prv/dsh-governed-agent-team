@@ -1,0 +1,12 @@
+{
+  "packages/core/tools/src/index.ts": "b36d7b9a213ba62a1b7153d89155525a3fb36ac7b274268e80aa2c39baef3f0c",
+  "packages/core/tools/src/ptc.ts": "0b49252770af39a3da225caceb8dbfdac658f364f359d2f9b48a05a03f49c178",
+  "packages/core/tools/src/schema.ts": "6434b819d35ec77fe6928f33b0e6a5f4a12485b5592ff0750862e8a8168c05d3",
+  "packages/core/tools/src/types.ts": "fee75053ed63d4b9a22e0b86f0bce79ff45cb09ab8a328918ba04811444dc055",
+  "packages/core/tools/tests/capabilities.spec.ts": "38d807128432ae008562eb12fa54bc503daf59ff55acb41e8e6a40a617b17e8f",
+  "packages/subagent/tool-subagent/src/index.ts": "930da0f08cc20c9cd4eef5174e8dc7a87bac1e4c5a13d514d60f625fc6d6c469",
+  "packages/workflow/tool-workflow/src/index.ts": "4b18eb25869adaed80531b1dac4271d2bb6b9501d48c51c27c02ff0bda2a90ef",
+  "packages/workflow/tool-ralph/src/index.ts": "39918d5cee41bcaa77ae80d7cd16677a96fcc480c4398ab755f52b8a63843076",
+  "packages/fs/tool-fs-search/src/glob.ts": "44952ad565c507f803aaa5b945de5dbf5551661a26b92c32381c3d554de4fe7a",
+  "packages/fs/tool-fs-search/src/grep.ts": "32818488ef0dcf7724c87b34768329090a0388cb0d34c7e6ad134ed5468bd400"
+}

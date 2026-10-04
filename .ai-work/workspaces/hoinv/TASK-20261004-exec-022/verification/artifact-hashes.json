@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/tmp/gat-exec022-verify/packages/experimental/gat-core/lib/index.js",
+    "sha256": "3afad3e2f173f2a0c0d7b9c31a48f67fd9d0139f9a810f48e34cf520035bb9fc",
+    "bytes": 148592
+  },
+  {
+    "path": "/tmp/gat-exec022-verify/packages/experimental/gat-durable-agent/lib/index.js",
+    "sha256": "3f0635e9eb4938238d3d6e2110c9d5cf867186ebc858d0aacb0c6a01eed950b4",
+    "bytes": 24040
+  },
+  {
+    "path": "/home/hoinv/work/dsh-governed-agent-team/compatibility/dsh-0.1.5-rc.2/manifest.json",
+    "sha256": "e0973ad5c8937caa3268d735014c29f00e9e457c29448fcdcdffa5b930794713",
+    "bytes": 27921
+  },
+  {
+    "path": "/home/hoinv/work/dsh-governed-agent-team/docs/gat-design/source-baseline.json",
+    "sha256": "d4b98746ecc440e34d421aa75b5a79369e8bbf65685353aa66236dd80eb8a9f1",
+    "bytes": 19140
+  }
+]

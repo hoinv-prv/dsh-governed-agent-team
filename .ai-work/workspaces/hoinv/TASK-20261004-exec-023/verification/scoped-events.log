@@ -1,0 +1,16 @@
+/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-scoped-events.ts:77
+      throw new Error(
+            ^
+
+Error: gen-scoped-events: 2 scoped-event contract violation(s):
+  - event 'agent/prepare-prompt' (packages/core/agent/src/runtime-types.ts:327) has this: Scoped<...> but its JSDoc does not explain "Scope-filtered dispatch"
+  - event 'agent/model-admission' (packages/core/agent/src/runtime-types.ts:337) has this: Scoped<...> but its JSDoc does not explain "Scope-filtered dispatch"
+    at ScopedEventGenerator.render (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-scoped-events.ts:77:13)
+    at renderScopedEvents (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-scoped-events.ts:377:71)
+    at main (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-scoped-events.ts:382:19)
+    at <anonymous> (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-scoped-events.ts:398:3)
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.23.1

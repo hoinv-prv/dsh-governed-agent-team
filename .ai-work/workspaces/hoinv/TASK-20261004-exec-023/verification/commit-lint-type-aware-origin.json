@@ -1,0 +1,1940 @@
+{
+  "diagnostics": 172,
+  "originCounts": {
+    "wrapped_fragment_of_original_line": 13,
+    "unchanged_source_line": 151,
+    "same_line_after_format_normalization": 8
+  },
+  "normalization": "Whitespace and parentheses around single arrow parameters ignored; completion alias mapped back to void. Wrapped fragments require at least 11 normalized characters. Fallback uses independent exact whole-file emitted JavaScript AST comparison, not a claim of earlier type-aware pass.",
+  "records": [
+    {
+      "file": "packages/api/gateway/src/index.ts",
+      "afterLine": 311,
+      "afterColumn": 17,
+      "diagnostic": "Function has no 'await' expression. [Error/typescript(require-await)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        310
+      ]
+    },
+    {
+      "file": "packages/client/connection/src/rpc-host.ts",
+      "afterLine": 326,
+      "afterColumn": 38,
+      "diagnostic": "Unnecessary optional chain on a non-nullish value. [Error/typescript(no-unnecessary-condition)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        325
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 61,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        61
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 64,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        64,
+        142,
+        161
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 66,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        66,
+        239,
+        242
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "afterLine": 167,
+      "afterColumn": 18,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        167,
+        203,
+        234,
+        238,
+        246
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 77,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        77
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 83,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        83,
+        144
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 85,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        85
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 96,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        95
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 71,
+      "afterColumn": 109,
+      "diagnostic": "Unsafe argument of type any assigned to a parameter of type readonly TeamMemberAttachmentRecord[]. [Error/typescript(no-unsafe-argument)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        71
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 110,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        109
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "afterLine": 203,
+      "afterColumn": 18,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        167,
+        203,
+        234,
+        238,
+        246
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "afterLine": 205,
+      "afterColumn": 18,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        205
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 125,
+      "afterColumn": 30,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        124
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 128,
+      "afterColumn": 31,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        126
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "afterLine": 214,
+      "afterColumn": 18,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        214
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 126,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        125,
+        128
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 134,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        132
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 129,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        125,
+        128
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 135,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        133,
+        153,
+        163,
+        182,
+        189,
+        291,
+        333,
+        352,
+        407,
+        433
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "afterLine": 234,
+      "afterColumn": 18,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        167,
+        203,
+        234,
+        238,
+        246
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 136,
+      "afterColumn": 30,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        134
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 141,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        140
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "afterLine": 238,
+      "afterColumn": 18,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        167,
+        203,
+        234,
+        238,
+        246
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 149,
+      "afterColumn": 23,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        147
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 143,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        64,
+        142,
+        161
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "afterLine": 246,
+      "afterColumn": 18,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        167,
+        203,
+        234,
+        238,
+        246
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 145,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        83,
+        144
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 155,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        133,
+        153,
+        163,
+        182,
+        189,
+        291,
+        333,
+        352,
+        407,
+        433
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 147,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        146,
+        149,
+        181
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 156,
+      "afterColumn": 28,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        154
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 150,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        146,
+        149,
+        181
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 162,
+      "afterColumn": 31,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        160
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 165,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        133,
+        153,
+        163,
+        182,
+        189,
+        291,
+        333,
+        352,
+        407,
+        433
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 168,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        166,
+        194,
+        214
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 169,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        167,
+        180,
+        195
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 162,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        64,
+        142,
+        161
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 170,
+      "afterColumn": 62,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        168
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 170,
+      "afterColumn": 108,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        168
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 171,
+      "afterColumn": 63,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        169,
+        196
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 172,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        170,
+        179,
+        251,
+        406,
+        432
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 165,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        164
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 173,
+      "afterColumn": 28,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        171,
+        181,
+        228
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 178,
+      "afterColumn": 31,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        176
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 180,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        178,
+        431
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 181,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        170,
+        179,
+        251,
+        406,
+        432
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 182,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        167,
+        180,
+        195
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 183,
+      "afterColumn": 28,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        171,
+        181,
+        228
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 184,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        133,
+        153,
+        163,
+        182,
+        189,
+        291,
+        333,
+        352,
+        407,
+        433
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 191,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        133,
+        153,
+        163,
+        182,
+        189,
+        291,
+        333,
+        352,
+        407,
+        433
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 182,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        146,
+        149,
+        181
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 184,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        183
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 195,
+      "afterColumn": 30,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        193
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 196,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        166,
+        194,
+        214
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 197,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        167,
+        180,
+        195
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 198,
+      "afterColumn": 63,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        169,
+        196
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 186,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        185
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 205,
+      "afterColumn": 23,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        203
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 217,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        166,
+        194,
+        214
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 201,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        200
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 225,
+      "afterColumn": 25,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        222
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 229,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        226,
+        290,
+        332,
+        408,
+        434
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 230,
+      "afterColumn": 28,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        227
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 231,
+      "afterColumn": 28,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        171,
+        181,
+        228
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 209,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        208
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 212,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        211
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 250,
+      "afterColumn": 60,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        244
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 257,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        170,
+        179,
+        251,
+        406,
+        432
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 275,
+      "afterColumn": 43,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "same_line_after_format_normalization",
+      "beforeCandidateLines": [
+        269
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 225,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        224
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 277,
+      "afterColumn": 25,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "same_line_after_format_normalization",
+      "beforeCandidateLines": [
+        271
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 279,
+      "afterColumn": 43,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "same_line_after_format_normalization",
+      "beforeCandidateLines": [
+        273
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 280,
+      "afterColumn": 23,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "same_line_after_format_normalization",
+      "beforeCandidateLines": [
+        274
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 239,
+      "afterColumn": 30,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        238
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 293,
+      "afterColumn": 42,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        287
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 296,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        226,
+        290,
+        332,
+        408,
+        434
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 297,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        133,
+        153,
+        163,
+        182,
+        189,
+        291,
+        333,
+        352,
+        407,
+        433
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 298,
+      "afterColumn": 28,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        292
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 240,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        66,
+        239,
+        242
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 307,
+      "afterColumn": 42,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        301
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 243,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        66,
+        239,
+        242
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 316,
+      "afterColumn": 28,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        310
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 316,
+      "afterColumn": 40,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        310
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 319,
+      "afterColumn": 28,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        313
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 320,
+      "afterColumn": 17,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        314
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 327,
+      "afterColumn": 28,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        321
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 268,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        267
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 336,
+      "afterColumn": 28,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        330,
+        405
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 336,
+      "afterColumn": 43,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        330,
+        405
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 269,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        268
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 337,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        331
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 338,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        226,
+        290,
+        332,
+        408,
+        434
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 339,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        133,
+        153,
+        163,
+        182,
+        189,
+        291,
+        333,
+        352,
+        407,
+        433
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 346,
+      "afterColumn": 42,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        340
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 354,
+      "afterColumn": 28,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        348,
+        429
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 354,
+      "afterColumn": 63,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        348,
+        429
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 355,
+      "afterColumn": 40,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        349,
+        430
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 356,
+      "afterColumn": 40,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        350
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 358,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        133,
+        153,
+        163,
+        182,
+        189,
+        291,
+        333,
+        352,
+        407,
+        433
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 300,
+      "afterColumn": 30,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        299
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 303,
+      "afterColumn": 40,
+      "diagnostic": "Prefer the safe `: unknown` for a `catch` callback variable. [Error/typescript(use-unknown-in-catch-callback-variable)]",
+      "originEvidence": "same_line_after_format_normalization",
+      "beforeCandidateLines": [
+        302
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 386,
+      "afterColumn": 42,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "same_line_after_format_normalization",
+      "beforeCandidateLines": [
+        380
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 387,
+      "afterColumn": 42,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "same_line_after_format_normalization",
+      "beforeCandidateLines": [
+        381
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 321,
+      "afterColumn": 30,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        320
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 324,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        323
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "afterLine": 325,
+      "afterColumn": 20,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        324
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 398,
+      "afterColumn": 28,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        392
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 406,
+      "afterColumn": 30,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        400,
+        424
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 411,
+      "afterColumn": 28,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        330,
+        405
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 411,
+      "afterColumn": 43,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        330,
+        405
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 412,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        170,
+        179,
+        251,
+        406,
+        432
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 413,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        133,
+        153,
+        163,
+        182,
+        189,
+        291,
+        333,
+        352,
+        407,
+        433
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 414,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        226,
+        290,
+        332,
+        408,
+        434
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 422,
+      "afterColumn": 42,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        416
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 430,
+      "afterColumn": 30,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        400,
+        424
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 435,
+      "afterColumn": 28,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        348,
+        429
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 435,
+      "afterColumn": 63,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        348,
+        429
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 436,
+      "afterColumn": 40,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        349,
+        430
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 437,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        178,
+        431
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 438,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        170,
+        179,
+        251,
+        406,
+        432
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 439,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        133,
+        153,
+        163,
+        182,
+        189,
+        291,
+        333,
+        352,
+        407,
+        433
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 440,
+      "afterColumn": 20,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        226,
+        290,
+        332,
+        408,
+        434
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "afterLine": 449,
+      "afterColumn": 23,
+      "diagnostic": "Avoid referencing unbound methods which may cause unintentional scoping of `this`. [Error/typescript(unbound-method)]",
+      "originEvidence": "same_line_after_format_normalization",
+      "beforeCandidateLines": [
+        443
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts",
+      "afterLine": 153,
+      "afterColumn": 18,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        153
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts",
+      "afterLine": 185,
+      "afterColumn": 18,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        185
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 137,
+      "afterColumn": 100,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        137
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 140,
+      "afterColumn": 16,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        139
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 140,
+      "afterColumn": 66,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        139
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 148,
+      "afterColumn": 16,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        147
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 152,
+      "afterColumn": 27,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        151
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 153,
+      "afterColumn": 40,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        152
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 154,
+      "afterColumn": 40,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        153
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 155,
+      "afterColumn": 69,
+      "diagnostic": "Returning a void expression from an arrow function shorthand is forbidden. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        154
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 192,
+      "afterColumn": 53,
+      "diagnostic": "Function has no 'await' expression. [Error/typescript(require-await)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        191
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 196,
+      "afterColumn": 54,
+      "diagnostic": "Function has no 'await' expression. [Error/typescript(require-await)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        195
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 243,
+      "afterColumn": 12,
+      "diagnostic": "Returning a void expression from a function is forbidden. Please remove the `return` statement. [Error/typescript(no-confusing-void-expression)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        242,
+        259,
+        479,
+        673
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 539,
+      "afterColumn": 75,
+      "diagnostic": "`snapshotEvents` is deprecated. Existing logic may remain unmigrated for now, but new calls are prohibited.",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        536
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 627,
+      "afterColumn": 10,
+      "diagnostic": "Unnecessary conditional, value is always falsy. [Error/typescript(no-unnecessary-condition)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        623
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 637,
+      "afterColumn": 32,
+      "diagnostic": "Unsafe member access .name on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        633
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 637,
+      "afterColumn": 89,
+      "diagnostic": "Unsafe argument of type any assigned to a parameter of type string. [Error/typescript(no-unsafe-argument)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        633
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 637,
+      "afterColumn": 94,
+      "diagnostic": "Unsafe member access .name on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        633
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 637,
+      "afterColumn": 108,
+      "diagnostic": "Unsafe member access .name on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        633
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 637,
+      "afterColumn": 133,
+      "diagnostic": "Unsafe member access .name on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        633
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 637,
+      "afterColumn": 162,
+      "diagnostic": "Unsafe argument of type any assigned to a parameter of type string. [Error/typescript(no-unsafe-argument)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        633
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 637,
+      "afterColumn": 167,
+      "diagnostic": "Unsafe member access .name on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        633
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 640,
+      "afterColumn": 17,
+      "diagnostic": "Unsafe argument of type any assigned to a parameter of type string. [Error/typescript(no-unsafe-argument)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        636
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 640,
+      "afterColumn": 22,
+      "diagnostic": "Unsafe member access .name on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        636
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 641,
+      "afterColumn": 40,
+      "diagnostic": "Unsafe argument of type any assigned to a parameter of type string. [Error/typescript(no-unsafe-argument)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        637
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 641,
+      "afterColumn": 45,
+      "diagnostic": "Unsafe member access .description on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        637
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 642,
+      "afterColumn": 49,
+      "diagnostic": "Unsafe argument of type any assigned to a parameter of type string. [Error/typescript(no-unsafe-argument)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        638
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 642,
+      "afterColumn": 54,
+      "diagnostic": "Unsafe member access .continuationProvider on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        638
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 643,
+      "afterColumn": 16,
+      "diagnostic": "Unsafe member access .context on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        639
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 643,
+      "afterColumn": 44,
+      "diagnostic": "Unsafe member access .context on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        639
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 643,
+      "afterColumn": 86,
+      "diagnostic": "Unsafe member access .initialTask on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        639
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 643,
+      "afterColumn": 107,
+      "diagnostic": "Unsafe member access .initialTask on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        639
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 647,
+      "afterColumn": 68,
+      "diagnostic": "Unsafe member access .initialTask on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        643
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 653,
+      "afterColumn": 59,
+      "diagnostic": "Unsafe member access .attachments on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        649
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 658,
+      "afterColumn": 7,
+      "diagnostic": "Unsafe return of a value of type `any`. [Error/typescript(no-unsafe-return)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        654
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 658,
+      "afterColumn": 60,
+      "diagnostic": "Unsafe assignment of an any value. [Error/typescript(no-unsafe-assignment)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        654
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 659,
+      "afterColumn": 17,
+      "diagnostic": "Unsafe member access .agentOptions on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        654
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 659,
+      "afterColumn": 53,
+      "diagnostic": "Unsafe assignment of an any value. [Error/typescript(no-unsafe-assignment)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        654
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 659,
+      "afterColumn": 88,
+      "diagnostic": "Unsafe member access .agentOptions on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        654
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 663,
+      "afterColumn": 13,
+      "diagnostic": "Unsafe assignment of an any value. [Error/typescript(no-unsafe-assignment)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        658
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 663,
+      "afterColumn": 29,
+      "diagnostic": "Unsafe member access .agentOptions on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        658
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 664,
+      "afterColumn": 13,
+      "diagnostic": "Unsafe assignment of an any value. [Error/typescript(no-unsafe-assignment)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        659
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 664,
+      "afterColumn": 26,
+      "diagnostic": "Unsafe member access .agentOptions on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "unchanged_source_line",
+      "beforeCandidateLines": [
+        659
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 666,
+      "afterColumn": 46,
+      "diagnostic": "Unsafe assignment of an any value. [Error/typescript(no-unsafe-assignment)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        661
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 666,
+      "afterColumn": 56,
+      "diagnostic": "Unsafe assignment of an any value. [Error/typescript(no-unsafe-assignment)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        661
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 667,
+      "afterColumn": 17,
+      "diagnostic": "Unsafe member access .agentOptions on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        661
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 667,
+      "afterColumn": 70,
+      "diagnostic": "Unsafe assignment of an any value. [Error/typescript(no-unsafe-assignment)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        661
+      ]
+    },
+    {
+      "file": "packages/experimental/gat-core/src/index.ts",
+      "afterLine": 667,
+      "afterColumn": 92,
+      "diagnostic": "Unsafe member access .agentOptions on an `any` value. [Error/typescript(no-unsafe-member-access)]",
+      "originEvidence": "wrapped_fragment_of_original_line",
+      "beforeCandidateLines": [
+        661
+      ]
+    }
+  ]
+}

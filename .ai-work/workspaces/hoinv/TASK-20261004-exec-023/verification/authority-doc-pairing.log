@@ -1,0 +1,4 @@
+verify-translation-pairing: recorded .agents/notes/implemented/architecture/2026-10-04-authenticated-control-admission.i18n.yaml
+verify-translation-pairing: recorded packages/api/gateway/README.i18n.yaml
+verify-translation-pairing: recorded packages/client/connection/README.i18n.yaml
+verify-translation-pairing: 3 record(s) written; run the check to validate the pairs.

@@ -1,0 +1,18 @@
+{
+  "normalization": "TypeScript JS parse and printer removing comments",
+  "rows": [
+    {
+      "package": "gat-core",
+      "exactNormalizedAstMatch": false,
+      "previousSha256": "c226a1075612a8b9d5cb8521dbe4899bdd786789ec3531c7f5e847f76b26e28a",
+      "currentSha256": "3430450f2cd9eff07eb32765ed09e6269d7cdbae9d24b4e6383ab5d4085655c1"
+    },
+    {
+      "package": "gat-tools",
+      "exactNormalizedAstMatch": true,
+      "previousSha256": "afa0e4eb35e6101fdd5abded4d6da19f2037c290008c61d3f6091169ee9343da",
+      "currentSha256": "ee059c071782e889f1411a109cf8824e722ee15c2aeea90df4424d5212802e6d"
+    }
+  ],
+  "limit": "Differences require substantive review; final source lint changes intentionally introduce local aliases/captures."
+}

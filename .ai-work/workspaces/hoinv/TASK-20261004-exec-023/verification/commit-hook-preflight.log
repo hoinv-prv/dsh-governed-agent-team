@@ -1,0 +1,44 @@
+╭──────────────────────────────────────╮
+│ lefthook  v2.1.9   hook:  [1mpre-commit[m │
+╰──────────────────────────────────────╯
+┃  translation pairing (staged records) ❯ 
+verify-translation-pairing: 29 named staged pair(s) consistent; the corpus-wide check still runs in doc-sync.
+
+│  archived agent notes (skip) no matching staged files
+┃  lint (staged) ❯ 
+packages/experimental/gat-core/src/roster.ts:551:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/subagent/tool-subagent/src/index.ts:623:7: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/index.ts:1004:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/index.ts:1091:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/index.ts:1197:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:317:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:418:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:448:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:466:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent/src/index.ts:494:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/experimental/gat-core/src/mailbox.ts:294:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/subagent/subagent/src/index.ts:538:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:553:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:555:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:557:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:559:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:561:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:563:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/tools/src/schema.ts:565:3: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent-loop/src/index.ts:181:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/core/agent-loop/src/index.ts:761:5: warning: Unused oxlint-disable directive (no problems were reported).
+
+┃  third-party notices (staged) ❯ 
+gen-third-party-notices: wrote THIRD_PARTY_NOTICES.md.
+
+┃  whitespace (staged) ❯ 
+
+┃  vendor manifest guard ❯ 
+
+[38;2;56;56;56m  ────────────────────────────────────[m
+summary: (done in 8.24 seconds)
+✓ translation pairing (staged records) (2.07 seconds)
+✓ lint (staged) (2.33 seconds)
+✓ third-party notices (staged) (3.72 seconds)
+✓ whitespace (staged) (0.06 seconds)
+✓ vendor manifest guard (0.01 seconds)

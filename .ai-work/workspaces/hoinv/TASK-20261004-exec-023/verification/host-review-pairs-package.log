@@ -1,0 +1,6 @@
+verify-translation-pairing: recorded .agents/notes/implemented/architecture/2026-10-04-reserved-continuable-admission.i18n.yaml
+verify-translation-pairing: recorded docs/subsystems/subagent.i18n.yaml
+verify-translation-pairing: recorded packages/core/agent-loop/README.i18n.yaml
+verify-translation-pairing: recorded packages/core/agent/README.i18n.yaml
+verify-translation-pairing: recorded packages/subagent/subagent/README.i18n.yaml
+verify-translation-pairing: 5 record(s) written; run the check to validate the pairs.
