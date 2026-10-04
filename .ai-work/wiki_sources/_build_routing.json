@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "default_route": "generic",
+  "routes": {
+    "java_source": {
+      "tool": "__PROJECT_ROOT__/.ai-work/tooling/build_java_wiki_metas.py",
+      "args": [
+        "--root",
+        "{root}",
+        "--source-prefix",
+        "{prefix}",
+        "--meta-subdir",
+        "{subdir}"
+      ],
+      "refresh_mode": "rerun_tool",
+      "profile_id": "java_class"
+    },
+    "typescript_source": {
+      "tool": "__PROJECT_ROOT__/.ai-work/tooling/build_typescript_wiki_metas.py",
+      "args": [
+        "--root",
+        "{root}",
+        "--source-prefix",
+        "{prefix}",
+        "--meta-subdir",
+        "{subdir}"
+      ],
+      "refresh_mode": "rerun_tool",
+      "profile_id": "typescript_module"
+    }
+  }
+}

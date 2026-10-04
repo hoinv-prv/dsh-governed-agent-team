@@ -1,0 +1,2656 @@
+{
+  "format": "dsh-wbs-execution/1",
+  "mission_id": "multi-mission-web-ui",
+  "revision": 32,
+  "plan_sha256": "e035073bfb1c103602c9cfc350dbc7e087d3e4c2a4856cb968abaea5686f6fb0",
+  "run_state": "active",
+  "coordinator_ref": "session-ad97e23b-b7c9-4713-ac6f-15f610e9dbac:lead",
+  "attempts_charged": 66,
+  "active_work": [],
+  "task_attempts_v26": [
+    {
+      "id": "attempt-gat-final-implementation-001",
+      "task_id": "standalone-integration",
+      "revision": 26,
+      "plan_sha256": "5e8ea1f4bcb91ee95c55039e7759e8ce55e50fa70bbccbae107292f9c1780311",
+      "hypothesis": "One transactional admission boundary closes terminal policy contradictions and enables wrapper-only admission, a synthetic-only frozen conformance runner, deterministic build and clean built-package smoke on identical standalone bytes.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/standalone-integration/attempt-gat-final-implementation-001",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/policy/index.mjs",
+          "sha256": "038782af3fc8671f8e8e3ede1a8fddecb898840288ac1cb2e7d1c2bf65d871fb"
+        },
+        {
+          "path": "packages/gat/src/memory/index.mjs",
+          "sha256": "6531e5fc8644372ac0f8ab43124076cc39cd50dd1e49a2c5142b00ff2c337bf0"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/policy/index.mjs",
+          "sha256": "378586ef9a6cbebe2e09f7064f33500a95bee7d5352569c93f6cc63e6aa34750"
+        },
+        {
+          "path": "packages/gat/src/adapter/index.mjs",
+          "sha256": "9b61327ba923beecbf425611c175dc0026a33cc165fc3735d28bcf7a1067d289"
+        },
+        {
+          "path": "packages/gat/src/conformance/index.mjs",
+          "sha256": "40fb2aa437db5e0cef73c7bb67a27b02b1949078abf1a888c213fab218c3b2f5"
+        },
+        {
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "sha256": "e2329159b4cbe4f1f11b6072becc1a56d3cabb6081083682e4163c1612d0d04b"
+        },
+        {
+          "path": "packages/gat/tests/policy-selector.test.mjs",
+          "sha256": "13fde6360e48f62e3e5a2cc95255c97cbe9bb77e304308d745a8449855f5cc77"
+        },
+        {
+          "path": "packages/gat/tests/wrapper-admission.test.mjs",
+          "sha256": "915b82c60bda281717fb2048e43b7e9e7f25fc29ed7d6976e3ffb334293ef264"
+        },
+        {
+          "path": "packages/gat/tests/conformance-runner.test.mjs",
+          "sha256": "090dbe55d652897d39f790cddac049b5b7b74d3a06af74754c80060da2dec946"
+        }
+      ],
+      "verification_ref": "wbs-runs/multi-mission-web-ui/integration-standalone.md",
+      "review_ref": "team-message-bf282e7f-39f1-422f-b8a5-08388c31f490"
+    }
+  ],
+  "task_attempts_policy_v24": [
+    {
+      "id": "attempt-gat-policy-001",
+      "task_id": "policy-selector",
+      "revision": 24,
+      "plan_sha256": "af07afcc1e0d45467632c58715a12f1d8969fbdb38dedb101b27c606091891fb",
+      "hypothesis": "A fresh-snapshot deny-first PDP with immutable rules, strict evidence equality, workspace containment, exact selector emission, and generic denial response meets policy isolation without cache or post-filtering.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/policy-selector/attempt-gat-policy-001",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/governance/index.mjs",
+          "sha256": "86ba33128b2b221d1f924a04024fa6239ee99cef605808603f9707bf8785c864"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/policy/index.mjs",
+          "sha256": "82043d2c931b38c59afb6c680be5ee8fb8bdbb58eff91a58f53180d16dbf2513"
+        },
+        {
+          "path": "packages/gat/types/policy/index.d.ts",
+          "sha256": "ec0c4e9d54723c2fc4b193c4054c1ed4397a8c0f37df988d52842d9cd36e666e"
+        },
+        {
+          "path": "packages/gat/tests/policy-selector.test.mjs",
+          "sha256": "5dd7a596269fa491639e75ca73ed2905c669c56df57057db37411f4f11dd0db8"
+        }
+      ],
+      "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/policy-selector/attempt-gat-policy-001/verification.md",
+      "review_ref": "team-message-2af972d9-1649-4b06-afdf-90c16317faad"
+    },
+    {
+      "id": "attempt-gat-policy-002",
+      "task_id": "policy-selector",
+      "revision": 24,
+      "plan_sha256": "af07afcc1e0d45467632c58715a12f1d8969fbdb38dedb101b27c606091891fb",
+      "hypothesis": "Authoritative canonical path/account mapping, deeply validated complete Team/Mission/classification snapshots, enforced timing envelope, typed evidence and HMAC selector close the independent review gaps.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/policy-selector/attempt-gat-policy-002",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/policy/index.mjs",
+          "sha256": "82043d2c931b38c59afb6c680be5ee8fb8bdbb58eff91a58f53180d16dbf2513"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/policy/index.mjs",
+          "sha256": "7f58ac2d75bbea5d3aede18a823842d39de42f26a40dbed151113b640e9535ab"
+        },
+        {
+          "path": "packages/gat/types/policy/index.d.ts",
+          "sha256": "3ab29993702a4a00f02f67c544fe5eab131e72ad7432c269c5ce24746057d55f"
+        },
+        {
+          "path": "packages/gat/tests/policy-selector.test.mjs",
+          "sha256": "5e7021983f60d77bed2e33d56a9071fd3288c8ff15b9327a2769bb2b20a986fc"
+        }
+      ],
+      "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/policy-selector/attempt-gat-policy-002/verification.md",
+      "review_ref": "team-message-3831bbfd-69fc-497f-b10f-5c06f34b5f43"
+    },
+    {
+      "id": "attempt-gat-policy-003",
+      "task_id": "policy-selector",
+      "revision": 25,
+      "plan_sha256": "01f4d1af08d25092743b5c29cc489ef9781fef3969cbf0e2f4fa6fdd49f443ac",
+      "hypothesis": "Exact classification/resource/decision selector binding, logical+canonical containment, and post-padding/full-callback envelope checks close the final policy review gaps.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/policy-selector/attempt-gat-policy-003",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/policy/index.mjs",
+          "sha256": "7f58ac2d75bbea5d3aede18a823842d39de42f26a40dbed151113b640e9535ab"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/policy/index.mjs",
+          "sha256": "038782af3fc8671f8e8e3ede1a8fddecb898840288ac1cb2e7d1c2bf65d871fb"
+        },
+        {
+          "path": "packages/gat/types/policy/index.d.ts",
+          "sha256": "3ab29993702a4a00f02f67c544fe5eab131e72ad7432c269c5ce24746057d55f"
+        },
+        {
+          "path": "packages/gat/tests/policy-selector.test.mjs",
+          "sha256": "72ff6e66f201c361e17bd2a00ae49543690b80d8e31ec193aeb493d56ec88ed8"
+        }
+      ],
+      "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/policy-selector/attempt-gat-policy-003/verification.md",
+      "review_ref": "team-message-06f4b96c-cc77-4edd-babb-c4a2657b7da6"
+    }
+  ],
+  "task_attempts_v24": [
+    {
+      "id": "attempt-gat-memory-008",
+      "task_id": "partitioned-memory",
+      "revision": 24,
+      "plan_sha256": "af07afcc1e0d45467632c58715a12f1d8969fbdb38dedb101b27c606091891fb",
+      "hypothesis": "Reference-only retained untrusted content, exact provenance cardinality, audited pre-validation denials, scope-neutral tenant GENESIS/five-field audit authority, and universal suffix result replay close all attempt7 residuals.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-008",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/memory/index.mjs",
+          "sha256": "cbb6a1aafdb0ee03313b6ae420a2f25086a9b25430b3b9ced16a6a0a02f5e441"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/memory/index.mjs",
+          "sha256": "0cb28eea8cbec3d4fef81b6669561ead354e0261f0b2b177fb9f944d4b7c86c8"
+        },
+        {
+          "path": "packages/gat/types/memory/index.d.ts",
+          "sha256": "6c45daf5171e62cca506ff76d46518209b9484a44a0303f34137100e7562f8a6"
+        },
+        {
+          "path": "packages/gat/tests/partition-store.test.mjs",
+          "sha256": "2f5d19547ae01191165156d8393019dc3171739bc42f3887f899dadbd9af1953"
+        },
+        {
+          "path": "packages/gat/tests/transaction-audit.test.mjs",
+          "sha256": "8672581f1aed42ccffc98d46d0bef522a22d15434f3722e5411786119a9feb04"
+        },
+        {
+          "path": "packages/gat/tests/lifecycle-privacy.test.mjs",
+          "sha256": "513f0b3bf68bdc1ded40653c144627b804724d6df1070a884b2c6b1ca03852eb"
+        }
+      ],
+      "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-008/verification.md",
+      "review_ref": "team-message-958b7189-7161-458c-acae-5419cb02fcc3"
+    },
+    {
+      "id": "attempt-gat-memory-009",
+      "task_id": "partitioned-memory",
+      "revision": 24,
+      "plan_sha256": "af07afcc1e0d45467632c58715a12f1d8969fbdb38dedb101b27c606091891fb",
+      "hypothesis": "Tenant/epoch-only GENESIS binding, physically delimited stored content, and recursive classification/redaction of every persisted record string close the final three material gaps.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-009",
+      "outcome": "accepted",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/memory/index.mjs",
+          "sha256": "0cb28eea8cbec3d4fef81b6669561ead354e0261f0b2b177fb9f944d4b7c86c8"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/memory/index.mjs",
+          "sha256": "6531e5fc8644372ac0f8ab43124076cc39cd50dd1e49a2c5142b00ff2c337bf0"
+        },
+        {
+          "path": "packages/gat/types/memory/index.d.ts",
+          "sha256": "6c45daf5171e62cca506ff76d46518209b9484a44a0303f34137100e7562f8a6"
+        },
+        {
+          "path": "packages/gat/tests/partition-store.test.mjs",
+          "sha256": "dd9d5a377e92b40ff29be9f9fe7ae1197a1f90b066a0d5d4fd58d75a92a55ca9"
+        },
+        {
+          "path": "packages/gat/tests/transaction-audit.test.mjs",
+          "sha256": "7682f23500b77dc89b70d2065812e5acc9113ed30f5378f420431c75c3e1582d"
+        },
+        {
+          "path": "packages/gat/tests/lifecycle-privacy.test.mjs",
+          "sha256": "513f0b3bf68bdc1ded40653c144627b804724d6df1070a884b2c6b1ca03852eb"
+        }
+      ],
+      "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-009/verification.md",
+      "review_ref": "team-message-c310182a-d1ec-4a16-83e0-df9b12a47c38"
+    }
+  ],
+  "task_attempts_v23": [
+    {
+      "id": "attempt-gat-memory-006",
+      "task_id": "partitioned-memory",
+      "revision": 23,
+      "plan_sha256": "c919b6efd5c4792eb32ef9ee8b06d98da00c042d03e9d0c89c52af388e3f70bb",
+      "hypothesis": "Normative tenant/epoch authenticated audit, external-state-aware recovery, authoritative decision snapshots, exact CLASS-001 handling, and replayable domain mutations close the final review residuals.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-006",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/memory/index.mjs",
+          "sha256": "9a59a98d4ab24d4a7940b1ba85be9b45ac04daede9c1a9fa31b33d82f1c4dd92"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/memory/index.mjs",
+          "sha256": "88d01951bc8f2cf6225fda142b31c1ac63e2917d2ac73d0403afcf01c5185a6b"
+        },
+        {
+          "path": "packages/gat/types/memory/index.d.ts",
+          "sha256": "6c45daf5171e62cca506ff76d46518209b9484a44a0303f34137100e7562f8a6"
+        },
+        {
+          "path": "packages/gat/tests/partition-store.test.mjs",
+          "sha256": "dd10b1517d19b831f2b6ddbd8bb6791faf15befdd2b250a59ba64501fd82dc13"
+        },
+        {
+          "path": "packages/gat/tests/transaction-audit.test.mjs",
+          "sha256": "1d27dfe3de082923e568b732039049c7fff6e0c1c3e74723be3a71fbe6c49b16"
+        },
+        {
+          "path": "packages/gat/tests/lifecycle-privacy.test.mjs",
+          "sha256": "4451bcf0dfdc4265d626fd3acb159a5bb7c1f527090f502b211d7972560bf8c3"
+        }
+      ],
+      "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-006/verification.md",
+      "review_ref": null
+    },
+    {
+      "id": "attempt-gat-memory-007",
+      "task_id": "partitioned-memory",
+      "revision": 23,
+      "plan_sha256": "c919b6efd5c4792eb32ef9ee8b06d98da00c042d03e9d0c89c52af388e3f70bb",
+      "hypothesis": "Inventory-driven purge reconciliation evidence plus idempotency-first revise replay closes the only two attempt6 failures without changing the normative protocol.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-007",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/memory/index.mjs",
+          "sha256": "88d01951bc8f2cf6225fda142b31c1ac63e2917d2ac73d0403afcf01c5185a6b"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/memory/index.mjs",
+          "sha256": "cbb6a1aafdb0ee03313b6ae420a2f25086a9b25430b3b9ced16a6a0a02f5e441"
+        },
+        {
+          "path": "packages/gat/types/memory/index.d.ts",
+          "sha256": "6c45daf5171e62cca506ff76d46518209b9484a44a0303f34137100e7562f8a6"
+        },
+        {
+          "path": "packages/gat/tests/partition-store.test.mjs",
+          "sha256": "dd10b1517d19b831f2b6ddbd8bb6791faf15befdd2b250a59ba64501fd82dc13"
+        },
+        {
+          "path": "packages/gat/tests/transaction-audit.test.mjs",
+          "sha256": "1d27dfe3de082923e568b732039049c7fff6e0c1c3e74723be3a71fbe6c49b16"
+        },
+        {
+          "path": "packages/gat/tests/lifecycle-privacy.test.mjs",
+          "sha256": "4451bcf0dfdc4265d626fd3acb159a5bb7c1f527090f502b211d7972560bf8c3"
+        }
+      ],
+      "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-007/verification.md",
+      "review_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-007/review.md"
+    }
+  ],
+  "selection_attempts": [
+    {
+      "id": "attempt-gat-govreplan-008",
+      "task_id": "governance-replan",
+      "revision": 23,
+      "plan_sha256": "c919b6efd5c4792eb32ef9ee8b06d98da00c042d03e9d0c89c52af388e3f70bb",
+      "hypothesis": "Exact HUMAN approval plus the appended change-level AIP re-plan can select v23 while preserving all 37 prior charges and pass the unchanged lint/status gates.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-008",
+      "outcome": "done",
+      "input_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v23.json",
+          "sha256": "c919b6efd5c4792eb32ef9ee8b06d98da00c042d03e9d0c89c52af388e3f70bb"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+          "sha256": "7ae5590f72ba2e1193f9828023c8d3da354ea79b49eb2717bfe9b389bc87a007"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/decisions.json",
+          "sha256": "78652d95cb4de614d81005031efa4aebb51a6a1b80d31970178200259cb19a90"
+        }
+      ],
+      "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-008/verification.md",
+      "review_ref": "team-message-3e6c5405-efa6-498f-ac95-52b51eab3130"
+    },
+    {
+      "id": "attempt-gat-govreplan-009",
+      "task_id": "governance-replan",
+      "revision": 24,
+      "plan_sha256": "af07afcc1e0d45467632c58715a12f1d8969fbdb38dedb101b27c606091891fb",
+      "hypothesis": "Exact HUMAN approval plus change-level AIP re-plan can select v24 while preserving all 40 prior charges and passing unchanged lint/status gates.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-009",
+      "outcome": "done",
+      "input_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v24.json",
+          "sha256": "af07afcc1e0d45467632c58715a12f1d8969fbdb38dedb101b27c606091891fb"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+          "sha256": "97a43b35bda8a08c8f1a877bcc9835d1d1f3bc5193bb831b520a4cd68e4f0597"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/decisions.json",
+          "sha256": "cd6b8a5313d9babf9438acf6aba7517057b9e095f1a0a23fbc477a7cfc3e0ca4"
+        }
+      ],
+      "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-009/verification.md",
+      "review_ref": "team-message-0d3c04a1-dc96-4147-9f56-37f5a0fbc7b2"
+    },
+    {
+      "id": "attempt-gat-govreplan-010",
+      "task_id": "governance-replan",
+      "revision": 25,
+      "plan_sha256": "01f4d1af08d25092743b5c29cc489ef9781fef3969cbf0e2f4fa6fdd49f443ac",
+      "hypothesis": "Exact HUMAN incident ACCEPT plus v25 approval permits selection while preserving 45 charges and the fixed no-DSH boundary.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-010",
+      "outcome": "accepted",
+      "input_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v25.json",
+          "sha256": "01f4d1af08d25092743b5c29cc489ef9781fef3969cbf0e2f4fa6fdd49f443ac"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/incident-dsh-read-boundary-001.md",
+          "sha256": "33756f87bebb8d71e6920d289980c69ee9f521595a375d8fb27fac2e92b64c24"
+        }
+      ],
+      "output_hashes": null,
+      "verification_ref": null,
+      "review_ref": "team-message-48023800-8e7e-437f-90a5-b979f386c252"
+    },
+    {
+      "id": "attempt-gat-govreplan-011",
+      "task_id": "governance-replan",
+      "revision": 26,
+      "plan_sha256": "5e8ea1f4bcb91ee95c55039e7759e8ce55e50fa70bbccbae107292f9c1780311",
+      "hypothesis": "Exact v26 approval selects the final three-attempt DAG without regaining charges.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-011",
+      "outcome": "accepted",
+      "input_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v26.json",
+          "sha256": "5e8ea1f4bcb91ee95c55039e7759e8ce55e50fa70bbccbae107292f9c1780311"
+        }
+      ],
+      "output_hashes": null,
+      "verification_ref": null,
+      "review_ref": "team-message-2fbfb7eb-d3b3-4f9f-a430-b4d82fbea6a3"
+    },
+    {
+      "id": "attempt-gat-govreplan-012",
+      "task_id": "governance-replan",
+      "revision": 27,
+      "plan_sha256": "467fa111ef6c17337be2ebdc7d029362ed07a1ba8a4a7b7aed49dec2671c98ca",
+      "hypothesis": "Exact HUMAN approval selects the 60-attempt recovery DAG while preserving all 49 prior charges and accepted governance/memory evidence.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-012",
+      "outcome": "accepted",
+      "input_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v27.json",
+          "sha256": "467fa111ef6c17337be2ebdc7d029362ed07a1ba8a4a7b7aed49dec2671c98ca"
+        }
+      ],
+      "output_hashes": null,
+      "verification_ref": null,
+      "review_ref": "team-message-bb0f5693-5e9d-4e96-849d-43d4b078e710"
+    },
+    {
+      "id": "attempt-gat-govreplan-013",
+      "task_id": "governance-replan",
+      "revision": 28,
+      "plan_sha256": "ee5310a7a01035a7948b36936f9a957776649bd02892b1a6aa0319e549913839",
+      "hypothesis": "Exact approval selects the final wrapper-schema recovery DAG without resetting 53 charges or accepted policy/memory/governance.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-013",
+      "outcome": "accepted",
+      "input_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v28.json",
+          "sha256": "ee5310a7a01035a7948b36936f9a957776649bd02892b1a6aa0319e549913839"
+        }
+      ],
+      "output_hashes": null,
+      "verification_ref": null,
+      "review_ref": "team-message-9c6bf67f-2abc-49f0-8b35-a23b14b0f619"
+    }
+  ],
+  "tasks": {
+    "discover-validation": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "attempt-discover-001",
+          "revision": 1,
+          "plan_sha256": "582c4aab13d2813e368a2e0ed233a2a05dc34d4071a98603d7d6a2cf20d0b68e",
+          "hypothesis": "The repository-supported Vitest entrypoint is available.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/discover-validation/attempt-discover-001",
+          "outcome": "done",
+          "input_hashes": [
+            {
+              "path": "package.json",
+              "sha256": "c8e950ef68d0aca1c106b9f84cfe5b5d48a3e0d798d4540587ceb0f7af98c1b9"
+            },
+            {
+              "path": "packages/core/package.json",
+              "sha256": "525978f206bf9985b06eec1e78dff971091d468c1faf1491a866de54643387e3"
+            },
+            {
+              "path": "packages/web/package.json",
+              "sha256": "8320114137ad8ab240e7467d3545c7f3377fea7b922d90f1d776d1facc614fd5"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "wbs-runs/multi-mission-web-ui/toolchain.md",
+              "sha256": "81737d72b7ea202c1195ffd7cb30301cab72e70c7ef510001b77f57ef7aab411"
+            }
+          ],
+          "verification_ref": "native-bash:pnpm-exec-vitest-version",
+          "review_ref": null
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "attempt-discover-001",
+        "verification_ref": "native-bash:pnpm-exec-vitest-version",
+        "review_ref": null,
+        "output_hashes": [
+          {
+            "path": "wbs-runs/multi-mission-web-ui/toolchain.md",
+            "sha256": "81737d72b7ea202c1195ffd7cb30301cab72e70c7ef510001b77f57ef7aab411"
+          }
+        ]
+      }
+    },
+    "core-mission-model": {
+      "state": "running",
+      "attempts": [
+        {
+          "id": "attempt-core-001",
+          "revision": 1,
+          "plan_sha256": "582c4aab13d2813e368a2e0ed233a2a05dc34d4071a98603d7d6a2cf20d0b68e",
+          "hypothesis": "The existing Team journal/projection can be extended with mission-scoped records and APIs while preserving existing task behavior.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/core-mission-model/attempt-core-001",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "packages/core/src/types.ts",
+              "sha256": "4911d4dadbd17b027dadb6f62b0b8a743eaece4c59e5f7eda20da356f378766d"
+            },
+            {
+              "path": "packages/core/src/projection.ts",
+              "sha256": "b7042352c03a07d4dd0cb245ae612f4a3ce4d89b85412c2cd897129109f6ed17"
+            },
+            {
+              "path": "packages/core/src/index.ts",
+              "sha256": "a8b5df7e22b22227d36f7b01474528519dd42f215d609b1ab47855bee348ba8b"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/core/src/types.ts",
+              "sha256": "5bf634de3c3d8bec62be9dec0740b0cbbe5801db63b20810a60f997c6ba91928"
+            },
+            {
+              "path": "packages/core/src/projection.ts",
+              "sha256": "4157fc9997a608a40a40be5cdae064c0a12d33f87300da11e782216f315b332c"
+            },
+            {
+              "path": "packages/core/src/journal.ts",
+              "sha256": "587c808df9cbef89aec851f0cc0a5ab60bf7d0058fea7dd11aabf4cf434192a4"
+            },
+            {
+              "path": "packages/core/src/index.ts",
+              "sha256": "98579b789882122ead5d8573ad698b45edf6de63dd141dbeb6a66893dfcc8bd6"
+            },
+            {
+              "path": "packages/core/src/mission-board.ts",
+              "sha256": "ccb5676c413f0374b148434871e278c1006dfcad0abdb059c4722129ce07445c"
+            },
+            {
+              "path": "packages/core/tests/team.spec.ts",
+              "sha256": "7785d69e1553a1f1bfd1d80c4a94270537d6865eef2ac5edd99d8a53ddeffed9"
+            },
+            {
+              "path": "packages/core/tests/projection-events.spec.ts",
+              "sha256": "42779baa4eb6e8c4985e1c7e995bd967b164be47c191977fb866921f2e9d71cf"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/core-mission-model/attempt-core-001-verification.md",
+          "review_ref": null
+        },
+        {
+          "id": "attempt-core-002",
+          "revision": 2,
+          "plan_sha256": "55955a3b3964413d151a13e2790e9464677fa0adc08c867fb4194f3166010959",
+          "hypothesis": "The retained core implementation is structurally correct and can be cleared for Web integration by a fresh independent static review, with runtime claims deferred to canonical integration verification.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/core-mission-model/attempt-core-002",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "packages/core/src/types.ts",
+              "sha256": "5bf634de3c3d8bec62be9dec0740b0cbbe5801db63b20810a60f997c6ba91928"
+            },
+            {
+              "path": "packages/core/src/projection.ts",
+              "sha256": "4157fc9997a608a40a40be5cdae064c0a12d33f87300da11e782216f315b332c"
+            },
+            {
+              "path": "packages/core/src/index.ts",
+              "sha256": "98579b789882122ead5d8573ad698b45edf6de63dd141dbeb6a66893dfcc8bd6"
+            },
+            {
+              "path": "packages/core/src/mission-board.ts",
+              "sha256": "ccb5676c413f0374b148434871e278c1006dfcad0abdb059c4722129ce07445c"
+            }
+          ],
+          "output_hashes": null,
+          "verification_ref": "team-message-e14fe8f5-5784-4f14-93c5-b6ee70bc6aff",
+          "review_ref": "team-message-e14fe8f5-5784-4f14-93c5-b6ee70bc6aff"
+        },
+        {
+          "id": "attempt-core-003",
+          "revision": 3,
+          "plan_sha256": "347823ac39155a82709b08650041bbfdc2d5398bd7d7e63406409ace1801f589",
+          "hypothesis": "A bounded mission-plan validator reused at creation and replay, plus malformed-plan tests, resolves reviewer finding F1 without widening the core API.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/core-mission-model/attempt-core-003",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "packages/core/src/types.ts",
+              "sha256": "5bf634de3c3d8bec62be9dec0740b0cbbe5801db63b20810a60f997c6ba91928"
+            },
+            {
+              "path": "packages/core/src/projection.ts",
+              "sha256": "4157fc9997a608a40a40be5cdae064c0a12d33f87300da11e782216f315b332c"
+            },
+            {
+              "path": "packages/core/src/mission-board.ts",
+              "sha256": "ccb5676c413f0374b148434871e278c1006dfcad0abdb059c4722129ce07445c"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/core/src/mission-plan.ts",
+              "sha256": "be389c339817bcd321b13844cda082629dd897657298c36f43a21f5c331f2c52"
+            },
+            {
+              "path": "packages/core/src/mission-board.ts",
+              "sha256": "56523d1fc2777c250cd32332feba199d41ec4a991ab41233647f2ecd0375dcf2"
+            },
+            {
+              "path": "packages/core/src/projection.ts",
+              "sha256": "605cca3d536b0beadc863a479e9402efff8d57fa3906cfa790a20c29077832bf"
+            },
+            {
+              "path": "packages/core/tests/team.spec.ts",
+              "sha256": "dcde224c26c4c7e86c21562f2405b11754061fab31f2c597945cf1ff9e685ea4"
+            },
+            {
+              "path": "packages/core/tests/projection-events.spec.ts",
+              "sha256": "41ce7fd6b459f40a4dca8ef02dced8dd2d5886fe238d50f9583e37d0b3826341"
+            }
+          ],
+          "verification_ref": "team-message-1e755129-031b-4ece-b52b-63e5f5e8e284",
+          "review_ref": "team-message-1e755129-031b-4ece-b52b-63e5f5e8e284"
+        },
+        {
+          "id": "attempt-core-004",
+          "revision": 4,
+          "plan_sha256": "3bfee29f8e6ecc673813f1922ea9857e66cf716979e36f220027c4dd6e6ffd3b",
+          "hypothesis": "Making TeamView.missions optional and omitting it only for an empty roster restores legacy exact-view compatibility while preserving populated mission views.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/core-mission-model/attempt-core-004",
+          "outcome": "done",
+          "input_hashes": [
+            {
+              "path": "packages/core/src/types.ts",
+              "sha256": "5bf634de3c3d8bec62be9dec0740b0cbbe5801db63b20810a60f997c6ba91928"
+            },
+            {
+              "path": "packages/core/src/index.ts",
+              "sha256": "59315b321b2ac4b9817f9f46a204c702e81d42e2ccd3ad06fdb9b44cfb18fc90"
+            },
+            {
+              "path": "packages/core/tests/team.spec.ts",
+              "sha256": "dcde224c26c4c7e86c21562f2405b11754061fab31f2c597945cf1ff9e685ea4"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/core/src/types.ts",
+              "sha256": "5bf634de3c3d8bec62be9dec0740b0cbbe5801db63b20810a60f997c6ba91928"
+            },
+            {
+              "path": "packages/core/src/index.ts",
+              "sha256": "98579b789882122ead5d8573ad698b45edf6de63dd141dbeb6a66893dfcc8bd6"
+            },
+            {
+              "path": "packages/core/src/mission-plan.ts",
+              "sha256": "be389c339817bcd321b13844cda082629dd897657298c36f43a21f5c331f2c52"
+            },
+            {
+              "path": "packages/core/src/mission-board.ts",
+              "sha256": "56523d1fc2777c250cd32332feba199d41ec4a991ab41233647f2ecd0375dcf2"
+            },
+            {
+              "path": "packages/core/src/projection.ts",
+              "sha256": "605cca3d536b0beadc863a479e9402efff8d57fa3906cfa790a20c29077832bf"
+            },
+            {
+              "path": "packages/core/src/journal.ts",
+              "sha256": "587c808df9cbef89aec851f0cc0a5ab60bf7d0058fea7dd11aabf4cf434192a4"
+            },
+            {
+              "path": "packages/core/tests/team.spec.ts",
+              "sha256": "ae6b76c44f2e78722de7c5e5b10b2423a3cb33d5b8571aca7ec5c27d9792f101"
+            },
+            {
+              "path": "packages/core/tests/projection-events.spec.ts",
+              "sha256": "41ce7fd6b459f40a4dca8ef02dced8dd2d5886fe238d50f9583e37d0b3826341"
+            },
+            {
+              "path": "wbs-runs/multi-mission-web-ui/evidence/core-mission-model/attempt-core-004-review.md",
+              "sha256": "dc61908652b00f6562c09c14a5f8719ee6a71a505d8f2aebe262fb3d9ec201b0"
+            }
+          ],
+          "verification_ref": "agent-fe29fdd5-c9e8-4544-9276-90cce5b956cc",
+          "review_ref": "wbs-runs/multi-mission-web-ui/evidence/core-mission-model/attempt-core-004-review.md"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "attempt-core-006",
+        "verification_ref": "team-message-3f4da836-a15e-48c9-ac87-3adcabe93bfb",
+        "review_ref": "team-message-3f4da836-a15e-48c9-ac87-3adcabe93bfb",
+        "runtime_verification_deferred_to": "integration-verification"
+      }
+    },
+    "aiws-governance-recovery": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "attempt-aiws-001",
+          "revision": 5,
+          "plan_sha256": "00c5a7c85d9fab819a0de790b93c759a6545ed3e3cac35ddbc2e51259289c30c",
+          "hypothesis": "A recovered EXEC AIP can explicitly document pre-applied work and govern every remaining step without modifying AIWS canonical or procedural artifacts.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/aiws-governance-recovery/attempt-aiws-001",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "wbs-runs/multi-mission-web-ui/wbs.v5.json",
+              "sha256": "00c5a7c85d9fab819a0de790b93c759a6545ed3e3cac35ddbc2e51259289c30c"
+            }
+          ],
+          "output_hashes": [],
+          "verification_ref": "native-bash:python-command-not-found-exit-127",
+          "review_ref": null
+        },
+        {
+          "id": "attempt-aiws-002",
+          "revision": 6,
+          "plan_sha256": "a484fdda4d896f3430c7501b5bbc2c8cbf4b9166d0f2ead3d2133ea0ebe59add",
+          "hypothesis": "Using the python3 interpreter declared by the AIWS tool shebangs allows the same bounded AIP recovery flow to execute.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/aiws-governance-recovery/attempt-aiws-002",
+          "outcome": "done",
+          "input_hashes": [
+            {
+              "path": "wbs-runs/multi-mission-web-ui/wbs.v6.json",
+              "sha256": "a484fdda4d896f3430c7501b5bbc2c8cbf4b9166d0f2ead3d2133ea0ebe59add"
+            }
+          ],
+          "output_hashes": [],
+          "verification_ref": "native-bash:aiws-lint-start-status-exit-0",
+          "review_ref": "coordinator-read:aip-and-workspace"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "attempt-aiws-002",
+        "verification_ref": "native-bash:aiws-lint-start-status-exit-0",
+        "review_ref": "coordinator-read:aip-and-workspace",
+        "evidence_paths": [
+          ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+          ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/00c_active_step_context.md",
+          ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/04_findings.md"
+        ]
+      }
+    },
+    "web-mission-management": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "attempt-web-001",
+          "revision": 4,
+          "plan_sha256": "3bfee29f8e6ecc673813f1922ea9857e66cf716979e36f220027c4dd6e6ffd3b",
+          "hypothesis": "The existing Team panel can add mission creation, list/detail selection, and exact-revision approval through the new core Remote APIs without changing the apps/web shell.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/web-mission-management/attempt-web-001",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "packages/web/src/client/TeamAction.tsx",
+              "sha256": "645d0a0856965b9added5f2de22c160509a7a65337bcfb432d3d73c7072b037e"
+            },
+            {
+              "path": "packages/web/src/client/mount.ts",
+              "sha256": "7ca65ecd0cabd31599ea3b11d3a82c6338d394bf4c6b27fa00c014fce08ae12e"
+            },
+            {
+              "path": "packages/web/src/client/locales.ts",
+              "sha256": "933acda1036c89d3cfd5448092d43ff8b42c7322a785cc6c2b64dddb02b865ed"
+            },
+            {
+              "path": "packages/web/src/client/TeamAction.module.css",
+              "sha256": "7a3dbd6bebdaabfa13c503d01db233396ae4704f116a764a2cca19bd1e85f952"
+            },
+            {
+              "path": "packages/web/tests/team-action.client.spec.tsx",
+              "sha256": "9237cf46cf3eecf8e3f55b7e2ec0212f1fed2576a0481a5f881bada0fc0e1481"
+            },
+            {
+              "path": "packages/web/tests/browser-plugin.client.spec.ts",
+              "sha256": "600685e07a84adbcbc3e8d7307d1ca6f478527487a393e0bd114f8d6c9e9199a"
+            },
+            {
+              "path": "packages/core/src/types.ts",
+              "sha256": "5bf634de3c3d8bec62be9dec0740b0cbbe5801db63b20810a60f997c6ba91928"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/web/src/client/TeamAction.tsx",
+              "sha256": "bd71944f3ff88c5c45675dbc57704336458c2053d8974d1ef6082d1a4e514c0e"
+            },
+            {
+              "path": "packages/web/src/client/mount.ts",
+              "sha256": "93f71a8ffcbb5ef7a24e204272c97e83f554f9e4e9d0c9c96c3fa816cd3a1549"
+            },
+            {
+              "path": "packages/web/src/client/locales.ts",
+              "sha256": "1f57cbf8bfb26d1f8c3f0e5394caafa61dc4f51ac23d1039f71e9a50afd5ed67"
+            },
+            {
+              "path": "packages/web/src/client/TeamAction.module.css",
+              "sha256": "a3a3476fba4a776749a69c746e52c21d5cde1f61c6c3a81f3925ce5ab2c4bab2"
+            },
+            {
+              "path": "packages/web/tests/team-action.client.spec.tsx",
+              "sha256": "b0517cc12f0254b3bd3a4c14f4847906dfd9bd41826deaea64d242d536d016a4"
+            },
+            {
+              "path": "packages/web/tests/browser-plugin.client.spec.ts",
+              "sha256": "600685e07a84adbcbc3e8d7307d1ca6f478527487a393e0bd114f8d6c9e9199a"
+            }
+          ],
+          "verification_ref": "agent-ff029151-c067-449f-bc7a-b2d32ad6ff8b:failed-before-finish",
+          "review_ref": null
+        },
+        {
+          "id": "attempt-web-002",
+          "revision": 7,
+          "plan_sha256": "80e69bac7c66e1bce2833aacae13f5f8417e6e5b4ce35a31d052b9de39ffc04f",
+          "hypothesis": "A bounded Terra completion pass can finish the retained Web implementation and required tests, after which a fresh Luna reviewer can validate the complete UI/Remote contract.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/web-mission-management/attempt-web-002",
+          "outcome": "allocated",
+          "input_hashes": [
+            {
+              "path": "packages/web/src/client/TeamAction.tsx",
+              "sha256": "bd71944f3ff88c5c45675dbc57704336458c2053d8974d1ef6082d1a4e514c0e"
+            },
+            {
+              "path": "packages/web/src/client/mount.ts",
+              "sha256": "93f71a8ffcbb5ef7a24e204272c97e83f554f9e4e9d0c9c96c3fa816cd3a1549"
+            },
+            {
+              "path": "packages/web/src/client/locales.ts",
+              "sha256": "1f57cbf8bfb26d1f8c3f0e5394caafa61dc4f51ac23d1039f71e9a50afd5ed67"
+            },
+            {
+              "path": "packages/web/src/client/TeamAction.module.css",
+              "sha256": "a3a3476fba4a776749a69c746e52c21d5cde1f61c6c3a81f3925ce5ab2c4bab2"
+            },
+            {
+              "path": "packages/web/tests/team-action.client.spec.tsx",
+              "sha256": "b0517cc12f0254b3bd3a4c14f4847906dfd9bd41826deaea64d242d536d016a4"
+            },
+            {
+              "path": "packages/web/tests/browser-plugin.client.spec.ts",
+              "sha256": "600685e07a84adbcbc3e8d7307d1ca6f478527487a393e0bd114f8d6c9e9199a"
+            },
+            {
+              "path": "packages/core/src/types.ts",
+              "sha256": "5bf634de3c3d8bec62be9dec0740b0cbbe5801db63b20810a60f997c6ba91928"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/web/src/client/TeamAction.tsx",
+              "sha256": "86173647768bd4eea1c5f26a39c31d67644bb564676151cb5ca0a55ff7f3ef85"
+            },
+            {
+              "path": "packages/web/src/client/mount.ts",
+              "sha256": "93f71a8ffcbb5ef7a24e204272c97e83f554f9e4e9d0c9c96c3fa816cd3a1549"
+            },
+            {
+              "path": "packages/web/src/client/locales.ts",
+              "sha256": "1f57cbf8bfb26d1f8c3f0e5394caafa61dc4f51ac23d1039f71e9a50afd5ed67"
+            },
+            {
+              "path": "packages/web/src/client/TeamAction.module.css",
+              "sha256": "1bef36132464f30e4730e5dfb934d8a255334c3b0eb89ad68cc22930e764239b"
+            },
+            {
+              "path": "packages/web/tests/team-action.client.spec.tsx",
+              "sha256": "9462e20a914a9f4d304b5609376c3e3e4916147ab74e1e14d68639074b007d6e"
+            },
+            {
+              "path": "packages/web/tests/browser-plugin.client.spec.ts",
+              "sha256": "9c71d0a31a0874e5a7a19f6367befa931f180fab890a943890af2ce74db49c23"
+            }
+          ],
+          "verification_ref": "team-message-f3d8fa43-a2c6-457b-a33b-8b85fcfcc2d0",
+          "review_ref": "wbs-runs/multi-mission-web-ui/evidence/web-mission-management/attempt-web-002-review.md"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "attempt-web-002",
+        "verification_ref": "team-message-f3d8fa43-a2c6-457b-a33b-8b85fcfcc2d0",
+        "review_ref": "wbs-runs/multi-mission-web-ui/evidence/web-mission-management/attempt-web-002-review.md",
+        "runtime_verification_deferred_to": "integration-verification"
+      }
+    },
+    "integration-verification": {
+      "state": "failed",
+      "attempts": [
+        {
+          "id": "attempt-integration-001",
+          "revision": 7,
+          "plan_sha256": "80e69bac7c66e1bce2833aacae13f5f8417e6e5b4ce35a31d052b9de39ffc04f",
+          "hypothesis": "Regenerated compatibility installed into the dedicated clean worktree will pass focused core/Web tests, full DSH build, built-library smoke, and assembled dashboard smoke.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/integration-verification/attempt-integration-001",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "packages/core/src/types.ts",
+              "sha256": "5bf634de3c3d8bec62be9dec0740b0cbbe5801db63b20810a60f997c6ba91928"
+            },
+            {
+              "path": "packages/core/src/index.ts",
+              "sha256": "98579b789882122ead5d8573ad698b45edf6de63dd141dbeb6a66893dfcc8bd6"
+            },
+            {
+              "path": "packages/web/src/client/TeamAction.tsx",
+              "sha256": "86173647768bd4eea1c5f26a39c31d67644bb564676151cb5ca0a55ff7f3ef85"
+            },
+            {
+              "path": "packages/web/tests/team-action.client.spec.tsx",
+              "sha256": "9462e20a914a9f4d304b5609376c3e3e4916147ab74e1e14d68639074b007d6e"
+            },
+            {
+              "path": "packages/web/tests/browser-plugin.client.spec.ts",
+              "sha256": "9c71d0a31a0874e5a7a19f6367befa931f180fab890a943890af2ce74db49c23"
+            }
+          ],
+          "output_hashes": [],
+          "verification_ref": "native-bash:rollback-payload-hash-mismatch-exit-1",
+          "review_ref": "wbs-runs/multi-mission-web-ui/integration.md"
+        },
+        {
+          "id": "attempt-integration-002",
+          "revision": 8,
+          "plan_sha256": "f6267a214279d655284268d7a8cc6f571a8ac52cc53062097e63a11e7f6b9955",
+          "hypothesis": "Resetting and cleaning only the dedicated verification worktree at the pinned DSH commit avoids stale-source rollback validation; regenerated compatibility can then install and pass the canonical verifier.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/integration-verification/attempt-integration-002",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "packages/core/src/types.ts",
+              "sha256": "5bf634de3c3d8bec62be9dec0740b0cbbe5801db63b20810a60f997c6ba91928"
+            },
+            {
+              "path": "packages/core/src/index.ts",
+              "sha256": "98579b789882122ead5d8573ad698b45edf6de63dd141dbeb6a66893dfcc8bd6"
+            },
+            {
+              "path": "packages/web/src/client/TeamAction.tsx",
+              "sha256": "86173647768bd4eea1c5f26a39c31d67644bb564676151cb5ca0a55ff7f3ef85"
+            },
+            {
+              "path": "packages/web/tests/team-action.client.spec.tsx",
+              "sha256": "9462e20a914a9f4d304b5609376c3e3e4916147ab74e1e14d68639074b007d6e"
+            },
+            {
+              "path": "packages/web/tests/browser-plugin.client.spec.ts",
+              "sha256": "9c71d0a31a0874e5a7a19f6367befa931f180fab890a943890af2ce74db49c23"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "compatibility/dsh-0.1.5-rc.2/manifest.json",
+              "sha256": null
+            },
+            {
+              "path": "wbs-runs/multi-mission-web-ui/integration.md",
+              "sha256": null
+            }
+          ],
+          "verification_ref": "native-bash:canonical-verifier-focused-tests-151-pass-4-fail-exit-1",
+          "review_ref": "wbs-runs/multi-mission-web-ui/integration.md"
+        }
+      ],
+      "acceptance": null
+    },
+    "final-review": {
+      "state": "pending",
+      "attempts": [],
+      "acceptance": null
+    },
+    "governance-replan": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "attempt-gat-govreplan-001",
+          "revision": 15,
+          "plan_sha256": "a6eb5baedafabb7098016fc45a7656421847cc5fea462a076a3568de66ed290b",
+          "hypothesis": "Observed quiescence plus exact HUMAN approval permits preserving all history, settling the stale orphaned direct marker, selecting revision 15, and re-planning the fixed AIWS task before product work.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-001",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "wbs-runs/multi-mission-web-ui/wbs.v15.json",
+              "sha256": "a6eb5baedafabb7098016fc45a7656421847cc5fea462a076a3568de66ed290b"
+            },
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "26c2de56c05f36e396d8d1e0f896613e8f7535f8eb5b090430f840b58e45bf9a"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "f2a920f8ed44555aeaa5ddff1fe4f38e5aa57379e4ed1e56a4e7f071672165eb"
+            },
+            {
+              "path": ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/wbs-v15/governance-replan/summary.md",
+              "sha256": "7ab98016d3de341ca2a200d430f551adc25401746d3a254285958b68efae48ae"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-001/verification.md",
+          "review_ref": null
+        },
+        {
+          "id": "attempt-gat-govreplan-002",
+          "revision": 16,
+          "plan_sha256": "a9a8a95d9ccc22662b33d331edf7da37175cd49f18a9eeda2fe96675f7ba1247",
+          "hypothesis": "Expanding STEP-05 through STEP-11 to the mandatory seven-field AIP schema and removing the historical vague STEP-04 input warning will make the unchanged re-plan pass exact lint/status verification.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-002",
+          "outcome": "done",
+          "input_hashes": [
+            {
+              "path": "wbs-runs/multi-mission-web-ui/wbs.v16.json",
+              "sha256": "a9a8a95d9ccc22662b33d331edf7da37175cd49f18a9eeda2fe96675f7ba1247"
+            },
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "f2a920f8ed44555aeaa5ddff1fe4f38e5aa57379e4ed1e56a4e7f071672165eb"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "9646b77037a89d634ee46efdfffd3ad54d149ee7c18bae4ee6f4ed27d92f86fd"
+            },
+            {
+              "path": ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/wbs-v16/governance-replan/summary.md",
+              "sha256": "d5e7081ec624d9a466a14ad3c3d42af826fb84a506a084849d47e949f01dd7ce"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-002/verification.md",
+          "review_ref": null
+        },
+        {
+          "id": "attempt-gat-govreplan-003",
+          "revision": 17,
+          "plan_sha256": "c7a802e9ba92c1220d378605ed301ffd553f9b48f196d2f63656f9bb2c2ec96b",
+          "hypothesis": "Exact revision-17 selection with unchanged repaired AIP bytes can preserve 20 prior charges and revalidate governance before the authorized STEP-06 transition.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-003",
+          "outcome": "done",
+          "input_hashes": [
+            {
+              "path": "wbs-runs/multi-mission-web-ui/wbs.v17.json",
+              "sha256": "c7a802e9ba92c1220d378605ed301ffd553f9b48f196d2f63656f9bb2c2ec96b"
+            },
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "9646b77037a89d634ee46efdfffd3ad54d149ee7c18bae4ee6f4ed27d92f86fd"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "229057d54638f31fde91610745ebbc72c837299961122a444db0a9d58caaf4f2"
+            },
+            {
+              "path": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-003/verification.md",
+              "sha256": "d057f5566af493b4b527a4d3a83243e4a775703173db224abb63e675ace0af29"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-003/verification.md",
+          "review_ref": "revision-reviewer:team-message-54adee80-5829-4b4e-aa75-a6fa163ab3ce:PASS"
+        },
+        {
+          "id": "attempt-gat-govreplan-004",
+          "revision": 18,
+          "plan_sha256": "728c1910d910ad8ffc94e38352c437513e987d69e95f77449dbc4cce82cc0b88",
+          "hypothesis": "Selecting approved revision18 and aligning active AIP controls can preserve 22 prior charges and revalidate before the bounded threat correction.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-004",
+          "outcome": "done",
+          "input_hashes": [
+            {
+              "path": "wbs-runs/multi-mission-web-ui/wbs.v18.json",
+              "sha256": "728c1910d910ad8ffc94e38352c437513e987d69e95f77449dbc4cce82cc0b88"
+            },
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "229057d54638f31fde91610745ebbc72c837299961122a444db0a9d58caaf4f2"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "ad6e272f0fb05ae33446e37b4bd8331c5f86f6179d86ea57f2ea195cd28ab829"
+            },
+            {
+              "path": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-004/verification.md",
+              "sha256": "c84a77f5298787e00eddf1316b7ae2e1b7bfb14e4bc9cbd21618493178e12e85"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-004/verification.md",
+          "review_ref": "coordinator:lint-status-pass"
+        },
+        {
+          "id": "attempt-gat-govreplan-005",
+          "revision": 19,
+          "plan_sha256": "95d9cfac0c4b08539490769af7c8d7653d3e2855f38a40d7069feda9824aac0b",
+          "hypothesis": "Selecting approved revision19 and aligning active AIP controls can preserve all 28 charges before the final distinct Mission correction.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-005",
+          "outcome": "done",
+          "input_hashes": [
+            {
+              "path": "wbs-runs/multi-mission-web-ui/wbs.v19.json",
+              "sha256": "95d9cfac0c4b08539490769af7c8d7653d3e2855f38a40d7069feda9824aac0b"
+            },
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "ad6e272f0fb05ae33446e37b4bd8331c5f86f6179d86ea57f2ea195cd28ab829"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "3536730039d4e0ca3fbd5168bfe33dea2ce4372aadd3d96674ddca56ecefd1e8"
+            },
+            {
+              "path": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-005/verification.md",
+              "sha256": "2daffe58d10d4cecd1fe2aa97c624e56652056780dcf04f6a8097b9c1a048e5f"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-005/verification.md",
+          "review_ref": "coordinator:lint-status-pass"
+        },
+        {
+          "id": "attempt-gat-govreplan-006",
+          "revision": 21,
+          "plan_sha256": "113c041b61324d124cf36429d25852cbf6e78ee923548a87faf1609d0e857a03",
+          "hypothesis": "Selecting the HUMAN-approved budget-only revision21 and aligning active AIP controls preserves all 31 prior charges while authorizing no product drift.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-006",
+          "outcome": "done",
+          "input_hashes": [
+            {
+              "path": "wbs-runs/multi-mission-web-ui/wbs.v21.json",
+              "sha256": "113c041b61324d124cf36429d25852cbf6e78ee923548a87faf1609d0e857a03"
+            },
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "3536730039d4e0ca3fbd5168bfe33dea2ce4372aadd3d96674ddca56ecefd1e8"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "b52fccb5cf5c2606429f1d91175d7982f7c8b0c1aa8dda36c2fc65a5ffb96dd9"
+            },
+            {
+              "path": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-006/verification.md",
+              "sha256": "9871bea934a519fb92bceeb93a74f7753612d8d2317965fb85a9f202922c063e"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-006/verification.md",
+          "review_ref": "coordinator:lint-status-pass"
+        },
+        {
+          "id": "attempt-gat-govreplan-007",
+          "revision": 22,
+          "plan_sha256": "f6d7e37d882c96982feea06e766b26c5a4b0d29aca05bf119ebfa007f8be7c8a",
+          "hypothesis": "Selecting approved v22 can add only the hash-pinned cleanup execution mechanism while preserving the 50-attempt ceiling and all product boundaries.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-007",
+          "outcome": "done",
+          "input_hashes": [
+            {
+              "path": "wbs-runs/multi-mission-web-ui/wbs.v22.json",
+              "sha256": "f6d7e37d882c96982feea06e766b26c5a4b0d29aca05bf119ebfa007f8be7c8a"
+            },
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "b52fccb5cf5c2606429f1d91175d7982f7c8b0c1aa8dda36c2fc65a5ffb96dd9"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+              "sha256": "7ff8249c3fa082134955a4e07a504b4ab98dffae094ad84b3a9983302694c111"
+            },
+            {
+              "path": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-007/verification.md",
+              "sha256": "be55aed0a06197e778da0182dd22b8d96535964121a5f68cf5449b79996aee67"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-007/verification.md",
+          "review_ref": "coordinator:lint-status-pass"
+        },
+        "attempt-governance-replan-014",
+        "attempt-governance-replan-015"
+      ],
+      "acceptance": {
+        "attempt_id": "attempt-governance-replan-015",
+        "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-governance-replan-015/verification.md",
+        "review_ref": "team-message-8cc6c68d-b77f-4014-9b51-2417d82768fb",
+        "human_ref": "ask_user_question:accept-governance-replan-attempt64",
+        "output_hashes": [
+          {
+            "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+            "sha256": "cf6a82cfc85bd63f52d11a82f792f98487d3d158dc3cf56d12113c6d598229b9"
+          },
+          {
+            "path": ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/00c_active_step_context.md",
+            "sha256": "cb3dc62f7615291220eb19ff7f1fe9c34b6612c14a99e7bf582236deaeda2331"
+          }
+        ]
+      },
+      "reason": "Revision-29 acceptance remains historical; attempt 64 reconciled exact v31 and the HUMAN accepted the verified AIP/Workspace control state."
+    },
+    "threat-model-gate": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "attempt-gat-threat-001",
+          "revision": 16,
+          "plan_sha256": "a9a8a95d9ccc22662b33d331edf7da37175cd49f18a9eeda2fe96675f7ba1247",
+          "hypothesis": "A threat model mapped to every unique proposal section-18.1 vector can close all conservative-MVP threats and provide exact hash-bound HUMAN gating before package creation.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/threat-model-gate/attempt-gat-threat-001",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+              "sha256": "dc47dc96949ea0c83d779d3dec11e30fbefb0bd738c4fb4898e6367313bd60ee"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+              "sha256": "f590ceec949e43a50cc6ea857c919ffbf16736e7757648d3e84c48702cad41da"
+            },
+            {
+              "path": "docs/conformance/gat-conservative-mvp-v1.json",
+              "sha256": "c5ba89ca50f064a56988f3755af40376d66f4966ee851c1f376e60133d3ad7f0"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/threat-model-gate/attempt-gat-threat-001/control-failure.md",
+          "review_ref": "subagent-00a7cef4-ac0f-4585-995c-efbb0e49edb8:pre-ASC-advisory-PASS-not-usable"
+        },
+        {
+          "id": "attempt-gat-threat-002",
+          "revision": 17,
+          "plan_sha256": "c7a802e9ba92c1220d378605ed301ffd553f9b48f196d2f63656f9bb2c2ec96b",
+          "hypothesis": "After the exact STEP-06 transition and ASC rebuild, the retained corrected candidate bytes can receive a valid independent exact-hash Security review and separate HUMAN acceptance before code.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/threat-model-gate/attempt-gat-threat-002",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+              "sha256": "dc47dc96949ea0c83d779d3dec11e30fbefb0bd738c4fb4898e6367313bd60ee"
+            },
+            {
+              "path": "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+              "sha256": "f590ceec949e43a50cc6ea857c919ffbf16736e7757648d3e84c48702cad41da"
+            },
+            {
+              "path": "docs/conformance/gat-conservative-mvp-v1.json",
+              "sha256": "c5ba89ca50f064a56988f3755af40376d66f4966ee851c1f376e60133d3ad7f0"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+              "sha256": "f590ceec949e43a50cc6ea857c919ffbf16736e7757648d3e84c48702cad41da"
+            },
+            {
+              "path": "docs/conformance/gat-conservative-mvp-v1.json",
+              "sha256": "c5ba89ca50f064a56988f3755af40376d66f4966ee851c1f376e60133d3ad7f0"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/threat-model-gate/attempt-gat-threat-002/verification.md",
+          "review_ref": "wbs-runs/multi-mission-web-ui/evidence/threat-model-gate/attempt-gat-threat-002/review-02.md"
+        },
+        {
+          "id": "attempt-gat-threat-003",
+          "revision": 18,
+          "plan_sha256": "728c1910d910ad8ffc94e38352c437513e987d69e95f77449dbc4cce82cc0b88",
+          "hypothesis": "The four bounded semantic corrections plus exact hash/assertion commands can produce a complete independently reviewable candidate for separate HUMAN hash acceptance.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/threat-model-gate/attempt-gat-threat-003",
+          "outcome": "done",
+          "input_hashes": [
+            {
+              "path": "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+              "sha256": "f590ceec949e43a50cc6ea857c919ffbf16736e7757648d3e84c48702cad41da"
+            },
+            {
+              "path": "docs/conformance/gat-conservative-mvp-v1.json",
+              "sha256": "c5ba89ca50f064a56988f3755af40376d66f4966ee851c1f376e60133d3ad7f0"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+              "sha256": "f590ceec949e43a50cc6ea857c919ffbf16736e7757648d3e84c48702cad41da"
+            },
+            {
+              "path": "docs/conformance/gat-conservative-mvp-v1.json",
+              "sha256": "2250aa8bd50e08efd4e4e876e8d9ac4309d3aea8c1af424de04a817aa507b87c"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/threat-model-gate/attempt-gat-threat-003/verification.md",
+          "review_ref": "wbs-runs/multi-mission-web-ui/evidence/threat-model-gate/attempt-gat-threat-003/review-03.md"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "attempt-gat-threat-003",
+        "owner": "human",
+        "decision_ref": "decisions.json#decision-threat-vector-018",
+        "artifact_hashes": [
+          {
+            "path": "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+            "sha256": "f590ceec949e43a50cc6ea857c919ffbf16736e7757648d3e84c48702cad41da"
+          },
+          {
+            "path": "docs/conformance/gat-conservative-mvp-v1.json",
+            "sha256": "2250aa8bd50e08efd4e4e876e8d9ac4309d3aea8c1af424de04a817aa507b87c"
+          }
+        ]
+      },
+      "reason": "Independent exact-byte PASS and separate HUMAN exact-hash acceptance obtained; package-scaffold is unlocked."
+    },
+    "package-scaffold": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "attempt-gat-scaffold-001",
+          "revision": 18,
+          "plan_sha256": "728c1910d910ad8ffc94e38352c437513e987d69e95f77449dbc4cce82cc0b88",
+          "hypothesis": "A minimal zero-dependency Node ESM scaffold with deterministic build/freeze scripts and a built-package smoke can define stable surfaces without implementing product capabilities or touching DSH.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/package-scaffold/attempt-gat-scaffold-001",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+              "sha256": "f590ceec949e43a50cc6ea857c919ffbf16736e7757648d3e84c48702cad41da"
+            },
+            {
+              "path": "docs/conformance/gat-conservative-mvp-v1.json",
+              "sha256": "2250aa8bd50e08efd4e4e876e8d9ac4309d3aea8c1af424de04a817aa507b87c"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/gat/package.json",
+              "sha256": "0a1d1c1e2d7e117a65608c82df9ac5663aa6e7437b25f1e7c5c66c4290897db1"
+            },
+            {
+              "path": "packages/gat/build.mjs",
+              "sha256": "1e24e5e52436816625a44de0ac09dbb5b8c004b1ebe86508c7bbb1d0cc919862"
+            },
+            {
+              "path": "packages/gat/freeze.mjs",
+              "sha256": "726221e25936c70540732b9158f4c4a3667e1d3a9a8be8fe63adab7aeaecc1ac"
+            },
+            {
+              "path": "packages/gat/tests/built-package.test.mjs",
+              "sha256": "68b8bab2084560ab74d2f4f7f8fa448b9dc392ee93e1aeb7585eef6e1c753530"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/package-scaffold/attempt-gat-scaffold-001/implementation.md",
+          "review_ref": "wbs-runs/multi-mission-web-ui/evidence/package-scaffold/attempt-gat-scaffold-001/review.md"
+        },
+        {
+          "id": "attempt-gat-scaffold-002",
+          "revision": 18,
+          "plan_sha256": "728c1910d910ad8ffc94e38352c437513e987d69e95f77449dbc4cce82cc0b88",
+          "hypothesis": "Aligning the exact scripts/freeze.mjs argv surface and spawning a clean Node child in the smoke closes both review findings without changing package capability boundaries.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/package-scaffold/attempt-gat-scaffold-002",
+          "outcome": "done",
+          "input_hashes": [
+            {
+              "path": "packages/gat/package.json",
+              "sha256": "0a1d1c1e2d7e117a65608c82df9ac5663aa6e7437b25f1e7c5c66c4290897db1"
+            },
+            {
+              "path": "packages/gat/freeze.mjs",
+              "sha256": "726221e25936c70540732b9158f4c4a3667e1d3a9a8be8fe63adab7aeaecc1ac"
+            },
+            {
+              "path": "packages/gat/tests/built-package.test.mjs",
+              "sha256": "68b8bab2084560ab74d2f4f7f8fa448b9dc392ee93e1aeb7585eef6e1c753530"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/gat/package.json",
+              "sha256": "83700ebfcc15fe42d7ed2a27ea8b4d38aefe70f358c1f4fbc82d415b5b3353c5"
+            },
+            {
+              "path": "packages/gat/build.mjs",
+              "sha256": "1e24e5e52436816625a44de0ac09dbb5b8c004b1ebe86508c7bbb1d0cc919862"
+            },
+            {
+              "path": "packages/gat/freeze.mjs",
+              "sha256": "6554a8d8bca977bbdd3c8993a6a19b271f91bfaee7a46eb44eaf8c96c310e9f0"
+            },
+            {
+              "path": "packages/gat/scripts/freeze.mjs",
+              "sha256": "ddf5494e6746fe86cae14344d5dca07b0b67012569caf9beadfccc284d9991b2"
+            },
+            {
+              "path": "packages/gat/src/index.mjs",
+              "sha256": "b23642ad1d0fc40c79fa4b98fc3b489a7208f89bdb8c8ce9a882030dfacd17cd"
+            },
+            {
+              "path": "packages/gat/types/index.d.ts",
+              "sha256": "1855e3eac8038567e3058339955dd3c0dfefc55084608d178701703158552cb1"
+            },
+            {
+              "path": "packages/gat/tests/built-package.test.mjs",
+              "sha256": "7faa771568f9ceb8e10fc1363307b129d5c60203f09ed4b1cfa8466f872df940"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/package-scaffold/attempt-gat-scaffold-002/implementation.md",
+          "review_ref": "wbs-runs/multi-mission-web-ui/evidence/package-scaffold/attempt-gat-scaffold-002/review.md"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "attempt-gat-scaffold-002",
+        "owner": "coordinator",
+        "review_ref": "wbs-runs/multi-mission-web-ui/evidence/package-scaffold/attempt-gat-scaffold-002/review.md"
+      },
+      "reason": "Independent review meets criteria; runtime build/test remains deferred to declared integration task."
+    },
+    "governance-contracts": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "attempt-gat-governance-001",
+          "revision": 18,
+          "plan_sha256": "728c1910d910ad8ffc94e38352c437513e987d69e95f77449dbc4cce82cc0b88",
+          "hypothesis": "Pure immutable governance validators and a package-owned readiness oracle can enforce principal-bound Desk and fixed execution identity with no DSH dependency.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-contracts/attempt-gat-governance-001",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "docs/conformance/gat-conservative-mvp-v1.json",
+              "sha256": "2250aa8bd50e08efd4e4e876e8d9ac4309d3aea8c1af424de04a817aa507b87c"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/gat/src/governance/index.mjs",
+              "sha256": "cea7f5e12e778f4840b7f136677cce7e00926edec0852116de3f97e18692b946"
+            },
+            {
+              "path": "packages/gat/types/governance/index.d.ts",
+              "sha256": "b067a4b1054fabf9bb4423ea7ba6b42531fc8f89d559f0540625cbf870f4bbe2"
+            },
+            {
+              "path": "packages/gat/tests/governance.test.mjs",
+              "sha256": "f0b4a052e6e5ec0ad5160874ca8e625645b5ed0bd2c66f5ae64bffd6c1378bbf"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-contracts/attempt-gat-governance-001/verification.md",
+          "review_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-contracts/attempt-gat-governance-001/review.md"
+        },
+        {
+          "id": "attempt-gat-governance-002",
+          "revision": 18,
+          "plan_sha256": "728c1910d910ad8ffc94e38352c437513e987d69e95f77449dbc4cce82cc0b88",
+          "hypothesis": "Deep-owned hash-bound contracts using the proposal tuple, package readiness oracle vocabulary, exact approved numeric plan snapshots, and native Mission identity binding close all review gaps.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-contracts/attempt-gat-governance-002",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "packages/gat/src/governance/index.mjs",
+              "sha256": "cea7f5e12e778f4840b7f136677cce7e00926edec0852116de3f97e18692b946"
+            },
+            {
+              "path": "packages/gat/tests/governance.test.mjs",
+              "sha256": "f0b4a052e6e5ec0ad5160874ca8e625645b5ed0bd2c66f5ae64bffd6c1378bbf"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/gat/src/governance/index.mjs",
+              "sha256": "805b393e0bc0262c98a11bc9fe4f258f7ef70cb198e55e5e6e943c82ef1b3bc2"
+            },
+            {
+              "path": "packages/gat/types/governance/index.d.ts",
+              "sha256": "dad968839e5e864e6d2921aa0bd0ba75090aa805b3894bf8a8823459faec83ed"
+            },
+            {
+              "path": "packages/gat/tests/governance.test.mjs",
+              "sha256": "0eaf3df5121c8fc440139f5fb536e167e7d45172aa69255de56ca38c3962b12c"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-contracts/attempt-gat-governance-002/verification.md",
+          "review_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-contracts/attempt-gat-governance-002/review.md"
+        },
+        {
+          "id": "attempt-gat-governance-003",
+          "revision": 19,
+          "plan_sha256": "95d9cfac0c4b08539490769af7c8d7653d3e2855f38a40d7069feda9824aac0b",
+          "hypothesis": "A distinct adapter-normalized Mission snapshot/approval contract using only native id/revision/status and adapter hashes closes the final mismatch without altering the five accepted governance contracts.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-contracts/attempt-gat-governance-003",
+          "outcome": "done",
+          "input_hashes": [
+            {
+              "path": "packages/gat/src/governance/index.mjs",
+              "sha256": "805b393e0bc0262c98a11bc9fe4f258f7ef70cb198e55e5e6e943c82ef1b3bc2"
+            },
+            {
+              "path": "packages/gat/types/governance/index.d.ts",
+              "sha256": "dad968839e5e864e6d2921aa0bd0ba75090aa805b3894bf8a8823459faec83ed"
+            },
+            {
+              "path": "packages/gat/tests/governance.test.mjs",
+              "sha256": "0eaf3df5121c8fc440139f5fb536e167e7d45172aa69255de56ca38c3962b12c"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/gat/src/governance/index.mjs",
+              "sha256": "86ba33128b2b221d1f924a04024fa6239ee99cef605808603f9707bf8785c864"
+            },
+            {
+              "path": "packages/gat/types/governance/index.d.ts",
+              "sha256": "2bcaac80d0bbb29301fce680dde937743cdbca73262cd6dd4a9d9d8939521d71"
+            },
+            {
+              "path": "packages/gat/tests/governance.test.mjs",
+              "sha256": "d81ebd63111d11a2dd8c6ef87060d6209174e82edeb81528b49d33cdfdf6a7d3"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-contracts/attempt-gat-governance-003/verification.md",
+          "review_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-contracts/attempt-gat-governance-003/review.md"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "attempt-gat-governance-003",
+        "owner": "coordinator",
+        "review_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-contracts/attempt-gat-governance-003/review.md"
+      },
+      "reason": "Focused tests pass and independent review meets all v19 governance criteria."
+    },
+    "partitioned-memory": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "attempt-gat-memory-001",
+          "revision": 19,
+          "plan_sha256": "95d9cfac0c4b08539490769af7c8d7653d3e2855f38a40d7069feda9824aac0b",
+          "hypothesis": "A deterministic in-memory store with explicit physical partition keys, immutable version history, idempotency, transaction journal, anchors, and lifecycle gates can cover the standalone conservative memory contract.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-001",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "packages/gat/src/governance/index.mjs",
+              "sha256": "86ba33128b2b221d1f924a04024fa6239ee99cef605808603f9707bf8785c864"
+            },
+            {
+              "path": "docs/conformance/gat-conservative-mvp-v1.json",
+              "sha256": "2250aa8bd50e08efd4e4e876e8d9ac4309d3aea8c1af424de04a817aa507b87c"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/gat/src/memory/index.mjs",
+              "sha256": "c99d9f1b309104dfe2e93ddc7fbb7e24324b1c4dd08f4e00ec6def16d782e22b"
+            },
+            {
+              "path": "packages/gat/types/memory/index.d.ts",
+              "sha256": "aa10bc16d100a5090ebf363a78da5efe3e576fcb27590d715abcb325aa4f2eaf"
+            },
+            {
+              "path": "packages/gat/tests/memory.test.mjs",
+              "sha256": "e834446cd56fccbd67273684e55fa910f29bcb459a7d6e8e6b32d474a835a6cd"
+            },
+            {
+              "path": "packages/gat/tests/audit-recovery.test.mjs",
+              "sha256": "e67733772d48fe549c8cca912abff79aa74b812a1cc437d39671b9a0cda48d9a"
+            },
+            {
+              "path": "packages/gat/tests/lifecycle-privacy.test.mjs",
+              "sha256": "52e0cc1e054a54d0ff53b1a75917008ff4683b0bf0853c01c2996dd54716331f"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-001/verification.md",
+          "review_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-001/review.md"
+        },
+        {
+          "id": "attempt-gat-memory-002",
+          "revision": 22,
+          "plan_sha256": "f6d7e37d882c96982feea06e766b26c5a4b0d29aca05bf119ebfa007f8be7c8a",
+          "hypothesis": "A ground-up authority-complete partition store with local transaction journal, partitioned canonical audit/anchors, derived lifecycle eligibility, purge manifests, and restore reconciliation can close attempt1 gaps under the exact command.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-002",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "packages/gat/src/memory/index.mjs",
+              "sha256": "c99d9f1b309104dfe2e93ddc7fbb7e24324b1c4dd08f4e00ec6def16d782e22b"
+            },
+            {
+              "path": "wbs-runs/multi-mission-web-ui/tooling/remove-memory-attempt1-tests.mjs",
+              "sha256": "b9a119fda1732ac853d433aab8c2cd9398ecc9c3951c3ace7c9c87da048c0281"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/gat/src/memory/index.mjs",
+              "sha256": "9b45bfb6169e7e08996f9b0961332805a2c78c292010355d2a279145da08fc4d"
+            },
+            {
+              "path": "packages/gat/types/memory/index.d.ts",
+              "sha256": "2d553bb727b3ed5b6f04805dea9e687356f137b06bbd4e7d3b9868a1139f7b79"
+            },
+            {
+              "path": "packages/gat/tests/partition-store.test.mjs",
+              "sha256": "d8dd8b876cabf731523a08c6ae38cf1b031d59ab04157498fa485d533d5841cd"
+            },
+            {
+              "path": "packages/gat/tests/transaction-audit.test.mjs",
+              "sha256": "e9f606267a28294d14cc65b5ac52015be55fa282dbeb52f76ad6d441e2f7cc7f"
+            },
+            {
+              "path": "packages/gat/tests/lifecycle-privacy.test.mjs",
+              "sha256": "1a196a000edbf6203cc16574226126ced292cf96e94cda16daf6eef717821f7e"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-002/verification.md",
+          "review_ref": null
+        },
+        {
+          "id": "attempt-gat-memory-003",
+          "revision": 22,
+          "plan_sha256": "f6d7e37d882c96982feea06e766b26c5a4b0d29aca05bf119ebfa007f8be7c8a",
+          "hypothesis": "Moving duplicate-record validation inside the transactional apply stage lets an already-published idempotency result replay before duplicate validation while preserving conflicts for new operation IDs.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-003",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "packages/gat/src/memory/index.mjs",
+              "sha256": "9b45bfb6169e7e08996f9b0961332805a2c78c292010355d2a279145da08fc4d"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/gat/src/memory/index.mjs",
+              "sha256": "06856c0da5d4ac9749ddc2a6f96372f6cf213d4e2b5f43b545385c5f0830b989"
+            },
+            {
+              "path": "packages/gat/types/memory/index.d.ts",
+              "sha256": "2d553bb727b3ed5b6f04805dea9e687356f137b06bbd4e7d3b9868a1139f7b79"
+            },
+            {
+              "path": "packages/gat/tests/partition-store.test.mjs",
+              "sha256": "d8dd8b876cabf731523a08c6ae38cf1b031d59ab04157498fa485d533d5841cd"
+            },
+            {
+              "path": "packages/gat/tests/transaction-audit.test.mjs",
+              "sha256": "e9f606267a28294d14cc65b5ac52015be55fa282dbeb52f76ad6d441e2f7cc7f"
+            },
+            {
+              "path": "packages/gat/tests/lifecycle-privacy.test.mjs",
+              "sha256": "1a196a000edbf6203cc16574226126ced292cf96e94cda16daf6eef717821f7e"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-003/verification.md",
+          "review_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-003/review.md"
+        },
+        {
+          "id": "attempt-gat-memory-004",
+          "revision": 22,
+          "plan_sha256": "f6d7e37d882c96982feea06e766b26c5a4b0d29aca05bf119ebfa007f8be7c8a",
+          "hypothesis": "Protocol-exact raw-prior audit hashing and reproducibility evidence, journal-before-idempotent-sink crash recovery, strict schema/lifecycle authority, complete purge manifests, and external-suffix restore reconciliation close all attempt3 findings.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-004",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "packages/gat/src/memory/index.mjs",
+              "sha256": "06856c0da5d4ac9749ddc2a6f96372f6cf213d4e2b5f43b545385c5f0830b989"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/gat/src/memory/index.mjs",
+              "sha256": "731c139a5bc626ba26093c7f7355c3b1c22e5b183258261677c2f53436706140"
+            },
+            {
+              "path": "packages/gat/types/memory/index.d.ts",
+              "sha256": "2d553bb727b3ed5b6f04805dea9e687356f137b06bbd4e7d3b9868a1139f7b79"
+            },
+            {
+              "path": "packages/gat/tests/partition-store.test.mjs",
+              "sha256": "b88e2b3afbcf5d96914e96b49c1533a455080786a32c07f34b1cf6afac9923cc"
+            },
+            {
+              "path": "packages/gat/tests/transaction-audit.test.mjs",
+              "sha256": "c6c1749868246de0522d70ee9b4375214efb4f69d67129c76eba0edba939a6df"
+            },
+            {
+              "path": "packages/gat/tests/lifecycle-privacy.test.mjs",
+              "sha256": "6895abc9b9e7fab4823e540382185b0fc43419f007ea9598e50a56ffd20fc21d"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-004/verification.md",
+          "review_ref": null
+        },
+        {
+          "id": "attempt-gat-memory-005",
+          "revision": 22,
+          "plan_sha256": "f6d7e37d882c96982feea06e766b26c5a4b0d29aca05bf119ebfa007f8be7c8a",
+          "hypothesis": "Requiring a nonempty purge decisionOwner and normalizing strict record validation failures to BINDING_INVALID closes the only two attempt4 test failures without changing protocol behavior.",
+          "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-005",
+          "outcome": "failed",
+          "input_hashes": [
+            {
+              "path": "packages/gat/src/memory/index.mjs",
+              "sha256": "731c139a5bc626ba26093c7f7355c3b1c22e5b183258261677c2f53436706140"
+            }
+          ],
+          "output_hashes": [
+            {
+              "path": "packages/gat/src/memory/index.mjs",
+              "sha256": "9a59a98d4ab24d4a7940b1ba85be9b45ac04daede9c1a9fa31b33d82f1c4dd92"
+            },
+            {
+              "path": "packages/gat/types/memory/index.d.ts",
+              "sha256": "415d7b21ee26fbe087a663dc03dd4194786f9d16ce3019c3a70267463e63ca47"
+            },
+            {
+              "path": "packages/gat/tests/partition-store.test.mjs",
+              "sha256": "b88e2b3afbcf5d96914e96b49c1533a455080786a32c07f34b1cf6afac9923cc"
+            },
+            {
+              "path": "packages/gat/tests/transaction-audit.test.mjs",
+              "sha256": "c6c1749868246de0522d70ee9b4375214efb4f69d67129c76eba0edba939a6df"
+            },
+            {
+              "path": "packages/gat/tests/lifecycle-privacy.test.mjs",
+              "sha256": "6895abc9b9e7fab4823e540382185b0fc43419f007ea9598e50a56ffd20fc21d"
+            }
+          ],
+          "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-005/verification.md",
+          "review_ref": "wbs-runs/multi-mission-web-ui/evidence/partitioned-memory/attempt-gat-memory-005/review.md"
+        }
+      ],
+      "acceptance": null,
+      "reason": "Attempt5 passed 10/10 but failed final independent review; memory allowance exhausted pending reviewed reallocation."
+    },
+    "policy-selector": {
+      "state": "failed",
+      "attempts": [],
+      "acceptance": null
+    },
+    "wrapper-admission": {
+      "state": "pending",
+      "attempts": [],
+      "acceptance": null
+    },
+    "conformance-runner": {
+      "state": "pending",
+      "attempts": [],
+      "acceptance": null
+    },
+    "standalone-integration": {
+      "state": "pending",
+      "attempts": [],
+      "acceptance": null
+    },
+    "implementation-freeze": {
+      "state": "pending",
+      "attempts": [],
+      "acceptance": null
+    },
+    "policy-terminal-recovery": {
+      "state": "accepted",
+      "attempts": [
+        "attempt-gat-policy-terminal-001",
+        "attempt-gat-policy-terminal-002"
+      ],
+      "acceptance": {
+        "decision": "accept",
+        "review_ref": "team-message-32ec8d80-7a9a-45dc-8396-848b11b2bc06"
+      }
+    },
+    "wrapper-reconciliation": {
+      "state": "accepted",
+      "attempts": [
+        "attempt-gat-wrapper-reconcile-001",
+        "attempt-gat-wrapper-reconcile-002",
+        "attempt-gat-wrapper-reconcile-003"
+      ],
+      "acceptance": {
+        "decision": "accept",
+        "review_ref": "team-message-3d05b6ba-402f-4fd6-b135-96b86550df8a"
+      }
+    },
+    "conformance-runner-recovery": {
+      "state": "failed",
+      "attempts": [
+        "attempt-gat-runner-recovery-001",
+        "attempt-gat-runner-recovery-002",
+        "attempt-gat-runner-recovery-003",
+        "attempt-gat-runner-recovery-004",
+        "attempt-gat-runner-recovery-005",
+        "attempt-gat-runner-recovery-006"
+      ],
+      "acceptance": null
+    },
+    "revision-32-reconciliation": {
+      "state": "reviewing",
+      "attempts": [
+        "attempt-revision-32-reconciliation-001"
+      ],
+      "acceptance": null
+    },
+    "conformance-contract-matrix-recovery": {
+      "state": "pending",
+      "attempts": [],
+      "acceptance": null
+    },
+    "conformance-contract-matrix": {
+      "state": "pending",
+      "attempts": [
+        "attempt-gat-contract-matrix-001"
+      ],
+      "acceptance": null,
+      "reason": "Attempt 65 produced provisional matrix JSON/Markdown/test and workspace observations, but the exact node:test was refused by the unavailable workspace-write sandbox before execution; the HUMAN then requested a plan review and new WBS revision. The charge and output hashes are preserved, no verification/review/acceptance exists, and no retry is authorized until a new revision is approved."
+    },
+    "control-state-reconciliation": {
+      "state": "pending",
+      "attempts": [],
+      "acceptance": null
+    },
+    "conformance-handlers-reducers": {
+      "state": "pending",
+      "attempts": [],
+      "acceptance": null
+    },
+    "conformance-runner-assembly": {
+      "state": "pending",
+      "attempts": [],
+      "acceptance": null
+    }
+  },
+  "reconciliations": [
+    {
+      "id": "reconcile-core-verification-001",
+      "reason": "Revision 1 core verification failed before test discovery because the standalone source layout lacks the DSH root tsconfig. Evidence and charged attempt are preserved.",
+      "evidence": [
+        "wbs-runs/multi-mission-web-ui/evidence/core-mission-model/attempt-core-001-verification.md"
+      ]
+    },
+    {
+      "id": "reconcile-revision-002",
+      "reason": "Human approved revision 2 and its bounded external verification-worktree effects. discover-validation acceptance is reused because all input/output hashes match revision 2. Core acceptance remains unset; retained bytes receive a new independent review attempt and later canonical runtime verification.",
+      "evidence": [
+        "wbs-runs/multi-mission-web-ui/wbs.v2.json",
+        "wbs-runs/multi-mission-web-ui/review.v2.md",
+        "decisions.json#decision-revision-002"
+      ]
+    },
+    {
+      "id": "reconcile-revision-003",
+      "reason": "Core attempt-core-002 independent review found high-severity missing mission-plan validation. Human approved one additional bounded core repair attempt; cumulative charges are preserved.",
+      "evidence": [
+        "team-message-e14fe8f5-5784-4f14-93c5-b6ee70bc6aff",
+        "wbs-runs/multi-mission-web-ui/wbs.v3.json",
+        "decisions.json#decision-revision-003"
+      ]
+    },
+    {
+      "id": "reconcile-revision-004",
+      "reason": "Core attempt-core-003 fixed mission-plan validation but review found a legacy empty-view compatibility mismatch. Human approved one final bounded compatibility attempt; no fifth core attempt is available.",
+      "evidence": [
+        "team-message-1e755129-031b-4ece-b52b-63e5f5e8e284",
+        "wbs-runs/multi-mission-web-ui/wbs.v4.json",
+        "decisions.json#decision-revision-004"
+      ]
+    },
+    {
+      "id": "reconcile-revision-005",
+      "reason": "Project instructions require AIWS AIP/workspace governance. The Terra Web child failed before completion and its partial outputs are retained as charged attempt-web-001. Human approved AIWS recovery plus the final Web attempt; accepted core evidence is reused because its contract and output hashes are unchanged.",
+      "evidence": [
+        "agent-ff029151-c067-449f-bc7a-b2d32ad6ff8b:failed-before-finish",
+        "wbs-runs/multi-mission-web-ui/wbs.v5.json",
+        "wbs-runs/multi-mission-web-ui/review.v5.md",
+        "decisions.json#decision-revision-005"
+      ]
+    },
+    {
+      "id": "reconcile-revision-006",
+      "reason": "The first AIWS recovery command failed with exit 127 because python is unavailable; tool shebangs identify python3. Human approved a final corrected recovery attempt and all earlier charges remain preserved.",
+      "evidence": [
+        "native-bash:python-command-not-found-exit-127",
+        "wbs-runs/multi-mission-web-ui/wbs.v6.json",
+        "wbs-runs/multi-mission-web-ui/review.v6.md",
+        "decisions.json#decision-revision-006"
+      ]
+    },
+    {
+      "id": "reconcile-revision-008",
+      "reason": "Integration attempt 1 stopped before target mutation because rollback validates stale current-source payload bytes. Human approved a final integration attempt that resets and cleans only the dedicated verification worktree before regeneration/install/verify; all prior charges and evidence remain preserved.",
+      "evidence": [
+        "wbs-runs/multi-mission-web-ui/integration.md",
+        "wbs-runs/multi-mission-web-ui/wbs.v8.json",
+        "wbs-runs/multi-mission-web-ui/review.v8.md",
+        "decisions.json#decision-revision-008"
+      ]
+    },
+    {
+      "id": "reconcile-revision-015",
+      "reason": "HUMAN approved exact revision 15 after revisions 12-14 were preserved but held before dispatch by independent REVISE findings. Native agent and job inspection showed only the current coordinator running and no background jobs; therefore the stale unsupported direct active_work marker for attempt-core-007 is settled as interrupted/unknown, remains included in the pre-existing 17 charged attempts, and cannot write further. Revision 15 allocates attempt-gat-govreplan-001 as cumulative charge 18 and retains the fixed AIWS Workspace.",
+      "evidence": [
+        "wbs-runs/multi-mission-web-ui/wbs.v15.json",
+        "wbs-runs/multi-mission-web-ui/review.v15.md",
+        "wbs-runs/multi-mission-web-ui/review-advisory.v13.md",
+        "wbs-runs/multi-mission-web-ui/review-advisory.v14.md",
+        "decisions.json#decision-revision-015",
+        "native:list_agents-only-current-lead-and-inactive-teammates",
+        "native:job_list-no-background-jobs",
+        "execution.json#previous-active_work-attempt-core-007"
+      ]
+    },
+    {
+      "id": "reconcile-revision-016",
+      "reason": "Revision-15 governance attempt 1 failed only AIP lint and was preserved as charge 18. HUMAN approved exact revision 16 for one mandatory-field repair attempt; independent exact-hash review passed. Attempt 2 repaired STEP-05 through STEP-11, removed the historical vague STEP-04 input warning, and passed lint/status with no findings before any product work. It is accepted as charge 19.",
+      "evidence": [
+        "wbs-runs/multi-mission-web-ui/wbs.v16.json",
+        "wbs-runs/multi-mission-web-ui/review.v16.md",
+        "decisions.json#decision-revision-016",
+        "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-001/verification.md",
+        "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-gat-govreplan-002/verification.md"
+      ]
+    },
+    {
+      "id": "reconcile-revision-031-resume-precharge",
+      "reason": "The HUMAN explicitly approved exact reviewed WBS revision 31 and requested resume. The current coordinator reconciled the paused revision-29 ledger before attempt 64: exact plan bytes recomputed to the approved SHA, 63 cumulative charges and all history/evidence remain preserved, recorded active_work is empty, native Team/job inspection found no live predecessor work, the prior pause and unselected v30 remain historical, revision-29 governance acceptance is invalid for v31, and all v31 task keys are materialized. No attempt was allocated or charged by this control-only resume transaction; AIP/Workspace repair remains the bounded work of attempt 64.",
+      "evidence": [
+        "current-human-message:continue-v31-after-paused-ledger-reconciliation",
+        "wbs-runs/multi-mission-web-ui/wbs.v31.json#sha256:872248ffc2b352e869535a6a12d0145c4c69cea9b4cd35e5e5c0f92bbc58c78d",
+        "wbs-runs/multi-mission-web-ui/review.v31.md",
+        "wbs-runs/multi-mission-web-ui/decisions.json#decision-revision-031",
+        "wbs-runs/multi-mission-web-ui/execution.json#pause",
+        "native:list_agents:session-ad97e23b-b7c9-4713-ac6f-15f610e9dbac",
+        "native:job_list:no-background-jobs",
+        "team-message-0327a3e2-a437-46fe-bd58-a7d754861b54",
+        "team-message-877d87ad-07f1-4b95-9f70-5f4c17aed571"
+      ]
+    },
+    {
+      "id": "pause-replan-revision-031-attempt65",
+      "reason": "The HUMAN requested a fresh plan check, adjustment, and new WBS revision before continuing. New dispatch stopped; the matrix worker had produced provisional scoped outputs but its exact test command was refused before execution by the unavailable workspace-write sandbox; native Team/job inspection showed no remaining writer/job; attempt 65 remains charged and is preserved as interrupted with output hashes and no verification/review/acceptance. Revision 31 remains the selected historical execution baseline but is paused and grants no further work pending a reviewed successor revision.",
+      "evidence": [
+        "current-human-message:check-adjust-create-new-wbs-before-continuing",
+        "native:interrupt_agent:ledger-reconciler",
+        "native:list_agents:ledger-reconciler-inactive",
+        "native:job_list:no-background-jobs",
+        "team-task:task-2:released-pending"
+      ]
+    }
+  ],
+  "task_attempts_v27": [
+    {
+      "id": "attempt-gat-policy-terminal-001",
+      "task_id": "policy-terminal-recovery",
+      "revision": 27,
+      "plan_sha256": "467fa111ef6c17337be2ebdc7d029362ed07a1ba8a4a7b7aed49dec2671c98ca",
+      "hypothesis": "A synchronous transaction sink with an enforceable effect-free failure contract and pre-commit deadline admission can eliminate deny-after-effect while bounding every denial path; commit is the terminal public disposition boundary and cannot be reclassified afterward.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/policy-terminal-recovery/attempt-gat-policy-terminal-001",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/policy/index.mjs",
+          "sha256": "378586ef9a6cbebe2e09f7064f33500a95bee7d5352569c93f6cc63e6aa34750"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/policy/index.mjs",
+          "sha256": "881c2dcc72fa5da868af9fba79b091b9ac685fb0c082bc79b79fd67c787421ec"
+        },
+        {
+          "path": "packages/gat/types/policy/index.d.ts",
+          "sha256": "7ce30f25c8c67f4184e0682aefc496e4cb7482f800e7f430a97f6a353bff869a"
+        },
+        {
+          "path": "packages/gat/tests/policy-selector.test.mjs",
+          "sha256": "d16c0fac1e1fe0875e51f9a856e6754a27fa7bcf1c6ad80d43c3d7a34eb4d5e9"
+        }
+      ],
+      "verification_ref": "node --test packages/gat/tests/policy-selector.test.mjs (7/7 PASS)",
+      "review_ref": "team-message-a2da4730-3689-48f3-835b-8a12d8345a5b"
+    },
+    {
+      "id": "attempt-gat-policy-terminal-002",
+      "task_id": "policy-terminal-recovery",
+      "revision": 27,
+      "plan_sha256": "467fa111ef6c17337be2ebdc7d029362ed07a1ba8a4a7b7aed49dec2671c98ca",
+      "hypothesis": "Constructing the exact admission journal privately inside PolicyEngine removes all subclass/monkey-patch injection; a read-only committedAdmissions view preserves evidence, and unique tokens make terminal-denial recording an enforceable internal invariant.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/policy-terminal-recovery/attempt-gat-policy-terminal-002",
+      "outcome": "accepted",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/policy/index.mjs",
+          "sha256": "881c2dcc72fa5da868af9fba79b091b9ac685fb0c082bc79b79fd67c787421ec"
+        },
+        {
+          "path": "packages/gat/types/policy/index.d.ts",
+          "sha256": "7ce30f25c8c67f4184e0682aefc496e4cb7482f800e7f430a97f6a353bff869a"
+        },
+        {
+          "path": "packages/gat/tests/policy-selector.test.mjs",
+          "sha256": "d16c0fac1e1fe0875e51f9a856e6754a27fa7bcf1c6ad80d43c3d7a34eb4d5e9"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/policy/index.mjs",
+          "sha256": "06137e382a2c4125d466c7c7fd707aad84fd329b7d584b8bc747188910f7bc98"
+        },
+        {
+          "path": "packages/gat/types/policy/index.d.ts",
+          "sha256": "aeab57733662a021ba47cd8af96f02a01f0757efa8dfe5ddc143772df6b386da"
+        },
+        {
+          "path": "packages/gat/tests/policy-selector.test.mjs",
+          "sha256": "723c7c738ed0020df3b0e16152708995ea4753b8976e979b73675fd1c01fe78b"
+        }
+      ],
+      "verification_ref": "node --test packages/gat/tests/policy-selector.test.mjs (7/7 PASS)",
+      "review_ref": "team-message-32ec8d80-7a9a-45dc-8396-848b11b2bc06"
+    },
+    {
+      "id": "attempt-gat-wrapper-reconcile-001",
+      "task_id": "wrapper-reconciliation",
+      "revision": 27,
+      "plan_sha256": "467fa111ef6c17337be2ebdc7d029362ed07a1ba8a4a7b7aed49dec2671c98ca",
+      "hypothesis": "The retained strengthened wrapper remains type/source aligned and enforces exact authenticated selector replay resistance, private capability and zero raw/denied downstream effects on newly accepted policy bytes.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/wrapper-reconciliation/attempt-gat-wrapper-reconcile-001",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/policy/index.mjs",
+          "sha256": "06137e382a2c4125d466c7c7fd707aad84fd329b7d584b8bc747188910f7bc98"
+        },
+        {
+          "path": "packages/gat/types/policy/index.d.ts",
+          "sha256": "aeab57733662a021ba47cd8af96f02a01f0757efa8dfe5ddc143772df6b386da"
+        },
+        {
+          "path": "packages/gat/tests/policy-selector.test.mjs",
+          "sha256": "723c7c738ed0020df3b0e16152708995ea4753b8976e979b73675fd1c01fe78b"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/adapter/index.mjs",
+          "sha256": "7d6171c3a5f65cda05b9f1ad8f8a98f934d6978be9d4ceab386eca1e1abd59c5"
+        },
+        {
+          "path": "packages/gat/types/adapter/index.d.ts",
+          "sha256": "cf6dea752eb6dabc4a90c0ca8770b2e187b345d6793010dd70741e6769bb788b"
+        },
+        {
+          "path": "packages/gat/tests/wrapper-admission.test.mjs",
+          "sha256": "63b250b096fb438472fde61c6f661d77ec86aa16c3bcb6dd7adae04235be32cc"
+        }
+      ],
+      "verification_ref": "node --test packages/gat/tests/wrapper-admission.test.mjs (4/4 PASS)",
+      "review_ref": "team-message-e806899e-82d8-4509-8984-264aa4b472d3"
+    }
+  ],
+  "task_attempts_v28": [
+    {
+      "id": "attempt-gat-wrapper-reconcile-002",
+      "task_id": "wrapper-reconciliation",
+      "revision": 28,
+      "plan_sha256": "ee5310a7a01035a7948b36936f9a957776649bd02892b1a6aa0319e549913839",
+      "hypothesis": "Exact action-specific closed object schemas plus explicit reconstruction of MCP data eliminate all authority alias forwarding, while guarded denial/policy result boundaries normalize exceptions before downstream access.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/wrapper-reconciliation/attempt-gat-wrapper-reconcile-002",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/adapter/index.mjs",
+          "sha256": "7d6171c3a5f65cda05b9f1ad8f8a98f934d6978be9d4ceab386eca1e1abd59c5"
+        },
+        {
+          "path": "packages/gat/tests/wrapper-admission.test.mjs",
+          "sha256": "63b250b096fb438472fde61c6f661d77ec86aa16c3bcb6dd7adae04235be32cc"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/adapter/index.mjs",
+          "sha256": "693fc7f2044e0692a226826d1b7e8f24d593e0df3e4de9c800b2fe13bb22ab5d"
+        },
+        {
+          "path": "packages/gat/types/adapter/index.d.ts",
+          "sha256": "cf6dea752eb6dabc4a90c0ca8770b2e187b345d6793010dd70741e6769bb788b"
+        },
+        {
+          "path": "packages/gat/tests/wrapper-admission.test.mjs",
+          "sha256": "cdb1d96abeb28464da254a2e848e357aa5c51509f26243c881461009dcedb5b9"
+        }
+      ],
+      "verification_ref": "node --test packages/gat/tests/wrapper-admission.test.mjs (6/6 PASS)",
+      "review_ref": "team-message-6a4869eb-601d-4100-a88e-1917746151bd"
+    },
+    {
+      "id": "attempt-gat-wrapper-reconcile-003",
+      "task_id": "wrapper-reconciliation",
+      "revision": 28,
+      "plan_sha256": "ee5310a7a01035a7948b36936f9a957776649bd02892b1a6aa0319e549913839",
+      "hypothesis": "Mandatory operation contracts, canonical wrapper-built patch/authority envelopes, and one non-throwing local denial event for every pre-PDP or malformed boundary close the remaining wrapper gaps.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/wrapper-reconciliation/attempt-gat-wrapper-reconcile-003",
+      "outcome": "accepted",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/adapter/index.mjs",
+          "sha256": "693fc7f2044e0692a226826d1b7e8f24d593e0df3e4de9c800b2fe13bb22ab5d"
+        },
+        {
+          "path": "packages/gat/types/adapter/index.d.ts",
+          "sha256": "cf6dea752eb6dabc4a90c0ca8770b2e187b345d6793010dd70741e6769bb788b"
+        },
+        {
+          "path": "packages/gat/tests/wrapper-admission.test.mjs",
+          "sha256": "cdb1d96abeb28464da254a2e848e357aa5c51509f26243c881461009dcedb5b9"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/adapter/index.mjs",
+          "sha256": "86c877d97594dbc359a8692d32f8a02d01d521510ac51fe40b195f72647ea460"
+        },
+        {
+          "path": "packages/gat/types/adapter/index.d.ts",
+          "sha256": "846b0908f4c134bdc8b2ea3b9670e3f9b8c13613204df4d5555b828025f5c587"
+        },
+        {
+          "path": "packages/gat/tests/wrapper-admission.test.mjs",
+          "sha256": "14730bc5fb418f91b63c64088a23ae112f81eeb3ff0dd31ac34da4db951658fb"
+        }
+      ],
+      "verification_ref": "node --test packages/gat/tests/wrapper-admission.test.mjs (7/7 PASS)",
+      "review_ref": "team-message-3d05b6ba-402f-4fd6-b135-96b86550df8a"
+    },
+    {
+      "id": "attempt-gat-runner-recovery-001",
+      "task_id": "conformance-runner-recovery",
+      "revision": 28,
+      "plan_sha256": "ee5310a7a01035a7948b36936f9a957776649bd02892b1a6aa0319e549913839",
+      "hypothesis": "A strict scenario registry wired directly into the CLI, typed evidence validators, exact expected comparison and absence assertions can make later accepted-baseline dispatch executable without source mutation while unit tests remain synthetic-only.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/conformance-runner-recovery/attempt-gat-runner-recovery-001",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/conformance/index.mjs",
+          "sha256": "40fb2aa437db5e0cef73c7bb67a27b02b1949078abf1a888c213fab218c3b2f5"
+        },
+        {
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "sha256": "e2329159b4cbe4f1f11b6072becc1a56d3cabb6081083682e4163c1612d0d04b"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/conformance/index.mjs",
+          "sha256": "bcb7f1b0f1a5f373a988934a1ddbc205ae00e9e36a3a2e3028dc0c1ad975aed2"
+        },
+        {
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "sha256": "fdf64a28ccd2a9027cbba783e940c797456f275fb0657dd22bae9145247fb4b7"
+        },
+        {
+          "path": "packages/gat/src/conformance/runtime.mjs",
+          "sha256": "6ced352c4d44cc351be4302f8663b794eea53fd4ae16a663145bfd79e8d1e587"
+        },
+        {
+          "path": "packages/gat/tests/conformance-runner.test.mjs",
+          "sha256": "c4900d5986e9e4ce18e3b0950046db455c77a28b65d149ab9a84568c13798b8a"
+        }
+      ],
+      "verification_ref": "node --test packages/gat/tests/conformance-runner.test.mjs (4/4 PASS after one corrected syntax failure)",
+      "review_ref": "team-message-54d2b53a-ec5c-47f7-bc18-01bc25baed1d"
+    },
+    {
+      "id": "attempt-gat-runner-recovery-002",
+      "task_id": "conformance-runner-recovery",
+      "revision": 28,
+      "plan_sha256": "ee5310a7a01035a7948b36936f9a957776649bd02892b1a6aa0319e549913839",
+      "hypothesis": "Runner-owned hashes, pinned execution configuration, verified runtime module bytes, explicit declared-evidence maps, nonempty vector sets and caller-bound outer command close the remaining self-assertion and vacuous-pass gaps.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/conformance-runner-recovery/attempt-gat-runner-recovery-002",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/conformance/index.mjs",
+          "sha256": "bcb7f1b0f1a5f373a988934a1ddbc205ae00e9e36a3a2e3028dc0c1ad975aed2"
+        },
+        {
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "sha256": "fdf64a28ccd2a9027cbba783e940c797456f275fb0657dd22bae9145247fb4b7"
+        },
+        {
+          "path": "packages/gat/src/conformance/runtime.mjs",
+          "sha256": "6ced352c4d44cc351be4302f8663b794eea53fd4ae16a663145bfd79e8d1e587"
+        },
+        {
+          "path": "packages/gat/tests/conformance-runner.test.mjs",
+          "sha256": "c4900d5986e9e4ce18e3b0950046db455c77a28b65d149ab9a84568c13798b8a"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/conformance/index.mjs",
+          "sha256": "18251e3b23ac9baf144a802d203b2f1eb37490c91fd998672855aa0356de159e"
+        },
+        {
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "sha256": "b7b71cc3e48a9f63ca54d57fcf7b51f8fcd7e5022031b4abd622fd0cd30dcce7"
+        },
+        {
+          "path": "packages/gat/src/conformance/runtime.mjs",
+          "sha256": "b25e27afb955427b6bc5be2a7b90645bd906f61bcdb0acd5192a5cdfb1d80b5d"
+        },
+        {
+          "path": "packages/gat/types/conformance/index.d.ts",
+          "sha256": "ca666f54d9f3998691ef908fefb324e93e4957291c75c2659c876c224d98673b"
+        },
+        {
+          "path": "packages/gat/tests/conformance-runner.test.mjs",
+          "sha256": "7f1212da04d520f02a2cd76f9664a4ba49c1d0b2cd85b125f78c1a16f942e5ad"
+        }
+      ],
+      "verification_ref": "node --test packages/gat/tests/conformance-runner.test.mjs (4/4 PASS)",
+      "review_ref": "team-message-a09810c0-6d99-4e01-8428-805847dda2bd"
+    }
+  ],
+  "task_attempts_v29": [
+    {
+      "id": "attempt-governance-replan-014",
+      "task_id": "governance-replan",
+      "revision": 29,
+      "plan_sha256": "dc7041284f578ec1336d61a470c72a560e652b3ae4a8c6545f953387dd6b9473",
+      "hypothesis": "Exact reviewed and HUMAN-approved WBS v29 preserves all 58 prior charges/evidence and raises only the cumulative ceiling to 80 with bounded runner, integration and freeze recovery.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-governance-replan-014",
+      "outcome": "accepted",
+      "input_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v29.json",
+          "sha256": "dc7041284f578ec1336d61a470c72a560e652b3ae4a8c6545f953387dd6b9473"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/review.v29.md",
+          "sha256": "9cfb19997f5acf17a8c1b358007d29b32b6bcfe5a70101437ad477a476e29185"
+        }
+      ],
+      "output_hashes": [],
+      "verification_ref": "team-message-cc6f89a6-c7f3-496a-9f29-d63dfee2739e + ask_user_question:approve_v29",
+      "review_ref": "team-message-cc6f89a6-c7f3-496a-9f29-d63dfee2739e"
+    },
+    {
+      "id": "attempt-gat-runner-recovery-003",
+      "task_id": "conformance-runner-recovery",
+      "revision": 29,
+      "plan_sha256": "dc7041284f578ec1336d61a470c72a560e652b3ae4a8c6545f953387dd6b9473",
+      "hypothesis": "Typed internal seams plus a runner-verified closed runtime manifest and execution packet with literal/canonical paths can close all attempt58 review gaps in one source-aligned change.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/conformance-runner-recovery/attempt-gat-runner-recovery-003",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/conformance/index.mjs",
+          "sha256": "18251e3b23ac9baf144a802d203b2f1eb37490c91fd998672855aa0356de159e"
+        },
+        {
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "sha256": "b7b71cc3e48a9f63ca54d57fcf7b51f8fcd7e5022031b4abd622fd0cd30dcce7"
+        },
+        {
+          "path": "packages/gat/src/conformance/runtime.mjs",
+          "sha256": "b25e27afb955427b6bc5be2a7b90645bd906f61bcdb0acd5192a5cdfb1d80b5d"
+        },
+        {
+          "path": "packages/gat/types/conformance/index.d.ts",
+          "sha256": "ca666f54d9f3998691ef908fefb324e93e4957291c75c2659c876c224d98673b"
+        },
+        {
+          "path": "packages/gat/tests/conformance-runner.test.mjs",
+          "sha256": "7f1212da04d520f02a2cd76f9664a4ba49c1d0b2cd85b125f78c1a16f942e5ad"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/conformance/index.mjs",
+          "sha256": "9c1b1ef2fab659fa9fa9b9e0536f6a61a9772c6d6f45ec621cc5ade5fe137ecb"
+        },
+        {
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "sha256": "b98ad33e3518ce2895f65996fe4750e30f0411b6a290856f7ab6371ad62e5b38"
+        },
+        {
+          "path": "packages/gat/src/conformance/runtime.mjs",
+          "sha256": "4f76c629fe7442610d379baf2a86c040e25ce7ac5fc4bc1f0e3fbe649bcedf26"
+        },
+        {
+          "path": "packages/gat/types/conformance/index.d.ts",
+          "sha256": "35dc1dc41c0505d0e404af7ee2460f1bf93a5a0f603ddb6c6a1ffa76776b51c9"
+        },
+        {
+          "path": "packages/gat/types/conformance/cli.d.ts",
+          "sha256": "5a89a58e21b99b638ead2af547f2965346a5fdafb789b18f52ea6b10c62c2c63"
+        },
+        {
+          "path": "packages/gat/types/conformance/runtime.d.ts",
+          "sha256": "c6a14301a3b8419d613029002d7aed15c25071f0a867ca7fbfdf714e48a90f06"
+        },
+        {
+          "path": "packages/gat/tests/conformance-runner.test.mjs",
+          "sha256": "618c50bdc626d726f2a4a918f14611febd74068015adbd5f74b98403681c7a7b"
+        }
+      ],
+      "verification_ref": "node --test packages/gat/tests/conformance-runner.test.mjs (5/5 PASS after one corrected import-regex failure)",
+      "review_ref": "team-message-7cff2dd8-b98b-4190-b0fe-1ff0e3a740f1"
+    },
+    {
+      "id": "attempt-gat-runner-recovery-004",
+      "task_id": "conformance-runner-recovery",
+      "revision": 29,
+      "plan_sha256": "dc7041284f578ec1336d61a470c72a560e652b3ae4a8c6545f953387dd6b9473",
+      "hypothesis": "Executing the exact verified buffer as a Node vm classic script in a code-generation-disabled context with no require/process and no dynamic-import callback removes transitive execution and TOCTOU/cache aliases; realpath all packet/manifest/entry evidence and containment close remaining gaps.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/conformance-runner-recovery/attempt-gat-runner-recovery-004",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/conformance/index.mjs",
+          "sha256": "9c1b1ef2fab659fa9fa9b9e0536f6a61a9772c6d6f45ec621cc5ade5fe137ecb"
+        },
+        {
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "sha256": "b98ad33e3518ce2895f65996fe4750e30f0411b6a290856f7ab6371ad62e5b38"
+        },
+        {
+          "path": "packages/gat/src/conformance/runtime.mjs",
+          "sha256": "4f76c629fe7442610d379baf2a86c040e25ce7ac5fc4bc1f0e3fbe649bcedf26"
+        },
+        {
+          "path": "packages/gat/types/conformance/index.d.ts",
+          "sha256": "35dc1dc41c0505d0e404af7ee2460f1bf93a5a0f603ddb6c6a1ffa76776b51c9"
+        },
+        {
+          "path": "packages/gat/types/conformance/cli.d.ts",
+          "sha256": "5a89a58e21b99b638ead2af547f2965346a5fdafb789b18f52ea6b10c62c2c63"
+        },
+        {
+          "path": "packages/gat/types/conformance/runtime.d.ts",
+          "sha256": "c6a14301a3b8419d613029002d7aed15c25071f0a867ca7fbfdf714e48a90f06"
+        },
+        {
+          "path": "packages/gat/tests/conformance-runner.test.mjs",
+          "sha256": "618c50bdc626d726f2a4a918f14611febd74068015adbd5f74b98403681c7a7b"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/conformance/index.mjs",
+          "sha256": "ceb9a6820ab3ed8040d87b28c66669c6473f434ec6a0b9b587ba1d01e570f63b"
+        },
+        {
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "sha256": "b98ad33e3518ce2895f65996fe4750e30f0411b6a290856f7ab6371ad62e5b38"
+        },
+        {
+          "path": "packages/gat/src/conformance/runtime.mjs",
+          "sha256": "38dc460cc573b8f58da9d3f05a053e79a50e3e9116d42df7c4aa84d48784e1b6"
+        },
+        {
+          "path": "packages/gat/types/conformance/index.d.ts",
+          "sha256": "55df74ef0f668194fc8e8343404f2ebfc410a54f86a1628d1c9419ae4128aea8"
+        },
+        {
+          "path": "packages/gat/types/conformance/cli.d.ts",
+          "sha256": "5a89a58e21b99b638ead2af547f2965346a5fdafb789b18f52ea6b10c62c2c63"
+        },
+        {
+          "path": "packages/gat/types/conformance/runtime.d.ts",
+          "sha256": "963dd1afb86f6fcafd5446aa4a4860129b2cdb2d0b7ed6bc730d8644a05924a5"
+        },
+        {
+          "path": "packages/gat/tests/conformance-runner.test.mjs",
+          "sha256": "097f511db340da68d716bdefe31037bd092d0e833870442dedb846276f30e851"
+        }
+      ],
+      "verification_ref": "node --test packages/gat/tests/conformance-runner.test.mjs (5/5 PASS after corrections)",
+      "review_ref": "team-message-f828d15c-193c-44ba-afc2-dfab76d7cbdb"
+    },
+    {
+      "id": "attempt-gat-runner-recovery-005",
+      "task_id": "conformance-runner-recovery",
+      "revision": 29,
+      "plan_sha256": "dc7041284f578ec1336d61a470c72a560e652b3ae4a8c6545f953387dd6b9473",
+      "hypothesis": "Replacing executable external runtime code with a verified declarative scenario fixture and a hashed package-owned bounded bridge that invokes actual policy/memory/adapter APIs removes sandbox/transitive/hang defects while preserving later no-source-mutation dispatch.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/conformance-runner-recovery/attempt-gat-runner-recovery-005",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/conformance/index.mjs",
+          "sha256": "ceb9a6820ab3ed8040d87b28c66669c6473f434ec6a0b9b587ba1d01e570f63b"
+        },
+        {
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "sha256": "b98ad33e3518ce2895f65996fe4750e30f0411b6a290856f7ab6371ad62e5b38"
+        },
+        {
+          "path": "packages/gat/src/conformance/runtime.mjs",
+          "sha256": "38dc460cc573b8f58da9d3f05a053e79a50e3e9116d42df7c4aa84d48784e1b6"
+        },
+        {
+          "path": "packages/gat/types/conformance/index.d.ts",
+          "sha256": "55df74ef0f668194fc8e8343404f2ebfc410a54f86a1628d1c9419ae4128aea8"
+        },
+        {
+          "path": "packages/gat/types/conformance/cli.d.ts",
+          "sha256": "5a89a58e21b99b638ead2af547f2965346a5fdafb789b18f52ea6b10c62c2c63"
+        },
+        {
+          "path": "packages/gat/types/conformance/runtime.d.ts",
+          "sha256": "963dd1afb86f6fcafd5446aa4a4860129b2cdb2d0b7ed6bc730d8644a05924a5"
+        },
+        {
+          "path": "packages/gat/tests/conformance-runner.test.mjs",
+          "sha256": "097f511db340da68d716bdefe31037bd092d0e833870442dedb846276f30e851"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/conformance/index.mjs",
+          "sha256": "fb95fd98aa7c1107a4af4be0f256c58b110e83839cc20d516d9c01068d7240b1"
+        },
+        {
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "sha256": "b9326aff5acc13a34f82665694be9833e0ec3c830d58f774095d9adbf0c9ae04"
+        },
+        {
+          "path": "packages/gat/src/conformance/runtime.mjs",
+          "sha256": "89688915c4e82b4a7890c6bc72db744a5f566dcbd651c87d4130fbb4c3d35213"
+        },
+        {
+          "path": "packages/gat/src/conformance/scenario.mjs",
+          "sha256": "429b6fca9eaa67ac942e5e19b77e4af0e7bc161d5cfbcbca9feccec4bb7f9065"
+        },
+        {
+          "path": "packages/gat/types/conformance/index.d.ts",
+          "sha256": "a94e5902680085325c2bb02079f5e25becb9382ebdece936929e1b10db501b12"
+        },
+        {
+          "path": "packages/gat/types/conformance/runtime.d.ts",
+          "sha256": "be9dcc2eefdd0085919ec5df73af03ceace63f5c317326a64fabc13bddf536fb"
+        },
+        {
+          "path": "packages/gat/types/conformance/scenario.d.ts",
+          "sha256": "c71dc8044b13cdf8c31b80ed55f008116dd54dea690f95954ecee2995266ddf1"
+        },
+        {
+          "path": "packages/gat/tests/conformance-runner.test.mjs",
+          "sha256": "213105e8047b70cffecd7f4fa632de803090733fd3787b61a73786c7dde75fb8"
+        }
+      ],
+      "verification_ref": "node --test packages/gat/tests/conformance-runner.test.mjs (5/5 PASS)",
+      "review_ref": "team-message-4d2deaa1-ee3c-4105-bcd0-0eed265794bb"
+    },
+    {
+      "id": "attempt-gat-runner-recovery-006",
+      "task_id": "conformance-runner-recovery",
+      "revision": 29,
+      "plan_sha256": "dc7041284f578ec1336d61a470c72a560e652b3ae4a8c6545f953387dd6b9473",
+      "hypothesis": "A closed package-owned operation registry that derives standardized actual outcomes exclusively from observed real governance/policy/memory/adapter results, rejects unsupported or mismatched scenario schemas, and emits only package-observed bindings/counters can eliminate self-fulfilling fixture semantics.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/conformance-runner-recovery/attempt-gat-runner-recovery-006",
+      "outcome": "failed",
+      "input_hashes": [
+        {
+          "path": "packages/gat/src/conformance/index.mjs",
+          "sha256": "fb95fd98aa7c1107a4af4be0f256c58b110e83839cc20d516d9c01068d7240b1"
+        },
+        {
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "sha256": "b9326aff5acc13a34f82665694be9833e0ec3c830d58f774095d9adbf0c9ae04"
+        },
+        {
+          "path": "packages/gat/src/conformance/runtime.mjs",
+          "sha256": "89688915c4e82b4a7890c6bc72db744a5f566dcbd651c87d4130fbb4c3d35213"
+        },
+        {
+          "path": "packages/gat/src/conformance/scenario.mjs",
+          "sha256": "429b6fca9eaa67ac942e5e19b77e4af0e7bc161d5cfbcbca9feccec4bb7f9065"
+        },
+        {
+          "path": "packages/gat/types/conformance/index.d.ts",
+          "sha256": "a94e5902680085325c2bb02079f5e25becb9382ebdece936929e1b10db501b12"
+        },
+        {
+          "path": "packages/gat/types/conformance/runtime.d.ts",
+          "sha256": "be9dcc2eefdd0085919ec5df73af03ceace63f5c317326a64fabc13bddf536fb"
+        },
+        {
+          "path": "packages/gat/types/conformance/scenario.d.ts",
+          "sha256": "c71dc8044b13cdf8c31b80ed55f008116dd54dea690f95954ecee2995266ddf1"
+        },
+        {
+          "path": "packages/gat/tests/conformance-runner.test.mjs",
+          "sha256": "213105e8047b70cffecd7f4fa632de803090733fd3787b61a73786c7dde75fb8"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": "packages/gat/src/conformance/scenario.mjs",
+          "sha256": "df0abae186411e200590f4c50326d24bdfeb5ec9d7cf0640b621295a17a4d3c2"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/runner-architecture-gap.md",
+          "sha256": "dc3c07f4de3bb73ef9c31b7b0a76cdcaee86368d0c39122656d96c27d876979c"
+        }
+      ],
+      "verification_ref": "architectural analysis only; no accepted baseline execution",
+      "review_ref": "subagent-c697ae46-38be-4440-b04c-83cc04a7307d"
+    }
+  ],
+  "task_attempts_v31": [
+    {
+      "id": "attempt-governance-replan-015",
+      "task_id": "governance-replan",
+      "revision": 31,
+      "plan_sha256": "872248ffc2b352e869535a6a12d0145c4c69cea9b4cd35e5e5c0f92bbc58c78d",
+      "hypothesis": "After the HUMAN-authorized pre-charge paused-ledger reconciliation selects exact v31 and preserves all 63 prior charges, one charged governance attempt can align the stable AIP and fixed Workspace to the split STEP-10 contract and pass the exact lint/status gates before any product work.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-governance-replan-015",
+      "outcome": "done",
+      "input_hashes": [
+        {
+          "path": "wbs-runs/multi-mission-web-ui/wbs.v31.json",
+          "sha256": "872248ffc2b352e869535a6a12d0145c4c69cea9b4cd35e5e5c0f92bbc58c78d"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/review.v31.md",
+          "sha256": "3cf60cd598b4a8cd39bcf5bd509a3c979f3a23e80e8d81df6a8bb83bca202f9f"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/decisions.json",
+          "sha256": "b971b0edbc22a9448609d9bcdcb0324cdd44c57063a09c0c356820da83592d9e"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/execution.json#pre-attempt-64",
+          "sha256": "0bd4ceaad9cf1c98b43e8281c65a8c828d85ca03b7c97302cbbf14bc777f3aa2"
+        },
+        {
+          "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+          "sha256": "277f5758bededa14c14efb83b1a88e4acf8caf726c383d2c332241365b98c961"
+        },
+        {
+          "path": ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/.current_step.json",
+          "sha256": "57029fb3fc2870af574823557dea9ea0a6fa518d3e4e0c1cdb50d2fc4a7e127e"
+        },
+        {
+          "path": ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/00c_active_step_context.md",
+          "sha256": "eccb1f69d07d91681b1e89b2c150d5bfbfcb27a707cdd49f47aa68208b8ee5f9"
+        }
+      ],
+      "output_hashes": [
+        {
+          "path": ".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md",
+          "sha256": "cf6a82cfc85bd63f52d11a82f792f98487d3d158dc3cf56d12113c6d598229b9"
+        },
+        {
+          "path": ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/.current_step.json",
+          "sha256": "e7f5b0eb5270cf3bd1dcb28ad18c7c99953fe7a8e04f81d568cdd90e74653723"
+        },
+        {
+          "path": ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/00c_active_step_context.md",
+          "sha256": "cb3dc62f7615291220eb19ff7f1fe9c34b6612c14a99e7bf582236deaeda2331"
+        },
+        {
+          "path": ".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/08_capture_inbox.jsonl",
+          "sha256": "c1873a6e483dca1fd145e2e6c22b1419f57415552a348fd18e2d263c3c079328"
+        },
+        {
+          "path": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-governance-replan-015/verification.md",
+          "sha256": "a7e09af8ede4241d36c3bfeed3897a7898d21aeb0a219603ae58f01750d99fac"
+        }
+      ],
+      "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/governance-replan/attempt-governance-replan-015/verification.md",
+      "review_ref": "ask_user_question:accept-governance-replan-attempt64 + team-message-8cc6c68d-b77f-4014-9b51-2417d82768fb"
+    },
+    {
+      "id": "attempt-gat-contract-matrix-001",
+      "task_id": "conformance-contract-matrix",
+      "revision": 31,
+      "plan_sha256": "872248ffc2b352e869535a6a12d0145c4c69cea9b4cd35e5e5c0f92bbc58c78d",
+      "hypothesis": "A closed static matrix can map all 51 accepted vector IDs to one named current package API or explicit planned control API, handler, observation reducer, symbolic predicate, absence probe and evidence producer while structurally preventing expected declarations from reaching execution components.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/conformance-contract-matrix/attempt-gat-contract-matrix-001",
+      "outcome": "interrupted",
+      "input_hashes": [
+        {"path":"docs/conformance/gat-conservative-mvp-v1.json","sha256":"2250aa8bd50e08efd4e4e876e8d9ac4309d3aea8c1af424de04a817aa507b87c"},
+        {"path":"docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md","sha256":"f590ceec949e43a50cc6ea857c919ffbf16736e7757648d3e84c48702cad41da"},
+        {"path":"packages/gat/src/governance/index.mjs","sha256":"86ba33128b2b221d1f924a04024fa6239ee99cef605808603f9707bf8785c864"},
+        {"path":"packages/gat/src/memory/index.mjs","sha256":"6531e5fc8644372ac0f8ab43124076cc39cd50dd1e49a2c5142b00ff2c337bf0"},
+        {"path":"packages/gat/src/policy/index.mjs","sha256":"06137e382a2c4125d466c7c7fd707aad84fd329b7d584b8bc747188910f7bc98"},
+        {"path":"packages/gat/src/adapter/index.mjs","sha256":"86c877d97594dbc359a8692d32f8a02d01d521510ac51fe40b195f72647ea460"},
+        {"path":"packages/gat/src/index.mjs","sha256":"b23642ad1d0fc40c79fa4b98fc3b489a7208f89bdb8c8ce9a882030dfacd17cd"},
+        {"path":"wbs-runs/multi-mission-web-ui/runner-architecture-gap.md","sha256":"dc3c07f4de3bb73ef9c31b7b0a76cdcaee86368d0c39122656d96c27d876979c"},
+        {"path":".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md","sha256":"cf6a82cfc85bd63f52d11a82f792f98487d3d158dc3cf56d12113c6d598229b9"},
+        {"path":".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/00c_active_step_context.md","sha256":"cb3dc62f7615291220eb19ff7f1fe9c34b6612c14a99e7bf582236deaeda2331"},
+        {"path":"wbs-runs/multi-mission-web-ui/execution.json#pre-attempt-65","sha256":"459913e28f0beb6e84e6402348bb88d35b22a34b6df5655b0f93e76c28cfd965"}
+      ],
+      "output_hashes": [
+        {"path":"wbs-runs/multi-mission-web-ui/conformance-contract-matrix.json","sha256":"548b750b879528bf42c6da62a7558f8e498b8ad4b07d71e4ce4b7a845f9235e5"},
+        {"path":"wbs-runs/multi-mission-web-ui/conformance-contract-matrix.md","sha256":"f91a824de7fd183b2076a79f33d06c5972b9ecaa278416340abc79008de21e60"},
+        {"path":"packages/gat/tests/conformance-contract-matrix.test.mjs","sha256":"e4156e00f9b8ca5a86386d998cb753edf7bddb9f17cb21c7c3c1776220db4af9"},
+        {"path":".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/wbs-v31/conformance-contract-matrix/observations.md","sha256":"8dad79385122010d5e2c8ecb71bf048ac07f72870f3b1a2e2286cfb4300525cb"}
+      ],
+      "verification_ref": "team-message-923ca3a0-cb2d-4b2b-807c-72c32e122bbd:sandbox-refused-before-node-test",
+      "review_ref": null
+    }
+  ],
+  "task_attempts_v32": [
+    {
+      "id": "attempt-revision-32-reconciliation-001",
+      "task_id": "revision-32-reconciliation",
+      "revision": 32,
+      "plan_sha256": "e035073bfb1c103602c9cfc350dbc7e087d3e4c2a4856cb968abaea5686f6fb0",
+      "hypothesis": "After exact HUMAN v32 approval and official helper validation, one charged attempt can select v32, preserve all 65 earlier charges/evidence including interrupted attempt65 outputs, and align ledger/AIP/fresh STEP-10 ASC without product mutation.",
+      "evidence_dir": "wbs-runs/multi-mission-web-ui/evidence/revision-32-reconciliation/attempt-revision-32-reconciliation-001",
+      "outcome": "done",
+      "input_hashes": [
+        {"path":"wbs-runs/multi-mission-web-ui/wbs.v32.json","sha256":"e035073bfb1c103602c9cfc350dbc7e087d3e4c2a4856cb968abaea5686f6fb0"},
+        {"path":"wbs-runs/multi-mission-web-ui/review.v32.md","sha256":"cba5c34dd32766d64202740e491251de1a6d6cb1a30884762eebdc8e39f1ae11"},
+        {"path":"wbs-runs/multi-mission-web-ui/decisions.json","sha256":"e2349ef2e70a868186b01e3bacb755a46375d88a5ed6a112e62f8d60957b8c8a"},
+        {"path":"wbs-runs/multi-mission-web-ui/execution.json#pre-attempt-66","sha256":"f221c0ee84e746b83057027f4d403eeea27d0b1cdb6cd108525598631b3474ba"},
+        {"path":".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md","sha256":"cf6a82cfc85bd63f52d11a82f792f98487d3d158dc3cf56d12113c6d598229b9"},
+        {"path":".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/.current_step.json","sha256":"e7f5b0eb5270cf3bd1dcb28ad18c7c99953fe7a8e04f81d568cdd90e74653723"},
+        {"path":".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/00c_active_step_context.md","sha256":"cb3dc62f7615291220eb19ff7f1fe9c34b6612c14a99e7bf582236deaeda2331"}
+      ],
+      "output_hashes": [
+        {"path":".ai-work/aip/hoinv/exec/AIP-EXEC-004-multi-mission-web-ui.md","sha256":"ddddf60d64c63eb45898974105e36edf2ae965e41dfa571038d0f47164d05706"},
+        {"path":".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/.current_step.json","sha256":"e7f5b0eb5270cf3bd1dcb28ad18c7c99953fe7a8e04f81d568cdd90e74653723"},
+        {"path":".ai-work/workspaces/hoinv/TASK-20260913-multi-mission-web-ui/00c_active_step_context.md","sha256":"a8bbb414d2913c18e55e89cd5ea8563b44de1c59a4a3fe651cded27a3e6a1f16"},
+        {"path":"wbs-runs/multi-mission-web-ui/evidence/revision-32-reconciliation/attempt-revision-32-reconciliation-001/verification.md","sha256":"e31e0c60173f7fb04d4a11205e309e8a2cfc8129001ff1aaed035aefb4ee95f7"}
+      ],
+      "verification_ref": "wbs-runs/multi-mission-web-ui/evidence/revision-32-reconciliation/attempt-revision-32-reconciliation-001/verification.md",
+      "review_ref": "team-member:wbs-control-reviewer:failed-before-verdict"
+    }
+  ],
+  "pause": {
+    "reason": "HUMAN requested pause for root-cause analysis after no visible day-over-day progress",
+    "source_ref": "user-direct:pause-and-root-cause-analysis",
+    "attempts_charged": 63,
+    "selected_revision": 29,
+    "pending_candidate_revision": 30,
+    "pending_candidate_sha256": "9237ed6f7fc3e7a727521433fafb6e6a6659255f523d587e83835707f54142dc",
+    "historical": true,
+    "resumed_by": "current-human-message:continue-v31-after-paused-ledger-reconciliation",
+    "resumed_to_revision": 31,
+    "resumed_plan_sha256": "872248ffc2b352e869535a6a12d0145c4c69cea9b4cd35e5e5c0f92bbc58c78d"
+  }
+}

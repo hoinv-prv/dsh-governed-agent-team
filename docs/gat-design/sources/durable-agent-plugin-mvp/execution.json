@@ -1,0 +1,743 @@
+{
+  "format": "dsh-wbs-execution/1",
+  "mission_id": "durable-agent-plugin-mvp",
+  "revision": 20,
+  "plan_sha256": "54c6678a434503231b62e21a239da2763cd1bc96e228ad5351ecab2872a8c839",
+  "run_state": "paused",
+  "coordinator_ref": "Team session session-6a3e55f2-015b-46cc-9951-87e0c6e12195, coordinator lead, goal goal-14ce6c65-36ab-4249-be7c-96be7daf99c3",
+  "attempts_charged": 19,
+  "active_work": [],
+  "tasks": {
+    "t00_g0_compatibility_spikes": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "t00-a01-r3",
+          "revision": 3,
+          "plan_sha256": "4e80b5cf6468336986c99ba0fff70ffbf30565b6020a98abaf368e6812aae874",
+          "hypothesis": "A bounded throwaway harness can prove the three missing G0 seams on exact pinned DSH-compatible package bytes without writing product code or modifying DSH core.",
+          "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a01-r3",
+          "outcome": "blocked",
+          "input_hashes": {
+            "wbs-runs/durable-agent-plugin-mvp/wbs.v3.json": "4e80b5cf6468336986c99ba0fff70ffbf30565b6020a98abaf368e6812aae874",
+            "AI_Teammate_Durable_Agent_Architecture.md": "92d2736ea388b3594a4021e066454f5a23ca41d7fe914f100f262ff278c5ccbb",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/dsh-compatibility-baseline.md": "bdb54b8a60cdd947914c62d95fe87eeb8e0cf312b3743bdcac69c83816f312ed"
+          },
+          "output_hashes": {},
+          "verification_ref": null,
+          "review_ref": null
+        },
+        {
+          "id": "t00-a02-r5",
+          "revision": 5,
+          "plan_sha256": "da8ff25f8d8afb118c4bc29b836bc4b24cfd03e67af70a7211642f7ad5872257",
+          "hypothesis": "A standalone hash-bound spike harness can prove all four G0 compatibility seams, including governed context routing/admission/replay, using only the declared mission-root writes and exact allowed commands without modifying product or DSH core.",
+          "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a02-r5",
+          "outcome": "blocked",
+          "input_hashes": {
+            "wbs-runs/durable-agent-plugin-mvp/wbs.v5.json": "da8ff25f8d8afb118c4bc29b836bc4b24cfd03e67af70a7211642f7ad5872257",
+            "AI_Teammate_Durable_Agent_Architecture.md": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/dsh-compatibility-baseline.md": "bdb54b8a60cdd947914c62d95fe87eeb8e0cf312b3743bdcac69c83816f312ed",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b"
+          },
+          "output_hashes": {
+            "spike/pnpm-lock.yaml": "5261ce29ff79cf6df88d5db0f75e59bef613cb9625b5997dfb838d229c54e5b5",
+            "spike/artifacts/worker-command-log.jsonl": "7ce5e5e56a48305a3de2be90df38d28b3457df1a732741697957e01c1b0449d2",
+            "spike/artifacts/source-manifest.json": "fc277b8653ae21d1a5ae8a3debabd6c1a5b5c3110722ff89a412339d33f9105e",
+            "spike/artifacts/pinned-input-manifest.json": "dc48f91fd8c2f8bd6d5599b7dd8fd1949d3d91c2e4a3cf891e0f36afb7c9365e",
+            "spike/artifacts/store-evidence.json": "dcfda5ca1bfa36b42b6d43038c85e634cd1ccf8c904cab0d25899dca3834ec99",
+            "spike/artifacts/tool-effects-evidence.json": "a989f3d735f04721d45fb6ab5550c83538e8990b83ab788def57028a575f11de",
+            "spike/artifacts/context-delegation-evidence.json": "1bd323416c1899d29ee5c28253a73459ca3cfe45ce712018444e3fd6dd0293d1",
+            "spike/tests/client-remote-slot.snapshot": "131a92a968cfc723f1e7fc2e3a47a6d4c7af841bd71b9bad59e1f52760f4762d",
+            "spike/tests/client-remote-slot.screenshot": "cfe254880107aa773bef346d14207b49f6dda4eeca948b47388395434013d823"
+          },
+          "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a02-r5/verification.md",
+          "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a02-r5/final-review.md and team-message-aee57839-3968-4c0f-a914-d9a35a2964ce"
+        },
+        {
+          "id": "t00-a03-r5",
+          "revision": 5,
+          "plan_sha256": "da8ff25f8d8afb118c4bc29b836bc4b24cfd03e67af70a7211642f7ad5872257",
+          "hypothesis": "Exact locked DSH 0.1.5-rc.2 public runtime/provider packages plus deterministic probe model/tool fixtures can replace every a02 fake/local seam with real Cordis compositions for Agent Loop/checkpoint/tools execution, generated API Gateway Remote/Client in Chromium, ctx.subagents fresh/fork and ctx.sessionQuery lifecycle refs, and a universal four-purpose SQLite ContextAdmission model gate within unchanged t00 scopes and command shapes.",
+          "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a03-r5",
+          "outcome": "blocked",
+          "input_hashes": {
+            "wbs-runs/durable-agent-plugin-mvp/wbs.v5.json": "da8ff25f8d8afb118c4bc29b836bc4b24cfd03e67af70a7211642f7ad5872257",
+            "AI_Teammate_Durable_Agent_Architecture.md": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/dsh-compatibility-baseline.md": "bdb54b8a60cdd947914c62d95fe87eeb8e0cf312b3743bdcac69c83816f312ed",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b",
+            "spike/a02-source-manifest": "fc277b8653ae21d1a5ae8a3debabd6c1a5b5c3110722ff89a412339d33f9105e"
+          },
+          "output_hashes": {
+            "spike/attempts/t00-a03-r5/real-agent.ts": "b8407410842a4a09694354d070635ee9d62bf14b19fbd700e610a111e0565730",
+            "spike/attempts/t00-a03-r5/crash-worker.mjs": "4d0f3d2c2fc5657395332d12b60905fca55081f1004bc0159a2513de28c8d20a",
+            "spike/attempts/t00-a03-r5/gateway-host.ts": "3aa0b53d866623dd87439878dbd54d391e0e5d29a171f28bfe158402f349298c",
+            "admission/triage": "82f9fc4d55ce619733be671a76237b432f7e9f0225da1c015961f2079de0c3a0",
+            "admission/execute": "fbaa86d915bbed63bcabc0a53a0f4b86855e3ef5452719c3597b2a5b020ba2dc",
+            "admission/verify": "c991e89507139140fcf6b6951d7b1cda14cde079bfefa757490b0badc840e49b",
+            "admission/recover": "685e41327c9bde9ea93b60d6be089020fe72ea7da4658de6ac5c76bcf789bdf4"
+          },
+          "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a03-r5/verification.md",
+          "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a03-r5/final-review.md and team-message-271e6529-1518-4a16-84ed-1211a977663f"
+        },
+        {
+          "id": "t00-a04-r6",
+          "revision": 6,
+          "plan_sha256": "ff698d302bc47e2de9fdf34599ecefd5eeb94248caa364d08739780e41e1837d",
+          "hypothesis": "A single evidence-integrated remediation of the existing public DSH 0.1.5-rc.2 harness can close every independent-review gap without new commands, effects, or write paths: in-scope runtime data; one generated Gateway-to-Slot path; policy-bound real route, capsule, admission, logged model input and Session-surface exclusion; full current manifests; ephemeral credentials; and honest same-tool crash recovery measurement.",
+          "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a04-r6",
+          "outcome": "blocked",
+          "input_hashes": {
+            "wbs-runs/durable-agent-plugin-mvp/wbs.v6.json": "ff698d302bc47e2de9fdf34599ecefd5eeb94248caa364d08739780e41e1837d",
+            "AI_Teammate_Durable_Agent_Architecture.md": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/dsh-compatibility-baseline.md": "bdb54b8a60cdd947914c62d95fe87eeb8e0cf312b3743bdcac69c83816f312ed",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b"
+          },
+          "output_hashes": {
+            "spike/package.json": "369dede56cf341a2b2790e546d6d27c1a20daedf9df4b85d1620a462da3436ae",
+            "spike/pnpm-lock.yaml": "1f144073875c69318be66271c18952e3483174eca6ec3f796c60966ada8f2105",
+            "spike/lock-integrity-set": "a7343386b2882123d51997d9bc7eaa79f703d606fa31a413afe5688bfaffb6a2",
+            "spike/tests/context-delegation.spec.ts": "c04c6d7449e43ea6aa33ce4ab5c2f4e8a09e2e266e0abd099f8bc72a6074c143",
+            "spike/tests/client-remote-slot.web.spec.ts": "1b3e8abe8ad4b6119c46d3bb1e96ed0194d42cdeab2684115e4e1612ff1cfcf4",
+            "spike/a04/integrated-context-chain.json": "8c17416906742da2c95e321d1c019c4a3ca87fc22205ea131a6025005328fca2",
+            "spike/a04/integrated-browser-slot.json": "163b78541f5abd8f1aff746726d728f63715ab12be775296f5c462aedda0c29e",
+            "spike/a04/module-mutation-audit.json": "9dbbe57158bd2e62ad21dfcccdd2541407bfa4c075f6868061960e1f1affd8cf",
+            "spike/reports/store-recovery.md": "037d0427453b21155826d0bf96e315eba40e1af2ee4f2d8c272e1ef64b4fcfb5",
+            "spike/reports/tool-effects.md": "0a8292098c8a4f2be2bb208fb7df1ded8d228ce5ea00a62ed9111a382742350e",
+            "spike/reports/client-remote-slot.md": "83fc1a6fccbca98c23ac3aca7621d9439a086562fcc8aa9a23cdd93d0b28f1c8",
+            "spike/reports/context-delegation.md": "e3f2899ac3457222e257821b2ab0f59041d0124e6517e606bd6cd6e961e8b6b1",
+            "spike/a04/final-report.md": "bc8995c0d491ca85ef5e6318be3800522d3fbdfec9f57e52c5fb2cd09ce4d5dd"
+          },
+          "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a04-r6/verification.md",
+          "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a04-r6/final-review.md and team-message-3eb5e052-f7a8-4f00-800e-593e7ac90285"
+        },
+        {
+          "id": "t00-a05-r7",
+          "revision": 7,
+          "plan_sha256": "6b87177ce9ceefc616c3205424bec39d1a9f1e413dc259352dd3d06333bc655d",
+          "hypothesis": "One final public-runtime integration can pass the actual DSH exec.callId through the Mission ledger, execute the full real route matrix with package-enforced scout and runtime-derived fork/AIWS evidence, and produce one authoritative post-Web byte chain using only existing command shapes and spike writes.",
+          "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a05-r7",
+          "outcome": "blocked",
+          "input_hashes": {
+            "wbs-runs/durable-agent-plugin-mvp/wbs.v7.json": "6b87177ce9ceefc616c3205424bec39d1a9f1e413dc259352dd3d06333bc655d",
+            "AI_Teammate_Durable_Agent_Architecture.md": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/dsh-compatibility-baseline.md": "bdb54b8a60cdd947914c62d95fe87eeb8e0cf312b3743bdcac69c83816f312ed",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b"
+          },
+          "output_hashes": {
+            "spike/package.json": "70572abd33dec68e1e74070fe3411092ddac76bde0d2797b2e2cfa4bc88af844",
+            "spike/pnpm-lock.yaml": "1f144073875c69318be66271c18952e3483174eca6ec3f796c60966ada8f2105",
+            "spike/tests/context-delegation.spec.ts": "7973d9545501c0c33c9858178bcc2a65f8bcb4d18ef291e786948bfdb0630af8",
+            "spike/tests/tool-effects.spec.ts": "2a099b417019cc927dbb753b3e0df909214c28f68526009307b8e4776ce56db4",
+            "spike/tests/client-remote-slot.web.spec.ts": "d4e9de11c28b0bf7375f9d6cfb4e6d48ffa456b422e429dac14260e596c78b6c",
+            "spike/a05/real-context-routes.json": "4a0ed512055da8c46bc4b9d6b41e1d7d6a4b3f3ba45d6189e1a2884d69bc3408",
+            "spike/a05/real-agent-checkpoint.json": "37a04e2cb0bfd1911f65beac4e0b2c0bb6759b219d7c48c5f390a69523a3f9f4",
+            "spike/a05/integrated-browser-slot.json": "069eb62d0c6ca6ec9c35022d1c98acf60b8b1565de7590b119c4729b6e31789b",
+            "spike/a05/integrated-browser-slot.png": "13d309cfba75834c3a0e8ce74a81c4b0da4af4d73f470ca8ade20f37cd7db91f",
+            "spike/a05/module-mutation-audit.json": "649bf38b1036d6f644d3ee4540a5d32c896d975adbfe96143deda96f594acee8",
+            "spike/reports/context-delegation.md": "96216437e9f5b941e9d2abec09856a3c490c9c3961dd7ef82ba7787feb2697e4",
+            "spike/a05/final-report.md": "80187fca97616d7fd74d0d56f4894ae61e6ce2ea3a4eb13be565f9303ab6551a"
+          },
+          "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a05-r7/verification.md",
+          "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a05-r7/final-review.md and team-message-a9d19de8-0dab-4f7a-b3a6-fcad34f41469"
+        },
+        {
+          "id": "t00-a06-r8",
+          "revision": 8,
+          "plan_sha256": "d76174a864b6f3c0c5004a78a3c37499eda84780ac302bf50cb67925870219e0",
+          "hypothesis": "Explicit inspection of the real parent and every admitted route Agent Session plus captured requests can persist a complete absence proof for raw child/query/tool envelopes, rejected candidates, retrieval traces and uncited content without changing the accepted runtime implementation or command shapes.",
+          "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a06-r8",
+          "outcome": "done",
+          "input_hashes": {
+            "wbs-runs/durable-agent-plugin-mvp/wbs.v8.json": "d76174a864b6f3c0c5004a78a3c37499eda84780ac302bf50cb67925870219e0",
+            "AI_Teammate_Durable_Agent_Architecture.md": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/dsh-compatibility-baseline.md": "bdb54b8a60cdd947914c62d95fe87eeb8e0cf312b3743bdcac69c83816f312ed",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b"
+          },
+          "output_hashes": {
+            "spike/package.json": "d0badb109a8154fab3e0bc314ca62e07b6b6877cfc0e35043ecca9dc6276eedd",
+            "spike/pnpm-lock.yaml": "1f144073875c69318be66271c18952e3483174eca6ec3f796c60966ada8f2105",
+            "spike/tests/context-delegation.spec.ts": "48ea8c3d2e5e468afa803593663028b1b5f29e9c13549ca6091a1128a15ee9e3",
+            "spike/tests/tool-effects.spec.ts": "014d7e5ca85423f8bdcb89dca39a3cfc0fcf7dd29ec3b10d2d5b69780fc6e9b2",
+            "spike/tests/client-remote-slot.web.spec.ts": "6dc00d8fc5a79f74e47d411a25a8a345265da32ed5cfc4ab0d6621f58c0ef8e1",
+            "spike/a06/real-context-routes.json": "e0fa79d95b32bc4cfc0013c2362f814997538d344c0aa2fc8abeb6775e9389a1",
+            "spike/a06/real-agent-checkpoint.json": "3227e9f0eaeb17e9e87382e3fc8315ef1661fe1788f4fe34424ecc6bfef5b640",
+            "spike/a06/integrated-browser-slot.json": "3b75976d3d1d538fabb93964d9b6403cc173c90e903b27cc53594bc7ffc9ae1d",
+            "spike/a06/integrated-browser-slot.png": "13d309cfba75834c3a0e8ce74a81c4b0da4af4d73f470ca8ade20f37cd7db91f",
+            "spike/a06/module-mutation-audit.json": "891f0c3f7bf50162b1768b9895b0e45e36a29b5adaf801549203ed8e270544cf",
+            "spike/reports/context-delegation.md": "ed92990eab7950c56a63ac606e28a3f9076ccaff8409d51d4ac3582ec1bf3f3e",
+            "spike/a06/final-report.md": "9f92700e9bb6674642101fd6aef1d0ca280e58d61cc8f36d0a6b9808bca02bf3"
+          },
+          "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a06-r8/verification.md",
+          "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a06-r8/final-review.md and team-message-407293c5-e9f3-44d1-bd12-d5ff99973572"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "t00-a06-r8",
+        "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a06-r8/verification.md",
+        "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t00_g0_compatibility_spikes/t00-a06-r8/final-review.md and team-message-407293c5-e9f3-44d1-bd12-d5ff99973572",
+        "output_hashes": {
+          "spike/package.json": "d0badb109a8154fab3e0bc314ca62e07b6b6877cfc0e35043ecca9dc6276eedd",
+          "spike/tests/context-delegation.spec.ts": "48ea8c3d2e5e468afa803593663028b1b5f29e9c13549ca6091a1128a15ee9e3",
+          "spike/a06/real-context-routes.json": "e0fa79d95b32bc4cfc0013c2362f814997538d344c0aa2fc8abeb6775e9389a1",
+          "spike/a06/final-report.md": "9f92700e9bb6674642101fd6aef1d0ca280e58d61cc8f36d0a6b9808bca02bf3"
+        }
+      }
+    },
+    "t01_g0_baseline": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "t01-a01-r2",
+          "revision": 2,
+          "plan_sha256": "511a1e8cf1213923094f857886fd747d4d237053f6eafe88232d38139fe9787a",
+          "hypothesis": "A concrete, source-bound G0 baseline can resolve every open architecture decision without widening WBS scope and can be presented for explicit HUMAN acceptance.",
+          "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t01_g0_baseline/t01-a01-r2",
+          "outcome": "blocked",
+          "input_hashes": {
+            "wbs-runs/durable-agent-plugin-mvp/wbs.v2.json": "511a1e8cf1213923094f857886fd747d4d237053f6eafe88232d38139fe9787a",
+            "AI_Teammate_Durable_Agent_Architecture.md": "92d2736ea388b3594a4021e066454f5a23ca41d7fe914f100f262ff278c5ccbb",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/dsh-compatibility-baseline.md": "bdb54b8a60cdd947914c62d95fe87eeb8e0cf312b3743bdcac69c83816f312ed"
+          },
+          "output_hashes": {},
+          "verification_ref": null,
+          "review_ref": "team-message-af7844a1-d183-46e6-854c-dbe3d3420eab and evidence/t01_g0_baseline/t01-a01-r2/preflight-review.md"
+        },
+        {
+          "id": "t01-a02-r8",
+          "revision": 8,
+          "plan_sha256": "d76174a864b6f3c0c5004a78a3c37499eda84780ac302bf50cb67925870219e0",
+          "hypothesis": "The accepted t00 evidence and prior baseline preflight now provide enough exact public-seam, policy, SLO, privacy, authorization and budget facts to resolve every G0 decision in one source-bound baseline for HUMAN acceptance.",
+          "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t01_g0_baseline/t01-a02-r8",
+          "outcome": "done",
+          "input_hashes": {
+            "wbs-runs/durable-agent-plugin-mvp/wbs.v8.json": "d76174a864b6f3c0c5004a78a3c37499eda84780ac302bf50cb67925870219e0",
+            "AI_Teammate_Durable_Agent_Architecture.md": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b",
+            "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b"
+          },
+          "output_hashes": {},
+          "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t01_g0_baseline/t01-a02-r8/verification.md",
+          "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t01_g0_baseline/t01-a02-r8/final-review.md and team-message-c9193ec6-82fd-4133-85e9-11ad589865b9"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "t01-a02-r8",
+        "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t01_g0_baseline/t01-a02-r8/verification.md",
+        "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t01_g0_baseline/t01-a02-r8/final-review.md and team-message-c9193ec6-82fd-4133-85e9-11ad589865b9",
+        "human_decision_ref": "decision-g0-baseline-r8-008; ask_user_question human_g0_acceptance: ACCEPT G0 và tiếp tục (Recommended)",
+        "output_hashes": {}
+      }
+    },
+    "t01a_execution_protocol": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "t01a-a01-r9",
+          "revision": 9,
+          "plan_sha256": "0f55a592ae78c79dceada8d1ba10275b40ea449d3189fe29ffc6d5058afd951f",
+          "hypothesis": "A concise source-bound coordinator protocol and reusable criterion matrix can make evidence completeness, final-byte custody, ownership, timestamps, independent review and audit chronology explicit before product implementation without adding product effects or commands.",
+          "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t01a_execution_protocol/t01a-a01-r9",
+          "outcome": "blocked",
+          "input_hashes": {
+            "wbs-runs/durable-agent-plugin-mvp/wbs.v9.json": "0f55a592ae78c79dceada8d1ba10275b40ea449d3189fe29ffc6d5058afd951f",
+            "wbs-runs/durable-agent-plugin-mvp/progress-analysis.md": "c49f1ba502a1cc7700a0e3ca531dad14cd1033b553563e2bfcaff76969295a7e",
+            "AI_Teammate_Durable_Agent_Architecture.md": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b"
+          },
+          "output_hashes": {},
+          "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t01a_execution_protocol/t01a-a01-r9/verification.md",
+          "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t01a_execution_protocol/t01a-a01-r9/final-review.md and team-message-8d02cb5a-cd31-4860-bcdb-93c6383e4523"
+        },
+        {
+          "id": "t01a-a02-r11",
+          "revision": 11,
+          "plan_sha256": "484f5755bf2d32138b04019473c318f8b988385f6acbf5471fcebdb89c497f73",
+          "hypothesis": "Preserving current mutable snapshots and input custody before dispatch, then freezing already-correct protocol bytes with a canonical nonrecursive manifest/receipt and actual contributor identity, closes a01 evidence gaps without content rework or history rewrite.",
+          "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t01a_execution_protocol/t01a-a02-r11",
+          "outcome": "blocked",
+          "input_hashes": {
+            "wbs-runs/durable-agent-plugin-mvp/wbs.v11.json": "484f5755bf2d32138b04019473c318f8b988385f6acbf5471fcebdb89c497f73",
+            "wbs-runs/durable-agent-plugin-mvp/progress-analysis.md": "c49f1ba502a1cc7700a0e3ca531dad14cd1033b553563e2bfcaff76969295a7e",
+            "wbs-runs/durable-agent-plugin-mvp/design-baseline-v3.md": "f98cf4c22382ae84a9c3c12eee7115a0aabd304c9cef96eb818464449da8129b"
+          },
+          "output_hashes": {},
+          "verification_ref": "predispatch custody not completed; input.decisions.json partial snapshot only",
+          "review_ref": "team-message-68dbbcf1-f115-4f44-a240-6f5ee1b7537c and subagent 767854ad-14f9-493b-a2d5-024b7c7ac662"
+        },
+        {
+          "id": "t01a-a03-r12",
+          "revision": 12,
+          "plan_sha256": "712ae3f67a5a383c81b98860b7c6928a6a269be621b763fa7013a40b14423dea",
+          "hypothesis": "Exact declared cp commands can preserve current execution/decision snapshots before hash and worker dispatch, enabling the already-reviewed nonrecursive custody chain without manual byte re-emission.",
+          "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t01a_execution_protocol/t01a-a03-r12",
+          "outcome": "done",
+          "input_hashes": {
+            "wbs-runs/durable-agent-plugin-mvp/wbs.v12.json": "712ae3f67a5a383c81b98860b7c6928a6a269be621b763fa7013a40b14423dea",
+            "wbs-runs/durable-agent-plugin-mvp/progress-analysis.md": "c49f1ba502a1cc7700a0e3ca531dad14cd1033b553563e2bfcaff76969295a7e",
+            "wbs-runs/durable-agent-plugin-mvp/design-baseline-v3.md": "f98cf4c22382ae84a9c3c12eee7115a0aabd304c9cef96eb818464449da8129b"
+          },
+          "output_hashes": {
+            "wbs-runs/durable-agent-plugin-mvp/execution-protocol-v1.md": "3efbaab76bd33dfb3dfa5e2fa910ab03a36d9c29e7490a0c150b99355099c113",
+            "wbs-runs/durable-agent-plugin-mvp/evidence-matrix-template.md": "0b272ef56c60a77315d17f58860d1996e2fcfe3fd4fb451345b9882809aed02a",
+            "custody-manifest.txt": "b35068f56401646ded7ba27cc96d6f7882393a845579e3b486ece0907f1d61c2"
+          },
+          "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t01a_execution_protocol/t01a-a03-r12/verification.pre-freeze.md; custody-manifest.txt; freeze-receipt.md",
+          "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t01a_execution_protocol/t01a-a03-r12/final-review.md and fresh subagent eb286378-df40-4374-b235-e038cbbbe6e9"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "t01a-a03-r12",
+        "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t01a_execution_protocol/t01a-a03-r12/verification.pre-freeze.md; custody-manifest.txt; freeze-receipt.md",
+        "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t01a_execution_protocol/t01a-a03-r12/final-review.md and fresh subagent eb286378-df40-4374-b235-e038cbbbe6e9",
+        "output_hashes": {
+          "wbs-runs/durable-agent-plugin-mvp/execution-protocol-v1.md": "3efbaab76bd33dfb3dfa5e2fa910ab03a36d9c29e7490a0c150b99355099c113",
+          "wbs-runs/durable-agent-plugin-mvp/evidence-matrix-template.md": "0b272ef56c60a77315d17f58860d1996e2fcfe3fd4fb451345b9882809aed02a",
+          "custody-manifest.txt": "b35068f56401646ded7ba27cc96d6f7882393a845579e3b486ece0907f1d61c2"
+        }
+      }
+    },
+    "t02_scaffold": {
+      "state": "accepted",
+      "attempts": [{
+        "id": "t02-a01-r12",
+        "revision": 12,
+        "plan_sha256": "712ae3f67a5a383c81b98860b7c6928a6a269be621b763fa7013a40b14423dea",
+        "hypothesis": "A minimal versioned Cordis host/client scaffold using accepted DSH package seams can establish deterministic dependencies, named exports, packed-profile fixtures, role-bound context-skill fail-closure and identity separation in one bounded implementation.",
+        "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t02_scaffold/t02-a01-r12",
+        "outcome": "blocked",
+        "input_hashes": {
+          "wbs-runs/durable-agent-plugin-mvp/design-baseline-v3.md": "f98cf4c22382ae84a9c3c12eee7115a0aabd304c9cef96eb818464449da8129b",
+          "wbs-runs/durable-agent-plugin-mvp/execution-protocol-v1.md": "3efbaab76bd33dfb3dfa5e2fa910ab03a36d9c29e7490a0c150b99355099c113",
+          "wbs-runs/durable-agent-plugin-mvp/evidence-matrix-template.md": "0b272ef56c60a77315d17f58860d1996e2fcfe3fd4fb451345b9882809aed02a",
+          "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b"
+        },
+        "output_hashes": {},
+        "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t02_scaffold/t02-a01-r12/verification.md",
+        "review_ref": "coordinator HOLD: final-byte hash command absent under r12"
+      }, {
+        "id": "t02-a02-r13",
+        "revision": 13,
+        "plan_sha256": "0539fce4071d8f681c40d6de204ee408b3f529d2562abe6a878d9723634c6e5c",
+        "hypothesis": "Unchanged scaffold bytes can satisfy all t02 criteria when the existing commands are rerun and the exact sixteen-file manifest is frozen for a fresh independent matrix audit.",
+        "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t02_scaffold/t02-a02-r13",
+        "outcome": "blocked",
+        "input_hashes": {
+          "wbs-runs/durable-agent-plugin-mvp/wbs.v13.json": "0539fce4071d8f681c40d6de204ee408b3f529d2562abe6a878d9723634c6e5c",
+          "wbs-runs/durable-agent-plugin-mvp/design-baseline-v3.md": "f98cf4c22382ae84a9c3c12eee7115a0aabd304c9cef96eb818464449da8129b",
+          "wbs-runs/durable-agent-plugin-mvp/execution-protocol-v1.md": "3efbaab76bd33dfb3dfa5e2fa910ab03a36d9c29e7490a0c150b99355099c113",
+          "wbs-runs/durable-agent-plugin-mvp/evidence-matrix-template.md": "0b272ef56c60a77315d17f58860d1996e2fcfe3fd4fb451345b9882809aed02a",
+          "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b"
+        },
+        "output_hashes": {
+          "durable-agent-plugin/package.json": "791623347c59d3706ca8487e10efc88f812f9a89551ac6fdaf25fcb06291ddab",
+          "durable-agent-plugin/pnpm-lock.yaml": "06f76834f679778842cfa5e9dfb29022428b1d4c6e65432ca8ba03a22eccf647",
+          "durable-agent-plugin/src/config.ts": "74bcef6e223008b306c2eb7a9d5fa0db88b94f735595628f0f3a851414876be2",
+          "durable-agent-plugin/src/identity.ts": "d2cb53190fc52043ce566a028bb958f55642ac1ada8923a35dcdacc9a43df6dd",
+          "durable-agent-plugin/src/index.ts": "766b5397e4df47173013b2319bb2d1a828b8af078724db72a2d05ae31d1c8c72",
+          "durable-agent-plugin/src/client.ts": "2318befba503e5d817475ec96abe575394bc4f0cc371ff78521a40ec00584e9f",
+          "durable-agent-plugin/tests/domain-contracts.spec.ts": "bd0408ae7a1b4d6efd90c43a751b7d05e41d33a0240a6e09ef113602b9f2f65e"
+        },
+        "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t02_scaffold/t02-a02-r13/verification.md and final-byte-manifest.txt",
+        "review_ref": "evidence/t02_scaffold/t02-a02-r13/final-review.md; review-2.md; adjudication.md; adjudicator 8964f434-9f22-4a15-bd73-036e40159dbe"
+      }, {
+        "id": "t02-a03-r14",
+        "revision": 14,
+        "plan_sha256": "2c081ac055d3c488bf5bd61c29297cefcce41115460d7da661896d1fa73ddae4",
+        "hypothesis": "Explicit member-wise compile-time assignment negatives plus executed build/named-export/package-export smoke can close adjudicated F1/F2, after which a 32-path source/generated manifest supports final independent acceptance.",
+        "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t02_scaffold/t02-a03-r14",
+        "outcome": "done",
+        "input_hashes": {
+          "wbs-runs/durable-agent-plugin-mvp/wbs.v14.json": "2c081ac055d3c488bf5bd61c29297cefcce41115460d7da661896d1fa73ddae4",
+          "wbs-runs/durable-agent-plugin-mvp/design-baseline-v3.md": "f98cf4c22382ae84a9c3c12eee7115a0aabd304c9cef96eb818464449da8129b",
+          "wbs-runs/durable-agent-plugin-mvp/execution-protocol-v1.md": "3efbaab76bd33dfb3dfa5e2fa910ab03a36d9c29e7490a0c150b99355099c113",
+          "wbs-runs/durable-agent-plugin-mvp/evidence-matrix-template.md": "0b272ef56c60a77315d17f58860d1996e2fcfe3fd4fb451345b9882809aed02a",
+          "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b"
+        },
+        "output_hashes": {
+          "durable-agent-plugin/package.json": "791623347c59d3706ca8487e10efc88f812f9a89551ac6fdaf25fcb06291ddab",
+          "durable-agent-plugin/pnpm-lock.yaml": "06f76834f679778842cfa5e9dfb29022428b1d4c6e65432ca8ba03a22eccf647",
+          "durable-agent-plugin/src/config.ts": "a2d54206d8866faaf9081690c70401f7595f926000bba0bc39ff67213b56a69a",
+          "durable-agent-plugin/src/identity.ts": "f8b55aa37bf616307d3147699be7cde5686b30be0139588f38dfd3c56d59fc3a",
+          "durable-agent-plugin/tests/domain-contracts.spec.ts": "df30b98b24045ad54e0fa0c089e1647fb88c2e2903a9751e31a0e67543c3fc05",
+          "durable-agent-plugin/lib/src/identity.js": "d7bcdddafa3cacf55800d768c6490bba2a53441fa97625c2cb4c5444f5b2b482"
+        },
+        "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t02_scaffold/t02-a03-r14/verification.md and final-byte-manifest.txt",
+        "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t02_scaffold/t02-a03-r14/final-review.md and team-message-6a8172e2-4d18-4275-aa6c-eb3a854f5cd0"
+      }],
+      "acceptance": {
+        "attempt_id": "t02-a03-r14",
+        "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t02_scaffold/t02-a03-r14/verification.md and final-byte-manifest.txt",
+        "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t02_scaffold/t02-a03-r14/final-review.md and team-message-6a8172e2-4d18-4275-aa6c-eb3a854f5cd0",
+        "output_hashes": {
+          "durable-agent-plugin/package.json": "791623347c59d3706ca8487e10efc88f812f9a89551ac6fdaf25fcb06291ddab",
+          "durable-agent-plugin/pnpm-lock.yaml": "06f76834f679778842cfa5e9dfb29022428b1d4c6e65432ca8ba03a22eccf647",
+          "durable-agent-plugin/src/config.ts": "a2d54206d8866faaf9081690c70401f7595f926000bba0bc39ff67213b56a69a",
+          "durable-agent-plugin/src/identity.ts": "f8b55aa37bf616307d3147699be7cde5686b30be0139588f38dfd3c56d59fc3a",
+          "durable-agent-plugin/tests/domain-contracts.spec.ts": "df30b98b24045ad54e0fa0c089e1647fb88c2e2903a9751e31a0e67543c3fc05"
+        }
+      }
+    },
+    "t03_domain_contracts": {
+      "state": "blocked",
+      "reason": "HUMAN paused execution for root-cause analysis after the t03-a05-r20 worker failed before settlement. Attempt remains charged and partial product state is unverified; no new dispatch is permitted while paused.",
+      "attempts": [{
+        "id": "t03-a01-r15",
+        "revision": 15,
+        "plan_sha256": "7b7c1bda0e939ad2787590ad63cceea06d01103607788c2386c7b1086a878169",
+        "hypothesis": "Seven exact domain modules with fail-closed codecs and property/negative tests can encode the accepted Mission, planning, authority, context, evidence and runtime contracts without persistence/controller behavior.",
+        "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a01-r15",
+        "outcome": "done",
+        "input_hashes": {
+          "wbs-runs/durable-agent-plugin-mvp/wbs.v15.json": "7b7c1bda0e939ad2787590ad63cceea06d01103607788c2386c7b1086a878169",
+          "wbs-runs/durable-agent-plugin-mvp/design-baseline-v3.md": "f98cf4c22382ae84a9c3c12eee7115a0aabd304c9cef96eb818464449da8129b",
+          "durable-agent-plugin/package.json": "791623347c59d3706ca8487e10efc88f812f9a89551ac6fdaf25fcb06291ddab"
+        },
+        "output_hashes": {
+          "durable-agent-plugin/src/domain/index.ts": "368fe5c80f913416167ca89daf7644211f27fe78a497f98e5ff4f3522dfa5298",
+          "durable-agent-plugin/src/domain/mission.ts": "01a9fdfd3ff14f23d2c0fbb5b643c3fde379c29d240b05187118ffd30ea5f84d",
+          "durable-agent-plugin/src/domain/planning.ts": "558c34bb66e2933230812826e7b32f30d6774479cd51fb5392e7c58301d8d59d",
+          "durable-agent-plugin/src/domain/authority.ts": "78e97e2e4df42ac978cb77a160c3050b9239826ca9c0ea2a127730f71c3b770d",
+          "durable-agent-plugin/src/domain/context.ts": "59e7248e1a11de1421a35a10c575ebf0e8e03d34f17a688607bf3fc8948f2c39",
+          "durable-agent-plugin/src/domain/evidence.ts": "bfc59b61161bc4fd9077e4cea6772ac37b62fadd489c931f277c4f6f04d85077",
+          "durable-agent-plugin/src/domain/runtime.ts": "68dc30f0c65bc13a471580c6ff420ea6cdd086ab0b24034d0c1e8b88673cb01b",
+          "durable-agent-plugin/tests/domain-contracts.spec.ts": "db8da6b353dd551cb8d4d0ea0d379e6dd51032232a69480770da10c8bc2d5cfe",
+          "durable-agent-plugin/tests/fixtures/domain/cases.json": "0fb58ca8e3866750abe498bef96e44ff04db97ca91ec7156e85fc5809703413e"
+        },
+        "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a01-r15/verification.md and final-byte-manifest.txt",
+        "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a01-r15/final-review.md and team-message-e841512b-8e48-400a-8845-fc37e751c215"
+      }, {
+        "id": "t03-a02-r15",
+        "revision": 15,
+        "plan_sha256": "7b7c1bda0e939ad2787590ad63cceea06d01103607788c2386c7b1086a878169",
+        "hypothesis": "Canonical source-state transitions, complete accepted provenance/hash/budget/replay schemas, deep-copy validators, full idempotency identity and deterministic seeded property tests can close every a01 review gap within the existing seven modules/test/fixture and exact commands.",
+        "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a02-r15",
+        "outcome": "done",
+        "input_hashes": {
+          "wbs-runs/durable-agent-plugin-mvp/wbs.v15.json": "7b7c1bda0e939ad2787590ad63cceea06d01103607788c2386c7b1086a878169",
+          "wbs-runs/durable-agent-plugin-mvp/design-baseline-v3.md": "f98cf4c22382ae84a9c3c12eee7115a0aabd304c9cef96eb818464449da8129b"
+        },
+        "output_hashes": {
+          "durable-agent-plugin/src/domain/index.ts": "368fe5c80f913416167ca89daf7644211f27fe78a497f98e5ff4f3522dfa5298",
+          "durable-agent-plugin/src/domain/mission.ts": "55862def05e1fde809dffe2fc70b63fd16df735bcd156f5f6cb40da54106a54c",
+          "durable-agent-plugin/src/domain/planning.ts": "721fefef1832242575ddbd042df9debe1c8ae11ef31ea7fd5755e2dd5aaca6a5",
+          "durable-agent-plugin/src/domain/authority.ts": "ee43e5cd244d7cc5aad50a474ab328e36e1a7df0ee663f4fa88d946a79fac5af",
+          "durable-agent-plugin/src/domain/context.ts": "219e398ba49f2f9757c9dc30055cb401f2a8137665908add27b952b682cbd264",
+          "durable-agent-plugin/src/domain/evidence.ts": "27227c361947351bf85661ca9b89b92e10d3a647a51356eda47d0204d3f19f16",
+          "durable-agent-plugin/src/domain/runtime.ts": "1bf6c159efcf4a891d12afae5eac619dbfe8bca0b31c8c29b2a8e7d8f7c54f1e",
+          "durable-agent-plugin/tests/domain-contracts.spec.ts": "927273781cb04143826f6f6c50bf4f211c46b3729c8270dbcddfda5e3f4d47e7",
+          "durable-agent-plugin/tests/fixtures/domain/cases.json": "94e839534dc52195b86cb9a6517eaba1b20b2daf1dac192dfe9f714075288694"
+        },
+        "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a02-r15/verification.md and final-byte-manifest.txt",
+        "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a02-r15/final-review.md and team-message-965fffbf-07da-4754-95fc-dad201e641ec"
+      }, {
+        "id": "t03-a03-r17",
+        "revision": 17,
+        "plan_sha256": "9dfa7d5ab927d500390c4500749857ee08b9739a1727686b4a818d642c8976f3",
+        "hypothesis": "Implementing the accepted baseline as authenticated relational contracts—rather than shape validators—and testing against independently encoded finite/property models will close every prior semantic blocker within the existing seven-module surface.",
+        "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a03-r17",
+        "outcome": "done",
+        "input_hashes": {
+          "wbs-runs/durable-agent-plugin-mvp/wbs.v17.json": "9dfa7d5ab927d500390c4500749857ee08b9739a1727686b4a818d642c8976f3",
+          "wbs-runs/durable-agent-plugin-mvp/design-baseline-v3.md": "f98cf4c22382ae84a9c3c12eee7115a0aabd304c9cef96eb818464449da8129b"
+        },
+        "output_hashes": {
+          "durable-agent-plugin/src/domain/index.ts": "368fe5c80f913416167ca89daf7644211f27fe78a497f98e5ff4f3522dfa5298",
+          "durable-agent-plugin/src/domain/mission.ts": "e9e18d15f7074e557fd5b931471c5ea6e87d3099b594e3d257f818fb09b12005",
+          "durable-agent-plugin/src/domain/planning.ts": "95aaf1bbc10ce2c3714bbceda10a5ed851c4fab712db7e131c3afbfff33c6688",
+          "durable-agent-plugin/src/domain/authority.ts": "3dabf5be0c95e744e47ddbaa02b6a909b1f4d6e62758ffc971c91d926bab8cfe",
+          "durable-agent-plugin/src/domain/context.ts": "15d7536fd474fe775a3fa321d8f79f951bc3bf4ab310275b1ebb607bd9939645",
+          "durable-agent-plugin/src/domain/evidence.ts": "2b9d772c8c763f96f8edbc266bc78dcef2a1ea02c7089b1039f6f6891c9b2a38",
+          "durable-agent-plugin/src/domain/runtime.ts": "150c4809388950f601fc57051d9f778b1bc7fe443345c8615ee2eb28c864ac7a",
+          "durable-agent-plugin/tests/domain-contracts.spec.ts": "e3f549ff7e19631574716df7861c42f226fe6973d43ec88faf083169a4365f67",
+          "durable-agent-plugin/tests/fixtures/domain/cases.json": "b28bb02023d1654deab7a2866d9388e4dfb6f205dbc2f5822df90bc0316b1300"
+        },
+        "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a03-r17/verification.md and final-byte-manifest.txt",
+        "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a03-r17/final-review.md and team-message-fb30a634-343c-456e-b8aa-6acb50d3f9f5"
+      }, {
+        "id": "t03-a04-r19",
+        "revision": 19,
+        "plan_sha256": "18920fc9744225e7166509b73e0566cd076e75600417001d1af5e6441c48bb7b",
+        "hypothesis": "Implementing every remaining adversarial counterexample as a first-class authenticated field/relation and independently modeled negative property can close t03 without widening its seven-module surface.",
+        "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a04-r19",
+        "outcome": "done",
+        "input_hashes": {
+          "wbs-runs/durable-agent-plugin-mvp/wbs.v19.json": "18920fc9744225e7166509b73e0566cd076e75600417001d1af5e6441c48bb7b",
+          "wbs-runs/durable-agent-plugin-mvp/design-baseline-v3.md": "f98cf4c22382ae84a9c3c12eee7115a0aabd304c9cef96eb818464449da8129b"
+        },
+        "output_hashes": {
+          "durable-agent-plugin/src/domain/index.ts": "368fe5c80f913416167ca89daf7644211f27fe78a497f98e5ff4f3522dfa5298",
+          "durable-agent-plugin/src/domain/mission.ts": "6935463338f4b3761f0e4957eadeca2bd63e479cc9159b6e0c713fbd9f6954a9",
+          "durable-agent-plugin/src/domain/planning.ts": "a5b770db3303150e62e0975f5ca888846e1792b9956751ac8f29c28dd83ba5ef",
+          "durable-agent-plugin/src/domain/authority.ts": "1730267f43644fc9e50a0d63d8179f5ba70eeff477c961a5c280fe599af765f2",
+          "durable-agent-plugin/src/domain/context.ts": "eae3804274783d88dac1da021702daee0f240b4d56b407ea3d69a82bcd2ab87d",
+          "durable-agent-plugin/src/domain/evidence.ts": "80758ab289d84914d1a6df4194e83c8bf34369b898e4bd76489955319e12c98b",
+          "durable-agent-plugin/src/domain/runtime.ts": "81679d71ad231b1eaae8291d1135fa3f849352bb7b6c79ef665366766ebb2955",
+          "durable-agent-plugin/tests/domain-contracts.spec.ts": "ddf29ab44ab48eae3e2636c1272df2a7863503c8bb7465346046fe515c95d47d",
+          "durable-agent-plugin/tests/fixtures/domain/cases.json": "3748fa26caa314a9c3ff2ee7a634f8c93b89db7500644c95c1d5a30697c7978b"
+        },
+        "verification_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a04-r19/verification.md and final-byte-manifest.txt",
+        "review_ref": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a04-r19/final-review.md and team-message-6f714ab5-dd69-4690-952d-38dd0825d70f"
+      }, {
+        "id": "t03-a05-r20",
+        "revision": 20,
+        "plan_sha256": "54c6678a434503231b62e21a239da2763cd1bc96e228ad5351ecab2872a8c839",
+        "hypothesis": "Coupling each authenticated relation to an independent adversarial oracle, with descriptor-safe data handling and external registries, will directly eliminate every a04 counterexample.",
+        "evidence_dir": "wbs-runs/durable-agent-plugin-mvp/evidence/t03_domain_contracts/t03-a05-r20",
+        "outcome": "interrupted",
+        "input_hashes": {
+          "wbs-runs/durable-agent-plugin-mvp/wbs.v20.json": "54c6678a434503231b62e21a239da2763cd1bc96e228ad5351ecab2872a8c839",
+          "wbs-runs/durable-agent-plugin-mvp/design-baseline-v3.md": "f98cf4c22382ae84a9c3c12eee7115a0aabd304c9cef96eb818464449da8129b"
+        },
+        "output_hashes": {},
+        "verification_ref": null,
+        "review_ref": null
+      }],
+      "acceptance": null
+    },
+    "t04_persistence": {"state": "pending", "attempts": [], "acceptance": null},
+    "t05_mission_controller": {"state": "pending", "attempts": [], "acceptance": null},
+    "t06_authority_budget": {"state": "pending", "attempts": [], "acceptance": null},
+    "t07_runtime_adapter": {"state": "pending", "attempts": [], "acceptance": null},
+    "t08_wake_scheduler": {"state": "pending", "attempts": [], "acceptance": null},
+    "t09_delegation": {"state": "pending", "attempts": [], "acceptance": null},
+    "t10_context_authority": {"state": "pending", "attempts": [], "acceptance": null},
+    "t11_quality_handoff": {"state": "pending", "attempts": [], "acceptance": null},
+    "t12_watchdog": {"state": "pending", "attempts": [], "acceptance": null},
+    "t13_projections_api": {"state": "pending", "attempts": [], "acceptance": null},
+    "t14_dashboard": {"state": "pending", "attempts": [], "acceptance": null},
+    "t15_learning_metrics": {"state": "pending", "attempts": [], "acceptance": null},
+    "t16_security_chaos": {"state": "pending", "attempts": [], "acceptance": null},
+    "t17_reference_scenarios": {"state": "pending", "attempts": [], "acceptance": null},
+    "t18_integration": {"state": "pending", "attempts": [], "acceptance": null},
+    "t19_final_report": {"state": "pending", "attempts": [], "acceptance": null}
+  },
+  "reconciliations": [
+    {
+      "id": "reconcile-start-r2-001",
+      "task_id": "t01_g0_baseline",
+      "reason": "Initialized execution from explicit HUMAN approval of revision 2 with no predecessor work or product tree.",
+      "decision": "selected revision 2 and began t01 preflight"
+    },
+    {
+      "id": "reconcile-g0-gap-r2-002",
+      "task_id": "t01_g0_baseline",
+      "reason": "Independent preflight found missing executable compatibility evidence and pinned DSH seams; t01-a01-r2 was blocked and retained.",
+      "review_ref": "evidence/t01_g0_baseline/t01-a01-r2/preflight-review.md",
+      "decision": "require reviewed revision 3 before further dispatch"
+    },
+    {
+      "id": "reconcile-select-r3-003",
+      "task_id": "t00_g0_compatibility_spikes",
+      "reason": "Selected explicitly approved revision 3, preserved t01-a01-r2 and allocated t00-a01-r3 with a 900-minute allowance.",
+      "review_ref": "decision-revision-r3-002",
+      "decision": "revision 3 selected with cumulative history preserved"
+    },
+    {
+      "id": "reconcile-context-design-r3-004",
+      "task_id": "t00_g0_compatibility_spikes",
+      "reason": "Before t00 dispatch, HUMAN requested architecture and WBS revision for context-delegation. The allocated t00-a01-r3 remains charged and blocked; cumulative preserved allocation is 1500 minutes across two attempts.",
+      "decision": "block revision 3 and require a new reviewed plan"
+    },
+    {
+      "id": "reconcile-canonical-validation-r4-005",
+      "task_id": "t00_g0_compatibility_spikes",
+      "reason": "HUMAN requested revision-4 execution, but canonical pre-dispatch validation failed because t02 and t07 inputs were outside task read grants. No revision-4 attempt or effect was dispatched. Full pre-conversion record is preserved at execution.pre-canonical-r5.json with SHA-256 e08d0b562b6ae810dbf82baca5d1cd861149978374b9e5b2f40f39d018aca659.",
+      "decision": "create immutable corrective revision 5 and require exact-hash HUMAN approval"
+    },
+    {
+      "id": "reconcile-select-r5-006",
+      "task_id": "t00_g0_compatibility_spikes",
+      "reason": "Selected canonically valid revision 5 after exact-hash HUMAN approval. Preserved t01-a01-r2 and t00-a01-r3 as charged blocked history; no revision-4 attempt existed.",
+      "review_ref": "decision-execution-r5-004 and review.v5.md",
+      "decision": "select revision 5; t00 is the sole initially ready task"
+    },
+    {
+      "id": "reconcile-final-hold-r5-007",
+      "task_id": "t00_g0_compatibility_spikes",
+      "reason": "Attempts t00-a02-r5 and t00-a03-r5 were independently held after verification. Revision 5 exhausted the three cumulative t00 attempts; all artifacts and charges remain preserved.",
+      "review_ref": "evidence/t00_g0_compatibility_spikes/t00-a03-r5/final-review.md and team-message-271e6529-1518-4a16-84ed-1211a977663f",
+      "decision": "require a reviewed corrective plan before any new t00 work"
+    },
+    {
+      "id": "reconcile-select-r6-008",
+      "task_id": "t00_g0_compatibility_spikes",
+      "reason": "Selected corrected canonical revision 6 after independent PASS and exact-hash HUMAN approval. Preserved four charged mission attempts and all prior evidence; t00 maximum four leaves exactly one remediation attempt.",
+      "review_ref": "decision-execution-r6-005, review.v6.md, and team-message-0b111aed-07a8-49ce-a678-8d08fa205e4b",
+      "decision": "select revision 6; t00 is the sole ready task and may allocate one final remediation attempt"
+    },
+    {
+      "id": "reconcile-final-hold-r6-009",
+      "task_id": "t00_g0_compatibility_spikes",
+      "reason": "t00-a04-r6 passed every command but independent review held acceptance for byte-chain inconsistency, incomplete real route matrix/fork/AIWS observations and disconnected real Mission operation binding.",
+      "review_ref": "evidence/t00_g0_compatibility_spikes/t00-a04-r6/final-review.md and team-message-3eb5e052-f7a8-4f00-800e-593e7ac90285",
+      "decision": "preserve attempt and require reviewed corrective revision"
+    },
+    {
+      "id": "reconcile-select-r7-010",
+      "task_id": "t00_g0_compatibility_spikes",
+      "reason": "Selected independently reviewed revision 7 after exact-hash HUMAN approval; preserved five charged attempts and all evidence. t00 maximum five leaves one remediation attempt.",
+      "review_ref": "decision-execution-r7-006, review.v7.md, and team-message-9881a668-266f-4a4b-b174-a1ac4a2da407",
+      "decision": "select revision 7 and allocate t00-a05-r7 before dispatch"
+    },
+    {
+      "id": "reconcile-select-r8-011",
+      "task_id": "t00_g0_compatibility_spikes",
+      "reason": "Selected independently reviewed revision 8 after exact-hash HUMAN approval; preserved six charged attempts and all a01-a05 evidence. Revision 8 added the sole explicit Session/request raw-exclusion proof and allowed t00-a06-r8.",
+      "review_ref": "decision-execution-r8-007, review.v8.md, and team-message-98375134-2016-4d93-8318-9540146aba0a",
+      "decision": "select revision 8 and allocate the final t00 corrective attempt"
+    },
+    {
+      "id": "reconcile-accept-t00-r8-012",
+      "task_id": "t00_g0_compatibility_spikes",
+      "reason": "t00-a06-r8 passed all eight coordinator verification entries and independent final review accepted the conjunctive G0 compatibility evidence, including five persisted Session surfaces and four captured requests with zero forbidden raw-output markers.",
+      "review_ref": "evidence/t00_g0_compatibility_spikes/t00-a06-r8/final-review.md and team-message-407293c5-e9f3-44d1-bd12-d5ff99973572",
+      "decision": "accept t00 and release t01"
+    },
+    {
+      "id": "reconcile-accept-g0-r8-013",
+      "task_id": "t01_g0_baseline",
+      "reason": "The corrected 504-line design baseline resolved every G0 decision, passed fresh independent re-review, and received explicit HUMAN product architecture/security acceptance after presentation of the exact current file.",
+      "review_ref": "decision-g0-baseline-r8-008, evidence/t01_g0_baseline/t01-a02-r8/final-review.md, and team-message-c9193ec6-82fd-4133-85e9-11ad589865b9",
+      "decision": "accept t01 G0 baseline and unblock product implementation"
+    },
+    {
+      "id": "reconcile-select-r9-014",
+      "task_id": "t01a_execution_protocol",
+      "reason": "Selected canonical independently reviewed revision 9 after direct exact-hash HUMAN approval and resume. Accepted t00/t01 remain valid; revision 9 adds only evidence-governance protocol r15/t01a before product dispatch.",
+      "review_ref": "decision-execution-r9-009, review.v9.md, and team-message-17a5e42b-c397-4f34-b3ef-247dec4ab2b9",
+      "decision": "select revision 9 and allocate t01a-a01-r9 before dispatch"
+    },
+    {
+      "id": "reconcile-block-t01a-r9-015",
+      "task_id": "t01a_execution_protocol",
+      "reason": "Team task-8 revision 3 and completion message prove wbs-reviewer authored the two protocol outputs; execution active_work was incorrectly changed to architecture-analyst only when independent review began. architecture-analyst contributed no output bytes and independently returned insufficient_evidence because mutable input snapshots and final-byte custody were absent.",
+      "review_ref": "team task-8 revision 3; team-message-022095ff-3210-4552-965f-c32c48ea5423; evidence/t01a_execution_protocol/t01a-a01-r9/final-review.md; team-message-8d02cb5a-cd31-4860-bcdb-93c6383e4523",
+      "decision": "settle a01 blocked; canonical contributor wbs-reviewer and independent reviewer architecture-analyst; do not fabricate lost snapshots or accept unbound bytes"
+    },
+    {
+      "id": "reconcile-select-r11-016",
+      "task_id": "t01a_execution_protocol",
+      "reason": "Revision 10 review HOLD exposed recursive custody ordering and was never approved. Selected canonical revision 11 only after fresh independent PASS and exact-hash HUMAN approval; it preserves a01 and authorizes one nonrecursive custody correction attempt.",
+      "review_ref": "decision-execution-r11-010, review.v11.md, team-message-e3c9bf76-7784-45b5-99de-86ebcab02ab1",
+      "decision": "select revision 11 and allocate t01a-a02-r11; predispatch snapshots/input custody required before worker dispatch"
+    },
+    {
+      "id": "reconcile-block-t01a-r11-017",
+      "task_id": "t01a_execution_protocol",
+      "reason": "Before any task-9 worker dispatch, native file-copy custody failed: decisions was copied, but two independent helpers could not safely re-emit the 401-line execution record with native read/write tools, and revision 11 did not authorize cp. No hash or product effect ran.",
+      "review_ref": "team-message-68dbbcf1-f115-4f44-a240-6f5ee1b7537c; subagent 767854ad-14f9-493b-a2d5-024b7c7ac662",
+      "decision": "settle allocated a02 blocked before dispatch; preserve partial snapshot as non-authoritative and require reviewed exact copy commands"
+    },
+    {
+      "id": "reconcile-select-r12-018",
+      "task_id": "t01a_execution_protocol",
+      "reason": "Selected canonical revision 12 after exact-hash HUMAN approval and independent Team plus fresh-subagent PASS. It adds only exact predispatch cp commands and one final t01a attempt; a01/a02 charges remain preserved.",
+      "review_ref": "decision-execution-r12-011, review.v12.md, team-message-f7b95a76-3de5-4435-813d-d848a8c3fb55, subagent f166324b-186f-4a46-8f87-72463d53bb45",
+      "decision": "select revision 12 and allocate t01a-a03-r12; create evidence directory before exact copy/hash gate"
+    },
+    {
+      "id": "reconcile-accept-t01a-r12-019",
+      "task_id": "t01a_execution_protocol",
+      "reason": "a03 completed exact predispatch snapshot/input custody, preserved already-correct protocol/template bytes, froze the canonical seven-member manifest, recorded a nonrecursive checksum receipt, and received a fresh contributor-independent meets_criteria verdict.",
+      "review_ref": "evidence/t01a_execution_protocol/t01a-a03-r12/final-review.md; fresh subagent eb286378-df40-4374-b235-e038cbbbe6e9",
+      "decision": "accept t01a and release t02_scaffold"
+    },
+    {
+      "id": "reconcile-block-t02-r12-020",
+      "task_id": "t02_scaffold",
+      "reason": "Worker implementation and all three coordinator verification commands passed, but r12 declared no t02 hash command. The new r15 protocol prohibits command-only acceptance and requires an authoritative final-byte manifest.",
+      "review_ref": "evidence/t02_scaffold/t02-a01-r12/verification.md; team task-10 revision 3",
+      "decision": "settle a01 blocked, preserve scaffold bytes, and require reviewed exact hash-command correction before a02 or t03"
+    },
+    {
+      "id": "reconcile-select-r13-021",
+      "task_id": "t02_scaffold",
+      "reason": "Selected canonical revision 13 after exact-hash HUMAN approval and two independent PASS reviews. It adds only exact final-byte hashing and matrix audit to t02; a01 remains charged and unchanged.",
+      "review_ref": "decision-execution-r13-012, review.v13.md, team-message-137cd282-ec44-4f73-aa29-f4b8d1011612, subagent 4a7c17ea-f46d-4cda-91a3-5351181f707a",
+      "decision": "select revision 13 and allocate final t02-a02-r13"
+    },
+    {
+      "id": "reconcile-block-t02-r13-022",
+      "task_id": "t02_scaffold",
+      "reason": "Independent reviews conflicted. Fresh adjudication confirmed F1 lifecycle execution/source-path negative and F2 identity cross-assignment negatives as blocking, while refuting provenance as a separate blocker.",
+      "review_ref": "evidence/t02_scaffold/t02-a02-r13/final-review.md; review-2.md; adjudication.md; adjudicator 8964f434-9f22-4a15-bd73-036e40159dbe",
+      "decision": "settle a02 blocked, preserve manifest and command evidence, require reviewed t02 command/test/max-attempt correction, keep t03 pending"
+    },
+    {
+      "id": "reconcile-select-r14-023",
+      "task_id": "t02_scaffold",
+      "reason": "Selected canonical revision 14 after exact-hash HUMAN approval and two independent PASS reviews. It addresses only adjudicated F1/F2, preserves a01/a02, and authorizes the third/final t02 attempt.",
+      "review_ref": "decision-execution-r14-013, review.v14.md, subagent 1bf0d7fe-fcc5-4796-9b84-c77af4447ceb, team-message-c53f9f1d-3c49-441d-bc6b-95fa97bf6f6a",
+      "decision": "select revision 14 and allocate t02-a03-r14"
+    },
+    {
+      "id": "reconcile-accept-t02-r14-024",
+      "task_id": "t02_scaffold",
+      "reason": "a03 closed adjudicated F1/F2 with explicit compile-time assignment negatives, executed lifecycle guards and a post-build 32-path manifest. All seven commands and C001-C015 passed fresh contributor-independent review.",
+      "review_ref": "evidence/t02_scaffold/t02-a03-r14/final-review.md; team-message-6a8172e2-4d18-4275-aa6c-eb3a854f5cd0; subagent 4230093e-5242-436c-a294-da9a1028dd1e",
+      "decision": "accept t02 and release t03_domain_contracts"
+    },
+    {
+      "id": "reconcile-select-r15-025",
+      "task_id": "t03_domain_contracts",
+      "reason": "Selected canonical revision 15 after exact-hash HUMAN approval and two independent PASS reviews. It proactively adds only exact t03 output layout/build/hash/manual audit; accepted t02 and all downstream contracts remain unchanged.",
+      "review_ref": "decision-execution-r15-014, review.v15.md, team-message-3b78ec72-ae4d-4abe-9372-44d04d165b72, subagent 428efd54-04c0-40c6-b845-228d27b5039b",
+      "decision": "select revision 15; t03 is the sole dependency-ready product task"
+    },
+    {
+      "id": "reconcile-block-t03-r15-026",
+      "task_id": "t03_domain_contracts",
+      "reason": "a01 commands and custody passed, but strict independent review found transition, provenance, budget, admission, deep-immutability, idempotency and generator/property evidence gaps across C002/C003/C006-C018.",
+      "review_ref": "evidence/t03_domain_contracts/t03-a01-r15/final-review.md; team-message-e841512b-8e48-400a-8845-fc37e751c215; subagent 20be69fd-e5ca-4b86-86ab-6ed1235af3d7",
+      "decision": "settle a01 blocked; keep t04 pending; use remaining r15 t03 attempt with a revised hypothesis"
+    },
+    {
+      "id": "reconcile-block-t03-r15-027",
+      "task_id": "t03_domain_contracts",
+      "reason": "a02 improved field coverage and passed tests/build/custody, but strict review found canonical transition/planning/budget/context/replay/graph/runtime/canonicalization/property semantics still incomplete.",
+      "review_ref": "evidence/t03_domain_contracts/t03-a02-r15/final-review.md; team-message-965fffbf-07da-4754-95fc-dad201e641ec; subagent a8d098ca-78f1-4cb1-960e-79c275ae3c4e",
+      "decision": "settle a02 blocked; both r15 attempts charged; require reviewed max-attempt and semantic-acceptance revision; keep t04 pending"
+    },
+    {
+      "id": "reconcile-hold-r16-select-r17-028",
+      "task_id": "t03_domain_contracts",
+      "reason": "r16 HUMAN approval was not selected because a late fresh HOLD identified missing systemSelector membership and nested alias-proof clauses. r17 reconciled exactly those findings, passed canonical validation and two independent reviews, then received exact-hash HUMAN approval.",
+      "review_ref": "decision-execution-r16-015; decision-execution-r17-016; review.v17.md; team-message-daa5a7d0-54ee-465f-bcef-b0d12f563699; subagent a47dcc2a-4b1b-46b9-95e5-86c5d0732ac2",
+      "decision": "do not select r16; select r17; preserve a01/a02 and authorize one final t03 attempt"
+    },
+    {
+      "id": "reconcile-block-t03-r17-029",
+      "task_id": "t03_domain_contracts",
+      "reason": "a03 passed exact commands/custody and canonical transitions, but adversarial review falsified planning, cross-run budgets, context external authentication, fork/admission validation, graph set equality, runtime links, canonical JSON and model coverage.",
+      "review_ref": "evidence/t03_domain_contracts/t03-a03-r17/final-review.md; team-message-fb30a634-343c-456e-b8aa-6acb50d3f9f5; subagent d841e0c9-4e1d-4636-9e3a-a321b1894f8f",
+      "decision": "settle a03 blocked; all r17 t03 attempts charged; keep t04 pending; only one mission-ceiling attempt remains if a reviewed revision authorizes it"
+    },
+    {
+      "id": "reconcile-hold-r18-select-r19-030",
+      "task_id": "t03_domain_contracts",
+      "reason": "r18 HUMAN approval was not selected after a late fresh HOLD found incomplete explicit baseline §7 grant fields. r19 adds exactly those fields, retains the final-slot contract, passes canonical validation and two independent reviews, and has exact-hash HUMAN approval.",
+      "review_ref": "decision-execution-r18-017; decision-execution-r19-018; review.v19.md; team-message-efdf21e4-d45e-4aab-89ed-09c1b3d8ac5b; subagent 135db4af-59bd-40c7-a862-383b7c8b3a07",
+      "decision": "do not select r18; select r19; preserve a01-a03 and authorize sole final t03 attempt"
+    },
+    {
+      "id": "reconcile-exhaust-t03-r19-031",
+      "task_id": "t03_domain_contracts",
+      "reason": "a04 passed commands but final independent review found remaining semantic counterexamples and malformed persisted manifest digests. All four t03 attempts and the current max4 authority are exhausted.",
+      "review_ref": "evidence/t03_domain_contracts/t03-a04-r19/final-review.md; team-message-6f714ab5-dd69-4690-952d-38dd0825d70f; subagent 7bebd93a-7d8a-46ba-b3c0-e0aa56985333",
+      "decision": "settle a04 blocked; keep t03/t04 blocked; require explicit HUMAN contract decision before any new attempt or budget reallocation"
+    },
+    {
+      "id": "reconcile-select-r20-032",
+      "task_id": "t03_domain_contracts",
+      "reason": "HUMAN chose global cap 61 and t03 max5, then approved exact canonical r20 after two independent PASS reviews. R20 adds one slot and direct a04-counterexample acceptance without reducing downstream budgets.",
+      "review_ref": "decision-execution-r20-019; review.v20.md; team-message-c4bfcc63-bbe8-4c57-9f64-99414965d935; subagent 00465c53-33e2-4f39-b19b-9fbc7a79d6e3",
+      "decision": "select r20; preserve a01-a04; authorize sole new t03 attempt"
+    },
+    {
+      "id": "reconcile-human-pause-033",
+      "task_id": "t03_domain_contracts",
+      "reason": "HUMAN explicitly requested a pause for root-cause analysis after t03-a05-r20 failed before settlement. All workers are inactive, active_work is empty, task-11 is released, and partial product bytes remain quarantined as forensic input.",
+      "review_ref": "evidence/t03_domain_contracts/t03-a05-r20/interruption.md; council-reviews/recovery-proposal-v1-council-001/failure-summary.md",
+      "decision": "set mission run_state paused; prohibit dispatch and verification until direct HUMAN resume plus reconciled recovery authority"
+    }
+  ]
+}

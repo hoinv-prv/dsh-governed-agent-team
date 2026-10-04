@@ -1,0 +1,30 @@
+{
+  "checked_on": "2026-10-04",
+  "document_links": 219,
+  "detail_ids": 18,
+  "symbol_locators": 79,
+  "source_test_files": 64,
+  "rationale_files": 7,
+  "documentation_errors": [],
+  "aiws_lint_exit": 0,
+  "aiws_lint_summary": "summary: errors=0 warnings=37 info=3005 accepted=1",
+  "product_tests": "Not run; documentation-only change",
+  "wiki_registration": "Complete: 72 sources, 240 new typed relations",
+  "wiki_lookup": {
+    "passed": 367,
+    "failed": 0
+  },
+  "wiki_relation_verification": {
+    "planned": 240,
+    "missing": 0,
+    "broken_references": 0
+  },
+  "source_test_hash_verification": {
+    "checked": 64,
+    "changed": 0
+  },
+  "wiki_lint": {
+    "exit_code": 0,
+    "summary": "summary: errors=0 warnings=25 info=3004 accepted=1"
+  }
+}

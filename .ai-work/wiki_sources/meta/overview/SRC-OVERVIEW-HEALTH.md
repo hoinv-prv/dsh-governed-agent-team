@@ -6,7 +6,7 @@ source_type: overview_page
 artifact_locator: .ai-work/wiki/overview/WIKI_HEALTH.md
 profile_id: overview_pages
 status: active
-updated_at: 2026-09-26T10:05:34.790649+00:00
+updated_at: 2026-10-03T23:43:32.496076+00:00
 authority_level: unknown
 freshness_status: unknown
 promotion_status: draft
@@ -59,6 +59,7 @@ Regenerate sau mỗi index/relations rebuild — fingerprint mismatch = lint WAR
 - enrichment
 - representation
 - freshness
+- current
 - rebuild
 - mismatch
 - warn
@@ -68,8 +69,7 @@ Regenerate sau mỗi index/relations rebuild — fingerprint mismatch = lint WAR
 - build_wiki_overview
 - build
 - overview_hand_edit
-- d988b0
-- hash
+- d204bd09cf78
 
 ## Source-Specific Hints
 - heading: Wiki Health — all systems

@@ -1,12 +1,20 @@
 # Wiki Contents Overview — all systems
 
-Registered sources: **160** (+36 chunked section metas). Đây là PROJECTION của wiki index — trang này trả lời "wiki chứa gì"; cách tìm → WIKI_SEARCH_GUIDE. Mở meta: `lookup_wiki_source.py --mode id <source_id>`.
+Registered sources: **232** (+36 chunked section metas). Đây là PROJECTION của wiki index — trang này trả lời "wiki chứa gì"; cách tìm → WIKI_SEARCH_GUIDE. Mở meta: `lookup_wiki_source.py --mode id <source_id>`.
 
-## gat_design_document (6)
+## gat_design_document (14)
+- **SRC-GAT-ARCHITECTURE-DESIGN** — GAT Architecture Design — Formal source-aligned GAT architecture: system context, package responsibilities, durable authority 
+- **SRC-GAT-BASIC-DESIGN** — GAT Basic Design — Formal source-aligned GAT basic design: feature catalog, actors, inputs and outputs, coordination fl
 - **SRC-GAT-CONTROL-PLANE-DESIGN-V39** — GAT Control Plane Stabilization Design v39 — Advisory inactive design that stabilizes the procedural control plane before another WBS build. It p
+- **SRC-GAT-DESIGN-COLLECTION** — GAT design collection and Agent Team reference hub — GAT reference document GAT design collection and Agent Team reference hub; supports formal design na
 - **SRC-GAT-DESIGN-REFERENCE** — GAT Design and Feature Reference — Maintained GAT navigation and behavior reference for the opt-in durable multi-agent Team on the pinn
+- **SRC-GAT-DESIGN-SOURCE-MAP** — GAT Detail Design to Source Code Map — Maps GAT detail design to inspected source symbols and existing tests across current, standalone and
+- **SRC-GAT-DETAIL-DESIGN** — GAT Detail Design — Formal source-aligned GAT detail design: 18 DD contracts covering data, algorithms, ordering, errors
+- **SRC-GAT-DURABLE-INTEGRATION-DESIGN** — GAT Durable Agent integration design reference — GAT reference document GAT Durable Agent integration design reference; supports formal design naviga
 - **SRC-GAT-INSTALLER-COMPATIBILITY** — GAT Installer Version and Compatibility Refactor Specification — Reviewed GAT installer refactor specification that separates advisory source drift from explicit GAT
 - **SRC-GAT-MCP-MEMORY-PROPOSAL** — GAT and MCP Reference Memory Architecture Proposal — Inactive Conservative MVP proposal for GAT on DeepSeek Harness. It defines governed team coordinatio
+- **SRC-GAT-MEMBER-BINDING-FREEZE** — GAT member binding contract freeze — GAT reference document GAT member binding contract freeze; supports formal design navigation, missio
+- **SRC-GAT-MISSION-DESIGN-DELTAS** — GAT mission design deltas across GAT and Durable Agent — GAT reference document GAT mission design deltas across GAT and Durable Agent; supports formal desig
 - **SRC-GAT-THREAT-MODEL** — GAT Conservative MVP Threat Model — Pre-code security gate for the GAT Conservative MVP. It defines fail-closed tenant, scope, workspace
 - **SRC-GAT-V1-GOLDEN-DESIGN** — Governed Agent Team V1 Golden Design — Proposed V1 design for an opt-in DeepSeek Harness coding team with a HUMAN-approved WBS, dependency-
 
@@ -116,6 +124,74 @@ Registered sources: **160** (+36 chunked section metas). Đây là PROJECTION c�
 - **SRC-PRESET-preset-knowledge-skills-aip-mailconfirm-md-ca04** — preset_knowledge / skills/AIP_MailConfirm.md — Paste nội dung yêu cầu (tiếng Việt) vào chat cùng với file này. AI sẽ chạy theo flow bên dưới — hỏi 
 - **SRC-PRESET-preset-knowledge-task-to-aip-mapping-md-24f2** — preset_knowledge / TASK_TO_AIP_MAPPING.md — Mapping table from task type to AIP type + Task Lens + main output (e.g., design new spec->EXEC, rev
 
+## source_code (38)
+- **SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-CONSUMER-TS** — External Durable Agent source — durable-agent-plugin/src/consumer.ts — External Durable Agent source — durable-agent-plugin/src/consumer.ts. Implementation/configuration m
+- **SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-LOCAL-PROVIDER-TS** — External Durable Agent source — durable-agent-plugin/src/local-provider.ts — External Durable Agent source — durable-agent-plugin/src/local-provider.ts. Implementation/configura
+- **SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-SERVICE-TS** — External Durable Agent source — durable-agent-plugin/src/service.ts — External Durable Agent source — durable-agent-plugin/src/service.ts. Implementation/configuration ma
+- **SRC-GAT-CODE-INSTALLER-COMPATIBILITY-MJS** — GAT source — installer/compatibility.mjs — GAT source — installer/compatibility.mjs. Implementation/configuration mapped by DD-11; primary symb
+- **SRC-GAT-CODE-INSTALLER-INDEX-MJS** — GAT source — installer/index.mjs — GAT source — installer/index.mjs. Implementation/configuration mapped by DD-11; primary symbols: val
+- **SRC-GAT-CODE-INSTALLER-VERIFY-MJS** — GAT source — installer/verify.mjs — GAT source — installer/verify.mjs. Implementation/configuration mapped by DD-11.
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-ACTIVITY-TS** — GAT source — packages/core/src/activity.ts — GAT source — packages/core/src/activity.ts. Implementation/configuration mapped by DD-08; primary sy
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-APPROVED-PLAN-IMPORT-TS** — GAT source — packages/core/src/approved-plan-import.ts — GAT source — packages/core/src/approved-plan-import.ts. Implementation/configuration mapped by DD-05
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS** — GAT source — packages/core/src/index.ts — GAT source — packages/core/src/index.ts. Implementation/configuration mapped by DD-01, DD-05, DD-06,
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-JOURNAL-TS** — GAT source — packages/core/src/journal.ts — GAT source — packages/core/src/journal.ts. Implementation/configuration mapped by DD-03; primary sym
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-LIFECYCLE-TS** — GAT source — packages/core/src/lifecycle.ts — GAT source — packages/core/src/lifecycle.ts. Implementation/configuration mapped by DD-08; primary s
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS** — GAT source — packages/core/src/mailbox.ts — GAT source — packages/core/src/mailbox.ts. Implementation/configuration mapped by DD-07; primary sym
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-BOARD-TS** — GAT source — packages/core/src/mission-board.ts — GAT source — packages/core/src/mission-board.ts. Implementation/configuration mapped by DD-06; prima
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-PLAN-TS** — GAT source — packages/core/src/mission-plan.ts — GAT source — packages/core/src/mission-plan.ts. Implementation/configuration mapped by DD-06; primar
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-PERSISTED-TS** — GAT source — packages/core/src/persisted.ts — GAT source — packages/core/src/persisted.ts. Implementation/configuration mapped by DD-03; primary s
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS** — GAT source — packages/core/src/projection.ts — GAT source — packages/core/src/projection.ts. Implementation/configuration mapped by DD-03; primary 
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS** — GAT source — packages/core/src/roster.ts — GAT source — packages/core/src/roster.ts. Implementation/configuration mapped by DD-02, DD-08; prima
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-SESSION-MESSAGE-TS** — GAT source — packages/core/src/session-message.ts — GAT source — packages/core/src/session-message.ts. Implementation/configuration mapped by DD-07; pri
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS** — GAT source — packages/core/src/task-board.ts — GAT source — packages/core/src/task-board.ts. Implementation/configuration mapped by DD-04, DD-05; p
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-GRAPH-TS** — GAT source — packages/core/src/task-graph.ts — GAT source — packages/core/src/task-graph.ts. Implementation/configuration mapped by DD-04; primary 
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS** — GAT source — packages/core/src/types.ts — GAT source — packages/core/src/types.ts. Implementation/configuration mapped by DD-04, DD-06; primar
+- **SRC-GAT-CODE-PACKAGES-CORE-SRC-WORK-STATE-TS** — GAT source — packages/core/src/work-state.ts — GAT source — packages/core/src/work-state.ts. Implementation/configuration mapped by DD-08; primary 
+- **SRC-GAT-CODE-PACKAGES-GAT-SRC-ADAPTER-INDEX-MJS** — Standalone Conservative MVP source — packages/gat/src/adapter/index.mjs — Standalone Conservative MVP source — packages/gat/src/adapter/index.mjs. Implementation/configuratio
+- **SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-CLI-MJS** — Standalone Conservative MVP source — packages/gat/src/conformance/cli.mjs — Standalone Conservative MVP source — packages/gat/src/conformance/cli.mjs. Implementation/configurat
+- **SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-INDEX-MJS** — Standalone Conservative MVP source — packages/gat/src/conformance/index.mjs — Standalone Conservative MVP source — packages/gat/src/conformance/index.mjs. Implementation/configur
+- **SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-RUNTIME-MJS** — Standalone Conservative MVP source — packages/gat/src/conformance/runtime.mjs — Standalone Conservative MVP source — packages/gat/src/conformance/runtime.mjs. Implementation/config
+- **SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-SCENARIO-MJS** — Standalone Conservative MVP source — packages/gat/src/conformance/scenario.mjs — Standalone Conservative MVP source — packages/gat/src/conformance/scenario.mjs. Implementation/confi
+- **SRC-GAT-CODE-PACKAGES-GAT-SRC-GOVERNANCE-INDEX-MJS** — Standalone Conservative MVP source — packages/gat/src/governance/index.mjs — Standalone Conservative MVP source — packages/gat/src/governance/index.mjs. Implementation/configura
+- **SRC-GAT-CODE-PACKAGES-GAT-SRC-INDEX-MJS** — Standalone Conservative MVP source — packages/gat/src/index.mjs — Standalone Conservative MVP source — packages/gat/src/index.mjs. Implementation/configuration mapped
+- **SRC-GAT-CODE-PACKAGES-GAT-SRC-MEMORY-INDEX-MJS** — Standalone Conservative MVP source — packages/gat/src/memory/index.mjs — Standalone Conservative MVP source — packages/gat/src/memory/index.mjs. Implementation/configuration
+- **SRC-GAT-CODE-PACKAGES-GAT-SRC-POLICY-INDEX-MJS** — Standalone Conservative MVP source — packages/gat/src/policy/index.mjs — Standalone Conservative MVP source — packages/gat/src/policy/index.mjs. Implementation/configuration
+- **SRC-GAT-CODE-PACKAGES-PROFILE-CORDIS-PATCH-YML** — GAT source — packages/profile/cordis.patch.yml — GAT source — packages/profile/cordis.patch.yml. Implementation/configuration mapped by DD-11.
+- **SRC-GAT-CODE-PACKAGES-TOOLS-SRC-INDEX-TS** — GAT source — packages/tools/src/index.ts — GAT source — packages/tools/src/index.ts. Implementation/configuration mapped by DD-01, DD-09; prima
+- **SRC-GAT-CODE-PACKAGES-TOOLS-SRC-TEAM-CONFIG-TS** — GAT source — packages/tools/src/team-config.ts — GAT source — packages/tools/src/team-config.ts. Implementation/configuration mapped by DD-01; primar
+- **SRC-GAT-CODE-PACKAGES-WEB-PROFILE-CORDIS-PATCH-YML** — GAT source — packages/web-profile/cordis.patch.yml — GAT source — packages/web-profile/cordis.patch.yml. Implementation/configuration mapped by DD-11.
+- **SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-INDEX-TS** — GAT source — packages/web/src/client/index.ts — GAT source — packages/web/src/client/index.ts. Implementation/configuration mapped by DD-10; primary
+- **SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-MOUNT-TS** — GAT source — packages/web/src/client/mount.ts — GAT source — packages/web/src/client/mount.ts. Implementation/configuration mapped by DD-10; primary
+- **SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-TEAMACTION-TSX** — GAT source — packages/web/src/client/TeamAction.tsx — GAT source — packages/web/src/client/TeamAction.tsx. Implementation/configuration mapped by DD-10; p
+
+## test_spec (26)
+- **SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-COMPOSITION-SPEC-TS** — External Durable Agent tests — durable-agent-plugin/tests/composition.spec.ts — External Durable Agent tests — durable-agent-plugin/tests/composition.spec.ts. Existing verification
+- **SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-CONSUMER-SPEC-TS** — External Durable Agent tests — durable-agent-plugin/tests/consumer.spec.ts — External Durable Agent tests — durable-agent-plugin/tests/consumer.spec.ts. Existing verification fi
+- **SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-LOCAL-PROVIDER-SPEC-TS** — External Durable Agent tests — durable-agent-plugin/tests/local-provider.spec.ts — External Durable Agent tests — durable-agent-plugin/tests/local-provider.spec.ts. Existing verificat
+- **SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-MEMORY-LIFECYCLE-SPEC-TS** — External Durable Agent tests — durable-agent-plugin/tests/memory-lifecycle.spec.ts — External Durable Agent tests — durable-agent-plugin/tests/memory-lifecycle.spec.ts. Existing verific
+- **SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-SERVICE-CONTRACTS-SPEC-TS** — External Durable Agent tests — durable-agent-plugin/tests/service-contracts.spec.ts — External Durable Agent tests — durable-agent-plugin/tests/service-contracts.spec.ts. Existing verifi
+- **SRC-GAT-CODE-INSTALLER-TESTS-CLI-TEST-MJS** — GAT tests — installer/tests/cli.test.mjs — GAT tests — installer/tests/cli.test.mjs. Existing verification fixtures for DD-11; registration doe
+- **SRC-GAT-CODE-INSTALLER-TESTS-COMPATIBILITY-TEST-MJS** — GAT tests — installer/tests/compatibility.test.mjs — GAT tests — installer/tests/compatibility.test.mjs. Existing verification fixtures for DD-11; regist
+- **SRC-GAT-CODE-INSTALLER-TESTS-VERIFY-PROFILE-TEST-MJS** — GAT tests — installer/tests/verify-profile.test.mjs — GAT tests — installer/tests/verify-profile.test.mjs. Existing verification fixtures for DD-11; regis
+- **SRC-GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS** — GAT tests — packages/core/tests/persistence.spec.ts — GAT tests — packages/core/tests/persistence.spec.ts. Existing verification fixtures for DD-02, DD-03
+- **SRC-GAT-CODE-PACKAGES-CORE-TESTS-PROJECTION-EVENTS-SPEC-TS** — GAT tests — packages/core/tests/projection-events.spec.ts — GAT tests — packages/core/tests/projection-events.spec.ts. Existing verification fixtures for DD-03,
+- **SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS** — GAT tests — packages/core/tests/team.spec.ts — GAT tests — packages/core/tests/team.spec.ts. Existing verification fixtures for DD-01, DD-02, DD-04
+- **SRC-GAT-CODE-PACKAGES-GAT-TESTS-BUILT-PACKAGE-TEST-MJS** — Standalone Conservative MVP tests — packages/gat/tests/built-package.test.mjs — Standalone Conservative MVP tests — packages/gat/tests/built-package.test.mjs. Existing verification
+- **SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-CONTRACT-MATRIX-TEST-MJS** — Standalone Conservative MVP tests — packages/gat/tests/conformance-contract-matrix.test.mjs — Standalone Conservative MVP tests — packages/gat/tests/conformance-contract-matrix.test.mjs. Existin
+- **SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-RUNNER-TEST-MJS** — Standalone Conservative MVP tests — packages/gat/tests/conformance-runner.test.mjs — Standalone Conservative MVP tests — packages/gat/tests/conformance-runner.test.mjs. Existing verific
+- **SRC-GAT-CODE-PACKAGES-GAT-TESTS-GOVERNANCE-TEST-MJS** — Standalone Conservative MVP tests — packages/gat/tests/governance.test.mjs — Standalone Conservative MVP tests — packages/gat/tests/governance.test.mjs. Existing verification fi
+- **SRC-GAT-CODE-PACKAGES-GAT-TESTS-LIFECYCLE-PRIVACY-TEST-MJS** — Standalone Conservative MVP tests — packages/gat/tests/lifecycle-privacy.test.mjs — Standalone Conservative MVP tests — packages/gat/tests/lifecycle-privacy.test.mjs. Existing verifica
+- **SRC-GAT-CODE-PACKAGES-GAT-TESTS-PARTITION-STORE-TEST-MJS** — Standalone Conservative MVP tests — packages/gat/tests/partition-store.test.mjs — Standalone Conservative MVP tests — packages/gat/tests/partition-store.test.mjs. Existing verificati
+- **SRC-GAT-CODE-PACKAGES-GAT-TESTS-POLICY-SELECTOR-TEST-MJS** — Standalone Conservative MVP tests — packages/gat/tests/policy-selector.test.mjs — Standalone Conservative MVP tests — packages/gat/tests/policy-selector.test.mjs. Existing verificati
+- **SRC-GAT-CODE-PACKAGES-GAT-TESTS-TRANSACTION-AUDIT-TEST-MJS** — Standalone Conservative MVP tests — packages/gat/tests/transaction-audit.test.mjs — Standalone Conservative MVP tests — packages/gat/tests/transaction-audit.test.mjs. Existing verifica
+- **SRC-GAT-CODE-PACKAGES-GAT-TESTS-WRAPPER-ADMISSION-TEST-MJS** — Standalone Conservative MVP tests — packages/gat/tests/wrapper-admission.test.mjs — Standalone Conservative MVP tests — packages/gat/tests/wrapper-admission.test.mjs. Existing verifica
+- **SRC-GAT-CODE-PACKAGES-PROFILE-TESTS-PROFILE-SPEC-TS** — GAT tests — packages/profile/tests/profile.spec.ts — GAT tests — packages/profile/tests/profile.spec.ts. Existing verification fixtures for DD-11; regist
+- **SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TEAM-CONFIG-SPEC-TS** — GAT tests — packages/tools/tests/team-config.spec.ts — GAT tests — packages/tools/tests/team-config.spec.ts. Existing verification fixtures for DD-01; regi
+- **SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TOOL-TEAM-SPEC-TS** — GAT tests — packages/tools/tests/tool-team.spec.ts — GAT tests — packages/tools/tests/tool-team.spec.ts. Existing verification fixtures for DD-01, DD-05,
+- **SRC-GAT-CODE-PACKAGES-WEB-PROFILE-TESTS-PROFILE-SPEC-TS** — GAT tests — packages/web-profile/tests/profile.spec.ts — GAT tests — packages/web-profile/tests/profile.spec.ts. Existing verification fixtures for DD-11; re
+- **SRC-GAT-CODE-PACKAGES-WEB-TESTS-BROWSER-PLUGIN-CLIENT-SPEC-TS** — GAT tests — packages/web/tests/browser-plugin.client.spec.ts — GAT tests — packages/web/tests/browser-plugin.client.spec.ts. Existing verification fixtures for DD-
+- **SRC-GAT-CODE-PACKAGES-WEB-TESTS-TEAM-ACTION-CLIENT-SPEC-TSX** — GAT tests — packages/web/tests/team-action.client.spec.tsx — GAT tests — packages/web/tests/team-action.client.spec.tsx. Existing verification fixtures for DD-10
+
 ## wiki_guideline (50)
 - **SRC-WIKIGUIDE-wiki-guidelines-appendix-deprecated-transition-deprecated-transition-note-md-5c53** — wiki_guidelines / appendix/deprecated_transition/DEPRECATED_TRANSITION_NOTE.md — The following older docs are preserved only as transition references:
 - **SRC-WIKIGUIDE-wiki-guidelines-appendix-deprecated-transition-task-lens-and-wiki-knowledge-profile-boundary-note-md-afd6** — wiki_guidelines / appendix/deprecated_transition/TASK_LENS_AND_WIKI_KNOWLEDGE_PROFILE_BOUNDARY_NOTE.md — This note clarifies the boundary between:
@@ -170,6 +246,6 @@ Registered sources: **160** (+36 chunked section metas). Đây là PROJECTION c�
 
 
 <!-- GENERATED page — do not hand-edit; regenerate via `py .ai-work/tooling/build_wiki_overview.py` (/aiws-wiki build-overview). CR-AIWS-2026-07-010; hand-edit = lint ERROR overview_hand_edit. -->
-<!-- GENERATED-FINGERPRINT: 974061d988b0 -->
-<!-- GENERATED-BODY-HASH: d6b269b8d24c -->
-<!-- GENERATED-AT: 2026-09-26T19:05:34 -->
+<!-- GENERATED-FINGERPRINT: d204bd09cf78 -->
+<!-- GENERATED-BODY-HASH: 90197aed6f95 -->
+<!-- GENERATED-AT: 2026-10-04T08:43:32 -->

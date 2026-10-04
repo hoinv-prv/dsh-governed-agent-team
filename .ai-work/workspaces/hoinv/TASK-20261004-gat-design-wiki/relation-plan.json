@@ -1,0 +1,1682 @@
+[
+  {
+    "from": "SRC-GAT-ARCHITECTURE-DESIGN",
+    "to": "SRC-GAT-BASIC-DESIGN",
+    "role": "downstream_target",
+    "basis": "Architecture responsibilities constrain Basic Design feature ownership and flows.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-BASIC-DESIGN",
+    "to": "SRC-GAT-DETAIL-DESIGN",
+    "role": "downstream_target",
+    "basis": "Basic Design feature IDs map to Detail Design data contracts, algorithms and errors.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "role": "downstream_navigation",
+    "basis": "The mapping locates exact source symbols/tests for DD contracts; does not prove test PASS.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-COLLECTION",
+    "to": "SRC-GAT-ARCHITECTURE-DESIGN",
+    "role": "downstream_navigation",
+    "basis": "Collection hub directs task-specific reading to this registered design/reference.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-COLLECTION",
+    "to": "SRC-GAT-BASIC-DESIGN",
+    "role": "downstream_navigation",
+    "basis": "Collection hub directs task-specific reading to this registered design/reference.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-COLLECTION",
+    "to": "SRC-GAT-DETAIL-DESIGN",
+    "role": "downstream_navigation",
+    "basis": "Collection hub directs task-specific reading to this registered design/reference.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-COLLECTION",
+    "to": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "role": "downstream_navigation",
+    "basis": "Collection hub directs task-specific reading to this registered design/reference.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-COLLECTION",
+    "to": "SRC-GAT-DURABLE-INTEGRATION-DESIGN",
+    "role": "downstream_navigation",
+    "basis": "Collection hub directs task-specific reading to this registered design/reference.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-COLLECTION",
+    "to": "SRC-GAT-MISSION-DESIGN-DELTAS",
+    "role": "downstream_navigation",
+    "basis": "Collection hub directs task-specific reading to this registered design/reference.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-COLLECTION",
+    "to": "SRC-GAT-MEMBER-BINDING-FREEZE",
+    "role": "downstream_navigation",
+    "basis": "Collection hub directs task-specific reading to this registered design/reference.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-ARCHITECTURE-DESIGN",
+    "to": "SRC-GAT-V1-GOLDEN-DESIGN",
+    "role": "upstream_input",
+    "basis": "Documented WHY/ownership/constraints inform architecture rationale; inspected source wins implemented-behavior conflicts.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-ARCHITECTURE-DESIGN",
+    "to": "SRC-GAT-DESIGN-REFERENCE",
+    "role": "upstream_input",
+    "basis": "Documented WHY/ownership/constraints inform architecture rationale; inspected source wins implemented-behavior conflicts.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-ARCHITECTURE-DESIGN",
+    "to": "SRC-GAT-MCP-MEMORY-PROPOSAL",
+    "role": "upstream_input",
+    "basis": "Documented WHY/ownership/constraints inform architecture rationale; inspected source wins implemented-behavior conflicts.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-ARCHITECTURE-DESIGN",
+    "to": "SRC-GAT-THREAT-MODEL",
+    "role": "upstream_input",
+    "basis": "Documented WHY/ownership/constraints inform architecture rationale; inspected source wins implemented-behavior conflicts.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-ARCHITECTURE-DESIGN",
+    "to": "SRC-GAT-INSTALLER-COMPATIBILITY",
+    "role": "upstream_input",
+    "basis": "Documented WHY/ownership/constraints inform architecture rationale; inspected source wins implemented-behavior conflicts.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-ARCHITECTURE-DESIGN",
+    "to": "SRC-GAT-MEMBER-BINDING-FREEZE",
+    "role": "upstream_input",
+    "basis": "Documented WHY/ownership/constraints inform architecture rationale; inspected source wins implemented-behavior conflicts.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-MEMBER-BINDING-FREEZE",
+    "role": "upstream_input",
+    "basis": "Frozen target-only attachment/authorization contracts explain DD-16/DD-17; no production implementation claimed.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-MISSION-DESIGN-DELTAS",
+    "role": "upstream_input",
+    "basis": "Historical/PoC evidence explains target gaps and current-versus-mission discrepancies.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DURABLE-INTEGRATION-DESIGN",
+    "to": "SRC-GAT-DETAIL-DESIGN",
+    "role": "companion_design",
+    "basis": "Integration reference complements source-aligned DD-15 without authorizing GAT binder adoption.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-MISSION-DESIGN-DELTAS",
+    "to": "SRC-GAT-ARCHITECTURE-DESIGN",
+    "role": "companion_design",
+    "basis": "Mission provenance complements current architecture and retains historical status differences.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-TEAM-CONFIG-TS",
+    "role": "describes",
+    "basis": "DD-01: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-TEAM-CONFIG-TS",
+    "role": "describes",
+    "basis": "DD-01: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-INDEX-TS",
+    "role": "describes",
+    "basis": "DD-01, DD-09: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-INDEX-TS",
+    "role": "describes",
+    "basis": "DD-01, DD-09: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-TEAM-CONFIG-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./team-config.ts in packages/tools/src/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "role": "describes",
+    "basis": "DD-01, DD-05, DD-06, DD-08: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "role": "describes",
+    "basis": "DD-01, DD-05, DD-06, DD-08: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-APPROVED-PLAN-IMPORT-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./approved-plan-import.ts in packages/core/src/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ACTIVITY-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./activity.ts in packages/core/src/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-JOURNAL-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./journal.ts in packages/core/src/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-LIFECYCLE-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./lifecycle.ts in packages/core/src/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./mailbox.ts in packages/core/src/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-BOARD-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./mission-board.ts in packages/core/src/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./projection.ts in packages/core/src/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./roster.ts in packages/core/src/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./task-board.ts in packages/core/src/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-WORK-STATE-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./work-state.ts in packages/core/src/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./types.ts in packages/core/src/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TEAM-CONFIG-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-01: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TEAM-CONFIG-SPEC-TS",
+    "role": "related",
+    "basis": "DD-01: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TEAM-CONFIG-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-TEAM-CONFIG-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/team-config.ts in packages/tools/tests/team-config.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TOOL-TEAM-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-01, DD-05, DD-09: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TOOL-TEAM-SPEC-TS",
+    "role": "related",
+    "basis": "DD-01, DD-05, DD-09: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TOOL-TEAM-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-INDEX-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/index.ts in packages/tools/tests/tool-team.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-01, DD-02, DD-04, DD-05, DD-06, DD-07, DD-08: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS",
+    "role": "related",
+    "basis": "DD-01, DD-02, DD-04, DD-05, DD-06, DD-07, DD-08: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/index.ts in packages/core/tests/team.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-LIFECYCLE-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/lifecycle.ts in packages/core/tests/team.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-APPROVED-PLAN-IMPORT-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/approved-plan-import.ts in packages/core/tests/team.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/projection.ts in packages/core/tests/team.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "role": "describes",
+    "basis": "DD-02, DD-08: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "role": "describes",
+    "basis": "DD-02, DD-08: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-JOURNAL-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./journal.ts in packages/core/src/roster.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-LIFECYCLE-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./lifecycle.ts in packages/core/src/roster.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PERSISTED-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./persisted.ts in packages/core/src/roster.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./projection.ts in packages/core/src/roster.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-SESSION-MESSAGE-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./session-message.ts in packages/core/src/roster.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./types.ts in packages/core/src/roster.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-02, DD-03, DD-07, DD-08: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS",
+    "role": "related",
+    "basis": "DD-02, DD-03, DD-07, DD-08: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/index.ts in packages/core/tests/persistence.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/mailbox.ts in packages/core/tests/persistence.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/projection.ts in packages/core/tests/persistence.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-JOURNAL-TS",
+    "role": "describes",
+    "basis": "DD-03: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-JOURNAL-TS",
+    "role": "describes",
+    "basis": "DD-03: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-JOURNAL-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./projection.ts in packages/core/src/journal.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "role": "describes",
+    "basis": "DD-03: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "role": "describes",
+    "basis": "DD-03: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./types.ts in packages/core/src/projection.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-PLAN-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./mission-plan.ts in packages/core/src/projection.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-GRAPH-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./task-graph.ts in packages/core/src/projection.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./task-board.ts in packages/core/src/projection.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PERSISTED-TS",
+    "role": "describes",
+    "basis": "DD-03: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PERSISTED-TS",
+    "role": "describes",
+    "basis": "DD-03: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PROJECTION-EVENTS-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-03, DD-04, DD-06: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PROJECTION-EVENTS-SPEC-TS",
+    "role": "related",
+    "basis": "DD-03, DD-04, DD-06: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PROJECTION-EVENTS-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/projection.ts in packages/core/tests/projection-events.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PROJECTION-EVENTS-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/task-board.ts in packages/core/tests/projection-events.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PROJECTION-EVENTS-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/types.ts in packages/core/tests/projection-events.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS",
+    "role": "describes",
+    "basis": "DD-04, DD-05: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS",
+    "role": "describes",
+    "basis": "DD-04, DD-05: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./roster.ts in packages/core/src/task-board.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-APPROVED-PLAN-IMPORT-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./approved-plan-import.ts in packages/core/src/task-board.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-JOURNAL-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./journal.ts in packages/core/src/task-board.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./projection.ts in packages/core/src/task-board.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-GRAPH-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./task-graph.ts in packages/core/src/task-board.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./types.ts in packages/core/src/task-board.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-GRAPH-TS",
+    "role": "describes",
+    "basis": "DD-04: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-GRAPH-TS",
+    "role": "describes",
+    "basis": "DD-04: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-GRAPH-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./types.ts in packages/core/src/task-graph.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "describes",
+    "basis": "DD-04, DD-06: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "describes",
+    "basis": "DD-04, DD-06: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-APPROVED-PLAN-IMPORT-TS",
+    "role": "describes",
+    "basis": "DD-05: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-APPROVED-PLAN-IMPORT-TS",
+    "role": "describes",
+    "basis": "DD-05: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-BOARD-TS",
+    "role": "describes",
+    "basis": "DD-06: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-BOARD-TS",
+    "role": "describes",
+    "basis": "DD-06: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-BOARD-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-JOURNAL-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./journal.ts in packages/core/src/mission-board.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-BOARD-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./roster.ts in packages/core/src/mission-board.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-BOARD-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./types.ts in packages/core/src/mission-board.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-BOARD-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-PLAN-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./mission-plan.ts in packages/core/src/mission-board.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-PLAN-TS",
+    "role": "describes",
+    "basis": "DD-06: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-PLAN-TS",
+    "role": "describes",
+    "basis": "DD-06: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-PLAN-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-GRAPH-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./task-graph.ts in packages/core/src/mission-plan.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-PLAN-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./types.ts in packages/core/src/mission-plan.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS",
+    "role": "describes",
+    "basis": "DD-07: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS",
+    "role": "describes",
+    "basis": "DD-07: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-JOURNAL-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./journal.ts in packages/core/src/mailbox.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-LIFECYCLE-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./lifecycle.ts in packages/core/src/mailbox.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PERSISTED-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./persisted.ts in packages/core/src/mailbox.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./roster.ts in packages/core/src/mailbox.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-SESSION-MESSAGE-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./session-message.ts in packages/core/src/mailbox.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./types.ts in packages/core/src/mailbox.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-SESSION-MESSAGE-TS",
+    "role": "describes",
+    "basis": "DD-07: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-SESSION-MESSAGE-TS",
+    "role": "describes",
+    "basis": "DD-07: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-WORK-STATE-TS",
+    "role": "describes",
+    "basis": "DD-08: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-WORK-STATE-TS",
+    "role": "describes",
+    "basis": "DD-08: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-WORK-STATE-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-JOURNAL-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./journal.ts in packages/core/src/work-state.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-WORK-STATE-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./roster.ts in packages/core/src/work-state.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-WORK-STATE-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./types.ts in packages/core/src/work-state.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ACTIVITY-TS",
+    "role": "describes",
+    "basis": "DD-08: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ACTIVITY-TS",
+    "role": "describes",
+    "basis": "DD-08: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ACTIVITY-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./types.ts in packages/core/src/activity.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-LIFECYCLE-TS",
+    "role": "describes",
+    "basis": "DD-08: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-CORE-SRC-LIFECYCLE-TS",
+    "role": "describes",
+    "basis": "DD-08: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-TEAMACTION-TSX",
+    "role": "describes",
+    "basis": "DD-10: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-TEAMACTION-TSX",
+    "role": "describes",
+    "basis": "DD-10: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-MOUNT-TS",
+    "role": "describes",
+    "basis": "DD-10: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-MOUNT-TS",
+    "role": "describes",
+    "basis": "DD-10: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-MOUNT-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-TEAMACTION-TSX",
+    "role": "imports",
+    "basis": "Literal relative import ./TeamAction.tsx in packages/web/src/client/mount.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-INDEX-TS",
+    "role": "describes",
+    "basis": "DD-10: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-INDEX-TS",
+    "role": "describes",
+    "basis": "DD-10: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-MOUNT-TS",
+    "role": "imports",
+    "basis": "Literal relative import ./mount.ts in packages/web/src/client/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-INDEX-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-TEAMACTION-TSX",
+    "role": "imports",
+    "basis": "Literal relative import ./TeamAction.tsx in packages/web/src/client/index.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-TESTS-TEAM-ACTION-CLIENT-SPEC-TSX",
+    "role": "describes",
+    "basis": "DD-10: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-TESTS-TEAM-ACTION-CLIENT-SPEC-TSX",
+    "role": "related",
+    "basis": "DD-10: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-WEB-TESTS-TEAM-ACTION-CLIENT-SPEC-TSX",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-TEAMACTION-TSX",
+    "role": "imports",
+    "basis": "Literal relative import ../src/client/TeamAction.tsx in packages/web/tests/team-action.client.spec.tsx; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-TESTS-BROWSER-PLUGIN-CLIENT-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-10: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-TESTS-BROWSER-PLUGIN-CLIENT-SPEC-TS",
+    "role": "related",
+    "basis": "DD-10: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-WEB-TESTS-BROWSER-PLUGIN-CLIENT-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-TEAMACTION-TSX",
+    "role": "imports",
+    "basis": "Literal relative import ../src/client/TeamAction.tsx in packages/web/tests/browser-plugin.client.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-WEB-TESTS-BROWSER-PLUGIN-CLIENT-SPEC-TS",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-MOUNT-TS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/client/mount.ts in packages/web/tests/browser-plugin.client.spec.ts; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-PROFILE-CORDIS-PATCH-YML",
+    "role": "describes",
+    "basis": "DD-11: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-PROFILE-CORDIS-PATCH-YML",
+    "role": "describes",
+    "basis": "DD-11: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-PROFILE-CORDIS-PATCH-YML",
+    "role": "describes",
+    "basis": "DD-11: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-PROFILE-CORDIS-PATCH-YML",
+    "role": "describes",
+    "basis": "DD-11: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-INSTALLER-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-11: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-INSTALLER-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-11: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-INSTALLER-INDEX-MJS",
+    "to": "SRC-GAT-CODE-INSTALLER-COMPATIBILITY-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ./compatibility.mjs in installer/index.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-INSTALLER-COMPATIBILITY-MJS",
+    "role": "describes",
+    "basis": "DD-11: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-INSTALLER-COMPATIBILITY-MJS",
+    "role": "describes",
+    "basis": "DD-11: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-INSTALLER-VERIFY-MJS",
+    "role": "describes",
+    "basis": "DD-11: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-INSTALLER-VERIFY-MJS",
+    "role": "describes",
+    "basis": "DD-11: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-PROFILE-TESTS-PROFILE-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-11: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-PROFILE-TESTS-PROFILE-SPEC-TS",
+    "role": "related",
+    "basis": "DD-11: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-PROFILE-TESTS-PROFILE-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-11: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-WEB-PROFILE-TESTS-PROFILE-SPEC-TS",
+    "role": "related",
+    "basis": "DD-11: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-INSTALLER-TESTS-CLI-TEST-MJS",
+    "role": "describes",
+    "basis": "DD-11: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-INSTALLER-TESTS-CLI-TEST-MJS",
+    "role": "related",
+    "basis": "DD-11: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-INSTALLER-TESTS-COMPATIBILITY-TEST-MJS",
+    "role": "describes",
+    "basis": "DD-11: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-INSTALLER-TESTS-COMPATIBILITY-TEST-MJS",
+    "role": "related",
+    "basis": "DD-11: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-INSTALLER-TESTS-COMPATIBILITY-TEST-MJS",
+    "to": "SRC-GAT-CODE-INSTALLER-COMPATIBILITY-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../compatibility.mjs in installer/tests/compatibility.test.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-INSTALLER-TESTS-VERIFY-PROFILE-TEST-MJS",
+    "role": "describes",
+    "basis": "DD-11: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-INSTALLER-TESTS-VERIFY-PROFILE-TEST-MJS",
+    "role": "related",
+    "basis": "DD-11: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-GOVERNANCE-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-12: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-GOVERNANCE-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-12: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-MEMORY-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-12: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-MEMORY-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-12: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-GOVERNANCE-TEST-MJS",
+    "role": "describes",
+    "basis": "DD-12: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-GOVERNANCE-TEST-MJS",
+    "role": "related",
+    "basis": "DD-12: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-GOVERNANCE-TEST-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-GOVERNANCE-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/governance/index.mjs in packages/gat/tests/governance.test.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-PARTITION-STORE-TEST-MJS",
+    "role": "describes",
+    "basis": "DD-12: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-PARTITION-STORE-TEST-MJS",
+    "role": "related",
+    "basis": "DD-12: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-PARTITION-STORE-TEST-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-MEMORY-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/memory/index.mjs in packages/gat/tests/partition-store.test.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-TRANSACTION-AUDIT-TEST-MJS",
+    "role": "describes",
+    "basis": "DD-12: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-TRANSACTION-AUDIT-TEST-MJS",
+    "role": "related",
+    "basis": "DD-12: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-TRANSACTION-AUDIT-TEST-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-MEMORY-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/memory/index.mjs in packages/gat/tests/transaction-audit.test.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-LIFECYCLE-PRIVACY-TEST-MJS",
+    "role": "describes",
+    "basis": "DD-12: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-LIFECYCLE-PRIVACY-TEST-MJS",
+    "role": "related",
+    "basis": "DD-12: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-LIFECYCLE-PRIVACY-TEST-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-MEMORY-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/memory/index.mjs in packages/gat/tests/lifecycle-privacy.test.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-POLICY-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-13: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-POLICY-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-13: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-ADAPTER-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-13: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-ADAPTER-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-13: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-POLICY-SELECTOR-TEST-MJS",
+    "role": "describes",
+    "basis": "DD-13: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-POLICY-SELECTOR-TEST-MJS",
+    "role": "related",
+    "basis": "DD-13: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-POLICY-SELECTOR-TEST-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-POLICY-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/policy/index.mjs in packages/gat/tests/policy-selector.test.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-WRAPPER-ADMISSION-TEST-MJS",
+    "role": "describes",
+    "basis": "DD-13: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-WRAPPER-ADMISSION-TEST-MJS",
+    "role": "related",
+    "basis": "DD-13: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-WRAPPER-ADMISSION-TEST-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-ADAPTER-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/adapter/index.mjs in packages/gat/tests/wrapper-admission.test.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-SCENARIO-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-SCENARIO-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-SCENARIO-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-ADAPTER-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../adapter/index.mjs in packages/gat/src/conformance/scenario.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-SCENARIO-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-GOVERNANCE-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../governance/index.mjs in packages/gat/src/conformance/scenario.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-SCENARIO-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../index.mjs in packages/gat/src/conformance/scenario.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-SCENARIO-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-MEMORY-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../memory/index.mjs in packages/gat/src/conformance/scenario.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-SCENARIO-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-POLICY-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../policy/index.mjs in packages/gat/src/conformance/scenario.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-RUNTIME-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-RUNTIME-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-RUNTIME-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ./index.mjs in packages/gat/src/conformance/runtime.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-RUNTIME-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-SCENARIO-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ./scenario.mjs in packages/gat/src/conformance/runtime.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-CLI-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-CLI-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-CLI-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ./index.mjs in packages/gat/src/conformance/cli.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-CLI-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-RUNTIME-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ./runtime.mjs in packages/gat/src/conformance/cli.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected implementation/configuration described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-INDEX-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected implementation/configuration described by the source map; scope=gat. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-RUNNER-TEST-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-RUNNER-TEST-MJS",
+    "role": "related",
+    "basis": "DD-14: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-RUNNER-TEST-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-INDEX-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/conformance/index.mjs in packages/gat/tests/conformance-runner.test.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-RUNNER-TEST-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-RUNTIME-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/conformance/runtime.mjs in packages/gat/tests/conformance-runner.test.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-RUNNER-TEST-MJS",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-CLI-MJS",
+    "role": "imports",
+    "basis": "Literal relative import ../src/conformance/cli.mjs in packages/gat/tests/conformance-runner.test.mjs; file dependency, not an inferred runtime call graph.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-CONTRACT-MATRIX-TEST-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-CONTRACT-MATRIX-TEST-MJS",
+    "role": "related",
+    "basis": "DD-14: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-BUILT-PACKAGE-TEST-MJS",
+    "role": "describes",
+    "basis": "DD-14: inspected verification fixture described by the source map; scope=gat.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-BUILT-PACKAGE-TEST-MJS",
+    "role": "related",
+    "basis": "DD-14: inspected verification fixture described by the source map; scope=gat. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-SERVICE-TS",
+    "role": "describes",
+    "basis": "DD-15: inspected implementation/configuration described by the source map; scope=durable-agent.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-SERVICE-TS",
+    "role": "describes",
+    "basis": "DD-15: inspected implementation/configuration described by the source map; scope=durable-agent. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DURABLE-INTEGRATION-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-SERVICE-TS",
+    "role": "describes",
+    "basis": "DD-15 external service/provider/Consumer or fixture; original sibling checkout is authoritative, no GAT production binder claimed.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-LOCAL-PROVIDER-TS",
+    "role": "describes",
+    "basis": "DD-15: inspected implementation/configuration described by the source map; scope=durable-agent.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-LOCAL-PROVIDER-TS",
+    "role": "describes",
+    "basis": "DD-15: inspected implementation/configuration described by the source map; scope=durable-agent. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DURABLE-INTEGRATION-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-LOCAL-PROVIDER-TS",
+    "role": "describes",
+    "basis": "DD-15 external service/provider/Consumer or fixture; original sibling checkout is authoritative, no GAT production binder claimed.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-CONSUMER-TS",
+    "role": "describes",
+    "basis": "DD-15: inspected implementation/configuration described by the source map; scope=durable-agent.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-CONSUMER-TS",
+    "role": "describes",
+    "basis": "DD-15: inspected implementation/configuration described by the source map; scope=durable-agent. Source code defines implemented behavior.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DURABLE-INTEGRATION-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-CONSUMER-TS",
+    "role": "describes",
+    "basis": "DD-15 external service/provider/Consumer or fixture; original sibling checkout is authoritative, no GAT production binder claimed.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-SERVICE-CONTRACTS-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-15: inspected verification fixture described by the source map; scope=durable-agent.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-SERVICE-CONTRACTS-SPEC-TS",
+    "role": "related",
+    "basis": "DD-15: inspected verification fixture described by the source map; scope=durable-agent. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DURABLE-INTEGRATION-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-SERVICE-CONTRACTS-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-15 external service/provider/Consumer or fixture; original sibling checkout is authoritative, no GAT production binder claimed.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-LOCAL-PROVIDER-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-15: inspected verification fixture described by the source map; scope=durable-agent.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-LOCAL-PROVIDER-SPEC-TS",
+    "role": "related",
+    "basis": "DD-15: inspected verification fixture described by the source map; scope=durable-agent. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DURABLE-INTEGRATION-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-LOCAL-PROVIDER-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-15 external service/provider/Consumer or fixture; original sibling checkout is authoritative, no GAT production binder claimed.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-MEMORY-LIFECYCLE-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-15: inspected verification fixture described by the source map; scope=durable-agent.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-MEMORY-LIFECYCLE-SPEC-TS",
+    "role": "related",
+    "basis": "DD-15: inspected verification fixture described by the source map; scope=durable-agent. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DURABLE-INTEGRATION-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-MEMORY-LIFECYCLE-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-15 external service/provider/Consumer or fixture; original sibling checkout is authoritative, no GAT production binder claimed.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-CONSUMER-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-15: inspected verification fixture described by the source map; scope=durable-agent.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-CONSUMER-SPEC-TS",
+    "role": "related",
+    "basis": "DD-15: inspected verification fixture described by the source map; scope=durable-agent. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DURABLE-INTEGRATION-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-CONSUMER-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-15 external service/provider/Consumer or fixture; original sibling checkout is authoritative, no GAT production binder claimed.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DESIGN-SOURCE-MAP",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-COMPOSITION-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-15: inspected verification fixture described by the source map; scope=durable-agent.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DETAIL-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-COMPOSITION-SPEC-TS",
+    "role": "related",
+    "basis": "DD-15: inspected verification fixture described by the source map; scope=durable-agent. Existing test file only; not a new test execution.",
+    "confidence": "asserted"
+  },
+  {
+    "from": "SRC-GAT-DURABLE-INTEGRATION-DESIGN",
+    "to": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-COMPOSITION-SPEC-TS",
+    "role": "describes",
+    "basis": "DD-15 external service/provider/Consumer or fixture; original sibling checkout is authoritative, no GAT production binder claimed.",
+    "confidence": "asserted"
+  }
+]

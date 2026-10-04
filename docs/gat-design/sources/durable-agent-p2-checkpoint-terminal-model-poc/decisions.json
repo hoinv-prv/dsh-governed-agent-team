@@ -1,0 +1,180 @@
+{
+  "format": "dsh-wbs-decisions/1",
+  "mission_id": "durable-agent-p2-checkpoint-terminal-model-poc",
+  "decisions": [
+    {
+      "id": "decision-execution-r1-001",
+      "kind": "execution",
+      "revision": 1,
+      "plan_sha256": "ed20dbc49d10ec72506a3db2606704c34548ac83feae7a5c6d141a918a33620e",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và chạy P2 (Khuyến nghị)",
+      "source_ref": "ask_user_question answer p2_execution_approval",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/wbs.v1.json",
+          "sha256": "ed20dbc49d10ec72506a3db2606704c34548ac83feae7a5c6d141a918a33620e"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-rebaseline-r2-002",
+      "kind": "execution",
+      "revision": 2,
+      "plan_sha256": "f325b73d349e78b819fbf41ebc67841b66e65465851bcfe3426dacccd8b98220",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Khuyến nghị)",
+      "source_ref": "ask_user_question answer p2_rebaseline_approval_short",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/wbs.v2.json",
+          "sha256": "f325b73d349e78b819fbf41ebc67841b66e65465851bcfe3426dacccd8b98220"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-rebaseline-r3-003",
+      "kind": "execution",
+      "revision": 3,
+      "plan_sha256": "9b25667e45d0e43aa193b130ef09e671342ad89f7f9726e8a49f676ef68ed1fd",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và chạy (Khuyến nghị)",
+      "source_ref": "ask_user_question answer p2_r3_approval",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/wbs.v3.json",
+          "sha256": "9b25667e45d0e43aa193b130ef09e671342ad89f7f9726e8a49f676ef68ed1fd"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-stop-r3-004",
+      "kind": "final",
+      "revision": 3,
+      "plan_sha256": "9b25667e45d0e43aa193b130ef09e671342ad89f7f9726e8a49f676ef68ed1fd",
+      "task_id": "p2_state_oracle",
+      "attempt_id": "p2_state_oracle-a04-r3",
+      "decision": "reject",
+      "verbatim_response": "Dừng P2",
+      "source_ref": "ask_user_question answer p2_r3_disposition",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/evidence/p2_state_oracle/p2_state_oracle-a04-r3/review.json",
+          "sha256": "7be2efcbc337b18f6d8279785a44f62e55e35f28cc7daeb25ea977dac17658d2"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-rebaseline-r4-005",
+      "kind": "execution",
+      "revision": 4,
+      "plan_sha256": "2ae8a0a397c90f09c7cf0ccb6a9c0cceb92aa40970014a28ec513464449b197c",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và chạy (Khuyến nghị)",
+      "source_ref": "ask_user_question answer p2_r4_approval",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/wbs.v4.json",
+          "sha256": "2ae8a0a397c90f09c7cf0ccb6a9c0cceb92aa40970014a28ec513464449b197c"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-rebaseline-r34-006",
+      "kind": "execution",
+      "revision": 34,
+      "plan_sha256": "2ab340021fbbef95f354d34417a0eee0c4c4dd83fa20573405f43681fac4ee47",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Tôi duyệt. Nhưng hãy cho tôi biết lý do cần tôi duyệt là gì?",
+      "source_ref": "custom response to p2_r34_approval in current trusted Session context",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/wbs.v34.json",
+          "sha256": "2ab340021fbbef95f354d34417a0eee0c4c4dd83fa20573405f43681fac4ee47"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-rebaseline-r35-007",
+      "kind": "execution",
+      "revision": 35,
+      "plan_sha256": "2d65b92fe7aa4d65699abed73373a86ccad0a1c2fa495e41299f8af115e80fa1",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt và chạy (Khuyến nghị)",
+      "source_ref": "ask_user_question answer p2_r35_approval",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/wbs.v35.json",
+          "sha256": "2d65b92fe7aa4d65699abed73373a86ccad0a1c2fa495e41299f8af115e80fa1"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-rebaseline-r36-008",
+      "kind": "execution",
+      "revision": 36,
+      "plan_sha256": "8b9fba4125348be85d9bbaaa94e54f68f069dafc5c1757e44f17059586bb8fba",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt và chạy (Khuyến nghị)",
+      "source_ref": "ask_user_question answer approve-r36",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/wbs.v36.json",
+          "sha256": "8b9fba4125348be85d9bbaaa94e54f68f069dafc5c1757e44f17059586bb8fba"
+        },
+        {
+          "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/wbs-r36-review.md",
+          "sha256": "9b194242a886cbe4e2b8f17c59342aee239716a2dba1790a88692e5dbb434cce"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-final-p2-r36-009",
+      "kind": "final_acceptance",
+      "revision": 36,
+      "plan_sha256": "8b9fba4125348be85d9bbaaa94e54f68f069dafc5c1757e44f17059586bb8fba",
+      "task_id": "p2_final",
+      "attempt_id": "p2_final-a01-r36",
+      "decision": "approve",
+      "verbatim_response": "ACCEPT (Khuyến nghị)",
+      "source_ref": "ask_user_question answer p2-final-decision-r36",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/final-report-r31.md",
+          "sha256": "08e8c5a6e3b165ba34f7ad9f93257bfeaeafa31152a5672d7e02daf7f8b143e2"
+        },
+        {
+          "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/learning-candidates-r31.md",
+          "sha256": "aaec1316e817e69f26023816122373bcd11f5c6218512d0e0bdba34c7c30ec12"
+        },
+        {
+          "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/integration-r31/p2-decision-candidate-r31.json",
+          "sha256": "df520179982f2fb9f9e9c7bfbdcc166d5ef14e2d9f8c0c417dda704e4523bd0a"
+        }
+      ],
+      "observed_at": null
+    }
+  ]
+}

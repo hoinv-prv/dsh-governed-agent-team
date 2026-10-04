@@ -1,0 +1,287 @@
+{
+  "format": "dsh-wbs-decisions/1",
+  "mission_id": "durable-agent-plugin-mvp",
+  "decisions": [
+    {
+      "id": "decision-execution-r2-001",
+      "kind": "execution",
+      "revision": 2,
+      "plan_sha256": "511a1e8cf1213923094f857886fd747d4d237053f6eafe88232d38139fe9787a",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "OK, hãy tiến hành mission theo WBS này",
+      "source_ref": "trusted current Session context: user message immediately following presentation of WBS revision 2 and its exact hash",
+      "artifact_hashes": [
+        {"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v2.json", "sha256": "511a1e8cf1213923094f857886fd747d4d237053f6eafe88232d38139fe9787a"},
+        {"path": "AI_Teammate_Durable_Agent_Architecture.md", "sha256": "92d2736ea388b3594a4021e066454f5a23ca41d7fe914f100f262ff278c5ccbb"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-r3-002",
+      "kind": "revision",
+      "revision": 3,
+      "plan_sha256": "4e80b5cf6468336986c99ba0fff70ffbf30565b6020a98abaf368e6812aae874",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve revision 3 và resume (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_revision_3 in the current trusted Session after presentation of revision 3 artifacts and exact hash",
+      "artifact_hashes": [
+        {"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v3.json", "sha256": "4e80b5cf6468336986c99ba0fff70ffbf30565b6020a98abaf368e6812aae874"},
+        {"path": "AI_Teammate_Durable_Agent_Architecture.md", "sha256": "92d2736ea388b3594a4021e066454f5a23ca41d7fe914f100f262ff278c5ccbb"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r4-003",
+      "kind": "execution",
+      "revision": 4,
+      "plan_sha256": "c6b3adaf4c177edd61d107d857537992da570cdf60160e608c3958802ab4dc1a",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Hãy chủ động thực hiện mission hoàn thành wbs này",
+      "source_ref": "trusted current Session context: user message immediately following presentation of WBS revision 4 and its exact hash",
+      "artifact_hashes": [
+        {"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v4.json", "sha256": "c6b3adaf4c177edd61d107d857537992da570cdf60160e608c3958802ab4dc1a"},
+        {"path": "AI_Teammate_Durable_Agent_Architecture.md", "sha256": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r5-004",
+      "kind": "execution",
+      "revision": 5,
+      "plan_sha256": "da8ff25f8d8afb118c4bc29b836bc4b24cfd03e67af70a7211642f7ad5872257",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_revision_5 in the current trusted Session after presentation of canonical revision 5 and exact hash",
+      "artifact_hashes": [
+        {"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v5.json", "sha256": "da8ff25f8d8afb118c4bc29b836bc4b24cfd03e67af70a7211642f7ad5872257"},
+        {"path": "AI_Teammate_Durable_Agent_Architecture.md", "sha256": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r6-005",
+      "kind": "execution",
+      "revision": 6,
+      "plan_sha256": "ff698d302bc47e2de9fdf34599ecefd5eeb94248caa364d08739780e41e1837d",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v6 in the current trusted Session after presentation of corrected canonical revision 6 and exact hash",
+      "artifact_hashes": [
+        {"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v6.json", "sha256": "ff698d302bc47e2de9fdf34599ecefd5eeb94248caa364d08739780e41e1837d"},
+        {"path": "AI_Teammate_Durable_Agent_Architecture.md", "sha256": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b"},
+        {"path": "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md", "sha256": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r7-006",
+      "kind": "execution",
+      "revision": 7,
+      "plan_sha256": "6b87177ce9ceefc616c3205424bec39d1a9f1e413dc259352dd3d06333bc655d",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v7 in the current trusted Session after presentation of independently reviewed canonical revision 7 and exact hash",
+      "artifact_hashes": [
+        {"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v7.json", "sha256": "6b87177ce9ceefc616c3205424bec39d1a9f1e413dc259352dd3d06333bc655d"},
+        {"path": "AI_Teammate_Durable_Agent_Architecture.md", "sha256": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b"},
+        {"path": "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md", "sha256": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r8-007",
+      "kind": "execution",
+      "revision": 8,
+      "plan_sha256": "d76174a864b6f3c0c5004a78a3c37499eda84780ac302bf50cb67925870219e0",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v8 in the current trusted Session after presentation of independently reviewed canonical revision 8 and exact hash",
+      "artifact_hashes": [
+        {"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v8.json", "sha256": "d76174a864b6f3c0c5004a78a3c37499eda84780ac302bf50cb67925870219e0"},
+        {"path": "AI_Teammate_Durable_Agent_Architecture.md", "sha256": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b"},
+        {"path": "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md", "sha256": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-g0-baseline-r8-008",
+      "kind": "gate",
+      "revision": 8,
+      "plan_sha256": "d76174a864b6f3c0c5004a78a3c37499eda84780ac302bf50cb67925870219e0",
+      "task_id": "t01_g0_baseline",
+      "attempt_id": "t01-a02-r8",
+      "decision": "approve",
+      "verbatim_response": "ACCEPT G0 và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer human_g0_acceptance in the current trusted Session after presentation of the exact current 504-line design-baseline-v3.md, refreshed coordinator verification and independent meets_criteria review",
+      "artifact_hashes": [
+        {"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v8.json", "sha256": "d76174a864b6f3c0c5004a78a3c37499eda84780ac302bf50cb67925870219e0"},
+        {"path": "AI_Teammate_Durable_Agent_Architecture.md", "sha256": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b"},
+        {"path": "wbs-runs/durable-agent-plugin-mvp/inputs/skills/context-delegation.SKILL.md", "sha256": "d19885139f8bbee3e9dcc792e903bde672cc575b6066db957214cbb2d40b541b"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r9-009",
+      "kind": "execution",
+      "revision": 9,
+      "plan_sha256": "0f55a592ae78c79dceada8d1ba10275b40ea449d3189fe29ffc6d5058afd951f",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt WBS revision 9 hash 0f55a592ae78c79dceada8d1ba10275b40ea449d3189fe29ffc6d5058afd951f và resume execution.",
+      "source_ref": "direct HUMAN message in current trusted Session after presentation of canonical independently reviewed revision 9",
+      "artifact_hashes": [
+        {"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v9.json", "sha256": "0f55a592ae78c79dceada8d1ba10275b40ea449d3189fe29ffc6d5058afd951f"},
+        {"path": "wbs-runs/durable-agent-plugin-mvp/progress-analysis.md", "sha256": "c49f1ba502a1cc7700a0e3ca531dad14cd1033b553563e2bfcaff76969295a7e"},
+        {"path": "AI_Teammate_Durable_Agent_Architecture.md", "sha256": "5b5cf034dba47f365aa06efb1284d5fc99a86d8fa059b7ff8ab9ae3660394c5b"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r11-010",
+      "kind": "execution",
+      "revision": 11,
+      "plan_sha256": "484f5755bf2d32138b04019473c318f8b988385f6acbf5471fcebdb89c497f73",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v11 in the current trusted Session after canonical validation and independent PASS",
+      "artifact_hashes": [
+        {"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v11.json", "sha256": "484f5755bf2d32138b04019473c318f8b988385f6acbf5471fcebdb89c497f73"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r12-011",
+      "kind": "execution",
+      "revision": 12,
+      "plan_sha256": "712ae3f67a5a383c81b98860b7c6928a6a269be621b763fa7013a40b14423dea",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v12 after canonical validation and two independent PASS reviews",
+      "artifact_hashes": [{"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v12.json", "sha256": "712ae3f67a5a383c81b98860b7c6928a6a269be621b763fa7013a40b14423dea"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r13-012",
+      "kind": "execution",
+      "revision": 13,
+      "plan_sha256": "0539fce4071d8f681c40d6de204ee408b3f529d2562abe6a878d9723634c6e5c",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v13 after canonical validation and two independent PASS reviews",
+      "artifact_hashes": [{"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v13.json", "sha256": "0539fce4071d8f681c40d6de204ee408b3f529d2562abe6a878d9723634c6e5c"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r14-013",
+      "kind": "execution",
+      "revision": 14,
+      "plan_sha256": "2c081ac055d3c488bf5bd61c29297cefcce41115460d7da661896d1fa73ddae4",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v14 after canonical validation and independent PASS",
+      "artifact_hashes": [{"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v14.json", "sha256": "2c081ac055d3c488bf5bd61c29297cefcce41115460d7da661896d1fa73ddae4"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r15-014",
+      "kind": "execution",
+      "revision": 15,
+      "plan_sha256": "7b7c1bda0e939ad2787590ad63cceea06d01103607788c2386c7b1086a878169",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v15 after canonical validation and two independent PASS reviews",
+      "artifact_hashes": [{"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v15.json", "sha256": "7b7c1bda0e939ad2787590ad63cceea06d01103607788c2386c7b1086a878169"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r16-015",
+      "kind": "execution",
+      "revision": 16,
+      "plan_sha256": "c9cc2ddc4c6431640de6e34936290808bf4ceea95e88153a17050284981cefee",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v16; not selected because late fresh review HOLD identified two unclosed acceptance clauses",
+      "artifact_hashes": [{"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v16.json", "sha256": "c9cc2ddc4c6431640de6e34936290808bf4ceea95e88153a17050284981cefee"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r17-016",
+      "kind": "execution",
+      "revision": 17,
+      "plan_sha256": "9dfa7d5ab927d500390c4500749857ee08b9739a1727686b4a818d642c8976f3",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v17 after canonical validation and two independent PASS reviews",
+      "artifact_hashes": [{"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v17.json", "sha256": "9dfa7d5ab927d500390c4500749857ee08b9739a1727686b4a818d642c8976f3"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r18-017",
+      "kind": "execution",
+      "revision": 18,
+      "plan_sha256": "a98304dbab9886491271a5954f938ff4637d64421b3523574526a98990835357",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt final attempt (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v18; not selected because late fresh HOLD identified incomplete explicit DelegationGrant field coverage",
+      "artifact_hashes": [{"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v18.json", "sha256": "a98304dbab9886491271a5954f938ff4637d64421b3523574526a98990835357"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r19-018",
+      "kind": "execution",
+      "revision": 19,
+      "plan_sha256": "18920fc9744225e7166509b73e0566cd076e75600417001d1af5e6441c48bb7b",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt final attempt (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v19 after canonical validation and two independent PASS reviews",
+      "artifact_hashes": [{"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v19.json", "sha256": "18920fc9744225e7166509b73e0566cd076e75600417001d1af5e6441c48bb7b"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r20-019",
+      "kind": "execution",
+      "revision": 20,
+      "plan_sha256": "54c6678a434503231b62e21a239da2763cd1bc96e228ad5351ecab2872a8c839",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục (Recommended)",
+      "source_ref": "ask_user_question answer approve_wbs_v20 after canonical validation and two independent PASS reviews",
+      "artifact_hashes": [{"path": "wbs-runs/durable-agent-plugin-mvp/wbs.v20.json", "sha256": "54c6678a434503231b62e21a239da2763cd1bc96e228ad5351ecab2872a8c839"}],
+      "observed_at": null
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "format": "dsh-wbs-execution/1",
+  "mission_id": "durable-agent-p0-task-contract-plan-poc",
+  "revision": 6,
+  "plan_sha256": "1fce7d02edf2916b52463516e87e2c10a91fc9ad44eacd7f3e014315db49a6c2",
+  "run_state": "complete",
+  "coordinator_ref": "DSH Team session-c82c9dfd-b348-4f0d-9072-d46ef12e543c coordinator lead, goal goal-a171d583-7db4-4702-8f62-7af668afc5aa",
+  "attempts_charged": 11,
+  "active_work": [],
+  "tasks": {
+    "p0_replan_binding_oracle": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "p0_replan_binding_oracle-a01-r6",
+          "revision": 6,
+          "plan_sha256": "1fce7d02edf2916b52463516e87e2c10a91fc9ad44eacd7f3e014315db49a6c2",
+          "hypothesis": "Embedding each exact prior canonical step body alongside id, order and result_hash in execution_snapshot.completed_steps and parent history will make completed-step immutability fully implementable and directly falsifiable without changing the public seam purpose or P0 boundary.",
+          "evidence_dir": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_replan_binding_oracle/p0_replan_binding_oracle-a01-r6",
+          "outcome": "done",
+          "input_hashes": {
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/wbs.v6.json": "1fce7d02edf2916b52463516e87e2c10a91fc9ad44eacd7f3e014315db49a6c2",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/p0-prototype-stop-lookback.md": "bd5b35124ad14775fa1070c9f78e73ddec55955bdab8883f2e93f8d58a5102c7",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_prototype/p0_prototype-a02-r5/review.json": "15b8c6458601fe45f84b173d53920748d6447e61b95e0e12714736eb26da9efa"
+          },
+          "output_hashes": {
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/checklist/closed-invariant-checklist.json": "21ad518175c62d758875bfccd883ca948d133ed403c394414357e92c3a365d32",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/checklist/checklist-notes.md": "2af128fbaadf98713db6b86870e31a7b38aad21cd73867cd12d8d41855dc172d",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/contract-plan-oracle.md": "0c3c979c7f67f1aa8d3bb2503ed9b208d80571e7d7744bf4cdc6b48be8d74a58",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/fixtures/policy-and-replan.json": "1644fa295d25f86a3a745542880720a481d68f75d2714979d148441cf8b9b723",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/fixture-manifest.json": "a1e413b70a9d3cc9eb66b0f005f97e90c2c9a18db0283c6051572a9dbc253acf",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/p0-oracle.test.mjs": "29aec0edbd6e75057636efc06ba7da25608a81b5f9deb0ecb286cfcbfdd3ec3f",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/learning-check.md": "91771ef097106b7d62daac7338d4a67df281a522ceb7160e3005e97db3ae4b40"
+          },
+          "verification_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_replan_binding_oracle/p0_replan_binding_oracle-a01-r6/verification.json",
+          "review_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_replan_binding_oracle/p0_replan_binding_oracle-a01-r6/review.json"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "p0_replan_binding_oracle-a01-r6",
+        "verification_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_replan_binding_oracle/p0_replan_binding_oracle-a01-r6/verification.json",
+        "review_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_replan_binding_oracle/p0_replan_binding_oracle-a01-r6/review.json and team-message-0ec279b3-9731-47e0-ad9f-44951c106af4",
+        "output_hashes": {
+          "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/fixture-manifest.json": "a1e413b70a9d3cc9eb66b0f005f97e90c2c9a18db0283c6051572a9dbc253acf",
+          "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/p0-oracle.test.mjs": "29aec0edbd6e75057636efc06ba7da25608a81b5f9deb0ecb286cfcbfdd3ec3f"
+        }
+      }
+    },
+    "p0_prototype_rebind": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "p0_prototype_rebind-a01-r6",
+          "revision": 6,
+          "plan_sha256": "1fce7d02edf2916b52463516e87e2c10a91fc9ad44eacd7f3e014315db49a6c2",
+          "hypothesis": "Validating each closed completed-history entry against its embedded step_body and the matching proposal step before plan construction will close the sole remaining implementation gap while preserving all behavior that previously passed 134 oracle cases.",
+          "evidence_dir": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_prototype_rebind/p0_prototype_rebind-a01-r6",
+          "outcome": "done",
+          "input_hashes": {
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/fixture-manifest.json": "a1e413b70a9d3cc9eb66b0f005f97e90c2c9a18db0283c6051572a9dbc253acf",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/p0-oracle.test.mjs": "29aec0edbd6e75057636efc06ba7da25608a81b5f9deb0ecb286cfcbfdd3ec3f",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/prototype/contract-plan.mjs": "7621bba85737e01bb27361035ba35db9e9a146f646e45f19a7b42b21617bf30a"
+          },
+          "output_hashes": {
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/prototype/contract-plan.mjs": "36da5767a171232154dcbe993b05695e8621a8a9920f2b428b7752b0ce6f9105",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/prototype/design-notes.md": "aed5dd5afca8f65bbe3995361e6b9dbf5f87132be0337b0922deba6a3a6a60fb",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/prototype/learning-check.md": "cbc4f79da087b67b45a2f94ee0e24770c6c5231b903c93b6b04dd2b210ce174c"
+          },
+          "verification_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_prototype_rebind/p0_prototype_rebind-a01-r6/verification.json",
+          "review_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_prototype_rebind/p0_prototype_rebind-a01-r6/review.json"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "p0_prototype_rebind-a01-r6",
+        "verification_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_prototype_rebind/p0_prototype_rebind-a01-r6/verification.json",
+        "review_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_prototype_rebind/p0_prototype_rebind-a01-r6/review.json and team-message-1883364b-c17f-4164-8b4d-bb4141d51f0d",
+        "output_hashes": {"wbs-runs/durable-agent-p0-task-contract-plan-poc/prototype/contract-plan.mjs":"36da5767a171232154dcbe993b05695e8621a8a9920f2b428b7752b0ce6f9105"}
+      }
+    },
+    "p0_integration": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "p0_integration-a01-r6",
+          "revision": 6,
+          "plan_sha256": "1fce7d02edf2916b52463516e87e2c10a91fc9ad44eacd7f3e014315db49a6c2",
+          "hypothesis": "The independently accepted corrected oracle and prototype, exact 135-case command evidence, and complete 10-attempt/410-minute ledger can support a transparent provisional accept recommendation without overstating production or P2 readiness.",
+          "evidence_dir": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_integration/p0_integration-a01-r6",
+          "outcome": "done",
+          "input_hashes": {
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/wbs.v6.json": "1fce7d02edf2916b52463516e87e2c10a91fc9ad44eacd7f3e014315db49a6c2",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/fixture-manifest.json": "a1e413b70a9d3cc9eb66b0f005f97e90c2c9a18db0283c6051572a9dbc253acf",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/p0-oracle.test.mjs": "29aec0edbd6e75057636efc06ba7da25608a81b5f9deb0ecb286cfcbfdd3ec3f",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/prototype/contract-plan.mjs": "36da5767a171232154dcbe993b05695e8621a8a9920f2b428b7752b0ce6f9105"
+          },
+          "output_hashes": {
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/integration.md": "f482e1988742ff9ae8f5cbfcbf2a06b8ce44d2920ce5a227938ae985c8caa6e7",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/p0-decision-candidate.json": "f0ba6c34db765f4ab674806f22296781f4408412c91d2c3cba2b23ccea531371",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/learning-check-integration.md": "06b2965b8c619c93099581c2380458fc1d574ec987b1c045f227466073f0e64f"
+          },
+          "verification_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_integration/p0_integration-a01-r6/verification.json",
+          "review_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_integration/p0_integration-a01-r6/review.json"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "p0_integration-a01-r6",
+        "verification_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_integration/p0_integration-a01-r6/verification.json",
+        "review_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_integration/p0_integration-a01-r6/review.json and team-message-11d32450-16c0-4310-aace-018711c9a025",
+        "output_hashes": {"wbs-runs/durable-agent-p0-task-contract-plan-poc/p0-decision-candidate.json":"f0ba6c34db765f4ab674806f22296781f4408412c91d2c3cba2b23ccea531371"}
+      }
+    },
+    "p0_final": {
+      "state": "accepted",
+      "attempts": [
+        {
+          "id": "p0_final-a01-r6",
+          "revision": 6,
+          "plan_sha256": "1fce7d02edf2916b52463516e87e2c10a91fc9ad44eacd7f3e014315db49a6c2",
+          "hypothesis": "A concise final report that faithfully binds the independently accepted integration package, full attempt lineage, zero remaining capacity and explicit limitations can support an unambiguous HUMAN accept/defer/reject decision without authorizing downstream work.",
+          "evidence_dir": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_final/p0_final-a01-r6",
+          "outcome": "done",
+          "input_hashes": {
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/wbs.v6.json": "1fce7d02edf2916b52463516e87e2c10a91fc9ad44eacd7f3e014315db49a6c2",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/integration.md": "f482e1988742ff9ae8f5cbfcbf2a06b8ce44d2920ce5a227938ae985c8caa6e7",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/p0-decision-candidate.json": "f0ba6c34db765f4ab674806f22296781f4408412c91d2c3cba2b23ccea531371",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/learning-check-integration.md": "06b2965b8c619c93099581c2380458fc1d574ec987b1c045f227466073f0e64f"
+          },
+          "output_hashes": {
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/final-report.md": "a89d5e663ec240dd350a9c82f487315a7db6d617f126b49d48829cdc309a46e1",
+            "wbs-runs/durable-agent-p0-task-contract-plan-poc/learning-candidates.md": "751ad598738564b3ab13ac5ee6b7cf039b390900d30d8e0e0bd589172a0a9c3b"
+          },
+          "verification_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_final/p0_final-a01-r6/verification.json",
+          "review_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_final/p0_final-a01-r6/review.json"
+        }
+      ],
+      "acceptance": {
+        "attempt_id": "p0_final-a01-r6",
+        "verification_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_final/p0_final-a01-r6/verification.json",
+        "review_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/p0_final/p0_final-a01-r6/review.json and team-message-6114af91-be49-4333-a528-f8945a57cd4c and decision-final-r6-005",
+        "output_hashes": {
+          "wbs-runs/durable-agent-p0-task-contract-plan-poc/final-report.md": "a89d5e663ec240dd350a9c82f487315a7db6d617f126b49d48829cdc309a46e1",
+          "wbs-runs/durable-agent-p0-task-contract-plan-poc/learning-candidates.md": "751ad598738564b3ab13ac5ee6b7cf039b390900d30d8e0e0bd589172a0a9c3b"
+        }
+      }
+    }
+  },
+  "reconciliations": [
+    {
+      "id": "reconciliation-retire-p0-oracle-r3-002",
+      "task_id": "p0_replan_binding_oracle",
+      "reason": "Revision-three p0_oracle exhausted two attempts and remains retired.",
+      "review_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/reconciliation/revision3-carry-forward.json",
+      "decision": "Carry forward both attempts and 90 effort-minutes; never allocate p0_oracle attempt 3."
+    },
+    {
+      "id": "reconciliation-select-r6-004",
+      "task_id": "p0_replan_binding_oracle",
+      "reason": "Revision five stopped after the second prototype attempt; revision six validated, passed independent planning review, and received exact-hash HUMAN execution approval.",
+      "review_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/p0-prototype-stop-lookback.md and decision-execution-r6-004",
+      "decision": "Activate revision six with seven prior attempts/325 minutes charged and exact remaining capacity 4/105."
+    },
+    {
+      "id": "reconciliation-final-r6-005",
+      "task_id": "p0_final",
+      "reason": "All revision-six tasks satisfied verification and independent review; HUMAN explicitly accepted the bounded P0 conclusion.",
+      "review_ref": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/reconciliation/revision6-cumulative-carry-forward.json and decision-final-r6-005",
+      "decision": "Close mission accepted at the cumulative ceiling of 11 attempts/430 effort-minutes with zero remaining capacity and no downstream authority."
+    }
+  ]
+}

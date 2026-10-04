@@ -1,0 +1,533 @@
+{
+  "format": "gat-design-collection/1",
+  "collected_on": "2026-10-04",
+  "source_root": "/home/hoinv/work/dsh-durable-agent",
+  "authority": "reference snapshots; no canonical promotion or execution grant",
+  "files": [
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/gat-durable-agent-integration/final-report.md",
+      "snapshot": "docs/gat-design/sources/gat-durable-agent-integration/final-report.md",
+      "bytes": 7965,
+      "sha256": "a270eefde7e8030fd863c5978f989e89bbb9fadc59d9bd48274285279a4d5cb0"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/gat-durable-agent-integration/integration-report.md",
+      "snapshot": "docs/gat-design/sources/gat-durable-agent-integration/integration-report.md",
+      "bytes": 9022,
+      "sha256": "a81b254b34503dc24f54dd897b4102bdb4f114e325f5edc98d964f3348f4cfc9"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/gat-durable-agent-integration/memory-protocol-qualification.md",
+      "snapshot": "docs/gat-design/sources/gat-durable-agent-integration/memory-protocol-qualification.md",
+      "bytes": 45904,
+      "sha256": "6c56960561e1b74c7c9bb007d1cad5f3267073899df536cc11b697d1c905868a"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/gat-durable-agent-integration/execution.json",
+      "snapshot": "docs/gat-design/sources/gat-durable-agent-integration/execution.json",
+      "bytes": 48152,
+      "sha256": "8ab89b6c52d1597b59fcb903701539166cf7171ac2624c40abf0e1f14eed3091"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/gat-durable-agent-integration/decisions.json",
+      "snapshot": "docs/gat-design/sources/gat-durable-agent-integration/decisions.json",
+      "bytes": 16927,
+      "sha256": "97ea40b2e1e18f83dde5506ba8b2fef5c2639558954838eb24f8969bb5f9a4b7"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-p0-task-contract-plan-poc/final-report.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-p0-task-contract-plan-poc/final-report.md",
+      "bytes": 10309,
+      "sha256": "a89d5e663ec240dd350a9c82f487315a7db6d617f126b49d48829cdc309a46e1"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-p0-task-contract-plan-poc/prototype/design-notes.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-p0-task-contract-plan-poc/prototype/design-notes.md",
+      "bytes": 2750,
+      "sha256": "aed5dd5afca8f65bbe3995361e6b9dbf5f87132be0337b0922deba6a3a6a60fb"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-p0-task-contract-plan-poc/execution.json",
+      "snapshot": "docs/gat-design/sources/durable-agent-p0-task-contract-plan-poc/execution.json",
+      "bytes": 13666,
+      "sha256": "fdcad411f7c9e5114185732a203550303501a27f1703e922bf746ede83534325"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-p0-task-contract-plan-poc/decisions.json",
+      "snapshot": "docs/gat-design/sources/durable-agent-p0-task-contract-plan-poc/decisions.json",
+      "bytes": 4945,
+      "sha256": "e1490eca68698365e48fd02ed338e33c1012cf4542265a1980305db51119c396"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-p1-file-cwd-containment-poc/final-report.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-p1-file-cwd-containment-poc/final-report.md",
+      "bytes": 11189,
+      "sha256": "76a3592ba4f1d74c617121120e96659f9e723cc314fda7716da59b08189f57c8"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/algorithm.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-p1-file-cwd-containment-poc/prototype/algorithm.md",
+      "bytes": 4822,
+      "sha256": "a561d8ee77de6bbb4076e2b39f423c845a24e38790ab244bfddb16f9386aac46"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-p1-file-cwd-containment-poc/execution.json",
+      "snapshot": "docs/gat-design/sources/durable-agent-p1-file-cwd-containment-poc/execution.json",
+      "bytes": 16081,
+      "sha256": "ac3ef2167f741f3afc6f5ace92e773683a24ea3b83af382096cf3604d5d90568"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-p1-file-cwd-containment-poc/decisions.json",
+      "snapshot": "docs/gat-design/sources/durable-agent-p1-file-cwd-containment-poc/decisions.json",
+      "bytes": 2347,
+      "sha256": "83f6bea4e822611f0ca760ebcc110b6915501925e775d5c62ba98a009d3c5dc9"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/final-report-r31.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-p2-checkpoint-terminal-model-poc/final-report-r31.md",
+      "bytes": 3319,
+      "sha256": "08e8c5a6e3b165ba34f7ad9f93257bfeaeafa31152a5672d7e02daf7f8b143e2"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/HANDOFF-FINAL.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-p2-checkpoint-terminal-model-poc/HANDOFF-FINAL.md",
+      "bytes": 14064,
+      "sha256": "24c413d4cc30b7f335ab417698639b61c1b1a504ea31896eafd4735ce56fee03"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/execution.json",
+      "snapshot": "docs/gat-design/sources/durable-agent-p2-checkpoint-terminal-model-poc/execution.json",
+      "bytes": 334947,
+      "sha256": "a474131380a431265df9c57cc1faa08763c0e3d229e5c3eb49e059d19e6a3dc1"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/decisions.json",
+      "snapshot": "docs/gat-design/sources/durable-agent-p2-checkpoint-terminal-model-poc/decisions.json",
+      "bytes": 6896,
+      "sha256": "531cee597af11b65e3f9c15a7374966618beedaeea17ef50aaff0a7a7df711fb"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-bs1-basic-design/CURRENT.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-bs1-basic-design/CURRENT.md",
+      "bytes": 3012,
+      "sha256": "39a0a2cc3be68c773a18c85412bade9e6adebb338f69549d1e67cefd590fa9a6"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-bs1-basic-design/integration-stages/projection-package/attempts/bs1_integration_projection_package-a03-r53/design-baseline.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-bs1-basic-design/integration-stages/projection-package/attempts/bs1_integration_projection_package-a03-r53/design-baseline.md",
+      "bytes": 62155,
+      "sha256": "7066e04b158e164d429172792876abbe696f12a3bb956621ff0817e082931aca"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-bs1-basic-design/integration-stages/projection-package/attempts/bs1_integration_projection_package-a03-r53/design-rationale.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-bs1-basic-design/integration-stages/projection-package/attempts/bs1_integration_projection_package-a03-r53/design-rationale.md",
+      "bytes": 1567,
+      "sha256": "2e8a108b521af3a33c8d17b23ecd653507fd07b2cc925922e2d94e4bb69a80ca"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-bs1-basic-design/execution.json",
+      "snapshot": "docs/gat-design/sources/durable-agent-bs1-basic-design/execution.json",
+      "bytes": 560650,
+      "sha256": "e51dcae477ea9573040c4ab0e303364f9328636fe02cf2733345b4f6955f5b3a"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-bs1-basic-design/decisions.json",
+      "snapshot": "docs/gat-design/sources/durable-agent-bs1-basic-design/decisions.json",
+      "bytes": 65248,
+      "sha256": "190d450587174f8fd9f128c24cc0b6b8b81900b535d0ac1498bea5243cf32191"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-plugin-mvp/design-baseline-v3.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-plugin-mvp/design-baseline-v3.md",
+      "bytes": 49432,
+      "sha256": "f98cf4c22382ae84a9c3c12eee7115a0aabd304c9cef96eb818464449da8129b"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-plugin-mvp/execution-protocol-v1.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-plugin-mvp/execution-protocol-v1.md",
+      "bytes": 12187,
+      "sha256": "3efbaab76bd33dfb3dfa5e2fa910ab03a36d9c29e7490a0c150b99355099c113"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-plugin-mvp/execution.json",
+      "snapshot": "docs/gat-design/sources/durable-agent-plugin-mvp/execution.json",
+      "bytes": 63392,
+      "sha256": "30691c01f8255eb26d6b4186a827720950c5f6ca889d737effb177568bcef5d6"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-plugin-mvp/decisions.json",
+      "snapshot": "docs/gat-design/sources/durable-agent-plugin-mvp/decisions.json",
+      "bytes": 15455,
+      "sha256": "b11018605caca3c7425fc03ea08d0ede59b2a4548fdf5d9024a436d892bc8e19"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-wbs-runner-mvp-sprint1/mission.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-wbs-runner-mvp-sprint1/mission.md",
+      "bytes": 2632,
+      "sha256": "4a8aa0cc9026565721faffc16bf8ac5534221af555c5ad97c365361e35ed659c"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-wbs-runner-mvp-sprint1/store-contract-baseline.v5.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-wbs-runner-mvp-sprint1/store-contract-baseline.v5.md",
+      "bytes": 75458,
+      "sha256": "7ba671865eaa830386fffb6d79b8443e37e1358951a6da882ced4a13d5b1b94f"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-wbs-runner-mvp-sprint1/execution.json",
+      "snapshot": "docs/gat-design/sources/durable-agent-wbs-runner-mvp-sprint1/execution.json",
+      "bytes": 10773,
+      "sha256": "88fa8c0edd3025abfa93819eb8b8478121a4452032b579748f0384302eeaf030"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-wbs-runner-mvp-sprint1/decisions.json",
+      "snapshot": "docs/gat-design/sources/durable-agent-wbs-runner-mvp-sprint1/decisions.json",
+      "bytes": 4539,
+      "sha256": "7a63a925eb3e0e9697b1eb7eb7f5333a521c9d5cdf2e5ad2062fd5008ac65b45"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-wbs-runner-mvp-agile/README.vi.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-wbs-runner-mvp-agile/README.vi.md",
+      "bytes": 2896,
+      "sha256": "8f6e04520df94729acdf79d9c8de7360b0437a74eca701d507d9279ab5042d9c"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-wbs-runner-mvp-agile/goal-scope-baseline-v2.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-wbs-runner-mvp-agile/goal-scope-baseline-v2.md",
+      "bytes": 14837,
+      "sha256": "581d608ceef37da9b2dc1ed2e8a71d5b2e5d98c772d1ec6f14e291ccf0ccf5cb"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-wbs-runner-mvp-agile/memo-agent-team-pm-goals-v1.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-wbs-runner-mvp-agile/memo-agent-team-pm-goals-v1.md",
+      "bytes": 5904,
+      "sha256": "23a45b0e09acdc02101ea1fe51fb447f11ce91a6b0e1e24b8ee29f92b477a543"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-wbs-runner-mvp-agile/memo-durable-agent-team-member-compatibility-v3.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-wbs-runner-mvp-agile/memo-durable-agent-team-member-compatibility-v3.md",
+      "bytes": 6338,
+      "sha256": "d6f5c45abde5239a66ffcfb210870603511c214444d2afd249a17b546888730e"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-wbs-runner-mvp-agile/ke-hoach-sprint-agile-v10.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-wbs-runner-mvp-agile/ke-hoach-sprint-agile-v10.md",
+      "bytes": 15382,
+      "sha256": "f63e24a918b01ddf315c9220c4cc89430dc5ddb7acde7c3c62bea7c1f019731e"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-adapter-spec/mission.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-adapter-spec/mission.md",
+      "bytes": 4462,
+      "sha256": "0ff3af099b37090409b0c5d9811ccd8a70e830c08f515debef9ea09f235dff3c"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-durable-agent/wbs-runs/durable-agent-adapter-spec-lite/mission.md",
+      "snapshot": "docs/gat-design/sources/durable-agent-adapter-spec-lite/mission.md",
+      "bytes": 2257,
+      "sha256": "e0331f30e9432beaa9a3dda0bd3f0e196dea47fa93b397f95a0643ccda074518"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/control-plane-stabilization-design.v39.md",
+      "snapshot": "docs/gat-design/sources/gat-control-plane/control-plane-stabilization-design.v39.md",
+      "bytes": 172367,
+      "sha256": "afe3c09a34eb370f69463b0b2901c22ec2dbf76aa8d6db87912320749ba3686f"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/legacy-agent-team-hotfix/final-report.md",
+      "snapshot": "docs/gat-design/sources/gat-missions/legacy-agent-team-hotfix/final-report.md",
+      "bytes": 5314,
+      "sha256": "13d8181d93430a514bcfb7c73d6bbae6ae2d61b753d029b5a4aad45a4a9c8b90"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/legacy-agent-team-hotfix/integration.md",
+      "snapshot": "docs/gat-design/sources/gat-missions/legacy-agent-team-hotfix/integration.md",
+      "bytes": 7345,
+      "sha256": "5712bdeb722ca1f5d7398802512cbb011a1d5e7161df820f053662eadca403a0"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/legacy-agent-team-hotfix/execution.json",
+      "snapshot": "docs/gat-design/sources/gat-missions/legacy-agent-team-hotfix/execution.json",
+      "bytes": 16830,
+      "sha256": "2fbdd11f05d2dd7a3a9522dd34918535ce5acd82730d6b15b19fe3ccc395997c"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/legacy-agent-team-hotfix/decisions.json",
+      "snapshot": "docs/gat-design/sources/gat-missions/legacy-agent-team-hotfix/decisions.json",
+      "bytes": 6397,
+      "sha256": "26d216b54d614b9ff69cd686cbea44f6203659fc8172012ed5d539c73fcb5d9e"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/mission.md",
+      "snapshot": "docs/gat-design/sources/gat-missions/multi-mission-web-ui/mission.md",
+      "bytes": 4214,
+      "sha256": "831c1ded494806355bf32d31210c75e1ca56255b4d3a749a81ca9da11b81fb37"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/integration-standalone.md",
+      "snapshot": "docs/gat-design/sources/gat-missions/multi-mission-web-ui/integration-standalone.md",
+      "bytes": 2873,
+      "sha256": "1bd060d33c90538ba1a133c2705775c17bb08fc18f86671b6f89ad55a633b4a9"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/runner-architecture-gap.md",
+      "snapshot": "docs/gat-design/sources/gat-missions/multi-mission-web-ui/runner-architecture-gap.md",
+      "bytes": 1616,
+      "sha256": "dc3c07f4de3bb73ef9c31b7b0a76cdcaee86368d0c39122656d96c27d876979c"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/conformance-contract-matrix.md",
+      "snapshot": "docs/gat-design/sources/gat-missions/multi-mission-web-ui/conformance-contract-matrix.md",
+      "bytes": 4368,
+      "sha256": "f91a824de7fd183b2076a79f33d06c5972b9ecaa278416340abc79008de21e60"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/execution.json",
+      "snapshot": "docs/gat-design/sources/gat-missions/multi-mission-web-ui/execution.json",
+      "bytes": 131866,
+      "sha256": "f8ad90422a8c6a9c773bd5000748879046db36929b9ec6ef6badcd5273f1e254"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/wbs-runs/multi-mission-web-ui/decisions.json",
+      "snapshot": "docs/gat-design/sources/gat-missions/multi-mission-web-ui/decisions.json",
+      "bytes": 25788,
+      "sha256": "e2349ef2e70a868186b01e3bacb755a46375d88a5ed6a112e62f8d60957b8c8a"
+    }
+  ],
+  "missions": [
+    {
+      "mission": "gat-durable-agent-integration",
+      "execution": {
+        "revision": 2,
+        "run_state": "complete",
+        "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457"
+      },
+      "final_acceptance": [
+        {
+          "id": "decision-human-accept-mission-017",
+          "kind": "final_acceptance",
+          "decision": "approve",
+          "revision": 2,
+          "artifact_hashes": [
+            {
+              "path": "wbs-runs/gat-durable-agent-integration/final-report.md",
+              "sha256": "a270eefde7e8030fd863c5978f989e89bbb9fadc59d9bd48274285279a4d5cb0"
+            },
+            {
+              "path": "wbs-runs/gat-durable-agent-integration/integration-report.md",
+              "sha256": "a81b254b34503dc24f54dd897b4102bdb4f114e325f5edc98d964f3348f4cfc9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mission": "durable-agent-p0-task-contract-plan-poc",
+      "execution": {
+        "revision": 6,
+        "run_state": "complete",
+        "plan_sha256": "1fce7d02edf2916b52463516e87e2c10a91fc9ad44eacd7f3e014315db49a6c2"
+      },
+      "final_acceptance": [
+        {
+          "id": "decision-final-r6-005",
+          "kind": "acceptance",
+          "decision": "accept",
+          "revision": 6,
+          "artifact_hashes": [
+            {
+              "path": "wbs-runs/durable-agent-p0-task-contract-plan-poc/final-report.md",
+              "sha256": "a89d5e663ec240dd350a9c82f487315a7db6d617f126b49d48829cdc309a46e1"
+            },
+            {
+              "path": "wbs-runs/durable-agent-p0-task-contract-plan-poc/learning-candidates.md",
+              "sha256": "751ad598738564b3ab13ac5ee6b7cf039b390900d30d8e0e0bd589172a0a9c3b"
+            },
+            {
+              "path": "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/fixture-manifest.json",
+              "sha256": "a1e413b70a9d3cc9eb66b0f005f97e90c2c9a18db0283c6051572a9dbc253acf"
+            },
+            {
+              "path": "wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/p0-oracle.test.mjs",
+              "sha256": "29aec0edbd6e75057636efc06ba7da25608a81b5f9deb0ecb286cfcbfdd3ec3f"
+            },
+            {
+              "path": "wbs-runs/durable-agent-p0-task-contract-plan-poc/prototype/contract-plan.mjs",
+              "sha256": "36da5767a171232154dcbe993b05695e8621a8a9920f2b428b7752b0ce6f9105"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mission": "durable-agent-p1-file-cwd-containment-poc",
+      "execution": {
+        "revision": 1,
+        "run_state": "complete",
+        "plan_sha256": "9b7243ea15285e95e7922489113ae7b8069eb3f5893a2e8a81aa9d909921f3de"
+      },
+      "final_acceptance": [
+        {
+          "id": "decision-final-r1-002",
+          "kind": "final_acceptance",
+          "decision": "approve",
+          "revision": 1,
+          "artifact_hashes": [
+            {
+              "path": "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/topology-manifest.json",
+              "sha256": "20de58bf0e3212dbbd9d1a3463698828d421b4b876ac188231a2c62e07c42bc3"
+            },
+            {
+              "path": "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/p1-containment.test.mjs",
+              "sha256": "a9e2406f9993bae5a1dde82900a47230d71faeedafb39a1e3980e3722569d7f9"
+            },
+            {
+              "path": "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/containment.mjs",
+              "sha256": "cb568613dd6d53fd890318b566de1e86ee90f0d12668f04d3ad06c9ec8b6054a"
+            },
+            {
+              "path": "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/algorithm.md",
+              "sha256": "a561d8ee77de6bbb4076e2b39f423c845a24e38790ab244bfddb16f9386aac46"
+            },
+            {
+              "path": "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/environment.json",
+              "sha256": "023ac9c768db6a5e8cdf5d68dcfe9c2e13db28469bab47e0a894291d8c8b3fec"
+            },
+            {
+              "path": "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/ceiling-proposal.json",
+              "sha256": "2d8558fa06fa63ef3d9bff2e9dac00b879511429927e711905893839fc1995bf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mission": "durable-agent-p2-checkpoint-terminal-model-poc",
+      "execution": {
+        "revision": 36,
+        "run_state": "complete",
+        "plan_sha256": "8b9fba4125348be85d9bbaaa94e54f68f069dafc5c1757e44f17059586bb8fba"
+      },
+      "final_acceptance": [
+        {
+          "id": "decision-final-p2-r36-009",
+          "kind": "final_acceptance",
+          "decision": "approve",
+          "revision": 36,
+          "artifact_hashes": [
+            {
+              "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/final-report-r31.md",
+              "sha256": "08e8c5a6e3b165ba34f7ad9f93257bfeaeafa31152a5672d7e02daf7f8b143e2"
+            },
+            {
+              "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/learning-candidates-r31.md",
+              "sha256": "aaec1316e817e69f26023816122373bcd11f5c6218512d0e0bdba34c7c30ec12"
+            },
+            {
+              "path": "wbs-runs/durable-agent-p2-checkpoint-terminal-model-poc/integration-r31/p2-decision-candidate-r31.json",
+              "sha256": "df520179982f2fb9f9e9c7bfbdcc166d5ef14e2d9f8c0c417dda704e4523bd0a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mission": "durable-agent-bs1-basic-design",
+      "execution": {
+        "revision": 60,
+        "run_state": "waiting_for_human",
+        "plan_sha256": "f5b3abadac6e68ff3677470f2f49f4b81dec4552d4d031e70b74944eaa61930a"
+      },
+      "final_acceptance": []
+    },
+    {
+      "mission": "durable-agent-plugin-mvp",
+      "execution": {
+        "revision": 20,
+        "run_state": "paused",
+        "plan_sha256": "54c6678a434503231b62e21a239da2763cd1bc96e228ad5351ecab2872a8c839"
+      },
+      "final_acceptance": []
+    },
+    {
+      "mission": "durable-agent-wbs-runner-mvp-sprint1",
+      "execution": {
+        "revision": 5,
+        "run_state": "cancelled",
+        "plan_sha256": "712487833e9abfc0cb95047aaf9b02d958f8c7e58f84518d88a161ccc0266e44"
+      },
+      "final_acceptance": []
+    },
+    {
+      "mission": "durable-agent-wbs-runner-mvp-agile",
+      "execution": null,
+      "final_acceptance": []
+    },
+    {
+      "mission": "durable-agent-adapter-spec",
+      "execution": null,
+      "final_acceptance": []
+    },
+    {
+      "mission": "durable-agent-adapter-spec-lite",
+      "execution": null,
+      "final_acceptance": []
+    },
+    {
+      "mission": "legacy-agent-team-hotfix",
+      "source_repository": "dsh-governed-agent-team",
+      "execution": {
+        "revision": 9,
+        "run_state": "completed",
+        "plan_sha256": "79ea97523df2124db54b05eb82bdf6ef2de0244543fe71fb121d53dc87848b71"
+      },
+      "final_acceptance": [
+        {
+          "id": "decision-final-001",
+          "kind": "final",
+          "revision": 9,
+          "plan_sha256": "79ea97523df2124db54b05eb82bdf6ef2de0244543fe71fb121d53dc87848b71",
+          "task_id": "final-review",
+          "attempt_id": "attempt-final-review-002",
+          "decision": "hold",
+          "verbatim_response": "Tạm giữ",
+          "source_ref": "ask_user_question:accept-final-hotfix-v9",
+          "artifact_hashes": [
+            {
+              "path": "wbs-runs/legacy-agent-team-hotfix/final-report.md",
+              "sha256": "13d8181d93430a514bcfb7c73d6bbae6ae2d61b753d029b5a4aad45a4a9c8b90"
+            }
+          ],
+          "observed_at": null
+        },
+        {
+          "id": "decision-final-002",
+          "kind": "final",
+          "revision": 9,
+          "plan_sha256": "79ea97523df2124db54b05eb82bdf6ef2de0244543fe71fb121d53dc87848b71",
+          "task_id": "final-review",
+          "attempt_id": "attempt-final-review-002",
+          "decision": "accept",
+          "verbatim_response": "Tôi approve đóng mission này",
+          "source_ref": "chat:user-final-acceptance",
+          "artifact_hashes": [
+            {
+              "path": "wbs-runs/legacy-agent-team-hotfix/final-report.md",
+              "sha256": "13d8181d93430a514bcfb7c73d6bbae6ae2d61b753d029b5a4aad45a4a9c8b90"
+            }
+          ],
+          "observed_at": null
+        }
+      ]
+    },
+    {
+      "mission": "multi-mission-web-ui",
+      "source_repository": "dsh-governed-agent-team",
+      "execution": {
+        "revision": 32,
+        "run_state": "active",
+        "plan_sha256": "e035073bfb1c103602c9cfc350dbc7e087d3e4c2a4856cb968abaea5686f6fb0"
+      },
+      "final_acceptance": []
+    }
+  ]
+}

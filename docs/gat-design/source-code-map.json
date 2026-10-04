@@ -1,0 +1,1011 @@
+{
+  "format": "gat-design-source-map/1",
+  "source_truth": "inspected source code",
+  "inspected_on": "2026-10-04",
+  "rows": [
+    {
+      "detail_id": "DD-01",
+      "basic_id": "BD-01",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/tools/src/team-config.ts",
+          "symbols": [
+            {
+              "symbol": "loadTeamMembers",
+              "line": 125
+            },
+            {
+              "symbol": "normalizeDocument",
+              "line": 70
+            },
+            {
+              "symbol": "normalizeMember",
+              "line": 49
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-TEAM-CONFIG-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/tools/src/index.ts",
+          "symbols": [
+            {
+              "symbol": "apply",
+              "line": 670
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-INDEX-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/index.ts",
+          "symbols": [
+            {
+              "symbol": "enable",
+              "line": 371
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/tools/tests/team-config.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TEAM-CONFIG-SPEC-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/tools/tests/tool-team.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TOOL-TEAM-SPEC-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-02",
+      "basic_id": "BD-02",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/roster.ts",
+          "symbols": [
+            {
+              "symbol": "TeamRoster",
+              "line": 58
+            },
+            {
+              "symbol": "spawnAdmitted",
+              "line": 246
+            },
+            {
+              "symbol": "checkpointInitialPrompt",
+              "line": 342
+            },
+            {
+              "symbol": "reconcileProvisioning",
+              "line": 394
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/persistence.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-03",
+      "basic_id": "BD-03",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/journal.ts",
+          "symbols": [
+            {
+              "symbol": "TeamJournal",
+              "line": 23
+            },
+            {
+              "symbol": "transact",
+              "line": 53
+            },
+            {
+              "symbol": "appendManyAndFlush",
+              "line": 85
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-JOURNAL-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/projection.ts",
+          "symbols": [
+            {
+              "symbol": "teamProjectionDefinition",
+              "line": 475
+            },
+            {
+              "symbol": "applyProjectionEvent",
+              "line": 323
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/persisted.ts",
+          "symbols": [
+            {
+              "symbol": "readPersistedSession",
+              "line": 22
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PERSISTED-TS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/projection-events.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PROJECTION-EVENTS-SPEC-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/persistence.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-04",
+      "basic_id": "BD-04",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/task-board.ts",
+          "symbols": [
+            {
+              "symbol": "TeamTaskBoard",
+              "line": 58
+            },
+            {
+              "symbol": "isStructuralTaskMutation",
+              "line": 43
+            },
+            {
+              "symbol": "scopesOverlap",
+              "line": 27
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/task-graph.ts",
+          "symbols": [
+            {
+              "symbol": "assertTaskGraphCandidate",
+              "line": 26
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-GRAPH-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/types.ts",
+          "symbols": [
+            {
+              "symbol": "TeamTaskSnapshot",
+              "line": 85
+            },
+            {
+              "symbol": "UpdateTeamTaskRequest",
+              "line": 345
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/projection-events.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PROJECTION-EVENTS-SPEC-TS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-05",
+      "basic_id": "BD-05",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/approved-plan-import.ts",
+          "symbols": [
+            {
+              "symbol": "approvedPlanTaskSubjects",
+              "line": 81
+            },
+            {
+              "symbol": "normalizedTaskSubject",
+              "line": 15
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-APPROVED-PLAN-IMPORT-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/task-board.ts",
+          "symbols": [
+            {
+              "symbol": "prepareApprovedPlanImport",
+              "line": 137
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/index.ts",
+          "symbols": [
+            {
+              "symbol": "approvePlan",
+              "line": 256
+            },
+            {
+              "symbol": "importApprovedPlanAndApprove",
+              "line": 300
+            },
+            {
+              "symbol": "remoteImportApprovedPlan",
+              "line": 529
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/tools/tests/tool-team.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TOOL-TEAM-SPEC-TS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-06",
+      "basic_id": "BD-06",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/mission-board.ts",
+          "symbols": [
+            {
+              "symbol": "TeamMissionBoard",
+              "line": 18
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-BOARD-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/mission-plan.ts",
+          "symbols": [
+            {
+              "symbol": "assertInitialMissionTaskPlan",
+              "line": 39
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-PLAN-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/types.ts",
+          "symbols": [
+            {
+              "symbol": "TeamMissionSnapshot",
+              "line": 124
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/index.ts",
+          "symbols": [
+            {
+              "symbol": "remoteCreateMission",
+              "line": 457
+            },
+            {
+              "symbol": "remoteApproveMission",
+              "line": 475
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/projection-events.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PROJECTION-EVENTS-SPEC-TS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-07",
+      "basic_id": "BD-07",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/mailbox.ts",
+          "symbols": [
+            {
+              "symbol": "TeamMailbox",
+              "line": 27
+            },
+            {
+              "symbol": "dispatchOnce",
+              "line": 235
+            },
+            {
+              "symbol": "checkpointDelivered",
+              "line": 273
+            },
+            {
+              "symbol": "markDelivered",
+              "line": 285
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/session-message.ts",
+          "symbols": [
+            {
+              "symbol": "messageAccepted",
+              "line": 25
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-SESSION-MESSAGE-TS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/persistence.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-08",
+      "basic_id": "BD-08",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/work-state.ts",
+          "symbols": [
+            {
+              "symbol": "TeamWorkBoard",
+              "line": 19
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-WORK-STATE-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/activity.ts",
+          "symbols": [
+            {
+              "symbol": "TeamActivity",
+              "line": 11
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ACTIVITY-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/lifecycle.ts",
+          "symbols": [
+            {
+              "symbol": "TeamRuntimeLifecycle",
+              "line": 6
+            },
+            {
+              "symbol": "settleMutations",
+              "line": 78
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-LIFECYCLE-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/roster.ts",
+          "symbols": [
+            {
+              "symbol": "interrupt",
+              "line": 204
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/index.ts",
+          "symbols": [
+            {
+              "symbol": "disposeRuntime",
+              "line": 616
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/persistence.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-09",
+      "basic_id": "BD-09",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/tools/src/index.ts",
+          "symbols": [
+            {
+              "symbol": "readiness",
+              "line": 189
+            },
+            {
+              "symbol": "preflight",
+              "line": 211
+            },
+            {
+              "symbol": "install",
+              "line": 373
+            },
+            {
+              "symbol": "EXTERNAL_SUBAGENT_TOOLS",
+              "line": 71
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-INDEX-TS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/tools/tests/tool-team.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TOOL-TEAM-SPEC-TS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-10",
+      "basic_id": "BD-10",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/web/src/client/TeamAction.tsx",
+          "symbols": [
+            {
+              "symbol": "TeamAction",
+              "line": 102
+            },
+            {
+              "symbol": "refreshGeneration",
+              "line": 114
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-TEAMACTION-TSX"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/web/src/client/mount.ts",
+          "symbols": [
+            {
+              "symbol": "mountAgentTeamUi",
+              "line": 157
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-MOUNT-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/web/src/client/index.ts",
+          "symbols": [
+            {
+              "symbol": "apply",
+              "line": 12
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-INDEX-TS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/web/tests/team-action.client.spec.tsx",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-WEB-TESTS-TEAM-ACTION-CLIENT-SPEC-TSX"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/web/tests/browser-plugin.client.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-WEB-TESTS-BROWSER-PLUGIN-CLIENT-SPEC-TS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-11",
+      "basic_id": "BD-10",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/profile/cordis.patch.yml",
+          "symbols": [],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-PROFILE-CORDIS-PATCH-YML"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/web-profile/cordis.patch.yml",
+          "symbols": [],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-WEB-PROFILE-CORDIS-PATCH-YML"
+        },
+        {
+          "repository": "gat",
+          "path": "installer/index.mjs",
+          "symbols": [
+            {
+              "symbol": "validateInstallTarget",
+              "line": 140
+            },
+            {
+              "symbol": "install",
+              "line": 221
+            },
+            {
+              "symbol": "rollback",
+              "line": 288
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-INSTALLER-INDEX-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "installer/compatibility.mjs",
+          "symbols": [
+            {
+              "symbol": "evaluateDshCompatibility",
+              "line": 48
+            },
+            {
+              "symbol": "inspectSource",
+              "line": 59
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-INSTALLER-COMPATIBILITY-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "installer/verify.mjs",
+          "symbols": [],
+          "wiki_source_id": "SRC-GAT-CODE-INSTALLER-VERIFY-MJS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/profile/tests/profile.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-PROFILE-TESTS-PROFILE-SPEC-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/web-profile/tests/profile.spec.ts",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-WEB-PROFILE-TESTS-PROFILE-SPEC-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "installer/tests/cli.test.mjs",
+          "wiki_source_id": "SRC-GAT-CODE-INSTALLER-TESTS-CLI-TEST-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "installer/tests/compatibility.test.mjs",
+          "wiki_source_id": "SRC-GAT-CODE-INSTALLER-TESTS-COMPATIBILITY-TEST-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "installer/tests/verify-profile.test.mjs",
+          "wiki_source_id": "SRC-GAT-CODE-INSTALLER-TESTS-VERIFY-PROFILE-TEST-MJS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-12",
+      "basic_id": "BD-11",
+      "status": "Standalone",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/governance/index.mjs",
+          "symbols": [
+            {
+              "symbol": "createProjectScope",
+              "line": 39
+            },
+            {
+              "symbol": "evaluateReadiness",
+              "line": 70
+            },
+            {
+              "symbol": "authorizeTeamPlan",
+              "line": 85
+            },
+            {
+              "symbol": "authorizeMissionMapping",
+              "line": 106
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-GOVERNANCE-INDEX-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/memory/index.mjs",
+          "symbols": [
+            {
+              "symbol": "physicalPartitionKey",
+              "line": 37
+            },
+            {
+              "symbol": "PartitionStore",
+              "line": 69
+            },
+            {
+              "symbol": "TransactionalAuditSink",
+              "line": 51
+            },
+            {
+              "symbol": "AnchorRegistry",
+              "line": 43
+            },
+            {
+              "symbol": "LifecycleRegistry",
+              "line": 61
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-MEMORY-INDEX-MJS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/governance.test.mjs",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-GOVERNANCE-TEST-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/partition-store.test.mjs",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-PARTITION-STORE-TEST-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/transaction-audit.test.mjs",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-TRANSACTION-AUDIT-TEST-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/lifecycle-privacy.test.mjs",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-LIFECYCLE-PRIVACY-TEST-MJS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-13",
+      "basic_id": "BD-11",
+      "status": "Standalone",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/policy/index.mjs",
+          "symbols": [
+            {
+              "symbol": "DenyFirstPolicy",
+              "line": 20
+            },
+            {
+              "symbol": "verifySelector",
+              "line": 29
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-POLICY-INDEX-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/adapter/index.mjs",
+          "symbols": [
+            {
+              "symbol": "GatMemoryAdapter",
+              "line": 10
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-ADAPTER-INDEX-MJS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/policy-selector.test.mjs",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-POLICY-SELECTOR-TEST-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/wrapper-admission.test.mjs",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-WRAPPER-ADMISSION-TEST-MJS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-14",
+      "basic_id": "BD-11",
+      "status": "Standalone",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/conformance/index.mjs",
+          "symbols": [
+            {
+              "symbol": "parseArguments",
+              "line": 4
+            },
+            {
+              "symbol": "createVectorDispatcher",
+              "line": 6
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-INDEX-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/conformance/scenario.mjs",
+          "symbols": [
+            {
+              "symbol": "createPackageScenarioHandlers",
+              "line": 9
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-SCENARIO-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/conformance/runtime.mjs",
+          "symbols": [],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-RUNTIME-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "symbols": [],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-CLI-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/index.mjs",
+          "symbols": [
+            {
+              "symbol": "PACKAGE_STATUS",
+              "line": 1
+            }
+          ],
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-INDEX-MJS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/conformance-runner.test.mjs",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-RUNNER-TEST-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/conformance-contract-matrix.test.mjs",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-CONTRACT-MATRIX-TEST-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/built-package.test.mjs",
+          "wiki_source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-BUILT-PACKAGE-TEST-MJS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-15",
+      "basic_id": "BD-12",
+      "status": "External",
+      "sources": [
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/src/service.ts",
+          "symbols": [
+            {
+              "symbol": "DurableAgentService",
+              "line": 147
+            }
+          ],
+          "wiki_source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-SERVICE-TS"
+        },
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/src/local-provider.ts",
+          "symbols": [
+            {
+              "symbol": "LocalDurableAgentProvider",
+              "line": 545
+            },
+            {
+              "symbol": "readAuthority",
+              "line": 452
+            },
+            {
+              "symbol": "bootstrapOrRecover",
+              "line": 482
+            },
+            {
+              "symbol": "publishPointer",
+              "line": 444
+            }
+          ],
+          "wiki_source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-LOCAL-PROVIDER-TS"
+        },
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/src/consumer.ts",
+          "symbols": [
+            {
+              "symbol": "DurableAgentConsumer",
+              "line": 11
+            },
+            {
+              "symbol": "bindDurableAgentConsumer",
+              "line": 41
+            }
+          ],
+          "wiki_source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-CONSUMER-TS"
+        }
+      ],
+      "tests": [
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/tests/service-contracts.spec.ts",
+          "wiki_source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-SERVICE-CONTRACTS-SPEC-TS"
+        },
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/tests/local-provider.spec.ts",
+          "wiki_source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-LOCAL-PROVIDER-SPEC-TS"
+        },
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/tests/memory-lifecycle.spec.ts",
+          "wiki_source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-MEMORY-LIFECYCLE-SPEC-TS"
+        },
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/tests/consumer.spec.ts",
+          "wiki_source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-CONSUMER-SPEC-TS"
+        },
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/tests/composition.spec.ts",
+          "wiki_source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-COMPOSITION-SPEC-TS"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-16",
+      "basic_id": "BD-13",
+      "status": "Target",
+      "sources": [],
+      "tests": [],
+      "implementation_gap": "required attachment binder and two-phase child admission has no mapped GAT production implementation",
+      "design_reference": "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md"
+    },
+    {
+      "detail_id": "DD-17",
+      "basic_id": "BD-14",
+      "status": "Target",
+      "sources": [],
+      "tests": [],
+      "implementation_gap": "host-attested mission lease and nested capability enforcement has no mapped GAT production implementation",
+      "design_reference": "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md"
+    },
+    {
+      "detail_id": "DD-18",
+      "basic_id": "BD-15",
+      "status": "Target",
+      "sources": [],
+      "tests": [],
+      "implementation_gap": "complete contracted member task runner has no mapped GAT production implementation",
+      "design_reference": "docs/gat-design/MISSION_DESIGN_DELTAS.md"
+    }
+  ],
+  "wiki_documents": {
+    "architecture": "SRC-GAT-ARCHITECTURE-DESIGN",
+    "basic": "SRC-GAT-BASIC-DESIGN",
+    "detail": "SRC-GAT-DETAIL-DESIGN",
+    "source_map": "SRC-GAT-DESIGN-SOURCE-MAP"
+  }
+}

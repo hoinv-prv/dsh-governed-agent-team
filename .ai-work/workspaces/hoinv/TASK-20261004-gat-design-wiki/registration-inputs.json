@@ -1,0 +1,2418 @@
+{
+  "entries": [
+    {
+      "source_id": "SRC-GAT-DESIGN-COLLECTION",
+      "artifact": "docs/gat-design/README.md",
+      "title": "GAT design collection and Agent Team reference hub",
+      "source_type": "gat_design_document",
+      "summary": "GAT reference document GAT design collection and Agent Team reference hub; supports formal design navigation, mission provenance or frozen target contracts. Current source defines implemented behavior.",
+      "keys": [
+        "GAT design collection and Agent Team reference hub",
+        "GAT-DESIGN-COLLECTION",
+        "README.md"
+      ],
+      "symbols": [],
+      "detail_ids": [],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "working_reference"
+    },
+    {
+      "source_id": "SRC-GAT-DURABLE-INTEGRATION-DESIGN",
+      "artifact": "docs/gat-design/DURABLE_AGENT_INTEGRATION.md",
+      "title": "GAT Durable Agent integration design reference",
+      "source_type": "gat_design_document",
+      "summary": "GAT reference document GAT Durable Agent integration design reference; supports formal design navigation, mission provenance or frozen target contracts. Current source defines implemented behavior.",
+      "keys": [
+        "GAT Durable Agent integration design reference",
+        "GAT-DURABLE-INTEGRATION-DESIGN",
+        "DURABLE_AGENT_INTEGRATION.md"
+      ],
+      "symbols": [],
+      "detail_ids": [],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "working_reference"
+    },
+    {
+      "source_id": "SRC-GAT-MISSION-DESIGN-DELTAS",
+      "artifact": "docs/gat-design/MISSION_DESIGN_DELTAS.md",
+      "title": "GAT mission design deltas across GAT and Durable Agent",
+      "source_type": "gat_design_document",
+      "summary": "GAT reference document GAT mission design deltas across GAT and Durable Agent; supports formal design navigation, mission provenance or frozen target contracts. Current source defines implemented behavior.",
+      "keys": [
+        "GAT mission design deltas across GAT and Durable Agent",
+        "GAT-MISSION-DESIGN-DELTAS",
+        "MISSION_DESIGN_DELTAS.md"
+      ],
+      "symbols": [],
+      "detail_ids": [],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "working_reference"
+    },
+    {
+      "source_id": "SRC-GAT-MEMBER-BINDING-FREEZE",
+      "artifact": "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md",
+      "title": "GAT member binding contract freeze",
+      "source_type": "gat_design_document",
+      "summary": "GAT reference document GAT member binding contract freeze; supports formal design navigation, mission provenance or frozen target contracts. Current source defines implemented behavior.",
+      "keys": [
+        "GAT member binding contract freeze",
+        "GAT-MEMBER-BINDING-FREEZE",
+        "GAT_MEMBER_BINDING_CONTRACT_FREEZE.md"
+      ],
+      "symbols": [],
+      "detail_ids": [],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "working_reference"
+    },
+    {
+      "source_id": "SRC-GAT-ARCHITECTURE-DESIGN",
+      "artifact": "docs/gat-design/ARCHITECTURE_DESIGN.md",
+      "title": "GAT Architecture Design",
+      "source_type": "gat_design_document",
+      "summary": "Formal source-aligned GAT architecture: system context, package responsibilities, durable authority boundaries, lifecycle decisions and documented rationale; current, standalone, external and target designs are distinguished.",
+      "keys": [
+        "GAT Architecture Design",
+        "GAT-ARCHITECTURE-DESIGN",
+        "ARCHITECTURE_DESIGN.md"
+      ],
+      "symbols": [],
+      "detail_ids": [],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "working_reference"
+    },
+    {
+      "source_id": "SRC-GAT-BASIC-DESIGN",
+      "artifact": "docs/gat-design/BASIC_DESIGN.md",
+      "title": "GAT Basic Design",
+      "source_type": "gat_design_document",
+      "summary": "Formal source-aligned GAT basic design: feature catalog, actors, inputs and outputs, coordination flows and documented goals; target integration features are explicitly separate from current source.",
+      "keys": [
+        "GAT Basic Design",
+        "GAT-BASIC-DESIGN",
+        "BASIC_DESIGN.md"
+      ],
+      "symbols": [],
+      "detail_ids": [],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "working_reference"
+    },
+    {
+      "source_id": "SRC-GAT-DETAIL-DESIGN",
+      "artifact": "docs/gat-design/DETAIL_DESIGN.md",
+      "title": "GAT Detail Design",
+      "source_type": "gat_design_document",
+      "summary": "Formal source-aligned GAT detail design: 18 DD contracts covering data, algorithms, ordering, errors and sourced WHY; current code is truth and DD-16 through DD-18 remain target-only.",
+      "keys": [
+        "GAT Detail Design",
+        "GAT-DETAIL-DESIGN",
+        "DETAIL_DESIGN.md"
+      ],
+      "symbols": [],
+      "detail_ids": [],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "working_reference"
+    },
+    {
+      "source_id": "SRC-GAT-DESIGN-SOURCE-MAP",
+      "artifact": "docs/gat-design/SOURCE_CODE_MAP.md",
+      "title": "GAT Detail Design to Source Code Map",
+      "source_type": "gat_design_document",
+      "summary": "Maps GAT detail design to inspected source symbols and existing tests across current, standalone and external implementations; records production gaps without claiming test execution.",
+      "keys": [
+        "GAT Detail Design to Source Code Map",
+        "GAT-DESIGN-SOURCE-MAP",
+        "SOURCE_CODE_MAP.md"
+      ],
+      "symbols": [],
+      "detail_ids": [],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "working_reference"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-TEAM-CONFIG-TS",
+      "artifact": "packages/tools/src/team-config.ts",
+      "title": "GAT source \u2014 packages/tools/src/team-config.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/tools/src/team-config.ts. Implementation/configuration mapped by DD-01; primary symbols: loadTeamMembers, normalizeDocument, normalizeMember.",
+      "keys": [
+        "GAT packages/tools/src/team-config.ts",
+        "GAT loadTeamMembers",
+        "GAT normalizeDocument",
+        "GAT normalizeMember",
+        "GAT-CODE-PACKAGES-TOOLS-TEAM-CONFIG-TS"
+      ],
+      "symbols": [
+        "loadTeamMembers",
+        "normalizeDocument",
+        "normalizeMember"
+      ],
+      "detail_ids": [
+        "DD-01"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-INDEX-TS",
+      "artifact": "packages/tools/src/index.ts",
+      "title": "GAT source \u2014 packages/tools/src/index.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/tools/src/index.ts. Implementation/configuration mapped by DD-01, DD-09; primary symbols: apply, readiness, preflight, install, EXTERNAL_SUBAGENT_TOOLS.",
+      "keys": [
+        "GAT packages/tools/src/index.ts",
+        "GAT apply",
+        "GAT readiness",
+        "GAT preflight",
+        "GAT install",
+        "GAT EXTERNAL_SUBAGENT_TOOLS",
+        "GAT-CODE-PACKAGES-TOOLS-INDEX-TS"
+      ],
+      "symbols": [
+        "apply",
+        "readiness",
+        "preflight",
+        "install",
+        "EXTERNAL_SUBAGENT_TOOLS"
+      ],
+      "detail_ids": [
+        "DD-01",
+        "DD-09"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS",
+      "artifact": "packages/core/src/index.ts",
+      "title": "GAT source \u2014 packages/core/src/index.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/index.ts. Implementation/configuration mapped by DD-01, DD-05, DD-06, DD-08; primary symbols: enable, approvePlan, importApprovedPlanAndApprove, remoteImportApprovedPlan, remoteCreateMission, remoteApproveMission, disposeRuntime.",
+      "keys": [
+        "GAT packages/core/src/index.ts",
+        "GAT enable",
+        "GAT approvePlan",
+        "GAT importApprovedPlanAndApprove",
+        "GAT remoteImportApprovedPlan",
+        "GAT remoteCreateMission",
+        "GAT remoteApproveMission",
+        "GAT-CODE-PACKAGES-CORE-INDEX-TS"
+      ],
+      "symbols": [
+        "enable",
+        "approvePlan",
+        "importApprovedPlanAndApprove",
+        "remoteImportApprovedPlan",
+        "remoteCreateMission",
+        "remoteApproveMission",
+        "disposeRuntime"
+      ],
+      "detail_ids": [
+        "DD-01",
+        "DD-05",
+        "DD-06",
+        "DD-08"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TEAM-CONFIG-SPEC-TS",
+      "artifact": "packages/tools/tests/team-config.spec.ts",
+      "title": "GAT tests \u2014 packages/tools/tests/team-config.spec.ts",
+      "source_type": "test_spec",
+      "summary": "GAT tests \u2014 packages/tools/tests/team-config.spec.ts. Existing verification fixtures for DD-01; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/tools/tests/team-config.spec.ts",
+        "GAT-CODE-PACKAGES-TOOLS-TESTS-TEAM-CONFIG-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-01"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-TESTS-TOOL-TEAM-SPEC-TS",
+      "artifact": "packages/tools/tests/tool-team.spec.ts",
+      "title": "GAT tests \u2014 packages/tools/tests/tool-team.spec.ts",
+      "source_type": "test_spec",
+      "summary": "GAT tests \u2014 packages/tools/tests/tool-team.spec.ts. Existing verification fixtures for DD-01, DD-05, DD-09; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/tools/tests/tool-team.spec.ts",
+        "GAT-CODE-PACKAGES-TOOLS-TESTS-TOOL-TEAM-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-01",
+        "DD-05",
+        "DD-09"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS",
+      "artifact": "packages/core/tests/team.spec.ts",
+      "title": "GAT tests \u2014 packages/core/tests/team.spec.ts",
+      "source_type": "test_spec",
+      "summary": "GAT tests \u2014 packages/core/tests/team.spec.ts. Existing verification fixtures for DD-01, DD-02, DD-04, DD-05, DD-06, DD-07, DD-08; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/core/tests/team.spec.ts",
+        "GAT-CODE-PACKAGES-CORE-TESTS-TEAM-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-01",
+        "DD-02",
+        "DD-04",
+        "DD-05",
+        "DD-06",
+        "DD-07",
+        "DD-08"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS",
+      "artifact": "packages/core/src/roster.ts",
+      "title": "GAT source \u2014 packages/core/src/roster.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/roster.ts. Implementation/configuration mapped by DD-02, DD-08; primary symbols: TeamRoster, spawnAdmitted, checkpointInitialPrompt, reconcileProvisioning, interrupt.",
+      "keys": [
+        "GAT packages/core/src/roster.ts",
+        "GAT TeamRoster",
+        "GAT spawnAdmitted",
+        "GAT checkpointInitialPrompt",
+        "GAT reconcileProvisioning",
+        "GAT interrupt",
+        "GAT-CODE-PACKAGES-CORE-ROSTER-TS"
+      ],
+      "symbols": [
+        "TeamRoster",
+        "spawnAdmitted",
+        "checkpointInitialPrompt",
+        "reconcileProvisioning",
+        "interrupt"
+      ],
+      "detail_ids": [
+        "DD-02",
+        "DD-08"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS",
+      "artifact": "packages/core/tests/persistence.spec.ts",
+      "title": "GAT tests \u2014 packages/core/tests/persistence.spec.ts",
+      "source_type": "test_spec",
+      "summary": "GAT tests \u2014 packages/core/tests/persistence.spec.ts. Existing verification fixtures for DD-02, DD-03, DD-07, DD-08; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/core/tests/persistence.spec.ts",
+        "GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-02",
+        "DD-03",
+        "DD-07",
+        "DD-08"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-JOURNAL-TS",
+      "artifact": "packages/core/src/journal.ts",
+      "title": "GAT source \u2014 packages/core/src/journal.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/journal.ts. Implementation/configuration mapped by DD-03; primary symbols: TeamJournal, transact, appendManyAndFlush.",
+      "keys": [
+        "GAT packages/core/src/journal.ts",
+        "GAT TeamJournal",
+        "GAT transact",
+        "GAT appendManyAndFlush",
+        "GAT-CODE-PACKAGES-CORE-JOURNAL-TS"
+      ],
+      "symbols": [
+        "TeamJournal",
+        "transact",
+        "appendManyAndFlush"
+      ],
+      "detail_ids": [
+        "DD-03"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PROJECTION-TS",
+      "artifact": "packages/core/src/projection.ts",
+      "title": "GAT source \u2014 packages/core/src/projection.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/projection.ts. Implementation/configuration mapped by DD-03; primary symbols: teamProjectionDefinition, applyProjectionEvent.",
+      "keys": [
+        "GAT packages/core/src/projection.ts",
+        "GAT teamProjectionDefinition",
+        "GAT applyProjectionEvent",
+        "GAT-CODE-PACKAGES-CORE-PROJECTION-TS"
+      ],
+      "symbols": [
+        "teamProjectionDefinition",
+        "applyProjectionEvent"
+      ],
+      "detail_ids": [
+        "DD-03"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-PERSISTED-TS",
+      "artifact": "packages/core/src/persisted.ts",
+      "title": "GAT source \u2014 packages/core/src/persisted.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/persisted.ts. Implementation/configuration mapped by DD-03; primary symbols: readPersistedSession.",
+      "keys": [
+        "GAT packages/core/src/persisted.ts",
+        "GAT readPersistedSession",
+        "GAT-CODE-PACKAGES-CORE-PERSISTED-TS"
+      ],
+      "symbols": [
+        "readPersistedSession"
+      ],
+      "detail_ids": [
+        "DD-03"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PROJECTION-EVENTS-SPEC-TS",
+      "artifact": "packages/core/tests/projection-events.spec.ts",
+      "title": "GAT tests \u2014 packages/core/tests/projection-events.spec.ts",
+      "source_type": "test_spec",
+      "summary": "GAT tests \u2014 packages/core/tests/projection-events.spec.ts. Existing verification fixtures for DD-03, DD-04, DD-06; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/core/tests/projection-events.spec.ts",
+        "GAT-CODE-PACKAGES-CORE-TESTS-PROJECTION-EVENTS-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-03",
+        "DD-04",
+        "DD-06"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-BOARD-TS",
+      "artifact": "packages/core/src/task-board.ts",
+      "title": "GAT source \u2014 packages/core/src/task-board.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/task-board.ts. Implementation/configuration mapped by DD-04, DD-05; primary symbols: TeamTaskBoard, isStructuralTaskMutation, scopesOverlap, prepareApprovedPlanImport.",
+      "keys": [
+        "GAT packages/core/src/task-board.ts",
+        "GAT TeamTaskBoard",
+        "GAT isStructuralTaskMutation",
+        "GAT scopesOverlap",
+        "GAT prepareApprovedPlanImport",
+        "GAT-CODE-PACKAGES-CORE-TASK-BOARD-TS"
+      ],
+      "symbols": [
+        "TeamTaskBoard",
+        "isStructuralTaskMutation",
+        "scopesOverlap",
+        "prepareApprovedPlanImport"
+      ],
+      "detail_ids": [
+        "DD-04",
+        "DD-05"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TASK-GRAPH-TS",
+      "artifact": "packages/core/src/task-graph.ts",
+      "title": "GAT source \u2014 packages/core/src/task-graph.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/task-graph.ts. Implementation/configuration mapped by DD-04; primary symbols: assertTaskGraphCandidate.",
+      "keys": [
+        "GAT packages/core/src/task-graph.ts",
+        "GAT assertTaskGraphCandidate",
+        "GAT-CODE-PACKAGES-CORE-TASK-GRAPH-TS"
+      ],
+      "symbols": [
+        "assertTaskGraphCandidate"
+      ],
+      "detail_ids": [
+        "DD-04"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-TYPES-TS",
+      "artifact": "packages/core/src/types.ts",
+      "title": "GAT source \u2014 packages/core/src/types.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/types.ts. Implementation/configuration mapped by DD-04, DD-06; primary symbols: TeamTaskSnapshot, UpdateTeamTaskRequest, TeamMissionSnapshot.",
+      "keys": [
+        "GAT packages/core/src/types.ts",
+        "GAT TeamTaskSnapshot",
+        "GAT UpdateTeamTaskRequest",
+        "GAT TeamMissionSnapshot",
+        "GAT-CODE-PACKAGES-CORE-TYPES-TS"
+      ],
+      "symbols": [
+        "TeamTaskSnapshot",
+        "UpdateTeamTaskRequest",
+        "TeamMissionSnapshot"
+      ],
+      "detail_ids": [
+        "DD-04",
+        "DD-06"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-APPROVED-PLAN-IMPORT-TS",
+      "artifact": "packages/core/src/approved-plan-import.ts",
+      "title": "GAT source \u2014 packages/core/src/approved-plan-import.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/approved-plan-import.ts. Implementation/configuration mapped by DD-05; primary symbols: approvedPlanTaskSubjects, normalizedTaskSubject.",
+      "keys": [
+        "GAT packages/core/src/approved-plan-import.ts",
+        "GAT approvedPlanTaskSubjects",
+        "GAT normalizedTaskSubject",
+        "GAT-CODE-PACKAGES-CORE-APPROVED-PLAN-IMPORT-TS"
+      ],
+      "symbols": [
+        "approvedPlanTaskSubjects",
+        "normalizedTaskSubject"
+      ],
+      "detail_ids": [
+        "DD-05"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-BOARD-TS",
+      "artifact": "packages/core/src/mission-board.ts",
+      "title": "GAT source \u2014 packages/core/src/mission-board.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/mission-board.ts. Implementation/configuration mapped by DD-06; primary symbols: TeamMissionBoard.",
+      "keys": [
+        "GAT packages/core/src/mission-board.ts",
+        "GAT TeamMissionBoard",
+        "GAT-CODE-PACKAGES-CORE-MISSION-BOARD-TS"
+      ],
+      "symbols": [
+        "TeamMissionBoard"
+      ],
+      "detail_ids": [
+        "DD-06"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MISSION-PLAN-TS",
+      "artifact": "packages/core/src/mission-plan.ts",
+      "title": "GAT source \u2014 packages/core/src/mission-plan.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/mission-plan.ts. Implementation/configuration mapped by DD-06; primary symbols: assertInitialMissionTaskPlan.",
+      "keys": [
+        "GAT packages/core/src/mission-plan.ts",
+        "GAT assertInitialMissionTaskPlan",
+        "GAT-CODE-PACKAGES-CORE-MISSION-PLAN-TS"
+      ],
+      "symbols": [
+        "assertInitialMissionTaskPlan"
+      ],
+      "detail_ids": [
+        "DD-06"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS",
+      "artifact": "packages/core/src/mailbox.ts",
+      "title": "GAT source \u2014 packages/core/src/mailbox.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/mailbox.ts. Implementation/configuration mapped by DD-07; primary symbols: TeamMailbox, dispatchOnce, checkpointDelivered, markDelivered.",
+      "keys": [
+        "GAT packages/core/src/mailbox.ts",
+        "GAT TeamMailbox",
+        "GAT dispatchOnce",
+        "GAT checkpointDelivered",
+        "GAT markDelivered",
+        "GAT-CODE-PACKAGES-CORE-MAILBOX-TS"
+      ],
+      "symbols": [
+        "TeamMailbox",
+        "dispatchOnce",
+        "checkpointDelivered",
+        "markDelivered"
+      ],
+      "detail_ids": [
+        "DD-07"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-SESSION-MESSAGE-TS",
+      "artifact": "packages/core/src/session-message.ts",
+      "title": "GAT source \u2014 packages/core/src/session-message.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/session-message.ts. Implementation/configuration mapped by DD-07; primary symbols: messageAccepted.",
+      "keys": [
+        "GAT packages/core/src/session-message.ts",
+        "GAT messageAccepted",
+        "GAT-CODE-PACKAGES-CORE-SESSION-MESSAGE-TS"
+      ],
+      "symbols": [
+        "messageAccepted"
+      ],
+      "detail_ids": [
+        "DD-07"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-WORK-STATE-TS",
+      "artifact": "packages/core/src/work-state.ts",
+      "title": "GAT source \u2014 packages/core/src/work-state.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/work-state.ts. Implementation/configuration mapped by DD-08; primary symbols: TeamWorkBoard.",
+      "keys": [
+        "GAT packages/core/src/work-state.ts",
+        "GAT TeamWorkBoard",
+        "GAT-CODE-PACKAGES-CORE-WORK-STATE-TS"
+      ],
+      "symbols": [
+        "TeamWorkBoard"
+      ],
+      "detail_ids": [
+        "DD-08"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ACTIVITY-TS",
+      "artifact": "packages/core/src/activity.ts",
+      "title": "GAT source \u2014 packages/core/src/activity.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/activity.ts. Implementation/configuration mapped by DD-08; primary symbols: TeamActivity.",
+      "keys": [
+        "GAT packages/core/src/activity.ts",
+        "GAT TeamActivity",
+        "GAT-CODE-PACKAGES-CORE-ACTIVITY-TS"
+      ],
+      "symbols": [
+        "TeamActivity"
+      ],
+      "detail_ids": [
+        "DD-08"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-LIFECYCLE-TS",
+      "artifact": "packages/core/src/lifecycle.ts",
+      "title": "GAT source \u2014 packages/core/src/lifecycle.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/core/src/lifecycle.ts. Implementation/configuration mapped by DD-08; primary symbols: TeamRuntimeLifecycle, settleMutations.",
+      "keys": [
+        "GAT packages/core/src/lifecycle.ts",
+        "GAT TeamRuntimeLifecycle",
+        "GAT settleMutations",
+        "GAT-CODE-PACKAGES-CORE-LIFECYCLE-TS"
+      ],
+      "symbols": [
+        "TeamRuntimeLifecycle",
+        "settleMutations"
+      ],
+      "detail_ids": [
+        "DD-08"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-TEAMACTION-TSX",
+      "artifact": "packages/web/src/client/TeamAction.tsx",
+      "title": "GAT source \u2014 packages/web/src/client/TeamAction.tsx",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/web/src/client/TeamAction.tsx. Implementation/configuration mapped by DD-10; primary symbols: TeamAction, refreshGeneration.",
+      "keys": [
+        "GAT packages/web/src/client/TeamAction.tsx",
+        "GAT TeamAction",
+        "GAT refreshGeneration",
+        "GAT-CODE-PACKAGES-WEB-CLIENT-TEAMACTION-TSX"
+      ],
+      "symbols": [
+        "TeamAction",
+        "refreshGeneration"
+      ],
+      "detail_ids": [
+        "DD-10"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-MOUNT-TS",
+      "artifact": "packages/web/src/client/mount.ts",
+      "title": "GAT source \u2014 packages/web/src/client/mount.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/web/src/client/mount.ts. Implementation/configuration mapped by DD-10; primary symbols: mountAgentTeamUi.",
+      "keys": [
+        "GAT packages/web/src/client/mount.ts",
+        "GAT mountAgentTeamUi",
+        "GAT-CODE-PACKAGES-WEB-CLIENT-MOUNT-TS"
+      ],
+      "symbols": [
+        "mountAgentTeamUi"
+      ],
+      "detail_ids": [
+        "DD-10"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-WEB-SRC-CLIENT-INDEX-TS",
+      "artifact": "packages/web/src/client/index.ts",
+      "title": "GAT source \u2014 packages/web/src/client/index.ts",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/web/src/client/index.ts. Implementation/configuration mapped by DD-10; primary symbols: apply.",
+      "keys": [
+        "GAT packages/web/src/client/index.ts",
+        "GAT apply",
+        "GAT-CODE-PACKAGES-WEB-CLIENT-INDEX-TS"
+      ],
+      "symbols": [
+        "apply"
+      ],
+      "detail_ids": [
+        "DD-10"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-WEB-TESTS-TEAM-ACTION-CLIENT-SPEC-TSX",
+      "artifact": "packages/web/tests/team-action.client.spec.tsx",
+      "title": "GAT tests \u2014 packages/web/tests/team-action.client.spec.tsx",
+      "source_type": "test_spec",
+      "summary": "GAT tests \u2014 packages/web/tests/team-action.client.spec.tsx. Existing verification fixtures for DD-10; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/web/tests/team-action.client.spec.tsx",
+        "GAT-CODE-PACKAGES-WEB-TESTS-TEAM-ACTION-CLIENT-SPEC-TSX"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-10"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-WEB-TESTS-BROWSER-PLUGIN-CLIENT-SPEC-TS",
+      "artifact": "packages/web/tests/browser-plugin.client.spec.ts",
+      "title": "GAT tests \u2014 packages/web/tests/browser-plugin.client.spec.ts",
+      "source_type": "test_spec",
+      "summary": "GAT tests \u2014 packages/web/tests/browser-plugin.client.spec.ts. Existing verification fixtures for DD-10; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/web/tests/browser-plugin.client.spec.ts",
+        "GAT-CODE-PACKAGES-WEB-TESTS-BROWSER-PLUGIN-CLIENT-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-10"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-PROFILE-CORDIS-PATCH-YML",
+      "artifact": "packages/profile/cordis.patch.yml",
+      "title": "GAT source \u2014 packages/profile/cordis.patch.yml",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/profile/cordis.patch.yml. Implementation/configuration mapped by DD-11.",
+      "keys": [
+        "GAT packages/profile/cordis.patch.yml",
+        "GAT-CODE-PACKAGES-PROFILE-CORDIS-PATCH-YML"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-11"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-WEB-PROFILE-CORDIS-PATCH-YML",
+      "artifact": "packages/web-profile/cordis.patch.yml",
+      "title": "GAT source \u2014 packages/web-profile/cordis.patch.yml",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 packages/web-profile/cordis.patch.yml. Implementation/configuration mapped by DD-11.",
+      "keys": [
+        "GAT packages/web-profile/cordis.patch.yml",
+        "GAT-CODE-PACKAGES-WEB-PROFILE-CORDIS-PATCH-YML"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-11"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-INSTALLER-INDEX-MJS",
+      "artifact": "installer/index.mjs",
+      "title": "GAT source \u2014 installer/index.mjs",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 installer/index.mjs. Implementation/configuration mapped by DD-11; primary symbols: validateInstallTarget, install, rollback.",
+      "keys": [
+        "GAT installer/index.mjs",
+        "GAT validateInstallTarget",
+        "GAT install",
+        "GAT rollback",
+        "GAT-CODE-INSTALLER-INDEX-MJS"
+      ],
+      "symbols": [
+        "validateInstallTarget",
+        "install",
+        "rollback"
+      ],
+      "detail_ids": [
+        "DD-11"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-INSTALLER-COMPATIBILITY-MJS",
+      "artifact": "installer/compatibility.mjs",
+      "title": "GAT source \u2014 installer/compatibility.mjs",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 installer/compatibility.mjs. Implementation/configuration mapped by DD-11; primary symbols: evaluateDshCompatibility, inspectSource.",
+      "keys": [
+        "GAT installer/compatibility.mjs",
+        "GAT evaluateDshCompatibility",
+        "GAT inspectSource",
+        "GAT-CODE-INSTALLER-COMPATIBILITY-MJS"
+      ],
+      "symbols": [
+        "evaluateDshCompatibility",
+        "inspectSource"
+      ],
+      "detail_ids": [
+        "DD-11"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-INSTALLER-VERIFY-MJS",
+      "artifact": "installer/verify.mjs",
+      "title": "GAT source \u2014 installer/verify.mjs",
+      "source_type": "source_code",
+      "summary": "GAT source \u2014 installer/verify.mjs. Implementation/configuration mapped by DD-11.",
+      "keys": [
+        "GAT installer/verify.mjs",
+        "GAT-CODE-INSTALLER-VERIFY-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-11"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-PROFILE-TESTS-PROFILE-SPEC-TS",
+      "artifact": "packages/profile/tests/profile.spec.ts",
+      "title": "GAT tests \u2014 packages/profile/tests/profile.spec.ts",
+      "source_type": "test_spec",
+      "summary": "GAT tests \u2014 packages/profile/tests/profile.spec.ts. Existing verification fixtures for DD-11; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/profile/tests/profile.spec.ts",
+        "GAT-CODE-PACKAGES-PROFILE-TESTS-PROFILE-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-11"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-WEB-PROFILE-TESTS-PROFILE-SPEC-TS",
+      "artifact": "packages/web-profile/tests/profile.spec.ts",
+      "title": "GAT tests \u2014 packages/web-profile/tests/profile.spec.ts",
+      "source_type": "test_spec",
+      "summary": "GAT tests \u2014 packages/web-profile/tests/profile.spec.ts. Existing verification fixtures for DD-11; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/web-profile/tests/profile.spec.ts",
+        "GAT-CODE-PACKAGES-WEB-PROFILE-TESTS-PROFILE-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-11"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-INSTALLER-TESTS-CLI-TEST-MJS",
+      "artifact": "installer/tests/cli.test.mjs",
+      "title": "GAT tests \u2014 installer/tests/cli.test.mjs",
+      "source_type": "test_spec",
+      "summary": "GAT tests \u2014 installer/tests/cli.test.mjs. Existing verification fixtures for DD-11; registration does not claim a test run.",
+      "keys": [
+        "GAT installer/tests/cli.test.mjs",
+        "GAT-CODE-INSTALLER-TESTS-CLI-TEST-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-11"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-INSTALLER-TESTS-COMPATIBILITY-TEST-MJS",
+      "artifact": "installer/tests/compatibility.test.mjs",
+      "title": "GAT tests \u2014 installer/tests/compatibility.test.mjs",
+      "source_type": "test_spec",
+      "summary": "GAT tests \u2014 installer/tests/compatibility.test.mjs. Existing verification fixtures for DD-11; registration does not claim a test run.",
+      "keys": [
+        "GAT installer/tests/compatibility.test.mjs",
+        "GAT-CODE-INSTALLER-TESTS-COMPATIBILITY-TEST-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-11"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-INSTALLER-TESTS-VERIFY-PROFILE-TEST-MJS",
+      "artifact": "installer/tests/verify-profile.test.mjs",
+      "title": "GAT tests \u2014 installer/tests/verify-profile.test.mjs",
+      "source_type": "test_spec",
+      "summary": "GAT tests \u2014 installer/tests/verify-profile.test.mjs. Existing verification fixtures for DD-11; registration does not claim a test run.",
+      "keys": [
+        "GAT installer/tests/verify-profile.test.mjs",
+        "GAT-CODE-INSTALLER-TESTS-VERIFY-PROFILE-TEST-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-11"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-GOVERNANCE-INDEX-MJS",
+      "artifact": "packages/gat/src/governance/index.mjs",
+      "title": "Standalone Conservative MVP source \u2014 packages/gat/src/governance/index.mjs",
+      "source_type": "source_code",
+      "summary": "Standalone Conservative MVP source \u2014 packages/gat/src/governance/index.mjs. Implementation/configuration mapped by DD-12; primary symbols: createProjectScope, evaluateReadiness, authorizeTeamPlan, authorizeMissionMapping.",
+      "keys": [
+        "GAT packages/gat/src/governance/index.mjs",
+        "GAT createProjectScope",
+        "GAT evaluateReadiness",
+        "GAT authorizeTeamPlan",
+        "GAT authorizeMissionMapping",
+        "GAT-CODE-PACKAGES-GAT-GOVERNANCE-INDEX-MJS"
+      ],
+      "symbols": [
+        "createProjectScope",
+        "evaluateReadiness",
+        "authorizeTeamPlan",
+        "authorizeMissionMapping"
+      ],
+      "detail_ids": [
+        "DD-12"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-MEMORY-INDEX-MJS",
+      "artifact": "packages/gat/src/memory/index.mjs",
+      "title": "Standalone Conservative MVP source \u2014 packages/gat/src/memory/index.mjs",
+      "source_type": "source_code",
+      "summary": "Standalone Conservative MVP source \u2014 packages/gat/src/memory/index.mjs. Implementation/configuration mapped by DD-12; primary symbols: physicalPartitionKey, PartitionStore, TransactionalAuditSink, AnchorRegistry, LifecycleRegistry.",
+      "keys": [
+        "GAT packages/gat/src/memory/index.mjs",
+        "GAT physicalPartitionKey",
+        "GAT PartitionStore",
+        "GAT TransactionalAuditSink",
+        "GAT AnchorRegistry",
+        "GAT LifecycleRegistry",
+        "GAT-CODE-PACKAGES-GAT-MEMORY-INDEX-MJS"
+      ],
+      "symbols": [
+        "physicalPartitionKey",
+        "PartitionStore",
+        "TransactionalAuditSink",
+        "AnchorRegistry",
+        "LifecycleRegistry"
+      ],
+      "detail_ids": [
+        "DD-12"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-GOVERNANCE-TEST-MJS",
+      "artifact": "packages/gat/tests/governance.test.mjs",
+      "title": "Standalone Conservative MVP tests \u2014 packages/gat/tests/governance.test.mjs",
+      "source_type": "test_spec",
+      "summary": "Standalone Conservative MVP tests \u2014 packages/gat/tests/governance.test.mjs. Existing verification fixtures for DD-12; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/gat/tests/governance.test.mjs",
+        "GAT-CODE-PACKAGES-GAT-TESTS-GOVERNANCE-TEST-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-12"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-PARTITION-STORE-TEST-MJS",
+      "artifact": "packages/gat/tests/partition-store.test.mjs",
+      "title": "Standalone Conservative MVP tests \u2014 packages/gat/tests/partition-store.test.mjs",
+      "source_type": "test_spec",
+      "summary": "Standalone Conservative MVP tests \u2014 packages/gat/tests/partition-store.test.mjs. Existing verification fixtures for DD-12; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/gat/tests/partition-store.test.mjs",
+        "GAT-CODE-PACKAGES-GAT-TESTS-PARTITION-STORE-TEST-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-12"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-TRANSACTION-AUDIT-TEST-MJS",
+      "artifact": "packages/gat/tests/transaction-audit.test.mjs",
+      "title": "Standalone Conservative MVP tests \u2014 packages/gat/tests/transaction-audit.test.mjs",
+      "source_type": "test_spec",
+      "summary": "Standalone Conservative MVP tests \u2014 packages/gat/tests/transaction-audit.test.mjs. Existing verification fixtures for DD-12; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/gat/tests/transaction-audit.test.mjs",
+        "GAT-CODE-PACKAGES-GAT-TESTS-TRANSACTION-AUDIT-TEST-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-12"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-LIFECYCLE-PRIVACY-TEST-MJS",
+      "artifact": "packages/gat/tests/lifecycle-privacy.test.mjs",
+      "title": "Standalone Conservative MVP tests \u2014 packages/gat/tests/lifecycle-privacy.test.mjs",
+      "source_type": "test_spec",
+      "summary": "Standalone Conservative MVP tests \u2014 packages/gat/tests/lifecycle-privacy.test.mjs. Existing verification fixtures for DD-12; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/gat/tests/lifecycle-privacy.test.mjs",
+        "GAT-CODE-PACKAGES-GAT-TESTS-LIFECYCLE-PRIVACY-TEST-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-12"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-POLICY-INDEX-MJS",
+      "artifact": "packages/gat/src/policy/index.mjs",
+      "title": "Standalone Conservative MVP source \u2014 packages/gat/src/policy/index.mjs",
+      "source_type": "source_code",
+      "summary": "Standalone Conservative MVP source \u2014 packages/gat/src/policy/index.mjs. Implementation/configuration mapped by DD-13; primary symbols: DenyFirstPolicy, verifySelector.",
+      "keys": [
+        "GAT packages/gat/src/policy/index.mjs",
+        "GAT DenyFirstPolicy",
+        "GAT verifySelector",
+        "GAT-CODE-PACKAGES-GAT-POLICY-INDEX-MJS"
+      ],
+      "symbols": [
+        "DenyFirstPolicy",
+        "verifySelector"
+      ],
+      "detail_ids": [
+        "DD-13"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-ADAPTER-INDEX-MJS",
+      "artifact": "packages/gat/src/adapter/index.mjs",
+      "title": "Standalone Conservative MVP source \u2014 packages/gat/src/adapter/index.mjs",
+      "source_type": "source_code",
+      "summary": "Standalone Conservative MVP source \u2014 packages/gat/src/adapter/index.mjs. Implementation/configuration mapped by DD-13; primary symbols: GatMemoryAdapter.",
+      "keys": [
+        "GAT packages/gat/src/adapter/index.mjs",
+        "GAT GatMemoryAdapter",
+        "GAT-CODE-PACKAGES-GAT-ADAPTER-INDEX-MJS"
+      ],
+      "symbols": [
+        "GatMemoryAdapter"
+      ],
+      "detail_ids": [
+        "DD-13"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-POLICY-SELECTOR-TEST-MJS",
+      "artifact": "packages/gat/tests/policy-selector.test.mjs",
+      "title": "Standalone Conservative MVP tests \u2014 packages/gat/tests/policy-selector.test.mjs",
+      "source_type": "test_spec",
+      "summary": "Standalone Conservative MVP tests \u2014 packages/gat/tests/policy-selector.test.mjs. Existing verification fixtures for DD-13; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/gat/tests/policy-selector.test.mjs",
+        "GAT-CODE-PACKAGES-GAT-TESTS-POLICY-SELECTOR-TEST-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-13"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-WRAPPER-ADMISSION-TEST-MJS",
+      "artifact": "packages/gat/tests/wrapper-admission.test.mjs",
+      "title": "Standalone Conservative MVP tests \u2014 packages/gat/tests/wrapper-admission.test.mjs",
+      "source_type": "test_spec",
+      "summary": "Standalone Conservative MVP tests \u2014 packages/gat/tests/wrapper-admission.test.mjs. Existing verification fixtures for DD-13; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/gat/tests/wrapper-admission.test.mjs",
+        "GAT-CODE-PACKAGES-GAT-TESTS-WRAPPER-ADMISSION-TEST-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-13"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-INDEX-MJS",
+      "artifact": "packages/gat/src/conformance/index.mjs",
+      "title": "Standalone Conservative MVP source \u2014 packages/gat/src/conformance/index.mjs",
+      "source_type": "source_code",
+      "summary": "Standalone Conservative MVP source \u2014 packages/gat/src/conformance/index.mjs. Implementation/configuration mapped by DD-14; primary symbols: parseArguments, createVectorDispatcher.",
+      "keys": [
+        "GAT packages/gat/src/conformance/index.mjs",
+        "GAT parseArguments",
+        "GAT createVectorDispatcher",
+        "GAT-CODE-PACKAGES-GAT-CONFORMANCE-INDEX-MJS"
+      ],
+      "symbols": [
+        "parseArguments",
+        "createVectorDispatcher"
+      ],
+      "detail_ids": [
+        "DD-14"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-SCENARIO-MJS",
+      "artifact": "packages/gat/src/conformance/scenario.mjs",
+      "title": "Standalone Conservative MVP source \u2014 packages/gat/src/conformance/scenario.mjs",
+      "source_type": "source_code",
+      "summary": "Standalone Conservative MVP source \u2014 packages/gat/src/conformance/scenario.mjs. Implementation/configuration mapped by DD-14; primary symbols: createPackageScenarioHandlers.",
+      "keys": [
+        "GAT packages/gat/src/conformance/scenario.mjs",
+        "GAT createPackageScenarioHandlers",
+        "GAT-CODE-PACKAGES-GAT-CONFORMANCE-SCENARIO-MJS"
+      ],
+      "symbols": [
+        "createPackageScenarioHandlers"
+      ],
+      "detail_ids": [
+        "DD-14"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-RUNTIME-MJS",
+      "artifact": "packages/gat/src/conformance/runtime.mjs",
+      "title": "Standalone Conservative MVP source \u2014 packages/gat/src/conformance/runtime.mjs",
+      "source_type": "source_code",
+      "summary": "Standalone Conservative MVP source \u2014 packages/gat/src/conformance/runtime.mjs. Implementation/configuration mapped by DD-14.",
+      "keys": [
+        "GAT packages/gat/src/conformance/runtime.mjs",
+        "GAT-CODE-PACKAGES-GAT-CONFORMANCE-RUNTIME-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-14"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-CONFORMANCE-CLI-MJS",
+      "artifact": "packages/gat/src/conformance/cli.mjs",
+      "title": "Standalone Conservative MVP source \u2014 packages/gat/src/conformance/cli.mjs",
+      "source_type": "source_code",
+      "summary": "Standalone Conservative MVP source \u2014 packages/gat/src/conformance/cli.mjs. Implementation/configuration mapped by DD-14.",
+      "keys": [
+        "GAT packages/gat/src/conformance/cli.mjs",
+        "GAT-CODE-PACKAGES-GAT-CONFORMANCE-CLI-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-14"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-SRC-INDEX-MJS",
+      "artifact": "packages/gat/src/index.mjs",
+      "title": "Standalone Conservative MVP source \u2014 packages/gat/src/index.mjs",
+      "source_type": "source_code",
+      "summary": "Standalone Conservative MVP source \u2014 packages/gat/src/index.mjs. Implementation/configuration mapped by DD-14; primary symbols: PACKAGE_STATUS.",
+      "keys": [
+        "GAT packages/gat/src/index.mjs",
+        "GAT PACKAGE_STATUS",
+        "GAT-CODE-PACKAGES-GAT-INDEX-MJS"
+      ],
+      "symbols": [
+        "PACKAGE_STATUS"
+      ],
+      "detail_ids": [
+        "DD-14"
+      ],
+      "is_test": false,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-RUNNER-TEST-MJS",
+      "artifact": "packages/gat/tests/conformance-runner.test.mjs",
+      "title": "Standalone Conservative MVP tests \u2014 packages/gat/tests/conformance-runner.test.mjs",
+      "source_type": "test_spec",
+      "summary": "Standalone Conservative MVP tests \u2014 packages/gat/tests/conformance-runner.test.mjs. Existing verification fixtures for DD-14; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/gat/tests/conformance-runner.test.mjs",
+        "GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-RUNNER-TEST-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-14"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-CONTRACT-MATRIX-TEST-MJS",
+      "artifact": "packages/gat/tests/conformance-contract-matrix.test.mjs",
+      "title": "Standalone Conservative MVP tests \u2014 packages/gat/tests/conformance-contract-matrix.test.mjs",
+      "source_type": "test_spec",
+      "summary": "Standalone Conservative MVP tests \u2014 packages/gat/tests/conformance-contract-matrix.test.mjs. Existing verification fixtures for DD-14; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/gat/tests/conformance-contract-matrix.test.mjs",
+        "GAT-CODE-PACKAGES-GAT-TESTS-CONFORMANCE-CONTRACT-MATRIX-TEST-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-14"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-GAT-CODE-PACKAGES-GAT-TESTS-BUILT-PACKAGE-TEST-MJS",
+      "artifact": "packages/gat/tests/built-package.test.mjs",
+      "title": "Standalone Conservative MVP tests \u2014 packages/gat/tests/built-package.test.mjs",
+      "source_type": "test_spec",
+      "summary": "Standalone Conservative MVP tests \u2014 packages/gat/tests/built-package.test.mjs. Existing verification fixtures for DD-14; registration does not claim a test run.",
+      "keys": [
+        "GAT packages/gat/tests/built-package.test.mjs",
+        "GAT-CODE-PACKAGES-GAT-TESTS-BUILT-PACKAGE-TEST-MJS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-14"
+      ],
+      "is_test": true,
+      "repository": "gat",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-SERVICE-TS",
+      "artifact": "../dsh-durable-agent/durable-agent-plugin/src/service.ts",
+      "title": "External Durable Agent source \u2014 durable-agent-plugin/src/service.ts",
+      "source_type": "source_code",
+      "summary": "External Durable Agent source \u2014 durable-agent-plugin/src/service.ts. Implementation/configuration mapped by DD-15; primary symbols: DurableAgentService.",
+      "keys": [
+        "Durable Agent durable-agent-plugin/src/service.ts",
+        "Durable Agent DurableAgentService",
+        "DA-CODE-DURABLE-AGENT-PLUGIN-SERVICE-TS"
+      ],
+      "symbols": [
+        "DurableAgentService"
+      ],
+      "detail_ids": [
+        "DD-15"
+      ],
+      "is_test": false,
+      "repository": "durable-agent",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-LOCAL-PROVIDER-TS",
+      "artifact": "../dsh-durable-agent/durable-agent-plugin/src/local-provider.ts",
+      "title": "External Durable Agent source \u2014 durable-agent-plugin/src/local-provider.ts",
+      "source_type": "source_code",
+      "summary": "External Durable Agent source \u2014 durable-agent-plugin/src/local-provider.ts. Implementation/configuration mapped by DD-15; primary symbols: LocalDurableAgentProvider, readAuthority, bootstrapOrRecover, publishPointer.",
+      "keys": [
+        "Durable Agent durable-agent-plugin/src/local-provider.ts",
+        "Durable Agent LocalDurableAgentProvider",
+        "Durable Agent readAuthority",
+        "Durable Agent bootstrapOrRecover",
+        "Durable Agent publishPointer",
+        "DA-CODE-DURABLE-AGENT-PLUGIN-LOCAL-PROVIDER-TS"
+      ],
+      "symbols": [
+        "LocalDurableAgentProvider",
+        "readAuthority",
+        "bootstrapOrRecover",
+        "publishPointer"
+      ],
+      "detail_ids": [
+        "DD-15"
+      ],
+      "is_test": false,
+      "repository": "durable-agent",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-SRC-CONSUMER-TS",
+      "artifact": "../dsh-durable-agent/durable-agent-plugin/src/consumer.ts",
+      "title": "External Durable Agent source \u2014 durable-agent-plugin/src/consumer.ts",
+      "source_type": "source_code",
+      "summary": "External Durable Agent source \u2014 durable-agent-plugin/src/consumer.ts. Implementation/configuration mapped by DD-15; primary symbols: DurableAgentConsumer, bindDurableAgentConsumer.",
+      "keys": [
+        "Durable Agent durable-agent-plugin/src/consumer.ts",
+        "Durable Agent DurableAgentConsumer",
+        "Durable Agent bindDurableAgentConsumer",
+        "DA-CODE-DURABLE-AGENT-PLUGIN-CONSUMER-TS"
+      ],
+      "symbols": [
+        "DurableAgentConsumer",
+        "bindDurableAgentConsumer"
+      ],
+      "detail_ids": [
+        "DD-15"
+      ],
+      "is_test": false,
+      "repository": "durable-agent",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-SERVICE-CONTRACTS-SPEC-TS",
+      "artifact": "../dsh-durable-agent/durable-agent-plugin/tests/service-contracts.spec.ts",
+      "title": "External Durable Agent tests \u2014 durable-agent-plugin/tests/service-contracts.spec.ts",
+      "source_type": "test_spec",
+      "summary": "External Durable Agent tests \u2014 durable-agent-plugin/tests/service-contracts.spec.ts. Existing verification fixtures for DD-15; registration does not claim a test run.",
+      "keys": [
+        "Durable Agent durable-agent-plugin/tests/service-contracts.spec.ts",
+        "DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-SERVICE-CONTRACTS-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-15"
+      ],
+      "is_test": true,
+      "repository": "durable-agent",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-LOCAL-PROVIDER-SPEC-TS",
+      "artifact": "../dsh-durable-agent/durable-agent-plugin/tests/local-provider.spec.ts",
+      "title": "External Durable Agent tests \u2014 durable-agent-plugin/tests/local-provider.spec.ts",
+      "source_type": "test_spec",
+      "summary": "External Durable Agent tests \u2014 durable-agent-plugin/tests/local-provider.spec.ts. Existing verification fixtures for DD-15; registration does not claim a test run.",
+      "keys": [
+        "Durable Agent durable-agent-plugin/tests/local-provider.spec.ts",
+        "DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-LOCAL-PROVIDER-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-15"
+      ],
+      "is_test": true,
+      "repository": "durable-agent",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-MEMORY-LIFECYCLE-SPEC-TS",
+      "artifact": "../dsh-durable-agent/durable-agent-plugin/tests/memory-lifecycle.spec.ts",
+      "title": "External Durable Agent tests \u2014 durable-agent-plugin/tests/memory-lifecycle.spec.ts",
+      "source_type": "test_spec",
+      "summary": "External Durable Agent tests \u2014 durable-agent-plugin/tests/memory-lifecycle.spec.ts. Existing verification fixtures for DD-15; registration does not claim a test run.",
+      "keys": [
+        "Durable Agent durable-agent-plugin/tests/memory-lifecycle.spec.ts",
+        "DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-MEMORY-LIFECYCLE-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-15"
+      ],
+      "is_test": true,
+      "repository": "durable-agent",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-CONSUMER-SPEC-TS",
+      "artifact": "../dsh-durable-agent/durable-agent-plugin/tests/consumer.spec.ts",
+      "title": "External Durable Agent tests \u2014 durable-agent-plugin/tests/consumer.spec.ts",
+      "source_type": "test_spec",
+      "summary": "External Durable Agent tests \u2014 durable-agent-plugin/tests/consumer.spec.ts. Existing verification fixtures for DD-15; registration does not claim a test run.",
+      "keys": [
+        "Durable Agent durable-agent-plugin/tests/consumer.spec.ts",
+        "DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-CONSUMER-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-15"
+      ],
+      "is_test": true,
+      "repository": "durable-agent",
+      "authority": "source_of_truth"
+    },
+    {
+      "source_id": "SRC-DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-COMPOSITION-SPEC-TS",
+      "artifact": "../dsh-durable-agent/durable-agent-plugin/tests/composition.spec.ts",
+      "title": "External Durable Agent tests \u2014 durable-agent-plugin/tests/composition.spec.ts",
+      "source_type": "test_spec",
+      "summary": "External Durable Agent tests \u2014 durable-agent-plugin/tests/composition.spec.ts. Existing verification fixtures for DD-15; registration does not claim a test run.",
+      "keys": [
+        "Durable Agent durable-agent-plugin/tests/composition.spec.ts",
+        "DA-CODE-DURABLE-AGENT-PLUGIN-TESTS-COMPOSITION-SPEC-TS"
+      ],
+      "symbols": [],
+      "detail_ids": [
+        "DD-15"
+      ],
+      "is_test": true,
+      "repository": "durable-agent",
+      "authority": "source_of_truth"
+    }
+  ],
+  "rows": [
+    {
+      "detail_id": "DD-01",
+      "basic_id": "BD-01",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/tools/src/team-config.ts",
+          "symbols": [
+            {
+              "symbol": "loadTeamMembers",
+              "line": 125
+            },
+            {
+              "symbol": "normalizeDocument",
+              "line": 70
+            },
+            {
+              "symbol": "normalizeMember",
+              "line": 49
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/tools/src/index.ts",
+          "symbols": [
+            {
+              "symbol": "apply",
+              "line": 670
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/index.ts",
+          "symbols": [
+            {
+              "symbol": "enable",
+              "line": 371
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/tools/tests/team-config.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/tools/tests/tool-team.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-02",
+      "basic_id": "BD-02",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/roster.ts",
+          "symbols": [
+            {
+              "symbol": "TeamRoster",
+              "line": 58
+            },
+            {
+              "symbol": "spawnAdmitted",
+              "line": 246
+            },
+            {
+              "symbol": "checkpointInitialPrompt",
+              "line": 342
+            },
+            {
+              "symbol": "reconcileProvisioning",
+              "line": 394
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/persistence.spec.ts"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-03",
+      "basic_id": "BD-03",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/journal.ts",
+          "symbols": [
+            {
+              "symbol": "TeamJournal",
+              "line": 23
+            },
+            {
+              "symbol": "transact",
+              "line": 53
+            },
+            {
+              "symbol": "appendManyAndFlush",
+              "line": 85
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/projection.ts",
+          "symbols": [
+            {
+              "symbol": "teamProjectionDefinition",
+              "line": 475
+            },
+            {
+              "symbol": "applyProjectionEvent",
+              "line": 323
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/persisted.ts",
+          "symbols": [
+            {
+              "symbol": "readPersistedSession",
+              "line": 22
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/projection-events.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/persistence.spec.ts"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-04",
+      "basic_id": "BD-04",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/task-board.ts",
+          "symbols": [
+            {
+              "symbol": "TeamTaskBoard",
+              "line": 58
+            },
+            {
+              "symbol": "isStructuralTaskMutation",
+              "line": 43
+            },
+            {
+              "symbol": "scopesOverlap",
+              "line": 27
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/task-graph.ts",
+          "symbols": [
+            {
+              "symbol": "assertTaskGraphCandidate",
+              "line": 26
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/types.ts",
+          "symbols": [
+            {
+              "symbol": "TeamTaskSnapshot",
+              "line": 85
+            },
+            {
+              "symbol": "UpdateTeamTaskRequest",
+              "line": 345
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/projection-events.spec.ts"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-05",
+      "basic_id": "BD-05",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/approved-plan-import.ts",
+          "symbols": [
+            {
+              "symbol": "approvedPlanTaskSubjects",
+              "line": 81
+            },
+            {
+              "symbol": "normalizedTaskSubject",
+              "line": 15
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/task-board.ts",
+          "symbols": [
+            {
+              "symbol": "prepareApprovedPlanImport",
+              "line": 137
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/index.ts",
+          "symbols": [
+            {
+              "symbol": "approvePlan",
+              "line": 256
+            },
+            {
+              "symbol": "importApprovedPlanAndApprove",
+              "line": 300
+            },
+            {
+              "symbol": "remoteImportApprovedPlan",
+              "line": 529
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/tools/tests/tool-team.spec.ts"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-06",
+      "basic_id": "BD-06",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/mission-board.ts",
+          "symbols": [
+            {
+              "symbol": "TeamMissionBoard",
+              "line": 18
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/mission-plan.ts",
+          "symbols": [
+            {
+              "symbol": "assertInitialMissionTaskPlan",
+              "line": 39
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/types.ts",
+          "symbols": [
+            {
+              "symbol": "TeamMissionSnapshot",
+              "line": 124
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/index.ts",
+          "symbols": [
+            {
+              "symbol": "remoteCreateMission",
+              "line": 457
+            },
+            {
+              "symbol": "remoteApproveMission",
+              "line": 475
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/projection-events.spec.ts"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-07",
+      "basic_id": "BD-07",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/mailbox.ts",
+          "symbols": [
+            {
+              "symbol": "TeamMailbox",
+              "line": 27
+            },
+            {
+              "symbol": "dispatchOnce",
+              "line": 235
+            },
+            {
+              "symbol": "checkpointDelivered",
+              "line": 273
+            },
+            {
+              "symbol": "markDelivered",
+              "line": 285
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/session-message.ts",
+          "symbols": [
+            {
+              "symbol": "messageAccepted",
+              "line": 25
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/persistence.spec.ts"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-08",
+      "basic_id": "BD-08",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/core/src/work-state.ts",
+          "symbols": [
+            {
+              "symbol": "TeamWorkBoard",
+              "line": 19
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/activity.ts",
+          "symbols": [
+            {
+              "symbol": "TeamActivity",
+              "line": 11
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/lifecycle.ts",
+          "symbols": [
+            {
+              "symbol": "TeamRuntimeLifecycle",
+              "line": 6
+            },
+            {
+              "symbol": "settleMutations",
+              "line": 78
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/roster.ts",
+          "symbols": [
+            {
+              "symbol": "interrupt",
+              "line": 204
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/index.ts",
+          "symbols": [
+            {
+              "symbol": "disposeRuntime",
+              "line": 616
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/team.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/persistence.spec.ts"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-09",
+      "basic_id": "BD-09",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/tools/src/index.ts",
+          "symbols": [
+            {
+              "symbol": "readiness",
+              "line": 189
+            },
+            {
+              "symbol": "preflight",
+              "line": 211
+            },
+            {
+              "symbol": "install",
+              "line": 373
+            },
+            {
+              "symbol": "EXTERNAL_SUBAGENT_TOOLS",
+              "line": 71
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/tools/tests/tool-team.spec.ts"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-10",
+      "basic_id": "BD-10",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/web/src/client/TeamAction.tsx",
+          "symbols": [
+            {
+              "symbol": "TeamAction",
+              "line": 102
+            },
+            {
+              "symbol": "refreshGeneration",
+              "line": 114
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/web/src/client/mount.ts",
+          "symbols": [
+            {
+              "symbol": "mountAgentTeamUi",
+              "line": 157
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/web/src/client/index.ts",
+          "symbols": [
+            {
+              "symbol": "apply",
+              "line": 12
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/web/tests/team-action.client.spec.tsx"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/web/tests/browser-plugin.client.spec.ts"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-11",
+      "basic_id": "BD-10",
+      "status": "Current",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/profile/cordis.patch.yml",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "packages/web-profile/cordis.patch.yml",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "installer/index.mjs",
+          "symbols": [
+            {
+              "symbol": "validateInstallTarget",
+              "line": 140
+            },
+            {
+              "symbol": "install",
+              "line": 221
+            },
+            {
+              "symbol": "rollback",
+              "line": 288
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "installer/compatibility.mjs",
+          "symbols": [
+            {
+              "symbol": "evaluateDshCompatibility",
+              "line": 48
+            },
+            {
+              "symbol": "inspectSource",
+              "line": 59
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "installer/verify.mjs",
+          "symbols": []
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/profile/tests/profile.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/web-profile/tests/profile.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "installer/tests/cli.test.mjs"
+        },
+        {
+          "repository": "gat",
+          "path": "installer/tests/compatibility.test.mjs"
+        },
+        {
+          "repository": "gat",
+          "path": "installer/tests/verify-profile.test.mjs"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-12",
+      "basic_id": "BD-11",
+      "status": "Standalone",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/governance/index.mjs",
+          "symbols": [
+            {
+              "symbol": "createProjectScope",
+              "line": 39
+            },
+            {
+              "symbol": "evaluateReadiness",
+              "line": 70
+            },
+            {
+              "symbol": "authorizeTeamPlan",
+              "line": 85
+            },
+            {
+              "symbol": "authorizeMissionMapping",
+              "line": 106
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/memory/index.mjs",
+          "symbols": [
+            {
+              "symbol": "physicalPartitionKey",
+              "line": 37
+            },
+            {
+              "symbol": "PartitionStore",
+              "line": 69
+            },
+            {
+              "symbol": "TransactionalAuditSink",
+              "line": 51
+            },
+            {
+              "symbol": "AnchorRegistry",
+              "line": 43
+            },
+            {
+              "symbol": "LifecycleRegistry",
+              "line": 61
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/governance.test.mjs"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/partition-store.test.mjs"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/transaction-audit.test.mjs"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/lifecycle-privacy.test.mjs"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-13",
+      "basic_id": "BD-11",
+      "status": "Standalone",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/policy/index.mjs",
+          "symbols": [
+            {
+              "symbol": "DenyFirstPolicy",
+              "line": 20
+            },
+            {
+              "symbol": "verifySelector",
+              "line": 29
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/adapter/index.mjs",
+          "symbols": [
+            {
+              "symbol": "GatMemoryAdapter",
+              "line": 10
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/policy-selector.test.mjs"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/wrapper-admission.test.mjs"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-14",
+      "basic_id": "BD-11",
+      "status": "Standalone",
+      "sources": [
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/conformance/index.mjs",
+          "symbols": [
+            {
+              "symbol": "parseArguments",
+              "line": 4
+            },
+            {
+              "symbol": "createVectorDispatcher",
+              "line": 6
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/conformance/scenario.mjs",
+          "symbols": [
+            {
+              "symbol": "createPackageScenarioHandlers",
+              "line": 9
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/conformance/runtime.mjs",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/conformance/cli.mjs",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/src/index.mjs",
+          "symbols": [
+            {
+              "symbol": "PACKAGE_STATUS",
+              "line": 1
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/conformance-runner.test.mjs"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/conformance-contract-matrix.test.mjs"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/gat/tests/built-package.test.mjs"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-15",
+      "basic_id": "BD-12",
+      "status": "External",
+      "sources": [
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/src/service.ts",
+          "symbols": [
+            {
+              "symbol": "DurableAgentService",
+              "line": 147
+            }
+          ]
+        },
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/src/local-provider.ts",
+          "symbols": [
+            {
+              "symbol": "LocalDurableAgentProvider",
+              "line": 545
+            },
+            {
+              "symbol": "readAuthority",
+              "line": 452
+            },
+            {
+              "symbol": "bootstrapOrRecover",
+              "line": 482
+            },
+            {
+              "symbol": "publishPointer",
+              "line": 444
+            }
+          ]
+        },
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/src/consumer.ts",
+          "symbols": [
+            {
+              "symbol": "DurableAgentConsumer",
+              "line": 11
+            },
+            {
+              "symbol": "bindDurableAgentConsumer",
+              "line": 41
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/tests/service-contracts.spec.ts"
+        },
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/tests/local-provider.spec.ts"
+        },
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/tests/memory-lifecycle.spec.ts"
+        },
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/tests/consumer.spec.ts"
+        },
+        {
+          "repository": "durable-agent",
+          "path": "durable-agent-plugin/tests/composition.spec.ts"
+        }
+      ],
+      "verification_status": "mapped only; not run in documentation task"
+    },
+    {
+      "detail_id": "DD-16",
+      "basic_id": "BD-13",
+      "status": "Target",
+      "sources": [],
+      "tests": [],
+      "implementation_gap": "required attachment binder and two-phase child admission has no mapped GAT production implementation",
+      "design_reference": "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md"
+    },
+    {
+      "detail_id": "DD-17",
+      "basic_id": "BD-14",
+      "status": "Target",
+      "sources": [],
+      "tests": [],
+      "implementation_gap": "host-attested mission lease and nested capability enforcement has no mapped GAT production implementation",
+      "design_reference": "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md"
+    },
+    {
+      "detail_id": "DD-18",
+      "basic_id": "BD-15",
+      "status": "Target",
+      "sources": [],
+      "tests": [],
+      "implementation_gap": "complete contracted member task runner has no mapped GAT production implementation",
+      "design_reference": "docs/gat-design/MISSION_DESIGN_DELTAS.md"
+    }
+  ]
+}

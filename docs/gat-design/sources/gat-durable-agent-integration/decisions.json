@@ -1,0 +1,277 @@
+{
+  "format": "dsh-wbs-decisions/1",
+  "mission_id": "gat-durable-agent-integration",
+  "decisions": [
+    {
+      "id": "decision-execute-r1-001",
+      "kind": "execution",
+      "revision": 1,
+      "plan_sha256": "fba7ddc0e287c3f178512ab73ffc739e356b3d6a9296d6be1ea3f040f2a73e69",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Hãy thực hiện mission. Hãy chia task cho cả các member khác trong team.",
+      "source_ref": "current trusted Session HUMAN response immediately following presentation of revision 1 and its exact SHA-256; no stable message id exposed",
+      "artifact_hashes": [
+        {"path": "wbs-runs/gat-durable-agent-integration/wbs.v1.json", "sha256": "fba7ddc0e287c3f178512ab73ffc739e356b3d6a9296d6be1ea3f040f2a73e69"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-pause-aiws-scope-002",
+      "kind": "pause",
+      "revision": 1,
+      "plan_sha256": "fba7ddc0e287c3f178512ab73ffc739e356b3d6a9296d6be1ea3f040f2a73e69",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "pause",
+      "verbatim_response": "Giữ WBS r1 và dừng mission",
+      "source_ref": "current trusted Session ask_user_question answer for authorize_aiws_scope",
+      "artifact_hashes": [
+        {"path": "wbs-runs/gat-durable-agent-integration/wbs.v1.json", "sha256": "fba7ddc0e287c3f178512ab73ffc739e356b3d6a9296d6be1ea3f040f2a73e69"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-draft-r2-003",
+      "kind": "handoff",
+      "revision": 1,
+      "plan_sha256": "fba7ddc0e287c3f178512ab73ffc739e356b3d6a9296d6be1ea3f040f2a73e69",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "handoff",
+      "verbatim_response": "Soạn WBS revision 2 tối thiểu (Recommended)",
+      "source_ref": "current trusted Session ask_user_question answer for wbs_resume_strategy",
+      "artifact_hashes": [
+        {"path": "wbs-runs/gat-durable-agent-integration/wbs-reassessment-before-resume.md", "sha256": "617a7c1ebac2c5d5be6b68d9edafba34452bafe653696af1798a8d162a77ce5d"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-approve-r2-004",
+      "kind": "revision",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt r2 và migrate, vẫn paused (Recommended)",
+      "source_ref": "current trusted Session ask_user_question answer for approve_wbs_r2",
+      "artifact_hashes": [
+        {"path": "wbs-runs/gat-durable-agent-integration/wbs.v2.json", "sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457"},
+        {"path": "wbs-runs/gat-durable-agent-integration/review.r2.md", "sha256": "5d3c1ecaaea682bf3efa61434badb0a0c9f55dfdadd2163ef88a1ef24b095495"},
+        {"path": "wbs-runs/gat-durable-agent-integration/wbs-review.r2.html", "sha256": "3fe753222181485fc5fe2010734301d27b2e88dd4d65deb6816053b874eb322e"},
+        {"path": "wbs-runs/gat-durable-agent-integration/evidence/revision-2/independent-review.json", "sha256": "e820f7b73f6661e2acfa6851058d1a374a896cfa9df892edbaa898c42e787336"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-resume-r2-005",
+      "kind": "execution",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "hãy resume",
+      "source_ref": "current trusted Session HUMAN response requesting resume; subsequent HUMAN instruction requires DSH skills rather than .agents wbs-plan/wbs-execute",
+      "artifact_hashes": [
+        {"path": "wbs-runs/gat-durable-agent-integration/wbs.v2.json", "sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-accept-local-provider-a04-006",
+      "kind": "task_acceptance",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": "local_provider",
+      "attempt_id": "local_provider-a04",
+      "decision": "approve",
+      "verbatim_response": "Coordinator accepts local_provider-a04 after exact verification passed and independent post-command review returned meets_criteria.",
+      "source_ref": "coordinator decision in current trusted Session bound to team-message-71aac955-d6d7-4911-b79d-f9da9a2e7c9f and exact a04 evidence",
+      "artifact_hashes": [
+        {"path": "wbs-runs/gat-durable-agent-integration/evidence/local_provider/local_provider-a04/fixture-qualification-review.json", "sha256": "864edce898f203e2e27538d8b930727b87fd3ec05fd3e97a32a9191ae2fef045"},
+        {"path": "wbs-runs/gat-durable-agent-integration/evidence/local_provider/local_provider-a04/verification.json", "sha256": "5b6c9177725426a924a75b05530e2423e3854891f686745ce9a8226837c1defe"},
+        {"path": "wbs-runs/gat-durable-agent-integration/evidence/local_provider/local_provider-a04/review.json", "sha256": "8d417b0a820e1f6dbcc55a39d9d01ce6c7bfd7325bbdee93097f0b103ae4d08b"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-pause-memory-contract-r2-007",
+      "kind": "pause",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": "memory_protocol_qualification",
+      "attempt_id": "memory_protocol_qualification-a01",
+      "decision": "approve",
+      "verbatim_response": "Coordinator pauses execution because independent review found a hard successor write-scope and protocol-authority gap requiring WBS revision before any retry.",
+      "source_ref": "team-message-5a06aae4-7eca-45d0-8e01-dd041d0adb7d plus wbs-reasoning-audit failure triage in current trusted Session",
+      "artifact_hashes": [
+        {"path": "wbs-runs/gat-durable-agent-integration/evidence/memory_protocol_qualification/memory_protocol_qualification-a01/review.json", "sha256": "6a16bf1684d9e97eece6a28578f966836ab097fb715c637ebcf0ebee65a209fe"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-reject-r3-008",
+      "kind": "revision",
+      "revision": 3,
+      "plan_sha256": "bf1f22eb5d1dedb4328f502f11012c3169035f4e8e33204f337f7880692f1f1e",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "reject",
+      "verbatim_response": "Không phê duyệt; giữ r2 paused",
+      "source_ref": "current trusted Session ask_user_question answer for approve_wbs_r3",
+      "artifact_hashes": [
+        {"path": "wbs-runs/gat-durable-agent-integration/evidence/revision-3/rejected-wbs.v3.json", "sha256": "bf1f22eb5d1dedb4328f502f11012c3169035f4e8e33204f337f7880692f1f1e"},
+        {"path": "wbs-runs/gat-durable-agent-integration/review.r3.md", "sha256": "fd44ddc33bae0621b04d042dea5c6f18dd66081c1a8eb158e7db6394284aaf19"},
+        {"path": "wbs-runs/gat-durable-agent-integration/evidence/revision-3/independent-review.json", "sha256": "395bb236a25faaaf2130076c91081e85c587c3d44b3272a40e39f88432280f02"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-r2-output-rework-009",
+      "kind": "handoff",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": "memory_protocol_qualification",
+      "attempt_id": "memory_protocol_qualification-a01",
+      "decision": "approve",
+      "verbatim_response": "wbs đâu có liên quan gì đến spec? wbs chỉ là danh sách task cần làm, còn output của task có thể thay đổi mà không cần thay đổi wbs. Bạn có nhầm lẫn wbs với output không vậy?",
+      "source_ref": "current trusted Session HUMAN clarification following rejection of revision 3",
+      "artifact_hashes": [
+        {"path": "wbs-runs/gat-durable-agent-integration/wbs.v2.json", "sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457"},
+        {"path": "wbs-runs/gat-durable-agent-integration/evidence/memory_protocol_qualification/memory_protocol_qualification-a01/review.json", "sha256": "6a16bf1684d9e97eece6a28578f966836ab097fb715c637ebcf0ebee65a209fe"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-resume-r2-output-rework-010",
+      "kind": "execution",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": "memory_protocol_qualification",
+      "attempt_id": "memory_protocol_qualification-a02",
+      "decision": "approve",
+      "verbatim_response": "Resume r2 và chạy a02 (Recommended)",
+      "source_ref": "current trusted Session ask_user_question answer for resume_r2_output_rework",
+      "artifact_hashes": [{"path":"wbs-runs/gat-durable-agent-integration/wbs.v2.json","sha256":"ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457"}],
+      "observed_at": null
+    },
+    {
+      "id": "decision-accept-memory-protocol-a02-011",
+      "kind": "task_acceptance",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": "memory_protocol_qualification",
+      "attempt_id": "memory_protocol_qualification-a02",
+      "decision": "approve",
+      "verbatim_response": "Coordinator accepts the corrected output after exact-hash manual verification and independent review reported meets_criteria with no findings.",
+      "source_ref": "team-message-51c37996-917d-4c6f-8407-b3b73e57debc plus current trusted Session coordinator verification",
+      "artifact_hashes": [
+        {"path":"wbs-runs/gat-durable-agent-integration/memory-protocol-qualification.md","sha256":"6c56960561e1b74c7c9bb007d1cad5f3267073899df536cc11b697d1c905868a"},
+        {"path":"wbs-runs/gat-durable-agent-integration/evidence/memory_protocol_qualification/memory_protocol_qualification-a02/verification.json","sha256":"2856d4c84b843e0d8ecbd28bed74a4ebab4d7fab311e4d795277f511e987b01e"},
+        {"path":"wbs-runs/gat-durable-agent-integration/evidence/memory_protocol_qualification/memory_protocol_qualification-a02/review.json","sha256":"88af6f365ad69c7700afed823e7de650a752af5cd92e5d49dea70d6c085b9bfb"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-accept-memory-lifecycle-a02-012",
+      "kind": "task_acceptance",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": "memory_lifecycle",
+      "attempt_id": "memory_lifecycle-a02",
+      "decision": "approve",
+      "verbatim_response": "Coordinator accepts memory_lifecycle-a02 after the exact focused command passed 57/57 and independent durability review reported meets_criteria with all a01 findings closed.",
+      "source_ref": "team-message-432284a9-cfa1-4d0a-b173-c2b42ff89798 plus current trusted Session coordinator verification",
+      "artifact_hashes": [
+        {"path":"wbs-runs/gat-durable-agent-integration/evidence/memory_lifecycle/memory_lifecycle-a02/verification.json","sha256":"90118d61e1916dcda5e52a4e41e93ec403567527b0204cc98987f33fd38d8f06"},
+        {"path":"wbs-runs/gat-durable-agent-integration/evidence/memory_lifecycle/memory_lifecycle-a02/review.json","sha256":"4349df847ab880426941f29feb86873f6f9d4e28d2ade9764bc8e5820eeef576"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-accept-scoped-consumer-a02-013",
+      "kind": "task_acceptance",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": "scoped_consumer",
+      "attempt_id": "scoped_consumer-a02",
+      "decision": "approve",
+      "verbatim_response": "Coordinator accepts scoped_consumer-a02 after exact focused verification passed 3/3 and independent model-contract review reported meets_criteria with all findings closed.",
+      "source_ref": "team-message-94b51170-8abc-4a27-8dfa-5830e2db5053 plus current trusted Session coordinator verification",
+      "artifact_hashes": [
+        {"path":"wbs-runs/gat-durable-agent-integration/evidence/scoped_consumer/scoped_consumer-a02/verification.json","sha256":"69b0f38c133e3e739a7d0fb54586d8918008d26c6f995534bcbc0d26896b7790"},
+        {"path":"wbs-runs/gat-durable-agent-integration/evidence/scoped_consumer/scoped_consumer-a02/review.json","sha256":"098d0a7c88494f53b29cdac06e4ac947b48f366a32c1306c35d5c12b2cadeaf1"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-accept-package-docs-a02-014",
+      "kind": "task_acceptance",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": "package_docs",
+      "attempt_id": "package_docs-a02",
+      "decision": "approve",
+      "verbatim_response": "Coordinator accepts package_docs-a02 after build, named-export, and packed-profile commands passed and independent review reported meets_criteria with behavior-preserving type repairs.",
+      "source_ref": "team-message-4cccbf74-dfd6-4798-b065-2fc55b87e65b plus current trusted Session coordinator verification",
+      "artifact_hashes": [
+        {"path":"wbs-runs/gat-durable-agent-integration/evidence/package_docs/package_docs-a02/verification.json","sha256":"63fb083cedfccdf512b8c18f00b6251345ca81cecebfda7794b1ca2c6aaf2d20"},
+        {"path":"wbs-runs/gat-durable-agent-integration/evidence/package_docs/package_docs-a02/review.json","sha256":"85a3e476ea35b96bcf7d5b630add0003c9316983ef9bb88f11860b9b664ac8d6"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-accept-integration-verify-a03-015",
+      "kind": "task_acceptance",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": "integration_verify",
+      "attempt_id": "integration_verify-a03",
+      "decision": "approve",
+      "verbatim_response": "Coordinator accepts integration_verify-a03 after all four exact commands passed on settled bytes, IV-PROV-001 was repaired exactly, and fresh independent review reported meets_criteria with no findings.",
+      "source_ref": "team-message-d8d45975-56e7-4ad5-b1fb-62a0f92b1afa plus current trusted Session coordinator verification",
+      "artifact_hashes": [
+        {"path":"wbs-runs/gat-durable-agent-integration/evidence/integration_verify/integration_verify-a03/verification.json","sha256":"927cf23c3d09bd728bac9bcfff1180fd3cd62c5fa434d17ec3ea53bbdfb05712"},
+        {"path":"wbs-runs/gat-durable-agent-integration/evidence/integration_verify/integration_verify-a03/review.json","sha256":"525d9d608b9c975e5da1ac0cb516c3f87d92c57fae4bd086f0a0862cdb80650b"},
+        {"path":"wbs-runs/gat-durable-agent-integration/integration-report.md","sha256":"a81b254b34503dc24f54dd897b4102bdb4f114e325f5edc98d964f3348f4cfc9"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-human-accept-final-report-a01-016",
+      "kind": "task_acceptance",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": "final_report",
+      "attempt_id": "final_report-a01",
+      "decision": "approve",
+      "verbatim_response": "Approve (Recommended)",
+      "source_ref": "current trusted Session HUMAN answer to final_acceptance",
+      "artifact_hashes": [
+        {"path":"wbs-runs/gat-durable-agent-integration/final-report.md","sha256":"a270eefde7e8030fd863c5978f989e89bbb9fadc59d9bd48274285279a4d5cb0"},
+        {"path":"wbs-runs/gat-durable-agent-integration/evidence/final_report/final_report-a01/verification.json","sha256":"03b48ae5e7dbc77945d1eaf8c027b0661d4afce5a5093be2d985507f2e961930"},
+        {"path":"wbs-runs/gat-durable-agent-integration/evidence/final_report/final_report-a01/review.json","sha256":"cb0d9768e89ce0c8a9d66b2df4a38b99bab66b5076936b09610e9fdac6d1aa4b"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-human-accept-mission-017",
+      "kind": "final_acceptance",
+      "revision": 2,
+      "plan_sha256": "ddabe11b55fe9a012f25bdffb3109952d1a8b057da158a14ebea9631a6467457",
+      "task_id": "final_report",
+      "attempt_id": "final_report-a01",
+      "decision": "approve",
+      "verbatim_response": "Approve (Recommended)",
+      "source_ref": "current trusted Session HUMAN answer to final_acceptance for exact final-report SHA-256 a270eefde7e8030fd863c5978f989e89bbb9fadc59d9bd48274285279a4d5cb0",
+      "artifact_hashes": [
+        {"path":"wbs-runs/gat-durable-agent-integration/final-report.md","sha256":"a270eefde7e8030fd863c5978f989e89bbb9fadc59d9bd48274285279a4d5cb0"},
+        {"path":"wbs-runs/gat-durable-agent-integration/integration-report.md","sha256":"a81b254b34503dc24f54dd897b4102bdb4f114e325f5edc98d964f3348f4cfc9"}
+      ],
+      "observed_at": null
+    }
+  ]
+}

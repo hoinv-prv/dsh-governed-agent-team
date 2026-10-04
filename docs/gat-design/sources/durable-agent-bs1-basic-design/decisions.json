@@ -1,0 +1,1508 @@
+{
+  "format": "dsh-wbs-decisions/1",
+  "mission_id": "durable-agent-bs1-basic-design",
+  "decisions": [
+    {
+      "id": "decision-execution-r3-001",
+      "kind": "execution",
+      "revision": 3,
+      "plan_sha256": "c7decd85d664b36568faaec2b06ca935c6956491570d18aa6171938b5a6b3756",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và chạy revision 3 (Recommended)",
+      "source_ref": "ask_user_question answer approve-bs1-wbs-v3 after presentation of validated and independently reviewed revision 3",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v3.json",
+          "sha256": "c7decd85d664b36568faaec2b06ca935c6956491570d18aa6171938b5a6b3756"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-r7-002",
+      "kind": "revision",
+      "revision": 7,
+      "plan_sha256": "b07e74be4b6d573a53ed5201fd39fd0273054a874618529fb70d5927f5873dfa",
+      "task_id": "bs1_contract_preflight",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt 1200 phút (Recommended)",
+      "source_ref": "ask_user_question answer approve-bs1-effort-1200, after the HUMAN directed proactive mission completion and required approval only for whole-WBS budget or task-definition changes",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v7.json",
+          "sha256": "b07e74be4b6d573a53ed5201fd39fd0273054a874618529fb70d5927f5873dfa"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-r9-003",
+      "kind": "execution",
+      "revision": 9,
+      "plan_sha256": "42ce6800af5483ae4b168a45ce60160a683ac8defdb9aa20938e921f338c963e",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt và chạy (Recommended)",
+      "source_ref": "ask_user_question answer approve-bs1-wbs-v9-team-r16 after validated WBS v9 and independent meets_criteria review; Team plan revision 16 separately approved by answer Duyệt revision 16 (Recommended)",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v9.json",
+          "sha256": "42ce6800af5483ae4b168a45ce60160a683ac8defdb9aa20938e921f338c963e"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r10-004",
+      "kind": "execution",
+      "revision": 10,
+      "plan_sha256": "0519afecc8d0d3904add31844886560646b4da2c920255785a71a8c943ba0511",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "OK rồi, tôi approve wbs mới này",
+      "source_ref": "direct HUMAN message after presentation of WBS v10 SHA 0519afecc8d0d3904add31844886560646b4da2c920255785a71a8c943ba0511 and mission-input-index.md; Agent Team plan revision 17 separately approved through ask_user_question answer approve-team-plan-17: Duyệt revision 17 (Recommended)",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v10.json",
+          "sha256": "0519afecc8d0d3904add31844886560646b4da2c920255785a71a8c943ba0511"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r11-005",
+      "kind": "execution",
+      "revision": 11,
+      "plan_sha256": "d9c0fdf52043ea9106ccea0cc8cadfd3845eec50bb1b3030c15ac73a1cdf2af0",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt và chạy (Recommended)",
+      "source_ref": "ask_user_question answer approve-wbs-v11 after presentation of validated revision 11 and independent meets_criteria review; Agent Team plan revision 18 previously approved through answer Duyệt revision 18 (Recommended)",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v11.json",
+          "sha256": "d9c0fdf52043ea9106ccea0cc8cadfd3845eec50bb1b3030c15ac73a1cdf2af0"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r12-006",
+      "kind": "execution",
+      "revision": 12,
+      "plan_sha256": "05b113ff261c7543ffb740f574680f0d333520635bdc88ccddc025cd1009f3e7",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt và chạy (Recommended)",
+      "source_ref": "ask_user_question answer approve-wbs-v12-team19 after validated WBS v12 and independent meets_criteria review; same answer approved Agent Team plan revision 19",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v12.json",
+          "sha256": "05b113ff261c7543ffb740f574680f0d333520635bdc88ccddc025cd1009f3e7"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-pause-r12-007",
+      "kind": "pause",
+      "revision": 12,
+      "plan_sha256": "05b113ff261c7543ffb740f574680f0d333520635bdc88ccddc025cd1009f3e7",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "pause",
+      "verbatim_response": "Hãy dừng lại phân tích sâu hơn để tìm ra root cause và đề xuất phương án cải thiện",
+      "source_ref": "direct HUMAN message after approval but before a04 allocation/dispatch",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v12.json",
+          "sha256": "05b113ff261c7543ffb740f574680f0d333520635bdc88ccddc025cd1009f3e7"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r13-008",
+      "kind": "execution",
+      "revision": 13,
+      "plan_sha256": "fc003716f88a5587ee979c1cfd1f2a65aab2a76c7433368db3e8feff3005705a",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt và chạy (Recommended)",
+      "source_ref": "ask_user_question answer approve-wbs-v13-team20 after presentation of coordinator-gate RCA direction, validated/reviewed WBS v13, and Team plan revision 20",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v13.json",
+          "sha256": "fc003716f88a5587ee979c1cfd1f2a65aab2a76c7433368db3e8feff3005705a"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r14-009",
+      "kind": "execution",
+      "revision": 14,
+      "plan_sha256": "eb4c785ec15afd4cabbd5f52fe1c94e7d2317fe11eaee2999f3f55360980dd1a",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt và chạy (Recommended)",
+      "source_ref": "ask_user_question answer approve-wbs-v14-team21 after validated/reviewed revision 14; separate answer approved Agent Team plan revision 21",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v14.json",
+          "sha256": "eb4c785ec15afd4cabbd5f52fe1c94e7d2317fe11eaee2999f3f55360980dd1a"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r15-010",
+      "kind": "execution",
+      "revision": 15,
+      "plan_sha256": "d90c26227b8b17f9362d4f38f91863b405da2a6c5bb85506747a88ac83c08603",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt và chạy (Recommended)",
+      "source_ref": "ask_user_question answer approve-wbs-v15-team32 after validated/reviewed revision 15 and Team plan revision 32",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v15.json",
+          "sha256": "d90c26227b8b17f9362d4f38f91863b405da2a6c5bb85506747a88ac83c08603"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r16-011",
+      "kind": "execution",
+      "revision": 16,
+      "plan_sha256": "af99d8957b90c48fbb4dab937b00c0e353e2bc50e8f9f3b237065a4b50148a4b",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt và chạy (Recommended); Approve Agent Team plan revision 36",
+      "source_ref": "ask_user_question approvals approve-wbs-v16-team36 and approve-agent-team-revision-36-exact",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v16.json",
+          "sha256": "af99d8957b90c48fbb4dab937b00c0e353e2bc50e8f9f3b237065a4b50148a4b"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r17-012",
+      "kind": "execution",
+      "revision": 17,
+      "plan_sha256": "159f28c189bb20af8e5e16fc87519685eb0bdb9d21d390fdbea054c1c7055ebe",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt WBS v17 và Team plan 40 (Recommended)",
+      "source_ref": "ask_user_question answer approve-wbs-v17-team40 following HUMAN split instruction and independent review",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v17.json",
+          "sha256": "159f28c189bb20af8e5e16fc87519685eb0bdb9d21d390fdbea054c1c7055ebe"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/mission-input-index.md",
+          "sha256": "3657f9acc093a00656df290facaa059cf4878446d6d8f376bc93fc4ef829629b"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r18-013",
+      "kind": "execution",
+      "revision": 18,
+      "plan_sha256": "028670d1f1f33c4ef8e4aeeb1b6e1d9c0e68df3ea1b7b815c883db68a77bb979",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt WBS v18 và Team plan 43 (Recommended); Approve Agent Team plan revision 43",
+      "source_ref": "ask_user_question approvals approve-wbs-v18-team43 and approve-agent-team-43-exact",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v18.json",
+          "sha256": "028670d1f1f33c4ef8e4aeeb1b6e1d9c0e68df3ea1b7b815c883db68a77bb979"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r19-014",
+      "kind": "execution",
+      "revision": 19,
+      "plan_sha256": "0480c475d71da2a19b14ad835ab38ba558077bdb27512240427cc269cc8831f1",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt WBS v19 và Team plan 46 (Recommended); Approve Agent Team plan revision 46",
+      "source_ref": "ask_user_question approvals approve-wbs-v19-team46 and approve-agent-team-46-exact",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v19.json",
+          "sha256": "0480c475d71da2a19b14ad835ab38ba558077bdb27512240427cc269cc8831f1"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r21-015",
+      "kind": "execution",
+      "revision": 21,
+      "plan_sha256": "5e41168bfbde3b1fc5c870b470eb186f1c0d67b41d2e78175bf2a45edffdceaa",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt WBS v21 và Team plan 52 (Recommended); Approve Agent Team plan revision 52",
+      "source_ref": "ask_user_question approvals approve-wbs-v21-team52 and approve-agent-team-52-exact",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v21.json",
+          "sha256": "5e41168bfbde3b1fc5c870b470eb186f1c0d67b41d2e78175bf2a45edffdceaa"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r22-016",
+      "kind": "execution",
+      "revision": 22,
+      "plan_sha256": "6e4552ecabfde35371929c21ed541a3665f792d4e6fc7647a53c33f91dc9af6e",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt WBS v22 và Team plan 58 (Recommended); Approve Agent Team plan revision 58",
+      "source_ref": "ask_user_question approvals approve-wbs-v22-team58 and approve-team58-exact",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v22.json",
+          "sha256": "6e4552ecabfde35371929c21ed541a3665f792d4e6fc7647a53c33f91dc9af6e"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r23-017",
+      "kind": "execution",
+      "revision": 23,
+      "plan_sha256": "480cac5ce051c89ab1e6fc3aaf607a73bab9a0f9e5a2a38c02f224d95815eff7",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt WBS v23 và Team plan 61 (Recommended); Approve Agent Team plan revision 61",
+      "source_ref": "ask_user_question approvals approve-v23-team61 and approve-team61-exact",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v23.json",
+          "sha256": "480cac5ce051c89ab1e6fc3aaf607a73bab9a0f9e5a2a38c02f224d95815eff7"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r25-018",
+      "kind": "execution",
+      "revision": 25,
+      "plan_sha256": "87e676fa18e01af37bc29cc9c6241250d38943e07d399290d6e6c1b0fa24620c",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt WBS v25 + Team plan 73 và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v25-team73-run",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v25.json",
+          "sha256": "87e676fa18e01af37bc29cc9c6241250d38943e07d399290d6e6c1b0fa24620c"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r27-019",
+      "kind": "execution",
+      "revision": 27,
+      "plan_sha256": "bd42d48d954f3d4d77503cf217c1d787d457748db1cd3c6799da8cc5033df677",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v27 + Team plan 98 (Recommended)",
+      "source_ref": "ask_user_question approve-v27-execution",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v27.json",
+          "sha256": "bd42d48d954f3d4d77503cf217c1d787d457748db1cd3c6799da8cc5033df677"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r28-020",
+      "kind": "execution",
+      "revision": 28,
+      "plan_sha256": "506e1e9d01dc9161eb9d8d91f862557378f59bc93e3e3fab2fb80ab7c1277975",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v28 + Team plan 103 (Recommended)",
+      "source_ref": "ask_user_question approve-v28-execution",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v28.json",
+          "sha256": "506e1e9d01dc9161eb9d8d91f862557378f59bc93e3e3fab2fb80ab7c1277975"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r30-021",
+      "kind": "execution",
+      "revision": 30,
+      "plan_sha256": "72efa04dfd4aa5bec4c670a4796d3676e145b8713ebd024c084b3361a589af4a",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v30 + Team 118 và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v30-ledger-run",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v30.json",
+          "sha256": "72efa04dfd4aa5bec4c670a4796d3676e145b8713ebd024c084b3361a589af4a"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v30.independent-review.md",
+          "sha256": "c27488c21cf93c216a671cd16ffa3d6efd095e29f86291bf44c88281885169c5"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r31-022",
+      "kind": "execution",
+      "revision": 31,
+      "plan_sha256": "56fb3b9d4ef3f76d48838217570d338c423aca3c210f1f8d99e197c98d8c0664",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v31 + Team 124 và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v31-rebootstrap-run",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v31.json",
+          "sha256": "56fb3b9d4ef3f76d48838217570d338c423aca3c210f1f8d99e197c98d8c0664"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v31.independent-review.md",
+          "sha256": "ed3224e32f5f7586accface4d9d267d51b17580c3de36f4d53f0984f02fde171"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r32-023",
+      "kind": "execution",
+      "revision": 32,
+      "plan_sha256": "85c50863deb00ca6b5fb972758c19183188eb9321b05f6ac01ba9c823a30c534",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v32 + Team 134 và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v32-direct-run",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v32.json",
+          "sha256": "85c50863deb00ca6b5fb972758c19183188eb9321b05f6ac01ba9c823a30c534"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v32.independent-review.md",
+          "sha256": "c05dc5959cd8605d2a40533f2c88b44437709fc2d951543849a477da925ba481"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/deferred-ledger-task-history-r32.json",
+          "sha256": "da9d641e4a9ee036bda84466d40878432b7bb98e2d17d19b51e8bb0f836e17d3"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r33-024",
+      "kind": "execution",
+      "revision": 33,
+      "plan_sha256": "a78fc029fc66488c0e6e168b78090637097a8a8c4107d08466ddd43077f08388",
+      "task_id": "bs1_task_contract_catalog",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v33 + Team 139 và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v33-h1-retry",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v33.json",
+          "sha256": "a78fc029fc66488c0e6e168b78090637097a8a8c4107d08466ddd43077f08388"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v33.independent-review.md",
+          "sha256": "1a3c1c97d04c1f02495b75acbf94fbbdcacb556bf318d641eb083e7a2517ea69"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r34-025",
+      "kind": "execution",
+      "revision": 34,
+      "plan_sha256": "a787cca87f8547a4e8811e19f5a4757bcc3e3ab80ddf38277f68bdab2554744d",
+      "task_id": "bs1_revision34_contract_delta_validation",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v34 + Team145 + budget và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v34-budget-and-run",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v34.json",
+          "sha256": "a787cca87f8547a4e8811e19f5a4757bcc3e3ab80ddf38277f68bdab2554744d"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v34.independent-review.md",
+          "sha256": "accd657e75c2bd7187438024ecc41e983b00b5773006fd3b327b613892f26182"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/accepted-task-fingerprints.v34.json",
+          "sha256": "6af0146abeae66fbeb9a794c377f3b371cea2450be1fa22d8d412a4e1fc523e9"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r35-026",
+      "kind": "execution",
+      "revision": 35,
+      "plan_sha256": "bfbcb1416eb3601e47d52de4fd8033c7a8a1ac2c6551fc33bfb611e117d467d0",
+      "task_id": "bs1_revision35_contract_delta_validation",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v35 + Team149 + budget và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v35-budget-run",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v35.json",
+          "sha256": "bfbcb1416eb3601e47d52de4fd8033c7a8a1ac2c6551fc33bfb611e117d467d0"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v35.independent-review.md",
+          "sha256": "0cfeddd0da4b6417f6c36b939346dc31af931709ced1b6dcf902482d04ced6d3"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r36-027",
+      "kind": "execution",
+      "revision": 36,
+      "plan_sha256": "c65d3571fb0246018667aeb9f3b751cace6112976f7d2cb73e1b464f18adb6bb",
+      "task_id": "bs1_revision36_contract_delta_validation",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v36 + Team151 và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v36-run",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v36.json",
+          "sha256": "c65d3571fb0246018667aeb9f3b751cace6112976f7d2cb73e1b464f18adb6bb"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v36.independent-review.md",
+          "sha256": "030003892b1856ef2d189d2c0f76cbce66a539cf99058b86cde95e150e6db6d3"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r37-028",
+      "kind": "execution",
+      "revision": 37,
+      "plan_sha256": "2a10e108ef427925a93bdf450fc573d56241452d3ec6495d2bbed674e624c7e8",
+      "task_id": "bs1_revision37_contract_delta_validation",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve v37 + Team154 + budget và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v37-budget-run",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v37.json",
+          "sha256": "2a10e108ef427925a93bdf450fc573d56241452d3ec6495d2bbed674e624c7e8"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r38-029",
+      "kind": "execution",
+      "revision": 38,
+      "plan_sha256": "ae0b073291973a849a8e411e99595b0feeb314a532282cdff64f608eea6f3dd7",
+      "task_id": "bs1_revision38_contract_delta_validation",
+      "decision": "approve",
+      "verbatim_response": "Tôi approve,",
+      "source_ref": "ask_user_question approve-v38",
+      "observed_at": null,
+      "attempt_id": null,
+      "artifact_hashes": []
+    },
+    {
+      "id": "decision-execution-r39-030",
+      "kind": "execution",
+      "revision": 39,
+      "plan_sha256": "ee81407122f93897e8eebce3fec3d07d46dee64157f6b2142fbadc75e1c4c985",
+      "task_id": "bs1_revision39_contract_delta_validation",
+      "decision": "approve",
+      "verbatim_response": "Approve và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v39",
+      "observed_at": null,
+      "attempt_id": null,
+      "artifact_hashes": []
+    },
+    {
+      "id": "decision-execution-r40-032",
+      "kind": "execution",
+      "revision": 40,
+      "plan_sha256": "8c8439794e496c3c9782b6ba220fdf0f2b78411dd0886b98cfba1cf63a9f210a",
+      "task_id": "bs1_revision40_contract_delta_validation",
+      "decision": "approve",
+      "verbatim_response": "Approve và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v40",
+      "observed_at": null,
+      "attempt_id": null,
+      "artifact_hashes": []
+    },
+    {
+      "id": "decision-execution-r41-033",
+      "kind": "execution",
+      "revision": 41,
+      "plan_sha256": "2e665bddf1ceb506100ba67cef9081e0a368f6e3f8ac5bb89e5cf59fab1c6bce",
+      "task_id": "bs1_revision41_contract_delta_validation",
+      "decision": "approve",
+      "verbatim_response": "Approve và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v41",
+      "observed_at": null,
+      "attempt_id": null,
+      "artifact_hashes": []
+    },
+    {
+      "id": "decision-execution-r42-034",
+      "kind": "execution",
+      "revision": 42,
+      "plan_sha256": "16b751927c58199028b3e88ac5ce9436759f545a67580d7cb8e2790edd6cfd4f",
+      "task_id": "bs1_revision42_contract_delta_validation",
+      "decision": "approve",
+      "verbatim_response": "Approve và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v42",
+      "observed_at": null,
+      "attempt_id": null,
+      "artifact_hashes": []
+    },
+    {
+      "id": "decision-execution-r43-035",
+      "kind": "execution",
+      "revision": 43,
+      "plan_sha256": "b669cf494a8a90eb39e00719cf662e7b15287ccb7c4db77537380674ddedbb29",
+      "task_id": "bs1_revision43_contract_delta_validation",
+      "decision": "approve",
+      "verbatim_response": "Approve và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v43",
+      "observed_at": null,
+      "attempt_id": null,
+      "artifact_hashes": []
+    },
+    {
+      "id": "decision-execution-r44-036",
+      "kind": "execution",
+      "revision": 44,
+      "plan_sha256": "dececaeb19a73c4234aa392d1ee9579481238143067594c021f34ca3d2551c10",
+      "task_id": "bs1_revision44_contract_delta_validation",
+      "decision": "approve",
+      "verbatim_response": "Approve và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v44",
+      "observed_at": null,
+      "attempt_id": null,
+      "artifact_hashes": []
+    },
+    {
+      "id": "decision-execution-r45-037",
+      "kind": "execution",
+      "revision": 45,
+      "plan_sha256": "0c579eca25779ed037d3a9779fd5d5eaf32c10688e42ac0c4a02dd9728e38a9c",
+      "task_id": "bs1_revision45_contract_delta_validation",
+      "decision": "approve",
+      "verbatim_response": "Approve và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v45",
+      "observed_at": null,
+      "attempt_id": null,
+      "artifact_hashes": []
+    },
+    {
+      "id": "decision-execution-r46-039",
+      "kind": "execution",
+      "revision": 46,
+      "plan_sha256": "eac6aad4dce78a3f363315e987a5ba2207214af0bc48ae8832bc26974115bdab",
+      "task_id": "bs1_revision46_contract_delta_validation",
+      "decision": "approve",
+      "verbatim_response": "Approve và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v46-retry",
+      "observed_at": null,
+      "attempt_id": null,
+      "artifact_hashes": []
+    },
+    {
+      "id": "decision-execution-r47-040",
+      "kind": "execution",
+      "revision": 47,
+      "plan_sha256": "782191cb5e58cf4ed56aa7a94cd69f38ce85b06283b5a01458455ae41bb5abd0",
+      "task_id": "bs1_revision47_contract_delta_validation",
+      "decision": "approve",
+      "verbatim_response": "Approve và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v47",
+      "observed_at": null,
+      "attempt_id": null,
+      "artifact_hashes": []
+    },
+    {
+      "id": "decision-execution-r49-042",
+      "kind": "execution",
+      "revision": 49,
+      "plan_sha256": "42dc74ead21587e9c82655de6adafded3ce34aaaf89f2b2b29ab738fb0d7885b",
+      "task_id": "bs1_revision47_contract_delta_validation",
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve và chạy (Recommended)",
+      "source_ref": "ask_user_question approve-v49",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v49.json",
+          "sha256": "42dc74ead21587e9c82655de6adafded3ce34aaaf89f2b2b29ab738fb0d7885b"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/review.md",
+          "sha256": "9160f83177dd11094d62556bf69c07b17ae4e79493a6b39dabb1347ae072580e"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-pause-successor-exhausted-r49-043",
+      "kind": "pause",
+      "revision": 49,
+      "plan_sha256": "42dc74ead21587e9c82655de6adafded3ce34aaaf89f2b2b29ab738fb0d7885b",
+      "task_id": "bs1_revision47_contract_delta_validation",
+      "attempt_id": "bs1_revision47_contract_delta_validation-a03-r49",
+      "decision": "pause",
+      "verbatim_response": "Reviewer changes_required: A0_A1_OVERLAP_DRIFT and CANONICAL_TASK_INDEPENDENT_PROOF_MISSING",
+      "source_ref": "wbs-runs/durable-agent-bs1-basic-design/evidence/bs1_revision47_contract_delta_validation/bs1_revision47_contract_delta_validation-a03-r49/review.json",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/evidence/bs1_revision47_contract_delta_validation/bs1_revision47_contract_delta_validation-a03-r49/review.json",
+          "sha256": "f3dea9f2ee1cfb8466412eba1a827949fa6e7d94dd995dbc2bc722f116926e96"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/evidence/bs1_revision47_contract_delta_validation/exhaustion-lookback-r49.json",
+          "sha256": "8db4a269e3c0889d9049322a9816758a74dad1b2f76d346f59d2c82d5ff0edcb"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r50-044",
+      "kind": "execution",
+      "revision": 50,
+      "plan_sha256": "4bcca7a5bbff88406ab200d6d213c95f32805278c16d973280109a0abfd40564",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve and resume (Recommended)",
+      "source_ref": "ask_user_question answer approve-bs1-v50-resume",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v50.json",
+          "sha256": "4bcca7a5bbff88406ab200d6d213c95f32805278c16d973280109a0abfd40564"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v50.json",
+          "sha256": "c1dbe37fbd814d4331c38d50524614f1f21bb8f4cec77fb2aefaa64e28cca0e1"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-preview.v50.json",
+          "sha256": "ec0a8a67316765c2eba59e86c7a45e0ba8de69dea0adf0d00c39e99fb23f0585"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/v50-resume-approval-packet.md",
+          "sha256": "9891786c87e22af2d97b75790925e2e7184bb02767402e32de86521720282935"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-pause-canonical-mismatch-r50-045",
+      "kind": "pause",
+      "revision": 50,
+      "plan_sha256": "4bcca7a5bbff88406ab200d6d213c95f32805278c16d973280109a0abfd40564",
+      "task_id": "bs1_revision49_allocation_transition_validation",
+      "attempt_id": null,
+      "decision": "pause",
+      "verbatim_response": "Stop condition: selected max3 task does not equal the frozen max2 canonical preimage and contract declaration.",
+      "source_ref": "wbs-runs/durable-agent-bs1-basic-design/preallocation-blocker-v50.json",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/preallocation-blocker-v50.json",
+          "sha256": "a60cd4936f5a0e2875f010bf924d2bb4fafaae505786829fbd6fef1a2b54c80d"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r51-046",
+      "kind": "execution",
+      "revision": 51,
+      "plan_sha256": "0e980220861688752dbe01922e76672c323d8fabf587a66c51824c032915aae9",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve and resume (Recommended)",
+      "source_ref": "ask_user_question answer approve-bs1-v51-resume",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v51.json",
+          "sha256": "0e980220861688752dbe01922e76672c323d8fabf587a66c51824c032915aae9"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v51.json",
+          "sha256": "66b407ec8cbf822a2943561317f791127f75fdb5a1ffcca6ad7c46829fa06f4c"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-preview.v51.json",
+          "sha256": "5b7f0b15f89790022d9e55de43913999e956094ad502f56bf39399674d987b3c"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/v51-approval-packet.md",
+          "sha256": "524cf37add13fc17c7f4f1438a54382c2b39b0d2efab560a19ce7ccd24a159fb"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-human-pause-rework-review-r51-047",
+      "kind": "pause",
+      "revision": 51,
+      "plan_sha256": "0e980220861688752dbe01922e76672c323d8fabf587a66c51824c032915aae9",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "pause",
+      "verbatim_response": "hãy dừng lại rút kinh nghiệm. Đã có rất nhiều cải thiện để tránh rework, nhưng ta đã phải nâng 2 version trong khi chưa done được task nào. cần rút kinh nghiệm triệt để, ko để rework nhiều quá như vậy.",
+      "source_ref": "direct HUMAN message after goal round 4 began",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "956f67abb27f61ad35d489f99f7450134a7de4b1da08a6590493ed14f39c88b9"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/evidence/bs1_revision49_allocation_transition_validation/bs1_revision49_allocation_transition_validation-a01-r51/failure.json",
+          "sha256": "415b09c41c4e5ab59ed19958c7ef087255739ac1907b7cd0c1b608f4372f294d"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r52-048",
+      "kind": "execution",
+      "revision": 52,
+      "plan_sha256": "c09327dbd5d28ada48b274dd537a75e53098ccab8880f40d662a651f16ff605f",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve and resume (Recommended)",
+      "source_ref": "ask_user_question answer approve-bs1-v52-systemic",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v52.json",
+          "sha256": "c09327dbd5d28ada48b274dd537a75e53098ccab8880f40d662a651f16ff605f"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v52.json",
+          "sha256": "66b407ec8cbf822a2943561317f791127f75fdb5a1ffcca6ad7c46829fa06f4c"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-preview.v52.json",
+          "sha256": "8759505cacb1d38eb108a98fdfa00aee8f3608f426de805ed7134d32a8e411a5"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/v52-systemic-review-result.md",
+          "sha256": "4615e7f74fe42fe2d50675c9e43fb6fbedbfebdab14cded35b2d92d7261930d6"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r53-049",
+      "kind": "execution",
+      "revision": 53,
+      "plan_sha256": "ff111316ebc558ae552f42238648a2bcd12e06c74fb70c1fe1863b0212864879",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve and resume",
+      "source_ref": "ask_user_question answer approve-bs1-v53-systemic",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v53.json",
+          "sha256": "ff111316ebc558ae552f42238648a2bcd12e06c74fb70c1fe1863b0212864879"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v53.json",
+          "sha256": "66b407ec8cbf822a2943561317f791127f75fdb5a1ffcca6ad7c46829fa06f4c"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-preview.v53.json",
+          "sha256": "f26aa1224c12991071d059e00eb3103d0beaafccea37d0c72eb03c4fba3b9cd8"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/semantic-preflight-v53.json",
+          "sha256": "f64b74a648222de1a6fd54677dccb17f529ddeac586c70f6f645b7a3dd143e70"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r54-050",
+      "kind": "execution",
+      "revision": 54,
+      "plan_sha256": "a7ae145ed70eaec438a0c77d8dd9d4e18d732b681eb589a40d6dff602c502308",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Tôi OK với plan này, hãy chủ động thực hiện.",
+      "source_ref": "direct HUMAN message in current Session immediately after presentation of WBS v54 SHA-256 a7ae145ed70eaec438a0c77d8dd9d4e18d732b681eb589a40d6dff602c502308",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v54.json",
+          "sha256": "a7ae145ed70eaec438a0c77d8dd9d4e18d732b681eb589a40d6dff602c502308"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v54.independent-review.md",
+          "sha256": "5d3819ae18ae1b3599bdd9860828f09096ec92d7501deba274a1dbe111d65182"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs-review-v54.html",
+          "sha256": "5bd32784180573e318b0dadadc22ee7cffe3f05ce6db349e95aea499922d6a0a"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v54.json",
+          "sha256": "66b407ec8cbf822a2943561317f791127f75fdb5a1ffcca6ad7c46829fa06f4c"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "c0a51690bfb5f3f522d175091c6670c2d40e313761b91b490d24fb57b46c689f"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-r54-050",
+      "kind": "revision",
+      "revision": 54,
+      "plan_sha256": "a7ae145ed70eaec438a0c77d8dd9d4e18d732b681eb589a40d6dff602c502308",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Tôi OK với plan này, hãy chủ động thực hiện.",
+      "source_ref": "direct HUMAN message in current Session immediately after presentation of WBS v54 SHA-256 a7ae145ed70eaec438a0c77d8dd9d4e18d732b681eb589a40d6dff602c502308",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v54.json",
+          "sha256": "a7ae145ed70eaec438a0c77d8dd9d4e18d732b681eb589a40d6dff602c502308"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v54.json",
+          "sha256": "66b407ec8cbf822a2943561317f791127f75fdb5a1ffcca6ad7c46829fa06f4c"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-preview.v54.json",
+          "sha256": "d8ce3851cfe71a881cfb5fc9f29d640a6e6a73fa33228bc709484fb1a3e22096"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r55-051",
+      "kind": "execution",
+      "revision": 55,
+      "plan_sha256": "9946829a480adada51f0aa6b7c097640eab2b68f31c1ec1b9e0f76100c93a4c6",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "tôi duyệt v55, hãy chủ động chạy tiếp",
+      "source_ref": "direct HUMAN message in current Session after presentation of exact WBS v55 SHA-256 9946829a480adada51f0aa6b7c097640eab2b68f31c1ec1b9e0f76100c93a4c6",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v55.json",
+          "sha256": "9946829a480adada51f0aa6b7c097640eab2b68f31c1ec1b9e0f76100c93a4c6"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v55.independent-review.md",
+          "sha256": "7c65ae5c97aed61b710518841fe85009b1936a20daadc78d91d50088c365510a"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs-review-v55.html",
+          "sha256": "cd2dc024812de975eb3d87b9e2a862b1842ad3d98d8290128c7660375c1c2a93"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v55.json",
+          "sha256": "d88c3c5e8bbbc0fb7ed52023e9c1ca3e826632ea4f8c7db9642c07b0b1e7403c"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "95e2533e8cdabc92e719a1bc3a43e67b77c637004fd83f19c37eb93fc970190c"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-r55-051",
+      "kind": "revision",
+      "revision": 55,
+      "plan_sha256": "9946829a480adada51f0aa6b7c097640eab2b68f31c1ec1b9e0f76100c93a4c6",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "tôi duyệt v55, hãy chủ động chạy tiếp",
+      "source_ref": "direct HUMAN message in current Session after presentation of exact WBS v55 SHA-256 9946829a480adada51f0aa6b7c097640eab2b68f31c1ec1b9e0f76100c93a4c6",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v55.json",
+          "sha256": "9946829a480adada51f0aa6b7c097640eab2b68f31c1ec1b9e0f76100c93a4c6"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v55.independent-review.md",
+          "sha256": "7c65ae5c97aed61b710518841fe85009b1936a20daadc78d91d50088c365510a"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs-review-v55.html",
+          "sha256": "cd2dc024812de975eb3d87b9e2a862b1842ad3d98d8290128c7660375c1c2a93"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v55.json",
+          "sha256": "d88c3c5e8bbbc0fb7ed52023e9c1ca3e826632ea4f8c7db9642c07b0b1e7403c"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "95e2533e8cdabc92e719a1bc3a43e67b77c637004fd83f19c37eb93fc970190c"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r56-052",
+      "kind": "execution",
+      "revision": 56,
+      "plan_sha256": "13dbe4ffe2912388cb422a71862cc64a2c6b8806863eeca922279795dbd564a1",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt exact v56 và chạy.",
+      "source_ref": "direct HUMAN message in current Session after presentation of exact WBS v56 SHA-256 13dbe4ffe2912388cb422a71862cc64a2c6b8806863eeca922279795dbd564a1",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v56.json",
+          "sha256": "13dbe4ffe2912388cb422a71862cc64a2c6b8806863eeca922279795dbd564a1"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v56.independent-review.md",
+          "sha256": "49b6bda2c7cad4c2b8c11e110d0b34ad1589fc2ff8c4de0952011664a71a589b"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs-review-v56.html",
+          "sha256": "23290a460d9f8fd2dbd32804efceed66afad7d3d2d4c83e567cb3a1031ec8f8c"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v56.json",
+          "sha256": "95857da771168eb8e5cd9b986ce4738dfe3d210394d4794f90d7e2815ce5fb49"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "6bf95d55b96b820d7b05b61bd9075629ed556408b87eb4117e0e21e8c35c5c23"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/approval-request-v56.json",
+          "sha256": "0ea42630c3699891f9704730471580a3e0327d34e0e830946f73ebcf22029f52"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-r56-052",
+      "kind": "revision",
+      "revision": 56,
+      "plan_sha256": "13dbe4ffe2912388cb422a71862cc64a2c6b8806863eeca922279795dbd564a1",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt exact v56 và chạy.",
+      "source_ref": "direct HUMAN message in current Session after presentation of exact WBS v56 SHA-256 13dbe4ffe2912388cb422a71862cc64a2c6b8806863eeca922279795dbd564a1",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v56.json",
+          "sha256": "13dbe4ffe2912388cb422a71862cc64a2c6b8806863eeca922279795dbd564a1"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v56.independent-review.md",
+          "sha256": "49b6bda2c7cad4c2b8c11e110d0b34ad1589fc2ff8c4de0952011664a71a589b"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs-review-v56.html",
+          "sha256": "23290a460d9f8fd2dbd32804efceed66afad7d3d2d4c83e567cb3a1031ec8f8c"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v56.json",
+          "sha256": "95857da771168eb8e5cd9b986ce4738dfe3d210394d4794f90d7e2815ce5fb49"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "6bf95d55b96b820d7b05b61bd9075629ed556408b87eb4117e0e21e8c35c5c23"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/approval-request-v56.json",
+          "sha256": "0ea42630c3699891f9704730471580a3e0327d34e0e830946f73ebcf22029f52"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r57-053",
+      "kind": "execution",
+      "revision": 57,
+      "plan_sha256": "42e1442b45a26d0bad9abc602d2a8588553f356e0ffa6bceb7d074ee599647b5",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt exact v57 min3 và chạy.",
+      "source_ref": "direct HUMAN message in current Session after presentation of exact min3 WBS v57 SHA-256 42e1442b45a26d0bad9abc602d2a8588553f356e0ffa6bceb7d074ee599647b5",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v57.json",
+          "sha256": "42e1442b45a26d0bad9abc602d2a8588553f356e0ffa6bceb7d074ee599647b5"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v57.independent-review.md",
+          "sha256": "c08a038ec0d82126c71e929e70835df4b6b3efeea1d6d061a7e1f05e002c6522"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs-review-v57.html",
+          "sha256": "d2fa5c086a97e38fcd1541a2940ca7080ae7a7095507b5514e223c3c8fa3bb84"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v57.json",
+          "sha256": "ecbc1e9019332e45dc88dc43c5edf3aa11d0fa2e95fdb5e1d44263ca6065a5a5"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "4989ceb7298b9629aa4938b33007e239654c16bff41dcd8b3404969975e60008"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/approval-request-v57.json",
+          "sha256": "8532342efdd6e879ace4a8ac1337858a98ac24ad2b1e65f1538aaf1fedc7ddf4"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/progress-reporting-policy-v57.json",
+          "sha256": "01a34271691fbe0483b72f06369db798c5a9a713d33ba0634daab9d96c1ae23f"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-r57-053",
+      "kind": "revision",
+      "revision": 57,
+      "plan_sha256": "42e1442b45a26d0bad9abc602d2a8588553f356e0ffa6bceb7d074ee599647b5",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt exact v57 min3 và chạy.",
+      "source_ref": "direct HUMAN message in current Session after presentation of exact min3 WBS v57 SHA-256 42e1442b45a26d0bad9abc602d2a8588553f356e0ffa6bceb7d074ee599647b5",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v57.json",
+          "sha256": "42e1442b45a26d0bad9abc602d2a8588553f356e0ffa6bceb7d074ee599647b5"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v57.independent-review.md",
+          "sha256": "c08a038ec0d82126c71e929e70835df4b6b3efeea1d6d061a7e1f05e002c6522"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs-review-v57.html",
+          "sha256": "d2fa5c086a97e38fcd1541a2940ca7080ae7a7095507b5514e223c3c8fa3bb84"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v57.json",
+          "sha256": "ecbc1e9019332e45dc88dc43c5edf3aa11d0fa2e95fdb5e1d44263ca6065a5a5"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "4989ceb7298b9629aa4938b33007e239654c16bff41dcd8b3404969975e60008"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/approval-request-v57.json",
+          "sha256": "8532342efdd6e879ace4a8ac1337858a98ac24ad2b1e65f1538aaf1fedc7ddf4"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/progress-reporting-policy-v57.json",
+          "sha256": "01a34271691fbe0483b72f06369db798c5a9a713d33ba0634daab9d96c1ae23f"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r58-054",
+      "kind": "execution",
+      "revision": 58,
+      "plan_sha256": "88259c82c30914a17e7d2dff05f6187c7313724e82d128a8748a4d50e5c8b52e",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt exact v58 và chạy (Recommended)",
+      "source_ref": "ask_user_question answer id v58-exact-selection in current Session after exact reviewed WBS v58 presentation",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v58.json",
+          "sha256": "88259c82c30914a17e7d2dff05f6187c7313724e82d128a8748a4d50e5c8b52e"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs-v58-review.json",
+          "sha256": "d40457b159d5a7b57385f3819d523a1a01bc1a8d8ac8a282cb2709e6cb65c1a7"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v58.json",
+          "sha256": "2e12b23d64e925a57a4bb85ac511b8b67fa991769887128c39d06e67ffdf7712"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/migration-preflight.v58.json",
+          "sha256": "47b2552ae6ceb75016df471b82f85fe5e0342084f765691496c9d07bc81cc77f"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "8c5f84303d1dd8932e6fb1b0c905eeacd328c33d219d281aac196033e7d221fa"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/command-effects-v58.json",
+          "sha256": "87f537170ccdc5e81854600605caea550d1e46a42002654adcb77b41a54533af"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/meta-rca-v57-max3-exhaustion.json",
+          "sha256": "d4a16213e5f7c8534e97cf9af8a01111efdc3662e7ab0fed4c5f85471aafdf9b"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/meta-rca-v57-max3-exhaustion.review.json",
+          "sha256": "be99518e9e02f3402d8438b34ba8f59e55e9cbfd12582df9bbd5d9170b6a8d52"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-r58-054",
+      "kind": "revision",
+      "revision": 58,
+      "plan_sha256": "88259c82c30914a17e7d2dff05f6187c7313724e82d128a8748a4d50e5c8b52e",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt exact v58 và chạy (Recommended)",
+      "source_ref": "ask_user_question answer id v58-exact-selection in current Session after exact reviewed WBS v58 presentation",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v58.json",
+          "sha256": "88259c82c30914a17e7d2dff05f6187c7313724e82d128a8748a4d50e5c8b52e"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs-v58-review.json",
+          "sha256": "d40457b159d5a7b57385f3819d523a1a01bc1a8d8ac8a282cb2709e6cb65c1a7"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v58.json",
+          "sha256": "2e12b23d64e925a57a4bb85ac511b8b67fa991769887128c39d06e67ffdf7712"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/migration-preflight.v58.json",
+          "sha256": "47b2552ae6ceb75016df471b82f85fe5e0342084f765691496c9d07bc81cc77f"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "8c5f84303d1dd8932e6fb1b0c905eeacd328c33d219d281aac196033e7d221fa"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/command-effects-v58.json",
+          "sha256": "87f537170ccdc5e81854600605caea550d1e46a42002654adcb77b41a54533af"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/meta-rca-v57-max3-exhaustion.json",
+          "sha256": "d4a16213e5f7c8534e97cf9af8a01111efdc3662e7ab0fed4c5f85471aafdf9b"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/meta-rca-v57-max3-exhaustion.review.json",
+          "sha256": "be99518e9e02f3402d8438b34ba8f59e55e9cbfd12582df9bbd5d9170b6a8d52"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r58-055",
+      "kind": "execution",
+      "revision": 58,
+      "plan_sha256": "88259c82c30914a17e7d2dff05f6187c7313724e82d128a8748a4d50e5c8b52e",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt migration sửa và tiếp tục chạy (Recommended)",
+      "source_ref": "ask_user_question answer id v58-corrected-migration in current Session after independent PASS of canonical-hash correction",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v58.json",
+          "sha256": "88259c82c30914a17e7d2dff05f6187c7313724e82d128a8748a4d50e5c8b52e"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs-v58-review.json",
+          "sha256": "d40457b159d5a7b57385f3819d523a1a01bc1a8d8ac8a282cb2709e6cb65c1a7"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v58.json",
+          "sha256": "b5ad600b3b8722a1b8e9955bf50b74f0a0ec2b952406a908d0e1fb75fa1b6a6f"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/migration-preflight.v58.json",
+          "sha256": "dc5803b793d778c4ec1760f183a43aa2b8331a1dfb8163449b4f7e2ad956caa6"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.preview.v58.json",
+          "sha256": "4e4eabe1903a8be0200f4da4feb31369c4319224560c764f3e689d95cc44f090"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "8c5f84303d1dd8932e6fb1b0c905eeacd328c33d219d281aac196033e7d221fa"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/command-effects-v58.json",
+          "sha256": "87f537170ccdc5e81854600605caea550d1e46a42002654adcb77b41a54533af"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-r58-055",
+      "kind": "revision",
+      "revision": 58,
+      "plan_sha256": "88259c82c30914a17e7d2dff05f6187c7313724e82d128a8748a4d50e5c8b52e",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt migration sửa và tiếp tục chạy (Recommended)",
+      "source_ref": "ask_user_question answer id v58-corrected-migration in current Session after independent PASS of canonical-hash correction",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v58.json",
+          "sha256": "88259c82c30914a17e7d2dff05f6187c7313724e82d128a8748a4d50e5c8b52e"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs-v58-review.json",
+          "sha256": "d40457b159d5a7b57385f3819d523a1a01bc1a8d8ac8a282cb2709e6cb65c1a7"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v58.json",
+          "sha256": "b5ad600b3b8722a1b8e9955bf50b74f0a0ec2b952406a908d0e1fb75fa1b6a6f"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/migration-preflight.v58.json",
+          "sha256": "dc5803b793d778c4ec1760f183a43aa2b8331a1dfb8163449b4f7e2ad956caa6"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.preview.v58.json",
+          "sha256": "4e4eabe1903a8be0200f4da4feb31369c4319224560c764f3e689d95cc44f090"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "8c5f84303d1dd8932e6fb1b0c905eeacd328c33d219d281aac196033e7d221fa"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/command-effects-v58.json",
+          "sha256": "87f537170ccdc5e81854600605caea550d1e46a42002654adcb77b41a54533af"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r59-056",
+      "kind": "execution",
+      "revision": 59,
+      "plan_sha256": "49f7a941fc0f5f0220982feaef3e99863c2ae3cc780c3a046899e39cf32a40f1",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt exact v59 và chạy (Recommended)",
+      "source_ref": "ask_user_question answer id approve-v59-exact in current Session after final independent C1-C6 pass_with_notes review",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v59.json",
+          "sha256": "49f7a941fc0f5f0220982feaef3e99863c2ae3cc780c3a046899e39cf32a40f1"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/wbs-v59-independent-review-final.md",
+          "sha256": "a599081849210345dc348259c0d078a4d24deebb05bbe7335dbde02efe3feba2"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/wbs-review-v59.html",
+          "sha256": "b9b1c269c783c0bb7cc814f6342890cc3398096c18d6cc17a2c66a54019b7d5c"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v59.json",
+          "sha256": "7c6dca07bbddc70d51319739b3db52d121bf4cc7fea31eb6dbe8e945c55dc7b6"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/execution-preview.v59.json",
+          "sha256": "4b4ed8d685126a39df2917a692c39dda408ef65b98fd643b8f604b0927a0a7aa"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/command-effects.v59.json",
+          "sha256": "60ad30d78a0579347a1fd3a6eca2470de7a807ba89c1b2bdd7ee6b245098f56d"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "9cf2b60b674a9b3a9500f73439e8fd74886e2d929303eb2981bb2518733c78cb"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-r59-056",
+      "kind": "revision",
+      "revision": 59,
+      "plan_sha256": "49f7a941fc0f5f0220982feaef3e99863c2ae3cc780c3a046899e39cf32a40f1",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt exact v59 và chạy (Recommended)",
+      "source_ref": "ask_user_question answer id approve-v59-exact in current Session after final independent C1-C6 pass_with_notes review",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/wbs.v59.json",
+          "sha256": "49f7a941fc0f5f0220982feaef3e99863c2ae3cc780c3a046899e39cf32a40f1"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/wbs-v59-independent-review-final.md",
+          "sha256": "a599081849210345dc348259c0d078a4d24deebb05bbe7335dbde02efe3feba2"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/wbs-review-v59.html",
+          "sha256": "b9b1c269c783c0bb7cc814f6342890cc3398096c18d6cc17a2c66a54019b7d5c"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution-migration.v59.json",
+          "sha256": "7c6dca07bbddc70d51319739b3db52d121bf4cc7fea31eb6dbe8e945c55dc7b6"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/execution-preview.v59.json",
+          "sha256": "4b4ed8d685126a39df2917a692c39dda408ef65b98fd643b8f604b0927a0a7aa"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/command-effects.v59.json",
+          "sha256": "60ad30d78a0579347a1fd3a6eca2470de7a807ba89c1b2bdd7ee6b245098f56d"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "9cf2b60b674a9b3a9500f73439e8fd74886e2d929303eb2981bb2518733c78cb"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r60-057",
+      "kind": "execution",
+      "revision": 60,
+      "plan_sha256": "f5b3abadac6e68ff3677470f2f49f4b81dec4552d4d031e70b74944eaa61930a",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt exact v60 và chạy (Recommended)",
+      "source_ref": "ask_user_question answer id approve-v60-exact after frozen C1-C6 PASS and independent exact-byte review",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/wbs.v60.json",
+          "sha256": "f5b3abadac6e68ff3677470f2f49f4b81dec4552d4d031e70b74944eaa61930a"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/command-effects.v60.json",
+          "sha256": "f7c19a379977ecc9e4cff558a20e8815132bea6750dfcda89a9972efe5e7d3d8"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/wbs-v60-independent-review-final.md",
+          "sha256": "27ec85bd3eb4dd54f98d02351ec7fa7be80ccf593cb80f03acfecdfc42d669d6"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/wbs-review-v60.html",
+          "sha256": "4ef31df3df430e6dc49b129fe3d5c377e3542eda3f47ae8175fd2de7b89af710"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/execution-migration.v60.json",
+          "sha256": "67b4ac111c98a11c38811904f818572006a55805930511ec915f0634f01b26ff"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "0981588d35c8160d802c2d4dac64fbfd463655877c00c3391b3cbae9be3c0744"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-revision-r60-058",
+      "kind": "revision",
+      "revision": 60,
+      "plan_sha256": "f5b3abadac6e68ff3677470f2f49f4b81dec4552d4d031e70b74944eaa61930a",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Duyệt exact v60 và chạy (Recommended)",
+      "source_ref": "ask_user_question answer id approve-v60-exact after frozen C1-C6 PASS and independent exact-byte review",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/wbs.v60.json",
+          "sha256": "f5b3abadac6e68ff3677470f2f49f4b81dec4552d4d031e70b74944eaa61930a"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/command-effects.v60.json",
+          "sha256": "f7c19a379977ecc9e4cff558a20e8815132bea6750dfcda89a9972efe5e7d3d8"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/wbs-v60-independent-review-final.md",
+          "sha256": "27ec85bd3eb4dd54f98d02351ec7fa7be80ccf593cb80f03acfecdfc42d669d6"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/wbs-review-v60.html",
+          "sha256": "4ef31df3df430e6dc49b129fe3d5c377e3542eda3f47ae8175fd2de7b89af710"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/current/20-recovery-draft/execution-migration.v60.json",
+          "sha256": "67b4ac111c98a11c38811904f818572006a55805930511ec915f0634f01b26ff"
+        },
+        {
+          "path": "wbs-runs/durable-agent-bs1-basic-design/execution.json",
+          "sha256": "0981588d35c8160d802c2d4dac64fbfd463655877c00c3391b3cbae9be3c0744"
+        }
+      ],
+      "observed_at": null
+    }
+  ]
+}

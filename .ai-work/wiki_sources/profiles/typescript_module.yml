@@ -1,0 +1,21 @@
+profile_id: typescript_module
+title: TypeScript module profile
+source_type: typescript_source
+default_impact: medium
+knowledge_targets:
+  - module
+  - type
+  - dependency
+lookup_key_hints:
+  - module
+  - class
+  - interface
+  - type
+  - function
+  - import
+section_hints:
+  - Source Facts
+  - Related Sources
+cautions:
+  - heuristic lexical extraction; verify facts against the source artifact
+  - package imports and tsconfig aliases are unresolved

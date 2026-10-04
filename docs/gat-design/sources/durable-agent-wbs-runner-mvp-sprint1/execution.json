@@ -1,0 +1,142 @@
+{
+  "format": "dsh-wbs-execution/1",
+  "mission_id": "durable-agent-wbs-runner-mvp-sprint1",
+  "revision": 5,
+  "plan_sha256": "712487833e9abfc0cb95047aaf9b02d958f8c7e58f84518d88a161ccc0266e44",
+  "run_state": "cancelled",
+  "coordinator_ref": "session-current:lead",
+  "attempts_charged": 8,
+  "active_work": [],
+  "tasks": {
+    "implement-runtime-contract-v2": {
+      "state": "failed",
+      "attempts": [
+        {
+          "id": "implement-runtime-contract-v2-a1",
+          "revision": 5,
+          "plan_sha256": "712487833e9abfc0cb95047aaf9b02d958f8c7e58f84518d88a161ccc0266e44",
+          "hypothesis": "Implementing the already accepted RuntimePlanV1 and RuntimeApprovalV1 sections from baseline v5 as closed DTOs with exact normalization/hash binding, then adapting the existing sequential runner and focused golden vectors in one pass, will satisfy the new contract without broadening effects.",
+          "evidence_dir": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/evidence/implement-runtime-contract-v2/implement-runtime-contract-v2-a1",
+          "outcome": "failed",
+          "input_hashes": {
+            "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/store-contract-baseline.v5.md": "7ba671865eaa830386fffb6d79b8443e37e1358951a6da882ced4a13d5b1b94f",
+            "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/store-contract-baseline.v5.record.json": "cc34044725e602a23ab51046524477182539626e59062c6c70a2a68d7fb5613b",
+            "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/author-test-review-protocol.md": "1a9e01e1aef6de404857ccf4f7cf1b15451a6644dc4e90220427a4b33b37818f",
+            "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/inputs/mvp-scope.md": "87536c231c6863cd7fe4209330f58bc114873bfcb42044b4e6bd2db7d4befab8",
+            "durable-agent-plugin/package.json": "791623347c59d3706ca8487e10efc88f812f9a89551ac6fdaf25fcb06291ddab",
+            "durable-agent-plugin/src/domain/planning.ts": "a5b770db3303150e62e0975f5ca888846e1792b9956751ac8f29c28dd83ba5ef",
+            "durable-agent-plugin/src/domain/mission.ts": "6935463338f4b3761f0e4957eadeca2bd63e479cc9159b6e0c713fbd9f6954a9",
+            "durable-agent-plugin/src/domain/runtime.ts": "81679d71ad231b1eaae8291d1135fa3f849352bb7b6c79ef665366766ebb2955",
+            "durable-agent-plugin/src/domain/authority.ts": "1730267f43644fc9e50a0d63d8179f5ba70eeff477c961a5c280fe599af765f2",
+            "durable-agent-plugin/src/mvp/types.ts": "eef0d7e70b9bc79ce79f3570d078528568643abfcc6c40e2da1a1a7ba743cadc",
+            "durable-agent-plugin/src/mvp/execution.ts": "060247e10f4ff8f320ca36a81a58aad725dbb94fe636247877fe34a46c64486f",
+            "durable-agent-plugin/tests/mvp-execution.spec.ts": "2019210becc0133bb15a82965ec8999ad1844098422436e194c35334595cce83"
+          },
+          "output_hashes": {
+            "durable-agent-plugin/src/mvp/types.ts": "acfb9c59ce55a0d50bf3dfcb98d28ae2f7481058293388762c231b9b7bca9dca",
+            "durable-agent-plugin/src/mvp/execution.ts": "28291b1c1c8f45498a00918a6faf2104bdabf747213dfcada489b26ac5de7107",
+            "durable-agent-plugin/tests/mvp-execution.spec.ts": "65311104a024be8c9beef00262b62ae3ec099aeeaf6f1c9c1e522620832ebb35"
+          },
+          "verification_ref": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/evidence/implement-runtime-contract-v2/implement-runtime-contract-v2-a1/verification.json",
+          "review_ref": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/evidence/implement-runtime-contract-v2/implement-runtime-contract-v2-a1/review.json"
+        },
+        {
+          "id": "implement-runtime-contract-v2-a2",
+          "revision": 5,
+          "plan_sha256": "712487833e9abfc0cb95047aaf9b02d958f8c7e58f84518d88a161ccc0266e44",
+          "hypothesis": "Narrowing shell rejection to actual shell executables and adding independent plan-order, identity, symlink-containment, exact-record and baseline-binding evidence in one batch will close all attempt-1 findings without changing the approved runtime contract.",
+          "evidence_dir": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/evidence/implement-runtime-contract-v2/implement-runtime-contract-v2-a2",
+          "outcome": "failed",
+          "input_hashes": {
+            "durable-agent-plugin/src/mvp/types.ts": "acfb9c59ce55a0d50bf3dfcb98d28ae2f7481058293388762c231b9b7bca9dca",
+            "durable-agent-plugin/src/mvp/execution.ts": "28291b1c1c8f45498a00918a6faf2104bdabf747213dfcada489b26ac5de7107",
+            "durable-agent-plugin/tests/mvp-execution.spec.ts": "65311104a024be8c9beef00262b62ae3ec099aeeaf6f1c9c1e522620832ebb35",
+            "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/runtime-contract-a1-review-rca.md": "acae88b26cba20ffa3a4f5ded40cc17e4423c67d3b4ff12088c5a03a9517be37",
+            "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/evidence/implement-runtime-contract-v2/implement-runtime-contract-v2-a1/review.json": "e25477f1ba3b150d5a39f5e8fc2be0b3b996de0ba8c08c90e3e221ccf7f86a59",
+            "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/evidence/implement-runtime-contract-v2/implement-runtime-contract-v2-a1/worker-result-baseline-addendum.json": "9cb1f0a197b0cd4d5cb286f888f45593caac1fc1ee62fda2df5693e6a11eee06"
+          },
+          "output_hashes": {
+            "durable-agent-plugin/src/mvp/types.ts": "acfb9c59ce55a0d50bf3dfcb98d28ae2f7481058293388762c231b9b7bca9dca",
+            "durable-agent-plugin/src/mvp/execution.ts": "950f654b0ace4e6de395089caee9f092f10f062e484c2840e797bc25deb76c1e",
+            "durable-agent-plugin/tests/mvp-execution.spec.ts": "38fa33b2ab1b48e3a3c8f51e02566376ae760b424fbe9fe8d8186b6a4d0027ad"
+          },
+          "verification_ref": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/evidence/implement-runtime-contract-v2/implement-runtime-contract-v2-a2/verification.json",
+          "review_ref": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/evidence/implement-runtime-contract-v2/implement-runtime-contract-v2-a2/review.json"
+        }
+      ],
+      "acceptance": null
+    },
+    "implement-checkpoint-store-v2": {
+      "state": "cancelled",
+      "attempts": [],
+      "acceptance": null
+    },
+    "freeze-report-contract-v1": {
+      "state": "cancelled",
+      "attempts": [],
+      "acceptance": null
+    },
+    "integrate-mvp-v2": {
+      "state": "cancelled",
+      "attempts": [],
+      "acceptance": null
+    },
+    "report-mvp-v2": {
+      "state": "cancelled",
+      "attempts": [],
+      "acceptance": null
+    }
+  },
+  "reconciliations": [
+    {
+      "id": "normalize-runner-core-input-hashes",
+      "task_id": "implement-runner-core",
+      "changed_output": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/execution.json",
+      "input_path": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/evidence/reconciliation/execution-before-input-hash-normalization.json",
+      "reason": "Losslessly converted the coordinator-authored legacy path/hash record array to the native path-to-hash map after progress packaging rejected the record; task work and attempt charge were unchanged.",
+      "decision": "HUMAN resumed after RCA; normalize bookkeeping only and continue the same charged attempt."
+    },
+    {
+      "id": "reconcile-runner-core-a1-final-worker-bytes",
+      "task_id": "implement-runner-core",
+      "changed_output": "durable-agent-plugin/src/mvp/types.ts and durable-agent-plugin/tests/mvp-execution.spec.ts",
+      "reason": "The worker made its reported final follow-up edits after the coordinator's first settlement hash; hashes were recomputed after the child reached terminal status and before allocating attempt 2.",
+      "decision": "Replace only the stale coordinator-recorded output hashes; preserve the attempt outcome and failed verification evidence, which observed the final settled files."
+    },
+    {
+      "id": "adopt-wbs-revision-2",
+      "task_id": "implement-durable-store",
+      "changed_output": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/wbs.v2.json",
+      "reason": "Revision 2 changes only durable-store attempt capacity and matching mission ceilings after both revision-1 store attempts were consumed.",
+      "decision": "HUMAN approved revision 2 and exact plan hash; preserve all prior charges and evidence, retain runner-core acceptance because its task contract and artifacts are byte-identical, and allocate only durable-store attempt 3."
+    },
+    {
+      "id": "adopt-wbs-revision-3",
+      "task_id": "implement-durable-store",
+      "changed_output": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/wbs.v3.json",
+      "reason": "Revision 3 changes only durable-store attempt capacity and matching mission ceilings after the required Sol review rejected attempt 3.",
+      "decision": "HUMAN approved revision 3 and exact plan hash; preserve all prior charges/evidence and runner-core acceptance, then allocate only durable-store attempt 4."
+    },
+    {
+      "id": "adopt-wbs-revision-5",
+      "task_id": "implement-runtime-contract-v2",
+      "changed_output": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/wbs.v5.json",
+      "reason": "Accepted checkpoint baseline v5 materially replaces the runner/store contracts, and revision 5 corrects revision 4 cumulative ceilings before any revision-4 dispatch.",
+      "decision": "HUMAN approved revision 5 and exact plan hash. Preserve all six historical attempts, charges, decisions and evidence; do not reuse predecessor acceptance for the five new task IDs; count the historical charges under the 15-attempt and 2340-minute mission ceilings."
+    },
+    {
+      "id": "archive-removed-task-ids-for-revision-5",
+      "task_id": "implement-runtime-contract-v2",
+      "changed_output": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/evidence/reconciliation/revision1-3-task-history.json",
+      "reason": "Revision 5 replaces materially changed task IDs; exact revision 1-3 task records are retained outside the selected-plan task map so native progress validation can require an exact revision-5 task set.",
+      "decision": "Preserve all historical attempts and charges in the archive and cumulative attempts_charged; do not reuse their acceptance for revision-5 readiness."
+    },
+    {
+      "id": "close-revision-5-for-linked-agile-reset",
+      "task_id": "implement-runtime-contract-v2",
+      "changed_output": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/pm-systemic-rework-rca.md",
+      "reason": "PM-guideline audit found systemic task-sizing, readiness, retry-economics and contract-complexity failures; draft revision 6 would add capacity without correcting the system.",
+      "decision": "HUMAN selected a new linked Agile mission. Cancel unstarted revision-5 tasks, preserve the failed runtime attempts and every historical record, and do not claim mission success or authorize draft revision 6."
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "format": "dsh-wbs-decisions/1",
+  "mission_id": "durable-agent-p0-task-contract-plan-poc",
+  "decisions": [
+    {
+      "id": "decision-execution-r1-001",
+      "kind": "execution",
+      "revision": 1,
+      "plan_sha256": "9b3263e29e45e377217930aa9e280296182ef99e494b85d236427fa865f9ca5f",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "hãy chủ động thực hiện mission này.",
+      "source_ref": "trusted current Session user message immediately following presentation of WBS revision 1 and its exact SHA-256; no portable runtime message ID exposed",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p0-task-contract-plan-poc/wbs.v1.json",
+          "sha256": "9b3263e29e45e377217930aa9e280296182ef99e494b85d236427fa865f9ca5f"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r3-002",
+      "kind": "execution",
+      "revision": 3,
+      "plan_sha256": "a340a7928cfab55dc43d5e5d1b566e06e523d7499767a27610e0babb30d0c3fe",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và thực hiện task đầu tiên (Khuyến nghị)",
+      "source_ref": "ask_user_question answer approve_p0_wbs_v3 after presentation of validated and independently reviewed revision 3",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p0-task-contract-plan-poc/wbs.v3.json",
+          "sha256": "a340a7928cfab55dc43d5e5d1b566e06e523d7499767a27610e0babb30d0c3fe"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r5-003",
+      "kind": "execution",
+      "revision": 5,
+      "plan_sha256": "3278f27919d5225459637c6bf7c37e3e2b34ca1a290727bb5872c310b764c50f",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục mission (Khuyến nghị)",
+      "source_ref": "ask_user_question answer approve_p0_wbs_v5 after presentation of validated and independently reviewed revision 5",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p0-task-contract-plan-poc/wbs.v5.json",
+          "sha256": "3278f27919d5225459637c6bf7c37e3e2b34ca1a290727bb5872c310b764c50f"
+        },
+        {
+          "path": "wbs-runs/durable-agent-p0-task-contract-plan-poc/evidence/reconciliation/revision3-carry-forward.json",
+          "sha256": "c36ee945da6fa6f6f60a29739be30fa41a512612796f1aa99290cb4a912bbd65"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-execution-r6-004",
+      "kind": "execution",
+      "revision": 6,
+      "plan_sha256": "1fce7d02edf2916b52463516e87e2c10a91fc9ad44eacd7f3e014315db49a6c2",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và tiếp tục mission (Khuyến nghị)",
+      "source_ref": "ask_user_question answer approve_wbs_v6 after presentation of validated and independently reviewed revision 6",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-p0-task-contract-plan-poc/wbs.v6.json",
+          "sha256": "1fce7d02edf2916b52463516e87e2c10a91fc9ad44eacd7f3e014315db49a6c2"
+        },
+        {
+          "path": "wbs-runs/durable-agent-p0-task-contract-plan-poc/p0-prototype-stop-lookback.md",
+          "sha256": "bd5b35124ad14775fa1070c9f78e73ddec55955bdab8883f2e93f8d58a5102c7"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-final-r6-005",
+      "kind": "acceptance",
+      "revision": 6,
+      "plan_sha256": "1fce7d02edf2916b52463516e87e2c10a91fc9ad44eacd7f3e014315db49a6c2",
+      "task_id": "p0_final",
+      "attempt_id": "p0_final-a01-r6",
+      "decision": "accept",
+      "verbatim_response": "Accept bounded P0 (Khuyến nghị)",
+      "source_ref": "ask_user_question answer p0_final_decision after presentation of independently reviewed final report",
+      "artifact_hashes": [
+        {"path":"wbs-runs/durable-agent-p0-task-contract-plan-poc/final-report.md","sha256":"a89d5e663ec240dd350a9c82f487315a7db6d617f126b49d48829cdc309a46e1"},
+        {"path":"wbs-runs/durable-agent-p0-task-contract-plan-poc/learning-candidates.md","sha256":"751ad598738564b3ab13ac5ee6b7cf039b390900d30d8e0e0bd589172a0a9c3b"},
+        {"path":"wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/fixture-manifest.json","sha256":"a1e413b70a9d3cc9eb66b0f005f97e90c2c9a18db0283c6051572a9dbc253acf"},
+        {"path":"wbs-runs/durable-agent-p0-task-contract-plan-poc/oracle/p0-oracle.test.mjs","sha256":"29aec0edbd6e75057636efc06ba7da25608a81b5f9deb0ecb286cfcbfdd3ec3f"},
+        {"path":"wbs-runs/durable-agent-p0-task-contract-plan-poc/prototype/contract-plan.mjs","sha256":"36da5767a171232154dcbe993b05695e8621a8a9920f2b428b7752b0ce6f9105"}
+      ],
+      "observed_at": null
+    }
+  ]
+}

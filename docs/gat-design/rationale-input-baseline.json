@@ -1,0 +1,42 @@
+{
+  "format": "gat-rationale-input-baseline/1",
+  "inspected_on": "2026-10-04",
+  "authority": "Design intent and provenance only; source code defines implemented behavior",
+  "files": [
+    {
+      "path": "docs/golden-reference/2026-09-12-governed-agent-team-v1-design.md",
+      "bytes": 14787,
+      "sha256": "ab6fb969848fc02572a93058ddce92de321e514a84c95264921643771e5d93bc"
+    },
+    {
+      "path": "docs/GAT_DESIGN_AND_FEATURE_REFERENCE.md",
+      "bytes": 38634,
+      "sha256": "fceaab373212b28a7491639c4ed0a309b0d74465e5e4509fd826e5050cc4055e"
+    },
+    {
+      "path": "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md",
+      "bytes": 27901,
+      "sha256": "c6b98a4dd2e6db8115de023e32bdbb05b2e5e2d7490533fa63d0657be8bcd6cd"
+    },
+    {
+      "path": "docs/GAT_AGENT_TEAM_MCP_MEMORY_ARCHITECTURE_PROPOSAL.md",
+      "bytes": 66815,
+      "sha256": "dc47dc96949ea0c83d779d3dec11e30fbefb0bd738c4fb4898e6367313bd60ee"
+    },
+    {
+      "path": "docs/security/GAT_CONSERVATIVE_MVP_THREAT_MODEL.md",
+      "bytes": 14668,
+      "sha256": "f590ceec949e43a50cc6ea857c919ffbf16736e7757648d3e84c48702cad41da"
+    },
+    {
+      "path": "docs/GAT_INSTALLER_VERSION_COMPATIBILITY_REFACTOR_SPEC.md",
+      "bytes": 28680,
+      "sha256": "b5fbb877262ec9e7c185d2f812de594c542a38d4d38d603d1db48e3316f53eda"
+    },
+    {
+      "path": "docs/source-extraction.md",
+      "bytes": 3329,
+      "sha256": "2c514a9a87309d2db044568c48bffbf049588fe2db21db97bb2d3b75216d8c04"
+    }
+  ]
+}

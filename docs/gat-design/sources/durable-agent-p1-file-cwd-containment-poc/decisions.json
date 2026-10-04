@@ -1,0 +1,41 @@
+{
+  "format": "dsh-wbs-decisions/1",
+  "mission_id": "durable-agent-p1-file-cwd-containment-poc",
+  "decisions": [
+    {
+      "id": "decision-execution-r1-001",
+      "kind": "execution",
+      "revision": 1,
+      "plan_sha256": "9b7243ea15285e95e7922489113ae7b8069eb3f5893a2e8a81aa9d909921f3de",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Phê duyệt và chạy P1 (Khuyến nghị)",
+      "source_ref": "ask_user_question answer p1_execution_approval",
+      "artifact_hashes": [
+        {"path":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/wbs.v1.json","sha256":"9b7243ea15285e95e7922489113ae7b8069eb3f5893a2e8a81aa9d909921f3de"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "decision-final-r1-002",
+      "kind": "final_acceptance",
+      "revision": 1,
+      "plan_sha256": "9b7243ea15285e95e7922489113ae7b8069eb3f5893a2e8a81aa9d909921f3de",
+      "task_id": "p1_final",
+      "attempt_id": "p1_final-a01-r1",
+      "decision": "approve",
+      "verbatim_response": "Accept bounded P1 (Khuyến nghị)",
+      "source_ref": "ask_user_question answer p1_final_decision after presentation of independently reviewed final report",
+      "artifact_hashes": [
+        {"path":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/topology-manifest.json","sha256":"20de58bf0e3212dbbd9d1a3463698828d421b4b876ac188231a2c62e07c42bc3"},
+        {"path":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/p1-containment.test.mjs","sha256":"a9e2406f9993bae5a1dde82900a47230d71faeedafb39a1e3980e3722569d7f9"},
+        {"path":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/containment.mjs","sha256":"cb568613dd6d53fd890318b566de1e86ee90f0d12668f04d3ad06c9ec8b6054a"},
+        {"path":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/algorithm.md","sha256":"a561d8ee77de6bbb4076e2b39f423c845a24e38790ab244bfddb16f9386aac46"},
+        {"path":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/environment.json","sha256":"023ac9c768db6a5e8cdf5d68dcfe9c2e13db28469bab47e0a894291d8c8b3fec"},
+        {"path":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/ceiling-proposal.json","sha256":"2d8558fa06fa63ef3d9bff2e9dac00b879511429927e711905893839fc1995bf"}
+      ],
+      "observed_at": null
+    }
+  ]
+}

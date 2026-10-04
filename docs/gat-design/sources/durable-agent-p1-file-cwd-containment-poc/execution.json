@@ -1,0 +1,180 @@
+{
+  "format": "dsh-wbs-execution/1",
+  "mission_id": "durable-agent-p1-file-cwd-containment-poc",
+  "revision": 1,
+  "plan_sha256": "9b7243ea15285e95e7922489113ae7b8069eb3f5893a2e8a81aa9d909921f3de",
+  "run_state": "complete",
+  "coordinator_ref": "DSH Team session-c82c9dfd-b348-4f0d-9072-d46ef12e543c coordinator lead, goal goal-47d80fae-aa05-4138-ba7d-550667cc5c75",
+  "attempts_charged": 6,
+  "active_work": [],
+  "tasks": {
+    "p1_boundary_oracle": {
+      "state":"accepted",
+      "attempts":[
+        {
+          "id":"p1_boundary_oracle-a01-r1",
+          "revision":1,
+          "plan_sha256":"9b7243ea15285e95e7922489113ae7b8069eb3f5893a2e8a81aa9d909921f3de",
+          "hypothesis":"A manifest-complete, implementation-independent strict no-symlink topology oracle with real tree-digest observations and explicit dangling-final/delete sensitivity can close the P1 boundary before any candidate implementation is authored.",
+          "evidence_dir":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_boundary_oracle/p1_boundary_oracle-a01-r1",
+          "outcome":"failed",
+          "input_hashes":{
+            "wbs-runs/durable-agent-wbs-runner-mvp-agile/ke-hoach-sprint-agile-v10.md":"f63e24a918b01ddf315c9220c4cc89430dc5ddb7acde7c3c62bea7c1f019731e",
+            "wbs-runs/durable-agent-wbs-runner-mvp-agile/goal-scope-baseline-v2.md":"581d608ceef37da9b2dc1ed2e8a71d5b2e5d98c772d1ec6f14e291ccf0ccf5cb",
+            "durable-agent-plugin/src/mvp/execution.ts":"950f654b0ace4e6de395089caee9f092f10f062e484c2840e797bc25deb76c1e",
+            "durable-agent-plugin/tests/mvp-execution.spec.ts":"38fa33b2ab1b48e3a3c8f51e02566376ae760b424fbe9fe8d8186b6a4d0027ad"
+          },
+          "output_hashes":{},
+          "verification_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_boundary_oracle/p1_boundary_oracle-a01-r1/verification.json",
+          "review_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_boundary_oracle/p1_boundary_oracle-a01-r1/review.json"
+        },
+        {
+          "id":"p1_boundary_oracle-a02-r1",
+          "revision":1,
+          "plan_sha256":"9b7243ea15285e95e7922489113ae7b8069eb3f5893a2e8a81aa9d909921f3de",
+          "hypothesis":"Splitting malformed input into empty, embedded-NUL, and non-string executable variants and emitting all five output hashes from the already authorized selfcheck will close both review blockers without changing the approved contract or grants.",
+          "evidence_dir":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_boundary_oracle/p1_boundary_oracle-a02-r1",
+          "outcome":"done",
+          "input_hashes":{
+            "wbs-runs/durable-agent-wbs-runner-mvp-agile/ke-hoach-sprint-agile-v10.md":"f63e24a918b01ddf315c9220c4cc89430dc5ddb7acde7c3c62bea7c1f019731e",
+            "wbs-runs/durable-agent-wbs-runner-mvp-agile/goal-scope-baseline-v2.md":"581d608ceef37da9b2dc1ed2e8a71d5b2e5d98c772d1ec6f14e291ccf0ccf5cb"
+          },
+          "output_hashes":{
+            "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/topology-manifest.json":"20de58bf0e3212dbbd9d1a3463698828d421b4b876ac188231a2c62e07c42bc3",
+            "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/containment-oracle.md":"a776e3bf505028901f5172b40d13c11fd80fb3bfd18d6b3ef0777eb38a0e8eac",
+            "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/oracle-selfcheck.test.mjs":"8f4f3de1730fde73830d896f7766b3b6187c8c3681214558d699f1dd065299a2",
+            "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/p1-containment.test.mjs":"a9e2406f9993bae5a1dde82900a47230d71faeedafb39a1e3980e3722569d7f9",
+            "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/learning-check.md":"f5028139143317435089070cecd3d35030ca8730ba5daf82f69d73ea331706ff"
+          },
+          "verification_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_boundary_oracle/p1_boundary_oracle-a02-r1/verification.json",
+          "review_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_boundary_oracle/p1_boundary_oracle-a02-r1/review.json"
+        }
+      ],
+      "acceptance":{
+        "attempt_id":"p1_boundary_oracle-a02-r1",
+        "verification_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_boundary_oracle/p1_boundary_oracle-a02-r1/verification.json",
+        "review_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_boundary_oracle/p1_boundary_oracle-a02-r1/review.json and team-message-0f2b6cc4-21a1-470d-ae16-159ef5a2a80a",
+        "output_hashes":{
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/topology-manifest.json":"20de58bf0e3212dbbd9d1a3463698828d421b4b876ac188231a2c62e07c42bc3",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/containment-oracle.md":"a776e3bf505028901f5172b40d13c11fd80fb3bfd18d6b3ef0777eb38a0e8eac",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/oracle-selfcheck.test.mjs":"8f4f3de1730fde73830d896f7766b3b6187c8c3681214558d699f1dd065299a2",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/p1-containment.test.mjs":"a9e2406f9993bae5a1dde82900a47230d71faeedafb39a1e3980e3722569d7f9",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/learning-check.md":"f5028139143317435089070cecd3d35030ca8730ba5daf82f69d73ea331706ff"
+        }
+      }
+    },
+    "p1_containment_prototype": {
+      "state":"accepted",
+      "attempts":[{
+        "id":"p1_containment_prototype-a01-r1",
+        "revision":1,
+        "plan_sha256":"9b7243ea15285e95e7922489113ae7b8069eb3f5893a2e8a81aa9d909921f3de",
+        "hypothesis":"A small component-walking implementation that validates lexical containment, rejects every lstat-visible symlink, distinguishes absent final from dangling final, revalidates before effect, and enforces finite proposal ceilings can satisfy all 66 immutable oracle rows within the cooperative Linux/POSIX boundary.",
+        "evidence_dir":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_containment_prototype/p1_containment_prototype-a01-r1",
+        "outcome":"failed",
+        "input_hashes":{
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/topology-manifest.json":"20de58bf0e3212dbbd9d1a3463698828d421b4b876ac188231a2c62e07c42bc3",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/containment-oracle.md":"a776e3bf505028901f5172b40d13c11fd80fb3bfd18d6b3ef0777eb38a0e8eac",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/oracle-selfcheck.test.mjs":"8f4f3de1730fde73830d896f7766b3b6187c8c3681214558d699f1dd065299a2",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/p1-containment.test.mjs":"a9e2406f9993bae5a1dde82900a47230d71faeedafb39a1e3980e3722569d7f9",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/learning-check.md":"f5028139143317435089070cecd3d35030ca8730ba5daf82f69d73ea331706ff"
+        },
+        "output_hashes":{},
+        "verification_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_containment_prototype/p1_containment_prototype-a01-r1/verification.json",
+        "review_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_containment_prototype/p1_containment_prototype-a01-r1/review.json"
+      },{
+        "id":"p1_containment_prototype-a02-r1",
+        "revision":1,
+        "plan_sha256":"9b7243ea15285e95e7922489113ae7b8069eb3f5893a2e8a81aa9d909921f3de",
+        "hypothesis":"Generic evidence-only instrumentation in the candidate process can emit exact runtime environment and five-output hash receipts through the existing immutable-test argv, allowing environment.json to be settled and verified without oracle edits, new commands, or seam changes.",
+        "evidence_dir":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_containment_prototype/p1_containment_prototype-a02-r1",
+        "outcome":"done",
+        "input_hashes":{
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/topology-manifest.json":"20de58bf0e3212dbbd9d1a3463698828d421b4b876ac188231a2c62e07c42bc3",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/containment-oracle.md":"a776e3bf505028901f5172b40d13c11fd80fb3bfd18d6b3ef0777eb38a0e8eac",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/oracle-selfcheck.test.mjs":"8f4f3de1730fde73830d896f7766b3b6187c8c3681214558d699f1dd065299a2",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/p1-containment.test.mjs":"a9e2406f9993bae5a1dde82900a47230d71faeedafb39a1e3980e3722569d7f9",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/learning-check.md":"f5028139143317435089070cecd3d35030ca8730ba5daf82f69d73ea331706ff"
+        },
+        "output_hashes":{
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/algorithm.md":"a561d8ee77de6bbb4076e2b39f423c845a24e38790ab244bfddb16f9386aac46",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/ceiling-proposal.json":"2d8558fa06fa63ef3d9bff2e9dac00b879511429927e711905893839fc1995bf",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/containment.mjs":"cb568613dd6d53fd890318b566de1e86ee90f0d12668f04d3ad06c9ec8b6054a",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/environment.json":"023ac9c768db6a5e8cdf5d68dcfe9c2e13db28469bab47e0a894291d8c8b3fec",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/learning-check.md":"0e295c19e80ca59564f425610941052ad79f4c93bad685114235d570c65ef08f"
+        },
+        "verification_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_containment_prototype/p1_containment_prototype-a02-r1/verification.json",
+        "review_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_containment_prototype/p1_containment_prototype-a02-r1/review.json"
+      }],
+      "acceptance":{
+        "attempt_id":"p1_containment_prototype-a02-r1",
+        "verification_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_containment_prototype/p1_containment_prototype-a02-r1/verification.json",
+        "review_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_containment_prototype/p1_containment_prototype-a02-r1/review.json and team-message-8831b773-344f-4be8-b804-f78b06d032dd",
+        "output_hashes":{
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/algorithm.md":"a561d8ee77de6bbb4076e2b39f423c845a24e38790ab244bfddb16f9386aac46",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/ceiling-proposal.json":"2d8558fa06fa63ef3d9bff2e9dac00b879511429927e711905893839fc1995bf",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/containment.mjs":"cb568613dd6d53fd890318b566de1e86ee90f0d12668f04d3ad06c9ec8b6054a",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/environment.json":"023ac9c768db6a5e8cdf5d68dcfe9c2e13db28469bab47e0a894291d8c8b3fec",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/learning-check.md":"0e295c19e80ca59564f425610941052ad79f4c93bad685114235d570c65ef08f"
+        }
+      }
+    },
+    "p1_integration": {
+      "state":"accepted",
+      "attempts":[{
+        "id":"p1_integration-a01-r1",
+        "revision":1,
+        "plan_sha256":"9b7243ea15285e95e7922489113ae7b8069eb3f5893a2e8a81aa9d909921f3de",
+        "hypothesis":"The accepted exact-byte oracle and prototype, immutable 66-case zero-effect evidence, observed environment receipt, finite ceilings, and complete four-attempt lineage can support a transparent bounded P1 accept recommendation without production or downstream overclaim.",
+        "evidence_dir":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_integration/p1_integration-a01-r1",
+        "outcome":"done",
+        "input_hashes":{
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/topology-manifest.json":"20de58bf0e3212dbbd9d1a3463698828d421b4b876ac188231a2c62e07c42bc3",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/p1-containment.test.mjs":"a9e2406f9993bae5a1dde82900a47230d71faeedafb39a1e3980e3722569d7f9",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/containment.mjs":"cb568613dd6d53fd890318b566de1e86ee90f0d12668f04d3ad06c9ec8b6054a",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/algorithm.md":"a561d8ee77de6bbb4076e2b39f423c845a24e38790ab244bfddb16f9386aac46",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/environment.json":"023ac9c768db6a5e8cdf5d68dcfe9c2e13db28469bab47e0a894291d8c8b3fec",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/ceiling-proposal.json":"2d8558fa06fa63ef3d9bff2e9dac00b879511429927e711905893839fc1995bf"
+        },
+        "output_hashes":{},
+        "verification_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_integration/p1_integration-a01-r1/verification.json",
+        "review_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_integration/p1_integration-a01-r1/review.json"
+      }],
+      "acceptance":{
+        "attempt_id":"p1_integration-a01-r1",
+        "verification_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_integration/p1_integration-a01-r1/verification.json",
+        "review_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_integration/p1_integration-a01-r1/review.json and team-message-ad63d99a-edb2-4b5d-99ae-3cd8f097a348",
+        "output_hashes":{}
+      }
+    },
+    "p1_final": {
+      "state":"accepted",
+      "attempts":[{
+        "id":"p1_final-a01-r1",
+        "revision":1,
+        "plan_sha256":"9b7243ea15285e95e7922489113ae7b8069eb3f5893a2e8a81aa9d909921f3de",
+        "hypothesis":"A concise final synthesis of the independently accepted exact-byte P1 evidence, complete six-attempt lineage, zero remaining capacity, limitations, and advisory recommendation can support an unambiguous HUMAN accept/defer/reject decision without granting downstream authority.",
+        "evidence_dir":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_final/p1_final-a01-r1",
+        "outcome":"done",
+        "input_hashes":{
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/topology-manifest.json":"20de58bf0e3212dbbd9d1a3463698828d421b4b876ac188231a2c62e07c42bc3",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/oracle/p1-containment.test.mjs":"a9e2406f9993bae5a1dde82900a47230d71faeedafb39a1e3980e3722569d7f9",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/containment.mjs":"cb568613dd6d53fd890318b566de1e86ee90f0d12668f04d3ad06c9ec8b6054a",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/algorithm.md":"a561d8ee77de6bbb4076e2b39f423c845a24e38790ab244bfddb16f9386aac46",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/environment.json":"023ac9c768db6a5e8cdf5d68dcfe9c2e13db28469bab47e0a894291d8c8b3fec",
+          "wbs-runs/durable-agent-p1-file-cwd-containment-poc/prototype/ceiling-proposal.json":"2d8558fa06fa63ef3d9bff2e9dac00b879511429927e711905893839fc1995bf"
+        },
+        "output_hashes":{},
+        "verification_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_final/p1_final-a01-r1/verification.json",
+        "review_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_final/p1_final-a01-r1/review.json"
+      }],
+      "acceptance":{
+        "attempt_id":"p1_final-a01-r1",
+        "verification_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_final/p1_final-a01-r1/verification.json",
+        "review_ref":"wbs-runs/durable-agent-p1-file-cwd-containment-poc/evidence/p1_final/p1_final-a01-r1/review.json and team-message-abcc765e-ef37-4edf-9853-a8ff551bc76a and decision-final-r1-002",
+        "output_hashes":{}
+      }
+    }
+  },
+  "reconciliations": []
+}

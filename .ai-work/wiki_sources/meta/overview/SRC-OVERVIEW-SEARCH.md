@@ -6,7 +6,7 @@ source_type: overview_page
 artifact_locator: .ai-work/wiki/overview/WIKI_SEARCH_GUIDE.md
 profile_id: overview_pages
 status: active
-updated_at: 2026-09-26T10:05:34.789890+00:00
+updated_at: 2026-10-03T23:43:32.495105+00:00
 authority_level: unknown
 freshness_status: unknown
 promotion_status: draft
@@ -49,6 +49,7 @@ Budget (E4): plan 3–5 queries, ~1 call/input; vượt ~2× inputs → BẮT BU
 - plan
 - capture
 - lens
+- test_spec
 - build
 - hand
 - edit
@@ -69,7 +70,6 @@ Budget (E4): plan 3–5 queries, ~1 call/input; vượt ~2× inputs → BẮT BU
 - score
 - slim
 - raw
-- gated
 
 ## Source-Specific Hints
 - heading: Wiki Search Guide — all systems

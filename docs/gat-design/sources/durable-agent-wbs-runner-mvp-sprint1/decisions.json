@@ -1,0 +1,105 @@
+{
+  "format": "dsh-wbs-decisions/1",
+  "mission_id": "durable-agent-wbs-runner-mvp-sprint1",
+  "decisions": [
+    {
+      "id": "approve-sprint1-execution-r1",
+      "kind": "execution",
+      "revision": 1,
+      "plan_sha256": "c6e60ef08da71b29f1738813fb0855416529cfa3a781d284c9c8d0574d2f4fb8",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve and run Sprint 1 (Recommended)",
+      "source_ref": "ask_user_question:approve_sprint1_mvp_execution",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/wbs.v1.json",
+          "sha256": "c6e60ef08da71b29f1738813fb0855416529cfa3a781d284c9c8d0574d2f4fb8"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "approve-sprint1-execution-r2",
+      "kind": "execution",
+      "revision": 2,
+      "plan_sha256": "f34331edb424b664ffb091faddeef5ab0846595888d32a955ebcc64ded8b46aa",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve revision 2 and continue (Recommended)",
+      "source_ref": "ask_user_question:approve_sprint1_revision2_execution",
+      "artifact_hashes": [
+        {
+          "path": "wbs-runs/durable-agent-wbs-runner-mvp-sprint1/wbs.v2.json",
+          "sha256": "f34331edb424b664ffb091faddeef5ab0846595888d32a955ebcc64ded8b46aa"
+        }
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "approve-sprint1-execution-r3",
+      "kind": "execution",
+      "revision": 3,
+      "plan_sha256": "ce41449b955bfefb66bdfa2670ba7c5b5c5d2ff3e0ec49d2d78c5ff50e69620d",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve revision 3 and continue (Recommended)",
+      "source_ref": "ask_user_question:approve_sprint1_revision3_execution",
+      "artifact_hashes": [
+        {"path":"wbs-runs/durable-agent-wbs-runner-mvp-sprint1/wbs.v3.json","sha256":"ce41449b955bfefb66bdfa2670ba7c5b5c5d2ff3e0ec49d2d78c5ff50e69620d"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "approve-sprint1-execution-r4",
+      "kind": "execution",
+      "revision": 4,
+      "plan_sha256": "d8e18beb0e7811d84766f2bba1d97fb69f6ef20216a7d13239ae9ca7272caf8a",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve revision 4 and run (Recommended)",
+      "source_ref": "ask_user_question:approve_sprint1_revision4_execution",
+      "artifact_hashes": [
+        {"path":"wbs-runs/durable-agent-wbs-runner-mvp-sprint1/wbs.v4.json","sha256":"d8e18beb0e7811d84766f2bba1d97fb69f6ef20216a7d13239ae9ca7272caf8a"},
+        {"path":"wbs-runs/durable-agent-wbs-runner-mvp-sprint1/store-contract-baseline.v5.md","sha256":"7ba671865eaa830386fffb6d79b8443e37e1358951a6da882ced4a13d5b1b94f"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "approve-sprint1-execution-r5",
+      "kind": "execution",
+      "revision": 5,
+      "plan_sha256": "712487833e9abfc0cb95047aaf9b02d958f8c7e58f84518d88a161ccc0266e44",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "approve",
+      "verbatim_response": "Approve revision 5 and run (Recommended)",
+      "source_ref": "ask_user_question:approve_sprint1_revision5_execution",
+      "artifact_hashes": [
+        {"path":"wbs-runs/durable-agent-wbs-runner-mvp-sprint1/wbs.v5.json","sha256":"712487833e9abfc0cb95047aaf9b02d958f8c7e58f84518d88a161ccc0266e44"},
+        {"path":"wbs-runs/durable-agent-wbs-runner-mvp-sprint1/store-contract-baseline.v5.md","sha256":"7ba671865eaa830386fffb6d79b8443e37e1358951a6da882ced4a13d5b1b94f"}
+      ],
+      "observed_at": null
+    },
+    {
+      "id": "close-sprint1-for-linked-agile-reset",
+      "kind": "cancel",
+      "revision": 5,
+      "plan_sha256": "712487833e9abfc0cb95047aaf9b02d958f8c7e58f84518d88a161ccc0266e44",
+      "task_id": null,
+      "attempt_id": null,
+      "decision": "cancel",
+      "verbatim_response": "Start a new linked Agile mission (Recommended)",
+      "source_ref": "ask_user_question:agile_reset_mission_strategy",
+      "artifact_hashes": [
+        {"path":"wbs-runs/durable-agent-wbs-runner-mvp-sprint1/pm-systemic-rework-rca.md","sha256":"2ae12ccad7b3beb478f90647511cefeb7a59739275af260a745bca7495c29604"},
+        {"path":"wbs-runs/durable-agent-wbs-runner-mvp-sprint1/runtime-contract-a2-terminal-review-rca.md","sha256":"0afccdc941c4e77f9801440f4d9aef191f9528e56970ccf6d1d1cf741fea2d00"}
+      ],
+      "observed_at": null
+    }
+  ]
+}

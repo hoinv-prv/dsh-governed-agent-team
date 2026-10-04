@@ -1,0 +1,16 @@
+# Findings
+
+## Findings List
+- ...
+
+## Confirmed Findings
+- ...
+
+## Inferred Findings
+- ...
+
+## To-Verify Findings
+- ...
+
+## Notes
+- ...

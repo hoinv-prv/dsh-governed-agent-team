@@ -1,6 +1,8 @@
 profile_id: gat_design_document
 title: GAT design-document profile
 source_type: gat_design_document
+# Source code/test ingestion uses explicit semantic overrides, not design-section extraction.
+source_types: [gat_design_document, source_code, test_spec]
 default_impact: medium
 knowledge_targets:
   - architecture
