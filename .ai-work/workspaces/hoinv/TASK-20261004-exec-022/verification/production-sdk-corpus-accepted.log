@@ -1,0 +1,10 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-distribution-accepted
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  14:22:06
+   Duration  1.19s (transform 615ms, setup 182ms, import 642ms, tests 279ms, environment 0ms)
+

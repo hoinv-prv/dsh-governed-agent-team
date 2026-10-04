@@ -1,0 +1,17 @@
+{
+  "root_head": "912cc24c95d2867dca683c75df9041f26c700dbc",
+  "host_head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+  "protected_dirty_sha256": {
+    "SOURCE_SNAPSHOT.json": "e39e39c7846c6557a2fd7a28cdfb5e119e0f8d7072fe6abb8a144dc352c29deb",
+    "compatibility/dsh-0.1.5-rc.2/manifest.json": "e0973ad5c8937caa3268d735014c29f00e9e457c29448fcdcdffa5b930794713",
+    "installer/verify.mjs": "10b630428ec104fc13086802665d322f583478f451a35e20665f1497a7c72400"
+  },
+  "original_pointer": {
+    "aip_id": "AIP-EXEC-022",
+    "aip_path": "__PROJECT_ROOT__/.ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+    "step_id": "STEP-08",
+    "status": "active",
+    "updated_at": "2026-10-04"
+  },
+  "date": "2026-10-04"
+}

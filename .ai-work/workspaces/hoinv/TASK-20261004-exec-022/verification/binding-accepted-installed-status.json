@@ -1,0 +1,25 @@
+{
+  "status": "installed",
+  "gat": {
+    "version": "0.1.0",
+    "source": {
+      "root": "/home/hoinv/work/dsh-governed-agent-team",
+      "commit": "912cc24c95d2867dca683c75df9041f26c700dbc",
+      "dirty": true,
+      "expectedCommit": null,
+      "commitDiffers": false
+    }
+  },
+  "dsh": {
+    "target": "/home/hoinv/work/dsh-binding-distribution-accepted",
+    "commit": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+    "version": "0.1.5-rc.2",
+    "compatibility": "SUPPORTED",
+    "reason": "selected exact host compatibility artifact"
+  },
+  "installation": {
+    "files": 200,
+    "structuralVerification": "PASS",
+    "sourceRoot": "/home/hoinv/work/dsh-governed-agent-team"
+  }
+}

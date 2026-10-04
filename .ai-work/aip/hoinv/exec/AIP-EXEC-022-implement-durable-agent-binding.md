@@ -2,7 +2,7 @@
 artifact_type: aip_exec
 artifact_id: AIP-EXEC-022
 title: "Implement GAT required member binding and Durable Agent adapter"
-status: active
+status: done
 project: dsh-governed-agent-team
 owner: hoinv
 plan_source: "Direct HUMAN request on 2026-10-04 to create an implementation AIP for docs/gat-design/DURABLE_AGENT_BINDING_PROPOSAL.md"

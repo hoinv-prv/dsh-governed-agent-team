@@ -1,0 +1,108 @@
+{
+  "format": "gat-binding-commit-distribution-qualification/1",
+  "scope": "Installed documentation ownership correction and truthful pinned-private-provider notices tooling; product/runtime bytes unchanged; deployment separate",
+  "target": "/home/hoinv/work/dsh-binding-distribution-commit-qualified",
+  "compatibility": "gat-binding-5c02ce9f",
+  "manifestSha256": "46316a97620f9f23fe5f55003886c93c4e9126c4bec2b5fb92e91ba0e9706a50",
+  "hostCommit": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+  "committedHostRevision": "f7f560ac937ec1e41d47fe8f48135fc1e4ac8554",
+  "providerCommit": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+  "hostReplacements": 49,
+  "payloadFiles": 151,
+  "sourceRows": 200,
+  "prerequisiteGuards": 244,
+  "checks": {
+    "transactionalInstallRepeatStatusFailureRestorationRollbackReinstall": "PASS",
+    "exactInstalledRowsAndFrozenGuards": "PASS",
+    "uniqueInstalledDestinationRows": "PASS",
+    "unchangedHistoricalProductSourceMetadataProviderRows": "PASS",
+    "exactCompiledWebNativeCompilerStateReuse": {
+      "files": 8311,
+      "status": "PASS"
+    },
+    "publicAndEightPackedExportsDedicatedProviderAndSharedAuthenticatedContext": "PASS",
+    "installerTests": {
+      "passed": 21,
+      "failed": 0
+    },
+    "noticesTestsIncludingExactPrivateMetadataAndOrdinaryMITRejection": {
+      "passed": 33,
+      "failed": 0,
+      "cwd": "/home/hoinv/work/dsh-binding-prerequisites"
+    },
+    "normalTypedNoticesLint": {
+      "exitCode": 0
+    },
+    "actualInstalledFiveREADMEPairs": "PASS",
+    "actualInstalledNoticesFreshness": "PASS",
+    "actualInstalledDocumentationAggregate": {
+      "cwd": "/home/hoinv/work/dsh-binding-distribution-commit-qualified",
+      "command": "pnpm_config_verify_deps_before_run=false npm_execpath=/home/hoinv/.local/bin/pnpm node --import tsx scripts/run-gates.ts doc-sync",
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 94.15,
+      "exitCode": 0
+    },
+    "actualFrozenOfflineLock": "PASS",
+    "targetOwnedNativeFlockAcquisitionContentionRelease": "PASS",
+    "protectedDirtyControlsAndUpstreamProvider": "PASS",
+    "postDocumentationSourceAnd8311ArtifactHashes": "PASS"
+  },
+  "verificationDependencyLinks": {
+    "workspacePackages": 297,
+    "exactTargetWorkspaceLinks": "PASS"
+  },
+  "evidence": {
+    "artifact": "commit-distribution-artifact-proof.json",
+    "manifestDelta": "commit-distribution-manifest-delta.json",
+    "lifecycle": "commit-distribution-lifecycle.json",
+    "publicPackedExports": "commit-distribution-public-exports.json",
+    "buildCache": "commit-distribution-build-cache.json",
+    "actualInstalledDocSync": "commit-distribution-installed-doc-sync.log",
+    "actualInstalledPairing": "commit-distribution-installed-pairing.log",
+    "actualInstalledNotices": "commit-distribution-installed-notices-check.log",
+    "installerTests": "commit-distribution-installer-tests.log",
+    "noticesTests": "commit-distribution-notices-tests.log",
+    "noticesNormalTypedLint": "commit-distribution-notices-lint.log",
+    "noticesSourceFreshness": "commit-distribution-notices-check.log",
+    "frozenLock": "commit-distribution-frozen-lock.log",
+    "nativeProbe": "commit-distribution-native-probe.log",
+    "hostCommittedBytes": "commit-host-receipt.json",
+    "status": "commit-distribution-installed-status.json"
+  },
+  "historicalAttributionCorrections": [
+    {
+      "artifactManifestSha256": "2a0c9a5474d6a98ecb767522dce29dc3c259d48697bc61b2b0ec796a5cb07e30",
+      "target": "/home/hoinv/work/dsh-binding-distribution-closed-final",
+      "correction": "Prior 34-PASS documentation aggregate ran on the prerequisite source host, whose three installed-layout README pairs were still correct. It did not qualify the nine different root README after-images installed by that artifact. Actual installed named check reproduced three pairing failures and broken sibling links. Runtime/build evidence remains valid and is retained; this artifact is superseded for installed documentation."
+    },
+    {
+      "artifactManifestSha256": "93186bad4a3dcb1cbf1f63494ed0243d11727355f7088c80f4ecb9d4a7392a69",
+      "target": "/home/hoinv/work/dsh-binding-distribution-commit-final",
+      "correction": "Intermediate documentation-only capture superseded by required notices tooling correction. Its installed aggregate was interrupted with exit143 after pnpm pre-run dependency auto-install failure; no documentation PASS claimed."
+    }
+  ],
+  "historicalArtifactsPreserved": [
+    "commit-distribution-closed-final-history/",
+    "commit-distribution-docs-only-trial/",
+    "commit-before-followup/",
+    "/home/hoinv/work/dsh-binding-distribution-closed-final"
+  ],
+  "initialScaffoldingAttemptDisclosure": "npm_config_verify_deps_before_run was ignored by pnpm11; initial named invocation auto-installed target-only dependencies and then rejected a literal -- argument. First-attempt log preserved. Correct pnpm_config_verify_deps_before_run=false controls final aggregate, every gate retained; dependencies independently linked/locked/verified.",
+  "subprocessesCompleteTargetSealed": true,
+  "deploymentPerformed": false,
+  "commitsCreatedByThisLane": false,
+  "designBeforeSource": [
+    "DETAIL_DESIGN.md \u00a78 Installed documentation layout ownership (15 file allowlist, distinct pinned provider path ownership)",
+    "DETAIL_DESIGN.md \u00a78 Pinned private-provider notices attribution (exact private metadata/pin and truthful missing-license disclosure)"
+  ],
+  "productRuntimeEvidenceReuse": "All 8311 carried compiled/Web/native/compiler-state bytes and product source/metadata/provider rows are exact. Prior same-target built Loader/browser/SDK/Core qualification remains preserved, rather than rerun or relabeled as new-target tests. Fresh target independently passed public/packed/context/native and actual installed documentation/lock/lifecycle checks.",
+  "generatedDocumentationBuildAssets": {
+    "paths": [
+      "website/.vitepress/.temp"
+    ],
+    "scope": "Outputs of the successful actual installed documentation build; distinct from200controlled installed sources and8311preserved runtime/compiler/Web/native hash rows.",
+    "runtimeAndCompilerRowHashesAfterDocumentationBuild": "PASS"
+  }
+}

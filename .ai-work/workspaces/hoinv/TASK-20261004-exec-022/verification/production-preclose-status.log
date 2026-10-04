@@ -1,0 +1,13 @@
+AIP:       AIP-EXEC-022  (/home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md)
+Task ID:   TASK-20261004-exec-022
+Workspace: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022 (exists)
+Steps:     9
+Pointer:   STEP-08 (active)  updated 2026-10-04
+  [✔] 00c_active_step_context.md
+  [✔] 04_findings.md
+  [✔] 07_output_draft.md
+  [✔] 11_output_final.md
+Captures:  14 total, 14 need triage (status=captured)
+           by kind: tooling_opportunity=10, wiki_quality_issue=2, process_doc_gap=1, retrieval_improvement=1
+Queue:     5 item(s), 0 open, 0 blocking
+Backlog:   35 row(s), 35 open

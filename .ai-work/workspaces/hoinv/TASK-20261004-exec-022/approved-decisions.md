@@ -26,3 +26,7 @@ P-08: graceful contribution abstention only with exact authoritative isolated-ex
 - DSH reserved-handle/request hook/executor metadata: host dependency, read-only qualification; missing capabilities become owner handoffs.
 - Mission/task leases: approved GAT/host authorization workstream evidence must be located; binding scope cannot silently rewrite that authority.
 - Canonical/Truth/contract/wiki changes: applicable approved review/CR gates. Project draft design deltas here preserve their existing authority status.
+
+## Authorized prerequisite and final integration follow-up
+
+The later HUMAN instruction explicitly authorized isolated DSH prerequisite changes in the separate worktree based on c291, with design-before-code and deployment approval separate. AIP-EXEC-023 delivered committed prerequisite revision 5c02ce9. The current request authorizes completing remaining AIP-EXEC-022 integration, package and evidence tasks against those pins. Disposable verification targets and private provider/session storage are test fixtures. The original dirty checkout, protected compatibility controls and untracked native outputs are preserved. No push, merge, publication or existing-process activation is included.

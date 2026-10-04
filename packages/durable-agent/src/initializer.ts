@@ -16,17 +16,20 @@ const MEMBER_KEYS = new Set([
 const DURABLE_KEYS = new Set(['scope'])
 const MEMBER_NAME = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u
 
+/** Explicit model route selected by one strict Durable declaration. */
 export interface DurableRouteSelection {
   readonly provider: string
   readonly model: string
   readonly reasoningEffort?: string
 }
 
+/** Host validation that resolves the declared route without changing its selection. */
 export type DurableRoutePreflight = (
   route: DurableRouteSelection,
   signal: AbortSignal,
 ) => Promise<AgentOptions | undefined>
 
+/** Trusted host configuration for bounded workspace-only roster loading. */
 export interface LoadDurableTeamMembersOptions {
   /** Canonical workspace path resolved and trusted by the host. */
   readonly workspaceRealpath: string
@@ -57,7 +60,7 @@ function invalidConfiguration(): never {
 
 function plainRecord(value: unknown): value is Record<string, unknown> {
   if (typeof value !== 'object' || value === null || Array.isArray(value)) return false
-  const prototype = Object.getPrototypeOf(value)
+  const prototype: unknown = Object.getPrototypeOf(value)
   return prototype === Object.prototype || prototype === null
 }
 
@@ -150,7 +153,11 @@ async function readBoundedConfig(workspaceRealpath: string, maxBytes: number): P
   }
 }
 
-/** Load the explicit Durable roster; errors fail closed and never select GAT defaults. */
+/**
+ * Load the explicit Durable roster; errors fail closed and never select GAT defaults.
+ * @param options Canonical workspace, trusted selectors, bounds and host route preflight.
+ * @returns Normalized required member specifications with persisted declaration payloads.
+ */
 export async function loadDurableTeamMembers(
   options: LoadDurableTeamMembersOptions,
 ): Promise<TeamInitialization> {
@@ -206,7 +213,9 @@ export async function loadDurableTeamMembers(
       initialTask: [{ type: 'text', text: declaration.prompt }],
       context: 'fresh',
       continuationProvider,
-      agentOptions: { provider: declaration.provider, model: declaration.model, ...(declaration.reasoningEffort === undefined ? {} : { reasoningEffort: ReasoningEffortId(declaration.reasoningEffort) }), ...agentOptions },
+      agentOptions: { provider: declaration.provider, model: declaration.model,
+        ...(declaration.reasoningEffort === undefined ? {} : { reasoningEffort: ReasoningEffortId(declaration.reasoningEffort) }),
+        ...agentOptions },
       attachments: [{ binderId: 'durable-agent', protocolVersion: 1, required: true, payload }],
     }
   }))

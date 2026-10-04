@@ -1,32 +1,39 @@
-# Verification ledger — AIP-EXEC-022
+# Final verification ledger — AIP-EXEC-022
 
-Current authoritative step is STEP-07. Source tests qualify foundation/adapter, not registered production child dispatch. Test source bytes are compared in tested-source-hashes.json. artifact-hashes.json records built entry/manifest/baseline identities. asc-refresh.json records each rebuild/read and the STEP-08 preview. Logs are fresh runs, not historical mapping claims.
+Final target: `/home/hoinv/work/dsh-binding-distribution-closed-final`. Exact selected manifest SHA-256: `2a0c9a5474d6a98ecb767522dce29dc3c259d48697bc61b2b0ec796a5cb07e30`. Host prerequisite is 5c02ce9 over c291; WK is unchanged a8e2154. `production-qualification-receipt.json` indexes source, exact artifact, actual loaded modules, independent review and governance results. Previous original/final/qualified/accepted/review-final runs remain history; no failed report was overwritten or represented as a final run.
 
-Disposable DSH build/test checkout: /tmp/gat-exec022-verify at compatible c291e7961a515f6d7af9304e7fd1d257929aef26 (0.1.5-rc.2). Current GAT source and candidate adapter copied into experimental packages. Candidate adapter added only to scratch host TS references. WK public provider is a built copy at /tmp/gat-exec022-da-provider from sibling clean a8e215433ae050e36e0ba27205701be1a5f114a1. yaml 2.9.1 and existing dependencies linked; native-system build completed. No external source checkout or live runtime was changed. Initial pnpm bootstrap, missing native binary/link and fixture failures were resolved during setup; final exits below describe the final runs. Native GC warnings remain visible in source logs.
-
-| Final check | Exit / result | Raw log |
+| Check | Result | Final evidence |
 |---|---|---|
-| Source suite | 0; 19 files / 235 tests PASS | source-tests.log |
-| Installer CLI suites | 0; 11 PASS | installer-tests.log |
-| Host aggregate TS | 0 | host-types.log |
-| Host bundle / generated remote API | 0 | host-bundle.log |
-| Client aggregate TS | 0 | client-types.log |
-| Client bundle | 0 | client-bundle.log |
-| Web Vite build | 0; chunk size warnings | web-build.log |
-| Built core smoke | 0; 1 PASS | built-core-smoke.log |
-| Plain Node adapter/core exports | 0; closed argument rejection PASS | built-adapter-smoke.log |
-| Default install dry-run/install/status/rollback | each 0; 94 installed files structural PASS | install-dry.log, install.log, install-status.log, rollback.log |
-| Keyless installed-profile browser | 1; 2 PASS / 1 FAIL | browser.log |
-| Strict task lint | 0; errors=0 warnings=0 info=0 | task-strict-lint.log |
-| Strict whole-tree lint | 1; errors=0 warnings=37 info=3005 accepted=1 (existing baseline warnings) | whole-tree-strict-lint.log |
+| Full GAT source |333 PASS /24 files|production-all-gat-tests-final.log|
+| Host admission/authority/prompt/tools boundaries |767 PASS /29 files|production-host-boundaries-final.log|
+| Core and actual WK Loader source |166 PASS /11 files|core-production-receipt.json|
+| Adapter/provider source |48 PASS /5 files|adapter-production-tests.log|
+| Ordinary complete type-aware lint |Exit0; no diagnostics; all 11 previous owners included|production-type-aware-lint-complete-final.log|
+| Installer |21 PASS|binding-installer-tests-closed-final.log|
+| Owning documentation |34 PASS /0 failed /0 skipped|binding-closed-final-doc-sync.log|
+| Source mapping |18 rows;138 files;184 anchors;80 test locators;0 errors|production-mapping-validation.json|
+| Exact installation/lifecycle |205 rows /244 guards; fresh install, failure restore, repeat, status, rollback, reinstall PASS|binding-distribution-closed-final.json|
+| Public and extracted archives |8 packages, shared public authenticated control context PASS|binding-built-packed-exports-closed-final.json|
+| Actual built Loader/provider/recovery |5 cases /22 public modules PASS; native/profile hashes|production-built-runtime-closed-final.json|
+| Actual supported browser WS |3 PASS, including independently asserted 5 Idle Agents|production-browser-closed-final.log|
+| Built Core/Remote contribution |1 PASS|production-built-core-closed-final.log|
+| Selected TypeScript SDK |7 PASS,12 unrelated scenarios filtered by name|production-sdk-ts-closed-final.log|
+| Canonical corpus |3 PASS|production-sdk-corpus-closed-final.log|
+| Python SDK |4 scenarios PASS|production-python-closed-final-sdk-*.log|
+| All-step ASC reading surfaces |9 rebuilt/read/identity-checked snapshots|production-asc-all-steps.json|
 
-Final source command (cwd /tmp/gat-exec022-verify):
-`DSH_SNAPSHOT=replay node node_modules/vitest/vitest.mjs run packages/experimental/gat-core/tests packages/experimental/gat-tools/tests packages/experimental/gat-durable-agent/tests packages/experimental/gat-profile/tests packages/experimental/gat-web-profile/tests packages/experimental/gat-web/tests`
+Counts overlap. TypeScript/Python API facades launch the actual built CLI; installed registry SDK/wheel qualification is outside scope. Filtered SDK scenarios are unrelated coverage, not AIP criterion waivers. Conditional isolated-only exclusions are explicitly mapped in acceptance-matrix.md.
 
-Other commands in that checkout: `node node_modules/typescript/bin/tsc -b tsconfig.host.json`; `node node_modules/tsdown/dist/run.mjs --env.DSH_BUILD_FACE host`; `node node_modules/typescript/bin/tsc -b tsconfig.client.json`; `node node_modules/tsdown/dist/run.mjs --env.DSH_BUILD_FACE client`; from apps/web, `node node_modules/vite/bin/vite.js build`; `DSH_SNAPSHOT=replay node node_modules/vitest/vitest.mjs run --config vitest.e2e.config.ts packages/experimental/gat-core/tests/built-lib.e2e.ts`; `node <workspace>/verification/built-entry.mjs /tmp/gat-exec022-verify`; browser: `DSH_SNAPSHOT=replay node node_modules/vitest/vitest.mjs run --config vitest.web.config.ts apps/web/tests/gat-agent-team-panel.e2e.ts`.
+Compilers, both bundle faces and Web were built and qualified on review-final after the runtime-peer fix. Closed-final changes only 4 README status sentences and 2 matched translation sidecars. All 8,311 compiled/Web/native/compiler-cache files and 8 public entry hashes were carried byte-identically; this is recorded artifact reuse, not a new compiler/bundle run. Fresh installer, frozen lock, native flock, public/packed probes, owning documentation and all 9 parent replay commands pass on closed-final. `binding-closed-final-build-cache.json` and `binding-closed-final-artifact-proof.json` bind that distinction and post-replay hashes.
 
-Root installer tests: `node --test installer/tests/*.test.mjs`. Separate fresh disposable /tmp/gat-exec022-install used `node installer/index.mjs install --target /tmp/gat-exec022-install --dry-run`, then install, status and rollback. Default installer excludes the candidate adapter pending host/authority qualifications. Full installer/verify.mjs pipeline is not claimed PASS: individual checks were run directly to avoid pnpm's implicit reinstallation for the scratch-only peer package, and the browser golden failed.
+Reproduction uses the checked-in verifiers and private temporary storage. From repository root:
 
-Browser failure is a model-label mismatch against supplied golden; actual defaults are unchanged in HEAD packages/tools/src/team-config.ts. No record-mode overwrite. Real reserved-child, request-refresh, exact authority and nested capability prerequisites remain unqualified; no deployment/profile activation, packed production adapter proof or live loaded-module evidence is claimed.
+```sh
+node installer/index.mjs status --target /home/hoinv/work/dsh-binding-distribution-closed-final --compatibility dsh-0.1.5-rc.2-binding-5c02ce9
+node installer/verify-binding-exports.mjs --target /home/hoinv/work/dsh-binding-distribution-closed-final
+node installer/verify-binding-runtime.mjs /home/hoinv/work/dsh-binding-distribution-closed-final
+```
 
-Strict lint commands (project root): `python3 .ai-work/tooling/lint_all.py --scope task --workspace .ai-work/workspaces/hoinv/TASK-20261004-exec-022 --aip .ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md --strict`; `python3 .ai-work/tooling/lint_all.py --strict`. `git diff --check` passed. Six captured candidates await HUMAN review; no direct Wiki/Truth changes.
+Browser and Core commands from the sealed target use `DSH_SNAPSHOT=replay node node_modules/vitest/vitest.mjs run --config vitest.web.config.ts apps/web/tests/gat-agent-team-panel.e2e.ts` and `--config vitest.e2e.config.ts packages/experimental/gat-core/tests/built-lib.e2e.ts`. TS SDK uses `DSH_EXAMPLE_MODE=lib DSH_SNAPSHOT=replay` with vitest.snapshot.config.ts and the exact 7-scenario name filter recorded in the parent receipt/command evidence; corpus is a separate unfiltered run. Python uses `PYTHONPATH=python/sdk/src /home/hoinv/anaconda3/bin/python scripts/smoke-python-runtime.py --scenario <sdk-request-refresh|sdk-snapshot|sdk-restart|sdk-minimal-in-history> --exe apps/cli/lib/bin.js`.
+
+Final strict task lint and governed close results are in production-task-lint-final.log, production-governed-close.log and production-post-close-status.log. Whole-tree strict lint retains 0 errors/37 existing warnings/3005 info/1 accepted and exits 1; it is not represented as a clean strict whole-tree PASS. No suppression or unrelated Wiki/Truth repair is applied. All 14 captures receive explicit account-backlog disposition. No deployment, push, merge, publication or original dirty-work reset is performed.

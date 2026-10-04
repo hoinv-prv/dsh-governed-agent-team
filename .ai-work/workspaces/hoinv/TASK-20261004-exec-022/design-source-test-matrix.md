@@ -14,3 +14,7 @@ All changes below follow the 2026-10-04 HUMAN selection in approved-decisions.md
 | Packaging/profile and source/build | DD §5 DD10/11; proposal §9 | root opt-in adapter export/build and installer qualification | no production activation before qualified host |
 
 Direct-continuable target: T17–T21 and isolated-only parts of T16/T22/T23 are not applicable. Strict denial and static Team presentation remain applicable. No official isolated Consumer or host-created hook substitutes for reserved-child admission.
+
+## Final production corroboration
+
+The intended deltas above are retained as chronology. Official DD sections7–8, AD/BD/integration production sections and their prospective corrective refinements govern the delivered connected implementation. Current source/test/fixture hashes and138 mapped files,184 symbols and80 test locators are in docs/gat-design/source-code-map.json and source-baseline.json, validated by verification/production-mapping-validation.json. Actual executed source, built/profile/SDK/browser and artifact evidence is in verification/production-qualification-receipt.json and acceptance-matrix.md, with independent review separately recorded. Macro criteria are declarative; runtime acceptance is not encoded by ticking them.

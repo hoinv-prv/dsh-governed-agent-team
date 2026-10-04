@@ -1,0 +1,328 @@
+{
+  "checked_on": "2026-10-04",
+  "aip": "AIP-EXEC-022",
+  "status": "qualified__aip_done",
+  "evidence_workspace": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022",
+  "qualification_receipt": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-qualification-receipt.json",
+  "source_map_verification": {
+    "status": "PASS",
+    "source_map_rows": 18,
+    "files": 138,
+    "symbols": 184,
+    "test_paths": 80,
+    "missing_paths": 0,
+    "unresolved_symbols": 0,
+    "mismatched_line_anchors": 0
+  },
+  "product_tests": {
+    "gat_files": 24,
+    "gat_tests": 333,
+    "host_boundary_files": 29,
+    "host_boundary_tests": 767,
+    "core_plus_actual_WK_tests": 166,
+    "adapter_tests": 48,
+    "counts_overlap": true,
+    "installer_tests": 21,
+    "browser_passed": 3,
+    "browser_failed": 0,
+    "built_runtime_cases": 5,
+    "public_loaded_modules": 22,
+    "built_core_passed": 1,
+    "typescript_sdk_executed": 7,
+    "typescript_sdk_filtered_unrelated": 12,
+    "canonical_corpus_passed": 3,
+    "python_sdk_scenarios": 4
+  },
+  "build_verification": {
+    "prerequisite_guards": 244,
+    "host_replacements": 54,
+    "payload_files": 151,
+    "exact_source_rows": 205,
+    "transactional_lifecycle": "PASS",
+    "public_and_eight_packed_exports": "PASS",
+    "shared_public_authenticated_control_module": "PASS",
+    "target_owned_native_flock": "PASS",
+    "frozen_lock": "PASS",
+    "compilers_bundles_web": "PASS qualified review-final builds; all8311 compiled/Web/native/compiler-cache files and eight public entries reused byte-identically after documentation-only delta; no fresh rebuild claimed.",
+    "post_replay_source_native_tool_guard_hashes": "PASS",
+    "receipt": "distribution-final-qualification.json",
+    "artifact_proof": "binding-closed-final-artifact-proof.json",
+    "final_documentation_delta": "Exactly four README status sentences and two matched translation sidecars; approved intended DD8 before documentation.",
+    "build_reuse_proof": "binding-closed-final-build-cache.json"
+  },
+  "documentation": {
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "after_gateway_peer_metadata": true,
+    "log": "binding-closed-final-doc-sync.log"
+  },
+  "task_strict_lint": {
+    "exit_code": 0,
+    "errors": 0,
+    "warnings": 0,
+    "log": "production-task-lint-final.log",
+    "post_close_log": "production-task-lint-post-close.log"
+  },
+  "whole_tree_strict_lint": {
+    "exit_code": 1,
+    "errors": 0,
+    "warnings": 37,
+    "info": 3005,
+    "accepted": 1,
+    "baseline_unchanged": true,
+    "log": "production-whole-tree-lint-post-close.json"
+  },
+  "deployment": "Separate approval; not performed",
+  "wiki_registration": "No promotion/source refresh applied; captured candidates receive explicit backlog disposition at governed close",
+  "prior_aip_023_verification": {
+    "checked_on": "2026-10-04",
+    "aip": "AIP-EXEC-023",
+    "status": "prerequisites_qualified__parent_production_gated",
+    "evidence_workspace": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023",
+    "qualification_receipt": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/qualification-receipt.json",
+    "source_test_hash_verification": {
+      "mapped_files": 109,
+      "root_staged_tested_files": 57,
+      "mismatches": 0
+    },
+    "source_map_verification": {
+      "detail_ids": 18,
+      "source_symbol_anchors": 180,
+      "test_paths": 73,
+      "missing_paths": 0,
+      "unresolved_symbols": 0,
+      "mismatched_line_anchors": 0
+    },
+    "product_tests": {
+      "gat_files": 17,
+      "gat_tests": 270,
+      "independently_repeated": true,
+      "matrix_cases": 60,
+      "matrix_allowed_bodies": 19,
+      "matrix_denied": 41,
+      "matrix_provider_requests": 0,
+      "counts_overlap": true
+    },
+    "build_verification": {
+      "host_types": "PASS",
+      "host_bundle": "PASS",
+      "client_types": "PASS",
+      "client_bundle": "PASS",
+      "plain_node_public_imports": 11
+    },
+    "documentation": {
+      "gates_passed": 34,
+      "gates_failed": 0,
+      "gates_skipped": 0
+    },
+    "task_strict_lint": {
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0
+    },
+    "whole_tree_strict_lint": {
+      "exit_code": 1,
+      "errors": 0,
+      "warnings": 37,
+      "info": 3005,
+      "accepted": 1,
+      "baseline_warnings_unchanged": true
+    },
+    "production_prerequisites": "Qualified source/artifact prerequisite APIs at exact patch receipt; parent production binder, profile/packaging/browser and changed-host release compatibility remain open. No deployment.",
+    "wiki_registration": "No promotion or meta refresh applied; candidates deferred with account-backlog destinations for HUMAN review.",
+    "process_limitations": [
+      "Two earlier corrective intended-design chronology gaps retained",
+      "Annotation expression/export accidents corrected and independently qualified",
+      "Original DSH AGENTS.md changed outside task-issued edits and preserved; 365 other protected hashes match",
+      "Core built AST differs through independently reviewed equivalent changes; tools normalized AST matches",
+      "Parent AIP-EXEC-022 production binder/profile/package/browser compatibility qualification remains OPEN",
+      "Deployment, merge, publication, live activation and canonical promotion remain separate"
+    ],
+    "prior_aip_022_verification": {
+      "checked_on": "2026-10-04",
+      "aip": "AIP-EXEC-022",
+      "status": "foundation_and_adapter_reviewed__production_gated",
+      "evidence_workspace": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022",
+      "source_test_hash_verification": {
+        "checked": 82,
+        "changed": 0,
+        "evidence": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/source-design-consistency.md"
+      },
+      "tested_source_bytes": {
+        "checked": 57,
+        "mismatches": 0,
+        "evidence": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/tested-source-hashes.json"
+      },
+      "source_map_verification": {
+        "detail_ids": 18,
+        "missing_paths": 0,
+        "unresolved_symbols": 0,
+        "evidence": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/source-design-consistency.md"
+      },
+      "product_tests": {
+        "source_files": 19,
+        "source_passed": 235,
+        "source_failed": 0,
+        "installer_passed": 11,
+        "browser_passed": 2,
+        "browser_failed": 1,
+        "browser_failure": "Model golden mismatch against unchanged HEAD defaults; RQ-022-03",
+        "raw_reports": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification"
+      },
+      "build_verification": {
+        "host_types": "PASS",
+        "host_bundle": "PASS",
+        "client_types": "PASS",
+        "client_bundle": "PASS",
+        "web_build": "PASS",
+        "core_built_entry": "PASS",
+        "adapter_built_entry": "PASS",
+        "default_install_status_rollback": "PASS",
+        "registered_attached_child_profile": "BLOCKED"
+      },
+      "task_strict_lint": {
+        "exit_code": 0,
+        "errors": 0,
+        "warnings": 0,
+        "info": 0
+      },
+      "whole_tree_strict_lint": {
+        "exit_code": 1,
+        "errors": 0,
+        "warnings": 37,
+        "info": 3005,
+        "accepted": 1,
+        "baseline_warning_count_unchanged": true
+      },
+      "asc": {
+        "steps": 9,
+        "snapshots": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts",
+        "active_step": "STEP-07",
+        "step_08": "preview; pointer remains STEP-07"
+      },
+      "production_prerequisites": "OPEN: qualified reserved/request-refresh host APIs and exact authority/nested capabilities missing",
+      "wiki_registration": "Refresh/registration not applied; CAP-022-05 pending HUMAN review",
+      "prior_documentation_verification": {
+        "checked_on": "2026-10-04",
+        "document_links": 219,
+        "detail_ids": 18,
+        "symbol_locators": 79,
+        "source_test_files": 64,
+        "rationale_files": 7,
+        "documentation_errors": [],
+        "aiws_lint_exit": 0,
+        "aiws_lint_summary": "summary: errors=0 warnings=37 info=3005 accepted=1",
+        "product_tests": "Not run; documentation-only change",
+        "wiki_registration": "Complete: 72 sources, 240 new typed relations",
+        "wiki_lookup": {
+          "passed": 367,
+          "failed": 0
+        },
+        "wiki_relation_verification": {
+          "planned": 240,
+          "missing": 0,
+          "broken_references": 0
+        },
+        "source_test_hash_verification": {
+          "checked": 64,
+          "changed": 0
+        },
+        "wiki_lint": {
+          "exit_code": 0,
+          "summary": "summary: errors=0 warnings=25 info=3004 accepted=1"
+        }
+      }
+    },
+    "asc": {
+      "steps": 8,
+      "snapshots": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/step_contexts",
+      "final_step": "STEP-07",
+      "pointer_status": "done",
+      "generated_context_status": "active",
+      "staleness_status": "fresh"
+    },
+    "commit_followup": {
+      "receipt": ".ai-work/workspaces/hoinv/TASK-20261004-exec-023/commit-receipt.json",
+      "host_commit": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+      "mechanically_corrected_files": 11,
+      "exact_normalized_javascript_matches": 11,
+      "root_host_tested_pairs": 57,
+      "mapped_files": 109,
+      "source_map_receipt": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-map-validation.json",
+      "gat_tests": {
+        "files": 18,
+        "passed": 271
+      },
+      "connection_gateway_tests": {
+        "files": 22,
+        "passed": 451
+      },
+      "documentation": {
+        "passed": 34,
+        "failed": 0,
+        "skipped": 0
+      },
+      "staged_lint": {
+        "exit_code": 0,
+        "errors": 0,
+        "warnings": 21,
+        "type_aware": false
+      },
+      "supplemental_type_aware_lint": {
+        "exit_code": 1,
+        "diagnostics": 172,
+        "origin": "All traced to pre-correction source lines; no full type-aware PASS claimed",
+        "parent_queue_item": "RQ-022-05"
+      },
+      "qualification_status": "Prerequisite source/artifact handoff; parent production/release qualification remains gated"
+    }
+  },
+  "asc": {
+    "steps": 9,
+    "all_step_snapshots_rebuilt_read": true,
+    "receipt": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-asc-all-steps.json",
+    "final_step": "STEP-08",
+    "pointer_status": "done",
+    "generated_context_status": "active: builder fixed reading projection label, not lifecycle",
+    "staleness_status": "fresh"
+  },
+  "independent_review": "PASS: .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-independent-review.md",
+  "captures": {
+    "total": 14,
+    "deferred": 14,
+    "untriaged": 0,
+    "backlog_ids": [
+      "BL-022-CAP-022-01",
+      "BL-022-CAP-022-02",
+      "BL-022-CAP-022-03",
+      "BL-022-CAP-022-04",
+      "BL-022-CAP-022-05",
+      "BL-022-CAP-022-06",
+      "BL-022-CAP-022-07",
+      "BL-022-CAP-022-08",
+      "BL-022-CAP-022-09",
+      "BL-022-CAP-022-10",
+      "BL-022-CAP-022-11",
+      "BL-022-CAP-022-12",
+      "BL-022-CAP-022-13",
+      "BL-022-CAP-022-14"
+    ],
+    "governed_close_log": "production-governed-close.log",
+    "promotion": "None; HUMAN-controlled future review"
+  },
+  "aip_close": {
+    "exit_code": 0,
+    "aip_status": "done",
+    "pointer_step": "STEP-08",
+    "pointer_status": "done",
+    "queue_open": 0,
+    "queue_blocking": 0,
+    "all_step_asc_rebuilt_read": 9,
+    "log": "production-governed-close.log",
+    "post_close_status": "production-post-close-status.log",
+    "post_close_task_lint_exit": 0,
+    "installed_status_after_close": "installed; SUPPORTED, structural PASS; source dirty advisory with exact selected hashes verified",
+    "installer_status_log": "production-installer-status-post-close.json"
+  }
+}

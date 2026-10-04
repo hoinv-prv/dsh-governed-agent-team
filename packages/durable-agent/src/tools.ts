@@ -17,8 +17,11 @@ const MAX_LIMITATIONS = 64
 const MEMORY_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u
 const CANDIDATE_KEYS = ['title', 'retrievalCondition', 'content', 'provenance', 'confidence', 'limitations'] as const
 
+/** Closed executable model tool with immutable dispatch classification. */
 export interface DurableToolDescriptor {
   readonly name: string
+  /** Captured host dispatch classification, independent of the tool name. */
+  readonly capability: 'read' | 'effect'
   readonly schema: JsonValue
   readonly invoke: (args: unknown) => Promise<unknown>
 }
@@ -63,12 +66,12 @@ function closedDataArray(value: unknown): unknown[] {
 
 function closedDataRecord(value: unknown, expectedKeys: readonly string[]): Record<string, unknown> {
   if (typeof value !== 'object' || value === null || Array.isArray(value)) rejected()
-  const prototype = Object.getPrototypeOf(value)
+  const prototype: unknown = Object.getPrototypeOf(value)
   if (prototype !== Object.prototype && prototype !== null) rejected()
   const keys = Reflect.ownKeys(value)
   if (keys.some(key => typeof key !== 'string') || keys.length !== expectedKeys.length
     || expectedKeys.some(key => !keys.includes(key))) rejected()
-  const result: Record<string, unknown> = Object.create(null)
+  const result: Record<string, unknown> = Object.create(null) as Record<string, unknown>
   for (const key of expectedKeys) {
     const descriptor = Object.getOwnPropertyDescriptor(value, key)
     if (descriptor === undefined || !('value' in descriptor) || descriptor.get !== undefined || descriptor.set !== undefined) rejected()
@@ -136,7 +139,7 @@ function safeCandidateResult(value: DurableAgentMemoryCandidate): DurableAgentMe
       confidence: candidate.confidence as DurableAgentMemoryCandidate['confidence'],
       limitations: limitations as string[],
     }
-    if (result.status !== 'unconfirmed'
+    if (candidate.status !== 'unconfirmed'
       || !text(result.candidateId, MAX_METADATA_BYTES)
       || !text(result.title, MAX_METADATA_BYTES)
       || !text(result.retrievalCondition, MAX_METADATA_BYTES)
@@ -172,13 +175,19 @@ const candidateSchema: JsonValue = {
   additionalProperties: false,
 }
 
-/** Build closed model tools bound to this Consumer and its current scope authority. */
+/**
+ * Build the selective-read and unconfirmed-candidate model tools.
+ * @param consumer Public WK Consumer bound to the exact opaque provider reference.
+ * @param authorize Current authority check performed before and after each operation.
+ * @returns Two closed tool descriptors without confirmed-memory authority.
+ */
 export function createDurableTools(
   consumer: DurableAgentConsumer,
   authorize: MemberCapabilityScope['authorize'],
 ): readonly DurableToolDescriptor[] {
   const read: DurableToolDescriptor = {
     name: 'durable_agent_read_memory',
+    capability: 'read',
     schema: readSchema,
     invoke: async (args: unknown): Promise<unknown> => {
       const input = closedDataRecord(args, ['itemId'])
@@ -197,6 +206,7 @@ export function createDurableTools(
   }
   const submit: DurableToolDescriptor = {
     name: 'durable_agent_submit_candidate',
+    capability: 'effect',
     schema: candidateSchema,
     invoke: async (args: unknown): Promise<unknown> => {
       const input = candidateInput(args)

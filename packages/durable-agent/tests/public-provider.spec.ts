@@ -19,8 +19,8 @@ describe('WK public provider in temporary storage', () => {
     let current = true
     const scope: MemberCapabilityScope = {
       isCurrent: () => current, authorize: () => { if (!current) throw new Error('host lease unavailable') },
-      install: value => { contribution = value; return () => { contribution = undefined } },
-      beforeRequest: value => { refresh = value; return () => { refresh = undefined } },
+      install: (value) => { contribution = value; return () => { contribution = undefined } },
+      beforeRequest: (value) => { refresh = value; return () => { refresh = undefined } },
       replacePrompt: (_key, prompt) => { contribution = { ...contribution!, prompt } },
     }
     const declaration = { name: 'implementer', description: 'Implement approved work', prompt: 'Use assigned tasks', context: 'fresh' as const, provider: 'mock', model: 'mock', scope: 'workspace' as const }
@@ -40,18 +40,18 @@ describe('WK public provider in temporary storage', () => {
       const prepared = await binder.prepare(input, signal)
       const binding = await binder.bind({ ...input, scope }, prepared.attachment, prepared.value, signal)
       expect(contribution!.tools.map(tool => tool.name)).toEqual(['durable_agent_read_memory', 'durable_agent_submit_candidate'])
-      expect(JSON.parse(contribution!.prompt).catalog).toEqual([expect.objectContaining({ id: 'rule-one' })])
+      expect((JSON.parse(contribution!.prompt) as { catalog: unknown[] }).catalog).toEqual([expect.objectContaining({ id: 'rule-one' })])
       const read = contribution!.tools[0]!
       expect(await read.invoke({ itemId: 'rule-one' })).toMatchObject({ content: 'Preserve evidence' })
       expect(await contribution!.tools[1]!.invoke({ title: 'Possible rule', retrievalCondition: 'During review', content: 'Candidate only', provenance: 'temporary fixture', confidence: 'medium', limitations: [] })).toMatchObject({ status: 'unconfirmed' })
       await refresh!()
-      const before = JSON.parse(contribution!.prompt).revision
+      const before = (JSON.parse(contribution!.prompt) as { revision: number }).revision
       binding.closeAdmission()
       await binding.settle(signal); await binding.release(signal)
       expect(contribution).toBeUndefined()
       await expect(read.invoke({ itemId: 'rule-one' })).rejects.toThrow()
       const recovered = await binder.recover({ ...input, generation: 'second', scope }, prepared.attachment, signal)
-      expect(JSON.parse(contribution!.prompt).revision).toBe(before)
+      expect((JSON.parse(contribution!.prompt) as { revision: number }).revision).toBe(before)
       expect(await contribution!.tools[0]!.invoke({ itemId: 'rule-one' })).toMatchObject({ content: 'Preserve evidence' })
       current = false
       await expect(refresh!()).rejects.toThrow()

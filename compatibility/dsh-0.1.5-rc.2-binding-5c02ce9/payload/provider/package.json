@@ -1,0 +1,76 @@
+{
+  "name": "@deepseek-ai/dsh-durable-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.7.0",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/src/index.d.ts",
+      "import": "./lib/src/index.js"
+    },
+    "./client": {
+      "types": "./lib/src/client.d.ts",
+      "import": "./lib/src/client.js"
+    },
+    "./config": {
+      "types": "./lib/src/config.d.ts",
+      "import": "./lib/src/config.js"
+    },
+    "./identity": {
+      "types": "./lib/src/identity.d.ts",
+      "import": "./lib/src/identity.js"
+    },
+    "./members": {
+      "types": "./lib/src/members.d.ts",
+      "import": "./lib/src/members.js"
+    },
+    "./service": {
+      "types": "./lib/src/service.d.ts",
+      "import": "./lib/src/service.js"
+    },
+    "./consumer": {
+      "types": "./lib/src/consumer.d.ts",
+      "import": "./lib/src/consumer.js"
+    },
+    "./standalone-adapter": {
+      "types": "./lib/src/standalone-adapter.d.ts",
+      "import": "./lib/src/standalone-adapter.js"
+    }
+  },
+  "files": [
+    "lib",
+    "fixtures/profiles",
+    "README.md",
+    "docs/service.md",
+    "docs/task-contract.md",
+    "docs/reviewer-context.md",
+    "docs/reviewer-ab-results.md",
+    "docs/reviewer-ab-pilot-requests.json",
+    "docs/reviewer-ab-live-responses.json",
+    "docs/reviewer-ab-pilot-provenance.json",
+    "scripts/reviewer-ab-benchmark.mjs"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check:named-exports": "node scripts/check-named-exports.mjs",
+    "smoke:packed-profile-v3": "node scripts/packed-profile-smoke.mjs",
+    "test:domain-contracts": "vitest run tests/domain-contracts.spec.ts",
+    "test:task-contract": "vitest run tests/task-contract.spec.ts",
+    "test:reviewer-context": "vitest run tests/review-packet.spec.ts tests/reviewer-ab-benchmark.spec.ts",
+    "benchmark:reviewer-ab": "node scripts/reviewer-ab-benchmark.mjs",
+    "test:members": "vitest run tests/members.spec.ts"
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis": "4.0.2",
+    "yaml": "2.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.7.2",
+    "typescript": "5.9.3",
+    "vitest": "3.2.4"
+  }
+}

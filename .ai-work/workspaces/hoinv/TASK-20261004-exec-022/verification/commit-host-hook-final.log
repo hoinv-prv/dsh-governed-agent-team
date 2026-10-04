@@ -1,0 +1,179 @@
+[gat-binding-prerequisites f7f560ac93] feat(gat): compose durable bindings on governed members
+ 200 files changed, 14361 insertions(+), 224 deletions(-)
+ create mode 100644 packages/experimental/gat-core/src/member-host.ts
+ create mode 100644 packages/experimental/gat-core/tests/production-binding.spec.ts
+ create mode 100644 packages/experimental/gat-durable-agent/README.i18n.yaml
+ create mode 100644 packages/experimental/gat-durable-agent/README.md
+ create mode 100644 packages/experimental/gat-durable-agent/README.zh.md
+ create mode 100644 packages/experimental/gat-durable-agent/package.json
+ create mode 100644 packages/experimental/gat-durable-agent/src/binder.ts
+ create mode 100644 packages/experimental/gat-durable-agent/src/composition.ts
+ create mode 100644 packages/experimental/gat-durable-agent/src/index.ts
+ create mode 100644 packages/experimental/gat-durable-agent/src/initializer.ts
+ create mode 100644 packages/experimental/gat-durable-agent/src/ownership.ts
+ create mode 100644 packages/experimental/gat-durable-agent/src/provider.ts
+ create mode 100644 packages/experimental/gat-durable-agent/src/tools.ts
+ create mode 100644 packages/experimental/gat-durable-agent/tests/binder.spec.ts
+ create mode 100644 packages/experimental/gat-durable-agent/tests/composition.spec.ts
+ create mode 100644 packages/experimental/gat-durable-agent/tests/initializer.spec.ts
+ create mode 100644 packages/experimental/gat-durable-agent/tests/public-provider.spec.ts
+ create mode 100644 packages/experimental/gat-durable-agent/tests/tools.spec.ts
+ create mode 100644 packages/experimental/gat-durable-agent/tsconfig.json
+ create mode 100644 packages/experimental/gat-durable-agent/tsdown.config.ts
+ create mode 100644 packages/experimental/gat-durable-profile/README.i18n.yaml
+ create mode 100644 packages/experimental/gat-durable-profile/README.md
+ create mode 100644 packages/experimental/gat-durable-profile/README.zh.md
+ create mode 100644 packages/experimental/gat-durable-profile/cordis.patch.yml
+ create mode 100644 packages/experimental/gat-durable-profile/package.json
+ create mode 100644 packages/experimental/gat-durable-profile/src/index.ts
+ create mode 100644 packages/experimental/gat-durable-profile/tsconfig.json
+ create mode 100644 vendor/gat-durable-provider/README.md
+ create mode 100644 vendor/gat-durable-provider/docs/reviewer-ab-live-responses.json
+ create mode 100644 vendor/gat-durable-provider/docs/reviewer-ab-pilot-provenance.json
+ create mode 100644 vendor/gat-durable-provider/docs/reviewer-ab-pilot-requests.json
+ create mode 100644 vendor/gat-durable-provider/docs/reviewer-ab-results.md
+ create mode 100644 vendor/gat-durable-provider/docs/reviewer-context.md
+ create mode 100644 vendor/gat-durable-provider/docs/service.md
+ create mode 100644 vendor/gat-durable-provider/docs/task-contract.md
+ create mode 100644 vendor/gat-durable-provider/lib/src/client.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/client.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/client.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/client.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/config.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/config.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/config.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/config.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/consumer.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/consumer.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/consumer.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/consumer.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/authority.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/authority.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/authority.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/authority.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/context.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/context.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/context.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/context.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/evidence.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/evidence.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/evidence.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/evidence.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/index.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/index.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/index.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/index.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/mission.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/mission.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/mission.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/mission.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/planning.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/planning.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/planning.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/planning.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/runtime.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/runtime.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/runtime.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/domain/runtime.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/errors.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/errors.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/errors.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/errors.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/identity.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/identity.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/identity.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/identity.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/index.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/index.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/index.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/index.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/local-provider.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/local-provider.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/local-provider.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/local-provider.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/members.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/members.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/members.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/members.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/mvp/execution.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/mvp/execution.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/mvp/execution.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/mvp/execution.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/mvp/store.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/mvp/store.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/mvp/store.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/mvp/store.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/mvp/types.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/mvp/types.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/mvp/types.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/mvp/types.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/review-host.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/review-host.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/review-host.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/review-host.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/review-packet.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/review-packet.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/review-packet.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/review-packet.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/service.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/service.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/service.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/service.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/standalone-adapter.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/standalone-adapter.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/standalone-adapter.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/standalone-adapter.js.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/task-contract.d.ts
+ create mode 100644 vendor/gat-durable-provider/lib/src/task-contract.d.ts.map
+ create mode 100644 vendor/gat-durable-provider/lib/src/task-contract.js
+ create mode 100644 vendor/gat-durable-provider/lib/src/task-contract.js.map
+ create mode 100644 vendor/gat-durable-provider/package.json
+ create mode 100644 vendor/gat-durable-provider/src/client.ts
+ create mode 100644 vendor/gat-durable-provider/src/config.ts
+ create mode 100644 vendor/gat-durable-provider/src/consumer.ts
+ create mode 100644 vendor/gat-durable-provider/src/domain/authority.ts
+ create mode 100644 vendor/gat-durable-provider/src/domain/context.ts
+ create mode 100644 vendor/gat-durable-provider/src/domain/evidence.ts
+ create mode 100644 vendor/gat-durable-provider/src/domain/index.ts
+ create mode 100644 vendor/gat-durable-provider/src/domain/mission.ts
+ create mode 100644 vendor/gat-durable-provider/src/domain/planning.ts
+ create mode 100644 vendor/gat-durable-provider/src/domain/runtime.ts
+ create mode 100644 vendor/gat-durable-provider/src/errors.ts
+ create mode 100644 vendor/gat-durable-provider/src/identity.ts
+ create mode 100644 vendor/gat-durable-provider/src/index.ts
+ create mode 100644 vendor/gat-durable-provider/src/local-provider.ts
+ create mode 100644 vendor/gat-durable-provider/src/members.ts
+ create mode 100644 vendor/gat-durable-provider/src/mvp/execution.ts
+ create mode 100644 vendor/gat-durable-provider/src/mvp/store.ts
+ create mode 100644 vendor/gat-durable-provider/src/mvp/types.ts
+ create mode 100644 vendor/gat-durable-provider/src/review-host.ts
+ create mode 100644 vendor/gat-durable-provider/src/review-packet.ts
+ create mode 100644 vendor/gat-durable-provider/src/service.ts
+ create mode 100644 vendor/gat-durable-provider/src/standalone-adapter.ts
+ create mode 100644 vendor/gat-durable-provider/src/task-contract.ts
+╭──────────────────────────────────────╮
+│ lefthook  v2.1.9   hook:  [1mpre-commit[m │
+╰──────────────────────────────────────╯
+┃  translation pairing (staged records) ❯ 
+verify-translation-pairing: 8 named staged pair(s) consistent; the corpus-wide check still runs in doc-sync.
+
+│  archived agent notes (skip) no matching staged files
+┃  lint (staged) ❯ 
+packages/experimental/gat-core/src/index.ts:573:9: warning: Unused oxlint-disable directive (no problems were reported).
+packages/experimental/gat-core/src/roster.ts:860:5: warning: Unused oxlint-disable directive (no problems were reported).
+packages/experimental/gat-core/src/mailbox.ts:358:5: warning: Unused oxlint-disable directive (no problems were reported).
+
+┃  third-party notices (staged) ❯ 
+gen-third-party-notices: wrote THIRD_PARTY_NOTICES.md.
+
+┃  whitespace (staged) ❯ 
+
+┃  vendor manifest guard ❯ 
+
+[38;2;56;56;56m  ────────────────────────────────────[m
+summary: (done in 5.68 seconds)
+✓ translation pairing (staged records) (1.22 seconds)
+✓ lint (staged) (1.35 seconds)
+✓ third-party notices (staged) (3.01 seconds)
+✓ whitespace (staged) (0.03 seconds)
+✓ vendor manifest guard (0.02 seconds)

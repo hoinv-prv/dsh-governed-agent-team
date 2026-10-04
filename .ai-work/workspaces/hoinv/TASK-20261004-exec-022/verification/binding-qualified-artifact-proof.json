@@ -1,0 +1,35 @@
+{
+  "manifestSha256": "50488aba97d623c70058d8713d6c251556c5286444eaf259dc5f07010367051b",
+  "selectedTarget": "/home/hoinv/work/dsh-binding-distribution-qualified",
+  "exactInstalledSourceRows": 199,
+  "exactInstalledSourceHashes": "PASS",
+  "verificationToolSha256": {
+    "installer/index.mjs": "a560c9b63cb722fb1d605a21b82168844ba0eb58a039fb0ef272c42a6393558f",
+    "scripts/generate-binding-compatibility.mjs": "67af75e0dd86dbe590dbe148df8c26c52ebf7b5d766d3939d1332cd5028c2129",
+    "installer/verify-binding.mjs": "65ae04b66fbeea063671e950922c02b8fde71c1cd189ab55198585e22730dda7",
+    "installer/verify-binding-exports.mjs": "b510b89d13a87c9487c908c125bfbc7a4073a7a7b0b0091511c93b8199cc112d",
+    "installer/verify-binding-runtime.mjs": "6f89483ff3c9bf92b8146f1d363b82bfd8676a44bf1a1b4f484e7be5ae667357"
+  },
+  "frozenPrerequisiteGuards": "PASS",
+  "frozenPrerequisiteFiles": 244,
+  "trackedTargetDeltas": 48,
+  "allTrackedTargetDeltasMapped": "PASS",
+  "sourceHashesAfterBuild": "PASS",
+  "protectedDirtyControlHashes": "PASS",
+  "upstreamProviderClean": "PASS",
+  "verificationDependencyLinks": {
+    "workspacePackages": 297,
+    "exactTargetWorkspaceLinks": "PASS",
+    "nestedNativeWorkspaceOptionalDependencies": "PASS"
+  },
+  "nativeTargetFilesSha256": {
+    "native/system/packages/entry/lib/flock.js": "e42af00c298d56322c073bf7cc66485096028318ab645a2e69dc2aa7481ba646",
+    "native/system/packages/linux-x64/package.json": "f2c14cfef615df7755050dba8567b5c0821178513b6ec31f2227bfa8f66be1e9",
+    "native/system/packages/linux-x64/prebuilds.json": "c43b9d8e9810162817d1536442d2459c5c5138c4e2ed9bfebca950aaf173cab7",
+    "native/system/packages/entry/src/flock.c": "c1aa773c7a62b03ce3973156b928f41773fef9407afd79d71b2f625b5616421f",
+    "native/system/packages/linux-x64/bin/glibc/system.node": "54a9c25c05186c17520f6b7a5ced5f005752c08044c3eb76524cd517287600bc"
+  },
+  "nativeTargetOwnedDirectory": true,
+  "nativeBuildCommand": "node node_modules/tsx/dist/cli.mjs native/system/scripts/build.ts --host-addon-only",
+  "nativeLockProbe": "PASS"
+}

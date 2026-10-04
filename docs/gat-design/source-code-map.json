@@ -33,7 +33,7 @@
           "symbols": [
             {
               "symbol": "apply",
-              "line": 704
+              "line": 707
             }
           ],
           "wiki_source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-INDEX-TS"
@@ -44,7 +44,7 @@
           "symbols": [
             {
               "symbol": "enable",
-              "line": 589
+              "line": 633
             }
           ],
           "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS"
@@ -80,19 +80,19 @@
           "symbols": [
             {
               "symbol": "TeamRoster",
-              "line": 58
+              "line": 66
             },
             {
               "symbol": "spawnAdmitted",
-              "line": 323
+              "line": 441
             },
             {
               "symbol": "reconcileProvisioning",
-              "line": 451
+              "line": 503
             },
             {
               "symbol": "resolveActiveMember",
-              "line": 42
+              "line": 51
             }
           ],
           "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS"
@@ -279,15 +279,15 @@
           "symbols": [
             {
               "symbol": "approvePlan",
-              "line": 480
+              "line": 514
             },
             {
               "symbol": "importApprovedPlanAndApprove",
-              "line": 531
+              "line": 565
             },
             {
               "symbol": "remoteImportApprovedPlan",
-              "line": 879
+              "line": 936
             }
           ],
           "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS"
@@ -351,11 +351,11 @@
           "symbols": [
             {
               "symbol": "remoteCreateMission",
-              "line": 760
+              "line": 817
             },
             {
               "symbol": "remoteApproveMission",
-              "line": 795
+              "line": 852
             }
           ],
           "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS"
@@ -386,11 +386,11 @@
           "symbols": [
             {
               "symbol": "TeamMailbox",
-              "line": 25
+              "line": 27
             },
             {
               "symbol": "dispatchOnce",
-              "line": 234
+              "line": 249
             },
             {
               "symbol": "checkpointDelivered",
@@ -398,7 +398,7 @@
             },
             {
               "symbol": "markDelivered",
-              "line": 277
+              "line": 317
             }
           ],
           "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-MAILBOX-TS"
@@ -425,6 +425,10 @@
           "repository": "gat",
           "path": "packages/core/tests/persistence.spec.ts",
           "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-TESTS-PERSISTENCE-SPEC-TS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/production-binding.spec.ts"
         }
       ],
       "verification_status": "mapped only; not run in documentation task"
@@ -477,7 +481,7 @@
           "symbols": [
             {
               "symbol": "interrupt",
-              "line": 281
+              "line": 482
             }
           ],
           "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-ROSTER-TS"
@@ -488,7 +492,7 @@
           "symbols": [
             {
               "symbol": "disposeRuntime",
-              "line": 969
+              "line": 1027
             }
           ],
           "wiki_source_id": "SRC-GAT-CODE-PACKAGES-CORE-SRC-INDEX-TS"
@@ -519,23 +523,23 @@
           "symbols": [
             {
               "symbol": "readiness",
-              "line": 193
+              "line": 196
             },
             {
               "symbol": "preflight",
-              "line": 217
+              "line": 220
             },
             {
               "symbol": "install",
-              "line": 392
+              "line": 395
             },
             {
               "symbol": "EXTERNAL_SUBAGENT_TOOLS",
-              "line": 74
+              "line": 77
             },
             {
               "symbol": "guardedTeamView",
-              "line": 141
+              "line": 144
             }
           ],
           "wiki_source_id": "SRC-GAT-CODE-PACKAGES-TOOLS-SRC-INDEX-TS"
@@ -630,15 +634,15 @@
           "symbols": [
             {
               "symbol": "validateInstallTarget",
-              "line": 140
+              "line": 148
             },
             {
               "symbol": "install",
-              "line": 221
+              "line": 251
             },
             {
               "symbol": "rollback",
-              "line": 288
+              "line": 319
             }
           ],
           "wiki_source_id": "SRC-GAT-CODE-INSTALLER-INDEX-MJS"
@@ -663,6 +667,101 @@
           "path": "installer/verify.mjs",
           "symbols": [],
           "wiki_source_id": "SRC-GAT-CODE-INSTALLER-VERIFY-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-profile/package.json",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-profile/cordis.patch.yml",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "installer/verify-binding.mjs",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "installer/verify-binding-exports.mjs",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "installer/verify-binding-runtime.mjs",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "scripts/generate-binding-compatibility.mjs",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "verification/web/task.expected.md",
+          "symbols": []
+        },
+        {
+          "repository": "dsh-prerequisites",
+          "path": "packages/api/gateway/package.json",
+          "symbols": []
+        },
+        {
+          "repository": "dsh-prerequisites",
+          "path": "packages/api/gateway/README.md",
+          "symbols": []
+        },
+        {
+          "repository": "dsh-prerequisites",
+          "path": "packages/api/gateway/README.zh.md",
+          "symbols": []
+        },
+        {
+          "repository": "dsh-prerequisites",
+          "path": "pnpm-lock.yaml",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "README.md",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-profile/README.md",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-profile/README.zh.md",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-profile/README.i18n.yaml",
+          "symbols": []
+        },
+        {
+          "repository": "dsh-prerequisites",
+          "path": "packages/api/gateway/README.i18n.yaml",
+          "symbols": []
+        },
+        {
+          "repository": "dsh-prerequisites",
+          "path": "scripts/gen-third-party-notices.ts",
+          "symbols": []
+        },
+        {
+          "repository": "dsh-prerequisites",
+          "path": "THIRD_PARTY_NOTICES.md",
+          "symbols": []
+        },
+        {
+          "repository": "dsh-prerequisites",
+          "path": "vendor/README.md",
+          "symbols": []
         }
       ],
       "tests": [
@@ -690,6 +789,26 @@
           "repository": "gat",
           "path": "installer/tests/verify-profile.test.mjs",
           "wiki_source_id": "SRC-GAT-CODE-INSTALLER-TESTS-VERIFY-PROFILE-TEST-MJS"
+        },
+        {
+          "repository": "gat",
+          "path": "installer/tests/binding-compatibility.test.mjs"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-agent/tests/composition.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "verification/web/gat-agent-team-panel.e2e.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/built-lib.e2e.ts"
+        },
+        {
+          "repository": "dsh-prerequisites",
+          "path": "scripts/gen-third-party-notices.spec.ts"
         }
       ],
       "verification_status": "mapped only; not run in documentation task"
@@ -897,7 +1016,7 @@
     {
       "detail_id": "DD-15",
       "basic_id": "BD-12",
-      "status": "External + Adapter; production gated",
+      "status": "External WK + implemented adapter",
       "sources": [
         {
           "repository": "durable-agent",
@@ -954,7 +1073,7 @@
           "symbols": [
             {
               "symbol": "loadDurableTeamMembers",
-              "line": 154
+              "line": 161
             }
           ]
         },
@@ -964,7 +1083,7 @@
           "symbols": [
             {
               "symbol": "createDurableAgentBinder",
-              "line": 138
+              "line": 158
             }
           ]
         },
@@ -978,7 +1097,7 @@
             },
             {
               "symbol": "coordinatorFor",
-              "line": 21
+              "line": 32
             }
           ]
         },
@@ -988,7 +1107,7 @@
           "symbols": [
             {
               "symbol": "createDurableTools",
-              "line": 176
+              "line": 184
             }
           ]
         },
@@ -1001,6 +1120,51 @@
               "line": 1
             }
           ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-agent/src/composition.ts",
+          "symbols": [
+            {
+              "symbol": "apply",
+              "line": 46
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-agent/src/provider.ts",
+          "symbols": [
+            {
+              "symbol": "apply",
+              "line": 14
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-agent/package.json",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-agent/tsdown.config.ts",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-agent/README.md",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-agent/README.zh.md",
+          "symbols": []
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-agent/README.i18n.yaml",
+          "symbols": []
         }
       ],
       "tests": [
@@ -1044,15 +1208,20 @@
         {
           "repository": "gat",
           "path": "packages/durable-agent/tests/tools.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/durable-agent/tests/composition.spec.ts"
         }
       ],
-      "verification_status": "mapped only; suite verification is recorded in AIP-EXEC-022 workspace",
-      "implementation_gap": "GAT adapter is an explicit integration library over WK public service/Consumer interfaces; production host admission, exact authenticated leases, and supported profile/installer activation remain gated by DD-16/17."
+      "verification_status": "Current AIP-EXEC-022 qualification is bound in workspace verification/production-qualification-receipt.json; earlier AIP-EXEC-022/AIP-EXEC-023 receipts remain historical. Deployment is separate.",
+      "implementation_gap": "Approved WK/direct-continuable composition implemented; isolated DD-18 task runner, official DSH Consumer integration and deployment are separate scope.",
+      "design_reference": "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md; docs/gat-design/DETAIL_DESIGN.md §§7–8"
     },
     {
       "detail_id": "DD-16",
       "basic_id": "BD-13",
-      "status": "Foundation + Adapter; production gated",
+      "status": "Current implementation",
       "sources": [
         {
           "repository": "gat",
@@ -1102,11 +1271,11 @@
             },
             {
               "symbol": "abortPrepared",
-              "line": 205
+              "line": 214
             },
             {
               "symbol": "prepareMembers",
-              "line": 260
+              "line": 270
             }
           ]
         },
@@ -1120,7 +1289,7 @@
             },
             {
               "symbol": "acquireBindingResource",
-              "line": 49
+              "line": 67
             }
           ]
         },
@@ -1134,15 +1303,15 @@
             },
             {
               "symbol": "provisionPreparedMember",
-              "line": 205
+              "line": 214
             },
             {
               "symbol": "recoverBoundMember",
-              "line": 278
+              "line": 288
             },
             {
               "symbol": "MemberBindingOwner",
-              "line": 342
+              "line": 357
             }
           ]
         },
@@ -1152,19 +1321,19 @@
           "symbols": [
             {
               "symbol": "TeamService",
-              "line": 91
+              "line": 94
             },
             {
               "symbol": "enable",
-              "line": 589
+              "line": 633
             },
             {
               "symbol": "validateInitialization",
-              "line": 626
+              "line": 648
             },
             {
               "symbol": "disposeRuntime",
-              "line": 969
+              "line": 1027
             }
           ]
         },
@@ -1174,15 +1343,15 @@
           "symbols": [
             {
               "symbol": "resolveActiveMember",
-              "line": 42
+              "line": 51
             },
             {
               "symbol": "spawnAdmitted",
-              "line": 323
+              "line": 441
             },
             {
               "symbol": "reconcileProvisioning",
-              "line": 451
+              "line": 503
             }
           ]
         },
@@ -1192,7 +1361,7 @@
           "symbols": [
             {
               "symbol": "dispatchOnce",
-              "line": 234
+              "line": 249
             },
             {
               "symbol": "checkpointDelivered",
@@ -1200,7 +1369,7 @@
             },
             {
               "symbol": "markDelivered",
-              "line": 277
+              "line": 317
             }
           ]
         },
@@ -1250,19 +1419,19 @@
           "symbols": [
             {
               "symbol": "durableActiveTeammates",
-              "line": 78
+              "line": 81
             },
             {
               "symbol": "readiness",
-              "line": 193
+              "line": 196
             },
             {
               "symbol": "preflight",
-              "line": 217
+              "line": 220
             },
             {
               "symbol": "MEMBER_VIEW_SCHEMA",
-              "line": 238
+              "line": 241
             }
           ]
         },
@@ -1272,7 +1441,7 @@
           "symbols": [
             {
               "symbol": "loadDurableTeamMembers",
-              "line": 154
+              "line": 161
             }
           ]
         },
@@ -1282,7 +1451,7 @@
           "symbols": [
             {
               "symbol": "createDurableAgentBinder",
-              "line": 138
+              "line": 158
             }
           ]
         },
@@ -1296,7 +1465,7 @@
             },
             {
               "symbol": "coordinatorFor",
-              "line": 21
+              "line": 32
             }
           ]
         },
@@ -1306,7 +1475,21 @@
           "symbols": [
             {
               "symbol": "createDurableTools",
-              "line": 176
+              "line": 184
+            }
+          ]
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/src/member-host.ts",
+          "symbols": [
+            {
+              "symbol": "HostMemberCapabilityScope",
+              "line": 16
+            },
+            {
+              "symbol": "createReservedMemberHost",
+              "line": 180
             }
           ]
         }
@@ -1347,16 +1530,20 @@
         {
           "repository": "gat",
           "path": "packages/durable-agent/tests/tools.spec.ts"
+        },
+        {
+          "repository": "gat",
+          "path": "packages/core/tests/production-binding.spec.ts"
         }
       ],
-      "implementation_gap": "Generic binding foundation and explicit WK adapter are mapped; production durable-member activation remains gated on qualified reserved-host admission/prompt persistence, exact mission/task authorization and nested capability ownership. Nonempty attachments fail closed before rows; this is not a production integration claim.",
-      "design_reference": "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md §§5, 9; docs/gat-design/DETAIL_DESIGN.md §§5–6",
-      "verification_status": "mapped only; suite verification is recorded in AIP-EXEC-022 workspace"
+      "implementation_gap": "Approved WK/direct-continuable composition implemented; isolated DD-18 task runner, official DSH Consumer integration and deployment are separate scope.",
+      "design_reference": "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md; docs/gat-design/DETAIL_DESIGN.md §§7–8",
+      "verification_status": "Current AIP-EXEC-022 qualification is bound in workspace verification/production-qualification-receipt.json; earlier AIP-EXEC-022/AIP-EXEC-023 receipts remain historical. Deployment is separate."
     },
     {
       "detail_id": "DD-17",
       "basic_id": "BD-14",
-      "status": "Prerequisite implementation mapped; qualification pending",
+      "status": "Current implementation",
       "sources": [
         {
           "repository": "dsh-prerequisites",
@@ -1364,19 +1551,19 @@
           "symbols": [
             {
               "symbol": "authenticatedControl",
-              "line": 335
+              "line": 337
             },
             {
               "symbol": "withControlInvocation",
-              "line": 350
+              "line": 352
             },
             {
               "symbol": "HumanControlReceipt",
-              "line": 364
+              "line": 366
             },
             {
               "symbol": "consumeHumanControl",
-              "line": 378
+              "line": 380
             }
           ]
         },
@@ -1584,15 +1771,15 @@
           "symbols": [
             {
               "symbol": "assertExecution",
-              "line": 232
+              "line": 240
             },
             {
               "symbol": "consumeMemberAdd",
-              "line": 312
+              "line": 331
             },
             {
               "symbol": "enable",
-              "line": 589
+              "line": 633
             }
           ]
         },
@@ -1745,9 +1932,9 @@
           "path": "packages/tools/tests/authorization-matrix.spec.ts"
         }
       ],
-      "implementation_gap": "Prerequisite host APIs, exact authenticated GAT mission/task authority and nested capabilities are qualified in AIP-EXEC-023. Parent AIP-EXEC-022 production binder/profile/package/browser composition, changed-host compatibility and deployment remain separate.",
-      "design_reference": "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md §§7, 10–13; docs/gat-design/DETAIL_DESIGN.md §7",
-      "verification_status": "Prerequisite PASS: final GAT 17 files/270 tests independently repeated, 60 actual authorization cases, supported host/client builds, 34 documentation gates, built public exports and SDK hash-bound replays. Exact evidence: .ai-work/workspaces/hoinv/TASK-20261004-exec-023/qualification-receipt.json. No production package/deployment acceptance."
+      "implementation_gap": "Approved WK/direct-continuable composition implemented; isolated DD-18 task runner, official DSH Consumer integration and deployment are separate scope.",
+      "design_reference": "docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md; docs/gat-design/DETAIL_DESIGN.md §§7–8",
+      "verification_status": "Current AIP-EXEC-022 qualification is bound in workspace verification/production-qualification-receipt.json; earlier AIP-EXEC-022/AIP-EXEC-023 receipts remain historical. Deployment is separate."
     },
     {
       "detail_id": "DD-18",
@@ -1764,5 +1951,10 @@
     "basic": "SRC-GAT-BASIC-DESIGN",
     "detail": "SRC-GAT-DETAIL-DESIGN",
     "source_map": "SRC-GAT-DESIGN-SOURCE-MAP"
+  },
+  "iteration": {
+    "aip_id": "AIP-EXEC-022",
+    "evidence": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-qualification-receipt.json",
+    "provenance": "Working-tree bytes after design-before-code production integration; qualified prerequisite commit remains separately pinned. Symbol anchors are TypeScript AST declaration locations, or exact event string locations."
   }
 }

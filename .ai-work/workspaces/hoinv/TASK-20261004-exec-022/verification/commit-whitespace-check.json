@@ -1,0 +1,9 @@
+{
+  "product_design_current_controls_exit": 0,
+  "product_design_current_controls_findings": "",
+  "raw_evidence_unfiltered_exit": 2,
+  "raw_evidence_findings": 2592,
+  "raw_evidence_files": 53,
+  "disposition": "Original captured subprocess output and archived generated contexts retain their recorded bytes; no product/design/current-control whitespace defects. Historical evidence whitespace is not normalized because qualification receipts bind exact captured hashes.",
+  "generated_current_ASC_empty_field_normalization": "Removed trailing space from empty staleness_reason in the current ASC and STEP-08 snapshot; YAML value and done lifecycle remain unchanged."
+}

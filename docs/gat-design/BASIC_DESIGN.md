@@ -20,15 +20,15 @@ Define GAT features by actor, input/output, behavior and failure outcome. Curren
 | BD-03 Team state persistence | Authorized domain mutation; Session events | Serialize root mutations, append/flush events, project detached runtime-enriched views | Current | DD-03 |
 | BD-04 Task board and dependency coordination | Team member; task fields/id/expectedRevision/action | Create/get/list/CAS update; validate DAG and ownership; report readiness and advisory write-scope overlap | Current | DD-04 |
 | BD-05 Plan approval/import | Lead Remote credential; exact displayed revision or latest approved chat-plan evidence | Validate nonempty structural plan/preflight, import missing subjects, flush exact approval | Current | DD-05 |
-| BD-06 Missions | Lead; title/objective/initial task snapshots or expected revision | Create/list/get/approve independently retained mission snapshots | Current baseline shortcut | DD-06 |
+| BD-06 Missions | Lead creation; authenticated exact HUMAN control for approval/revoke/close | Create draft; retain canonical mission/task association and exact receipt generations | Current | DD-06, DD-17 |
 | BD-07 Messaging, waiting and interruption | Team sender/Lead; target/content/timeout | Durable queue, best-effort delivery/dedupe, bounded wait, interrupt current teammate turn | Current | DD-07, DD-08 |
 | BD-08 Work status | Exact member; state/summary/reason/task/files | Validate self-report and persist latest member work view | Current | DD-08 |
 | BD-09 Execution readiness and scoped tools | Exact Agent/tool name/arguments and live projection | Enforce readiness/repair admission and enabled-Team external name denial; contribute policy/preflight context | Current | DD-09 |
 | BD-10 Browser/profile/distribution | HUMAN/Loader; profile config, Session id or install target | Mount Remote panel, refresh safely, apply YAML composition, install/verify/rollback controlled payload | Current | DD-10, DD-11 |
 | BD-11 Conservative reference-memory governance | Trusted standalone host; identities/readiness/approvals/policy/request | Evaluate governed identity, partition isolation, audit, selector admission, safe wrapper result and conformance evidence | Standalone | DD-12, DD-13, DD-14 |
 | BD-12 Durable member capabilities | Trusted external host; explicit declaration/ref/memory input | Provision context, selectively read, submit candidate, authorized commit, release with data retained | External | DD-15 |
-| BD-13 Required member attachments | Initializer/binder/DSH host; normalized roster and attachment descriptors | Prepare/bind/recover before admitted model work, enforce bounds and reverse cleanup | Target | DD-16 |
-| BD-14 Mission authority and Team-exclusive effects | Authenticated host; exact mission lease and capability classification | Bind task/mission revision and revalidate before every effect or wake; preserve structural repair exemptions | Target | DD-17 |
+| BD-13 Required member attachments | Initializer/binder/DSH host; normalized roster and attachment descriptors | Prepare/bind/recover before admitted model work, enforce bounds and reverse cleanup | Current | DD-16 |
+| BD-14 Mission authority and Team-exclusive effects | Authenticated host; exact mission lease and capability classification | Bind task/mission revision and revalidate before every effect or wake; preserve structural repair exemptions | Current | DD-17 |
 | BD-15 Contracted member task execution | PM/Team; normalized TaskContract and host PlanProposal | Execute one bounded internal plan, no delegation/queue, persist provisional terminal handoff and return idle | Target / accepted bounded PoCs | DD-18 |
 
 ## 2.1. Product goals behind the features
@@ -36,10 +36,10 @@ Define GAT features by actor, input/output, behavior and failure outcome. Curren
 | Goal / WHY | Features | Documented origin and current limit |
 |---|---|---|
 | Reuse an opt-in coding team with one durable progress view | BD-01..BD-03, BD-10 | Golden V1 Objective / Existing foundation; feature reference §5 |
-| Coordinate dependency-ready work and reject stale planning mutations | BD-04..BD-06, BD-09 | Golden V1 Team lifecycle / Canonical plan state; current simpleMode and mission shortcut differ |
+| Coordinate dependency-ready work and reject stale planning mutations | BD-04..BD-06, BD-09 | Golden V1 Team lifecycle / Canonical plan state; simpleMode does not bypass exact mission/task authorization |
 | Preserve useful work and make explicit blockers/review evidence visible | BD-07..BD-08, BD-10 | Golden V1 Evidence and lessons applied / Member work state; stalls remain inference only |
 | Prevent reference memory/LLM input from gaining authority or crossing scopes | BD-11..BD-12 | MCP proposal §§2,6,8–12; threat model §5; standalone/external integration limits remain |
-| Separate Team lifecycle from capability persistence and prevent unbound execution | BD-12..BD-14 | Feature reference §§7.1–7.2 and member freeze §§1–3,7–11; required binder/mission lease are target-only |
+| Separate Team lifecycle from capability persistence and prevent unbound execution | BD-12..BD-14 | Feature reference §§7.1–7.2 and member freeze §§1–3,7–11; required binder and exact mission/task lease are implemented; deployment remains separate |
 | Keep a member's execution bounded and acceptance external | BD-15 | Collected Agile baseline / compatibility memo; PoCs and unfinished BS1 do not establish production GAT implementation |
 
 Each DD entry contains a WHY paragraph with its exact supporting document sections and distinguishes documented intent from inferred trade-offs. Architecture Design §5.1 summarizes decision-level rationale. No numerical constant is justified by invented benchmark evidence.
@@ -78,11 +78,11 @@ Each update compares expected task revision before mutation. Readiness requires 
 
 Plan import reads the latest matching `exit_plan_mode` approval evidence, extracts explicit Tasks subjects, normalizes/deduplicates against nondeleted tasks and prepares all checks before appending imported task events and approval in one flush.
 
-## 5. Mission flow and authorization gap
+## 5. Mission flow and exact authorization
 
-Current create is Lead-only and persists revision 1 with status `approved`, embedded plan tasks and approval revision 1. The explicit approval method accepts only a draft at the expected revision. This baseline does not establish an authenticated HUMAN mission event or a task-to-mission execution lease.
+Lead creation commits a draft without executable embedded task snapshots. Canonical tasks have immutable mission association. Approve/revoke/close require the exact authenticated HUMAN control receipt, expected mission revision and current lifecycle; control is consumed inside the canonical journal transaction.
 
-Target flow: host-attested exact HUMAN authorization → GAT scope lease → canonical task claim/association → effect-boundary revalidation. Draft/model-created, stale, wrong-Team, ambiguous, closed or revoked authorization denies effects. Current mission methods/types are not a complete create/activate/close/revoke lifecycle.
+Host-selected exact mission/task/executor leases are revalidated before model requests, wakes and effects. Draft/model-created, stale, wrong-Team, ambiguous, closed or revoked scope denies admission. Simple mode retains its documented plan-readiness behavior while requiring exact mission/task authority for effects. Historical immediate-approved v2 records grant no new execution lease. See Detail Design DD-06/DD-17 and §§7–8 for publication and cancellation barriers.
 
 ## 6. Communication and work flow
 
@@ -122,10 +122,16 @@ When source changes, update the affected DD contract and mapping, then reconcile
 
 HUMAN approval dated 2026-10-04 selects proposal P-01–P-08 and WK/direct-continuable composition. Detail Design §5 defines intended contracts before implementation. BD-01 moves provisioning ownership from the initializer into core; BD-02/03 add v3 bounded records with strict v2 replay; BD-12/13 add the required WK adapter and generic binding lifecycle. BD-09/14 retain exact host authority as a production dependency. BD-10 exposes only safe binding summaries and qualifies new composition/build/install mappings. Unsupported or corrupt required capabilities never fall back to unbound execution. These planned changes remain distinct from production qualification and from isolated-only closing fixtures.
 
-## 11. Qualified foundation versus production
+## 11. Qualified foundation versus production — historical snapshot
+
+This paragraph preserves the initial foundation inspection. Current behavior follows the approved prerequisite and production deltas below, with exact qualification in the AIP workspace.
 
 AIP-EXEC-022 adds normalized initialization, v3 attachment replay, safe binding summaries, generic lifecycle ports and the separate WK adapter. BD-13 has tested foundation code; production admission remains Target. BD-14 exact authority remains Target. Core and tool guards exclude unavailable bindings, including queued legacy recovery. WK/global or fork declarations reject; explicit Durable YAML never falls back. See Detail Design §6 and the source map for current implementation and workspace evidence.
 
 ## 12. Approved prerequisite behavior — AIP-EXEC-023
 
 HUMAN authorized isolated host prerequisite implementation on 2026-10-04. Intended ownership and behavior are defined in [Detail Design §7](DETAIL_DESIGN.md#7-approved-prerequisite-implementation-delta--aip-exec-023): DSH owns reserved/quarantined child lifecycle, pre-render request refresh and immutable nested dispatch capabilities; GAT owns host-attested exact mission/task leases and effect/model admission. WK/direct-continuable target remains fixed. Deployment stays separate and prerequisite eligibility requires actual conformance evidence.
+
+## Production binding delivery — AIP-EXEC-022
+
+Intended BD-12–14 delivery connects complete roster preparation, required binder registration, reserved child admission, exact authority and persisted attachment recovery to the qualified host. An opt-in WK profile selects one strict Durable initializer and a dedicated provider while ordinary GAT retains its default initializer. Detail Design §8 defines readiness, failure, cleanup, Loader and changed-host package verification; implementation presence alone is not acceptance.

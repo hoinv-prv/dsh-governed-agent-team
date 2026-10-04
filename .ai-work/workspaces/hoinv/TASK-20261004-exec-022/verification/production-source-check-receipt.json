@@ -1,0 +1,38 @@
+{
+  "result": "PASS",
+  "protected_dirty_controls": {
+    "SOURCE_SNAPSHOT.json": true,
+    "compatibility/dsh-0.1.5-rc.2/manifest.json": true,
+    "installer/verify.mjs": true
+  },
+  "host_prerequisite_head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+  "wk_head": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+  "wk_working_tree": "",
+  "source_suite": {
+    "files": 24,
+    "passed": 333,
+    "failed": 0,
+    "log": "production-all-gat-tests-final.log"
+  },
+  "host_boundary_suite": {
+    "files": 29,
+    "passed": 767,
+    "failed": 0,
+    "log": "production-host-boundaries-final.log"
+  },
+  "ordinary_complete_type_aware_lint": {
+    "exit_code": 0,
+    "diagnostics": 0,
+    "log": "production-type-aware-lint-complete-final.log",
+    "all_eleven_prior_owners_included": true
+  },
+  "installer_tests": {
+    "passed": 21,
+    "failed": 0,
+    "log": "production-installer-tests-repair-final.log"
+  },
+  "built_runtime_verifier_syntax": {
+    "exit_code": 0
+  },
+  "counts_overlap": true
+}

@@ -13,7 +13,7 @@ const sha256 = value => createHash('sha256').update(value).digest('hex')
 
 function usage(message) {
   if (message !== undefined) console.error(`gat-installer: ${message}`)
-  console.error('usage: node installer/index.mjs <dry-run|install|status|rollback> --target <DSH_WORKTREE> [--allow-unverified-dsh] [--allow-dirty-target] [--simulate-failure-after <count>]')
+  console.error('usage: node installer/index.mjs <dry-run|install|status|rollback> --target <DSH_WORKTREE> [--compatibility <directory-id>] [--allow-unverified-dsh] [--allow-dirty-target] [--simulate-failure-after <count>]')
   process.exit(2)
 }
 
@@ -21,22 +21,25 @@ function parseArguments(argv) {
   const [operation, ...rest] = argv
   if (!['dry-run', 'install', 'status', 'rollback'].includes(operation)) usage('unknown or missing operation')
   let target
+  let compatibilityId
   let simulateFailureAfter
   let allowUnverifiedDsh = false
   let allowDirtyTarget = false
   for (let index = 0; index < rest.length; index += 1) {
     const argument = rest[index]
     if (argument === '--target') target = rest[++index]
+    else if (argument === '--compatibility') compatibilityId = rest[++index]
     else if (argument === '--simulate-failure-after') simulateFailureAfter = Number(rest[++index])
     else if (argument === '--allow-unverified-dsh') allowUnverifiedDsh = true
     else if (argument === '--allow-dirty-target') allowDirtyTarget = true
     else usage(`unknown argument ${argument}`)
   }
   if (typeof target !== 'string' || target.length === 0) usage('--target is required')
+  if (compatibilityId !== undefined && (typeof compatibilityId !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9.+-]*$/u.test(compatibilityId))) usage('--compatibility must be a safe directory id')
   if (simulateFailureAfter !== undefined && (!Number.isSafeInteger(simulateFailureAfter) || simulateFailureAfter < 1)) usage('--simulate-failure-after must be a positive safe integer')
   if (simulateFailureAfter !== undefined && operation !== 'install') usage('--simulate-failure-after is valid only with install')
   if ((allowUnverifiedDsh || allowDirtyTarget) && !['dry-run', 'install'].includes(operation)) usage('override flags are valid only with dry-run or install')
-  return { operation, target: resolve(target), simulateFailureAfter, allowUnverifiedDsh, allowDirtyTarget }
+  return { operation, target: resolve(target), compatibilityId, simulateFailureAfter, allowUnverifiedDsh, allowDirtyTarget }
 }
 
 function safeRelative(path, label) {
@@ -62,14 +65,17 @@ function rejectSymlinkAncestors(root, destination) {
 
 const git = (target, args, encoding = 'utf8') => execFileSync('git', args, { cwd: target, encoding })
 
-function readManifest(targetVersion) {
+function readManifest(targetVersion, compatibilityId) {
   if (!/^[0-9A-Za-z.+-]+$/u.test(targetVersion)) throw new Error(`unsafe DSH version ${targetVersion}`)
-  const path = join(SOURCE_ROOT, 'compatibility', `dsh-${targetVersion}`, 'manifest.json')
+  const path = join(SOURCE_ROOT, 'compatibility', compatibilityId ?? `dsh-${targetVersion}`, 'manifest.json')
+  rejectSymlinkAncestors(SOURCE_ROOT, path)
   if (!existsSync(path)) throw new Error(`no compatibility mapping for DSH version ${targetVersion}`)
   const bytes = readFileSync(path)
   const manifest = JSON.parse(bytes.toString('utf8'))
   if (manifest.schemaVersion !== 1) throw new Error(`unsupported manifest schema ${String(manifest.schemaVersion)}`)
   if (manifest.target?.version !== targetVersion) throw new Error(`compatibility manifest targets ${String(manifest.target?.version)}, not ${targetVersion}`)
+  if (compatibilityId !== undefined && (manifest.selectionPolicy !== 'exact-commit-and-hashes' || !/^[a-f0-9]{40}$/u.test(manifest.target?.commit ?? '') || !Array.isArray(manifest.prerequisiteFiles) || manifest.prerequisiteFiles.length === 0)) throw new Error('selected compatibility artifact requires exact commit and prerequisite hashes')
+  if (compatibilityId !== undefined && manifest.lockfilePrepared !== true) throw new Error('selected compatibility artifact requires a generated dependency lockfile')
   return { manifest, manifestSha256: sha256(bytes), compatibilityRoot: dirname(path) }
 }
 
@@ -110,8 +116,10 @@ function validateSource(manifest, compatibilityRoot) {
   return { actualPayload, drifted }
 }
 
-function warnSourceState(sourceInfo, drifted) {
-  if (sourceInfo.dirty) console.error('[WARN] GAT source tree contains local modifications; source hashes are advisory.')
+function warnSourceState(sourceInfo, drifted, exactSelectedArtifact = false) {
+  if (sourceInfo.dirty) console.error(exactSelectedArtifact
+    ? '[WARN] GAT source tree contains local modifications; selected artifact file hashes were verified.'
+    : '[WARN] GAT source tree contains local modifications; source hashes are advisory.')
   if (sourceInfo.commitDiffers) console.error(`[WARN] GAT source commit differs from descriptor: expected ${sourceInfo.expectedCommit}, actual ${sourceInfo.commit ?? 'unknown'}.`)
   if (drifted.length > 0) console.error(`[WARN] ${drifted.length} payload file(s) differ from the frozen compatibility snapshot; current bytes will be installed.`)
 }
@@ -166,6 +174,20 @@ function validateInstallTarget(target, manifest, allowDirtyTarget) {
   return dirty
 }
 
+function validatePrerequisites(target, manifest, installed) {
+  if (manifest.selectionPolicy !== 'exact-commit-and-hashes') return
+  const replacements = new Map(manifest.hostFiles.map(file => [file.path, file.afterSha256]))
+  const seen = new Set()
+  for (const file of manifest.prerequisiteFiles) {
+    if (seen.has(file.path) || !/^[a-f0-9]{64}$/u.test(file.sha256 ?? '')) throw new Error('invalid prerequisite hash inventory')
+    seen.add(file.path)
+    const destination = inside(target, file.path, 'prerequisite path')
+    rejectSymlinkAncestors(target, destination)
+    const expected = installed ? (replacements.get(file.path) ?? file.sha256) : file.sha256
+    if (!existsSync(destination) || !statSync(destination).isFile() || sha256(readFileSync(destination)) !== expected) throw new Error(`prerequisite hash mismatch for ${file.path}`)
+  }
+}
+
 function installedFileRows(manifest, payload = manifest.payloadFiles) {
   return [
     ...manifest.hostFiles.map(file => ({ path: file.path, sha256: file.afterSha256, kind: 'host' })),
@@ -186,6 +208,14 @@ function validateInstalled(target, manifest, manifestSha256, record) {
     if (record.manifestSha256 !== manifestSha256 || record.patchsetChecksum !== manifest.patchsetChecksum || record.payloadChecksum !== manifest.payloadChecksum) throw new Error('legacy installation record checksums do not match this installer')
   } else if (record.mappingChecksum !== mappingChecksum(manifest) || record.patchsetChecksum !== manifest.patchsetChecksum) {
     throw new Error('installation record mapping or patchset does not match this installer')
+  }
+  if (manifest.selectionPolicy === 'exact-commit-and-hashes') {
+    if (record.manifestSha256 !== manifestSha256 || record.payloadChecksum !== manifest.payloadChecksum) throw new Error('selected installation record payload does not match this exact compatibility artifact')
+    const rows = installedFileRows(manifest)
+    if (!Array.isArray(record.files) || record.files.length !== rows.length || !record.files.every((file, index) => {
+      const expected = rows[index]
+      return file.path === expected.path && file.kind === expected.kind && file.sha256 === expected.sha256 && file.bytes === expected.bytes
+    })) throw new Error('selected installation record file hashes do not match the exact manifest rows')
   }
   const expected = installedFileRows(manifest).map(file => ({ path: file.path, kind: file.kind }))
   const recorded = Array.isArray(record.files) ? record.files.map(file => ({ path: file.path, kind: file.kind })) : []
@@ -267,6 +297,7 @@ function install(target, targetInfo, compatibility, manifestData, descriptor, so
       installedAt: new Date().toISOString(),
       dirtyTargetPathsPreserved: dirty,
       patchsetChecksum: manifest.patchsetChecksum,
+      ...(manifest.selectionPolicy === 'exact-commit-and-hashes' ? { payloadChecksum: manifest.payloadChecksum } : {}),
       changedPaths: files.map(file => file.path),
       files,
     }
@@ -307,11 +338,19 @@ function main() {
   const descriptor = readVersionDescriptor(SOURCE_ROOT)
   const sourceInfo = inspectSource(SOURCE_ROOT, descriptor)
   const targetInfo = inspectDshTarget(options.target)
-  const compatibility = evaluateDshCompatibility(descriptor, targetInfo)
-  const manifestData = readManifest(targetInfo.version)
+  const manifestData = readManifest(targetInfo.version, options.compatibilityId)
+  const compatibility = options.compatibilityId === undefined ? evaluateDshCompatibility(descriptor, targetInfo) : {
+    state: targetInfo.commit === manifestData.manifest.target.commit ? COMPATIBILITY_STATES.SUPPORTED : COMPATIBILITY_STATES.UNSUPPORTED,
+    reason: targetInfo.commit === manifestData.manifest.target.commit ? 'selected exact host compatibility artifact' : `selected artifact requires DSH commit ${manifestData.manifest.target.commit}; actual ${targetInfo.commit}`,
+  }
   const sourceValidation = validateSource(manifestData.manifest, manifestData.compatibilityRoot)
-  warnSourceState(sourceInfo, sourceValidation.drifted)
   const { manifest, manifestSha256 } = manifestData
+  if (options.compatibilityId !== undefined) {
+    if (compatibility.state !== COMPATIBILITY_STATES.SUPPORTED) throw new Error(compatibility.reason)
+    if (sourceValidation.drifted.length > 0) throw new Error(`selected frozen payload drift: ${sourceValidation.drifted.join(', ')}`)
+    validatePrerequisites(options.target, manifest, readRecord(options.target, manifest) !== undefined)
+  }
+  warnSourceState(sourceInfo, sourceValidation.drifted, options.compatibilityId !== undefined)
 
   if (options.operation === 'status') {
     const record = readRecord(options.target, manifest)

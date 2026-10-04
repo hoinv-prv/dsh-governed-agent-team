@@ -53,6 +53,7 @@ The smallest addition to an existing composition is the two-package fragment fro
 | `externalRestrictedTools` | `[]` | Canonical external read/HUMAN-interaction tools allowed while Team policy restrictions are active; Team coordination tools are internal and are not listed here |
 | `minExecutionMembers` | `2` | Minimum durable active teammates, excluding the Lead, required for execution readiness |
 | `maxExecutionMembers` | `4` | Durable teammate creation cap for this tool layer; must be at least the minimum |
+| `initializer` | `default` | Select the default roster loader or a separately registered strict initializer |
 
 Both execution values must be positive safe integers. Invalid direct plugin application and `maxExecutionMembers < minExecutionMembers` fail closed. Spawn caps, preflight/readiness metadata, execution guards, and policy wording use the resolved values consistently.
 

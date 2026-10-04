@@ -1,0 +1,4 @@
+packages/experimental/gat-core/src/index.ts(716,35): error TS2322: Type '{ agentOptions?: AgentOptions; context: string; description: string; continuationProvider: string; initialTask: ContentBlock[]; attachments: readonly TeamMemberAttachmentRequest[]; name: string; }[]' is not assignable to type 'readonly TeamMemberSpec[]'.
+  Type '{ agentOptions?: AgentOptions; context: string; description: string; continuationProvider: string; initialTask: ContentBlock[]; attachments: readonly TeamMemberAttachmentRequest[]; name: string; }' is not assignable to type 'TeamMemberSpec' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Types of property 'context' are incompatible.
+      Type 'string' is not assignable to type '"fresh" | "fork"'.

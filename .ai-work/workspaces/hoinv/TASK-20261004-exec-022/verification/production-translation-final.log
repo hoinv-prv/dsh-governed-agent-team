@@ -1,0 +1,3 @@
+verify-translation-pairing: bilingual pairing rules violated (see docs/i18n/README.md):
+  packages/experimental/gat-core/README.md ↔ packages/experimental/gat-core/README.zh.md: link target #20 diverges between the pair: "../tools/README.md" vs "../tools/README.zh.md"
+  packages/experimental/gat-tools/README.md ↔ packages/experimental/gat-tools/README.zh.md: link target #7 diverges between the pair: "../core/README.md#smallest-working-setup" vs "../core/README.zh.md#smallest-working-setup"

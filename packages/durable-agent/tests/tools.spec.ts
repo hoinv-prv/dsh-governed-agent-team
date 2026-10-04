@@ -4,7 +4,13 @@ import type { DurableAgentConsumer } from '@deepseek-ai/dsh-durable-agent/consum
 import type { DurableAgentMemoryCandidateInput } from '@deepseek-ai/dsh-durable-agent/service'
 import { createDurableTools } from '../src/tools.ts'
 
-function consumerMock(overrides: Record<string, unknown> = {}): DurableAgentConsumer {
+type ReceiverFree<T> = { [K in keyof T]: T[K] extends (...args: infer A) => infer R ? (...args: A) => R : T[K] }
+
+function toolsFor(consumer: ReceiverFree<DurableAgentConsumer>, authorize: Parameters<typeof createDurableTools>[1]) {
+  return createDurableTools(consumer as unknown as DurableAgentConsumer, authorize)
+}
+
+function consumerMock(overrides: Record<string, unknown> = {}): ReceiverFree<DurableAgentConsumer> {
   return {
     readMemory: vi.fn(async () => ({
       id: 'architecture', title: 'Architecture', retrievalCondition: 'When design is needed',
@@ -16,7 +22,7 @@ function consumerMock(overrides: Record<string, unknown> = {}): DurableAgentCons
       confidence: input.confidence, limitations: [...input.limitations],
     })),
     ...overrides,
-  } as unknown as DurableAgentConsumer
+  } as unknown as ReceiverFree<DurableAgentConsumer>
 }
 
 function candidate(overrides: Record<string, unknown> = {}) {
@@ -33,7 +39,7 @@ function candidate(overrides: Record<string, unknown> = {}) {
 
 describe('Durable Agent model tools', () => {
   it('exposes only the read and unconfirmed-candidate tools', () => {
-    const tools = createDurableTools(consumerMock(), vi.fn())
+    const tools = toolsFor(consumerMock(), vi.fn())
     expect(tools.map(tool => tool.name)).toEqual([
       'durable_agent_read_memory', 'durable_agent_submit_candidate',
     ])
@@ -45,7 +51,7 @@ describe('Durable Agent model tools', () => {
   it('rejects malformed read and candidate arguments without calling the Consumer', async () => {
     const consumer = consumerMock()
     const authorize = vi.fn()
-    const [read, submit] = createDurableTools(consumer, authorize)
+    const [read, submit] = toolsFor(consumer, authorize)
     if (read === undefined || submit === undefined) throw new Error('expected the two Durable tools')
 
     await expect(read.invoke({ itemId: 'bad_id' })).rejects.toMatchObject({ code: 'TEAM_INVALID_ARGUMENT' })
@@ -66,7 +72,7 @@ describe('Durable Agent model tools', () => {
     const authorize = vi.fn()
       .mockImplementationOnce(() => undefined)
       .mockImplementationOnce(() => { throw authorizationError })
-    const [read] = createDurableTools(consumer, authorize)
+    const [read] = toolsFor(consumer, authorize)
     if (read === undefined) throw new Error('expected the read tool')
 
     await expect(read.invoke({ itemId: 'architecture' })).rejects.toBe(authorizationError)
@@ -77,7 +83,7 @@ describe('Durable Agent model tools', () => {
   it('authorizes before effects and returns only an explicitly unconfirmed candidate', async () => {
     const consumer = consumerMock()
     const authorize = vi.fn()
-    const [, submit] = createDurableTools(consumer, authorize)
+    const [, submit] = toolsFor(consumer, authorize)
     if (submit === undefined) throw new Error('expected the submit tool')
 
     await expect(submit.invoke(candidate())).resolves.toMatchObject({
@@ -91,7 +97,7 @@ describe('Durable Agent model tools', () => {
     const consumer = consumerMock()
     const authorizationError = new TeamError('revoked', 'TEAM_BINDING_UNAVAILABLE')
     const authorize = vi.fn(() => { throw authorizationError })
-    const [, submit] = createDurableTools(consumer, authorize)
+    const [, submit] = toolsFor(consumer, authorize)
 
     await expect(submit?.invoke(candidate())).rejects.toBe(authorizationError)
     expect(consumer.submitUnconfirmedCandidate).not.toHaveBeenCalled()
@@ -105,7 +111,7 @@ describe('Durable Agent model tools', () => {
         content: 'x'.repeat(1024 * 1024 + 1), revision: 3,
       })),
     })
-    const [read] = createDurableTools(consumer, vi.fn())
+    const [read] = toolsFor(consumer, vi.fn())
 
     await expect(read?.invoke({ itemId: 'architecture' })).rejects.toMatchObject({
       code: 'TEAM_BINDING_UNAVAILABLE', message: 'Durable Agent operation failed',

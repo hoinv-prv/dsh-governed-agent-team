@@ -1,0 +1,105 @@
+{
+  "result": "PASS",
+  "target": "/home/hoinv/work/dsh-binding-distribution-qualified",
+  "cases": [
+    "quarantined Loader/profile enable before first request",
+    "actual pre-render refresh twice, executable schema and unconfirmed candidate",
+    "public provider restart, persisted records, queued recovery, one initial admission without YAML reread",
+    "revoked exact authority withholds memory and withdraws required readiness"
+  ],
+  "loadedModules": {
+    "@deepseek-ai/cordis": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/vendor/cordis/lib/index.js",
+      "sha256": "1729cdbf8ee40b17c8839e06bf96491490548559e11ef7e411271e0754e751c5"
+    },
+    "@deepseek-ai/cordis-plugin-loader": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/vendor/loader/lib/index.js",
+      "sha256": "95f3651b2ac3caa6d19fd4e75121617ad28355e604102920480defb1da895e1b"
+    },
+    "@deepseek-ai/cordis-plugin-include": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/vendor/include/lib/index.js",
+      "sha256": "2194500a0615b8c9faf9bdfa6c2c975291ff29737c867bf14ef179259db0de47"
+    },
+    "@deepseek-ai/dsh-agent-loop": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/core/agent-loop/lib/index.js",
+      "sha256": "0326a8f0520035249efe85872b335f44e6d4705c4cd694e178f4e1f1f225a788"
+    },
+    "@deepseek-ai/dsh-agent-loop-testkit": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/test-support/agent-loop-testkit/lib/index.js",
+      "sha256": "161019aff77feb344d0542e88dde4dbcd96ea5ecd0dfd19287731fd7e254ff07"
+    },
+    "@deepseek-ai/dsh-llm": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/llm/llm/lib/index.js",
+      "sha256": "f54d86572d4c0e8d9348cdc65e4c4684a4956a91162815d3c52ee7c0c58225ed"
+    },
+    "@deepseek-ai/dsh-session-persistence-jsonl": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/session/session-persistence-jsonl/lib/index.js",
+      "sha256": "7d0640c9fc4be6c703b77605fdee6af519c542fae28a6cd4489353309812f062"
+    },
+    "@deepseek-ai/dsh-session-query": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/session-query/session-query/lib/index.js",
+      "sha256": "c2a3954a0060942b179a92111cce556f27b8d659a4d815bb0e9defadbdb874da"
+    },
+    "@deepseek-ai/dsh-session": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/core/session/lib/index.js",
+      "sha256": "0be28c47faf269a5489d7640bbcf0ef3d659dab4e4696f49a274f11460aad5b6"
+    },
+    "@deepseek-ai/dsh-subagent": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/subagent/subagent/lib/index.js",
+      "sha256": "a9ff01f68cd45314e2e4bbbbc7d89e782d6be749daed895f26e41984fa834dc4"
+    },
+    "@deepseek-ai/dsh-subagent-spawn-in-process": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/subagent/subagent-spawn-in-process/lib/index.js",
+      "sha256": "11c92108dd145957f8251a81fc9bfb8a30e7f6f25d96e34a5cb8581a4be4be06"
+    },
+    "@deepseek-ai/dsh-subagent-fork-in-process": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/subagent/subagent-fork-in-process/lib/index.js",
+      "sha256": "03ba69c10e8da1053f3997bfe6845cc72dfedd1b8f4d795e4b039f8659cfe620"
+    },
+    "@deepseek-ai/dsh-client-connection": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/client/connection/lib/index.js",
+      "sha256": "14142cb64bce7e471b45a8d06310564faa449bc14dea5188183c7a3194277068"
+    },
+    "@deepseek-ai/dsh-api-gateway": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/api/gateway/lib/index.js",
+      "sha256": "2ced385a2538b439905829572a2575e47ea7e94be433a2e176f568ebb2378b3e"
+    },
+    "@deepseek-ai/dsh-typert-registry": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/typert/registry/lib/index.js",
+      "sha256": "60c0f6c30d3363a66d9e3edb77338fda58f130ca543d5ece18295ae85a5f6d88"
+    },
+    "@deepseek-ai/dsh-app-boot": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/boot/app-boot/lib/index.js",
+      "sha256": "d8fdfe41996a4fefcff63af4982787924b0ae651f24bb1402f775b70202529bb"
+    },
+    "@vuhoi/gat-core": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/experimental/gat-core/lib/index.js",
+      "sha256": "55bd45c17eabbf29910e835c60baf41f88ebfb3d4757c2d653daab698c8c4e71"
+    },
+    "@vuhoi/gat-tools": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/experimental/gat-tools/lib/index.js",
+      "sha256": "60cde29fcb236fdacbafc26fcacfa5edc352fa0a9a7dba127b37e31e60e1fd20"
+    },
+    "@vuhoi/gat-durable-agent/provider": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/experimental/gat-durable-agent/lib/provider.js",
+      "sha256": "46be5f6fa4d4f23042641e4d279d4436e692b9759be0d4ccc2d81af0fddf840f"
+    },
+    "@vuhoi/gat-durable-agent/composition": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/experimental/gat-durable-agent/lib/composition.js",
+      "sha256": "7610b7be6a9931dcd804edbbec58f801905fff2c5cdef57506ffc79f235f4377"
+    },
+    "@deepseek-ai/dsh-durable-agent/service": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/vendor/gat-durable-provider/lib/src/service.js",
+      "sha256": "1af474f9027e9a06d4e7bb12a1b77e34df5a24f2205355433334920ff97db249"
+    },
+    "@deepseek-ai/dsh-durable-agent/consumer": {
+      "path": "/home/hoinv/work/dsh-binding-distribution-qualified/vendor/gat-durable-provider/lib/src/consumer.js",
+      "sha256": "f817d50a694e4e6c25385999bb6eeceda51658d6adac644929bb031b131cf0af"
+    }
+  },
+  "profile": {
+    "path": "/home/hoinv/work/dsh-binding-distribution-qualified/packages/experimental/gat-durable-profile/cordis.patch.yml",
+    "sha256": "af6d2c6b2417973bc85a79a81e09d30953490c4e5df589f3f552d25844a886b7"
+  },
+  "topology": "private temporary storage, dedicated provider, one host at a time; deployment separately authorized"
+}

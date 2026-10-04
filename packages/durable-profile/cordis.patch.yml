@@ -1,0 +1,29 @@
+# Apply after the GAT host profile. The external initializer is registered once.
+- id: tool-agent-team
+  config:
+    freshProvider: spawn
+    forkProvider: fork
+    minExecutionMembers: 2
+    maxExecutionMembers: 4
+    simpleMode: true
+    teamMembersMaxBytes: 65536
+    initializer: external
+    externalRestrictedTools:
+      - ask_user_question
+      - glob
+      - grep
+      - read
+      - read_image
+
+- insert:
+    - id: gat-durable-provider
+      name: '@vuhoi/gat-durable-agent/provider'
+    - id: gat-durable-agent
+      name: '@vuhoi/gat-durable-agent/composition'
+      config:
+        serviceBindingKey: gat-wk-durable-v1
+        dedicatedProvider: true
+        singleHostWorkspace: true
+        continuationProvider: spawn
+        maxMembers: 4
+        maxBytes: 65536

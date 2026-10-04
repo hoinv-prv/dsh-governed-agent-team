@@ -1,0 +1,6 @@
+{
+  "status": "SUPERSEDED: documentation-only intermediate; subsequent private-provider notices tooling correction required",
+  "target": "/home/hoinv/work/dsh-binding-distribution-commit-final",
+  "docAggregate": "Interrupted exit143 after dependency auto-install failure; never PASS",
+  "runtimeBuildArtifactsUnchanged": "PASS"
+}

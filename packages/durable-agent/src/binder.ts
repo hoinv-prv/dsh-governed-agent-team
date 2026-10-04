@@ -6,6 +6,7 @@ import type { BinderBindInput, BinderPrepareInput, BindingIdentity, DisposableBi
 import { coordinatorFor } from './ownership.ts'
 import { createDurableTools } from './tools.ts'
 
+/** Persist the strict declaration and trusted selectors without runtime references. */
 export interface DurableAttachmentV1 {
   readonly schemaVersion: 1
   readonly serviceBindingKey: string
@@ -22,6 +23,8 @@ export interface DurableBinderComposition {
   resolveWorkspace(identity: BindingIdentity): Promise<string>
 }
 
+function isTrue(value: unknown): boolean { return value === true }
+function isV1(value: unknown): boolean { return value === 1 }
 function unavailable(): never { throw new TeamError('required Durable binding unavailable', 'TEAM_BINDING_UNAVAILABLE') }
 function closed(value: unknown, keys: readonly string[], optional: readonly string[] = []): Record<string, unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value)) unavailable()
@@ -33,7 +36,9 @@ function text(value: unknown, max: number): value is string {
   return typeof value === 'string' && value.length > 0 && value === value.trim() && value.length <= max && !value.includes('\0')
 }
 function payload(value: JsonValue, input: BindingIdentity, composition: DurableBinderComposition): DurableAttachmentV1 {
-  const detached = validateAttachmentRequests([{ binderId: 'durable-agent', protocolVersion: 1, required: true, payload: value }])[0]!.payload
+  const validated = validateAttachmentRequests([{ binderId: 'durable-agent', protocolVersion: 1, required: true, payload: value }])[0]
+  if (!validated) unavailable()
+  const detached = validated.payload
   const root = closed(detached, ['schemaVersion', 'serviceBindingKey', 'workspaceRealpath', 'declaration'])
   const d = closed(root.declaration, ['name', 'description', 'prompt', 'context', 'provider', 'model', 'scope'], ['reasoningEffort'])
   if (root.schemaVersion !== 1 || root.serviceBindingKey !== composition.serviceBindingKey || !text(root.workspaceRealpath, 16_384)
@@ -52,10 +57,13 @@ class DurableLease implements DisposableBinding {
   private closed = false
   private transferred = false
   private installed = false
-  constructor(readonly attachment: DurableAttachmentV1, readonly identity: BindingIdentity, private readonly composition: DurableBinderComposition, private readonly releaseOwner: () => void) {}
+  constructor(readonly attachment: DurableAttachmentV1, readonly identity: BindingIdentity,
+    private readonly composition: DurableBinderComposition, private readonly releaseOwner: () => void,
+  ) {}
   private check(scope: BinderBindInput['scope'], action?: 'read' | 'effect' | 'request'): void {
     try {
-      if (this.closed || !scope.isCurrent() || this.composition.resolveService(this.attachment.serviceBindingKey) !== this.composition.service) unavailable()
+      if (this.closed || !scope.isCurrent()
+        || this.composition.resolveService(this.attachment.serviceBindingKey) !== this.composition.service) unavailable()
       if (action) scope.authorize(action)
     } catch (error) {
       try { this.closeAdmission() } catch { /* all removers attempted before cleanup */ }
@@ -73,39 +81,47 @@ class DurableLease implements DisposableBinding {
     signal.throwIfAborted()
     if (input.workspaceRealpath !== this.attachment.workspaceRealpath) unavailable()
     this.check(input.scope)
-    if (this.transferred || this.closed || JSON.stringify(this.identity) !== JSON.stringify({ teamId: input.teamId, memberId: input.memberId, memberName: input.memberName, generation: input.generation })) unavailable()
+    if (this.transferred || this.closed || JSON.stringify(this.identity) !== JSON.stringify({
+      teamId: input.teamId, memberId: input.memberId, memberName: input.memberName, generation: input.generation,
+    })) unavailable()
     this.transferred = true
     const onAbort = () => {
       try { this.closeAdmission() } catch { /* each remover was attempted */ }
       queueMicrotask(() => { void this.release(new AbortController().signal).catch(() => undefined) })
     }
     signal.addEventListener('abort', onAbort, { once: true })
-    this.removers.push(() => signal.removeEventListener('abort', onAbort))
+    this.removers.push(() =>{  signal.removeEventListener('abort', onAbort) })
     const service = this.composition.service
     this.provision = (async () => { this.ref = await service.provision(this.attachment.workspaceRealpath, this.attachment.declaration) })()
     try {
       await this.provision
       signal.throwIfAborted(); this.check(input.scope)
-      const consumer = new DurableAgentConsumer(service, this.ref!)
+      const ref = this.ref
+      if (!ref) unavailable()
+      const consumer = new DurableAgentConsumer(service, ref)
       const key = `gat:durable-agent:${input.teamId}:${input.memberId}:${input.generation}`
-      const refresh = async (authorize: boolean) => await this.track(async () => {
+      const refresh = async (authorize: boolean) =>{  await this.track(async () => {
         this.check(input.scope, authorize ? 'request' : undefined)
         const contribution = await consumer.modelContribution()
         signal.throwIfAborted(); this.check(input.scope, authorize ? 'request' : undefined)
         if (typeof contribution.prompt !== 'string' || Buffer.byteLength(contribution.prompt, 'utf8') > 1_048_576) unavailable()
         if (!this.installed) {
-          const tools = createDurableTools(consumer, action => this.check(input.scope, action)).map(tool => ({ ...tool, invoke: (args: unknown) => this.track(() => tool.invoke(args)) }))
+          const tools = createDurableTools(consumer, (action) => { this.check(input.scope, action) }).map(tool => ({
+            ...tool, invoke: (args: unknown) => this.track(() => tool.invoke(args)),
+          }))
           this.removers.push(input.scope.install({ key, prompt: contribution.prompt, tools }))
           this.installed = true
         } else input.scope.replacePrompt(key, contribution.prompt)
-      })
+      }) }
       await refresh(false)
       this.removers.push(input.scope.beforeRequest(() => refresh(true)))
       signal.throwIfAborted(); this.check(input.scope)
       return this
     } catch (error) {
-      try { this.closeAdmission() } catch { /* cleanup still owns pending resources */ }
-      await this.release(new AbortController().signal).catch(() => undefined)
+      const failures: unknown[] = [error]
+      try { this.closeAdmission() } catch (cleanup) { failures.push(cleanup) }
+      try { await this.release(new AbortController().signal) } catch (cleanup) { failures.push(cleanup) }
+      if (failures.length > 1) throw new AggregateError(failures, 'Durable binding acquisition and cleanup failed')
       throw error
     }
   }
@@ -134,18 +150,24 @@ class DurableLease implements DisposableBinding {
   abort(signal: AbortSignal): Promise<void> { return this.release(signal) }
 }
 
-/** Standalone qualified-port adapter; no legacy post-created hook or production auto-install. */
+/**
+ * Create a WK v1 binder for the selected trusted host topology.
+ * @param composition Exact provider identity, topology assertions and independent resolvers.
+ * @returns Required member binder with exclusive ownership and bounded scoped contributions.
+ */
 export function createDurableAgentBinder(composition: DurableBinderComposition): TeamMemberBinder<DurableLease> {
-  if (composition.dedicatedProvider !== true || composition.singleHostWorkspace !== true || !text(composition.serviceBindingKey, 200)) unavailable()
+  if (!isTrue(composition.dedicatedProvider) || !isTrue(composition.singleHostWorkspace)
+    || !text(composition.serviceBindingKey, 200)) unavailable()
   const service = composition.service
   const coordinator = coordinatorFor(service)
   const validate = async (input: BindingIdentity & { workspaceRealpath: string }, value: JsonValue, signal: AbortSignal) => {
     signal.throwIfAborted()
-    if (composition.resolveService(composition.serviceBindingKey) !== service || service.apiVersion !== 1
-      || service.features.selectiveMemoryRead !== true || service.features.memoryCandidateSubmission !== true) unavailable()
+    if (composition.resolveService(composition.serviceBindingKey) !== service || !isV1(service.apiVersion)
+      || !isTrue(service.features.selectiveMemoryRead) || !isTrue(service.features.memoryCandidateSubmission)) unavailable()
     const attachment = payload(value, input, composition)
     const workspace = await composition.resolveWorkspace(input)
-    if (workspace !== attachment.workspaceRealpath || workspace !== input.workspaceRealpath || await realpath(workspace) !== workspace) unavailable()
+    if (workspace !== attachment.workspaceRealpath || workspace !== input.workspaceRealpath
+      || await realpath(workspace) !== workspace) unavailable()
     await service.validateDeclaration(workspace, attachment.declaration)
     signal.throwIfAborted()
     if (composition.resolveService(composition.serviceBindingKey) !== service) unavailable()
@@ -157,24 +179,32 @@ export function createDurableAgentBinder(composition: DurableBinderComposition):
       const attachment = await validate(input, input.payload, signal)
       const d = attachment.declaration
       const route = input.spec.agentOptions
-      if (input.spec.name !== d.name || input.spec.context !== 'fresh' || input.spec.description !== d.description
-        || route?.provider !== d.provider || route.model !== d.model || route.reasoningEffort !== d.reasoningEffort
-        || input.spec.initialTask.length !== 1 || input.spec.initialTask[0]?.type !== 'text' || (input.spec.initialTask[0] as { text?: string }).text !== d.prompt) unavailable()
+      if (route === undefined || input.spec.name !== d.name || input.spec.context !== 'fresh' || input.spec.description !== d.description
+        || route.provider !== d.provider || route.model !== d.model || route.reasoningEffort !== d.reasoningEffort
+        || input.spec.initialTask.length !== 1 || input.spec.initialTask[0]?.type !== 'text'
+        || (input.spec.initialTask[0] as { text?: string }).text !== d.prompt) unavailable()
       const releaseOwner = coordinator.reserve(attachment.workspaceRealpath, d.name)
-      const value = new DurableLease(attachment, { teamId: input.teamId, memberId: input.memberId, memberName: input.memberName, generation: input.generation }, composition, releaseOwner)
+      const value = new DurableLease(attachment, {
+        teamId: input.teamId, memberId: input.memberId, memberName: input.memberName, generation: input.generation,
+      }, composition, releaseOwner)
       return { attachment: attachment as unknown as JsonValue, value, abort: signal => value.abort(signal) }
     },
     async bind(input, value, prepared, signal) {
-      if (!(prepared instanceof DurableLease) || JSON.stringify(prepared.attachment) !== JSON.stringify(payload(value, input, composition))) unavailable()
+      if (!(prepared instanceof DurableLease) || JSON.stringify(prepared.attachment)
+        !== JSON.stringify(payload(value, input, composition))) unavailable()
       await validate(input, value, signal)
       return await prepared.bind(input, signal)
     },
     async recover(input, value, signal) {
       const attachment = await validate(input, value, signal)
       const releaseOwner = coordinator.reserve(attachment.workspaceRealpath, attachment.declaration.name)
-      const lease = new DurableLease(attachment, { teamId: input.teamId, memberId: input.memberId, memberName: input.memberName, generation: input.generation }, composition, releaseOwner)
+      const lease = new DurableLease(attachment, {
+        teamId: input.teamId, memberId: input.memberId, memberName: input.memberName, generation: input.generation,
+      }, composition, releaseOwner)
       try { return await lease.bind(input, signal) } catch (error) {
-        await lease.abort(new AbortController().signal).catch(() => undefined)
+        try { await lease.abort(new AbortController().signal) } catch (cleanup) {
+          throw new AggregateError([error, cleanup], 'Durable recovery and cleanup failed')
+        }
         throw error
       }
     },

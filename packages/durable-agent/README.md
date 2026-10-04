@@ -1,13 +1,83 @@
-# GAT WK Durable Agent adapter
+---
+description: "Attach selective persistent memory to governed Team members."
+kind: "package-reference"
+---
 
-This explicit adapter library uses the WK Durable Agent public API v1 (`/service` and `/consumer`). It provides strict `team_members.durable.yaml` normalization, the `durable-agent` v1 binder, exclusive identity ownership, and executable read-memory / submit-candidate tools. Confirmed memory remains a separately authorized host operation.
+# @vuhoi/gat-durable-agent
 
-The current GAT compatibility runtime rejects required attachments before creating member rows. Production composition still needs the frozen reserved-child lifecycle, a request hook that refreshes prompt context before dispatch, exact mission/task authorization, and nested capability enforcement. The package is therefore excluded from the current default installer/profile. Deterministic ports and temporary public-provider tests qualify the adapter library only.
+English | [中文](README.zh.md)
 
-Trusted host composition supplies `serviceBindingKey`, a pinned service instance, an independent workspace resolver and explicit `dedicatedProvider: true` / `singleHostWorkspace: true` assertions to `createDurableAgentBinder`. A coordinator shared by all binders on that service prevents overlapping owners for canonical workspace/name. These assertions require deployment evidence; they do not create a distributed storage lock. Pending or failed provider cleanup keeps identity quarantined.
+## Summary
 
-`loadDurableTeamMembers` takes canonical workspace, continuation route and model-route preflight from the host. It reads a regular bounded file without symlink following, requires explicit fresh/workspace declarations and never falls back. The normalized payload stores the declaration and trusted selectors, with no runtime reference. Recovery uses that persisted payload and independently verifies its workspace/service identity.
+Team members can receive persistent guidance, read one memory item and submit an unconfirmed candidate. Each request refreshes its memory catalog before prompt rendering. The selected host requires exact mission/task authorization, a dedicated provider and one process per workspace. Confirmed memory commits remain separate host operations.
 
-The qualified host capability scope installs one prompt section and two tools, replaces the section on each request refresh, authorizes every read/effect/request, and removes all installed authority synchronously at cutoff. Provider calls that finish after cutoff cannot return model-visible bodies. Cleanup is memoized and persistent provider data survives release.
+## Table of Contents
 
-Design: [proposal](../../docs/gat-design/DURABLE_AGENT_BINDING_PROPOSAL.md) §§4–7 and [Detail Design](../../docs/gat-design/DETAIL_DESIGN.md) §§5–6. Exact source, test, build and dependency evidence: `.ai-work/workspaces/hoinv/TASK-20261004-exec-022/`.
+- [Use this package](#use-this-package)
+- [Understand the implementation](#understand-the-implementation)
+- [Further Exploration](#further-exploration)
+- [Model Experience](#model-experience)
+- [Known Limitations and Deferred Work](#known-limitations-and-deferred-work)
+- [Dev Note](#dev-note)
+
+-----
+
+<a id="use-this-package"></a>
+## Use this package
+
+Apply the [Durable profile](../gat-durable-profile/README.md) after the [GAT profile](../gat-profile/README.md) in an explicitly selected host. The host supplies `serviceBindingKey` and verified dedicated-provider/single-host assertions.
+
+The public composition entries are `@vuhoi/gat-durable-agent/provider` and `@vuhoi/gat-durable-agent/composition`. Load a regular bounded `team_members.durable.yaml` with explicit `fresh`, `workspace` and model routes; invalid declarations fail without default fallback.
+
+-----
+
+<a id="understand-the-implementation"></a>
+## Understand the implementation
+
+<details>
+<summary>Implementation internals — click to expand</summary>
+
+The binder prepares exclusive workspace/name ownership before member creation, installs generation-scoped contributions while quarantined and checks authority around asynchronous provider calls. Recovery uses persisted attachment records rather than YAML. Cleanup withdraws contributions immediately and releases ownership only after physical provider cleanup succeeds. Cordis service proxies are unwrapped to compare the actual registered provider identity.
+
+</details>
+
+-----
+
+<a id="further-exploration"></a>
+## Further Exploration
+
+- [Binder ownership](src/binder.ts), [strict initializer](src/initializer.ts), [tools](src/tools.ts).
+- [Team runtime](../gat-core/README.md) and [profile layer](../gat-durable-profile/README.md).
+
+-----
+
+<a id="model-experience"></a>
+## Model Experience
+
+### Durable memory context
+
+#### What the model sees
+
+The prompt contains guidance and catalog metadata. `durable_agent_read_memory` returns only the selected item; `durable_agent_submit_candidate` returns an explicitly unconfirmed candidate.
+
+#### Token effect
+
+Catalog refresh replaces one owner section. Read results add only the requested body; candidate results add bounded metadata.
+
+#### KV Cache effect
+
+A changed catalog can change the prompt prefix. Unchanged guidance and catalog preserve that section; persistent memory bodies are read selectively.
+
+## Known Limitations and Deferred Work
+
+<a id="known-limitations-and-deferred-work"></a>
+
+These constraints require explicit host ownership.
+
+- WK API v1 only, pinned to `a8e215433ae050e36e0ba27205701be1a5f114a1` and host `5c02ce9f3e44dfce3f87498f65cf684194ad4572`.
+- Workspace/fresh direct children only; global sharing, distributed locking and confirmed-memory model tools are unsupported. Failed cleanup keeps the identity quarantined.
+
+<a id="dev-note"></a>
+### Dev Note
+
+Integration qualification is recorded under AIP-EXEC-022; deployment requires separate approval.

@@ -1,0 +1,31 @@
+import { canonicalHash } from './runtime.js';
+const hash = /^[a-f0-9]{64}$/;
+const scoped = (v, e) => v.missionId === e.missionId && v.projectId === e.projectId;
+const pint = (n) => Number.isSafeInteger(n) && n > 0;
+export function artifact(v, e) { if (!scoped(v, e) || !v.artifactId || !pint(v.revision) || !hash.test(v.sha256) || !v.sourceHashes.length || v.sourceHashes.some(x => !hash.test(x)) || !v.contributorIds.length)
+    throw new TypeError('INVALID_OR_FOREIGN_ARTIFACT'); return Object.freeze({ ...v, sourceHashes: Object.freeze([...v.sourceHashes]), contributorIds: Object.freeze([...v.contributorIds]) }); }
+export function evidence(v, e) { if (!scoped(v, e) || !v.evidenceId || !pint(v.revision) || !v.artifactRefs.length || v.artifactRefs.some(x => !x.artifactId || !pint(x.revision) || !hash.test(x.sha256)) || !v.sourceHashes.length || v.sourceHashes.some(x => !hash.test(x)))
+    throw new TypeError('INVALID_OR_FOREIGN_EVIDENCE'); return Object.freeze({ ...v, artifactRefs: Object.freeze(v.artifactRefs.map(x => Object.freeze({ ...x }))), sourceHashes: Object.freeze([...v.sourceHashes]) }); }
+export function gate(v, e) { if (!scoped(v, e) || !v.gateId || !pint(v.revision) || v.contributorIds.includes(v.reviewerId) || !v.evidenceIds.length || v.evidenceIds.length !== v.evidenceHashes.length || v.evidenceHashes.some(x => !hash.test(x)))
+    throw new TypeError('GATE_SELF_ACCEPT_FOREIGN_OR_MISSING_EVIDENCE'); return Object.freeze({ ...v, contributorIds: Object.freeze([...v.contributorIds]), evidenceIds: Object.freeze([...v.evidenceIds]), evidenceHashes: Object.freeze([...v.evidenceHashes]) }); }
+export function handoff(v, e, supportedCompletion) { if (!scoped(v, e) || v.senderId === v.receiverId || !pint(v.revision) || !v.scope.length || !v.artifactHashes.length || v.artifactHashes.some(x => !hash.test(x)) || !v.gateIds.length || v.gateIds.length !== v.gateHashes.length || v.gateHashes.some(x => !hash.test(x)) || !v.nextAction.trim() || (v.completionClaim && !supportedCompletion))
+    throw new TypeError('INVALID_FOREIGN_OR_UNSUPPORTED_HANDOFF'); return Object.freeze({ ...v, scope: Object.freeze([...v.scope]), artifactHashes: Object.freeze([...v.artifactHashes]), gateIds: Object.freeze([...v.gateIds]), gateHashes: Object.freeze([...v.gateHashes]) }); }
+export function evidenceGraph(v, e, supportedCompletion) { const artifacts = v.artifacts.map(x => artifact(x, e)), records = v.evidence.map(x => evidence(x, e)), gates = v.gates.map(x => gate(x, e)), transfer = handoff(v.handoff, e, supportedCompletion), byA = new Map(artifacts.map(x => [x.artifactId, x])), byE = new Map(records.map(x => [x.evidenceId, x])), byG = new Map(gates.map(x => [x.gateId, x])); if (!artifacts.length || !records.length || !gates.length || byA.size !== artifacts.length || byE.size !== records.length || byG.size !== gates.length)
+    throw new TypeError('DUPLICATE_OR_EMPTY_EVIDENCE_GRAPH'); const reachedA = new Set(); for (const record of records) {
+    if (new Set(record.artifactRefs.map(x => x.artifactId)).size !== record.artifactRefs.length)
+        throw new TypeError('DUPLICATE_ARTIFACT_EDGE');
+    for (const ref of record.artifactRefs) {
+        const a = byA.get(ref.artifactId);
+        if (!a || a.revision !== ref.revision || a.sha256 !== ref.sha256)
+            throw new TypeError('ARTIFACT_GRAPH_CONFLICT');
+        reachedA.add(ref.artifactId);
+    }
+} const reachedE = new Set(); for (const decision of gates) {
+    const derived = [...new Set(decision.evidenceIds.flatMap(id => byE.get(id)?.artifactRefs.flatMap(r => byA.get(r.artifactId)?.contributorIds ?? []) ?? []))].sort();
+    if (new Set(decision.evidenceIds).size !== decision.evidenceIds.length || JSON.stringify([...decision.contributorIds].sort()) !== JSON.stringify(derived) || derived.includes(decision.reviewerId))
+        throw new TypeError('DERIVED_CONTRIBUTOR_CONFLICT');
+    decision.evidenceIds.forEach((id, i) => { const record = byE.get(id); if (!record || decision.evidenceHashes[i] !== canonicalHash(record))
+        throw new TypeError('EVIDENCE_GRAPH_CONFLICT'); reachedE.add(id); });
+} const exact = (a, b) => a.length === b.length && new Set(a).size === a.length && [...a].sort().join(',') === [...b].sort().join(','); if (reachedA.size !== artifacts.length || reachedE.size !== records.length || !exact(transfer.artifactHashes, artifacts.map(a => a.sha256)) || !exact(transfer.gateIds, gates.map(g => g.gateId)) || transfer.gateIds.some((id, i) => transfer.gateHashes[i] !== canonicalHash(byG.get(id))) || gates.some(g => g.verdict !== 'PASS'))
+    throw new TypeError('HANDOFF_GRAPH_SET_OR_REACHABILITY_CONFLICT'); return Object.freeze({ artifacts: Object.freeze(artifacts), evidence: Object.freeze(records), gates: Object.freeze(gates), handoff: transfer }); }
+//# sourceMappingURL=evidence.js.map

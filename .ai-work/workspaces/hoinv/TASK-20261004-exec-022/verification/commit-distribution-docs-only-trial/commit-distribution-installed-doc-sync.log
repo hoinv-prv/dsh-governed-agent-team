@@ -1,0 +1,69 @@
+run-gates: doc-sync running 34 gate(s) with 4 worker(s) from 12 available CPU(s), doc-sync cap 4.
+run-gates: start doc-typecheck
+run-gates: start documentation build
+run-gates: start doc graphs
+run-gates: start markdown links
+
+== FAILED documentation build (12.82s) ==
+command: pnpm run docs:build
+outcome: exit 1
+native/system/packages/darwin-arm64      | [WARN] Unsupported platform: wanted: {"cpu":["arm64"],"os":["darwin"],"libc":["any"]} (current: {"os":"linux","cpu":"x64","libc":"glibc"})
+native/system/packages/darwin-x64        | [WARN] Unsupported platform: wanted: {"cpu":["x64"],"os":["darwin"],"libc":["any"]} (current: {"os":"linux","cpu":"x64","libc":"glibc"})
+native/system/packages/linux-arm64       | [WARN] Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["any"]} (current: {"os":"linux","cpu":"x64","libc":"glibc"})
+Scope: all 299 workspace projects
+[WARN] There are cyclic workspace dependencies: /home/hoinv/work/dsh-binding-distribution-commit-final/apps/web, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/client/web, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/client/ui-renderer, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/test-support/client-runtime, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/bundle/web-app; /home/hoinv/work/dsh-binding-distribution-commit-final/packages/api/gateway, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/client/connection, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/api/session-controller, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/client/file-upload, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/api/remotes, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/api/workspace-controller; /home/hoinv/work/dsh-binding-distribution-commit-final/packages/client/ui-conversation, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/client/ui-workspace; /home/hoinv/work/dsh-binding-distribution-commit-final/packages/core/agent-loop, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/llm/llm-pi-ai, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/llm/llm-deepseek, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/session/session-log-deepseek, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/feedback/command-feedback, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/test-support/agent-loop-testkit; /home/hoinv/work/dsh-binding-distribution-commit-final/packages/e2b/e2b, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/e2b/fs-e2b; /home/hoinv/work/dsh-binding-distribution-commit-final/packages/sandbox/sandbox-local, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/sandbox/sandbox-windows-acl; /home/hoinv/work/dsh-binding-distribution-commit-final/packages/subagent/subagent-spawn-in-process, /home/hoinv/work/dsh-binding-distribution-commit-final/packages/subagent/tool-subagent; /home/hoinv/work/dsh-binding-distribution-commit-final/vendor/cordis, /home/hoinv/work/dsh-binding-distribution-commit-final/vendor/include
+✓ Lockfile passes supply-chain policies (verified 29m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 85, reused 85, downloaded 0, added 0
+Progress: resolved 107, reused 107, downloaded 0, added 0
+Progress: resolved 159, reused 159, downloaded 0, added 0
+Progress: resolved 395, reused 340, downloaded 0, added 0
+Progress: resolved 698, reused 563, downloaded 0, added 0
+Progress: resolved 953, reused 723, downloaded 0, added 0
+Progress: resolved 1347, reused 1112, downloaded 0, added 0
+Progress: resolved 1548, reused 1298, downloaded 0, added 0
+[WARN] 11 deprecated subdependencies found: boolean@3.2.0, glob@10.5.0, glob@11.1.0, glob@7.2.3, inflight@1.0.6, lodash.isequal@4.5.0, node-domexception@1.0.0, prebuild-install@7.1.3, rimraf@2.6.3, tsconfck@3.1.6, whatwg-encoding@2.0.0
+Progress: resolved 1567, reused 1299, downloaded 0, added 0
+Packages: +88 -176
+++++++++++++++++++++++++++------------------------------------------------------
+Progress: resolved 1567, reused 1299, downloaded 0, added 5, done
+[WARN] Failed to create bin at /home/hoinv/work/dsh-binding-distribution-commit-final/node_modules/.pnpm/node_modules/.bin/extract-zip. ENOENT: no such file or directory, chmod '/home/hoinv/work/dsh-binding-distribution-commit-final/node_modules/.pnpm/node_modules/.bin/extract-zip'
+[EEXIST] EEXIST: file already exists, symlink '../.pnpm/@testing-library+react@16.3.2_@testing-library+dom@10.4.1_@types+react-dom@18.3.7_@type_b0bbe147884ef4cbbf95e64a97c782e8/node_modules/@testing-library/react' -> '/home/hoinv/work/dsh-binding-distribution-commit-final/node_modules/@testing-library/react'
+
+pnpm: EEXIST: file already exists, symlink '../.pnpm/@testing-library+react@16.3.2_@testing-library+dom@10.4.1_@types+react-dom@18.3.7_@type_b0bbe147884ef4cbbf95e64a97c782e8/node_modules/@testing-library/react' -> '/home/hoinv/work/dsh-binding-distribution-commit-final/node_modules/@testing-library/react'
+    at async Object.symlink (node:internal/fs/promises:1644:10)
+    at async forceSymlink (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:131924:7)
+    at async forceSymlink (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:131936:9)
+    at async file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:180028:10
+    at async Promise.all (index 2)
+    at async linkDirectDepsOfProject (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:180016:3)
+    at async Promise.all (index 0)
+    at async linkDirectDeps (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:179957:30)
+    at async linkPackages (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:187485:20)
+    at async _installInContext (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:189908:25)
+[ERROR] Command failed with exit code 239: '/home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/pnpm' install
+
+pnpm: Command failed with exit code 239: '/home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/pnpm' install
+    at getFinalError (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:34109:14)
+    at makeError (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:36416:21)
+    at getSyncResult (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:38260:10)
+    at spawnSubprocessSync (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:38220:14)
+    at execaCoreSync (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:38150:23)
+    at callBoundExeca (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:40678:23)
+    at boundExeca (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:40655:49)
+    at sync (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:40814:10)
+    at runPnpmCli (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:245097:5)
+    at runDepsStatusCheck (file:///home/hoinv/.local/share/pnpm/package-manager-store/v11/links/@pnpm/exe/11.7.0/157c950c0275f08d983be2d69a1b56fa7301730d6f3311cb3a5ea549f7d97b31/node_modules/@pnpm/exe/dist/pnpm.mjs:246833:7)
+run-gates: start type equivalence
+run-gates: PASS markdown links (34.65s)
+run-gates: start cordis catalog
+run-gates: PASS type equivalence (22.28s)
+run-gates: start Cordis inspect catalog
+run-gates: PASS Cordis inspect catalog (6.82s)
+run-gates: start verify-mermaid
+run-gates: PASS doc graphs (46.76s)
+run-gates: start scoped events
+run-gates: PASS verify-mermaid (11.21s)
+run-gates: start translation pairing
+run-gates: PASS cordis catalog (21.43s)
+run-gates: start markdown wrap

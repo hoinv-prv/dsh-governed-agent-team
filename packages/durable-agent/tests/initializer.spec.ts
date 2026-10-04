@@ -2,7 +2,6 @@ import { mkdtemp, realpath, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import type { AgentOptions } from '@deepseek-ai/dsh-agent'
 import { type DurableRoutePreflight, loadDurableTeamMembers } from '../src/initializer.ts'
 
 const fileName = 'team_members.durable.yaml'
@@ -28,7 +27,7 @@ describe('Durable Team initializer', () => {
   beforeEach(async () => {
     root = await mkdtemp(join(tmpdir(), 'gat-durable-initializer-'))
     workspaceRealpath = await realpath(root)
-    routePreflight = vi.fn(async () => ({ provider: 'mock', model: 'model-a' } as AgentOptions))
+    routePreflight = vi.fn(async () => ({ provider: 'mock', model: 'model-a' }))
   })
 
   afterEach(async () => {
@@ -131,10 +130,10 @@ describe('Durable Team initializer', () => {
     await write({ version: 1, members: [validMember()] })
     routePreflight.mockRejectedValueOnce(new Error(`route failure at ${workspaceRealpath}`))
 
-    const error = await load().catch(value => value)
+    const error = await load().catch((value: unknown) => value)
 
     expect(error).toMatchObject({ code: 'TEAM_INVALID_CONFIG', message: 'Durable Team route preflight failed' })
-    expect(error.message).not.toContain(workspaceRealpath)
+    expect((error as Error).message).not.toContain(workspaceRealpath)
   })
 
   it('bounds reads and rejects symlinked config files', async () => {

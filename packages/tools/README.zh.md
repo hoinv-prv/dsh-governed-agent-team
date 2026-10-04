@@ -53,6 +53,7 @@ kind: "package-reference"
 | `externalRestrictedTools` | `[]` | Team policy 限制生效时允许的规范外部只读／HUMAN 交互工具；Team 自有协调工具不重复列入 |
 | `minExecutionMembers` | `2` | 达到 execution readiness 所需的最少持久 active teammate 数（不包含 Lead） |
 | `maxExecutionMembers` | `4` | 此工具层持久 teammate 创建上限；不得小于最小值 |
+| `initializer` | `default` | 选择默认 roster loader 或单独注册的严格 initializer |
 
 两个执行值都必须是正的安全整数。直接应用插件时提供无效值，或配置 `maxExecutionMembers < minExecutionMembers`，都会 fail closed。spawn 上限、preflight／readiness metadata、execution guard 与 policy 数字文案统一使用解析后的值。
 

@@ -1,0 +1,17 @@
+node:internal/modules/esm/resolve:314
+  return new ERR_PACKAGE_PATH_NOT_EXPORTED(
+         ^
+
+Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Package subpath './service' is not defined by "exports" in /home/hoinv/work/dsh-binding-distribution-qualified/node_modules/@deepseek-ai/dsh-durable-agent/package.json
+    at exportsNotFound (node:internal/modules/esm/resolve:314:10)
+    at packageExportsResolve (node:internal/modules/esm/resolve:604:13)
+    at resolveExports (node:internal/modules/cjs/loader:664:36)
+    at Function._findPath (node:internal/modules/cjs/loader:731:31)
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1415:27)
+    at Function.resolve (node:internal/modules/helpers:157:19)
+    at load (file:///home/hoinv/work/dsh-governed-agent-team/installer/verify-binding-runtime.mjs:18:43)
+    at file:///home/hoinv/work/dsh-governed-agent-team/installer/verify-binding-runtime.mjs:41:229 {
+  code: 'ERR_PACKAGE_PATH_NOT_EXPORTED'
+}
+
+Node.js v22.23.1

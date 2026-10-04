@@ -155,6 +155,8 @@ Team events are appended to the exact live Lead Session and flushed before the o
 
 Disposal closes admission, aborts and awaits admitted creation and mailbox-dispatch transactions, then asks the continuation owner to release the roster's exact live direct children and their descendants; non-Team continuable children of the Lead remain untouched. Cleanup failures make disposal fail visibly, bounded by `disposalTimeoutMs`.
 
+Required attachments use the host-only `registerMemberBinder()` registry. Enable prepares the entire roster before its first member record, then installs generation-scoped prompts, tools and pre-render refresh while the reserved child remains quarantined. The host binds an exact mission/task lease before release. Attached recovery uses immutable persisted records, stages pending mailbox input before releasing an already-consumed initial generation, and never reloads the declaration file. Removing a required contribution withdraws the whole generation scope; reauthorization alone cannot restore it. Inactive durable references prevent live binder removal, and late cleanup failures remain owned diagnostics.
+
 </details>
 
 -----

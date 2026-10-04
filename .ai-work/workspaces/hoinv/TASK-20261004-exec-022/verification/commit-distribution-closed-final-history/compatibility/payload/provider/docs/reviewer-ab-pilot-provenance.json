@@ -1,0 +1,33 @@
+{
+  "format": "durable-agent-reviewer-ab-pilot-provenance/1",
+  "runId": "06b84d5ea523edca0feea67a3eb12ae304cdac2be17d4df91fc4ce31da7ddc1f",
+  "requestsSha256": "da5a20bc8a746a50229dcaaed9f8cf1bb206b7e06ffea7d7b2e5f52778aab0e5",
+  "collectedBy": "lead",
+  "transport": "functions.subagent",
+  "context": "fresh (non-fork)",
+  "modelRoute": "native-subagent-default",
+  "exactModelId": null,
+  "requestedMaxTokens": 1200,
+  "tokenBudgetEnforcedByTool": false,
+  "usageTelemetryAvailable": false,
+  "dispatch": "Concurrent pairs; replicate 0 creation order A/B, replicate 1 B/A. Completion order unconstrained.",
+  "responseHandling": "Exact final JSON text observed in runtime completion messages, stored verbatim as response strings. IDs are collection references, not authenticated remote receipts.",
+  "leaves": [
+    { "index": 0, "subagentId": "f0d0528d-d2ac-4b9a-ab65-b62310b7154f" },
+    { "index": 1, "subagentId": "306d0cf7-5cae-4d72-b099-59393dac3c2f" },
+    { "index": 2, "subagentId": "c9efac72-0e11-4e2a-a35d-d65d4aba2cfe" },
+    { "index": 3, "subagentId": "1be608a2-5dbc-4116-b23a-38d6ec88ab3a" },
+    { "index": 4, "subagentId": "3db8f175-fe38-49c6-b160-3f7d0b869d5c" },
+    { "index": 5, "subagentId": "97b134f7-c31b-400e-9034-cdd39f28bc8a" },
+    { "index": 6, "subagentId": "10e6efeb-7003-403d-91b1-d0d831788cf2" },
+    { "index": 7, "subagentId": "d9af0356-1f8d-4a7d-a3b5-aa53ae9bd682" },
+    { "index": 8, "subagentId": "316d78df-f425-41fc-be70-b34c6fb842f1" },
+    { "index": 9, "subagentId": "11c959ba-2505-4456-9fb8-8abfea494a07" },
+    { "index": 10, "subagentId": "3726358e-dbc7-43e9-967b-b676e4292d9c" },
+    { "index": 11, "subagentId": "eeef619f-ac41-407d-830f-0caaa8f63692" },
+    { "index": 12, "subagentId": "2f8b28c7-baef-48a9-947d-84e0e32cdbcd" },
+    { "index": 13, "subagentId": "26e41f77-c61a-4036-94f3-fd252efb945c" },
+    { "index": 14, "subagentId": "9a920898-3cb7-47b8-a0b4-dd14db4c1480" },
+    { "index": 15, "subagentId": "72da5e46-3dd9-41db-b4a4-9bb8f98a412b" }
+  ]
+}

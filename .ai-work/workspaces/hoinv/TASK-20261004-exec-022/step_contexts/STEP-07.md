@@ -13,8 +13,8 @@ step_index: 8
 step_total: 9
 status: active
 active_task_lens: No-Lens.
-staleness_status: fresh
-staleness_reason: 
+staleness_status: stale
+staleness_reason: pointer points to STEP-08, not STEP-07
 updated_at: 2026-10-04
 ---
 
@@ -143,16 +143,14 @@ All proposal §10 production prerequisites have evidence locators. Wrong/stale/a
 - No expected outputs declared (inherited from AIP)
 
 ## Runtime Queue Blockers
-- RQ-022-03 — Supported-profile browser golden mismatch needs owner alignment (blocked)
 - RQ-022-04 — Production binder composition and changed-host compatibility/profile/package qualification remain pending (pending)
-- RQ-022-05 — Broader type-aware lint findings need disposition before final production qualification (pending)
 
 ## Relevant Queue Item IDs
 - RQ-022-01 — STEP-04: DSH reserved-child and request-refresh qualification missing; upstream pointer labels do not mean this gate passed (resolved)
 - RQ-022-02 — STEP-07: Exact mission/task leases and nested capability enforcement are unqualified (resolved)
-- RQ-022-03 — Supported-profile browser golden mismatch needs owner alignment (blocked)
+- RQ-022-03 — Final built browser qualification: shared authenticated gateway control context (resolved)
 - RQ-022-04 — Production binder composition and changed-host compatibility/profile/package qualification remain pending (pending)
-- RQ-022-05 — Broader type-aware lint findings need disposition before final production qualification (pending)
+- RQ-022-05 — Broader type-aware lint findings need disposition before final production qualification (resolved)
 
 ## Previous Step Results / Handoff Inputs
 - OUT-022-00-01 — HUMAN approved P01–08 and WK/direct-continuable target. Exact replies recorded; no external source edit or live activation grant. (approved_for_next_step)
@@ -173,3 +171,7 @@ All proposal §10 production prerequisites have evidence locators. Wrong/stale/a
 - CAP-022-04 — ASC ordinal upstream labels do not reflect blocked prerequisite gates (captured)
 - CAP-022-05 — Review wiki refresh for implemented member-binding foundation and WK adapter (captured)
 - CAP-022-06 — GAT panel replay golden expects obsolete default model labels (captured)
+- CAP-022-07 — Type-aware lint must preserve optional JSON serialization outcomes (captured)
+- CAP-022-08 — Prerequisite worktrees require additive compatibility selection (captured)
+- CAP-022-09 — Authorization must be rechecked inside serialized acknowledgement transactions (captured)
+- CAP-022-10 — Cordis service identity must use the original object (captured)

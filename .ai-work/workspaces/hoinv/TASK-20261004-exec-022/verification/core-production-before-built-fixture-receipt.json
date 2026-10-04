@@ -1,0 +1,227 @@
+{
+  "status": "source-ready",
+  "generated_at": "2026-10-04T05:10:55.370650+00:00",
+  "design": "docs/gat-design/DETAIL_DESIGN.md \u00a78; GAT_MEMBER_BINDING_CONTRACT_FREEZE \u00a7\u00a74\u201310/13",
+  "tests": {
+    "all_core_plus_real_WK_composition": 166,
+    "test_files": 11,
+    "status": "PASS"
+  },
+  "core_type_aware_lint": "PASS all src/tests",
+  "core_tsc": "PASS",
+  "aggregate_host_tsc": "PASS",
+  "exported_api_jsdoc": "PASS",
+  "mirror_file_count": 40,
+  "exact_mirror": true,
+  "source_files": [
+    {
+      "source": "packages/core/src/activity.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/activity.ts",
+      "sha256": "a35a8d322aea033ef7f2e1d8539026f6a49251b3c0252ee695d361066cbd4f08"
+    },
+    {
+      "source": "packages/core/src/approved-plan-import.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/approved-plan-import.ts",
+      "sha256": "3efdd14de8baaa4ae76a5d41ffb82216a28959b129f66f4abccdae6356d10fb9"
+    },
+    {
+      "source": "packages/core/src/attachments.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/attachments.ts",
+      "sha256": "cc6c3c678acb13ac71950db8519c343ae42256e28035b005cbad089925e87fd2"
+    },
+    {
+      "source": "packages/core/src/authority.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/authority.ts",
+      "sha256": "7d0c9297333759c1d5ce7a0a90705a671cf93130d8f9315fe83862ec499ac16d"
+    },
+    {
+      "source": "packages/core/src/binding-deadline.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/binding-deadline.ts",
+      "sha256": "c3b0520c4f4558c92e49d3791878614f0c7f8fecaa1c20c16af205683f206fde"
+    },
+    {
+      "source": "packages/core/src/client.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/client.ts",
+      "sha256": "e698321df957a563b624d7e27a356f69c8ed1fb7a2d28cfa14209a1ce8ea03e2"
+    },
+    {
+      "source": "packages/core/src/error.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/error.ts",
+      "sha256": "b9d14250f819c6cfd364c42cf2b4045674a1f7c88321f99e9a4a29b68419bea4"
+    },
+    {
+      "source": "packages/core/src/index.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/index.ts",
+      "sha256": "5a173592fd7919a3361d5e0e7d3adbc30440fa40bde61c5cd8d504ec25f53420"
+    },
+    {
+      "source": "packages/core/src/invariant.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/invariant.ts",
+      "sha256": "95667f2092b28b5e62a4bfcdd910a0e712ff1b71ce97bd20b79b1bab3be12753"
+    },
+    {
+      "source": "packages/core/src/journal.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/journal.ts",
+      "sha256": "2b046d6ff7d759ccd96c996b63dfc9b43aef974e69aedc132c3272ee18911b00"
+    },
+    {
+      "source": "packages/core/src/lifecycle.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/lifecycle.ts",
+      "sha256": "763a3afe65dd3fc762b1a6b9aad0909b30751c7b3908c453c92f0d708674f8ac"
+    },
+    {
+      "source": "packages/core/src/mailbox.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/mailbox.ts",
+      "sha256": "4be4d71ec88924c3ce38ac2a29e165f263c4572ebe3a62afda1b162b49a50a4e"
+    },
+    {
+      "source": "packages/core/src/member-binders.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/member-binders.ts",
+      "sha256": "e5b7967d0a9abb7be97efec68e0487c843bb8f7280c4f25cf83e61c9716113b1"
+    },
+    {
+      "source": "packages/core/src/member-binding.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/member-binding.ts",
+      "sha256": "c0d191454c0608f19bbfd91c3b8b69376f2af234eb51ca6fd181088d65d12fb2"
+    },
+    {
+      "source": "packages/core/src/member-host.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/member-host.ts",
+      "sha256": "7ad1914df53454ae42d2657991ebe423daa8177b4b8ba6a5dacc921f1e97c56d"
+    },
+    {
+      "source": "packages/core/src/mission-board.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/mission-board.ts",
+      "sha256": "5edc76c4b4cfca7185c646b62fc2f789003a03050062deec76751ab7c8323033"
+    },
+    {
+      "source": "packages/core/src/mission-plan.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/mission-plan.ts",
+      "sha256": "625bcb7a9b2e5113291adb73f81dc70a6294637ed2531f06d0588d4531b4d029"
+    },
+    {
+      "source": "packages/core/src/persisted.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/persisted.ts",
+      "sha256": "382fe7cab52e47100a798307300d649c506536d6bbe0ac89025e6c41abe4ec87"
+    },
+    {
+      "source": "packages/core/src/projection.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/projection.ts",
+      "sha256": "1255829d060fae3c0d8f82af11e8ea7fd852048ac5996732c6809fcbb5e425ec"
+    },
+    {
+      "source": "packages/core/src/roster.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/roster.ts",
+      "sha256": "f4518a259a325d9db4692516b58495cf209fad184364fcf930fe802dbd4231c5"
+    },
+    {
+      "source": "packages/core/src/session-message.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/session-message.ts",
+      "sha256": "c74ef1d18667d0f221bafd726d8332e682778f06cf43b1ce13d174e5a843cf10"
+    },
+    {
+      "source": "packages/core/src/task-board.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/task-board.ts",
+      "sha256": "6a2c74c7a360ee0747a666226c708b1b45c4ee599f9a10a0f7d816c9c72e094f"
+    },
+    {
+      "source": "packages/core/src/task-graph.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/task-graph.ts",
+      "sha256": "a726081289a2f7a848f69109a750db3ead0d95b88ab0adfdae0477f749b8f490"
+    },
+    {
+      "source": "packages/core/src/types.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/types.ts",
+      "sha256": "0076d8ef6204c7f95a79ed284c7dd730ef3ab296cfc474a5222d03a0dd77e490"
+    },
+    {
+      "source": "packages/core/src/validation.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/validation.ts",
+      "sha256": "eb0668e8096ce9ca294b7d787f974d27e896329bb0b4c547cb4d6bd7e42ee44b"
+    },
+    {
+      "source": "packages/core/src/work-state.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/src/work-state.ts",
+      "sha256": "1e5d26383684f5fd41633ea15ecad161b0bb7ba694834fe72a29b3821c0bbcdb"
+    },
+    {
+      "source": "packages/core/tests/authority.spec.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/authority.spec.ts",
+      "sha256": "41921fe762c2335d2f8b881258e9acc00e8fb567bc57360d32067c7b5b7d9d29"
+    },
+    {
+      "source": "packages/core/tests/authorized-team-fixture.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/authorized-team-fixture.ts",
+      "sha256": "fa3283c946b0e9b1dc77dfbb37c3a99e3104ef1a9624489659684fba7357a9a9"
+    },
+    {
+      "source": "packages/core/tests/binding-enable.spec.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/binding-enable.spec.ts",
+      "sha256": "b77a8b728a3287cb6fcf4dacc47478fe8ce025678e12e02dd260d2befbb796a1"
+    },
+    {
+      "source": "packages/core/tests/built-lib.e2e.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/built-lib.e2e.ts",
+      "sha256": "d6553aaf203d46f01d7b8672e51fb43bb2b32fe4f9c3d01e994b4275608d0525"
+    },
+    {
+      "source": "packages/core/tests/human-control-fixture.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/human-control-fixture.ts",
+      "sha256": "ee730732e42a8ae2c7649f698a2a29b1ebb72f162de573e0ad5adedf337592f3"
+    },
+    {
+      "source": "packages/core/tests/invariant.spec.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/invariant.spec.ts",
+      "sha256": "15905991fba1d95ef01e29459542d3f4eb13278978c78be126d0c48fd89291e2"
+    },
+    {
+      "source": "packages/core/tests/member-attachments.spec.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "sha256": "167a74df96a82e6104ec46dfd8718d3bcad5076f7975259ec5dad1ae5f2a2c45"
+    },
+    {
+      "source": "packages/core/tests/member-binding.spec.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "sha256": "d013dcf1b86ad31b163d7a4131db95399b229f1956f915af34d9eecff998401e"
+    },
+    {
+      "source": "packages/core/tests/member-replay.spec.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/member-replay.spec.ts",
+      "sha256": "2f424f8067a9e673fae7ff64ff2f956930e621a19378f9c45e0e892c09197a29"
+    },
+    {
+      "source": "packages/core/tests/persistence.spec.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/persistence.spec.ts",
+      "sha256": "2a29cff185af0650172d82e8f08ab3ba657b9d5753111be28347f041bcc07be7"
+    },
+    {
+      "source": "packages/core/tests/production-binding.spec.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/production-binding.spec.ts",
+      "sha256": "5c688b941130b5b20df67b530b5d461edd4d4c75e2111da079472fbe67c70d80"
+    },
+    {
+      "source": "packages/core/tests/projection-events.spec.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/projection-events.spec.ts",
+      "sha256": "336aa4ebecdeab1a98747670f45502a1fb6321bb672a871e5c5d941e9cbe8210"
+    },
+    {
+      "source": "packages/core/tests/team.spec.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/team.spec.ts",
+      "sha256": "38a1f629a7ca340905d45b4773390e69a8f57cb643879572030f201ba53c03fc"
+    },
+    {
+      "source": "packages/core/tests/test-session-query.ts",
+      "host": "/home/hoinv/work/dsh-binding-prerequisites/packages/experimental/gat-core/tests/test-session-query.ts",
+      "sha256": "7ea5a954b40909339e2f0d2e8106aae4df5a6220035c465ec7c1ce7f407dc757"
+    }
+  ],
+  "deployment": "not approved or performed",
+  "latest_refinement": "DD \u00a78 Staged acknowledgement transaction authorization: exact target and cancellation checked inside serialized Lead transaction immediately before delivered append",
+  "latest_evidence": [
+    "core-production-ack-transaction-full-tests.log",
+    "core-production-ack-transaction-type-aware-lint.log",
+    "core-production-ack-transaction-core-types.log",
+    "core-production-ack-transaction-host-types.log",
+    "core-production-ack-transaction-focused-tests.log"
+  ]
+}

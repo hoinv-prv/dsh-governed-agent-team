@@ -1,0 +1,22 @@
+- button "Agent Team 4" [expanded]:
+  - img
+  - text: Agent Team 4
+- dialog "Agent Team":
+  - strong: Agent Team
+  - button "Refresh Team":
+    - img
+  - button "Close":
+    - img
+  - heading "Mission detail" [level=3]
+  - text: No missions yet
+  - heading "Members" [level=3]
+  - 'button "lead Runtime status: Running · Model: deepseek-v4-flash" [disabled]'
+  - text: No durable work reported
+  - 'button "advisor Runtime status: Inactive · Model: deepseek-v4-flash"'
+  - text: No durable work reported
+  - 'button "senior-dev Runtime status: Inactive · Model: deepseek-v4-flash"'
+  - text: No durable work reported
+  - 'button "dev Runtime status: Inactive · Model: deepseek-v4-flash"'
+  - text: No durable work reported
+  - 'button "junior-dev Runtime status: Inactive · Model: deepseek-v4-flash"'
+  - text: No durable work reported

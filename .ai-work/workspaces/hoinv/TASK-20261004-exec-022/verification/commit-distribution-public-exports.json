@@ -1,0 +1,161 @@
+{
+  "format": "gat-binding-built-and-packed-exports/1",
+  "target": "/home/hoinv/work/dsh-binding-distribution-commit-qualified",
+  "plain": {
+    "imports": 8,
+    "builtEntries": [
+      {
+        "specifier": "@vuhoi/gat-core",
+        "path": "packages/experimental/gat-core/lib/index.js",
+        "sha256": "55bd45c17eabbf29910e835c60baf41f88ebfb3d4757c2d653daab698c8c4e71"
+      },
+      {
+        "specifier": "@vuhoi/gat-durable-agent",
+        "path": "packages/experimental/gat-durable-agent/lib/index.js",
+        "sha256": "f975bfd75f1a8557683ebb8925a7bd34275ba163a8ffdf48d655be8ac1da91b8"
+      },
+      {
+        "specifier": "@vuhoi/gat-durable-agent/composition",
+        "path": "packages/experimental/gat-durable-agent/lib/composition.js",
+        "sha256": "7610b7be6a9931dcd804edbbec58f801905fff2c5cdef57506ffc79f235f4377"
+      },
+      {
+        "specifier": "@vuhoi/gat-durable-agent/provider",
+        "path": "packages/experimental/gat-durable-agent/lib/provider.js",
+        "sha256": "46be5f6fa4d4f23042641e4d279d4436e692b9759be0d4ccc2d81af0fddf840f"
+      },
+      {
+        "specifier": "@vuhoi/gat-durable-profile",
+        "path": "packages/experimental/gat-durable-profile/lib/index.js",
+        "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+      },
+      {
+        "specifier": "@deepseek-ai/dsh-durable-agent",
+        "path": "vendor/gat-durable-provider/lib/src/index.js",
+        "sha256": "2b7a2e8eb4ce098a93bc3b27946908403511ea57e431ea1371a21c9ac00dbb27"
+      },
+      {
+        "specifier": "@deepseek-ai/dsh-durable-agent/consumer",
+        "path": "vendor/gat-durable-provider/lib/src/consumer.js",
+        "sha256": "f817d50a694e4e6c25385999bb6eeceda51658d6adac644929bb031b131cf0af"
+      },
+      {
+        "specifier": "@deepseek-ai/dsh-durable-agent/service",
+        "path": "vendor/gat-durable-provider/lib/src/service.js",
+        "sha256": "1af474f9027e9a06d4e7bb12a1b77e34df5a24f2205355433334920ff97db249"
+      }
+    ],
+    "sharedControlContext": {
+      "externalPublicGatewayImport": "PASS",
+      "noDuplicateAdmissionStore": "PASS",
+      "exactSharedModuleResolution": "PASS",
+      "gatewayEntrySha256": "2ced385a2538b439905829572a2575e47ea7e94be433a2e176f568ebb2378b3e",
+      "admissionModuleSha256": "14142cb64bce7e471b45a8d06310564faa449bc14dea5188183c7a3194277068"
+    },
+    "publicProviderRegistrationAndDisposal": "PASS",
+    "profilePatchResolution": "PASS",
+    "trustedTopologyAssertions": "PASS",
+    "runtime": "plain-node",
+    "providerRegistrationOnly": true
+  },
+  "packed": [
+    {
+      "name": "@vuhoi/gat-core",
+      "archiveSha256": "0362d8e8dc89d315b9ed7d99d6ffa7b25de154b36bd1bda8c6c6e0f74c68ffb1",
+      "files": 62
+    },
+    {
+      "name": "@vuhoi/gat-tools",
+      "archiveSha256": "7612df3c5b16a6b150e67159431ad71ecc5e2a426f46355468f779db086022bd",
+      "files": 7
+    },
+    {
+      "name": "@vuhoi/gat-web",
+      "archiveSha256": "78ea1f1893124846e6d3963b4ae7704eb7a2d27d5b7baab628d841260053fe03",
+      "files": 11
+    },
+    {
+      "name": "@vuhoi/gat-profile",
+      "archiveSha256": "7f80cb3a1ed62f81e8205b58971e2924ddfbbeb0d0215d1962a4ab32305418cb",
+      "files": 7
+    },
+    {
+      "name": "@vuhoi/gat-web-profile",
+      "archiveSha256": "12c9fc3862ac181317b0159cc1e66b3429eddbee4a92d0b0651aa7a754f0a62c",
+      "files": 7
+    },
+    {
+      "name": "@vuhoi/gat-durable-agent",
+      "archiveSha256": "8af8816021670950d04b9aea21f21c9b95a402f23e7ef041bf08c91ff630b407",
+      "files": 37
+    },
+    {
+      "name": "@vuhoi/gat-durable-profile",
+      "archiveSha256": "d56b7522259fa6afa14982d2794e225f0d336dce45b06caa00502856318fe629",
+      "files": 7
+    },
+    {
+      "name": "@deepseek-ai/dsh-durable-agent",
+      "archiveSha256": "67093c26e6eea7e04d25ce42ea41bd9ece0f9fcff18b8f32f9f9c0777767f1ca",
+      "files": 101
+    }
+  ],
+  "packedProbe": {
+    "imports": 8,
+    "builtEntries": [
+      {
+        "specifier": "@vuhoi/gat-core",
+        "path": "packages/experimental/gat-core/lib/index.js",
+        "sha256": "55bd45c17eabbf29910e835c60baf41f88ebfb3d4757c2d653daab698c8c4e71"
+      },
+      {
+        "specifier": "@vuhoi/gat-durable-agent",
+        "path": "packages/experimental/gat-durable-agent/lib/index.js",
+        "sha256": "f975bfd75f1a8557683ebb8925a7bd34275ba163a8ffdf48d655be8ac1da91b8"
+      },
+      {
+        "specifier": "@vuhoi/gat-durable-agent/composition",
+        "path": "packages/experimental/gat-durable-agent/lib/composition.js",
+        "sha256": "7610b7be6a9931dcd804edbbec58f801905fff2c5cdef57506ffc79f235f4377"
+      },
+      {
+        "specifier": "@vuhoi/gat-durable-agent/provider",
+        "path": "packages/experimental/gat-durable-agent/lib/provider.js",
+        "sha256": "46be5f6fa4d4f23042641e4d279d4436e692b9759be0d4ccc2d81af0fddf840f"
+      },
+      {
+        "specifier": "@vuhoi/gat-durable-profile",
+        "path": "packages/experimental/gat-durable-profile/lib/index.js",
+        "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+      },
+      {
+        "specifier": "@deepseek-ai/dsh-durable-agent",
+        "path": "vendor/gat-durable-provider/lib/src/index.js",
+        "sha256": "2b7a2e8eb4ce098a93bc3b27946908403511ea57e431ea1371a21c9ac00dbb27"
+      },
+      {
+        "specifier": "@deepseek-ai/dsh-durable-agent/consumer",
+        "path": "vendor/gat-durable-provider/lib/src/consumer.js",
+        "sha256": "f817d50a694e4e6c25385999bb6eeceda51658d6adac644929bb031b131cf0af"
+      },
+      {
+        "specifier": "@deepseek-ai/dsh-durable-agent/service",
+        "path": "vendor/gat-durable-provider/lib/src/service.js",
+        "sha256": "1af474f9027e9a06d4e7bb12a1b77e34df5a24f2205355433334920ff97db249"
+      }
+    ],
+    "sharedControlContext": {
+      "externalPublicGatewayImport": "PASS",
+      "noDuplicateAdmissionStore": "PASS",
+      "exactSharedModuleResolution": "PASS",
+      "gatewayEntrySha256": "2ced385a2538b439905829572a2575e47ea7e94be433a2e176f568ebb2378b3e",
+      "admissionModuleSha256": "14142cb64bce7e471b45a8d06310564faa449bc14dea5188183c7a3194277068"
+    },
+    "publicProviderRegistrationAndDisposal": "PASS",
+    "profilePatchResolution": "PASS",
+    "trustedTopologyAssertions": "PASS",
+    "runtime": "plain-node",
+    "providerRegistrationOnly": true
+  },
+  "scope": "Built and packed public exports, dedicated-provider registration, and opt-in patch resolution with exact target dependency peers; full authorized lifecycle and standalone registry installation are separate."
+}

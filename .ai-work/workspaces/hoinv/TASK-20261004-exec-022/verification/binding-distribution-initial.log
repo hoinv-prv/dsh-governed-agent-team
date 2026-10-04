@@ -1,0 +1,23 @@
+Preparing worktree (detached HEAD 5c02ce9f3e)
+HEAD is now at 5c02ce9f3e feat(gat): add governed binding prerequisites
+{
+  "format": "gat-binding-distribution-verification/1",
+  "hostCommit": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+  "providerCommit": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+  "compatibility": "dsh-0.1.5-rc.2-binding-5c02ce9",
+  "prerequisiteFiles": 244,
+  "hostFiles": 30,
+  "payloadFiles": 115,
+  "lockfilePrepared": true,
+  "dryRun": "ready",
+  "install": "installed",
+  "repeatedInstall": "already-installed",
+  "status": "installed",
+  "simulatedFailureRestore": "PASS",
+  "rollbackRestore": "PASS",
+  "finalInstall": "installed",
+  "exactInstalledHashes": "PASS",
+  "verificationDependencyLinks": true,
+  "target": "/home/hoinv/work/dsh-binding-distribution-check",
+  "targetRetainedForBuildAndRuntimeChecks": true
+}

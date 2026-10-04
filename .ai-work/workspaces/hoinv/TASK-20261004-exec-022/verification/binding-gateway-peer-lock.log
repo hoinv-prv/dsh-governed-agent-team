@@ -1,0 +1,19 @@
+native/system/packages/darwin-arm64      | [WARN] Unsupported platform: wanted: {"cpu":["arm64"],"os":["darwin"],"libc":["any"]} (current: {"os":"linux","cpu":"x64","libc":"glibc"})
+native/system/packages/darwin-x64        | [WARN] Unsupported platform: wanted: {"cpu":["x64"],"os":["darwin"],"libc":["any"]} (current: {"os":"linux","cpu":"x64","libc":"glibc"})
+native/system/packages/linux-arm64       | [WARN] Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["any"]} (current: {"os":"linux","cpu":"x64","libc":"glibc"})
+Scope: all 299 workspace projects
+[WARN] There are cyclic workspace dependencies: /home/hoinv/work/dsh-binding-prerequisites/apps/web, /home/hoinv/work/dsh-binding-prerequisites/packages/client/web, /home/hoinv/work/dsh-binding-prerequisites/packages/client/ui-renderer, /home/hoinv/work/dsh-binding-prerequisites/packages/test-support/client-runtime, /home/hoinv/work/dsh-binding-prerequisites/packages/bundle/web-app; /home/hoinv/work/dsh-binding-prerequisites/packages/api/gateway, /home/hoinv/work/dsh-binding-prerequisites/packages/client/connection, /home/hoinv/work/dsh-binding-prerequisites/packages/api/session-controller, /home/hoinv/work/dsh-binding-prerequisites/packages/client/file-upload, /home/hoinv/work/dsh-binding-prerequisites/packages/api/remotes, /home/hoinv/work/dsh-binding-prerequisites/packages/api/workspace-controller; /home/hoinv/work/dsh-binding-prerequisites/packages/client/ui-conversation, /home/hoinv/work/dsh-binding-prerequisites/packages/client/ui-workspace; /home/hoinv/work/dsh-binding-prerequisites/packages/core/agent-loop, /home/hoinv/work/dsh-binding-prerequisites/packages/llm/llm-pi-ai, /home/hoinv/work/dsh-binding-prerequisites/packages/llm/llm-deepseek, /home/hoinv/work/dsh-binding-prerequisites/packages/session/session-log-deepseek, /home/hoinv/work/dsh-binding-prerequisites/packages/feedback/command-feedback, /home/hoinv/work/dsh-binding-prerequisites/packages/test-support/agent-loop-testkit; /home/hoinv/work/dsh-binding-prerequisites/packages/e2b/e2b, /home/hoinv/work/dsh-binding-prerequisites/packages/e2b/fs-e2b; /home/hoinv/work/dsh-binding-prerequisites/packages/sandbox/sandbox-local, /home/hoinv/work/dsh-binding-prerequisites/packages/sandbox/sandbox-windows-acl; /home/hoinv/work/dsh-binding-prerequisites/packages/subagent/subagent-spawn-in-process, /home/hoinv/work/dsh-binding-prerequisites/packages/subagent/tool-subagent; /home/hoinv/work/dsh-binding-prerequisites/vendor/cordis, /home/hoinv/work/dsh-binding-prerequisites/vendor/include
+✓ Lockfile passes supply-chain policies (verified 34m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 95, reused 0, downloaded 0, added 0
+Progress: resolved 131, reused 5, downloaded 0, added 0
+Progress: resolved 160, reused 5, downloaded 0, added 0
+Progress: resolved 161, reused 5, downloaded 0, added 0
+Progress: resolved 706, reused 5, downloaded 0, added 0
+Progress: resolved 1408, reused 5, downloaded 0, added 0
+Progress: resolved 1567, reused 5, downloaded 0, added 0
+[WARN] 11 deprecated subdependencies found: boolean@3.2.0, glob@10.5.0, glob@11.1.0, glob@7.2.3, inflight@1.0.6, lodash.isequal@4.5.0, node-domexception@1.0.0, prebuild-install@7.1.3, rimraf@2.6.3, tsconfck@3.1.6, whatwg-encoding@2.0.0
+Progress: resolved 1567, reused 5, downloaded 0, added 0, done
+[WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+
+Done in 8.4s using pnpm v11.7.0

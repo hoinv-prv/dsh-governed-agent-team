@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/hoinv/work/dsh-binding-distribution-qualified/scripts/smoke-python-runtime.py", line 2448, in <module>
+    main()
+  File "/home/hoinv/work/dsh-binding-distribution-qualified/scripts/smoke-python-runtime.py", line 797, in main
+    smoke_sdk_minimal(model.url, args.exe.resolve(), args.update_snapshots, in_history=True, request_refresh=True)
+  File "/home/hoinv/work/dsh-binding-distribution-qualified/scripts/smoke-python-runtime.py", line 1093, in smoke_sdk_minimal
+    assert_session_log(sessions, root, MINIMAL_TEXT, "COUNT=1", "COUNT=2")
+  File "/home/hoinv/work/dsh-binding-distribution-qualified/scripts/smoke-python-runtime.py", line 1764, in assert_session_log
+    raise AssertionError(f"expected one JSONL session log under {sessions}, found {logs}")
+AssertionError: expected one JSONL session log under /tmp/dsh-sdk-minimal-mbw_l_lj/home/sessions, found []

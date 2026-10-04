@@ -1,0 +1,169 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ undefined
+- 'workspace:^'
+
+    at file:///home/hoinv/work/dsh-binding-distribution-accepted/[eval1]:22:8 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: 'workspace:^',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.1
+node:internal/errors:983
+  const err = new Error(message);
+              ^
+
+Error: Command failed: /home/hoinv/.hermes/node/bin/node --input-type=module --eval 
+import assert from 'node:assert/strict'
+import { readFile } from 'node:fs/promises'
+import { createRequire } from 'node:module'
+import { createHash } from 'node:crypto'
+import { fileURLToPath } from 'node:url'
+import { relative, resolve } from 'node:path'
+import { Context } from '@deepseek-ai/cordis'
+import * as Core from '@vuhoi/gat-core'
+import * as Durable from '@vuhoi/gat-durable-agent'
+import * as Composition from '@vuhoi/gat-durable-agent/composition'
+import * as Provider from '@vuhoi/gat-durable-agent/provider'
+import * as Profile from '@vuhoi/gat-durable-profile'
+import * as WK from '@deepseek-ai/dsh-durable-agent'
+import * as Consumer from '@deepseek-ai/dsh-durable-agent/consumer'
+import * as Service from '@deepseek-ai/dsh-durable-agent/service'
+const { parse } = createRequire(import.meta.resolve('@vuhoi/gat-durable-agent'))('yaml')
+const gatewayUrl = import.meta.resolve('@deepseek-ai/dsh-api-gateway')
+const gatewayRequire = createRequire(gatewayUrl)
+const coreRequire = createRequire(import.meta.resolve('@vuhoi/gat-core'))
+const gatewayPackage = JSON.parse(await readFile(gatewayRequire.resolve('@deepseek-ai/dsh-api-gateway/package.json'), 'utf8'))
+assert.equal(gatewayPackage.peerDependencies['@deepseek-ai/dsh-client-connection'], 'workspace:^')
+const gatewayCode = await readFile(new URL(gatewayUrl), 'utf8')
+const coreCode = await readFile(new URL(import.meta.resolve('@vuhoi/gat-core')), 'utf8')
+assert.match(gatewayCode, /import\s*\{[^}]*\bwithControlInvocation\b[^}]*\}\s*from\s*["']@deepseek-ai\/dsh-client-connection["']/u)
+assert.match(coreCode, /import\s*\{[^}]*\bconsumeHumanControl\b[^}]*\}\s*from\s*["']@deepseek-ai\/dsh-client-connection["']/u)
+assert.doesNotMatch(gatewayCode, /\b(?:const|let|var)\s+admissions\s*=\s*new\s+AsyncLocalStorage/u)
+const admissionModule = gatewayRequire.resolve('@deepseek-ai/dsh-client-connection')
+assert.equal(admissionModule, coreRequire.resolve('@deepseek-ai/dsh-client-connection'))
+const sharedControlContext = { externalPublicGatewayImport: 'PASS', noDuplicateAdmissionStore: 'PASS', exactSharedModuleResolution: 'PASS', gatewayEntrySha256: createHash('sha256').update(gatewayCode).digest('hex'), admissionModuleSha256: createHash('sha256').update(await readFile(admissionModule)).digest('hex') }
+const builtEntries = []
+for (const specifier of ['@vuhoi/gat-core', '@vuhoi/gat-durable-agent', '@vuhoi/gat-durable-agent/composition', '@vuhoi/gat-durable-agent/provider', '@vuhoi/gat-durable-profile', '@deepseek-ai/dsh-durable-agent', '@deepseek-ai/dsh-durable-agent/consumer', '@deepseek-ai/dsh-durable-agent/service']) {
+  const url = import.meta.resolve(specifier)
+  const path = fileURLToPath(url)
+  assert.ok(path.startsWith(resolve(process.cwd()) + '/'), 'public package entry escaped the selected target: ' + specifier)
+  builtEntries.push({ specifier, path: relative(process.cwd(), path), sha256: createHash('sha256').update(await readFile(path)).digest('hex') })
+}
+assert.equal(typeof Core.default, 'function')
+assert.equal(typeof Durable.createDurableAgentBinder, 'function')
+assert.equal(typeof Durable.loadDurableTeamMembers, 'function')
+assert.equal(typeof Composition.apply, 'function')
+assert.equal(typeof Provider.apply, 'function')
+assert.equal(WK.DurableAgentConsumer, Consumer.DurableAgentConsumer)
+assert.equal(WK.DurableAgentService, Service.DurableAgentService)
+const patchPath = import.meta.resolve('@vuhoi/gat-durable-profile/cordis.patch.yml')
+const patch = parse(await readFile(new URL(patchPath), 'utf8'))
+assert.equal(patch.find(row => row.id === 'tool-agent-team').config.initializer, 'external')
+const registrations = patch.flatMap(row => row.insert ?? [])
+assert.equal(registrations.filter(row => row.name === '@vuhoi/gat-durable-agent/provider').length, 1)
+assert.equal(registrations.filter(row => row.name === '@vuhoi/gat-durable-agent/composition').length, 1)
+const config = registrations.find(row => row.name === '@vuhoi/gat-durable-agent/composition').config
+assert.equal(config.dedicatedProvider, true)
+assert.equal(config.singleHostWorkspace, true)
+assert.equal(config.serviceBindingKey, 'gat-wk-durable-v1')
+const ctx = new Context()
+await ctx.plugin(Provider)
+const service = ctx.get('durableAgent')
+assert.ok(service instanceof WK.LocalDurableAgentProvider)
+assert.equal(service.apiVersion, 1)
+assert.equal(service.features.selectiveMemoryRead, true)
+assert.equal(service.features.memoryCandidateSubmission, true)
+await ctx.fiber.dispose()
+assert.equal(ctx.get('durableAgent'), undefined)
+console.log(JSON.stringify({ imports: 8, builtEntries, sharedControlContext, publicProviderRegistrationAndDisposal: 'PASS', profilePatchResolution: 'PASS', trustedTopologyAssertions: 'PASS', runtime: 'plain-node', providerRegistrationOnly: true }))
+
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ undefined
+- 'workspace:^'
+
+    at file:///home/hoinv/work/dsh-binding-distribution-accepted/[eval1]:22:8 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: 'workspace:^',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.1
+
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:916:11)
+    at execFileSync (node:child_process:952:15)
+    at file:///home/hoinv/work/dsh-governed-agent-team/installer/verify-binding-exports.mjs:81:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'node:internal/modules/run_main:123\n' +
+      '    triggerUncaughtException(\n' +
+      '    ^\n' +
+      '\n' +
+      'AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n' +
+      '+ actual - expected\n' +
+      '\n' +
+      '+ undefined\n' +
+      "- 'workspace:^'\n" +
+      '\n' +
+      '    at file:///home/hoinv/work/dsh-binding-distribution-accepted/[eval1]:22:8 {\n' +
+      '  generatedMessage: true,\n' +
+      "  code: 'ERR_ASSERTION',\n" +
+      '  actual: undefined,\n' +
+      "  expected: 'workspace:^',\n" +
+      "  operator: 'strictEqual',\n" +
+      "  diff: 'simple'\n" +
+      '}\n' +
+      '\n' +
+      'Node.js v22.23.1\n'
+  ],
+  pid: 112542,
+  stdout: '',
+  stderr: 'node:internal/modules/run_main:123\n' +
+    '    triggerUncaughtException(\n' +
+    '    ^\n' +
+    '\n' +
+    'AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n' +
+    '+ actual - expected\n' +
+    '\n' +
+    '+ undefined\n' +
+    "- 'workspace:^'\n" +
+    '\n' +
+    '    at file:///home/hoinv/work/dsh-binding-distribution-accepted/[eval1]:22:8 {\n' +
+    '  generatedMessage: true,\n' +
+    "  code: 'ERR_ASSERTION',\n" +
+    '  actual: undefined,\n' +
+    "  expected: 'workspace:^',\n" +
+    "  operator: 'strictEqual',\n" +
+    "  diff: 'simple'\n" +
+    '}\n' +
+    '\n' +
+    'Node.js v22.23.1\n'
+}
+
+Node.js v22.23.1

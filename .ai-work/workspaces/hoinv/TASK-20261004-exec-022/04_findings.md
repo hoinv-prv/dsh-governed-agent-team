@@ -54,3 +54,37 @@ Both ASCs were refreshed before staging on HUMAN request. Closed AIP-023 supplie
 ### Local commit receipt — 2026-10-04
 
 DSH commit `5c02ce9f3e44dfce3f87498f65cf684194ad4572` contains exactly the 244 approved paths; commit hooks changed no checked source bytes. Current commit qualification is in ../TASK-20261004-exec-023/commit-receipt.json. Prior qualification/patch receipts remain historical. AIP-022 remains active at STEP-07 with RQ-022-03/04/05 open. Its six captures still require triage before closure; final production acceptance and STEP-08 review remain pending.
+
+### Remaining delivery resumed — 2026-10-04
+
+HUMAN requested completion of remaining AIP-022 tasks. Existing pointer was STEP-08 with RQ-022-03/04/05 still open; execution returned to STEP-07 using the governed tool, without treating ordinal upstream labels as acceptance. remaining-work-baseline.json preserves protected dirty hashes and starting revisions. Official intended design §8 and architecture/basic/integration deltas precede new source work. Core integration and distribution owners are released only after this design exists. Browser stale labels are confined to the fixture; product defaults remain unchanged.
+
+## Final source qualification and review pointer
+
+Final source: all 333 GAT tests in 24 files pass; revised core/actual WK suite is 166/166 in 11 files. Independent source review resolved the staged acknowledgement transaction race after prospective DD §8 refinement; all 40 core mirrors match. Final host documentation gates pass 34/34, including all 819 bilingual pairs. Selected fresh installer lifecycle and frozen lock pass. STEP-08 ASC is rebuilt for substantive review; STEP-07 artifact/browser/SDK checks remain pending and pointer labels do not constitute acceptance. Protected dirty compatibility/snapshot/verifier files remain preserved.
+
+## Final built browser control-context finding
+
+Source and normal typed lint pass; actual selected built HTTP, SDK and provider storage workflows pass. Browser diagnostic `verification/production-browser-enable-diagnostic-02.log` independently records `TEAM_HUMAN_CONTROL_REQUIRED` at `consumeHumanControl` in public connection/lib, with `withControlInvocation` executing inside gateway/lib. The accepted gateway bundle inlines the dev-only dependency while the earlier qualified bundle externalizes it. The host build externalizes runtime dependencies/peers, so declare the runtime peer to preserve one admission store. Official DD section 8 “Shared authenticated control context in built gateway” was written before the metadata repair. Final browser/distribution acceptance remains open until rebuilt and replayed; no authority bypass or snapshot recording is permitted.
+
+## Same sealed target product qualification
+
+Final review target `/home/hoinv/work/dsh-binding-distribution-review-final`, selected manifest SHA `8e5abdc7eef2008d48fdb34978706414222fc878d5012312097cdffdbf90ad58`: actual built Loader5 cases/22 modules, browser3/3, built Core1/1, TS SDK7 executed/12 unrelated filtered, corpus3/3 and Python4 scenarios all exit0. Shared public authenticated admission module guard passes in installed and packed probes; no global state or receipt bypass. RQ-022-03 resolved on actual WS replay. Final source130-file mapping, independent disposition, step metadata/capture sweep and scoped governance close remain to record.
+
+## Final capture and target-spec sweep
+
+Swept approved source/design deltas, owner corrections, source lint/build failures, actual transport proofs, immutable documentation wording, installer receipts and finalization artifacts for reusable candidates. Fourteen inline captures cover the discovered knowledge/tooling gaps; no additional uncaptured candidate was identified. No source relations or Wiki/source registry changes are pending application. Captures will be explicitly deferred to the account Capture Backlog for HUMAN review, without Wiki/Truth promotion. Target-spec attribution and approvals are in `verification/target-spec-attribution.md`. All eight macro Done Criteria remain declarative and unchecked in the AIP; runtime acceptance is in the matrix/receipts.
+
+## Governed closure
+
+Strict scoped finalize lint exits0 with0 errors/0 warnings. AIP close tool explicitly defers all14 captures to named account backlog rows and flips active→done. STEP-08 pointer is done; generated ASC remains a fixed active reading projection label by tooling, not lifecycle. All five runtime queue items are resolved; no blocking item remains. Product/artifact peer PASS and final source/build/actual-runtime evidence remain separately hash-bound. No deployment, new commit, publication or Wiki/Truth promotion.
+
+## Commit preflight — 2026-10-04
+
+The HUMAN authorized local commits of the completed AIP-EXEC-022 work in GAT and its isolated DSH worktree. Luna inventoried both repositories read-only. Three original GAT controls and host `.gat/`, native output and website temporary files remain excluded. DSH pre-commit requires the pinned provider ownership entry in `vendor/README.md`; that entry preserves the original upstream source/package bytes.
+
+Attempting to stage all distribution after-images exposed nine root-layout web/profile/web-profile README and sidecar overlays with invalid installed sibling links. The preceding documentation aggregate ran on the source host and did not qualify these differing installer after-images. Distribution ownership is being corrected prospectively in Detail Design §8 before the generator changes; the previous sealed artifact/runtime receipts are retained. The fresh artifact and actual installed-target checks are recorded separately in `verification/commit-distribution-*`. No runtime change or deployment is authorized by this documentation repair.
+
+The first DSH commit attempt was rejected by the mandatory third-party-notices generator: its Cordis-vendor MIT assumption cannot classify the unchanged private WK provider, which declares no license. Translation, staged lint, whitespace and vendor ownership checks passed, and every staged hash remained unchanged. Prospective design and truthful private-provider notices handling are required before retry; provider source/package metadata and existing foundation license checks stay intact. Raw failure: `verification/commit-host-hook-initial-failure.log`.
+
+Commit follow-up correction is qualified on `/home/hoinv/work/dsh-binding-distribution-commit-qualified`, frozen manifest `46316a97620f9f23fe5f55003886c93c4e9126c4bec2b5fb92e91ba0e9706a50`,49 replacements/151 additions/200 installed rows/244 guards. Actual installed doc-sync34, notices33, installer21, transactional lifecycle/lock/native/public-packed checks pass; all8,311 carried artifact hashes are unchanged. DSH commit `f7f560ac937ec1e41d47fe8f48135fc1e4ac8554` contains exactly200 matching files and passed all hooks without source rewriting. Original product/runtime/browser/SDK checks are reused only through exact byte proof. AIP and STEP-08 remain done; no push/deployment/canonical promotion.

@@ -1,6 +1,6 @@
-# DSH dependency qualification (source inspection)
+# DSH dependency qualification — historical baseline and current prerequisite
 
-Inspection date: 2026-10-04. This records source declarations and control flow only; it makes no claim about which bytes are loaded in any running process.
+The baseline source-only sections below are historical observations before AIP-EXEC-023. They make no claim about loaded bytes. Current committed prerequisite and production qualification are stated in the final section and linked receipts; they supersede the original missing-capability findings for the exact changed host.
 
 ## Compared source identities
 
@@ -38,3 +38,9 @@ Design prerequisites consulted: `docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md` §�
 ## Qualified prerequisite follow-up
 
 The source-only baseline inspection above is retained as history. AIP-EXEC-023 implements and qualifies the four missing prerequisite families in an isolated, approved changed-host patch. Exact source/artifact and independent review receipts are ../TASK-20261004-exec-023/qualification-receipt.json and prerequisite-handoff.md. This does not select a supported release, approve deployment or qualify the parent production binder/profile. The unchanged compatibility commit must be paired with the qualified patch SHA-256; it cannot stand in for changed bytes.
+
+## Current committed prerequisite and production integration
+
+AIP-EXEC-023 local commit `5c02ce9f3e44dfce3f87498f65cf684194ad4572`, parent c291, supplies independently qualified reserved materialize/persist/activate/recover, awaited pre-render refresh, exact authenticated HUMAN mission/task control and immutable nested executor metadata. `../TASK-20261004-exec-023/commit-receipt.json` binds all 244 committed paths; its qualification/commit follow-up reports remain distinct historical receipts. WK remains unchanged at `a8e215433ae050e36e0ba27205701be1a5f114a1`.
+
+Parent connected production composition now has source333, host-boundary767, core/actual-WK166, adapter48, normal type-aware lint and registered built HTTP/provider/restart evidence. RQ-022-01/02/05 are resolved. The final selected changed-host artifact additionally captures reviewed production working-tree bytes; HEAD alone does not identify them. Its final public module, installer, browser WS and SDK receipts must pass on the same sealed target before full AIP acceptance. Current browser runtime-peer repair is recorded in DD section8 and RQ-022-03. Final aggregate evidence is `verification/production-qualification-receipt.json`; until that receipt is final, overall artifact acceptance remains open. Deployment is separate.

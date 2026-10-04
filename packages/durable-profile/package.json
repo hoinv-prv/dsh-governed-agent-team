@@ -1,0 +1,47 @@
+{
+  "name": "@vuhoi/gat-durable-profile",
+  "description": "Opt-in WK Durable Agent profile layer after the GAT profile",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hoinv-prv/dsh-governed-agent-team.git",
+    "directory": "packages/durable-profile"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "cordis.patch.yml",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "@vuhoi/gat-profile": "file:../gat-profile",
+    "@vuhoi/gat-tools": "file:../gat-tools",
+    "@vuhoi/gat-durable-agent": "file:../gat-durable-agent"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis-plugin-include": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^",
+    "js-yaml": "^4.2.0"
+  }
+}

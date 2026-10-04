@@ -11,7 +11,7 @@ Status: Formal project design draft for review; not canonical Truth, release app
 
 Describe the architecture of Governed Agent Team (GAT), the responsibilities of its packages, durable authority boundaries and the intended Durable Agent integration. This document consolidates the [collected design sources](README.md) and [mission deltas](MISSION_DESIGN_DELTAS.md), with current implementation inspected separately.
 
-The inspected GAT HEAD is `d7a2eec9adbc14f6d892c7f4722ec2061d67e227`, with pre-existing uncommitted edits in core projection/roster/types and tests. [Source baseline](source-baseline.json) binds the exact inspected files. A commit alone does not identify these working-tree bytes. No product suite or deployment was performed for this documentation revision.
+The GAT working tree is based on `912cc24c95d2867dca683c75df9041f26c700dbc`. [Source baseline](source-baseline.json) binds current inspected bytes, the committed host prerequisite revision and clean WK revision. Existing dirty compatibility controls remain preserved. Current AIP-EXEC-022 qualification is recorded separately in its workspace; earlier documentation and mission receipts remain historical. Deployment is separately authorized.
 
 Use these status terms throughout the design set:
 
@@ -54,7 +54,7 @@ flowchart TB
   P[GAT host and Web profiles] --> C
   P --> T
   P --> UI
-  B[Target GAT member binder] -.-> D
+  B[GAT member binder and production scope] --> D
   B -.-> DA[External DurableAgentService and Consumer]
 ```
 
@@ -80,11 +80,11 @@ The standalone package is a separate implementation stream. Its `PACKAGE_STATUS`
 | Team membership, tasks, missions, mailbox and work | Root DSH Session event log; `agentTeam` projection | Core commands, tools and Web views | No independent UI or Durable Agent coordination store |
 | Child execution and inbox acceptance | DSH Agent/Session/subagent services | Roster recovery and mailbox dedupe | Child history must be checked outside inherited fork prefix |
 | Runtime status and in-flight operations | Process-local Agent registry/lifecycle | Views, guards and disposal | Runtime status differs from durable member phase |
-| Member profile/context/memory | External Durable Agent provider | Explicitly bound Consumer/target binder | Does not authorize Team/task/model effects |
+| Member profile/context/memory | External Durable Agent provider | Explicitly bound WK Consumer/GAT binder | Does not authorize Team/task/model effects |
 | Standalone reference-memory partitions | Conservative MVP `PartitionStore` and injected audit/anchor/lifecycle registries | Standalone policy/wrapper | No assumption of production DSH or persistent backend integration |
 | Mission research/acceptance evidence | `wbs-runs` reports/ledgers and collection manifest | Design authors/reviewers | Historical evidence is not automatic runtime authority |
 
-Current missions retain embedded task snapshots while the shared task board is separate. The target contract requires task `missionId` association and one executable task authority; that migration is not present in current `TeamTaskSnapshot`.
+Current canonical tasks carry immutable `missionId`, and mission plans reference canonical task IDs. Embedded task snapshots and approval-only v2 history remain replay evidence, without executable authority. Host-attested current mission/task leases govern request and effect admission (§11; Detail Design §7).
 
 ## 5. Architecture decisions
 
@@ -95,10 +95,10 @@ Current missions retain embedded task snapshots while the shared task board is s
 | AD-03 | Flush durable events before publishing mutation completion/activity | Current; serialization is per root; not a database rollback guarantee |
 | AD-04 | Separate durable member phase from runtime Agent status | Current; restart requires child evidence rather than inferred success |
 | AD-05 | Opt-in profile installation and per-Session Enable are separate controls | Current; enabled is derived from retained teammate rows, not a separate Boolean event |
-| AD-06 | Workspace declarations are bounded configuration and model routes are preflighted before provisioning | Current; invalid declaration selects defaults; route failures stop provisioning |
-| AD-07 | Team dispatch enforcement lives in scoped tool guards | Current name-based external-delegation denial; immutable nested capability metadata is Target |
-| AD-08 | Capability services own their data; GAT persists only bounded opaque attachments | Target; required-only attachment binding and recovery gate precede model admission |
-| AD-09 | Exact host-attested HUMAN mission authorization must bind effectful dispatch | Target; current immediate mission approval and simple-mode shortcut do not prove HUMAN provenance |
+| AD-06 | Workspace declarations are bounded configuration and model routes are preflighted before provisioning | Current; default GAT keeps its loader behavior, while explicit Durable declarations fail closed; complete-roster route/attachment preflight precedes provisioning |
+| AD-07 | Team dispatch enforcement lives in scoped tool guards | Current immutable named/aliased/nested capability checks at dispatch; read and structural repair classifications do not grant effect authority |
+| AD-08 | Capability services own their data; GAT persists only bounded opaque attachments | Current required-only attachment binding and recovery gate precede model admission |
+| AD-09 | Exact host-attested HUMAN mission authorization must bind effectful dispatch | Current host-attested exact mission/task authorization; simple mode does not bypass effect or model authority |
 | AD-10 | Member task runner consumes one normalized contracted task; PM/Team retains orchestration and acceptance | Target/PoC line; not delivered by the external memory-service mission |
 | AD-11 | Standalone reference memory and external member memory remain separate subsystems | Standalone/External; no implicit migration between them |
 | AD-12 | Compatibility, source drift and post-install verification are separate distribution concerns | Current installer implementation; inspect installed evidence before release claims |
@@ -114,7 +114,7 @@ Source defines current behavior; the documents below explain design intent. A hi
 | AD-04 | Preserve useful members/work across reporting or restart defects; do not turn timing warnings into asserted failures | Golden V1: Evidence and lessons applied, Runtime and stall display; current child-evidence checks are source-aligned |
 | AD-05 | Let GAT be available without provisioning every Session; destructive Disable needs a complete teardown contract | Feature reference §§5.1–5.3 |
 | AD-06 | Discover provider/capability mismatch before dispatch and reduce obvious partial bootstrap | Golden V1: Evidence and lessons applied; feature reference §6.8. Config fallback is a usability inference, not isolation proof |
-| AD-07 | Prompt guidance cannot prevent tool execution, aliases or nested delegation | Golden V1: Write barrier; member freeze §11. Current name guard does not implement the entire metadata target |
+| AD-07 | Prompt guidance cannot prevent tool execution, aliases or nested delegation | Golden V1: Write barrier; member freeze §11. Current immutable capability metadata covers aliases and nested dispatch |
 | AD-08 | Permit independent GAT/DSH work and prevent model admission before required capabilities exist | Member freeze §§1–3,7–9,14; target-only |
 | AD-09 | Model/Lead credentials cannot prove HUMAN authorship; stale or ambiguous mission approval cannot authorize effects | Member freeze §10. No adequate documented safety rationale for the current auto-approval shortcut |
 | AD-10 | Keep one-task member execution bounded while PM/Team owns cross-task orchestration and acceptance | Collected Agile goal/scope baseline and compatibility memo; target/PoC line |
@@ -145,16 +145,22 @@ External memory approval is explicit and provider-governed. Selective reads and 
 
 Read [Basic Design](BASIC_DESIGN.md) for features, inputs/outputs and flows; [Detail Design](DETAIL_DESIGN.md) for algorithms/data/contracts; [Source Code Map](SOURCE_CODE_MAP.md) for implementation/test locators.
 
-The open gaps are: Lead-only hotfix/current default mismatch; target binder/event v3/two-phase activation; host-attested mission leases and task normalization; nested capability enforcement; Conservative MVP production integration/full conformance; and complete BS1 task-runner adoption. These are explicit gaps, not requests to implement them in this documentation task.
+Historical minimum-zero hotfix defaults differ from the current 2/4/true profile. The approved WK required binder, v3 member records, two-phase admission, exact host-attested mission/task authority and nested capability enforcement are implemented under §§9–11 and the production delta. Conservative MVP integration/full conformance and the complete DD-18 task runner remain separate scope. Publication and deployment remain separately authorized.
 
 ## 9. Approved binding implementation delta — AIP-EXEC-022
 
 On 2026-10-04 the HUMAN approved proposal P-01–P-08 and selected the WK-style adapter with existing direct-continuable members. Intended implementation is specified in Detail Design §5 before source changes. AD-04/06/08 add immutable required attachment records, core-owned normalized roster preparation and generic reserved-child orchestration. AD-09 stays a separate exact mission/executor prerequisite. AD-12 requires new package/profile verification before distribution or activation. Existing Team authority and DA storage ownership remain separate; no isolated-session migration, official Consumer adoption or standalone reference-memory substitution is approved. Foundation modules/fake tests do not qualify production child wiring.
 
-## 10. Foundation qualification boundary
+## 10. Foundation qualification boundary — historical snapshot
+
+This paragraph preserves the initial foundation inspection. Current behavior follows the approved prerequisite and production deltas below, with exact qualification in the AIP workspace.
 
 AIP-EXEC-022 implements generic member v3 records/replay and lifecycle ports in core, with the WK adapter in packages/durable-agent. The default runtime admits empty-attachment members and refuses attached members on legacy wake/recovery paths. The tested ports do not establish DSH reserved-child activation, request-time prompt replacement, exact mission/task leases or nested capability enforcement. These production dependencies remain Target; the adapter is not auto-installed or activated. Detail Design §6 and SOURCE_CODE_MAP.md identify source coverage and remaining gates.
 
 ## 11. Approved prerequisite ownership — AIP-EXEC-023
 
 HUMAN authorized isolated host prerequisite implementation on 2026-10-04. Intended ownership and behavior are defined in [Detail Design §7](DETAIL_DESIGN.md#7-approved-prerequisite-implementation-delta--aip-exec-023): DSH owns reserved/quarantined child lifecycle, pre-render request refresh and immutable nested dispatch capabilities; GAT owns host-attested exact mission/task leases and effect/model admission. WK/direct-continuable target remains fixed. Deployment stays separate and prerequisite eligibility requires actual conformance evidence.
+
+## Production composition delta — AIP-EXEC-022
+
+Intended host composition consumes the qualified prerequisite revision through a GAT-owned binder registry, exact-generation member runtime and owner-scoped prompt/tool bridge. One explicit Durable initializer and a dedicated WK provider compose through an opt-in profile; generic core owns lifecycle and authority, and the provider owns its persistent data. Design and distribution details are specified before source in Detail Design §8. Changed-host compatibility is captured separately from the existing baseline; deployment approval remains separate.

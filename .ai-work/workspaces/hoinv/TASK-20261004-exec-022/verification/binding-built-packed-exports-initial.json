@@ -1,0 +1,63 @@
+{
+  "format": "gat-binding-built-and-packed-exports/1",
+  "target": "/home/hoinv/work/dsh-binding-distribution-final",
+  "plain": {
+    "imports": 8,
+    "publicProviderRegistrationAndDisposal": "PASS",
+    "profilePatchResolution": "PASS",
+    "trustedTopologyAssertions": "PASS",
+    "runtime": "plain-node",
+    "providerRegistrationOnly": true
+  },
+  "packed": [
+    {
+      "name": "@vuhoi/gat-core",
+      "archiveSha256": "99a043c73a90bebb5de20e955192d50593f84ea3d2392cfa01decef971c5c94a",
+      "files": 62
+    },
+    {
+      "name": "@vuhoi/gat-tools",
+      "archiveSha256": "c703931278caa651e11589f0f7685c7626f5b2795658337f11699b936d85e844",
+      "files": 7
+    },
+    {
+      "name": "@vuhoi/gat-web",
+      "archiveSha256": "d54302f28baa0aa0ff132b601f7dab2f4d29418c5a97761cac5b34ddc08a6257",
+      "files": 11
+    },
+    {
+      "name": "@vuhoi/gat-profile",
+      "archiveSha256": "1e99bf37f6bc22fc806000eb61a9ba2e2fe95a45da5aca6a073fa72126f05b81",
+      "files": 7
+    },
+    {
+      "name": "@vuhoi/gat-web-profile",
+      "archiveSha256": "af72a01cab549aafba7bb08e3359d09bc7d91a1a0d7933a5a1af0f993c78c0e3",
+      "files": 7
+    },
+    {
+      "name": "@vuhoi/gat-durable-agent",
+      "archiveSha256": "43c76f4e2dd9bfcf9b2ae3ea44bf5795136e7043407f89297527715e061d18f9",
+      "files": 37
+    },
+    {
+      "name": "@vuhoi/gat-durable-profile",
+      "archiveSha256": "fc4d87e279d87dbccb31d487062ea385bc8e950a88a317800a2f74b6d13f175f",
+      "files": 7
+    },
+    {
+      "name": "@deepseek-ai/dsh-durable-agent",
+      "archiveSha256": "67093c26e6eea7e04d25ce42ea41bd9ece0f9fcff18b8f32f9f9c0777767f1ca",
+      "files": 101
+    }
+  ],
+  "packedProbe": {
+    "imports": 8,
+    "publicProviderRegistrationAndDisposal": "PASS",
+    "profilePatchResolution": "PASS",
+    "trustedTopologyAssertions": "PASS",
+    "runtime": "plain-node",
+    "providerRegistrationOnly": true
+  },
+  "scope": "Built and packed public exports, dedicated-provider registration, and opt-in patch resolution with exact target dependency peers; full authorized lifecycle and standalone registry installation are separate."
+}

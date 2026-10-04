@@ -9,9 +9,12 @@ import type { BinderBindInput, BinderPrepareInput, CapabilityContribution, JsonV
 import { createDurableAgentBinder } from '../src/binder.ts'
 import type { DurableBinderComposition } from '../src/binder.ts'
 
+type ReceiverFree<T> = { [K in keyof T]: T[K] extends (...args: infer A) => infer R ? (...args: A) => R : T[K] }
+type Completion = ReturnType<() => void>
+
 function barrier<T>() {
   let resolve!: (value: T) => void
-  const promise = new Promise<T>(yes => { resolve = yes })
+  const promise = new Promise<T>((yes) => { resolve = yes })
   return { promise, resolve }
 }
 
@@ -31,12 +34,14 @@ async function fixture() {
   const contributions = new Map<string, CapabilityContribution>()
   const hooks = new Set<() => Promise<void>>()
   let installed: CapabilityContribution | undefined
-  const scope: MemberCapabilityScope = {
+  const scope: ReceiverFree<MemberCapabilityScope> = {
     isCurrent: () => current,
-    authorize: vi.fn(action => { actions.push(action); if (!authorized) throw new Error('host lease revoked') }),
-    install: vi.fn(contribution => { installed = contribution; contributions.set(contribution.key, contribution); return vi.fn(() => { contributions.delete(contribution.key) }) }),
-    beforeRequest: vi.fn(refresh => { hooks.add(refresh); return vi.fn(() => { hooks.delete(refresh) }) }),
-    replacePrompt: vi.fn((key, prompt) => { const old = contributions.get(key); if (!old) throw new Error('missing contribution'); contributions.set(key, { ...old, prompt }) }),
+    authorize: vi.fn((action: 'read' | 'effect' | 'request') => { actions.push(action); if (!authorized) throw new Error('host lease revoked') }),
+    install: vi.fn((contribution: CapabilityContribution) => { installed = contribution
+      contributions.set(contribution.key, contribution)
+      return vi.fn(() => { contributions.delete(contribution.key) }) }),
+    beforeRequest: vi.fn((refresh: () => Promise<void>) => { hooks.add(refresh); return vi.fn(() => { hooks.delete(refresh) }) }),
+    replacePrompt: vi.fn((key: string, prompt: string) => { const old = contributions.get(key); if (!old) throw new Error('missing contribution'); contributions.set(key, { ...old, prompt }) }),
   }
   const declaration = { name: 'worker-one', description: 'Review approved source', prompt: 'Review the approved source.', context: 'fresh' as const, provider: 'provider-one', model: 'model-one', scope: 'workspace' as const }
   const context = (): DurableAgentTaskContext => ({
@@ -59,7 +64,7 @@ async function fixture() {
     release: vi.fn(async () => {}),
   }
   let selected: DurableAgentService | undefined = service as unknown as DurableAgentService
-  const composition: DurableBinderComposition = {
+  const composition: ReceiverFree<DurableBinderComposition> = {
     serviceBindingKey: 'dedicated-wk-service', service: service as unknown as DurableAgentService,
     dedicatedProvider: true, singleHostWorkspace: true,
     resolveService: () => selected,
@@ -70,7 +75,8 @@ async function fixture() {
     spec: { name: declaration.name, description: declaration.description, initialTask: [{ type: 'text', text: declaration.prompt }], context: 'fresh', continuationProvider: 'spawn', agentOptions: { provider: declaration.provider, model: declaration.model } },
     payload: { schemaVersion: 1, serviceBindingKey: composition.serviceBindingKey, workspaceRealpath: workspace, declaration },
   }
-  const bindInput: BinderBindInput = { teamId: input.teamId, memberId: input.memberId, memberName: input.memberName, generation: input.generation, workspaceRealpath: workspace, scope }
+  const bindInput: BinderBindInput = { teamId: input.teamId, memberId: input.memberId, memberName: input.memberName,
+    generation: input.generation, workspaceRealpath: workspace, scope }
   const binder = createDurableAgentBinder(composition)
   const bound = async () => {
     const prepared = await binder.prepare(input, new AbortController().signal)
@@ -79,7 +85,9 @@ async function fixture() {
   }
   return {
     workspace, ref, service, composition, binder, input, bindInput, scope, actions, contributions, hooks, context, item, bound,
-    setRevision: (value: number) => { revision = value }, setCurrent: (value: boolean) => { current = value }, setAuthorized: (value: boolean) => { authorized = value },
+    setRevision: (value: number) => { revision = value },
+    setCurrent: (value: boolean) => { current = value },
+    setAuthorized: (value: boolean) => { authorized = value },
     replaceService: () => { selected = undefined },
     refresh: async () => { for (const hook of hooks) await hook() },
   }
@@ -105,7 +113,7 @@ describe('WK Durable binder and identity ownership over public service ports', (
     expect(f.scope.install).not.toHaveBeenCalled()
   })
 
-  it.each(['version', 'read', 'candidate'] as const)('requires supported service API and feature %s before preparing', async feature => {
+  it.each(['version', 'read', 'candidate'] as const)('requires supported service API and feature %s before preparing', async (feature) => {
     const f = await fixture()
     if (feature === 'version') f.service.apiVersion = 2
     else if (feature === 'read') f.service.features.selectiveMemoryRead = false
@@ -157,7 +165,7 @@ describe('WK Durable binder and identity ownership over public service ports', (
   it('refreshes the owner prompt for every authorized request and fails the request on refresh error', async () => {
     const f = await fixture()
     const { binding, contribution } = await f.bound()
-    expect(JSON.parse(contribution.prompt).revision).toBe(1)
+    expect((JSON.parse(contribution.prompt) as { revision: number }).revision).toBe(1)
     f.setRevision(2)
     await f.refresh()
     expect(f.contributions.size).toBe(1)
@@ -171,7 +179,7 @@ describe('WK Durable binder and identity ownership over public service ports', (
     await binding.release(new AbortController().signal)
   })
 
-  it.each(['generation', 'service', 'authorization'] as const)('revokes stale tool admission immediately when %s is lost', async reason => {
+  it.each(['generation', 'service', 'authorization'] as const)('revokes stale tool admission immediately when %s is lost', async (reason) => {
     const f = await fixture()
     const { binding, contribution } = await f.bound()
     if (reason === 'generation') f.setCurrent(false)
@@ -188,7 +196,7 @@ describe('WK Durable binder and identity ownership over public service ports', (
   it('withholds a paused read result after scope revocation without self-drain deadlock', async () => {
     const f = await fixture()
     const { binding, contribution } = await f.bound()
-    const entered = barrier<void>()
+    const entered = barrier<Completion>()
     const readResult = barrier<DurableAgentMemoryItem>()
     f.service.readMemoryItem.mockImplementation(async () => { entered.resolve(); return await readResult.promise })
     const read = contribution.tools[0]!.invoke({ itemId: 'memory-one' })
@@ -223,8 +231,8 @@ describe('WK Durable binder and identity ownership over public service ports', (
   it('retains cross-Team ownership until physical release settles and memoizes all cleanup callers', async () => {
     const f = await fixture()
     const { binding } = await f.bound()
-    const released = barrier<void>()
-    const entered = barrier<void>()
+    const released = barrier<Completion>()
+    const entered = barrier<Completion>()
     f.service.release.mockImplementation(async () => { entered.resolve(); await released.promise })
     binding.closeAdmission()
     expect(f.contributions.size).toBe(0)
@@ -277,7 +285,7 @@ describe('WK Durable binder and identity ownership over public service ports', (
     } finally { await prepared.abort(new AbortController().signal) }
   })
 
-  it.each(['aborted', 'stale'] as const)('rejects %s bind admission before persistent provisioning starts', async state => {
+  it.each(['aborted', 'stale'] as const)('rejects %s bind admission before persistent provisioning starts', async (state) => {
     const f = await fixture()
     const prepared = await f.binder.prepare(f.input, new AbortController().signal)
     const cancellation = new AbortController()
@@ -293,7 +301,7 @@ describe('WK Durable binder and identity ownership over public service ports', (
   it('uses the real public provider for host-approved memory, request refresh, unconfirmed candidates and persisted recovery', async () => {
     const f = await fixture()
     const service = new LocalDurableAgentProvider(new Context())
-    const composition: DurableBinderComposition = { ...f.composition, service, resolveService: () => service }
+    const composition: ReceiverFree<DurableBinderComposition> = { ...f.composition, service, resolveService: () => service }
     const binder = createDurableAgentBinder(composition)
     const provision = vi.spyOn(service, 'provision')
     const prepared = await binder.prepare(f.input, new AbortController().signal)
@@ -307,7 +315,7 @@ describe('WK Durable binder and identity ownership over public service ports', (
     })
     await f.refresh()
     const contribution = [...f.contributions.values()][0]!
-    expect(JSON.parse(contribution.prompt).catalog).toEqual([{ id: 'memory-one', title: 'An approved fact', retrievalCondition: 'When reviewing' }])
+    expect((JSON.parse(contribution.prompt) as { catalog: unknown[] }).catalog).toEqual([{ id: 'memory-one', title: 'An approved fact', retrievalCondition: 'When reviewing' }])
     expect(contribution.prompt).not.toContain('Host-approved body')
     expect(contribution.prompt).not.toContain(ref)
     await expect(contribution.tools[0]!.invoke({ itemId: 'memory-one' })).resolves.toMatchObject({ content: 'Host-approved body', revision: committed.revision })
@@ -330,7 +338,7 @@ describe('WK Durable binder and identity ownership over public service ports', (
     const interrupted = createDurableAgentBinder({
       ...f.composition,
       resolveService: () => {
-        if (++checks === 2) queueMicrotask(() => cancellation.abort(new Error('recovery cancelled at handoff')))
+        if (++checks === 2) queueMicrotask(() =>{  cancellation.abort(new Error('recovery cancelled at handoff')) })
         return f.composition.service
       },
     })
@@ -340,4 +348,20 @@ describe('WK Durable binder and identity ownership over public service ports', (
     expect(f.service.provision).not.toHaveBeenCalled()
     expect(f.scope.install).not.toHaveBeenCalled()
   })
+  it('reports recovery cleanup rejection and keeps the identity quarantined', async () => {
+    const f = await fixture()
+    const snapshotFailure = new Error('snapshot acquisition failed')
+    const cleanupFailure = new Error('provider release failed')
+    f.service.openTaskContext.mockRejectedValue(snapshotFailure)
+    f.service.release.mockRejectedValue(cleanupFailure)
+    const failure = await f.binder.recover(f.bindInput, f.input.payload, new AbortController().signal).catch((error: unknown) => error)
+    expect(failure).toBeInstanceOf(AggregateError)
+    const errors = (failure as AggregateError).errors as unknown[]
+    expect(errors).toContain(cleanupFailure)
+    expect(f.service.release).toHaveBeenCalledTimes(1)
+    expect(f.contributions.size).toBe(0)
+    await expect(f.binder.prepare({ ...f.input, teamId: 'other', memberId: 'other' }, new AbortController().signal))
+      .rejects.toMatchObject({ code: 'TEAM_BINDING_CONFLICT' })
+  })
+
 })

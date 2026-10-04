@@ -1,0 +1,365 @@
+native/system/packages/darwin-arm64      | [WARN] Unsupported platform: wanted: {"cpu":["arm64"],"os":["darwin"],"libc":["any"]} (current: {"os":"linux","cpu":"x64","libc":"glibc"})
+native/system/packages/darwin-x64        | [WARN] Unsupported platform: wanted: {"cpu":["x64"],"os":["darwin"],"libc":["any"]} (current: {"os":"linux","cpu":"x64","libc":"glibc"})
+native/system/packages/linux-arm64       | [WARN] Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["any"]} (current: {"os":"linux","cpu":"x64","libc":"glibc"})
+Scope: all 299 workspace projects
+[WARN] There are cyclic workspace dependencies: /home/hoinv/work/dsh-binding-prerequisites/apps/web, /home/hoinv/work/dsh-binding-prerequisites/packages/client/web, /home/hoinv/work/dsh-binding-prerequisites/packages/client/ui-renderer, /home/hoinv/work/dsh-binding-prerequisites/packages/test-support/client-runtime, /home/hoinv/work/dsh-binding-prerequisites/packages/bundle/web-app; /home/hoinv/work/dsh-binding-prerequisites/packages/api/gateway, /home/hoinv/work/dsh-binding-prerequisites/packages/client/connection, /home/hoinv/work/dsh-binding-prerequisites/packages/api/session-controller, /home/hoinv/work/dsh-binding-prerequisites/packages/client/file-upload, /home/hoinv/work/dsh-binding-prerequisites/packages/api/remotes, /home/hoinv/work/dsh-binding-prerequisites/packages/api/workspace-controller; /home/hoinv/work/dsh-binding-prerequisites/packages/client/ui-conversation, /home/hoinv/work/dsh-binding-prerequisites/packages/client/ui-workspace; /home/hoinv/work/dsh-binding-prerequisites/packages/core/agent-loop, /home/hoinv/work/dsh-binding-prerequisites/packages/llm/llm-pi-ai, /home/hoinv/work/dsh-binding-prerequisites/packages/llm/llm-deepseek, /home/hoinv/work/dsh-binding-prerequisites/packages/session/session-log-deepseek, /home/hoinv/work/dsh-binding-prerequisites/packages/feedback/command-feedback, /home/hoinv/work/dsh-binding-prerequisites/packages/test-support/agent-loop-testkit; /home/hoinv/work/dsh-binding-prerequisites/packages/e2b/e2b, /home/hoinv/work/dsh-binding-prerequisites/packages/e2b/fs-e2b; /home/hoinv/work/dsh-binding-prerequisites/packages/sandbox/sandbox-local, /home/hoinv/work/dsh-binding-prerequisites/packages/sandbox/sandbox-windows-acl; /home/hoinv/work/dsh-binding-prerequisites/packages/subagent/subagent-spawn-in-process, /home/hoinv/work/dsh-binding-prerequisites/packages/subagent/tool-subagent; /home/hoinv/work/dsh-binding-prerequisites/vendor/cordis, /home/hoinv/work/dsh-binding-prerequisites/vendor/include
+✓ Lockfile passes supply-chain policies (verified 6m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 100, reused 100, downloaded 0, added 0
+Progress: resolved 128, reused 128, downloaded 0, added 0
+Progress: resolved 160, reused 160, downloaded 0, added 0
+Progress: resolved 408, reused 344, downloaded 0, added 0
+Progress: resolved 750, reused 578, downloaded 0, added 0
+Progress: resolved 1467, reused 1232, downloaded 0, added 0
+[WARN] 11 deprecated subdependencies found: boolean@3.2.0, glob@10.5.0, glob@11.1.0, glob@7.2.3, inflight@1.0.6, lodash.isequal@4.5.0, node-domexception@1.0.0, prebuild-install@7.1.3, rimraf@2.6.3, tsconfck@3.1.6, whatwg-encoding@2.0.0
+Progress: resolved 1567, reused 1299, downloaded 0, added 0
+Packages: +41 -4
++++++++++++++++++++++++++++++++++++++++++----
+Progress: resolved 1567, reused 1299, downloaded 0, added 41, done
+packages/subprocess/subprocess-local postinstall$ node scripts/ensure-spawn-helper.mjs
+packages/subprocess/subprocess-local postinstall: Done
+. postinstall$ node scripts/install-lefthook.mjs
+. postinstall: sync hooks: ✔️(pre-commit, pre-merge-commit, pre-push)
+. postinstall: Done
+[WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+
+Done in 9.8s using pnpm v11.7.0
+$ tsx scripts/run-gates.ts doc-sync
+run-gates: doc-sync running 34 gate(s) with 4 worker(s) from 12 available CPU(s), doc-sync cap 4.
+run-gates: start doc-typecheck
+run-gates: start documentation build
+run-gates: start doc graphs
+run-gates: start markdown links
+
+== FAILED markdown links (17.26s) ==
+command: pnpm run verify-md-links
+outcome: exit 1
+$ tsx scripts/verify-md-links.ts
+verify-md-links: broken relative cross-links found:
+  packages/experimental/gat-durable-provider/README.md:11  docs/service.md  (target does not exist)
+  packages/experimental/gat-durable-provider/README.md:15  docs/task-contract.md  (target does not exist)
+  packages/experimental/gat-durable-provider/README.md:19  docs/reviewer-context.md  (target does not exist)
+  packages/experimental/gat-durable-provider/README.md:19  docs/reviewer-ab-results.md  (target does not exist)
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start type equivalence
+
+== FAILED doc graphs (19.61s) ==
+command: pnpm run verify-doc-graphs
+outcome: exit 1
+$ tsx scripts/gen-doc-graphs.ts --check
+/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:51
+  throw new Error(
+        ^
+
+Error: gen-cordis-catalog: 1 signature type-link coverage violation(s):
+  service method ctx.agentTeams.registerMemberBinder (packages/experimental/gat-core/src/index.ts:600) references unclassified type 'TeamMemberBinder'. Add it to linkedTypePages with its documentation page, to foundationTypeNames if TypeScript or the framework owns it, or to typeLinkExemptions with the non-catalog documentation owner.
+    at reportTypeLinkViolations (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:51:9)
+    at CordisCatalogProjector.collectServices (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:326:5)
+    at CordisCatalogProjector.project (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:159:22)
+    at projectCordisCatalog (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:394:40)
+    at renderDocs (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-doc-graphs.ts:1474:21)
+    at main (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-doc-graphs.ts:1527:16)
+    at <anonymous> (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-doc-graphs.ts:1551:3)
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.23.1
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start cordis catalog
+run-gates: PASS type equivalence (11.59s)
+run-gates: start Cordis inspect catalog
+run-gates: PASS Cordis inspect catalog (5.79s)
+run-gates: start verify-mermaid
+
+== FAILED cordis catalog (19.18s) ==
+command: pnpm run verify-cordis-catalog
+outcome: exit 1
+$ tsx scripts/gen-cordis-catalog.ts --check
+/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:51
+  throw new Error(
+        ^
+
+Error: gen-cordis-catalog: 1 signature type-link coverage violation(s):
+  service method ctx.agentTeams.registerMemberBinder (packages/experimental/gat-core/src/index.ts:606) references unclassified type 'TeamMemberBinder'. Add it to linkedTypePages with its documentation page, to foundationTypeNames if TypeScript or the framework owns it, or to typeLinkExemptions with the non-catalog documentation owner.
+    at reportTypeLinkViolations (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:51:9)
+    at CordisCatalogProjector.collectServices (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:326:5)
+    at CordisCatalogProjector.project (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:159:22)
+    at projectCordisCatalog (/home/hoinv/work/dsh-binding-prerequisites/packages/typert/generator/src/cordis-catalog.ts:394:40)
+    at computeOutputs (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-cordis-catalog.ts:1009:32)
+    at main (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-cordis-catalog.ts:1124:8)
+    at <anonymous> (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-cordis-catalog.ts:1179:3)
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.23.1
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start scoped events
+run-gates: PASS documentation build (43.16s)
+run-gates: start translation pairing
+run-gates: PASS verify-mermaid (9.76s)
+run-gates: start markdown wrap
+run-gates: PASS markdown wrap (8.64s)
+run-gates: start client catalog
+run-gates: PASS scoped events (16.63s)
+run-gates: start export jsdoc
+
+== FAILED client catalog (3.69s) ==
+command: pnpm run verify-client-catalog
+outcome: exit 1
+$ tsx scripts/gen-client-catalog.ts --check
+gen-client-catalog: stale — packages/extensions/cordis-client-runner/src/client/slot-catalog.ts. Run `pnpm run gen-client-catalog` and commit the result.
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start tool catalog
+
+== FAILED doc-typecheck (58.04s) ==
+command: pnpm run doc-typecheck
+outcome: exit 2
+$ npm run build:lib:host && npm run doc-typecheck:contracts-ready
+
+> @deepseek-ai/dsh-root@0.1.5-rc.2 build:lib:host
+> node --max-old-space-size=4096 ./node_modules/typescript/bin/tsc -b tsconfig.host.json && tsdown --env.DSH_BUILD_FACE host
+
+packages/experimental/gat-core/tests/production-binding.spec.ts(207,37): error TS2339: Property 'attachments' does not exist on type 'TeamMemberSnapshot | LegacyTeamMemberSnapshot'.
+  Property 'attachments' does not exist on type 'LegacyTeamMemberSnapshot'.
+packages/experimental/gat-core/tests/production-binding.spec.ts(207,81): error TS2339: Property 'attachments' does not exist on type 'TeamMemberSnapshot | LegacyTeamMemberSnapshot'.
+  Property 'attachments' does not exist on type 'LegacyTeamMemberSnapshot'.
+[ELIFECYCLE] Command failed with exit code 2.
+run-gates: start config catalog
+run-gates: PASS tool catalog (2.10s)
+run-gates: start persistence catalog
+
+== FAILED config catalog (1.95s) ==
+command: pnpm run verify-config-catalog
+outcome: exit 1
+$ tsx scripts/gen-config-catalog.ts --check
+/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-config-catalog.ts:96
+  throw new Error(
+        ^
+
+Error: gen-config-catalog: 3 violation(s):
+  packages/experimental/gat-durable-provider/src/index.ts: inject is not a plain string-array literal; teach the generator the new declaration form.
+  packages/experimental/gat-durable-provider/src/index.ts: relative import './config.js' lacks the explicit .ts extension the repo convention requires.
+  @deepseek-ai/dsh-durable-agent: config declaration references 'DurableAgentConfig' (via packages/experimental/gat-durable-provider/src/index.ts), which is neither declared in the package, imported, nor a known global type.
+    at report (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-config-catalog.ts:96:9)
+    at collectConfigCatalog (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-config-catalog.ts:766:3)
+    at main (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-config-catalog.ts:855:26)
+    at <anonymous> (/home/hoinv/work/dsh-binding-prerequisites/scripts/gen-config-catalog.ts:878:3)
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.23.1
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start Session format catalog
+run-gates: PASS persistence catalog (1.70s)
+run-gates: start public repository links
+run-gates: PASS Session format catalog (0.67s)
+run-gates: start doc refs
+
+== FAILED export jsdoc (6.15s) ==
+command: pnpm run verify-export-jsdoc
+outcome: exit 1
+$ tsx scripts/verify-export-jsdoc.ts
+verify-export-jsdoc: 37 JSDoc completeness violation(s) (see AGENTS.md):
+  exported class method 'BindingDeadline.remainingMs' (packages/experimental/gat-core/src/binding-deadline.ts:27) is missing @returns (return type: number).
+  exported class method 'TeamMailbox.stageRecoveryFor' (packages/experimental/gat-core/src/mailbox.ts:102) is missing @param agent.
+  exported class method 'TeamMailbox.stageRecoveryFor' (packages/experimental/gat-core/src/mailbox.ts:102) is missing @param signal.
+  exported class method 'TeamMailbox.stageRecoveryFor' (packages/experimental/gat-core/src/mailbox.ts:102) is missing @returns (return type: Promise<number>).
+  exported class method 'BoundMemberRuntime.isReady' (packages/experimental/gat-core/src/member-binding.ts:84) is missing @returns (return type: boolean).
+  exported function 'createReservedMemberHost' (packages/experimental/gat-core/src/member-host.ts:150) is missing @param options.
+  exported function 'createReservedMemberHost' (packages/experimental/gat-core/src/member-host.ts:150) is missing @returns (return type: MemberBindingHost).
+  exported class method 'TeamRoster.registerMemberBinder' (packages/experimental/gat-core/src/roster.ts:95) is missing @param binder.
+  exported class method 'TeamRoster.registerMemberBinder' (packages/experimental/gat-core/src/roster.ts:95) is missing @returns (return type: () => Promise<void>).
+  exported class method 'TeamRoster.prepareRoster' (packages/experimental/gat-core/src/roster.ts:105) is missing @param root.
+  exported class method 'TeamRoster.prepareRoster' (packages/experimental/gat-core/src/roster.ts:105) is missing @param specs.
+  exported class method 'TeamRoster.prepareRoster' (packages/experimental/gat-core/src/roster.ts:105) is missing @param signal.
+  exported class method 'TeamRoster.prepareRoster' (packages/experimental/gat-core/src/roster.ts:105) is missing @returns (return type: Promise<readonly PreparedMember[]>).
+  exported class method 'TeamRoster.bindingReady' (packages/experimental/gat-core/src/roster.ts:116) is missing @param id.
+  exported class method 'TeamRoster.bindingReady' (packages/experimental/gat-core/src/roster.ts:116) is missing @returns (return type: boolean).
+  exported class method 'TeamRoster.initialInputConsumed' (packages/experimental/gat-core/src/roster.ts:123) is missing @param agent.
+  exported class method 'TeamRoster.initialInputConsumed' (packages/experimental/gat-core/src/roster.ts:123) is missing @param signal.
+  exported class method 'TeamRoster.initialInputConsumed' (packages/experimental/gat-core/src/roster.ts:123) is missing @returns (return type: Promise<boolean>).
+  exported class method 'TeamRoster.assertBindings' (packages/experimental/gat-core/src/roster.ts:136) is missing @param agent.
+  exported class method 'TeamRoster.releaseMailbox' (packages/experimental/gat-core/src/roster.ts:145) is missing @param agent.
+  exported class method 'TeamRoster.releaseMailbox' (packages/experimental/gat-core/src/roster.ts:145) is missing @param deliver.
+  exported class method 'TeamRoster.disposedAgent' (packages/experimental/gat-core/src/roster.ts:153) is missing @param agent.
+  exported class method 'TeamRoster.spawn' (packages/experimental/gat-core/src/roster.ts:396) is missing @param prepared.
+  exported interface 'DurableAttachmentV1' (packages/experimental/gat-durable-agent/src/binder.ts:9) has no JSDoc.
+  exported function 'createDurableAgentBinder' (packages/experimental/gat-durable-agent/src/binder.ts:153) is missing @param composition.
+  exported function 'createDurableAgentBinder' (packages/experimental/gat-durable-agent/src/binder.ts:153) is missing @returns (return type: TeamMemberBinder<DurableLease>).
+  exported interface 'DurableRouteSelection' (packages/experimental/gat-durable-agent/src/initializer.ts:19) has no JSDoc.
+  exported type 'DurableRoutePreflight' (packages/experimental/gat-durable-agent/src/initializer.ts:25) has no JSDoc.
+  exported interface 'LoadDurableTeamMembersOptions' (packages/experimental/gat-durable-agent/src/initializer.ts:30) has no JSDoc.
+  exported function 'loadDurableTeamMembers' (packages/experimental/gat-durable-agent/src/initializer.ts:154) is missing @param options.
+  exported function 'loadDurableTeamMembers' (packages/experimental/gat-durable-agent/src/initializer.ts:154) is missing @returns (return type: Promise<TeamInitialization>).
+  exported class method 'DurableOwnershipCoordinator.reserve' (packages/experimental/gat-durable-agent/src/ownership.ts:6) has no JSDoc.
+  exported function 'coordinatorFor' (packages/experimental/gat-durable-agent/src/ownership.ts:21) has no JSDoc.
+  exported interface 'DurableToolDescriptor' (packages/experimental/gat-durable-agent/src/tools.ts:20) has no JSDoc.
+  exported function 'createDurableTools' (packages/experimental/gat-durable-agent/src/tools.ts:178) is missing @param consumer.
+  exported function 'createDurableTools' (packages/experimental/gat-durable-agent/src/tools.ts:178) is missing @param authorize.
+  exported function 'createDurableTools' (packages/experimental/gat-durable-agent/src/tools.ts:178) is missing @returns (return type: readonly DurableToolDescriptor[]).
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start subsystem pages
+run-gates: PASS doc refs (1.12s)
+run-gates: start package paths
+
+== FAILED translation pairing (19.28s) ==
+command: pnpm run verify-translation-pairing
+outcome: exit 1
+$ tsx scripts/verify-translation-pairing.ts
+verify-translation-pairing: bilingual pairing rules violated (see docs/i18n/README.md):
+  packages/experimental/gat-durable-agent/README.md: in-scope documentation must merge bilingual (docs/i18n/README.md); add the counterpart and record the pair
+  packages/experimental/gat-durable-profile/README.md: in-scope documentation must merge bilingual (docs/i18n/README.md); add the counterpart and record the pair
+  packages/experimental/gat-durable-provider/README.md: in-scope documentation must merge bilingual (docs/i18n/README.md); add the counterpart and record the pair
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start tsconfig paths
+run-gates: PASS subsystem pages (0.95s)
+run-gates: start config source ownership
+run-gates: PASS package paths (1.04s)
+run-gates: start package README Summaries
+
+== FAILED tsconfig paths (0.64s) ==
+command: pnpm run verify-tsconfig-paths
+outcome: exit 1
+$ tsx scripts/gen-tsconfig-paths.ts --check
+gen-tsconfig-paths: no alias maps @deepseek-ai/dsh-durable-agent; add a hand-written entry, because a package named after something other than its directory cannot be generated.
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start package README model experience
+run-gates: PASS config source ownership (0.58s)
+run-gates: start agent note classification
+
+== FAILED package README Summaries (0.64s) ==
+command: pnpm run verify-package-readme-summaries
+outcome: exit 1
+$ tsx scripts/verify-package-readme-summaries.ts
+verify-package-readme-summaries: violations found:
+  packages/experimental/gat-durable-agent/README.md: missing `## Summary`
+  packages/experimental/gat-durable-profile/README.md: missing `## Summary`
+  packages/experimental/gat-durable-provider/README.md: missing `## Summary`
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: start agent note format
+run-gates: PASS public repository links (3.04s)
+run-gates: start archived agent notes
+run-gates: PASS agent note classification (0.59s)
+run-gates: start skill invocation metadata
+run-gates: PASS agent note format (0.63s)
+run-gates: start translation prompt
+run-gates: PASS skill invocation metadata (0.68s)
+run-gates: start doc budgets
+run-gates: PASS archived agent notes (0.84s)
+run-gates: start documentation standard tests
+run-gates: PASS translation prompt (0.71s)
+run-gates: start documentation site checks
+run-gates: PASS doc budgets (0.63s)
+run-gates: start package README limitations
+
+== FAILED documentation standard tests (1.56s) ==
+command: pnpm exec vitest run scripts/doc-standard.spec.ts
+outcome: exit 1
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-prerequisites
+
+ ❯ |thread-safe| scripts/doc-standard.spec.ts (19 tests | 2 failed) 134ms
+     × maps package README kinds to their documentation standards 63ms
+     × keeps every package README on the summary, contents, and Dev Note skeleton 42ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |thread-safe| scripts/doc-standard.spec.ts > dsh-doc skill consolidation > maps package README kinds to their documentation standards
+AssertionError: packages/experimental/gat-durable-agent/README.md: YAML frontmatter: expected null not to be null
+ ❯ readFrontmatter scripts/doc-standard.spec.ts:103:50
+    101|   const source = readFileSync(resolve(root, file), 'utf8')
+    102|   const match = /^---\n([\s\S]*?)\n---\n/u.exec(source)
+    103|   expect(match, `${file}: YAML frontmatter`).not.toBeNull()
+       |                                                  ^
+    104|   const metadata = load(match?.[1] ?? '')
+    105|   expect(metadata, `${file}: frontmatter object`).toBeTypeOf('object')
+ ❯ scripts/doc-standard.spec.ts:348:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |thread-safe| scripts/doc-standard.spec.ts > dsh-doc skill consolidation > keeps every package README on the summary, contents, and Dev Note skeleton
+AssertionError: packages/experimental/gat-durable-agent/README.md: expected [ 'missing Summary', …(2) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "missing Summary",
++   "missing Table of Contents",
++   "missing Dev Note",
++ ]
+
+ ❯ scripts/doc-standard.spec.ts:368:64
+    366|     for (const file of packageReadmes().filter(file => file.split('/')…
+    367|       const source = readFileSync(resolve(root, file), 'utf8')
+    368|       expect(packageReadmeStructureErrors(file, source), file).toEqual…
+       |                                                                ^
+    369|     }
+    370|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 17 passed (19)
+   Start at  13:52:57
+   Duration  457ms (transform 167ms, setup 181ms, import 29ms, tests 134ms, environment 0ms)
+
+
+== FAILED package README model experience (5.91s) ==
+command: pnpm run verify-package-readme-model-experience
+outcome: exit 1
+$ tsx scripts/verify-package-readme-model-experience.ts
+verify-package-readme-model-experience failed:
+  packages/experimental/gat-durable-agent/README.md: missing ## Model Experience
+  packages/experimental/gat-durable-profile/README.md: missing ## Model Experience
+  packages/experimental/gat-durable-provider/README.md: missing ## Model Experience
+[ELIFECYCLE] Command failed with exit code 1.
+run-gates: PASS documentation site checks (5.70s)
+
+== FAILED package README limitations (5.51s) ==
+command: pnpm run verify-package-readme-limitations
+outcome: exit 1
+$ tsx scripts/verify-package-readme-limitations.ts
+verify-package-readme-limitations: violations found:
+  packages/experimental/gat-durable-agent/README.md: missing the `## Known Limitations and Deferred Work` section (a package with genuinely nothing to declare joins NO_LIMITATIONS in scripts/verify-package-readme-limitations.ts instead)
+  packages/experimental/gat-durable-profile/README.md:7: the `## Known Limitations and Deferred Work` section has no top-level `- ` bullet — state the limitations, or whitelist the package if there are genuinely none
+  packages/experimental/gat-durable-provider/README.md: missing the `## Known Limitations and Deferred Work` section (a package with genuinely nothing to declare joins NO_LIMITATIONS in scripts/verify-package-readme-limitations.ts instead)
+[ELIFECYCLE] Command failed with exit code 1.
+
+run-gates: 21 passed, 13 failed, 0 skipped in 70.52s.
+run-gates: unsuccessful gates:
+  - FAILED doc-typecheck (58.04s, exit 2)
+    pnpm run doc-typecheck
+  - FAILED doc graphs (19.61s, exit 1)
+    pnpm run verify-doc-graphs
+  - FAILED markdown links (17.26s, exit 1)
+    pnpm run verify-md-links
+  - FAILED cordis catalog (19.18s, exit 1)
+    pnpm run verify-cordis-catalog
+  - FAILED translation pairing (19.28s, exit 1)
+    pnpm run verify-translation-pairing
+  - FAILED client catalog (3.69s, exit 1)
+    pnpm run verify-client-catalog
+  - FAILED export jsdoc (6.15s, exit 1)
+    pnpm run verify-export-jsdoc
+  - FAILED config catalog (1.95s, exit 1)
+    pnpm run verify-config-catalog
+  - FAILED tsconfig paths (0.64s, exit 1)
+    pnpm run verify-tsconfig-paths
+  - FAILED package README Summaries (0.64s, exit 1)
+    pnpm run verify-package-readme-summaries
+  - FAILED package README model experience (5.91s, exit 1)
+    pnpm run verify-package-readme-model-experience
+  - FAILED documentation standard tests (1.56s, exit 1)
+    pnpm exec vitest run scripts/doc-standard.spec.ts
+  - FAILED package README limitations (5.51s, exit 1)
+    pnpm run verify-package-readme-limitations
+[ELIFECYCLE] Command failed with exit code 1.

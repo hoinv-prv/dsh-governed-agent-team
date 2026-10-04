@@ -1,0 +1,30 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-distribution-accepted
+
+ ❯ apps/web/tests/gat-agent-team-panel.e2e.ts (3 tests | 1 failed) 33164ms
+     × loads the current mission and members without task controls 30197ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/web/tests/gat-agent-team-panel.e2e.ts > web e2e: Governed Agent Team panel > loads the current mission and members without task controls
+TimeoutError: locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-team-action]').getByRole('heading', { name: 'Mission detail' }) to be visible[22m
+
+ ❯ apps/web/tests/gat-agent-team-panel.e2e.ts:91:67
+     89|     await action.getByRole('button', { name: /Agent Team/iu }).click()
+     90|     await action.getByRole('button', { name: 'Enable Agent Team for th…
+     91|     await action.getByRole('heading', { name: 'Mission detail' }).wait…
+       |                                                                   ^
+     92|     await action.getByRole('heading', { name: 'Members' }).waitFor()
+     93|     await action.getByText('lead').waitFor()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  14:23:32
+   Duration  34.26s (transform 593ms, setup 0ms, import 1.02s, tests 33.16s, environment 0ms)
+

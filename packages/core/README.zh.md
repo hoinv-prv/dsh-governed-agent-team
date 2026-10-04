@@ -155,6 +155,8 @@ Team 事件追加到精确的 live Lead 会话，并在操作报告成功或唤�
 
 dispose 会关闭准入、中止并等待已获准的创建与 mailbox dispatch 事务，再让 continuation owner 释放 roster 中确切的 live direct child 及其后代；Lead 的非 Team continuable child 不受影响。cleanup 失败会让 dispose 明确失败，并以 `disposalTimeoutMs` 为上限。
 
+必需 attachment 使用仅供 Host 调用的 `registerMemberBinder()` registry。Enable 在首个 member record 之前准备整个 roster，随后在 reserved child 仍处于隔离状态时安装 generation-scoped prompt、tool 和渲染前刷新。Host 在释放之前绑定精确 mission/task lease。附加绑定的恢复使用不可变持久 record，在释放初始消息已消费的 generation 之前暂存 pending mailbox input，且不会重新读取声明文件。移除必需 contribution 会撤销整个 generation scope；仅重新授权无法恢复它。Inactive 持久引用会阻止 live binder 移除，晚到清理失败仍由所属诊断流程负责。
+
 </details>
 
 -----

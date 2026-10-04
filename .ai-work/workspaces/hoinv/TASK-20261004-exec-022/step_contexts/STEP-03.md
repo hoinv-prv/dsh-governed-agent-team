@@ -13,8 +13,8 @@ step_index: 4
 step_total: 9
 status: active
 active_task_lens: No-Lens.
-staleness_status: fresh
-staleness_reason: 
+staleness_status: stale
+staleness_reason: pointer points to STEP-08, not STEP-03
 updated_at: 2026-10-04
 ---
 
@@ -141,25 +141,26 @@ Zero model work before committed active plus authorization/activation; one initi
 - No expected outputs declared (inherited from AIP)
 
 ## Runtime Queue Blockers
-- RQ-022-01 — STEP-04: DSH reserved-child and request-refresh qualification missing; upstream pointer labels do not mean this gate passed (blocked)
-- RQ-022-02 — STEP-07: Exact mission/task leases and nested capability enforcement are unqualified (blocked)
-- RQ-022-03 — Supported-profile browser golden mismatch needs owner alignment (blocked)
+- RQ-022-04 — Production binder composition and changed-host compatibility/profile/package qualification remain pending (pending)
 
 ## Relevant Queue Item IDs
-- RQ-022-01 — STEP-04: DSH reserved-child and request-refresh qualification missing; upstream pointer labels do not mean this gate passed (blocked)
-- RQ-022-02 — STEP-07: Exact mission/task leases and nested capability enforcement are unqualified (blocked)
-- RQ-022-03 — Supported-profile browser golden mismatch needs owner alignment (blocked)
+- RQ-022-01 — STEP-04: DSH reserved-child and request-refresh qualification missing; upstream pointer labels do not mean this gate passed (resolved)
+- RQ-022-02 — STEP-07: Exact mission/task leases and nested capability enforcement are unqualified (resolved)
+- RQ-022-03 — Final built browser qualification: shared authenticated gateway control context (resolved)
+- RQ-022-04 — Production binder composition and changed-host compatibility/profile/package qualification remain pending (pending)
+- RQ-022-05 — Broader type-aware lint findings need disposition before final production qualification (resolved)
 
 ## Previous Step Results / Handoff Inputs
 - OUT-022-00-01 — HUMAN approved P01–08 and WK/direct-continuable target. Exact replies recorded; no external source edit or live activation grant. (approved_for_next_step)
 - OUT-022-01-01 — Formal intended delta preceded source; prior dirty edits preserved. (reviewed)
 - OUT-022-02-01 — Bounded attachments, strict v2/v3 replay, core initializer and safe summaries; source tests pass. (reviewed)
 - OUT-022-03-01 — Deterministic lifecycle ports reviewed and tested; actual host integration not qualified. (reviewed)
-- OUT-022-04-01 — Source inspection complete; production gate OPEN. Reserved staging/recovery and pre-dispatch prompt refresh absent in inspected APIs. (needs_revision)
+- OUT-022-04-01 — Host lifecycle/refresh and exact authority/nested capability prerequisites qualified in AIP-EXEC-023. Parent production binder, changed-host compatibility/profile/package checks and browser finding remain open. (needs_revision)
 - OUT-022-05-01 — WK adapter tested over public service ports and temporary real provider; production integration gate remains open. (reviewed)
 - OUT-022-06-01 — Executable handlers/refresh and strict direct-path revocation pass ports tests. Isolated-only cases not applicable; actual host dispatch qualification pending. (reviewed)
-- OUT-022-07-01 — ACTIVE HARD GATE. Default distribution and separate adapter built checks pass; browser golden mismatch open; production composition requires STEP04 and authority prerequisites. (needs_revision)
+- OUT-022-07-01 — Host lifecycle/refresh and exact authority/nested capability prerequisites qualified in AIP-EXEC-023. Parent production binder, changed-host compatibility/profile/package checks and browser finding remain open. (needs_revision)
 - OUT-022-08-01 — Independent source review pass and design reconciliation available; full delivery acceptance and finalize blocked by production prerequisites. (draft)
+- OUT-022-04-02 — Qualified prerequisite handoff: reserved recovery, pre-render refresh, exact authority and nested capabilities PASS (reviewed)
 
 ## Capture Inbox References
 - CAP-022-01 — retrieval gap: docs/gat-design/DURABLE_AGENT_BINDING_PROPOSAL.md (captured)
@@ -168,3 +169,7 @@ Zero model work before committed active plus authorization/activation; one initi
 - CAP-022-04 — ASC ordinal upstream labels do not reflect blocked prerequisite gates (captured)
 - CAP-022-05 — Review wiki refresh for implemented member-binding foundation and WK adapter (captured)
 - CAP-022-06 — GAT panel replay golden expects obsolete default model labels (captured)
+- CAP-022-07 — Type-aware lint must preserve optional JSON serialization outcomes (captured)
+- CAP-022-08 — Prerequisite worktrees require additive compatibility selection (captured)
+- CAP-022-09 — Authorization must be rechecked inside serialized acknowledgement transactions (captured)
+- CAP-022-10 — Cordis service identity must use the original object (captured)

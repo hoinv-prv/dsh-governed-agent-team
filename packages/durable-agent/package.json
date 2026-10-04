@@ -6,9 +6,46 @@
   "type": "module",
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
-  "exports": { ".": { "types": "./lib/types/index.d.ts", "default": "./lib/index.js" }, "./src/*": "./src/*", "./package.json": "./package.json" },
-  "files": ["lib", "README.md"],
-  "dependencies": { "yaml": "2.9.1" },
-  "peerDependencies": { "@vuhoi/gat-core": "workspace:^", "@deepseek-ai/dsh-durable-agent": "0.1.0", "@deepseek-ai/dsh-agent": "workspace:^", "@deepseek-ai/dsh-llm": "workspace:^" },
-  "license": "MIT"
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json",
+    "./composition": {
+      "types": "./lib/types/composition.d.ts",
+      "default": "./lib/composition.js"
+    },
+    "./provider": {
+      "types": "./lib/types/provider.d.ts",
+      "default": "./lib/provider.js"
+    }
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "dependencies": {
+    "yaml": "2.9.1"
+  },
+  "peerDependencies": {
+    "@vuhoi/gat-core": "workspace:^",
+    "@deepseek-ai/dsh-durable-agent": "0.1.0",
+    "@deepseek-ai/dsh-agent": "workspace:^",
+    "@deepseek-ai/dsh-llm": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^",
+    "@deepseek-ai/schemastery": "workspace:^",
+    "@deepseek-ai/dsh-subagent": "workspace:^",
+    "@deepseek-ai/dsh-session": "workspace:^"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@deepseek-ai/cordis-plugin-loader": "workspace:^",
+    "@deepseek-ai/cordis-plugin-include": "workspace:^",
+    "js-yaml": "^4.2.0",
+    "@deepseek-ai/dsh-agent-loop-testkit": "workspace:^",
+    "@deepseek-ai/dsh-session-persistence-jsonl": "workspace:^",
+    "@deepseek-ai/dsh-app-boot": "workspace:^"
+  }
 }

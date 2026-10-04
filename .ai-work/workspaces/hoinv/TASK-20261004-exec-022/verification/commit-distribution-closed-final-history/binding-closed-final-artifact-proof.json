@@ -1,0 +1,62 @@
+{
+  "manifestSha256": "2a0c9a5474d6a98ecb767522dce29dc3c259d48697bc61b2b0ec796a5cb07e30",
+  "selectedTarget": "/home/hoinv/work/dsh-binding-distribution-closed-final",
+  "exactInstalledSourceRows": 205,
+  "exactInstalledSourceHashes": "PASS",
+  "sourceHashesAfterFinalBuild": "PASS",
+  "frozenPrerequisiteGuards": "PASS",
+  "frozenPrerequisiteFiles": 244,
+  "trackedTargetDeltas": 54,
+  "allTrackedTargetDeltasMapped": "PASS",
+  "verificationToolSha256": {
+    "installer/index.mjs": "a560c9b63cb722fb1d605a21b82168844ba0eb58a039fb0ef272c42a6393558f",
+    "scripts/generate-binding-compatibility.mjs": "67af75e0dd86dbe590dbe148df8c26c52ebf7b5d766d3939d1332cd5028c2129",
+    "installer/verify-binding.mjs": "65ae04b66fbeea063671e950922c02b8fde71c1cd189ab55198585e22730dda7",
+    "installer/verify-binding-exports.mjs": "677883f6b7942befba86170c22e070429f41ca0854c48a3bbffedb6c3dc1a815",
+    "installer/verify-binding-runtime.mjs": "c0ae3cec5cce63ee342facc158bae2b93dc170dd0098e87cee0276f34267485d"
+  },
+  "protectedDirtyControlHashes": "PASS",
+  "protectedDirtyControls": {
+    "SOURCE_SNAPSHOT.json": "e39e39c7846c6557a2fd7a28cdfb5e119e0f8d7072fe6abb8a144dc352c29deb",
+    "compatibility/dsh-0.1.5-rc.2/manifest.json": "e0973ad5c8937caa3268d735014c29f00e9e457c29448fcdcdffa5b930794713",
+    "installer/verify.mjs": "10b630428ec104fc13086802665d322f583478f451a35e20665f1497a7c72400"
+  },
+  "upstreamProviderClean": "PASS",
+  "verificationDependencyLinks": {
+    "workspacePackages": 297,
+    "exactTargetWorkspaceLinks": "PASS",
+    "nestedNativeWorkspaceOptionalDependencies": "PASS"
+  },
+  "nativeTargetFilesSha256": {
+    "native/system/packages/entry/lib/flock.js": "e42af00c298d56322c073bf7cc66485096028318ab645a2e69dc2aa7481ba646",
+    "native/system/packages/linux-x64/package.json": "f2c14cfef615df7755050dba8567b5c0821178513b6ec31f2227bfa8f66be1e9",
+    "native/system/packages/linux-x64/prebuilds.json": "c43b9d8e9810162817d1536442d2459c5c5138c4e2ed9bfebca950aaf173cab7",
+    "native/system/packages/entry/src/flock.c": "c1aa773c7a62b03ce3973156b928f41773fef9407afd79d71b2f625b5616421f",
+    "native/system/packages/linux-x64/bin/glibc/system.node": "54a9c25c05186c17520f6b7a5ced5f005752c08044c3eb76524cd517287600bc"
+  },
+  "nativeTargetOwnedDirectory": true,
+  "nativeBuildCommand": "node node_modules/tsx/dist/cli.mjs native/system/scripts/build.ts --host-addon-only",
+  "nativeLockProbe": "PASS",
+  "sharedControlContext": {
+    "externalPublicGatewayImport": "PASS",
+    "noDuplicateAdmissionStore": "PASS",
+    "exactSharedModuleResolution": "PASS",
+    "gatewayEntrySha256": "2ced385a2538b439905829572a2575e47ea7e94be433a2e176f568ebb2378b3e",
+    "admissionModuleSha256": "14142cb64bce7e471b45a8d06310564faa449bc14dea5188183c7a3194277068"
+  },
+  "subprocessesCompleteTargetSealed": true,
+  "docOnlyDeltaFiles": [
+    "packages/experimental/gat-durable-agent/README.i18n.yaml",
+    "packages/experimental/gat-durable-agent/README.md",
+    "packages/experimental/gat-durable-agent/README.zh.md",
+    "packages/experimental/gat-durable-profile/README.i18n.yaml",
+    "packages/experimental/gat-durable-profile/README.md",
+    "packages/experimental/gat-durable-profile/README.zh.md"
+  ],
+  "reusedCompiledFileCount": 8311,
+  "exactCompiledWebNativeAndCompilerStateReuse": "PASS",
+  "sourceNativeToolsGuardsAnd8311OutputsAfterParentReplays": "PASS",
+  "aggregateBuildsReusedByExactHash": true,
+  "nativeBuildExecutedInClosedFinal": false,
+  "nativeBuildArtifactOrigin": "/home/hoinv/work/dsh-binding-distribution-review-final"
+}

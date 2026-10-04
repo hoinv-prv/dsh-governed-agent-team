@@ -1,7 +1,7 @@
 # GAT Durable Agent integration — design reference
 
 **As of:** 2026-10-04  
-**Status:** Draft reference synthesis; service mission accepted, GAT binder adoption unverified.  
+**Status:** Project design reference; accepted service mission is historical evidence, and WK/direct-continuable GAT adoption is implemented under AIP-EXEC-022 with separately recorded qualification.
 **Primary evidence:** [Integration report](sources/gat-durable-agent-integration/integration-report.md), [final report](sources/gat-durable-agent-integration/final-report.md), [decisions](sources/gat-durable-agent-integration/decisions.json).
 
 
@@ -11,7 +11,7 @@ For implemented behavior, use the source-aligned [formal detail design](DETAIL_D
 
 Cập nhật góc nhìn integration từ MiniMVP file-based context sang versioned Durable Agent service. Mission `gat-durable-agent-integration` hoàn tất ở WBS r2; final acceptance là `decision-human-accept-mission-017`. Report giữ nguyên câu pending acceptance vì đó là bytes đã trình duyệt; ledger ghi quyết định đến sau.
 
-Acceptance giới hạn ở Durable Agent capability và compatibility adapter. Mission loại trừ GAT-owned binder, Agent Session/Team lifecycle adoption và package publication/deployment. Tài liệu này không xác nhận binder hiện có trong GAT; task triển khai phải kiểm source/tests và contract freeze.
+Acceptance giới hạn ở Durable Agent capability và compatibility adapter. Mission loại trừ GAT-owned binder, Agent Session/Team lifecycle adoption và package publication/deployment. Acceptance đó không tự xác nhận GAT binder. Các section AIP-EXEC-022 bên dưới mô tả implementation riêng; qualification được ràng buộc với source/build bytes trong workspace.
 
 ## Architecture and responsibility boundaries
 
@@ -78,10 +78,14 @@ A future binder task should demonstrate explicit Session/Team scope ownership, m
 
 The HUMAN approved proposal P-01–P-08 on 2026-10-04 and selected WK-style public DA APIs with existing direct-continuable GAT members. Intended payload, ownership, executable tool, request-refresh and cleanup contracts are defined before code in [Detail Design §5](DETAIL_DESIGN.md). Use workspace/fresh, a dedicated provider and exclusive workspace/name owner; context snapshots and later reads remain per-call consistent. Recovery validates trusted host workspace/registration and persisted declaration, obtains a fresh process ref, and never reloads mutable YAML. Model tools read one item or submit an unconfirmed candidate; confirmed commit stays separately host-authorized. No provider-private storage/API change or official DSH Consumer adoption is implied. Production adoption still needs exact reserved-host, refresh and mission/executor qualification; fake-scope/temporary-provider evidence must be labeled separately.
 
-## AIP-EXEC-022 foundation implementation
+## AIP-EXEC-022 foundation implementation — historical snapshot
 
-The selected WK adapter library is packages/durable-agent. It validates strict workspace/fresh declarations, persists only bounded declaration payloads, coordinates exclusive live identities and installs read/candidate tools and refresh through a trusted capability scope. Temporary public-provider and deterministic-port verification are recorded in the AIP workspace. Production composition remains unavailable until the reserved-child, request-refresh and exact authorization dependencies qualify; current core rejects required attachments before member creation. No isolated known-closing behavior is claimed for the selected direct-continuable target.
+The following paragraph preserves the initial pre-prerequisite inspection; production behavior follows Detail Design §8. The selected WK adapter library is packages/durable-agent. It validates strict workspace/fresh declarations, persists only bounded declaration payloads, coordinates exclusive live identities and installs read/candidate tools and refresh through a trusted capability scope. Temporary public-provider and deterministic-port verification are recorded in the AIP workspace. Production composition remains unavailable until the reserved-child, request-refresh and exact authorization dependencies qualify; current core rejects required attachments before member creation. No isolated known-closing behavior is claimed for the selected direct-continuable target.
 
 ## Prerequisite implementation — AIP-EXEC-023
 
 HUMAN authorized isolated host prerequisite implementation on 2026-10-04. Intended ownership and behavior are defined in [Detail Design §7](DETAIL_DESIGN.md#7-approved-prerequisite-implementation-delta--aip-exec-023): DSH owns reserved/quarantined child lifecycle, pre-render request refresh and immutable nested dispatch capabilities; GAT owns host-attested exact mission/task leases and effect/model admission. WK/direct-continuable target remains fixed. Deployment stays separate and prerequisite eligibility requires actual conformance evidence.
+
+## Implemented production composition — AIP-EXEC-022
+
+The approved production implementation connects the existing WK adapter library to actual reserved GAT children and owner-scoped prompt/tools, with one external-selected initializer and a separate opt-in profile. Exact pinned service/public Consumer resolution, canonical workspace and dedicated/single-host topology assertions are trusted host inputs. Detail Design §8 precedes source implementation and describes lifecycle, recovery, current authority and additive changed-host distribution. Qualification uses isolated real provider storage, registered Loader composition and actual built public imports; exact receipt and limits are recorded in the AIP workspace.  live deployment remains separately authorized.

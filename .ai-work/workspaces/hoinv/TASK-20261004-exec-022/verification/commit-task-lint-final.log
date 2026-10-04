@@ -1,0 +1,4 @@
+lint target: /home/hoinv/work/dsh-governed-agent-team/.ai-work
+  OK — no findings
+summary: errors=0 warnings=0 info=0
+note: task declares no paths (Expected Outputs / In Scope) — falling back to whole-repo git dirt as footprint. Only a bullet's FIRST token is read, so write `- path/to/file.md — what it is`, not `- what it is — path/to/file.md`; or pass --footprint-paths to scope your finalize lint

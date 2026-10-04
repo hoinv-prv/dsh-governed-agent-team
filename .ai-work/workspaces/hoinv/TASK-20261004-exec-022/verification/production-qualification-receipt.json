@@ -1,0 +1,263 @@
+{
+  "format": "gat-production-qualification/1",
+  "checked_on": "2026-10-04",
+  "aip": "AIP-EXEC-022",
+  "status": "qualified__aip_done",
+  "target": "/home/hoinv/work/dsh-binding-distribution-commit-qualified",
+  "host_compatibility_base": "c291e7961a515f6d7af9304e7fd1d257929aef26",
+  "host_prerequisite_commit": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+  "provider_commit": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+  "compatibility": "dsh-0.1.5-rc.2-binding-5c02ce9",
+  "manifest_sha256": "46316a97620f9f23fe5f55003886c93c4e9126c4bec2b5fb92e91ba0e9706a50",
+  "distribution": {
+    "prerequisite_guards": 244,
+    "host_replacements": 49,
+    "payload_files": 151,
+    "exact_source_rows": 200,
+    "transactional_lifecycle": "PASS",
+    "public_and_eight_packed_exports": "PASS",
+    "shared_public_authenticated_control_module": "PASS",
+    "target_owned_native_flock": "PASS",
+    "frozen_lock": "PASS",
+    "compilers_bundles_web": "All 8311 carried compiled/Web/native/compiler-state bytes and product source/metadata/provider rows are exact. Prior same-target built Loader/browser/SDK/Core qualification remains preserved, rather than rerun or relabeled as new-target tests. Fresh target independently passed public/packed/context/native and actual installed documentation/lock/lifecycle checks.",
+    "post_replay_source_native_tool_guard_hashes": "PASS",
+    "receipt": "commit-distribution-qualification.json",
+    "artifact_proof": "commit-distribution-artifact-proof.json",
+    "final_documentation_delta": "Nine root-layout README overlays removed; installed-layout ownership expanded to fifteen files. Exact provider pin attribution and notices generator/spec/output added without modifying runtime/provider metadata.",
+    "build_reuse_proof": "commit-distribution-build-cache.json"
+  },
+  "source": {
+    "result": "PASS",
+    "protected_dirty_controls": {
+      "SOURCE_SNAPSHOT.json": true,
+      "compatibility/dsh-0.1.5-rc.2/manifest.json": true,
+      "installer/verify.mjs": true
+    },
+    "host_prerequisite_head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+    "wk_head": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+    "wk_working_tree": "",
+    "source_suite": {
+      "files": 24,
+      "passed": 333,
+      "failed": 0,
+      "log": "production-all-gat-tests-final.log"
+    },
+    "host_boundary_suite": {
+      "files": 29,
+      "passed": 767,
+      "failed": 0,
+      "log": "production-host-boundaries-final.log"
+    },
+    "ordinary_complete_type_aware_lint": {
+      "exit_code": 0,
+      "diagnostics": 0,
+      "log": "production-type-aware-lint-complete-final.log",
+      "all_eleven_prior_owners_included": true
+    },
+    "installer_tests": {
+      "passed": 21,
+      "failed": 0,
+      "log": "commit-distribution-installer-tests.log"
+    },
+    "built_runtime_verifier_syntax": {
+      "exit_code": 0
+    },
+    "counts_overlap": true,
+    "host_committed_revision": "f7f560ac937ec1e41d47fe8f48135fc1e4ac8554",
+    "notices_tests": {
+      "passed": 33,
+      "failed": 0,
+      "log": "commit-distribution-notices-tests.log"
+    },
+    "notices_normal_typed_lint": {
+      "exit_code": 0,
+      "log": "commit-distribution-notices-lint.log"
+    }
+  },
+  "runtime": {
+    "result": "PASS",
+    "cases": 5,
+    "loaded_public_modules": 22,
+    "loaded_module_profile_native_hash_recheck": "PASS",
+    "receipt": "production-built-runtime-closed-final.json"
+  },
+  "browser": {
+    "passed": 3,
+    "failed": 0,
+    "independent_exact_quarantined_idle_assertion": true,
+    "transport": "actual authenticated browser WebSocket Enable"
+  },
+  "built_core": {
+    "passed": 1,
+    "failed": 0
+  },
+  "sdk": {
+    "typescript_executed": 7,
+    "typescript_filtered_unrelated": 12,
+    "canonical_corpus_passed": 3,
+    "python_scenarios_passed": 4,
+    "source_api_facades_with_built_cli": true,
+    "installed_registry_sdk_or_wheel_claimed": false
+  },
+  "replay_exits": {
+    "production-built-runtime-closed-final.log": {
+      "exit_code": 0,
+      "log": "production-built-runtime-closed-final.log"
+    },
+    "production-browser-closed-final.log": {
+      "exit_code": 0,
+      "log": "production-browser-closed-final.log"
+    },
+    "production-built-core-closed-final.log": {
+      "exit_code": 0,
+      "log": "production-built-core-closed-final.log"
+    },
+    "production-sdk-ts-closed-final.log": {
+      "exit_code": 0,
+      "log": "production-sdk-ts-closed-final.log"
+    },
+    "production-sdk-corpus-closed-final.log": {
+      "exit_code": 0,
+      "log": "production-sdk-corpus-closed-final.log"
+    },
+    "production-python-closed-final-sdk-request-refresh.log": {
+      "exit_code": 0,
+      "log": "production-python-closed-final-sdk-request-refresh.log"
+    },
+    "production-python-closed-final-sdk-snapshot.log": {
+      "exit_code": 0,
+      "log": "production-python-closed-final-sdk-snapshot.log"
+    },
+    "production-python-closed-final-sdk-restart.log": {
+      "exit_code": 0,
+      "log": "production-python-closed-final-sdk-restart.log"
+    },
+    "production-python-closed-final-sdk-minimal-in-history.log": {
+      "exit_code": 0,
+      "log": "production-python-closed-final-sdk-minimal-in-history.log"
+    }
+  },
+  "documentation": {
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "after_gateway_peer_metadata": true,
+    "log": "commit-distribution-installed-doc-sync.log",
+    "cwd": "/home/hoinv/work/dsh-binding-distribution-commit-qualified",
+    "actual_installed_afterimages_checked": true,
+    "historical_source_host_attribution_corrected": true
+  },
+  "mapping": {
+    "status": "PASS",
+    "source_map_rows": 18,
+    "files": 142,
+    "symbols": 184,
+    "test_paths": 81,
+    "missing_paths": 0,
+    "unresolved_symbols": 0,
+    "mismatched_line_anchors": 0
+  },
+  "source_baseline_sha256": "a173f1e404537152fa362867601b4b72b434b8a6b5e6e8d85673b9c8d37804c1",
+  "source_code_map_sha256": "a0c49b2eb7c06368479848c7e77c3a79b6ad41f8f8080d7e4c03c3e5838fe797",
+  "core_mirror_receipt": "core-production-receipt.json",
+  "independent_review": "commit-independent-review.md",
+  "task_strict_lint": {
+    "exit_code": 0,
+    "errors": 0,
+    "warnings": 0,
+    "log": "production-task-lint-final.log",
+    "post_close_log": "production-task-lint-post-close.log"
+  },
+  "whole_tree_strict_lint": {
+    "exit_code": 1,
+    "errors": 0,
+    "warnings": 37,
+    "info": 3005,
+    "accepted": 1,
+    "baseline_unchanged": true,
+    "log": "production-whole-tree-lint-post-close.json"
+  },
+  "approval": "approved-decisions.md: P01\u201308, WK/direct-continuable and isolated host prerequisite/final integration",
+  "isolated_t16_t22": "Approved conditional non-applicability only; direct strict denial and workflow remain qualified",
+  "rollback": "Exact package restoration; no attachment stripping, Session/provider deletion or event downgrade. Restored prerequisite refuses attached execution; v2-only reader refuses v3.",
+  "captures": {
+    "total": 14,
+    "deferred": 14,
+    "untriaged": 0,
+    "backlog_ids": [
+      "BL-022-CAP-022-01",
+      "BL-022-CAP-022-02",
+      "BL-022-CAP-022-03",
+      "BL-022-CAP-022-04",
+      "BL-022-CAP-022-05",
+      "BL-022-CAP-022-06",
+      "BL-022-CAP-022-07",
+      "BL-022-CAP-022-08",
+      "BL-022-CAP-022-09",
+      "BL-022-CAP-022-10",
+      "BL-022-CAP-022-11",
+      "BL-022-CAP-022-12",
+      "BL-022-CAP-022-13",
+      "BL-022-CAP-022-14"
+    ],
+    "governed_close_log": "production-governed-close.log",
+    "promotion": "None; HUMAN-controlled future review"
+  },
+  "scope_limits": [
+    "Dedicated provider, one host process per workspace; no cross-host locking guarantee",
+    "No official DSH Consumer or isolated task runner",
+    "No standalone registry installation, deployment, push, merge, publication, Truth/Wiki promotion",
+    "Earlier prerequisite chronology/audit limitations remain disclosed in AIP-EXEC-023 historical handoff; current changes follow prospective DD section8"
+  ],
+  "deployment_performed": false,
+  "commit_created_for_this_followup": true,
+  "independent_review_status": "PASS source, product and exact final artifact; no open finding",
+  "aip_close": {
+    "exit_code": 0,
+    "aip_status": "done",
+    "pointer_step": "STEP-08",
+    "pointer_status": "done",
+    "queue_open": 0,
+    "queue_blocking": 0,
+    "all_step_asc_rebuilt_read": 9,
+    "log": "production-governed-close.log",
+    "post_close_status": "production-post-close-status.log",
+    "post_close_task_lint_exit": 0,
+    "installed_status_after_close": "installed; SUPPORTED, structural PASS; source dirty advisory with exact selected hashes verified",
+    "installer_status_log": "production-installer-status-post-close.json"
+  },
+  "commit_followup": {
+    "requested_by": "HUMAN",
+    "host_commit": "f7f560ac937ec1e41d47fe8f48135fc1e4ac8554",
+    "host_committed_files": 200,
+    "host_receipt": "commit-host-receipt.json",
+    "gat_commit": "This companion commit; its final SHA is reported to HUMAN after creation.",
+    "distribution_receipt": "commit-distribution-qualification.json",
+    "prior_current_receipt": "commit-before-followup/production-qualification-receipt.json",
+    "historical_attribution_corrections": [
+      {
+        "artifactManifestSha256": "2a0c9a5474d6a98ecb767522dce29dc3c259d48697bc61b2b0ec796a5cb07e30",
+        "target": "/home/hoinv/work/dsh-binding-distribution-closed-final",
+        "correction": "Prior 34-PASS documentation aggregate ran on the prerequisite source host, whose three installed-layout README pairs were still correct. It did not qualify the nine different root README after-images installed by that artifact. Actual installed named check reproduced three pairing failures and broken sibling links. Runtime/build evidence remains valid and is retained; this artifact is superseded for installed documentation."
+      },
+      {
+        "artifactManifestSha256": "93186bad4a3dcb1cbf1f63494ed0243d11727355f7088c80f4ecb9d4a7392a69",
+        "target": "/home/hoinv/work/dsh-binding-distribution-commit-final",
+        "correction": "Intermediate documentation-only capture superseded by required notices tooling correction. Its installed aggregate was interrupted with exit143 after pnpm pre-run dependency auto-install failure; no documentation PASS claimed."
+      }
+    ],
+    "source_product_suite_reuse": "333 GAT/767 host tests remain executed historical evidence for unchanged product sources; notices33 and installer21 are separate fresh checks.",
+    "runtime_browser_sdk_evidence_executed_target": "/home/hoinv/work/dsh-binding-distribution-closed-final",
+    "runtime_browser_sdk_evidence_reused_by_exact_bytes": true,
+    "fresh_runtime_browser_sdk_replay_claimed": false,
+    "whitespace_receipt": "commit-whitespace-check.json",
+    "pushed": false,
+    "deployed": false,
+    "task_strict_lint": {
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "log": "commit-task-lint-final.log"
+    }
+  }
+}

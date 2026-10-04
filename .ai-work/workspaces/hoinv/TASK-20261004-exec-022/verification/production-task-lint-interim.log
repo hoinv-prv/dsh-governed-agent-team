@@ -1,0 +1,6 @@
+note: task declares no paths (Expected Outputs / In Scope) — falling back to whole-repo git dirt as footprint. Only a bullet's FIRST token is read, so write `- path/to/file.md — what it is`, not `- what it is — path/to/file.md`; or pass --footprint-paths to scope your finalize lint
+lint target: /home/hoinv/work/dsh-governed-agent-team/.ai-work
+  [WARNING] capture_field: capture missing recommended field: suggested_target @ line 7 (/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/08_capture_inbox.jsonl)
+  [WARNING] capture_field: capture missing recommended field: suggested_target @ line 8 (/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/08_capture_inbox.jsonl)
+  [WARNING] capture_field: capture missing recommended field: suggested_target @ line 9 (/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-022/08_capture_inbox.jsonl)
+summary: errors=0 warnings=3 info=0

@@ -1,0 +1,61 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /home/hoinv/work/dsh-binding-distribution-accepted
+
+stderr | apps/web/tests/gat-agent-team-panel.debug.e2e.ts > web e2e: Governed Agent Team panel > loads the current mission and members without task controls
+DEBUG ENABLE ERROR TeamError: authenticated HUMAN Enable control required
+    at Proxy.enable (file:///home/hoinv/work/dsh-binding-distribution-accepted/packages/experimental/gat-core/lib/index.js:5039:11)
+    at Object.apply (/home/hoinv/work/dsh-binding-distribution-accepted/vendor/cordis/src/utils.ts:160:40)
+    ... 6 lines matching cause stack trace ...
+    at withControlInvocation (file:///home/hoinv/work/dsh-binding-distribution-accepted/packages/api/gateway/lib/index.js:4020:26)
+    at TypertGatewayService.invoke (file:///home/hoinv/work/dsh-binding-distribution-accepted/packages/api/gateway/lib/index.js:4573:17) {
+  code: 'TEAM_HUMAN_CONTROL_REQUIRED',
+  [cause]: Error: HUMAN_CONTROL_REQUIRED: exact authenticated action/session/revision receipt required
+      at consumeHumanControl (file:///home/hoinv/work/dsh-binding-distribution-accepted/packages/client/connection/lib/index.js:758:190)
+      at Proxy.enable (file:///home/hoinv/work/dsh-binding-distribution-accepted/packages/experimental/gat-core/lib/index.js:5037:5)
+      at Object.apply (/home/hoinv/work/dsh-binding-distribution-accepted/vendor/cordis/src/utils.ts:160:40)
+      at Proxy.scaffold.ctx.agentTeams.enable (/home/hoinv/work/dsh-binding-distribution-accepted/apps/web/tests/gat-agent-team-panel.debug.e2e.ts:94:34)
+      at Object.apply (/home/hoinv/work/dsh-binding-distribution-accepted/vendor/cordis/src/utils.ts:160:40)
+      at Proxy.remoteEnable (file:///home/hoinv/work/dsh-binding-distribution-accepted/packages/experimental/gat-core/lib/index.js:5217:16)
+      at Object.apply (/home/hoinv/work/dsh-binding-distribution-accepted/vendor/cordis/src/utils.ts:160:40)
+      at file:///home/hoinv/work/dsh-binding-distribution-accepted/packages/api/gateway/lib/index.js:4573:117
+      at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:80:14)
+      at withControlInvocation (file:///home/hoinv/work/dsh-binding-distribution-accepted/packages/api/gateway/lib/index.js:4020:26)
+}
+
+stderr | apps/web/tests/gat-agent-team-panel.debug.e2e.ts > web e2e: Governed Agent Team panel > loads the current mission and members without task controls
+DEBUG DOM Agent Team
+Agent Team
+authenticated HUMAN Enable control required (gateway/internal)
+Agent Team is off
+
+This session runs solo by default. Enabling loads team_members.yaml from the workspace, or uses the built-in starter Team when that file is missing or invalid.
+
+Enable Agent Team for this session
+
+ ❯ apps/web/tests/gat-agent-team-panel.debug.e2e.ts (3 tests | 1 failed) 34224ms
+     × loads the current mission and members without task controls 31194ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/web/tests/gat-agent-team-panel.debug.e2e.ts > web e2e: Governed Agent Team panel > loads the current mission and members without task controls
+TimeoutError: locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-team-action]').getByRole('heading', { name: 'Mission detail' }) to be visible[22m
+
+ ❯ apps/web/tests/gat-agent-team-panel.debug.e2e.ts:103:67
+    101|     await page.waitForTimeout(1000)
+    102|     console.error('DEBUG DOM', await action.innerText())
+    103|     await action.getByRole('heading', { name: 'Mission detail' }).wait…
+       |                                                                   ^
+    104|     await action.getByRole('heading', { name: 'Members' }).waitFor()
+    105|     await action.getByText('lead').waitFor()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  14:26:27
+   Duration  35.34s (transform 584ms, setup 0ms, import 1.04s, tests 34.22s, environment 0ms)
+

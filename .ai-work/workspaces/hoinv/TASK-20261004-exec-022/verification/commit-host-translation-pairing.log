@@ -1,0 +1,4 @@
+verify-translation-pairing: bilingual pairing rules violated (see docs/i18n/README.md):
+  packages/experimental/gat-profile/README.md ↔ packages/experimental/gat-profile/README.zh.md: link target #1 diverges between the pair: "../core/README.md" vs "../core/README.zh.md"
+  packages/experimental/gat-web-profile/README.md ↔ packages/experimental/gat-web-profile/README.zh.md: link target #1 diverges between the pair: "../core/README.md" vs "../core/README.zh.md"
+  packages/experimental/gat-web/README.md ↔ packages/experimental/gat-web/README.zh.md: link target #7 diverges between the pair: "../web-profile/README.md" vs "../web-profile/README.zh.md"

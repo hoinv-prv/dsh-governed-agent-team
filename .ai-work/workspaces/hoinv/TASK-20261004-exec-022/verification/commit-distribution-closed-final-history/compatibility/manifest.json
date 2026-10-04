@@ -1,0 +1,2683 @@
+{
+  "schemaVersion": 1,
+  "id": "gat-binding-5c02ce9f",
+  "selectionPolicy": "exact-commit-and-hashes",
+  "lockfilePrepared": true,
+  "gat": {
+    "version": "0.1.0",
+    "sourceCommit": "912cc24c95d2867dca683c75df9041f26c700dbc"
+  },
+  "installer": {
+    "name": "@vuhoi/governed-agent-team",
+    "version": "0.1.0"
+  },
+  "target": {
+    "repository": "deepseek-harness",
+    "version": "0.1.5-rc.2",
+    "commit": "5c02ce9f3e44dfce3f87498f65cf684194ad4572"
+  },
+  "externalProvider": {
+    "repositoryCommit": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+    "package": "@deepseek-ai/dsh-durable-agent",
+    "version": "0.1.0",
+    "builtLayout": "lib/src"
+  },
+  "installationRecord": ".gat/durable-binding-installation.json",
+  "installedPackages": [
+    "@vuhoi/gat-core",
+    "@vuhoi/gat-tools",
+    "@vuhoi/gat-web",
+    "@vuhoi/gat-profile",
+    "@vuhoi/gat-web-profile",
+    "@vuhoi/gat-durable-agent",
+    "@vuhoi/gat-durable-profile",
+    "@deepseek-ai/dsh-durable-agent"
+  ],
+  "packageMappings": [
+    {
+      "source": "packages/durable-agent",
+      "destination": "packages/experimental/gat-durable-agent"
+    },
+    {
+      "source": "packages/durable-profile",
+      "destination": "packages/experimental/gat-durable-profile"
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider",
+      "destination": "vendor/gat-durable-provider"
+    }
+  ],
+  "cleanupDirectories": [
+    "packages/experimental/gat-durable-agent",
+    "packages/experimental/gat-durable-profile",
+    "vendor/gat-durable-provider"
+  ],
+  "prerequisiteFiles": [
+    {
+      "path": ".agents/notes/implemented/architecture/2026-10-04-authenticated-control-admission.i18n.yaml",
+      "sha256": "6c1744ea989990eb8bb0bb2374aaad6810b590cb0a70d9ec9a675019ef4bad95"
+    },
+    {
+      "path": ".agents/notes/implemented/architecture/2026-10-04-authenticated-control-admission.md",
+      "sha256": "db7a0b4608b963a469253943ff15504558c4c9a0e60897220aeb0c6fe2d00db1"
+    },
+    {
+      "path": ".agents/notes/implemented/architecture/2026-10-04-authenticated-control-admission.zh.md",
+      "sha256": "4950d53bb3e4659dd67288d9cd4b743802b5e5733750bc3137d759362c8ff3ed"
+    },
+    {
+      "path": ".agents/notes/implemented/architecture/2026-10-04-immutable-tool-capabilities.i18n.yaml",
+      "sha256": "da215256dd9dd1fa7695aa6afe6fb51b557449b9079bec7bc284e0467d2a6736"
+    },
+    {
+      "path": ".agents/notes/implemented/architecture/2026-10-04-immutable-tool-capabilities.md",
+      "sha256": "b18b14b201ec11d3e1dad4378dfe04ab1684561d60e9a05223c642a9921943eb"
+    },
+    {
+      "path": ".agents/notes/implemented/architecture/2026-10-04-immutable-tool-capabilities.zh.md",
+      "sha256": "f4cbfe4f0f0c8ca575db209fc382f8b22fec0b49f29d4a060980d82ce0afb3c6"
+    },
+    {
+      "path": ".agents/notes/implemented/architecture/2026-10-04-reserved-continuable-admission.i18n.yaml",
+      "sha256": "2bb4bfd5db3cbb0644871195b26871ce646fe5aa817f0ab2f62ac84821bcedc8"
+    },
+    {
+      "path": ".agents/notes/implemented/architecture/2026-10-04-reserved-continuable-admission.md",
+      "sha256": "5c5417f0c9cec3ec03e89b521ce0ed94ca2fa8df631bc13adb437d93bf3560e1"
+    },
+    {
+      "path": ".agents/notes/implemented/architecture/2026-10-04-reserved-continuable-admission.zh.md",
+      "sha256": "ecd125758bd90660d11c19ea1a01f4ffb9948725a23ddc49112f7f698f8f90f0"
+    },
+    {
+      "path": ".agents/notes/implemented/process/2026-10-04-active-catalog-replacements.i18n.yaml",
+      "sha256": "3a82fdbc8f93719b68e5edb3ada83a439ad2e355f0dcdef3c2559859d5b7017b"
+    },
+    {
+      "path": ".agents/notes/implemented/process/2026-10-04-active-catalog-replacements.md",
+      "sha256": "c0a15274ced2e09f2ffd8a642a7a20ea845aaed2fb44f0e516e1a117d4f9d427"
+    },
+    {
+      "path": ".agents/notes/implemented/process/2026-10-04-active-catalog-replacements.zh.md",
+      "sha256": "045891893d48931c29cdbe83f86b960e8b19dcdec1142553458fe1941f8c6137"
+    },
+    {
+      "path": "apps/web/tests/gat-agent-team-panel.e2e.ts",
+      "sha256": "e072cf07243f040dc317eb8027f4672302c1698c602dfa4015190c1b8213f6b2"
+    },
+    {
+      "path": "apps/web/tests/gat-agent-team-panel.overlay.yml",
+      "sha256": "1149197b1829b74cb2d7db2c51bfc9d87ede23ce12939064ebc37df5a6eb88b6"
+    },
+    {
+      "path": "apps/web/tests/snapshots/gat-agent-team-panel/task.expected.md",
+      "sha256": "9fbe10ceef08bc84bd11f920fed11034363562c3aca6d5f3a5019db47bdd128a"
+    },
+    {
+      "path": "apps/web/tsconfig.json",
+      "sha256": "a5dfd07bd64e005ee21ccef9e97eda5393790d4b30eadad3a193e3c088b7c393"
+    },
+    {
+      "path": "docs/architecture.i18n.yaml",
+      "sha256": "8236a2afe16651f1c9f33b0d813f74a81052cc779a5253608c9effd6b1343ed3"
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "e0eae8cd15e59e52a6ebdae0575dcb20f899df4c93bab950febcdc2b1afb8d8b"
+    },
+    {
+      "path": "docs/architecture.zh.md",
+      "sha256": "65d10ae584ff45706b066f141bc61bba574df7651ed5ec0cf6226c2f7fd913cf"
+    },
+    {
+      "path": "docs/config-catalog.i18n.yaml",
+      "sha256": "6f84d78317a8bce9516f816f25f583d274ac55f14138b473fd6321c19289f428"
+    },
+    {
+      "path": "docs/config-catalog.md",
+      "sha256": "e7c31043060effc4d0e1d69b208525aeb3527a1161a460e565c3a852706ab733"
+    },
+    {
+      "path": "docs/config-catalog.zh.md",
+      "sha256": "dcb07bddc06b1f9102b0ce44db0df547e54cdb3f5946e25d490701fcb6ae0fed"
+    },
+    {
+      "path": "docs/event-producer-consumer.i18n.yaml",
+      "sha256": "1431c253763a1ca947416c4583224f06905dc68c151ab0f16ee88ffda6e02ac0"
+    },
+    {
+      "path": "docs/event-producer-consumer.md",
+      "sha256": "12cc522a1acda0dc13760348ad5c016632c37af5eb780bdffc0e28665471ef47"
+    },
+    {
+      "path": "docs/event-producer-consumer.zh.md",
+      "sha256": "50af201d0809cb7853324726c53568381609d795d9e0ddf7b9073c8d3d400f78"
+    },
+    {
+      "path": "docs/persistence-catalog.i18n.yaml",
+      "sha256": "5486e6b1a2efefc1385783151b477ba3ba5c649687b213e0e86d793c9eb8b29b"
+    },
+    {
+      "path": "docs/persistence-catalog.md",
+      "sha256": "8a2f6e0d1ce1496085b7f1b8f8b521b469dcfc05dd3881667f39a6d49b941669"
+    },
+    {
+      "path": "docs/persistence-catalog.zh.md",
+      "sha256": "64eee6179d84e0ef0a7ee48f3297fff1f8b3489c7e98e9c5b5603e3bdb2ee1c7"
+    },
+    {
+      "path": "docs/subsystems/agent-team.i18n.yaml",
+      "sha256": "4c48f2cc99ebc85280e82956be9174dc6d95e42fb773772c56a1dbe89b6e5783"
+    },
+    {
+      "path": "docs/subsystems/agent-team.md",
+      "sha256": "c2f0e7db3d22e369304440930e4faac916e3e858c046b5809898334b8589337a"
+    },
+    {
+      "path": "docs/subsystems/agent-team.zh.md",
+      "sha256": "1754fe6fef4f2d690efa902f95124a8b1b1569cf30f8dee9ffceee5937ccee65"
+    },
+    {
+      "path": "docs/subsystems/core.i18n.yaml",
+      "sha256": "0eb99abe984f93e432a8e74eaea104aba59bed7b499b642fb5a95a9b2827faaa"
+    },
+    {
+      "path": "docs/subsystems/core.md",
+      "sha256": "8e7b6d7ca5a8b239aa1166b16f389232efae69609311b370d8d1ab70bc3784f0"
+    },
+    {
+      "path": "docs/subsystems/core.zh.md",
+      "sha256": "8d196e84ef0b6bc3a73e4cb513bfc236e6c2f5485e61330e6778d5c87653acd9"
+    },
+    {
+      "path": "docs/subsystems/subagent.i18n.yaml",
+      "sha256": "4e1fa84e7ab528ea2a86620be493e627961039cdc90cbbfb960eddb885c9be63"
+    },
+    {
+      "path": "docs/subsystems/subagent.md",
+      "sha256": "22fa00971d87701b5c4503605abb02319766a2400582e707839e4525bde24cbe"
+    },
+    {
+      "path": "docs/subsystems/subagent.zh.md",
+      "sha256": "6442cd6a1780072dd69df53ad7798cfcafd289b13599fa4bc111d95a839aa67c"
+    },
+    {
+      "path": "docs/subsystems/tools.i18n.yaml",
+      "sha256": "85455ad7b462fb6392a9eac053470e57e45afaf5b3f789855261e52cfbe897ed"
+    },
+    {
+      "path": "docs/subsystems/tools.md",
+      "sha256": "55611ad219fff449a138112191e991fde9c150c14285bb466821e68c0b039de9"
+    },
+    {
+      "path": "docs/subsystems/tools.zh.md",
+      "sha256": "76892c8048ff36fa829ec54228f773d91ab4a7a68bd257686ca4d37f2a435ad2"
+    },
+    {
+      "path": "docs/tool-catalog.i18n.yaml",
+      "sha256": "bd0a1c98b6046d9de4abd4336f2f2a26d069de951cb04b1bde63ccfd708dc3d4"
+    },
+    {
+      "path": "docs/tool-catalog.md",
+      "sha256": "1d472f1d85089b3b9a657637e2659b39ea4514f9c77250e3be95bf0a2a744d99"
+    },
+    {
+      "path": "docs/tool-catalog.zh.md",
+      "sha256": "32bb02711dea6184945077bdd5ad2f63cc9b02976424bada22c9aeb4f91108f4"
+    },
+    {
+      "path": "packages/api/gateway/README.i18n.yaml",
+      "sha256": "4c1e5a6036a7521a89850a1d5a18b228ca2c93ada3879c2ab18639cb877b7a1d"
+    },
+    {
+      "path": "packages/api/gateway/README.md",
+      "sha256": "ce819300ef8c41c42aba83e0a54a8bccd2295baed211a254b12c4c4828951f7a"
+    },
+    {
+      "path": "packages/api/gateway/README.zh.md",
+      "sha256": "5e7baed2915eaf57d1f6f022d076bfce9582d652dbc1e858d313babb91aff278"
+    },
+    {
+      "path": "packages/api/gateway/src/index.ts",
+      "sha256": "465ec00cd70de3661670696627b834428958440910e79c2d2c9395f96e06438c"
+    },
+    {
+      "path": "packages/api/gateway/tests/gateway.host.spec.ts",
+      "sha256": "3b65eceb83fe485f32e172277ce047ebc3dce23dcbd8213659f7256207cec13d"
+    },
+    {
+      "path": "packages/client/connection/README.i18n.yaml",
+      "sha256": "ffe575d26e9bfb93aa6f6c594552e6d05d07a54d5c298be1ee3c052b09ca0d79"
+    },
+    {
+      "path": "packages/client/connection/README.md",
+      "sha256": "aa628c5c49a7869ca283d8c1042eea10a325c22467e760b4750f9fe8ba136f78"
+    },
+    {
+      "path": "packages/client/connection/README.zh.md",
+      "sha256": "85a6986c7df4b9948cd4f5460d0e5a3a4dca6217b2db59069b2a3fb9fee96026"
+    },
+    {
+      "path": "packages/client/connection/src/control-admission.ts",
+      "sha256": "05ac55f7db7e75e3bf1737408c8fb8301daf788b0068c6fdb2ed660e76246d0d"
+    },
+    {
+      "path": "packages/client/connection/src/index.ts",
+      "sha256": "f8d820023e9490e22c93466db70ae7c088fd8f45c77ca9c42ecb86191f224310"
+    },
+    {
+      "path": "packages/client/connection/src/rpc-host.ts",
+      "sha256": "cd6e44981accc19089eb3350f50eebcd39992ab2530272c32d94bdff322b9d91"
+    },
+    {
+      "path": "packages/client/connection/tsconfig.host.json",
+      "sha256": "59cf7abba383a7270738ab2ef4a589bef3146415a52413b303289f0aea0a33ad"
+    },
+    {
+      "path": "packages/context/agent-instructions/tests/agent-instructions.spec.ts",
+      "sha256": "99f421d8537b0320489ddaa03bafd653396813d52b4c3f0316e1bf27ae4f4af5"
+    },
+    {
+      "path": "packages/core/agent-loop/README.i18n.yaml",
+      "sha256": "12ac4eef87aec26dc8feca62891028604fb23755cdc9ca894880069aff7eceda"
+    },
+    {
+      "path": "packages/core/agent-loop/README.md",
+      "sha256": "978e49aa35b2b630cee79faa11bc235171a87df94a8911c6ece4556c63dd0742"
+    },
+    {
+      "path": "packages/core/agent-loop/README.zh.md",
+      "sha256": "078d76ff6b0c20f673fcf96373d7190a4fa40761aaea160a8747c3dbf87bf9c5"
+    },
+    {
+      "path": "packages/core/agent-loop/src/agent.ts",
+      "sha256": "d8d46efb267c9b983266b2424d24d4658b1217f093ab268b6ec1e60e29376c97"
+    },
+    {
+      "path": "packages/core/agent-loop/src/index.ts",
+      "sha256": "d3e65703e2b0e0c5c41eb2597ac3cabe4baec1c9ac0a033f48823a09f49914e7"
+    },
+    {
+      "path": "packages/core/agent-loop/tests/prepare-prompt.spec.ts",
+      "sha256": "a7faaf33e58ec5bb47dd1a3b90769fa4c79a9619579c7067a7e4eed849349189"
+    },
+    {
+      "path": "packages/core/agent-loop/tests/system-prompt-admission.spec.ts",
+      "sha256": "b8d07321c99fe4421c8637c96bb9f4c269166e7b15bb6cc3825836e6c06b1095"
+    },
+    {
+      "path": "packages/core/agent/README.i18n.yaml",
+      "sha256": "8776725bf8f18ded4fd6234ddc1c23eee16a4b152d199c18f18f440b81c232c8"
+    },
+    {
+      "path": "packages/core/agent/README.md",
+      "sha256": "f6303cdcabe715866929743b3739b11f1eb9d1a7b92bb60a4772ded541bff5ba"
+    },
+    {
+      "path": "packages/core/agent/README.zh.md",
+      "sha256": "adc161b95a02c02e6861008d327674e59f3ba5e3c1875a5474cc8c0f785260d4"
+    },
+    {
+      "path": "packages/core/agent/src/index.ts",
+      "sha256": "a0081433b8be817fbdd9c1280973f9950ff189375a1e8b75b905b6e9a74a6fcf"
+    },
+    {
+      "path": "packages/core/agent/src/runtime-types.ts",
+      "sha256": "c12c8e343a094720ccb4f23db9ee97be3cdd0c350956d530d25dfee7cbcd1084"
+    },
+    {
+      "path": "packages/core/agent/src/types.ts",
+      "sha256": "b8a789c4cb92c3cf62e4aba41703c3be3d35c4f7a0ae7976ef256c8cc05428d7"
+    },
+    {
+      "path": "packages/core/scope/src/scoped-events.generated.ts",
+      "sha256": "86ab089086be16367347bfb6c50744011a2b33051df5c84a241476c9e2289861"
+    },
+    {
+      "path": "packages/core/scope/tests/invariant.spec.ts",
+      "sha256": "0358b62b8f9a1f64cae2f05c3ba222cc149410d7ae6f6ba200c5c5f2b64cb17d"
+    },
+    {
+      "path": "packages/core/session/src/known-event-types.ts",
+      "sha256": "badc2e1a8d58e4d2a4c00beeb96b03eeedd587d16930a9f54d83df1355c103f1"
+    },
+    {
+      "path": "packages/core/tools/README.i18n.yaml",
+      "sha256": "8cba173b3edcbec4d97b5819849e884544d6f7419989958e3775fb7c20175e84"
+    },
+    {
+      "path": "packages/core/tools/README.md",
+      "sha256": "6df9215d1b53481ac043b128889ce5c1ee8fc842d6876d2ef7f4828fd0016ee7"
+    },
+    {
+      "path": "packages/core/tools/README.zh.md",
+      "sha256": "77e35dd5618966e41cb25f4cddd32007021df7b29a6b9fb59356fd92af1b050d"
+    },
+    {
+      "path": "packages/core/tools/src/index.ts",
+      "sha256": "de773858f9674e21acf881f28267358013032738fcb62018fd3a9dec3dc48b5c"
+    },
+    {
+      "path": "packages/core/tools/src/ptc.ts",
+      "sha256": "0b49252770af39a3da225caceb8dbfdac658f364f359d2f9b48a05a03f49c178"
+    },
+    {
+      "path": "packages/core/tools/src/schema.ts",
+      "sha256": "6434b819d35ec77fe6928f33b0e6a5f4a12485b5592ff0750862e8a8168c05d3"
+    },
+    {
+      "path": "packages/core/tools/src/types.ts",
+      "sha256": "fee75053ed63d4b9a22e0b86f0bce79ff45cb09ab8a328918ba04811444dc055"
+    },
+    {
+      "path": "packages/core/tools/tests/capabilities.spec.ts",
+      "sha256": "38d807128432ae008562eb12fa54bc503daf59ff55acb41e8e6a40a617b17e8f"
+    },
+    {
+      "path": "packages/core/tools/tests/invariant.spec.ts",
+      "sha256": "90948a50f367cb70cf8f515ff80b78e0f987c9e98a926cb397bff5a9d1e36a7d"
+    },
+    {
+      "path": "packages/core/tools/tests/ptc.spec.ts",
+      "sha256": "43a04a9a86397e6ac75009e5c6b8cc1b8732882aca53a4b0240519bfb22a618e"
+    },
+    {
+      "path": "packages/core/tools/tests/scoped.spec.ts",
+      "sha256": "19fcd16e3150f730cf5749fcd9591d64f09fd43cabfce3c5b07c427286e16fe9"
+    },
+    {
+      "path": "packages/core/tools/tests/tools.spec.ts",
+      "sha256": "081f701dba2f57b138488ae84cd0e01e9f55ebf19d6db33d5b62e6947f996e27"
+    },
+    {
+      "path": "packages/experimental/gat-core/README.i18n.yaml",
+      "sha256": "55f570627945b4703b66fe025bb18fbeabca5098828937b7740c29bcff799e88"
+    },
+    {
+      "path": "packages/experimental/gat-core/README.md",
+      "sha256": "bb8d4a5eba271ae88d81880ce3415c307a88f232461451a51e1226dc93c99391"
+    },
+    {
+      "path": "packages/experimental/gat-core/README.zh.md",
+      "sha256": "6db8e0bbf37397bfdec5bcfd60cee66ffa750bbf53bd7ec0f84ddaef0c37ce2e"
+    },
+    {
+      "path": "packages/experimental/gat-core/package.json",
+      "sha256": "f1ef81b5bb6385a329fafc52cfb41fc441a7710f6c80d8d3d860ca2c71b43bb0"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/activity.ts",
+      "sha256": "a35a8d322aea033ef7f2e1d8539026f6a49251b3c0252ee695d361066cbd4f08"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/approved-plan-import.ts",
+      "sha256": "3efdd14de8baaa4ae76a5d41ffb82216a28959b129f66f4abccdae6356d10fb9"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/attachments.ts",
+      "sha256": "cc6c3c678acb13ac71950db8519c343ae42256e28035b005cbad089925e87fd2"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/authority.ts",
+      "sha256": "7d0c9297333759c1d5ce7a0a90705a671cf93130d8f9315fe83862ec499ac16d"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/binding-deadline.ts",
+      "sha256": "5ce023bc8e8613822edd046b9e298c2a4247a52309cf509c725223a19cffc6aa"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/client.ts",
+      "sha256": "e698321df957a563b624d7e27a356f69c8ed1fb7a2d28cfa14209a1ce8ea03e2"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/error.ts",
+      "sha256": "b9d14250f819c6cfd364c42cf2b4045674a1f7c88321f99e9a4a29b68419bea4"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/index.ts",
+      "sha256": "2cd97b437e28b9e17b6030429db6bbcfb23428d59950b21e725ec645ba245577"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/invariant.ts",
+      "sha256": "95667f2092b28b5e62a4bfcdd910a0e712ff1b71ce97bd20b79b1bab3be12753"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/journal.ts",
+      "sha256": "2b046d6ff7d759ccd96c996b63dfc9b43aef974e69aedc132c3272ee18911b00"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/lifecycle.ts",
+      "sha256": "763a3afe65dd3fc762b1a6b9aad0909b30751c7b3908c453c92f0d708674f8ac"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/mailbox.ts",
+      "sha256": "30dbcc2ed5e9af1379dd2328148f0139ba7d44cd5f00bf036245d1fb15f44c1a"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/member-binders.ts",
+      "sha256": "9c202cf04e1a588a2ecc4426ef620c4fab0b9f381ccbf56e97144b25907c5eda"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/member-binding.ts",
+      "sha256": "e58fe1ea3c02f99a43544f62319985a32651cef6ad9dcb6ea72b440474d459a0"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/mission-board.ts",
+      "sha256": "5edc76c4b4cfca7185c646b62fc2f789003a03050062deec76751ab7c8323033"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/mission-plan.ts",
+      "sha256": "625bcb7a9b2e5113291adb73f81dc70a6294637ed2531f06d0588d4531b4d029"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/persisted.ts",
+      "sha256": "382fe7cab52e47100a798307300d649c506536d6bbe0ac89025e6c41abe4ec87"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/projection.ts",
+      "sha256": "1255829d060fae3c0d8f82af11e8ea7fd852048ac5996732c6809fcbb5e425ec"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/roster.ts",
+      "sha256": "f41577261e78c3fd6ed06a4fa23a4835796f2881151f548839e464488f16e14b"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/session-message.ts",
+      "sha256": "c74ef1d18667d0f221bafd726d8332e682778f06cf43b1ce13d174e5a843cf10"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/task-board.ts",
+      "sha256": "6a2c74c7a360ee0747a666226c708b1b45c4ee599f9a10a0f7d816c9c72e094f"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/task-graph.ts",
+      "sha256": "a726081289a2f7a848f69109a750db3ead0d95b88ab0adfdae0477f749b8f490"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/types.ts",
+      "sha256": "0076d8ef6204c7f95a79ed284c7dd730ef3ab296cfc474a5222d03a0dd77e490"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/validation.ts",
+      "sha256": "eb0668e8096ce9ca294b7d787f974d27e896329bb0b4c547cb4d6bd7e42ee44b"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/work-state.ts",
+      "sha256": "1e5d26383684f5fd41633ea15ecad161b0bb7ba694834fe72a29b3821c0bbcdb"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "sha256": "d806b302834485514b756290c229d623a45dde8ee4610a03f4296a4adcc5f19e"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/authorized-team-fixture.ts",
+      "sha256": "fa3283c946b0e9b1dc77dfbb37c3a99e3104ef1a9624489659684fba7357a9a9"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/binding-enable.spec.ts",
+      "sha256": "b77a8b728a3287cb6fcf4dacc47478fe8ce025678e12e02dd260d2befbb796a1"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/built-lib.e2e.ts",
+      "sha256": "d6553aaf203d46f01d7b8672e51fb43bb2b32fe4f9c3d01e994b4275608d0525"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/human-control-fixture.ts",
+      "sha256": "c499351f324619bbf068c2dc8e057f56299ca52a2549fa3c2627cefa50e95a3d"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/invariant.spec.ts",
+      "sha256": "15905991fba1d95ef01e29459542d3f4eb13278978c78be126d0c48fd89291e2"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "sha256": "f582e773344dbcf60048af2601b9e01231ad0cb05bf65ed4532d176918160b76"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "sha256": "6278825cdca961d9155065206a5d646e99a52e26dfddb95a64660b408b392eac"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/member-replay.spec.ts",
+      "sha256": "55eeb4cf816e869c81305a0903f07ea6cc78408e98cadebde71efab9bec34150"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/persistence.spec.ts",
+      "sha256": "2a29cff185af0650172d82e8f08ab3ba657b9d5753111be28347f041bcc07be7"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/projection-events.spec.ts",
+      "sha256": "336aa4ebecdeab1a98747670f45502a1fb6321bb672a871e5c5d941e9cbe8210"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/team.spec.ts",
+      "sha256": "38a1f629a7ca340905d45b4773390e69a8f57cb643879572030f201ba53c03fc"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/test-session-query.ts",
+      "sha256": "7ea5a954b40909339e2f0d2e8106aae4df5a6220035c465ec7c1ce7f407dc757"
+    },
+    {
+      "path": "packages/experimental/gat-core/tsconfig.json",
+      "sha256": "ad16adc4cf9f96d89870bf8a5a4a289f5260673836b44915754d3dcd38c442eb"
+    },
+    {
+      "path": "packages/experimental/gat-core/tsdown.config.ts",
+      "sha256": "38329836c05c3470c93e7c03491bf385504118e5c3245a9eba8e1e43df5c1255"
+    },
+    {
+      "path": "packages/experimental/gat-profile/README.i18n.yaml",
+      "sha256": "354bcf5bbcf9dff1488a6d825295e00b33ee78b81f7332298c5653088d5db226"
+    },
+    {
+      "path": "packages/experimental/gat-profile/README.md",
+      "sha256": "93cca1d8b7d7c4f0976a4eb8099f2a2630ed102a0c27b39f408c403305064bf0"
+    },
+    {
+      "path": "packages/experimental/gat-profile/README.zh.md",
+      "sha256": "015f44436b8c7db24ca6224255a39ab85a8f8bcc3e44e9fbb7b4df8c242b9c48"
+    },
+    {
+      "path": "packages/experimental/gat-profile/cordis.patch.yml",
+      "sha256": "d3238c2a7b54173f78918b23023b2a2d2344113d247b82f5ee7c5176c874f2aa"
+    },
+    {
+      "path": "packages/experimental/gat-profile/package.json",
+      "sha256": "e60eea495c50b0ca434d358833b84753918cdcbfa264d69073282546b444e6d5"
+    },
+    {
+      "path": "packages/experimental/gat-profile/src/index.ts",
+      "sha256": "29c12b32b6ed5a81a0519f638b05e3f4b533948372719ed99a823c6038328dc2"
+    },
+    {
+      "path": "packages/experimental/gat-profile/tests/fixtures/keyless-base.yml",
+      "sha256": "ecd6310af636b83fe5f9cff82babd4d778b53696d9ad7d22210875602f5e2b06"
+    },
+    {
+      "path": "packages/experimental/gat-profile/tests/profile.spec.ts",
+      "sha256": "8c6ae453b436eca23882b0d45ad2bc8b216502a6f62681d2359c77a236c9fd3e"
+    },
+    {
+      "path": "packages/experimental/gat-profile/tsconfig.json",
+      "sha256": "72830ce4949b7e2f4c7137c3d9e331b059dd2e0196417d555a1b47fdf622a245"
+    },
+    {
+      "path": "packages/experimental/gat-tools/README.i18n.yaml",
+      "sha256": "f0a96288a627448a98e4b11344f370c1f3e1ee58886a001aef6af6da6b6d813d"
+    },
+    {
+      "path": "packages/experimental/gat-tools/README.md",
+      "sha256": "b6e9ad7d6f87d39b8cab89a1edd5d21b965519b2378a304588feb08929059ae1"
+    },
+    {
+      "path": "packages/experimental/gat-tools/README.zh.md",
+      "sha256": "32d9f30720413e7cd037d71fea337a29b7971ad3c3516fdd0d35e896299dc823"
+    },
+    {
+      "path": "packages/experimental/gat-tools/package.json",
+      "sha256": "ab001f645b76e035fe420a401f30eb1793cfde6684c7d31c219d39f1471b23df"
+    },
+    {
+      "path": "packages/experimental/gat-tools/src/index.ts",
+      "sha256": "b134eec6087435fd732287b62792d05a1e088053a4215b84eea77e841f028a66"
+    },
+    {
+      "path": "packages/experimental/gat-tools/src/team-config.ts",
+      "sha256": "544234653dbd6abd8b9e2fcea30fc82600c9707254368b3d9cadcc641378d413"
+    },
+    {
+      "path": "packages/experimental/gat-tools/tests/authorization-matrix.spec.ts",
+      "sha256": "f3668acef9eff719c3ad7f7f75797b44022a621e0994fc0bc67ca450d4b10c18"
+    },
+    {
+      "path": "packages/experimental/gat-tools/tests/binding-views.spec.ts",
+      "sha256": "995d128705740915e0961a7a9ad421527462c1082913096d1a198c83a7b48179"
+    },
+    {
+      "path": "packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts",
+      "sha256": "cd99f2f2958d1964fa43bfc3c8c67f18f3c654ed0b65b6ac748e0c4d984e2850"
+    },
+    {
+      "path": "packages/experimental/gat-tools/tests/team-config.spec.ts",
+      "sha256": "a2b2b38caa88344528ca59a5cf4d68d59697d1d3e6b4069d20d19f60a8bccdf6"
+    },
+    {
+      "path": "packages/experimental/gat-tools/tests/tool-team.spec.ts",
+      "sha256": "2ea65a30248306c38f6330eee9557019c20d37d2d82fa5173dba0c886640a634"
+    },
+    {
+      "path": "packages/experimental/gat-tools/tsconfig.json",
+      "sha256": "07641b119f47f4e802bf9ddbfbdd12ccd7c6d22663e1d1f64a964fce07f19c7e"
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/README.i18n.yaml",
+      "sha256": "3c5be626415f06d63b25a1ee782fb0028aa764b5274d14e7e3dc3bf06f1d6b07"
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/README.md",
+      "sha256": "85c5bf033eb29a027f4f18c5c24af2127e69f15310e510d85c3a2d190a17baf6"
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/README.zh.md",
+      "sha256": "b90cbec7b053ac8730e1a500ec7e2923d1e96ba316d0cca2a93d07952ae2e5d1"
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/cordis.patch.yml",
+      "sha256": "3b477314736c4c20d15d72c6ce2b771fa28f3edd19971fe950c2227c6f800bf4"
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/package.json",
+      "sha256": "20c66a6deb5e590e4fb60b7763f94e54e8778e07e7a39c923cae181469c223c0"
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/src/index.ts",
+      "sha256": "8d0c616a95db9384f5697a1da9c7288c4342d8240d62bd60ffb3501a8ef58b93"
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/tests/profile.spec.ts",
+      "sha256": "50889d3d5df9fa9477a3d5f5ffb7a509d13ddada62c5ec9a17458c7d0fe7e7f1"
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/tsconfig.json",
+      "sha256": "90739a00530a4bc2f44a4e447e823dfb113bcd6ee0ee6748e9f48345f66c7a95"
+    },
+    {
+      "path": "packages/experimental/gat-web/README.i18n.yaml",
+      "sha256": "675508208040af80d0991978ee5f844218184cdd620b4f592869f5fde38ae618"
+    },
+    {
+      "path": "packages/experimental/gat-web/README.md",
+      "sha256": "38f94ba3f038532d363ecb501de0dd74634d7633c20d8314bebd3c9b17b5974d"
+    },
+    {
+      "path": "packages/experimental/gat-web/README.zh.md",
+      "sha256": "187900dc437193a927cb99667f258caa37397d868203ca0211522effa3a5da89"
+    },
+    {
+      "path": "packages/experimental/gat-web/package.json",
+      "sha256": "8320114137ad8ab240e7467d3545c7f3377fea7b922d90f1d776d1facc614fd5"
+    },
+    {
+      "path": "packages/experimental/gat-web/src/client/TeamAction.module.css",
+      "sha256": "1bef36132464f30e4730e5dfb934d8a255334c3b0eb89ad68cc22930e764239b"
+    },
+    {
+      "path": "packages/experimental/gat-web/src/client/TeamAction.tsx",
+      "sha256": "d2285b5a428a4ae84993ed300a0da349a4215dd3f04898b0472bdd8b398a80d7"
+    },
+    {
+      "path": "packages/experimental/gat-web/src/client/index.ts",
+      "sha256": "c62df96466421c75347c35a1bbdf935583be21a9b75c241597e268cfd6a4a9a4"
+    },
+    {
+      "path": "packages/experimental/gat-web/src/client/locales.ts",
+      "sha256": "df58587f82a9fe751274f90023aba15c66c92a5d86088f357c4a77e9b46598f9"
+    },
+    {
+      "path": "packages/experimental/gat-web/src/client/mount.ts",
+      "sha256": "bd970c155e2546cca7af2ea855f57bfc6e83192ba7b766df12a64da59df0f03f"
+    },
+    {
+      "path": "packages/experimental/gat-web/src/css-modules.d.ts",
+      "sha256": "e28410d74a0d763364c04fa690c2ca2202ad3019c74f8f5205e8dc6cba69c02f"
+    },
+    {
+      "path": "packages/experimental/gat-web/src/index.ts",
+      "sha256": "1eff6fe14f46d1807a21f73ee698ecd73407b27c3d84edbaec9697bd56ce94df"
+    },
+    {
+      "path": "packages/experimental/gat-web/tests/browser-plugin.client.spec.ts",
+      "sha256": "ac96ce8f4ac507691c749da446fa9f7a7690c7ab096e550e02a8e21b03350689"
+    },
+    {
+      "path": "packages/experimental/gat-web/tests/team-action.client.spec.tsx",
+      "sha256": "dbc95423f603a45b5361fbcb9a7e7ce5efdd90c5149c619a8cbfb82bc989148b"
+    },
+    {
+      "path": "packages/experimental/gat-web/tsconfig.json",
+      "sha256": "3a4009bcf6803fa6be54e4bbd71f486cd207e5c9ccedcd3a9e5515e420061444"
+    },
+    {
+      "path": "packages/experimental/gat-web/tsdown.config.ts",
+      "sha256": "f99eb1ceab31deb9709085d35cc4fc4c1d9b3b5891f66d6e1c2e17863718f914"
+    },
+    {
+      "path": "packages/experimental/tool-agent-team/README.i18n.yaml",
+      "sha256": "8b7532536841e27fee87848c7edfe19e98569c0b6db435e54bce0d5f9cd9d125"
+    },
+    {
+      "path": "packages/experimental/tool-agent-team/README.md",
+      "sha256": "c04c3f24b2bd433b40bafac78bf1126addf92852fedf5750f73985a7cd202772"
+    },
+    {
+      "path": "packages/experimental/tool-agent-team/README.zh.md",
+      "sha256": "ca36e4d364c50ef76572fd1a209cbd0d381481155be42a5fc394ad5ca655e810"
+    },
+    {
+      "path": "packages/extensions/cordis-client-runner/src/client/slot-catalog.ts",
+      "sha256": "d9d62c92855596154d6d8f55309d72696bf950688d9d6acf3072277b754a0822"
+    },
+    {
+      "path": "packages/extensions/tool-cordis/src/api-catalog.ts",
+      "sha256": "5daf0e0ec6da072e2112275a3aaf8161aedae73be3a4f698b9869f7079a0eb2b"
+    },
+    {
+      "path": "packages/fs/tool-fs-search/README.i18n.yaml",
+      "sha256": "7d5cd25f7e3366867707daabbb3dad50c459fffe237b65af3c0f99a68574c94e"
+    },
+    {
+      "path": "packages/fs/tool-fs-search/README.md",
+      "sha256": "e7a21cfa0885a606ed5c68947a0c67059c0530a631fef88a0a27e694072a6452"
+    },
+    {
+      "path": "packages/fs/tool-fs-search/README.zh.md",
+      "sha256": "175c9e5229949ec86500789a594cda9e7e04f901a11d0a74646222e67bb5e1b0"
+    },
+    {
+      "path": "packages/fs/tool-fs-search/package.json",
+      "sha256": "b349d63bc37979dd23232be49b91ee1da33c0b64bdcfe6934d186f10a0be079f"
+    },
+    {
+      "path": "packages/fs/tool-fs-search/src/glob.ts",
+      "sha256": "44952ad565c507f803aaa5b945de5dbf5551661a26b92c32381c3d554de4fe7a"
+    },
+    {
+      "path": "packages/fs/tool-fs-search/src/grep.ts",
+      "sha256": "32818488ef0dcf7724c87b34768329090a0388cb0d34c7e6ad134ed5468bd400"
+    },
+    {
+      "path": "packages/fs/tool-fs-search/tests/tools.spec.ts",
+      "sha256": "a76b12bdfacf66e81b0be5a3fc295f32d1c358e3f5f8067ba4b004aa278d1147"
+    },
+    {
+      "path": "packages/fs/tool-fs-search/tsconfig.json",
+      "sha256": "651b7935ecef20a59891d16aca3450ca1165ee3a98400fe2591691adf48a7fe2"
+    },
+    {
+      "path": "packages/shell/shell-env/tests/shell-env.spec.ts",
+      "sha256": "e852a77029a92260cd34a61b580ed0f71cfa80e53991ed6442a1d96c37105f3b"
+    },
+    {
+      "path": "packages/spill/spill-policy/tests/spill-policy.spec.ts",
+      "sha256": "26462d899bc1b77e55ad3608087c3deed79c1ba248b1c271ec7376d3246fc1a2"
+    },
+    {
+      "path": "packages/subagent/subagent/README.i18n.yaml",
+      "sha256": "18ce619af1774538cba839a57beaa86f793bcaf336953720036929cefa363793"
+    },
+    {
+      "path": "packages/subagent/subagent/README.md",
+      "sha256": "a3be4f2279485dd4ade3c2702b23aa67e73c9b97d9575e3a32e0ec17a403bea6"
+    },
+    {
+      "path": "packages/subagent/subagent/README.zh.md",
+      "sha256": "a0f3cc6243ab4e26b92faaed4ca6ad4b86ed0d2242dc189cd19615d28bb4355b"
+    },
+    {
+      "path": "packages/subagent/subagent/src/continuation-activation.ts",
+      "sha256": "1c80141ebdfebbc0465dc04ea7f444e170a076df9fc53a1fcdbbf55b5a9bd7df"
+    },
+    {
+      "path": "packages/subagent/subagent/src/continuation.ts",
+      "sha256": "1975cc34b307d81e0878a34ba06814fbb7511c36f7e33062d815f9d2ec2cae79"
+    },
+    {
+      "path": "packages/subagent/subagent/src/index.ts",
+      "sha256": "93ac02c618f1cca9c18a04fbe606dae0b8f95b5f22fef61e3547a256d5a9a477"
+    },
+    {
+      "path": "packages/subagent/subagent/src/internal.ts",
+      "sha256": "ada13e6d465304f5bef5fc88db5d2d6cfb43ec4dd743754ee0a46571e6f34f23"
+    },
+    {
+      "path": "packages/subagent/subagent/src/reserved.ts",
+      "sha256": "e23d9488888c9df5b8cbf3705663782687989862538bb9d1e69996bc7075e595"
+    },
+    {
+      "path": "packages/subagent/subagent/src/types.ts",
+      "sha256": "f7f90b1a3f7d2639f6da183449927d6c02d5bc14fdb069dc47ebc416ec4fe226"
+    },
+    {
+      "path": "packages/subagent/subagent/tests/continuation.spec.ts",
+      "sha256": "4eba565931245d445ff19db5d155d10cc4db4ae927b0b0160b7a2025ff917487"
+    },
+    {
+      "path": "packages/subagent/subagent/tests/reserved.spec.ts",
+      "sha256": "0568b8082b1550d17ccb42ac9c3e53ad804545026bc36887fa3585a7dc2ef47d"
+    },
+    {
+      "path": "packages/subagent/tool-subagent/README.i18n.yaml",
+      "sha256": "3b6654379b388bd20ebbfca9850dfe1505545cdb2749cda4581bf867103bb0a5"
+    },
+    {
+      "path": "packages/subagent/tool-subagent/README.md",
+      "sha256": "09efa5392ac4f30504ffa73860ae12d82a6e96ea3aafaec0bf53d23b9fd21d16"
+    },
+    {
+      "path": "packages/subagent/tool-subagent/README.zh.md",
+      "sha256": "b573bf4fac00c5c69202a9dc54c2ef9cb557f27598fc3c36bf0ade509c0c0c27"
+    },
+    {
+      "path": "packages/subagent/tool-subagent/src/index.ts",
+      "sha256": "930da0f08cc20c9cd4eef5174e8dc7a87bac1e4c5a13d514d60f625fc6d6c469"
+    },
+    {
+      "path": "packages/subagent/tool-subagent/tests/tool-subagent.spec.ts",
+      "sha256": "2736614391348e58917a0e7665f250e0fae8a65dd10ef60e32baf838c518e60a"
+    },
+    {
+      "path": "packages/workflow/tool-ralph/README.i18n.yaml",
+      "sha256": "ed9b197b480670184bc785012584e87aae6ac4e8b5caee81e38383a9fa63f341"
+    },
+    {
+      "path": "packages/workflow/tool-ralph/README.md",
+      "sha256": "aa2c5c168e28e4c6879a53b40c6b76bfca37ef80bfd6468be02f5644c57de63a"
+    },
+    {
+      "path": "packages/workflow/tool-ralph/README.zh.md",
+      "sha256": "4cb732af19abe94553a9e955b86ac285c81565ca4f2ae3ba500cdda149d8ec89"
+    },
+    {
+      "path": "packages/workflow/tool-ralph/src/index.ts",
+      "sha256": "39918d5cee41bcaa77ae80d7cd16677a96fcc480c4398ab755f52b8a63843076"
+    },
+    {
+      "path": "packages/workflow/tool-ralph/tests/tool-ralph.spec.ts",
+      "sha256": "f04da7632825e253601d473b7b41341e31994bdfb4135516204abb0b6b4080ea"
+    },
+    {
+      "path": "packages/workflow/tool-workflow/README.i18n.yaml",
+      "sha256": "7788aac7b0131011c1ddda2439517b25c3c9b1e9c44b0db47436bafb114a3238"
+    },
+    {
+      "path": "packages/workflow/tool-workflow/README.md",
+      "sha256": "149b272810d57a80e11eb0cb1602238720aa8ba10d79bed15d219993b59454e5"
+    },
+    {
+      "path": "packages/workflow/tool-workflow/README.zh.md",
+      "sha256": "e25712cd44ee54bd4ade2cc6a2b72a052dfac5ece49f8edeb42196a83d29880c"
+    },
+    {
+      "path": "packages/workflow/tool-workflow/src/index.ts",
+      "sha256": "4b18eb25869adaed80531b1dac4271d2bb6b9501d48c51c27c02ff0bda2a90ef"
+    },
+    {
+      "path": "packages/workflow/tool-workflow/tests/tool-workflow.spec.ts",
+      "sha256": "21f9ab8cbb4b34faa4423520835a106b0a00891cefd25c2e240e88f127516314"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "d677464302dd8e659c1bd6e764143f5571a63f06f8972b3a252c5bfab5b4e6a7"
+    },
+    {
+      "path": "scripts/catalog-source-files.spec.ts",
+      "sha256": "ebcac15488448d4303d0b3a96e3b10a8ee609a69001774df4f4ff986e0b2cfbd"
+    },
+    {
+      "path": "scripts/catalog-source-files.ts",
+      "sha256": "49401a399242d68652583a8cdbf806af1224bb56b577e4b7e012d79e4ac70b0b"
+    },
+    {
+      "path": "scripts/cordis-walk.ts",
+      "sha256": "a4e2b1e3c8c3d31b04138fef664397d0d61ae98d13eae492e42985291b21605e"
+    },
+    {
+      "path": "scripts/fixtures/sdk-request-refresh.mjs",
+      "sha256": "153be4b0f9bf8fa64429f546a31ceaf9174fef74c0f0a6adfaee0c3696906891"
+    },
+    {
+      "path": "scripts/gen-cordis-catalog.ts",
+      "sha256": "9996bc99b05b93f864f095a70db1f0e93a18e3273014737c3604bf86a5f71e9e"
+    },
+    {
+      "path": "scripts/gen-persistence-catalog.ts",
+      "sha256": "5da52c67328be5974492ee617c1708e7496755f05a4f2f0c8d4c6d4c08788306"
+    },
+    {
+      "path": "scripts/gen-tool-catalog.ts",
+      "sha256": "66a1fb6171a4b946f6d167a347428b735a281b7ceaa8a7be495c8f74c6e34798"
+    },
+    {
+      "path": "scripts/slot-walk.ts",
+      "sha256": "d3c878be497664aa5acff4826e686ea6bd6e865a17867c0c9298ba69f7dbe369"
+    },
+    {
+      "path": "scripts/smoke-python-runtime.py",
+      "sha256": "bb23789497896132100c51a2e97267a26a457891f96e3c788ff46e6c6289e9f2"
+    },
+    {
+      "path": "scripts/snapshots/python-sdk-single-exe/request-refresh/prompt-history.json",
+      "sha256": "c7f4f7d4231faa05aec5fa686e0a4aaca7f98bba6032f5a3028ee8d725ace166"
+    },
+    {
+      "path": "scripts/verify-package-readme-model-experience.ts",
+      "sha256": "4725d5ae23a6e0fdadef772d42518401e64440cc07247dc566a8f5f87203cb51"
+    },
+    {
+      "path": "snapshots/sdk/request-refresh/cordis.snapshot.yml",
+      "sha256": "5f5ab42cf9f6f9a09e94b925f00b0552d3fac0094fb5fd252973575c3770ad48"
+    },
+    {
+      "path": "snapshots/sdk/request-refresh/cordis.yml",
+      "sha256": "330cb0d845e3c812bf0b70dbebdd291557383e01906348c1f53b427672b4f661"
+    },
+    {
+      "path": "snapshots/sdk/request-refresh/notifications.expected.jsonl",
+      "sha256": "cbffa260da045803bd6084901ee88e0fa16930cb91a1c40e8f1291b5649a08fa"
+    },
+    {
+      "path": "snapshots/sdk/request-refresh/replay.override.json",
+      "sha256": "1b76e65dc8dc4db59650f618679eb61e460061ba908350496d79945ff31c4673"
+    },
+    {
+      "path": "snapshots/sdk/request-refresh/result.expected.json",
+      "sha256": "14f5e13da68f0265080e3e919e4a3b6c12c37e62893af0b7560657de4d9cca44"
+    },
+    {
+      "path": "snapshots/sdk/request-refresh/session.v3.jsonl",
+      "sha256": "dc57121d023808a84b91b2f201362c76d169011889162ab72a7c69759b76da2b"
+    },
+    {
+      "path": "snapshots/sdk/request-refresh/snapshot.yml",
+      "sha256": "cfa325b9460462ce46100116cc0eb15e0f2a400e326938ec8bcc101a376e672d"
+    },
+    {
+      "path": "snapshots/sdk/request-refresh/system-prompt.expected.md",
+      "sha256": "22ced80981d0844a4b6e58ada9a4ebd84897b563843363d730f4c8e7a880f2c2"
+    },
+    {
+      "path": "snapshots/sdk/request-refresh/tool-schemas.expected.json",
+      "sha256": "d08364139fff6f02c80cf904036513fcb3a0f7e7149aef7f968b0bac4215d206"
+    },
+    {
+      "path": "snapshots/sdk/request-refresh/workspace/task.txt",
+      "sha256": "c7d267537620bb2b588e2a299246ba73c81ab42494cd5c32116dd1115036fe5a"
+    },
+    {
+      "path": "snapshots/sdk/sdk.snapshot.ts",
+      "sha256": "5dead1ebeba479a71640b6d7936f75ac7638a33de9dde79e0c361b1f55fe1f6e"
+    },
+    {
+      "path": "snapshots/sdk/subagent-continuable-inheritance/session.1.v3.jsonl",
+      "sha256": "c979d536f3a0d8671c0edb60a5986b86a5625787e15d150dc83c7bc8d03158fc"
+    },
+    {
+      "path": "snapshots/sdk/subagent-continuable/session.1.v3.jsonl",
+      "sha256": "b28ef2ccc998bb4a1ade70cfbbedd257485b16abf9c0da840f5209c11f458825"
+    },
+    {
+      "path": "snapshots/sdk/subagent-list-agents/session.1.v3.jsonl",
+      "sha256": "945d98121d7862dbcca14cb1d530375e20fb74b44c64d6f526682e760b398be0"
+    },
+    {
+      "path": "snapshots/sdk/subagent-send-message/session.1.v3.jsonl",
+      "sha256": "03dcdb5eba1badee7a87056f5860e9a1196ec4bc0540f79179d996641b61bee8"
+    },
+    {
+      "path": "tsconfig.base.json",
+      "sha256": "fe4ad7dbfac9e2a63d949c7cbaebd2408d5358995dc64c7417bf4e341fc3d0ec"
+    },
+    {
+      "path": "tsconfig.client.json",
+      "sha256": "a00ac2d3dfa7c8e2327e5ed546aa23cc1b93711337595c68da5d5841f899a43e"
+    },
+    {
+      "path": "tsconfig.host.json",
+      "sha256": "9746376e2d824469270ee116f198338a2694fbb239fa3fd77aadbab8a0fa7629"
+    },
+    {
+      "path": "tsdown.config.ts",
+      "sha256": "2d73c3865d14956da26b169923b669cba26091ec51886fe7e0190ff6a60f7f50"
+    }
+  ],
+  "capturedHostDeltaPaths": [
+    "apps/web/tests/gat-agent-team-panel.e2e.ts",
+    "apps/web/tests/snapshots/gat-agent-team-panel/task.expected.md",
+    "docs/config-catalog.i18n.yaml",
+    "docs/config-catalog.md",
+    "docs/config-catalog.zh.md",
+    "docs/event-producer-consumer.i18n.yaml",
+    "docs/event-producer-consumer.md",
+    "docs/event-producer-consumer.zh.md",
+    "docs/subsystems/agent-team.i18n.yaml",
+    "docs/subsystems/agent-team.md",
+    "docs/subsystems/agent-team.zh.md",
+    "packages/api/gateway/README.i18n.yaml",
+    "packages/api/gateway/README.md",
+    "packages/api/gateway/README.zh.md",
+    "packages/api/gateway/package.json",
+    "packages/api/gateway/src/index.ts",
+    "packages/client/connection/src/rpc-host.ts",
+    "packages/experimental/gat-core/README.i18n.yaml",
+    "packages/experimental/gat-core/README.md",
+    "packages/experimental/gat-core/README.zh.md",
+    "packages/experimental/gat-core/package.json",
+    "packages/experimental/gat-core/src/binding-deadline.ts",
+    "packages/experimental/gat-core/src/index.ts",
+    "packages/experimental/gat-core/src/mailbox.ts",
+    "packages/experimental/gat-core/src/member-binders.ts",
+    "packages/experimental/gat-core/src/member-binding.ts",
+    "packages/experimental/gat-core/src/roster.ts",
+    "packages/experimental/gat-core/tests/authority.spec.ts",
+    "packages/experimental/gat-core/tests/built-lib.e2e.ts",
+    "packages/experimental/gat-core/tests/human-control-fixture.ts",
+    "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+    "packages/experimental/gat-core/tests/member-binding.spec.ts",
+    "packages/experimental/gat-core/tests/member-replay.spec.ts",
+    "packages/experimental/gat-core/tsconfig.json",
+    "packages/experimental/gat-tools/README.i18n.yaml",
+    "packages/experimental/gat-tools/README.md",
+    "packages/experimental/gat-tools/README.zh.md",
+    "packages/experimental/gat-tools/src/index.ts",
+    "packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts",
+    "packages/extensions/tool-cordis/src/api-catalog.ts",
+    "pnpm-lock.yaml",
+    "scripts/gen-cordis-catalog.ts",
+    "tsconfig.base.json",
+    "tsconfig.host.json",
+    "tsdown.config.ts"
+  ],
+  "installedDocumentationOverrides": [
+    "packages/experimental/gat-core/README.md",
+    "packages/experimental/gat-core/README.zh.md",
+    "packages/experimental/gat-core/README.i18n.yaml",
+    "packages/experimental/gat-tools/README.md",
+    "packages/experimental/gat-tools/README.zh.md",
+    "packages/experimental/gat-tools/README.i18n.yaml"
+  ],
+  "hostFiles": [
+    {
+      "path": "apps/web/tests/gat-agent-team-panel.e2e.ts",
+      "mode": "0644",
+      "beforeSha256": "e072cf07243f040dc317eb8027f4672302c1698c602dfa4015190c1b8213f6b2",
+      "afterSha256": "6c1e2a631e970a39afc8c0bc7f6247f8f862a245bfee2349ef6d4fa28da05743"
+    },
+    {
+      "path": "apps/web/tests/snapshots/gat-agent-team-panel/task.expected.md",
+      "mode": "0644",
+      "beforeSha256": "9fbe10ceef08bc84bd11f920fed11034363562c3aca6d5f3a5019db47bdd128a",
+      "afterSha256": "1ad96db08eea2907cfa0c4447430f2a1563b14b9da5ad6f02c597f8179bd9460"
+    },
+    {
+      "path": "docs/config-catalog.i18n.yaml",
+      "mode": "0664",
+      "beforeSha256": "6f84d78317a8bce9516f816f25f583d274ac55f14138b473fd6321c19289f428",
+      "afterSha256": "b0f24e56122baee3b03e3e9130be2f8a0abbc7d69afe213baa0be9857ef6cab9"
+    },
+    {
+      "path": "docs/config-catalog.md",
+      "mode": "0664",
+      "beforeSha256": "e7c31043060effc4d0e1d69b208525aeb3527a1161a460e565c3a852706ab733",
+      "afterSha256": "f30d546da7408d8f86245964db3eab85b3d96e780d9fdf88d4f9e63f45d6621f"
+    },
+    {
+      "path": "docs/config-catalog.zh.md",
+      "mode": "0664",
+      "beforeSha256": "dcb07bddc06b1f9102b0ce44db0df547e54cdb3f5946e25d490701fcb6ae0fed",
+      "afterSha256": "3baf9862999fa04d9bf5205ca4c2a3ffe2a10a93445ad3e57c53160831dbf95b"
+    },
+    {
+      "path": "docs/event-producer-consumer.i18n.yaml",
+      "mode": "0664",
+      "beforeSha256": "1431c253763a1ca947416c4583224f06905dc68c151ab0f16ee88ffda6e02ac0",
+      "afterSha256": "529a6ad0a4e9046c7b49f489b6360b460b719e17bb6b63030934472701899e69"
+    },
+    {
+      "path": "docs/event-producer-consumer.md",
+      "mode": "0664",
+      "beforeSha256": "12cc522a1acda0dc13760348ad5c016632c37af5eb780bdffc0e28665471ef47",
+      "afterSha256": "2fc8870027f7fc1382e73564eda0ed98233d1a837afb752acaf2523b597c4a70"
+    },
+    {
+      "path": "docs/event-producer-consumer.zh.md",
+      "mode": "0664",
+      "beforeSha256": "50af201d0809cb7853324726c53568381609d795d9e0ddf7b9073c8d3d400f78",
+      "afterSha256": "72367b7379ae15e3ed85bf5244fbf475fd8803285d931cb9e57b63d07301490d"
+    },
+    {
+      "path": "docs/subsystems/agent-team.i18n.yaml",
+      "mode": "0664",
+      "beforeSha256": "4c48f2cc99ebc85280e82956be9174dc6d95e42fb773772c56a1dbe89b6e5783",
+      "afterSha256": "cdc3cd541db50ceb28e12a0a27ade337ee9d6a9d363ab6c675ee49d166a78ea6"
+    },
+    {
+      "path": "docs/subsystems/agent-team.md",
+      "mode": "0664",
+      "beforeSha256": "c2f0e7db3d22e369304440930e4faac916e3e858c046b5809898334b8589337a",
+      "afterSha256": "41b1aecbae134b5e0a72c0ad08ea27a23d682c0469b52a5987c3e4c6f16b2300"
+    },
+    {
+      "path": "docs/subsystems/agent-team.zh.md",
+      "mode": "0664",
+      "beforeSha256": "1754fe6fef4f2d690efa902f95124a8b1b1569cf30f8dee9ffceee5937ccee65",
+      "afterSha256": "f8afd45804764866616f7a494af30515fba7ae7fffc0476d4e9e11053fca592c"
+    },
+    {
+      "path": "packages/api/gateway/package.json",
+      "mode": "0664",
+      "beforeSha256": "b9227652ca45dcaaf83865a1b291d0fecad6a494e0541ede8645f1bf08add652",
+      "afterSha256": "43eb05c8fe70a8f6ba0f3ea2231ae45a6ad80fb933c87b2b2e9d1f7b3bb9aeb6"
+    },
+    {
+      "path": "packages/api/gateway/README.i18n.yaml",
+      "mode": "0664",
+      "beforeSha256": "4c1e5a6036a7521a89850a1d5a18b228ca2c93ada3879c2ab18639cb877b7a1d",
+      "afterSha256": "9643f2d774f4982a70397a5f534d0313976f71143fc6d938c5c2af39d3a97e33"
+    },
+    {
+      "path": "packages/api/gateway/README.md",
+      "mode": "0664",
+      "beforeSha256": "ce819300ef8c41c42aba83e0a54a8bccd2295baed211a254b12c4c4828951f7a",
+      "afterSha256": "ca5ddd55aa8e965152537dd1d545224db360a98bfe9802435e99412b7ea3b12f"
+    },
+    {
+      "path": "packages/api/gateway/README.zh.md",
+      "mode": "0664",
+      "beforeSha256": "5e7baed2915eaf57d1f6f022d076bfce9582d652dbc1e858d313babb91aff278",
+      "afterSha256": "6b8413c4857abd74fab2f052a232a3db74364a1cbd4cb882b8e4aa9460ece7d1"
+    },
+    {
+      "path": "packages/api/gateway/src/index.ts",
+      "mode": "0664",
+      "beforeSha256": "465ec00cd70de3661670696627b834428958440910e79c2d2c9395f96e06438c",
+      "afterSha256": "da0d1fa76e4acc0d5371298c0ec385b44880befb93d2ce0dfe84b9eae411e248"
+    },
+    {
+      "path": "packages/client/connection/src/rpc-host.ts",
+      "mode": "0664",
+      "beforeSha256": "cd6e44981accc19089eb3350f50eebcd39992ab2530272c32d94bdff322b9d91",
+      "afterSha256": "4f2c3e055a4c7de7703e7ed2f5b1a40f47ca6b9ad2f7755529f4efe9eef51d83"
+    },
+    {
+      "path": "packages/experimental/gat-core/package.json",
+      "mode": "0664",
+      "beforeSha256": "f1ef81b5bb6385a329fafc52cfb41fc441a7710f6c80d8d3d860ca2c71b43bb0",
+      "afterSha256": "382e0e117aa628fc4c652e168d0b5af46cb3e3b7bd38e32b1756353bd4ad91bd"
+    },
+    {
+      "path": "packages/experimental/gat-core/README.i18n.yaml",
+      "mode": "0664",
+      "beforeSha256": "55f570627945b4703b66fe025bb18fbeabca5098828937b7740c29bcff799e88",
+      "afterSha256": "2409996d351f8ef308d2a862df30809e8f916bcaf83361b4222508cd1824f92c"
+    },
+    {
+      "path": "packages/experimental/gat-core/README.md",
+      "mode": "0664",
+      "beforeSha256": "bb8d4a5eba271ae88d81880ce3415c307a88f232461451a51e1226dc93c99391",
+      "afterSha256": "ce9621261a920a94cc34e41e37a420efa9195704c3d51c6810898c215b031570"
+    },
+    {
+      "path": "packages/experimental/gat-core/README.zh.md",
+      "mode": "0664",
+      "beforeSha256": "6db8e0bbf37397bfdec5bcfd60cee66ffa750bbf53bd7ec0f84ddaef0c37ce2e",
+      "afterSha256": "740170116999ff0862d95159bca05c4ee3a5977254085aa77ecc4f9702fdb4a1"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/binding-deadline.ts",
+      "mode": "0664",
+      "beforeSha256": "5ce023bc8e8613822edd046b9e298c2a4247a52309cf509c725223a19cffc6aa",
+      "afterSha256": "c3b0520c4f4558c92e49d3791878614f0c7f8fecaa1c20c16af205683f206fde"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/index.ts",
+      "mode": "0664",
+      "beforeSha256": "2cd97b437e28b9e17b6030429db6bbcfb23428d59950b21e725ec645ba245577",
+      "afterSha256": "5a173592fd7919a3361d5e0e7d3adbc30440fa40bde61c5cd8d504ec25f53420"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/mailbox.ts",
+      "mode": "0664",
+      "beforeSha256": "30dbcc2ed5e9af1379dd2328148f0139ba7d44cd5f00bf036245d1fb15f44c1a",
+      "afterSha256": "4be4d71ec88924c3ce38ac2a29e165f263c4572ebe3a62afda1b162b49a50a4e"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/member-binders.ts",
+      "mode": "0664",
+      "beforeSha256": "9c202cf04e1a588a2ecc4426ef620c4fab0b9f381ccbf56e97144b25907c5eda",
+      "afterSha256": "e5b7967d0a9abb7be97efec68e0487c843bb8f7280c4f25cf83e61c9716113b1"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/member-binding.ts",
+      "mode": "0664",
+      "beforeSha256": "e58fe1ea3c02f99a43544f62319985a32651cef6ad9dcb6ea72b440474d459a0",
+      "afterSha256": "c0d191454c0608f19bbfd91c3b8b69376f2af234eb51ca6fd181088d65d12fb2"
+    },
+    {
+      "path": "packages/experimental/gat-core/src/roster.ts",
+      "mode": "0664",
+      "beforeSha256": "f41577261e78c3fd6ed06a4fa23a4835796f2881151f548839e464488f16e14b",
+      "afterSha256": "f4518a259a325d9db4692516b58495cf209fad184364fcf930fe802dbd4231c5"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/authority.spec.ts",
+      "mode": "0664",
+      "beforeSha256": "d806b302834485514b756290c229d623a45dde8ee4610a03f4296a4adcc5f19e",
+      "afterSha256": "41921fe762c2335d2f8b881258e9acc00e8fb567bc57360d32067c7b5b7d9d29"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/built-lib.e2e.ts",
+      "mode": "0664",
+      "beforeSha256": "d6553aaf203d46f01d7b8672e51fb43bb2b32fe4f9c3d01e994b4275608d0525",
+      "afterSha256": "fe1adea7668523269407fb80273dfd63593a04485e37546e3e30594dbc1de8b4"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/human-control-fixture.ts",
+      "mode": "0664",
+      "beforeSha256": "c499351f324619bbf068c2dc8e057f56299ca52a2549fa3c2627cefa50e95a3d",
+      "afterSha256": "ee730732e42a8ae2c7649f698a2a29b1ebb72f162de573e0ad5adedf337592f3"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+      "mode": "0664",
+      "beforeSha256": "f582e773344dbcf60048af2601b9e01231ad0cb05bf65ed4532d176918160b76",
+      "afterSha256": "167a74df96a82e6104ec46dfd8718d3bcad5076f7975259ec5dad1ae5f2a2c45"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/member-binding.spec.ts",
+      "mode": "0664",
+      "beforeSha256": "6278825cdca961d9155065206a5d646e99a52e26dfddb95a64660b408b392eac",
+      "afterSha256": "d013dcf1b86ad31b163d7a4131db95399b229f1956f915af34d9eecff998401e"
+    },
+    {
+      "path": "packages/experimental/gat-core/tests/member-replay.spec.ts",
+      "mode": "0664",
+      "beforeSha256": "55eeb4cf816e869c81305a0903f07ea6cc78408e98cadebde71efab9bec34150",
+      "afterSha256": "2f424f8067a9e673fae7ff64ff2f956930e621a19378f9c45e0e892c09197a29"
+    },
+    {
+      "path": "packages/experimental/gat-core/tsconfig.json",
+      "mode": "0664",
+      "beforeSha256": "ad16adc4cf9f96d89870bf8a5a4a289f5260673836b44915754d3dcd38c442eb",
+      "afterSha256": "14c48262c8978c1f070d38446b975a4c3f1637dc587d30be8843661596903302"
+    },
+    {
+      "path": "packages/experimental/gat-profile/README.i18n.yaml",
+      "mode": "0664",
+      "beforeSha256": "354bcf5bbcf9dff1488a6d825295e00b33ee78b81f7332298c5653088d5db226",
+      "afterSha256": "9f3a41443be295b2087019d2f0a58c8cee699bda8b12161f7e3864746aab1291"
+    },
+    {
+      "path": "packages/experimental/gat-profile/README.md",
+      "mode": "0664",
+      "beforeSha256": "93cca1d8b7d7c4f0976a4eb8099f2a2630ed102a0c27b39f408c403305064bf0",
+      "afterSha256": "534d6c82d6b7afe5806f34c9571fe13fd9a796341f4e6f593a79d5f4269ac28a"
+    },
+    {
+      "path": "packages/experimental/gat-profile/README.zh.md",
+      "mode": "0664",
+      "beforeSha256": "015f44436b8c7db24ca6224255a39ab85a8f8bcc3e44e9fbb7b4df8c242b9c48",
+      "afterSha256": "53d80e770135487a4a36781677e8c037c7fc759d11d313e36f698e048f3a56fb"
+    },
+    {
+      "path": "packages/experimental/gat-tools/README.i18n.yaml",
+      "mode": "0664",
+      "beforeSha256": "f0a96288a627448a98e4b11344f370c1f3e1ee58886a001aef6af6da6b6d813d",
+      "afterSha256": "76a4dbe3869220a5606b70ed9dae22012d253553114c95ee077022a555d196c2"
+    },
+    {
+      "path": "packages/experimental/gat-tools/README.md",
+      "mode": "0664",
+      "beforeSha256": "b6e9ad7d6f87d39b8cab89a1edd5d21b965519b2378a304588feb08929059ae1",
+      "afterSha256": "0b47801a44423e8174e18869894ee230d82c8e4670bfb5879c04514b87ff6384"
+    },
+    {
+      "path": "packages/experimental/gat-tools/README.zh.md",
+      "mode": "0664",
+      "beforeSha256": "32d9f30720413e7cd037d71fea337a29b7971ad3c3516fdd0d35e896299dc823",
+      "afterSha256": "adb4d42c68664c2a4a92de89b94f0ec899569a9b95a01c3be3e83c55b311e380"
+    },
+    {
+      "path": "packages/experimental/gat-tools/src/index.ts",
+      "mode": "0664",
+      "beforeSha256": "b134eec6087435fd732287b62792d05a1e088053a4215b84eea77e841f028a66",
+      "afterSha256": "9631577a21416819ba724bb88e7155782eeb46532abaa488b0c53c670330ec2e"
+    },
+    {
+      "path": "packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts",
+      "mode": "0664",
+      "beforeSha256": "cd99f2f2958d1964fa43bfc3c8c67f18f3c654ed0b65b6ac748e0c4d984e2850",
+      "afterSha256": "229a474c587e7dae89c9809b9d09a5a29a6c634651602d08e264e91ce16f3118"
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/README.i18n.yaml",
+      "mode": "0664",
+      "beforeSha256": "3c5be626415f06d63b25a1ee782fb0028aa764b5274d14e7e3dc3bf06f1d6b07",
+      "afterSha256": "beca265159f327018bdaeede5c2d7a68c91845f15492797940b512c606a085ea"
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/README.md",
+      "mode": "0664",
+      "beforeSha256": "85c5bf033eb29a027f4f18c5c24af2127e69f15310e510d85c3a2d190a17baf6",
+      "afterSha256": "7de004c0b486051491ce0333b1a7c03b8cdfcb92431710897be2e430b2ea672f"
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/README.zh.md",
+      "mode": "0664",
+      "beforeSha256": "b90cbec7b053ac8730e1a500ec7e2923d1e96ba316d0cca2a93d07952ae2e5d1",
+      "afterSha256": "6dbb1d11d395eaf73b121c8947ecbc928b86df7d894f92aff66832d4558d03eb"
+    },
+    {
+      "path": "packages/experimental/gat-web/README.i18n.yaml",
+      "mode": "0664",
+      "beforeSha256": "675508208040af80d0991978ee5f844218184cdd620b4f592869f5fde38ae618",
+      "afterSha256": "c670ac487fb954f07928cb69b602e56e3441796d52094b1d9f447947d6d687e3"
+    },
+    {
+      "path": "packages/experimental/gat-web/README.md",
+      "mode": "0664",
+      "beforeSha256": "38f94ba3f038532d363ecb501de0dd74634d7633c20d8314bebd3c9b17b5974d",
+      "afterSha256": "52b963cd1a686bc88e218fd3a1de896fdb625d55f118defd676748b0b70c38c9"
+    },
+    {
+      "path": "packages/experimental/gat-web/README.zh.md",
+      "mode": "0664",
+      "beforeSha256": "187900dc437193a927cb99667f258caa37397d868203ca0211522effa3a5da89",
+      "afterSha256": "c1e3bc9434caa54823d32493ef001b5154adf7fe6aeaeca4ea058d2368116774"
+    },
+    {
+      "path": "packages/extensions/tool-cordis/src/api-catalog.ts",
+      "mode": "0644",
+      "beforeSha256": "5daf0e0ec6da072e2112275a3aaf8161aedae73be3a4f698b9869f7079a0eb2b",
+      "afterSha256": "f2ec4005dacdf2a40c559dee3da1e979fa6dd22d0d208a80352a0a1f4f95ed5e"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "mode": "0644",
+      "beforeSha256": "d677464302dd8e659c1bd6e764143f5571a63f06f8972b3a252c5bfab5b4e6a7",
+      "afterSha256": "b5a45bcd6ef055e027ab00698a9f76edec2408efc2231525a9c6492a1233b6df"
+    },
+    {
+      "path": "scripts/gen-cordis-catalog.ts",
+      "mode": "0664",
+      "beforeSha256": "9996bc99b05b93f864f095a70db1f0e93a18e3273014737c3604bf86a5f71e9e",
+      "afterSha256": "6450b621405bbaff0c66166819a138215a0f37b85ccbe40b801df423bc4f0ba1"
+    },
+    {
+      "path": "tsconfig.base.json",
+      "mode": "0644",
+      "beforeSha256": "fe4ad7dbfac9e2a63d949c7cbaebd2408d5358995dc64c7417bf4e341fc3d0ec",
+      "afterSha256": "300db7c8f1c6f917a3d1e461232edc685086a7cdf2f0b4af4a3dcc0b12eb9501"
+    },
+    {
+      "path": "tsconfig.host.json",
+      "mode": "0644",
+      "beforeSha256": "9746376e2d824469270ee116f198338a2694fbb239fa3fd77aadbab8a0fa7629",
+      "afterSha256": "0b0986608c4f359200d311568f351b796ba253760ae15ed64b3954d4cbd7a2d2"
+    },
+    {
+      "path": "tsdown.config.ts",
+      "mode": "0644",
+      "beforeSha256": "2d73c3865d14956da26b169923b669cba26091ec51886fe7e0190ff6a60f7f50",
+      "afterSha256": "8637ffee12558b9d6e587736afaabc1a548582e4caade9f05fff924ed9dafb8f"
+    }
+  ],
+  "payloadFiles": [
+    {
+      "source": "packages/core/src/member-host.ts",
+      "destination": "packages/experimental/gat-core/src/member-host.ts",
+      "mode": "0664",
+      "sha256": "7ad1914df53454ae42d2657991ebe423daa8177b4b8ba6a5dacc921f1e97c56d",
+      "bytes": 11730
+    },
+    {
+      "source": "packages/core/tests/production-binding.spec.ts",
+      "destination": "packages/experimental/gat-core/tests/production-binding.spec.ts",
+      "mode": "0664",
+      "sha256": "5c688b941130b5b20df67b530b5d461edd4d4c75e2111da079472fbe67c70d80",
+      "bytes": 23574
+    },
+    {
+      "source": "packages/durable-agent/package.json",
+      "destination": "packages/experimental/gat-durable-agent/package.json",
+      "mode": "0664",
+      "sha256": "5a0d600c95e8682a9e10f9d355b17bec5911791c5d314f2aff986e870b4a1a15",
+      "bytes": 1479
+    },
+    {
+      "source": "packages/durable-agent/README.i18n.yaml",
+      "destination": "packages/experimental/gat-durable-agent/README.i18n.yaml",
+      "mode": "0664",
+      "sha256": "3107d4e98c6fcf5cb2a0b66c78e238e0812708daaad315bc5ecf9b045202670b",
+      "bytes": 449
+    },
+    {
+      "source": "packages/durable-agent/README.md",
+      "destination": "packages/experimental/gat-durable-agent/README.md",
+      "mode": "0664",
+      "sha256": "b62b785244781e69e7d8dc0674234134350efc334979f71487686c6c148ea7fe",
+      "bytes": 3500
+    },
+    {
+      "source": "packages/durable-agent/README.zh.md",
+      "destination": "packages/experimental/gat-durable-agent/README.zh.md",
+      "mode": "0664",
+      "sha256": "e90159ca4e6b84b83e49a14aeda8d1e8c01c52726c2ac9b96b2abf3a1e82b016",
+      "bytes": 3298
+    },
+    {
+      "source": "packages/durable-agent/src/binder.ts",
+      "destination": "packages/experimental/gat-durable-agent/src/binder.ts",
+      "mode": "0664",
+      "sha256": "e96321ae263a2a8be4171ca744207e7e6c9190b17337d12ec1ec9efbef652e33",
+      "bytes": 12143
+    },
+    {
+      "source": "packages/durable-agent/src/composition.ts",
+      "destination": "packages/experimental/gat-durable-agent/src/composition.ts",
+      "mode": "0664",
+      "sha256": "7c2b1305f92d80021151a383936872a084f29a3cb4777beaaf9f0fbb22e594ec",
+      "bytes": 5242
+    },
+    {
+      "source": "packages/durable-agent/src/index.ts",
+      "destination": "packages/experimental/gat-durable-agent/src/index.ts",
+      "mode": "0664",
+      "sha256": "e345b8a9e7f766f1453146a9cbaf8b1f43b94baac2d902ba8b1dbb3488c36c8c",
+      "bytes": 419
+    },
+    {
+      "source": "packages/durable-agent/src/initializer.ts",
+      "destination": "packages/experimental/gat-durable-agent/src/initializer.ts",
+      "mode": "0664",
+      "sha256": "2c2f7f4bde7e3157cef8dc6cd2bdad0df0733a2dfc854b09a5eeedc36a571b30",
+      "bytes": 9181
+    },
+    {
+      "source": "packages/durable-agent/src/ownership.ts",
+      "destination": "packages/experimental/gat-durable-agent/src/ownership.ts",
+      "mode": "0664",
+      "sha256": "2d0d7bf992c8211bf2309a9cb80c4b5a850e886790b15eb25bd03e508e9a6d20",
+      "bytes": 1567
+    },
+    {
+      "source": "packages/durable-agent/src/provider.ts",
+      "destination": "packages/experimental/gat-durable-agent/src/provider.ts",
+      "mode": "0664",
+      "sha256": "e1a3208196390f417f4ee61ad1f7327013a42b1aca7aa92c4ecb4a7b43162d18",
+      "bytes": 697
+    },
+    {
+      "source": "packages/durable-agent/src/tools.ts",
+      "destination": "packages/experimental/gat-durable-agent/src/tools.ts",
+      "mode": "0664",
+      "sha256": "5a986d23476809e3a5b8c70a00f33134339d4fef5fe4f0e116175da685fc1d61",
+      "bytes": 9192
+    },
+    {
+      "source": "packages/durable-agent/tests/binder.spec.ts",
+      "destination": "packages/experimental/gat-durable-agent/tests/binder.spec.ts",
+      "mode": "0664",
+      "sha256": "137333231d08eec33746873cf0aac1ee0e547b58a6da99d196071194cd059822",
+      "bytes": 23748
+    },
+    {
+      "source": "packages/durable-agent/tests/composition.spec.ts",
+      "destination": "packages/experimental/gat-durable-agent/tests/composition.spec.ts",
+      "mode": "0664",
+      "sha256": "b68d656bfb39d699db27b809499697e7f4a3fa6a9ed3c608038e5b9a848ff685",
+      "bytes": 15014
+    },
+    {
+      "source": "packages/durable-agent/tests/initializer.spec.ts",
+      "destination": "packages/experimental/gat-durable-agent/tests/initializer.spec.ts",
+      "mode": "0664",
+      "sha256": "25baee71f315ea0d30c369fe29decea4aeeaf6736ebaefb20d3ebdc6df22a553",
+      "bytes": 6052
+    },
+    {
+      "source": "packages/durable-agent/tests/public-provider.spec.ts",
+      "destination": "packages/experimental/gat-durable-agent/tests/public-provider.spec.ts",
+      "mode": "0664",
+      "sha256": "c1f7f0b08af4c6543fbc4efa519301b150ccdd8cd359bab71e95575d8a58f721",
+      "bytes": 4780
+    },
+    {
+      "source": "packages/durable-agent/tests/tools.spec.ts",
+      "destination": "packages/experimental/gat-durable-agent/tests/tools.spec.ts",
+      "mode": "0664",
+      "sha256": "bd8ca8e12c643fab74a31dbd2f5d79ccfbc798fa21921422eba049a075e9a775",
+      "bytes": 5722
+    },
+    {
+      "source": "packages/durable-agent/tsconfig.json",
+      "destination": "packages/experimental/gat-durable-agent/tsconfig.json",
+      "mode": "0664",
+      "sha256": "fbdc634dcb4a3ac833e6761f6907f8a0182bbcbb215f6b7c1ef6f493991fce8a",
+      "bytes": 515
+    },
+    {
+      "source": "packages/durable-agent/tsdown.config.ts",
+      "destination": "packages/experimental/gat-durable-agent/tsdown.config.ts",
+      "mode": "0664",
+      "sha256": "795a9f84758ff27604de4b8f046a7991f232bb83ae5d1532a86b956dfe152720",
+      "bytes": 376
+    },
+    {
+      "source": "packages/durable-profile/cordis.patch.yml",
+      "destination": "packages/experimental/gat-durable-profile/cordis.patch.yml",
+      "mode": "0664",
+      "sha256": "af6d2c6b2417973bc85a79a81e09d30953490c4e5df589f3f552d25844a886b7",
+      "bytes": 782
+    },
+    {
+      "source": "packages/durable-profile/package.json",
+      "destination": "packages/experimental/gat-durable-profile/package.json",
+      "mode": "0664",
+      "sha256": "c534c6cc38f88cc614693d7fc965ee5af11127c451a6b0cb6ad081865b874aad",
+      "bytes": 1216
+    },
+    {
+      "source": "packages/durable-profile/README.i18n.yaml",
+      "destination": "packages/experimental/gat-durable-profile/README.i18n.yaml",
+      "mode": "0664",
+      "sha256": "5b789e2e5d10115e6fe5fe1c5cb0ceb36ed53029a2009f69e385f01a4ad02c3b",
+      "bytes": 451
+    },
+    {
+      "source": "packages/durable-profile/README.md",
+      "destination": "packages/experimental/gat-durable-profile/README.md",
+      "mode": "0664",
+      "sha256": "6dfbdfd3c6aff9887dba9f64b78e1d1b2f9d9e50aecd6054f07cbf77668b4b00",
+      "bytes": 3157
+    },
+    {
+      "source": "packages/durable-profile/README.zh.md",
+      "destination": "packages/experimental/gat-durable-profile/README.zh.md",
+      "mode": "0664",
+      "sha256": "a9e65ce24965260c0e6e0d313f0486285ff902839833ce7e4279e814a6207015",
+      "bytes": 2883
+    },
+    {
+      "source": "packages/durable-profile/src/index.ts",
+      "destination": "packages/experimental/gat-durable-profile/src/index.ts",
+      "mode": "0664",
+      "sha256": "009a27462e2a45c1b4a2ce808f12777a6bad5b562beb987ff76c33c9a6f54554",
+      "bytes": 87
+    },
+    {
+      "source": "packages/durable-profile/tsconfig.json",
+      "destination": "packages/experimental/gat-durable-profile/tsconfig.json",
+      "mode": "0664",
+      "sha256": "72830ce4949b7e2f4c7137c3d9e331b059dd2e0196417d555a1b47fdf622a245",
+      "bytes": 310
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/docs/reviewer-ab-live-responses.json",
+      "destination": "vendor/gat-durable-provider/docs/reviewer-ab-live-responses.json",
+      "mode": "0644",
+      "sha256": "f772cd4562ae8f2fbefe02d3995f022fd1f926642dab4ee2550e5e30dbf94137",
+      "bytes": 5286
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/docs/reviewer-ab-pilot-provenance.json",
+      "destination": "vendor/gat-durable-provider/docs/reviewer-ab-pilot-provenance.json",
+      "mode": "0644",
+      "sha256": "d56a69aeced13a2d99cabf07ae69fda065c3ac2f4d85729a12eb4b7de2d1a94c",
+      "bytes": 2011
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/docs/reviewer-ab-pilot-requests.json",
+      "destination": "vendor/gat-durable-provider/docs/reviewer-ab-pilot-requests.json",
+      "mode": "0644",
+      "sha256": "f6e795ea3e9c1c05ed5c856afa0ebc1927bb9aa6740de232fee21bda7c800773",
+      "bytes": 84270
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/docs/reviewer-ab-results.md",
+      "destination": "vendor/gat-durable-provider/docs/reviewer-ab-results.md",
+      "mode": "0644",
+      "sha256": "433bace24338075265e75241eec7d0ff05e0114e2c1f7793bd8784782476bf00",
+      "bytes": 6206
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/docs/reviewer-context.md",
+      "destination": "vendor/gat-durable-provider/docs/reviewer-context.md",
+      "mode": "0644",
+      "sha256": "0cd20cf3930c558b3e0b289ad4c69ebba09e40f6a6ae710d9f8663da6ea52e43",
+      "bytes": 12281
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/docs/service.md",
+      "destination": "vendor/gat-durable-provider/docs/service.md",
+      "mode": "0644",
+      "sha256": "b8b1eee573d33dba67856559966c44f49e152883407e011095e802e0a1e18efa",
+      "bytes": 4882
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/docs/task-contract.md",
+      "destination": "vendor/gat-durable-provider/docs/task-contract.md",
+      "mode": "0644",
+      "sha256": "b91469afb97ec05c93915b428c9ff0262d93b919b925afa9481758819120a057",
+      "bytes": 5556
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/client.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/client.d.ts",
+      "mode": "0644",
+      "sha256": "19422a3d0a492416949dda8f2e7dccf3d75834f7265cc75d52e896164c4f19f3",
+      "bytes": 651
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/client.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/client.d.ts.map",
+      "mode": "0644",
+      "sha256": "31d4327a2806fafb84e8bd709e6b78fc057e6d2b09e2cc9b19c5522c557b683d",
+      "bytes": 543
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/client.js",
+      "destination": "vendor/gat-durable-provider/lib/src/client.js",
+      "mode": "0644",
+      "sha256": "af51d59fc1f90d0cca7ee3388a6a1632e41498408523ba34f5c218ddb6f607d4",
+      "bytes": 427
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/client.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/client.js.map",
+      "mode": "0644",
+      "sha256": "3bd9daa4fe77948a3f9107207784f475b187c95f010064fb59de33e19a12ded8",
+      "bytes": 460
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/config.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/config.d.ts",
+      "mode": "0644",
+      "sha256": "50b268e6052e859a0fb523aa49dfbd2a6140bd3253395e9940c03fbbfcc0b5a0",
+      "bytes": 1030
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/config.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/config.d.ts.map",
+      "mode": "0644",
+      "sha256": "1f2c62535d681698189b86acd60aa8e76e092e834387a80128b1068cb654ad69",
+      "bytes": 810
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/config.js",
+      "destination": "vendor/gat-durable-provider/lib/src/config.js",
+      "mode": "0644",
+      "sha256": "6eb086ea72ede0ccbb9ef390e2e1e459d003ce4a44b2e01b97b73d461235ebbc",
+      "bytes": 2042
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/config.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/config.js.map",
+      "mode": "0644",
+      "sha256": "b48e0ea735aaa43e9ae6cb1032d6eb4a36e6b870c281ad4d482c96a725539806",
+      "bytes": 2129
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/consumer.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/consumer.d.ts",
+      "mode": "0644",
+      "sha256": "ed2585197e970b5a1281ce69a871426a8b3050b99ca7392aa8bd93bfcea6277a",
+      "bytes": 2440
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/consumer.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/consumer.d.ts.map",
+      "mode": "0644",
+      "sha256": "7930f12c37d9448f7e2b33175900130790a437cd987f8f2ca4a442e118571d4f",
+      "bytes": 1745
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/consumer.js",
+      "destination": "vendor/gat-durable-provider/lib/src/consumer.js",
+      "mode": "0644",
+      "sha256": "f817d50a694e4e6c25385999bb6eeceda51658d6adac644929bb031b131cf0af",
+      "bytes": 3264
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/consumer.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/consumer.js.map",
+      "mode": "0644",
+      "sha256": "ded41f294c23016a3edaaa5a3d6adb60499db26a1b66394769cf4d1287a18640",
+      "bytes": 3006
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/authority.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/authority.d.ts",
+      "mode": "0644",
+      "sha256": "70d43792fe3daf1d2db858174ca548d4eba340c710827a1a4579c2221ba39553",
+      "bytes": 4264
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/authority.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/authority.d.ts.map",
+      "mode": "0644",
+      "sha256": "113e8ad541c5a1658344a2ed8b006ecc9c879659cd76a003a659aa9ca0a32f99",
+      "bytes": 4292
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/authority.js",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/authority.js",
+      "mode": "0644",
+      "sha256": "23905c5c209d8b78499fc7ff822392b8b9c10c06b1cc27abf228b59c59393568",
+      "bytes": 4945
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/authority.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/authority.js.map",
+      "mode": "0644",
+      "sha256": "34360a313791196c32986e4b7ad97f59c17a9079bc916a23719eb44a9d1df1d0",
+      "bytes": 6985
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/context.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/context.d.ts",
+      "mode": "0644",
+      "sha256": "24d6a8580cae1328ab1b3c56aa8d181ee45e39c62abab8b1cf2ef8416f2f67d9",
+      "bytes": 6744
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/context.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/context.d.ts.map",
+      "mode": "0644",
+      "sha256": "9beee61ab9b4f8a3ae4155b8419e40a78940aa5caadffeae55cb6c60e144a6ce",
+      "bytes": 6623
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/context.js",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/context.js",
+      "mode": "0644",
+      "sha256": "52fcb21999bc88e7e5260eacaaee4e94c0454ecea76d39ccd3b139bdbe8ec84d",
+      "bytes": 8301
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/context.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/context.js.map",
+      "mode": "0644",
+      "sha256": "c0949201d2a85b5585e2f42485965c4eb18c428a708a28ffaad3b8cdee1060f8",
+      "bytes": 11512
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/evidence.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/evidence.d.ts",
+      "mode": "0644",
+      "sha256": "a0a8fe2b8ea27114d8bf0aec4d386970bcaaa623648b9b8fa6a5ca0464feb18e",
+      "bytes": 2184
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/evidence.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/evidence.d.ts.map",
+      "mode": "0644",
+      "sha256": "52cbd922ae17ab7b6c32fe0470c596c77c3ebf2dc83123857f811c9ed591dae8",
+      "bytes": 2193
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/evidence.js",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/evidence.js",
+      "mode": "0644",
+      "sha256": "a5bd56eca70b764bef4b685e6d8e576b15d0b5e745e7df5393556a039b5882e2",
+      "bytes": 4822
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/evidence.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/evidence.js.map",
+      "mode": "0644",
+      "sha256": "90acf8abada56ba186f392804ee294864be73364f4ef69a182ba77739d0592e1",
+      "bytes": 7216
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/index.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/index.d.ts",
+      "mode": "0644",
+      "sha256": "68561188af210aa3b17c7e82bdf59becaabe7d4285eb18b52de9c6961d5dfeb6",
+      "bytes": 219
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/index.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/index.d.ts.map",
+      "mode": "0644",
+      "sha256": "11a94b73227fbbe1419ee3a3deb069cb73ca54f3e80845a002f862fad8817d23",
+      "bytes": 243
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/index.js",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/index.js",
+      "mode": "0644",
+      "sha256": "f3c3469f1e755bc9da3f26a051d9e03dbd9845372d7c19ed652b90748a905f9d",
+      "bytes": 217
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/index.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/index.js.map",
+      "mode": "0644",
+      "sha256": "e046b4f605b3d5f2c31ddf4c27624b9b3fbb2cf1d8be076dedb8e0d2a8e050d0",
+      "bytes": 241
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/mission.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/mission.d.ts",
+      "mode": "0644",
+      "sha256": "61a4cecece019f5a6d10af3c0fea5b93fba370405936661263ece41df72054e0",
+      "bytes": 3165
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/mission.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/mission.d.ts.map",
+      "mode": "0644",
+      "sha256": "25e125f792cee9e8a5a8fd83b73b94c5e4d112c55eab43513b9de2e30c020891",
+      "bytes": 2863
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/mission.js",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/mission.js",
+      "mode": "0644",
+      "sha256": "3c81f0ac7073d1ef9d165ec35db03399342bba851463697eaec7232f728df849",
+      "bytes": 5260
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/mission.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/mission.js.map",
+      "mode": "0644",
+      "sha256": "3c39a419d4d5f8b1115e35520f37648608ce6193f7430538c5770acac2bb5c78",
+      "bytes": 6258
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/planning.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/planning.d.ts",
+      "mode": "0644",
+      "sha256": "b87b81138e956d71137d6b4fdbc2b2cd7633d2b47d2b509e6e1cad7908ab74b0",
+      "bytes": 2240
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/planning.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/planning.d.ts.map",
+      "mode": "0644",
+      "sha256": "13bd8bf6b91f521320c8dbcc64494ee732bf62435e23a2dd0794a9abd93be6e4",
+      "bytes": 2260
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/planning.js",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/planning.js",
+      "mode": "0644",
+      "sha256": "aa677479348e339fc1f983997266fbeb33a39e3880ea7cb901dcf9c527fb6d21",
+      "bytes": 3479
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/planning.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/planning.js.map",
+      "mode": "0644",
+      "sha256": "4deec31527ad516fdbcb15be025aa2ad139fa0823ecf6626dd947334dba96f1a",
+      "bytes": 4823
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/runtime.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/runtime.d.ts",
+      "mode": "0644",
+      "sha256": "fedeedd6e5020eb0b77c6f7962d7d8eee521b7d2d3290e199c412a1f4f2db897",
+      "bytes": 2318
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/runtime.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/runtime.d.ts.map",
+      "mode": "0644",
+      "sha256": "9f41a07e78ca340fcc513b1c215d27003b93d8aae43c928a79da0f37bec28db1",
+      "bytes": 2366
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/runtime.js",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/runtime.js",
+      "mode": "0644",
+      "sha256": "b28281a92c6bcf8962fe16e67a47bca1d6ad37cf4d05228452267b332754b54f",
+      "bytes": 6191
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/domain/runtime.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/domain/runtime.js.map",
+      "mode": "0644",
+      "sha256": "cf05dce855887481aa80c69c1d2d2caf416dc79d180eb82d4acb5010adab14ba",
+      "bytes": 8342
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/errors.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/errors.d.ts",
+      "mode": "0644",
+      "sha256": "eeccc372ccd8bb4724185fd25058f072f5f50cf21160e9c2ec39a7cdac05b85c",
+      "bytes": 1408
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/errors.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/errors.d.ts.map",
+      "mode": "0644",
+      "sha256": "feb3b756d846fbb9b65e7e8576a159a3ccaa9f133532844844ad3bd3f46e5118",
+      "bytes": 974
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/errors.js",
+      "destination": "vendor/gat-durable-provider/lib/src/errors.js",
+      "mode": "0644",
+      "sha256": "c6e18a5de86160d3783c0eefbee8c456c4a0997ddd74a6656762690199115c8b",
+      "bytes": 2770
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/errors.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/errors.js.map",
+      "mode": "0644",
+      "sha256": "15d3638d3495b0f5c8399f26a7fe77427b866f9cb30e6d76dadb8793b570e024",
+      "bytes": 1981
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/identity.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/identity.d.ts",
+      "mode": "0644",
+      "sha256": "3c8fc3434203ea69a16412a60939f3802de478eccfebc8d942d3c27e805e8ffd",
+      "bytes": 939
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/identity.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/identity.d.ts.map",
+      "mode": "0644",
+      "sha256": "fa7ad05c863114ac472b7f9b1a71fbae98b52a48e6225d071dc5865bc26da72d",
+      "bytes": 984
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/identity.js",
+      "destination": "vendor/gat-durable-provider/lib/src/identity.js",
+      "mode": "0644",
+      "sha256": "d7bcdddafa3cacf55800d768c6490bba2a53441fa97625c2cb4c5444f5b2b482",
+      "bytes": 3129
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/identity.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/identity.js.map",
+      "mode": "0644",
+      "sha256": "ab04d96f9c19c3cbd6a367e2ee05cb655ccba2dbd4162cef5ef15dba38000bb3",
+      "bytes": 2156
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/index.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/index.d.ts",
+      "mode": "0644",
+      "sha256": "db743ef25bfbee3b4e1d7e5c9e2be84655192715e715bb5992d98de6288b9e3b",
+      "bytes": 1108
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/index.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/index.d.ts.map",
+      "mode": "0644",
+      "sha256": "e64b73be6c3de575d503cdbcec51b81e0893376646f36c65bd79f0d088f00daa",
+      "bytes": 852
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/index.js",
+      "destination": "vendor/gat-durable-provider/lib/src/index.js",
+      "mode": "0644",
+      "sha256": "2b7a2e8eb4ce098a93bc3b27946908403511ea57e431ea1371a21c9ac00dbb27",
+      "bytes": 968
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/index.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/index.js.map",
+      "mode": "0644",
+      "sha256": "e7a6f3dfab829489eb441c5ba5f1682e3d8282172a54edcef6b029891db04a71",
+      "bytes": 810
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/local-provider.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/local-provider.d.ts",
+      "mode": "0644",
+      "sha256": "af7ad9ac1279dacc3bd553ed04fafc78c3f6f4c6ab00be3599486383aea08112",
+      "bytes": 1623
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/local-provider.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/local-provider.d.ts.map",
+      "mode": "0644",
+      "sha256": "17288a1e0cb162d2568b6f3f1103fd21caac71f47ca1feb016bd94a75b636fda",
+      "bytes": 1242
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/local-provider.js",
+      "destination": "vendor/gat-durable-provider/lib/src/local-provider.js",
+      "mode": "0644",
+      "sha256": "be1aada8c6a0f21f85f927d78e7ae253eb89db9ddfa9f3912d4a0f90dfc7055e",
+      "bytes": 44636
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/local-provider.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/local-provider.js.map",
+      "mode": "0644",
+      "sha256": "37fb091a96167d078d9a3dbbacd2772399c2f94c323af2c464232e18bb4c3c26",
+      "bytes": 46294
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/members.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/members.d.ts",
+      "mode": "0644",
+      "sha256": "124705590c1de26618aacdb6355715faa84084462ec72f0d6b48f92035ee4494",
+      "bytes": 3770
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/members.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/members.d.ts.map",
+      "mode": "0644",
+      "sha256": "63888f64ed97e00651d49be9a8ba35f48d100fd9e00fb31b3fa6f22a86bfdae0",
+      "bytes": 2284
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/members.js",
+      "destination": "vendor/gat-durable-provider/lib/src/members.js",
+      "mode": "0644",
+      "sha256": "3ec492bcfbd4bec2f811fd7dcbefb5044d048b95a64e574b099faf598844c11b",
+      "bytes": 21213
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/members.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/members.js.map",
+      "mode": "0644",
+      "sha256": "720874297cf857d4863c22008edb7580e2a7a3a0d8545a72d2d6e2ffe794cc43",
+      "bytes": 20837
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/mvp/execution.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/mvp/execution.d.ts",
+      "mode": "0644",
+      "sha256": "b316c85f150c5db10507c9a0fada4a4ce356ff92c7c76db404c2bf75da7c4f2c",
+      "bytes": 4600
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/mvp/execution.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/mvp/execution.d.ts.map",
+      "mode": "0644",
+      "sha256": "a335ba9b165542be2159e7a4e48b5d4e0a9006e9f3ec79649f5f6793573cc8cb",
+      "bytes": 3359
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/mvp/execution.js",
+      "destination": "vendor/gat-durable-provider/lib/src/mvp/execution.js",
+      "mode": "0644",
+      "sha256": "2d12dfd38c7333b17695d7d3d741ba37e81fecef39ee1053d5e7720d5400d649",
+      "bytes": 40799
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/mvp/execution.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/mvp/execution.js.map",
+      "mode": "0644",
+      "sha256": "7c6da8ab68fb862d7f2acb670778d6c896d4362d954dc7539545fa61b0b345a4",
+      "bytes": 43609
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/mvp/store.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/mvp/store.d.ts",
+      "mode": "0644",
+      "sha256": "50442854e58b0e926b8d23abd2036e120fdc39f62635838a0d6f180beea5f0c2",
+      "bytes": 4909
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/mvp/store.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/mvp/store.d.ts.map",
+      "mode": "0644",
+      "sha256": "3a3bb0ddf7508f7c38626462f0f67c30ca0ae6bc3485d1dc2d54a3202e1aa279",
+      "bytes": 3480
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/mvp/store.js",
+      "destination": "vendor/gat-durable-provider/lib/src/mvp/store.js",
+      "mode": "0644",
+      "sha256": "0a6bd95c199347f21d4baa3cf060b66a1940d8f0f5d2f26907954d61bd07f9af",
+      "bytes": 22345
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/mvp/store.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/mvp/store.js.map",
+      "mode": "0644",
+      "sha256": "a1db95546dd6021d3df4c1429741050e342037c8627892a42702511fee0850e2",
+      "bytes": 23080
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/mvp/types.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/mvp/types.d.ts",
+      "mode": "0644",
+      "sha256": "946332cfa266b877e0f2522e2bf10fbba91b0d6357e36625058ad3761498a4e0",
+      "bytes": 8031
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/mvp/types.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/mvp/types.d.ts.map",
+      "mode": "0644",
+      "sha256": "2f797a17076b540a9de9ad7241b65245f73d3e11d29e2b8dfe6c50f17bababcd",
+      "bytes": 7669
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/mvp/types.js",
+      "destination": "vendor/gat-durable-provider/lib/src/mvp/types.js",
+      "mode": "0644",
+      "sha256": "9df941fd09527bb71cd235f743d44fd0d95791c26a710e93f5612715d0637264",
+      "bytes": 453
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/mvp/types.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/mvp/types.js.map",
+      "mode": "0644",
+      "sha256": "319c27ff17d5376d32b2ae94cbaabdc0b1b879b73148c78d82b3ca8577ae0652",
+      "bytes": 315
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/review-host.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/review-host.d.ts",
+      "mode": "0644",
+      "sha256": "affa73c369639cbb7cf6609e0f005c902cb509a04bff3b776898c2c67ac6cfb8",
+      "bytes": 2544
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/review-host.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/review-host.d.ts.map",
+      "mode": "0644",
+      "sha256": "afcc69f624236ee47ff6b13e198577fe9188086abaae6da38870ca396ef1dd6d",
+      "bytes": 2095
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/review-host.js",
+      "destination": "vendor/gat-durable-provider/lib/src/review-host.js",
+      "mode": "0644",
+      "sha256": "e5c95e106a4b07b46f9fd51990e3034b8b6646ac90f275416ebdb501921db6e1",
+      "bytes": 10245
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/review-host.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/review-host.js.map",
+      "mode": "0644",
+      "sha256": "08b3d5f3fa17f58b8e73c1eb56d94b141e6067282d01957120a429fd73d8cf63",
+      "bytes": 9108
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/review-packet.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/review-packet.d.ts",
+      "mode": "0644",
+      "sha256": "c3de222af34c2c907ac02783c4010ae48965a5c6b5619065f63531a7e8f5ba1f",
+      "bytes": 5330
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/review-packet.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/review-packet.d.ts.map",
+      "mode": "0644",
+      "sha256": "4a52cd2af6f33f448b7791bc0ef163d1254c8b6ae6a70fe5bf773ce4707e6fd7",
+      "bytes": 3652
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/review-packet.js",
+      "destination": "vendor/gat-durable-provider/lib/src/review-packet.js",
+      "mode": "0644",
+      "sha256": "51e5d1e27ffbb366203d1b4b4eb369293d8fe120ef8fec9d1f4e08a8d3d4b335",
+      "bytes": 15397
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/review-packet.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/review-packet.js.map",
+      "mode": "0644",
+      "sha256": "3dbee09b1b7aaf1a585e09be3e37ac843af103253621a1ed0638c50ec9d9bf52",
+      "bytes": 17014
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/service.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/service.d.ts",
+      "mode": "0644",
+      "sha256": "4d556f48b5a1e487a1b8afa5c74e9fcea271456249ac77facb3bea28dfa11afc",
+      "bytes": 7138
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/service.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/service.d.ts.map",
+      "mode": "0644",
+      "sha256": "fa5b054f3e6f6e66ec2c3ce4bf096c341163ad2f250a51a57e843af86c0a8e6e",
+      "bytes": 4550
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/service.js",
+      "destination": "vendor/gat-durable-provider/lib/src/service.js",
+      "mode": "0644",
+      "sha256": "1af474f9027e9a06d4e7bb12a1b77e34df5a24f2205355433334920ff97db249",
+      "bytes": 1146
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/service.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/service.js.map",
+      "mode": "0644",
+      "sha256": "034b471545bbaf55191efcad73c4355c54ea2398d7995d904043f37bf2bc4ffd",
+      "bytes": 741
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/standalone-adapter.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/standalone-adapter.d.ts",
+      "mode": "0644",
+      "sha256": "efc4f3bb03f589d82f889eac9960a1fc2e29a50688b02f03da6db5586eaa6d55",
+      "bytes": 1867
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/standalone-adapter.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/standalone-adapter.d.ts.map",
+      "mode": "0644",
+      "sha256": "7d1f984e0551d732e0dfed927220fef5d8ee548704fc4dd70557289c84ed504f",
+      "bytes": 1331
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/standalone-adapter.js",
+      "destination": "vendor/gat-durable-provider/lib/src/standalone-adapter.js",
+      "mode": "0644",
+      "sha256": "0d3d8e6b026774ced09dd375a411bdf93e7211d2cf50951fff7af32d79f4a387",
+      "bytes": 6130
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/standalone-adapter.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/standalone-adapter.js.map",
+      "mode": "0644",
+      "sha256": "92e44776f3095677436e258c0711a017c3fbaacf8f297cbe28488846be9255e0",
+      "bytes": 6473
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/task-contract.d.ts",
+      "destination": "vendor/gat-durable-provider/lib/src/task-contract.d.ts",
+      "mode": "0644",
+      "sha256": "c4a006037f9760aa8d7c967c5d4eb972910afb676ee4337949a1b89f9bc295c1",
+      "bytes": 3983
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/task-contract.d.ts.map",
+      "destination": "vendor/gat-durable-provider/lib/src/task-contract.d.ts.map",
+      "mode": "0644",
+      "sha256": "4e825f2f077ab4d580bcf16a3e4b26c058ede170d03b44e91044d135013d4b85",
+      "bytes": 3453
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/task-contract.js",
+      "destination": "vendor/gat-durable-provider/lib/src/task-contract.js",
+      "mode": "0644",
+      "sha256": "e69d5392472c8cb062c4919ade02fc833f329e185669aef8e00e44b26e473a0e",
+      "bytes": 9726
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/lib/src/task-contract.js.map",
+      "destination": "vendor/gat-durable-provider/lib/src/task-contract.js.map",
+      "mode": "0644",
+      "sha256": "173fd9501f21370b92545b82567707a56e481ccfef1d8db75fa7e8626a8205a3",
+      "bytes": 11796
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/package.json",
+      "destination": "vendor/gat-durable-provider/package.json",
+      "mode": "0644",
+      "sha256": "cd439c180340d69ec2bd05b2c8f1a60672a0808fb31888c1426c5ffb80b4c18a",
+      "bytes": 2214
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/README.md",
+      "destination": "vendor/gat-durable-provider/README.md",
+      "mode": "0644",
+      "sha256": "dea07f545e80803dc9364e042360bc4c50e998da64e8e8e15d1095bf529f8b77",
+      "bytes": 3128
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/client.ts",
+      "destination": "vendor/gat-durable-provider/src/client.ts",
+      "mode": "0644",
+      "sha256": "2318befba503e5d817475ec96abe575394bc4f0cc371ff78521a40ec00584e9f",
+      "bytes": 726
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/config.ts",
+      "destination": "vendor/gat-durable-provider/src/config.ts",
+      "mode": "0644",
+      "sha256": "a2d54206d8866faaf9081690c70401f7595f926000bba0bc39ff67213b56a69a",
+      "bytes": 2610
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/consumer.ts",
+      "destination": "vendor/gat-durable-provider/src/consumer.ts",
+      "mode": "0644",
+      "sha256": "77c1507140a86b90d9766c61f9e1cab1c59248f4d56142ade512e36f4bc2edd6",
+      "bytes": 4573
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/domain/authority.ts",
+      "destination": "vendor/gat-durable-provider/src/domain/authority.ts",
+      "mode": "0644",
+      "sha256": "1730267f43644fc9e50a0d63d8179f5ba70eeff477c961a5c280fe599af765f2",
+      "bytes": 7825
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/domain/context.ts",
+      "destination": "vendor/gat-durable-provider/src/domain/context.ts",
+      "mode": "0644",
+      "sha256": "eae3804274783d88dac1da021702daee0f240b4d56b407ea3d69a82bcd2ab87d",
+      "bytes": 12847
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/domain/evidence.ts",
+      "destination": "vendor/gat-durable-provider/src/domain/evidence.ts",
+      "mode": "0644",
+      "sha256": "80758ab289d84914d1a6df4194e83c8bf34369b898e4bd76489955319e12c98b",
+      "bytes": 6017
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/domain/index.ts",
+      "destination": "vendor/gat-durable-provider/src/domain/index.ts",
+      "mode": "0644",
+      "sha256": "368fe5c80f913416167ca89daf7644211f27fe78a497f98e5ff4f3522dfa5298",
+      "bytes": 178
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/domain/mission.ts",
+      "destination": "vendor/gat-durable-provider/src/domain/mission.ts",
+      "mode": "0644",
+      "sha256": "6935463338f4b3761f0e4957eadeca2bd63e479cc9159b6e0c713fbd9f6954a9",
+      "bytes": 7032
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/domain/planning.ts",
+      "destination": "vendor/gat-durable-provider/src/domain/planning.ts",
+      "mode": "0644",
+      "sha256": "a5b770db3303150e62e0975f5ca888846e1792b9956751ac8f29c28dd83ba5ef",
+      "bytes": 4791
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/domain/runtime.ts",
+      "destination": "vendor/gat-durable-provider/src/domain/runtime.ts",
+      "mode": "0644",
+      "sha256": "81679d71ad231b1eaae8291d1135fa3f849352bb7b6c79ef665366766ebb2955",
+      "bytes": 7004
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/errors.ts",
+      "destination": "vendor/gat-durable-provider/src/errors.ts",
+      "mode": "0644",
+      "sha256": "10f1dbe70be6c762894ecb8947debdfa0246207effe01366e4e998fc9601c43f",
+      "bytes": 3715
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/identity.ts",
+      "destination": "vendor/gat-durable-provider/src/identity.ts",
+      "mode": "0644",
+      "sha256": "f8b55aa37bf616307d3147699be7cde5686b30be0139588f38dfd3c56d59fc3a",
+      "bytes": 3932
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/index.ts",
+      "destination": "vendor/gat-durable-provider/src/index.ts",
+      "mode": "0644",
+      "sha256": "c38d5fe41d55248eeed60cfc0c8efc286aadd718fa3dbd3e86f1ca6a91a8d8ed",
+      "bytes": 1304
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/local-provider.ts",
+      "destination": "vendor/gat-durable-provider/src/local-provider.ts",
+      "mode": "0644",
+      "sha256": "75e63d7d634d5afe7b162dd4e3758103a733ac7eff1f9481b1115fd72c6ca58a",
+      "bytes": 47567
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/members.ts",
+      "destination": "vendor/gat-durable-provider/src/members.ts",
+      "mode": "0644",
+      "sha256": "6d5f39891f1436d53b9e34dd3a57757d20798bcde0143317a1b453f142383f5d",
+      "bytes": 23202
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/mvp/execution.ts",
+      "destination": "vendor/gat-durable-provider/src/mvp/execution.ts",
+      "mode": "0644",
+      "sha256": "7761d4f8da8777c632215fc0fac66141b9273114ff022c4c562cf0250a66f41e",
+      "bytes": 42266
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/mvp/store.ts",
+      "destination": "vendor/gat-durable-provider/src/mvp/store.ts",
+      "mode": "0644",
+      "sha256": "e2459fe00a178fd427d9954cbbab2295cb92241359f33d44ea6562cfdc4464e9",
+      "bytes": 23622
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/mvp/types.ts",
+      "destination": "vendor/gat-durable-provider/src/mvp/types.ts",
+      "mode": "0644",
+      "sha256": "acfb9c59ce55a0d50bf3dfcb98d28ae2f7481058293388762c231b9b7bca9dca",
+      "bytes": 7591
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/review-host.ts",
+      "destination": "vendor/gat-durable-provider/src/review-host.ts",
+      "mode": "0644",
+      "sha256": "a35459cccec6e980d5223e72a69ed599d1d245d7ae7294dcb30602000f495b13",
+      "bytes": 11010
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/review-packet.ts",
+      "destination": "vendor/gat-durable-provider/src/review-packet.ts",
+      "mode": "0644",
+      "sha256": "9e23ae1117e2271525180282bdc3a38aca9903f97a2d2dff7c9bfae75d74239b",
+      "bytes": 18499
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/service.ts",
+      "destination": "vendor/gat-durable-provider/src/service.ts",
+      "mode": "0644",
+      "sha256": "f54e4954ad7a4b085fdb8c6dcc600c28832ce16cb5174c1985ab35085c9ed833",
+      "bytes": 7235
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/standalone-adapter.ts",
+      "destination": "vendor/gat-durable-provider/src/standalone-adapter.ts",
+      "mode": "0644",
+      "sha256": "6181154388782419e258a491d6d256ff1850cd973733728351c5d3dc73de2788",
+      "bytes": 7212
+    },
+    {
+      "source": "compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/payload/provider/src/task-contract.ts",
+      "destination": "vendor/gat-durable-provider/src/task-contract.ts",
+      "mode": "0644",
+      "sha256": "f706164e0451c5ec3209594e19416ab2c8c438124746255b53a1649390cb04d9",
+      "bytes": 12693
+    }
+  ],
+  "patchsetChecksum": "bef317121fd780161bede72d304ac2c8aba6fbcaa3e4435e6c2a0ae207456c1b",
+  "payloadChecksum": "a885220016d7878e485a29d4821d3d08110654f7ab85c5bb224ffff2ebd9f705",
+  "allowedPaths": [
+    "apps/web/tests/gat-agent-team-panel.e2e.ts",
+    "apps/web/tests/snapshots/gat-agent-team-panel/task.expected.md",
+    "docs/config-catalog.i18n.yaml",
+    "docs/config-catalog.md",
+    "docs/config-catalog.zh.md",
+    "docs/event-producer-consumer.i18n.yaml",
+    "docs/event-producer-consumer.md",
+    "docs/event-producer-consumer.zh.md",
+    "docs/subsystems/agent-team.i18n.yaml",
+    "docs/subsystems/agent-team.md",
+    "docs/subsystems/agent-team.zh.md",
+    "packages/api/gateway/package.json",
+    "packages/api/gateway/README.i18n.yaml",
+    "packages/api/gateway/README.md",
+    "packages/api/gateway/README.zh.md",
+    "packages/api/gateway/src/index.ts",
+    "packages/client/connection/src/rpc-host.ts",
+    "packages/experimental/gat-core/package.json",
+    "packages/experimental/gat-core/README.i18n.yaml",
+    "packages/experimental/gat-core/README.md",
+    "packages/experimental/gat-core/README.zh.md",
+    "packages/experimental/gat-core/src/binding-deadline.ts",
+    "packages/experimental/gat-core/src/index.ts",
+    "packages/experimental/gat-core/src/mailbox.ts",
+    "packages/experimental/gat-core/src/member-binders.ts",
+    "packages/experimental/gat-core/src/member-binding.ts",
+    "packages/experimental/gat-core/src/roster.ts",
+    "packages/experimental/gat-core/tests/authority.spec.ts",
+    "packages/experimental/gat-core/tests/built-lib.e2e.ts",
+    "packages/experimental/gat-core/tests/human-control-fixture.ts",
+    "packages/experimental/gat-core/tests/member-attachments.spec.ts",
+    "packages/experimental/gat-core/tests/member-binding.spec.ts",
+    "packages/experimental/gat-core/tests/member-replay.spec.ts",
+    "packages/experimental/gat-core/tsconfig.json",
+    "packages/experimental/gat-profile/README.i18n.yaml",
+    "packages/experimental/gat-profile/README.md",
+    "packages/experimental/gat-profile/README.zh.md",
+    "packages/experimental/gat-tools/README.i18n.yaml",
+    "packages/experimental/gat-tools/README.md",
+    "packages/experimental/gat-tools/README.zh.md",
+    "packages/experimental/gat-tools/src/index.ts",
+    "packages/experimental/gat-tools/tests/prerequisite-composition.spec.ts",
+    "packages/experimental/gat-web-profile/README.i18n.yaml",
+    "packages/experimental/gat-web-profile/README.md",
+    "packages/experimental/gat-web-profile/README.zh.md",
+    "packages/experimental/gat-web/README.i18n.yaml",
+    "packages/experimental/gat-web/README.md",
+    "packages/experimental/gat-web/README.zh.md",
+    "packages/extensions/tool-cordis/src/api-catalog.ts",
+    "pnpm-lock.yaml",
+    "scripts/gen-cordis-catalog.ts",
+    "tsconfig.base.json",
+    "tsconfig.host.json",
+    "tsdown.config.ts",
+    "packages/experimental/gat-core/src/member-host.ts",
+    "packages/experimental/gat-core/tests/production-binding.spec.ts",
+    "packages/experimental/gat-durable-agent/package.json",
+    "packages/experimental/gat-durable-agent/README.i18n.yaml",
+    "packages/experimental/gat-durable-agent/README.md",
+    "packages/experimental/gat-durable-agent/README.zh.md",
+    "packages/experimental/gat-durable-agent/src/binder.ts",
+    "packages/experimental/gat-durable-agent/src/composition.ts",
+    "packages/experimental/gat-durable-agent/src/index.ts",
+    "packages/experimental/gat-durable-agent/src/initializer.ts",
+    "packages/experimental/gat-durable-agent/src/ownership.ts",
+    "packages/experimental/gat-durable-agent/src/provider.ts",
+    "packages/experimental/gat-durable-agent/src/tools.ts",
+    "packages/experimental/gat-durable-agent/tests/binder.spec.ts",
+    "packages/experimental/gat-durable-agent/tests/composition.spec.ts",
+    "packages/experimental/gat-durable-agent/tests/initializer.spec.ts",
+    "packages/experimental/gat-durable-agent/tests/public-provider.spec.ts",
+    "packages/experimental/gat-durable-agent/tests/tools.spec.ts",
+    "packages/experimental/gat-durable-agent/tsconfig.json",
+    "packages/experimental/gat-durable-agent/tsdown.config.ts",
+    "packages/experimental/gat-durable-profile/cordis.patch.yml",
+    "packages/experimental/gat-durable-profile/package.json",
+    "packages/experimental/gat-durable-profile/README.i18n.yaml",
+    "packages/experimental/gat-durable-profile/README.md",
+    "packages/experimental/gat-durable-profile/README.zh.md",
+    "packages/experimental/gat-durable-profile/src/index.ts",
+    "packages/experimental/gat-durable-profile/tsconfig.json",
+    "vendor/gat-durable-provider/docs/reviewer-ab-live-responses.json",
+    "vendor/gat-durable-provider/docs/reviewer-ab-pilot-provenance.json",
+    "vendor/gat-durable-provider/docs/reviewer-ab-pilot-requests.json",
+    "vendor/gat-durable-provider/docs/reviewer-ab-results.md",
+    "vendor/gat-durable-provider/docs/reviewer-context.md",
+    "vendor/gat-durable-provider/docs/service.md",
+    "vendor/gat-durable-provider/docs/task-contract.md",
+    "vendor/gat-durable-provider/lib/src/client.d.ts",
+    "vendor/gat-durable-provider/lib/src/client.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/client.js",
+    "vendor/gat-durable-provider/lib/src/client.js.map",
+    "vendor/gat-durable-provider/lib/src/config.d.ts",
+    "vendor/gat-durable-provider/lib/src/config.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/config.js",
+    "vendor/gat-durable-provider/lib/src/config.js.map",
+    "vendor/gat-durable-provider/lib/src/consumer.d.ts",
+    "vendor/gat-durable-provider/lib/src/consumer.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/consumer.js",
+    "vendor/gat-durable-provider/lib/src/consumer.js.map",
+    "vendor/gat-durable-provider/lib/src/domain/authority.d.ts",
+    "vendor/gat-durable-provider/lib/src/domain/authority.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/domain/authority.js",
+    "vendor/gat-durable-provider/lib/src/domain/authority.js.map",
+    "vendor/gat-durable-provider/lib/src/domain/context.d.ts",
+    "vendor/gat-durable-provider/lib/src/domain/context.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/domain/context.js",
+    "vendor/gat-durable-provider/lib/src/domain/context.js.map",
+    "vendor/gat-durable-provider/lib/src/domain/evidence.d.ts",
+    "vendor/gat-durable-provider/lib/src/domain/evidence.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/domain/evidence.js",
+    "vendor/gat-durable-provider/lib/src/domain/evidence.js.map",
+    "vendor/gat-durable-provider/lib/src/domain/index.d.ts",
+    "vendor/gat-durable-provider/lib/src/domain/index.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/domain/index.js",
+    "vendor/gat-durable-provider/lib/src/domain/index.js.map",
+    "vendor/gat-durable-provider/lib/src/domain/mission.d.ts",
+    "vendor/gat-durable-provider/lib/src/domain/mission.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/domain/mission.js",
+    "vendor/gat-durable-provider/lib/src/domain/mission.js.map",
+    "vendor/gat-durable-provider/lib/src/domain/planning.d.ts",
+    "vendor/gat-durable-provider/lib/src/domain/planning.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/domain/planning.js",
+    "vendor/gat-durable-provider/lib/src/domain/planning.js.map",
+    "vendor/gat-durable-provider/lib/src/domain/runtime.d.ts",
+    "vendor/gat-durable-provider/lib/src/domain/runtime.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/domain/runtime.js",
+    "vendor/gat-durable-provider/lib/src/domain/runtime.js.map",
+    "vendor/gat-durable-provider/lib/src/errors.d.ts",
+    "vendor/gat-durable-provider/lib/src/errors.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/errors.js",
+    "vendor/gat-durable-provider/lib/src/errors.js.map",
+    "vendor/gat-durable-provider/lib/src/identity.d.ts",
+    "vendor/gat-durable-provider/lib/src/identity.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/identity.js",
+    "vendor/gat-durable-provider/lib/src/identity.js.map",
+    "vendor/gat-durable-provider/lib/src/index.d.ts",
+    "vendor/gat-durable-provider/lib/src/index.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/index.js",
+    "vendor/gat-durable-provider/lib/src/index.js.map",
+    "vendor/gat-durable-provider/lib/src/local-provider.d.ts",
+    "vendor/gat-durable-provider/lib/src/local-provider.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/local-provider.js",
+    "vendor/gat-durable-provider/lib/src/local-provider.js.map",
+    "vendor/gat-durable-provider/lib/src/members.d.ts",
+    "vendor/gat-durable-provider/lib/src/members.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/members.js",
+    "vendor/gat-durable-provider/lib/src/members.js.map",
+    "vendor/gat-durable-provider/lib/src/mvp/execution.d.ts",
+    "vendor/gat-durable-provider/lib/src/mvp/execution.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/mvp/execution.js",
+    "vendor/gat-durable-provider/lib/src/mvp/execution.js.map",
+    "vendor/gat-durable-provider/lib/src/mvp/store.d.ts",
+    "vendor/gat-durable-provider/lib/src/mvp/store.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/mvp/store.js",
+    "vendor/gat-durable-provider/lib/src/mvp/store.js.map",
+    "vendor/gat-durable-provider/lib/src/mvp/types.d.ts",
+    "vendor/gat-durable-provider/lib/src/mvp/types.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/mvp/types.js",
+    "vendor/gat-durable-provider/lib/src/mvp/types.js.map",
+    "vendor/gat-durable-provider/lib/src/review-host.d.ts",
+    "vendor/gat-durable-provider/lib/src/review-host.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/review-host.js",
+    "vendor/gat-durable-provider/lib/src/review-host.js.map",
+    "vendor/gat-durable-provider/lib/src/review-packet.d.ts",
+    "vendor/gat-durable-provider/lib/src/review-packet.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/review-packet.js",
+    "vendor/gat-durable-provider/lib/src/review-packet.js.map",
+    "vendor/gat-durable-provider/lib/src/service.d.ts",
+    "vendor/gat-durable-provider/lib/src/service.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/service.js",
+    "vendor/gat-durable-provider/lib/src/service.js.map",
+    "vendor/gat-durable-provider/lib/src/standalone-adapter.d.ts",
+    "vendor/gat-durable-provider/lib/src/standalone-adapter.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/standalone-adapter.js",
+    "vendor/gat-durable-provider/lib/src/standalone-adapter.js.map",
+    "vendor/gat-durable-provider/lib/src/task-contract.d.ts",
+    "vendor/gat-durable-provider/lib/src/task-contract.d.ts.map",
+    "vendor/gat-durable-provider/lib/src/task-contract.js",
+    "vendor/gat-durable-provider/lib/src/task-contract.js.map",
+    "vendor/gat-durable-provider/package.json",
+    "vendor/gat-durable-provider/README.md",
+    "vendor/gat-durable-provider/src/client.ts",
+    "vendor/gat-durable-provider/src/config.ts",
+    "vendor/gat-durable-provider/src/consumer.ts",
+    "vendor/gat-durable-provider/src/domain/authority.ts",
+    "vendor/gat-durable-provider/src/domain/context.ts",
+    "vendor/gat-durable-provider/src/domain/evidence.ts",
+    "vendor/gat-durable-provider/src/domain/index.ts",
+    "vendor/gat-durable-provider/src/domain/mission.ts",
+    "vendor/gat-durable-provider/src/domain/planning.ts",
+    "vendor/gat-durable-provider/src/domain/runtime.ts",
+    "vendor/gat-durable-provider/src/errors.ts",
+    "vendor/gat-durable-provider/src/identity.ts",
+    "vendor/gat-durable-provider/src/index.ts",
+    "vendor/gat-durable-provider/src/local-provider.ts",
+    "vendor/gat-durable-provider/src/members.ts",
+    "vendor/gat-durable-provider/src/mvp/execution.ts",
+    "vendor/gat-durable-provider/src/mvp/store.ts",
+    "vendor/gat-durable-provider/src/mvp/types.ts",
+    "vendor/gat-durable-provider/src/review-host.ts",
+    "vendor/gat-durable-provider/src/review-packet.ts",
+    "vendor/gat-durable-provider/src/service.ts",
+    "vendor/gat-durable-provider/src/standalone-adapter.ts",
+    "vendor/gat-durable-provider/src/task-contract.ts",
+    ".gat/durable-binding-installation.json"
+  ]
+}

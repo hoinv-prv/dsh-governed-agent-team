@@ -1,0 +1,45 @@
+AggregateError: required member binding failed
+    at provisionPreparedMember (file:///home/hoinv/work/dsh-binding-distribution-qualified/packages/experimental/gat-core/lib/index.js:1452:9)
+    at async TeamRoster.spawnBound (file:///home/hoinv/work/dsh-binding-distribution-qualified/packages/experimental/gat-core/lib/index.js:3150:19)
+    at async TeamRoster.spawnAdmitted (file:///home/hoinv/work/dsh-binding-distribution-qualified/packages/experimental/gat-core/lib/index.js:3482:11)
+    at async TeamRoster.spawn (file:///home/hoinv/work/dsh-binding-distribution-qualified/packages/experimental/gat-core/lib/index.js:3289:11)
+    at async file:///home/hoinv/work/dsh-binding-distribution-qualified/packages/experimental/gat-core/lib/index.js:5062:23 {
+  [errors]: [
+    Error: Cannot find module '@deepseek-ai/node-addon-system-linux-x64/package.json'
+    Require stack:
+    - /home/hoinv/work/dsh-binding-distribution-qualified/native/system/packages/entry/lib/flock.js
+        at Function._resolveFilename (node:internal/modules/cjs/loader:1430:15)
+        at Function.resolve (node:internal/modules/helpers:157:19)
+        at loadBinding (file:///home/hoinv/work/dsh-binding-distribution-qualified/native/system/packages/entry/lib/flock.js:23:30)
+        at errno (file:///home/hoinv/work/dsh-binding-distribution-qualified/native/system/packages/entry/lib/flock.js:41:9)
+        at new Promise (<anonymous>)
+        at tryLockExclusive (file:///home/hoinv/work/dsh-binding-distribution-qualified/native/system/packages/entry/lib/flock.js:40:25)
+        at SessionWriteLease.acquire (file:///home/hoinv/work/dsh-binding-distribution-qualified/packages/session/session-persistence-jsonl/lib/index.js:690:12)
+        at async JsonlSessionHandle.ensureLease (file:///home/hoinv/work/dsh-binding-distribution-qualified/packages/session/session-persistence-jsonl/lib/index.js:248:18)
+        at async JsonlSessionHandle.persistContiguous (file:///home/hoinv/work/dsh-binding-distribution-qualified/packages/session/session-persistence-jsonl/lib/index.js:224:3)
+        at async file:///home/hoinv/work/dsh-binding-distribution-qualified/packages/session/session-persistence-jsonl/lib/index.js:212:5 {
+      code: 'MODULE_NOT_FOUND',
+      requireStack: [Array]
+    }
+  ]
+}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"ok":false,"error":{"code":"gateway/internal","message":"required member binding failed","details":{}}}
+
+false !== true
+
+    at Object.call (file:///home/hoinv/work/dsh-governed-agent-team/installer/verify-binding-runtime.mjs:137:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///home/hoinv/work/dsh-governed-agent-team/installer/verify-binding-runtime.mjs:179:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.1

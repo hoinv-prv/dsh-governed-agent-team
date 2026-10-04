@@ -1,0 +1,65 @@
+{
+  "previousManifestSha256": "2a0c9a5474d6a98ecb767522dce29dc3c259d48697bc61b2b0ec796a5cb07e30",
+  "newManifestSha256": "93186bad4a3dcb1cbf1f63494ed0243d11727355f7088c80f4ecb9d4a7392a69",
+  "oldRows": 205,
+  "newRows": 197,
+  "hostReplacements": 46,
+  "payloadFiles": 151,
+  "prerequisiteGuards": 244,
+  "allowedDocumentationDelta": [
+    {
+      "path": "packages/experimental/gat-profile/README.i18n.yaml",
+      "old": "9f3a41443be295b2087019d2f0a58c8cee699bda8b12161f7e3864746aab1291",
+      "new": null
+    },
+    {
+      "path": "packages/experimental/gat-profile/README.md",
+      "old": "534d6c82d6b7afe5806f34c9571fe13fd9a796341f4e6f593a79d5f4269ac28a",
+      "new": null
+    },
+    {
+      "path": "packages/experimental/gat-profile/README.zh.md",
+      "old": "53d80e770135487a4a36781677e8c037c7fc759d11d313e36f698e048f3a56fb",
+      "new": null
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/README.i18n.yaml",
+      "old": "beca265159f327018bdaeede5c2d7a68c91845f15492797940b512c606a085ea",
+      "new": null
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/README.md",
+      "old": "7de004c0b486051491ce0333b1a7c03b8cdfcb92431710897be2e430b2ea672f",
+      "new": null
+    },
+    {
+      "path": "packages/experimental/gat-web-profile/README.zh.md",
+      "old": "6dbb1d11d395eaf73b121c8947ecbc928b86df7d894f92aff66832d4558d03eb",
+      "new": null
+    },
+    {
+      "path": "packages/experimental/gat-web/README.i18n.yaml",
+      "old": "c670ac487fb954f07928cb69b602e56e3441796d52094b1d9f447947d6d687e3",
+      "new": null
+    },
+    {
+      "path": "packages/experimental/gat-web/README.md",
+      "old": "52b963cd1a686bc88e218fd3a1de896fdb625d55f118defd676748b0b70c38c9",
+      "new": null
+    },
+    {
+      "path": "packages/experimental/gat-web/README.zh.md",
+      "old": "c1e3bc9434caa54823d32493ef001b5154adf7fe6aeaeca4ea058d2368116774",
+      "new": null
+    },
+    {
+      "path": "vendor/README.md",
+      "old": null,
+      "new": "32bd77d64c4e1b49907995e7a65e4f335f40a4bf90d25559e32e0083dfedd831"
+    }
+  ],
+  "allOtherHistoricalExecutableMetadataProviderRowsEqual": "PASS",
+  "guardRowsEqual": "PASS",
+  "uniqueDestinationRows": "PASS",
+  "generatorSha256": "c1a9fcbfb4be62200c0b84093c1fd5ae3a2c4fc234e084dcd25f4c06ba7bad37"
+}

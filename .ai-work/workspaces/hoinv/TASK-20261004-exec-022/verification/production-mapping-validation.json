@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "source_map_rows": 18,
+  "files": 142,
+  "symbols": 184,
+  "test_paths": 81,
+  "missing_paths": 0,
+  "unresolved_symbols": 0,
+  "mismatched_line_anchors": 0
+}

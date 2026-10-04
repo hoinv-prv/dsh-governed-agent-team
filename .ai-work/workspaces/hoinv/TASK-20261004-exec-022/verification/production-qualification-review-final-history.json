@@ -1,0 +1,174 @@
+{
+  "format": "gat-production-qualification/1",
+  "checked_on": "2026-10-04",
+  "aip": "AIP-EXEC-022",
+  "status": "product_qualified__final_review_and_close_pending",
+  "target": "/home/hoinv/work/dsh-binding-distribution-review-final",
+  "host_compatibility_base": "c291e7961a515f6d7af9304e7fd1d257929aef26",
+  "host_prerequisite_commit": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+  "provider_commit": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+  "compatibility": "dsh-0.1.5-rc.2-binding-5c02ce9",
+  "manifest_sha256": "8e5abdc7eef2008d48fdb34978706414222fc878d5012312097cdffdbf90ad58",
+  "distribution": {
+    "prerequisite_guards": 244,
+    "host_replacements": 54,
+    "payload_files": 151,
+    "exact_source_rows": 205,
+    "transactional_lifecycle": "PASS",
+    "public_and_eight_packed_exports": "PASS",
+    "shared_public_authenticated_control_module": "PASS",
+    "target_owned_native_flock": "PASS",
+    "frozen_lock": "PASS",
+    "compilers_bundles_web": "PASS",
+    "post_replay_source_native_tool_guard_hashes": "PASS",
+    "receipt": "distribution-final-qualification.json",
+    "artifact_proof": "binding-review-final-artifact-proof.json"
+  },
+  "source": {
+    "result": "PASS",
+    "protected_dirty_controls": {
+      "SOURCE_SNAPSHOT.json": true,
+      "compatibility/dsh-0.1.5-rc.2/manifest.json": true,
+      "installer/verify.mjs": true
+    },
+    "host_prerequisite_head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+    "wk_head": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+    "wk_working_tree": "",
+    "source_suite": {
+      "files": 24,
+      "passed": 333,
+      "failed": 0,
+      "log": "production-all-gat-tests-final.log"
+    },
+    "host_boundary_suite": {
+      "files": 29,
+      "passed": 767,
+      "failed": 0,
+      "log": "production-host-boundaries-final.log"
+    },
+    "ordinary_complete_type_aware_lint": {
+      "exit_code": 0,
+      "diagnostics": 0,
+      "log": "production-type-aware-lint-complete-final.log",
+      "all_eleven_prior_owners_included": true
+    },
+    "installer_tests": {
+      "passed": 21,
+      "failed": 0,
+      "log": "production-installer-tests-repair-final.log"
+    },
+    "built_runtime_verifier_syntax": {
+      "exit_code": 0
+    },
+    "counts_overlap": true
+  },
+  "runtime": {
+    "result": "PASS",
+    "cases": 5,
+    "loaded_public_modules": 22,
+    "loaded_module_profile_native_hash_recheck": "PASS",
+    "receipt": "production-built-runtime-review-final.json"
+  },
+  "browser": {
+    "passed": 3,
+    "failed": 0,
+    "independent_exact_quarantined_idle_assertion": true,
+    "transport": "actual authenticated browser WebSocket Enable"
+  },
+  "built_core": {
+    "passed": 1,
+    "failed": 0
+  },
+  "sdk": {
+    "typescript_executed": 7,
+    "typescript_filtered_unrelated": 12,
+    "canonical_corpus_passed": 3,
+    "python_scenarios_passed": 4,
+    "source_api_facades_with_built_cli": true,
+    "installed_registry_sdk_or_wheel_claimed": false
+  },
+  "replay_exits": {
+    "production-built-runtime-review-final.log": {
+      "exit_code": 0,
+      "log": "production-built-runtime-review-final.log"
+    },
+    "production-browser-review-final.log": {
+      "exit_code": 0,
+      "log": "production-browser-review-final.log"
+    },
+    "production-built-core-review-final.log": {
+      "exit_code": 0,
+      "log": "production-built-core-review-final.log"
+    },
+    "production-sdk-ts-review-final.log": {
+      "exit_code": 0,
+      "log": "production-sdk-ts-review-final.log"
+    },
+    "production-sdk-corpus-review-final.log": {
+      "exit_code": 0,
+      "log": "production-sdk-corpus-review-final.log"
+    },
+    "production-python-review-final-sdk-request-refresh.log": {
+      "exit_code": 0,
+      "log": "production-python-review-final-sdk-request-refresh.log"
+    },
+    "production-python-review-final-sdk-snapshot.log": {
+      "exit_code": 0,
+      "log": "production-python-review-final-sdk-snapshot.log"
+    },
+    "production-python-review-final-sdk-restart.log": {
+      "exit_code": 0,
+      "log": "production-python-review-final-sdk-restart.log"
+    },
+    "production-python-review-final-sdk-minimal-in-history.log": {
+      "exit_code": 0,
+      "log": "production-python-review-final-sdk-minimal-in-history.log"
+    }
+  },
+  "documentation": {
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "after_gateway_peer_metadata": true,
+    "log": "binding-gateway-peer-doc-sync.log"
+  },
+  "mapping": {
+    "status": "PASS",
+    "source_map_rows": 18,
+    "files": 130,
+    "symbols": 184,
+    "test_paths": 80,
+    "missing_paths": 0,
+    "unresolved_symbols": 0,
+    "mismatched_line_anchors": 0
+  },
+  "source_baseline_sha256": "1096b2ed0912fe816c4a9d791662d28bcc079b70b1ff2bbb9303f9fa3006be0e",
+  "source_code_map_sha256": "fb4d1ef85c4a7476aca1ffa8bd445633b3b4fd7b9595463f32858b6291cc9d8b",
+  "core_mirror_receipt": "core-production-receipt.json",
+  "independent_review": "production-independent-review.md",
+  "task_strict_lint": "Final post-reconciliation check pending",
+  "whole_tree_strict_lint": {
+    "exit_code": 1,
+    "errors": 0,
+    "warnings": 37,
+    "info": 3005,
+    "accepted": 1,
+    "baseline_unchanged": true,
+    "log": "production-whole-tree-lint-repair-final.json"
+  },
+  "approval": "approved-decisions.md: P01\u201308, WK/direct-continuable and isolated host prerequisite/final integration",
+  "isolated_t16_t22": "Approved conditional non-applicability only; direct strict denial and workflow remain qualified",
+  "rollback": "Exact package restoration; no attachment stripping, Session/provider deletion or event downgrade. Restored prerequisite refuses attached execution; v2-only reader refuses v3.",
+  "captures": {
+    "total": 13,
+    "disposition": "captured; governed backlog defer pending close"
+  },
+  "scope_limits": [
+    "Dedicated provider, one host process per workspace; no cross-host locking guarantee",
+    "No official DSH Consumer or isolated task runner",
+    "No standalone registry installation, deployment, push, merge, publication, Truth/Wiki promotion",
+    "Earlier prerequisite chronology/audit limitations remain disclosed in AIP-EXEC-023 historical handoff; current changes follow prospective DD section8"
+  ],
+  "deployment_performed": false,
+  "commit_created_for_this_followup": false
+}

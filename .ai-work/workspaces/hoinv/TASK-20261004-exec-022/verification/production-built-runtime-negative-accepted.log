@@ -1,0 +1,22 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+
+Caught error:
+
+TypeError: Cannot read properties of undefined (reading 'throwIfAborted')
+    at async file:///home/hoinv/work/dsh-governed-agent-team/installer/verify-binding-runtime.mjs:178:3 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: TypeError: Cannot read properties of undefined (reading 'throwIfAborted')
+      at Proxy.enable (file:///home/hoinv/work/dsh-binding-distribution-accepted/packages/experimental/gat-core/lib/index.js:5023:11)
+      at Object.apply (file:///home/hoinv/work/dsh-binding-distribution-accepted/vendor/cordis/lib/index.js:120:36)
+      at file:///home/hoinv/work/dsh-governed-agent-team/installer/verify-binding-runtime.mjs:178:45,
+  expected: [Function (anonymous)],
+  operator: 'rejects',
+  diff: 'simple'
+}
+
+Node.js v22.23.1

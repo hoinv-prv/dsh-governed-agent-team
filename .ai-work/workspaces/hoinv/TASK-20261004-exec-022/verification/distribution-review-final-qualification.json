@@ -1,0 +1,109 @@
+{
+  "format": "gat-binding-distribution-final-qualification/1",
+  "scope": "Isolated exact prerequisite-host composition and changed-host distribution; deployment and standalone registry installation remain separate.",
+  "target": "/home/hoinv/work/dsh-binding-distribution-review-final",
+  "compatibility": "dsh-0.1.5-rc.2-binding-5c02ce9",
+  "manifestSha256": "8e5abdc7eef2008d48fdb34978706414222fc878d5012312097cdffdbf90ad58",
+  "hostCommit": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+  "providerCommit": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+  "prerequisiteFiles": 244,
+  "hostReplacements": 54,
+  "payloadFiles": 151,
+  "checks": {
+    "freshInstallRepeatStatusFailureRestorationRollbackReinstall": "PASS",
+    "exactSourceHashesAndPrerequisiteGuards": "PASS",
+    "frozenOfflineLock": "PASS",
+    "hostTypeScript": "PASS",
+    "hostBundle": "PASS",
+    "clientTypeScript": "PASS",
+    "clientBundle": "PASS",
+    "viteWebBuild": "PASS",
+    "plainNodePublicExportsAndDedicatedProviderRegistration": "PASS",
+    "eightPackedPublicPackageExports": "PASS",
+    "installerTests": {
+      "passed": 21,
+      "failed": 0
+    },
+    "protectedDirtyControlHashes": "PASS",
+    "upstreamProviderClean": "PASS",
+    "targetOwnedNativeBuildAndRealFlock": "PASS",
+    "exactInstalledSourceRows": 205,
+    "finalRuntimeVerifierHashBound": "PASS",
+    "sharedAuthenticatedControlContext": "PASS",
+    "owningDocumentationSync": {
+      "passed": 34,
+      "failed": 0
+    },
+    "postParentReplayExactSourceNativeVerifierAndGuardHashes": "PASS"
+  },
+  "evidence": {
+    "distribution": "binding-distribution-review-final.json",
+    "artifact": "binding-review-final-artifact-proof.json",
+    "exports": "binding-built-packed-exports-review-final.json",
+    "hostTypes": "binding-review-final-host-types.log",
+    "hostBundle": "binding-review-final-host-bundle.log",
+    "clientTypes": "binding-review-final-client-types.log",
+    "clientBundle": "binding-review-final-client-bundle.log",
+    "webBuild": "binding-review-final-web-build.log",
+    "frozenLock": "binding-review-final-frozen-lock.log",
+    "installerTests": "binding-installer-tests-final.log",
+    "providerRebuild": "provider-rebuild-comparison.json",
+    "nativeBuild": "binding-review-final-native-build.log",
+    "clientBundleHistoricalFailure": "binding-accepted-client-bundle-first-failure.log",
+    "buildCacheProvenance": "binding-review-final-build-cache.json",
+    "nativeProbe": "binding-review-final-native-probe.log",
+    "runtimePeerDocumentation": "binding-gateway-peer-doc-sync.log",
+    "runtimePeerNegative": "binding-shared-context-negative.log",
+    "parentRuntime": "production-built-runtime-review-final.json",
+    "parentBrowser": "production-browser-review-final.log",
+    "parentBuiltCore": "production-built-core-review-final.log",
+    "parentTypeScriptSDK": "production-sdk-ts-review-final.log",
+    "parentSchemaCorpus": "production-sdk-corpus-review-final.log",
+    "parentPythonSDK": [
+      "production-python-review-final-sdk-minimal-in-history.log",
+      "production-python-review-final-sdk-snapshot.log",
+      "production-python-review-final-sdk-request-refresh.log",
+      "production-python-review-final-sdk-restart.log"
+    ]
+  },
+  "separateParentQualification": [
+    "T01\u2013T23 final evidence mapping, independent acceptance review and AIP/ASC finalization"
+  ],
+  "deploymentPerformed": false,
+  "commitsCreated": false,
+  "verificationDependencyLinks": {
+    "workspacePackages": 297,
+    "exactTargetWorkspaceLinks": "PASS",
+    "nestedNativeWorkspaceOptionalDependencies": "PASS"
+  },
+  "historicalTargets": [
+    "/home/hoinv/work/dsh-binding-distribution-final",
+    "/home/hoinv/work/dsh-binding-distribution-qualified",
+    "/home/hoinv/work/dsh-binding-distribution-accepted"
+  ],
+  "subprocessesCompleteTargetSealed": true,
+  "parentReportedSameTargetReplays": {
+    "runtime": {
+      "casesPassed": 5,
+      "publicModules": 22,
+      "negativeControls": "PASS"
+    },
+    "browser": {
+      "passed": 3,
+      "exactLiveIdleAssertion": "PASS"
+    },
+    "builtCore": {
+      "passed": 1
+    },
+    "typeScriptSDK": {
+      "passed": 7,
+      "filteredSkips": 12
+    },
+    "schemaCorpus": {
+      "passed": 3
+    },
+    "pythonSDK": {
+      "passed": 4
+    }
+  }
+}

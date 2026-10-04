@@ -1,0 +1,16 @@
+{
+  "paths": [
+    "packages/experimental/gat-profile/README.md",
+    "packages/experimental/gat-profile/README.zh.md",
+    "packages/experimental/gat-profile/README.i18n.yaml",
+    "packages/experimental/gat-web-profile/README.md",
+    "packages/experimental/gat-web-profile/README.zh.md",
+    "packages/experimental/gat-web-profile/README.i18n.yaml",
+    "packages/experimental/gat-web/README.md",
+    "packages/experimental/gat-web/README.zh.md",
+    "packages/experimental/gat-web/README.i18n.yaml"
+  ],
+  "restoredExactHEAD": "PASS",
+  "stageExactHEAD": "PASS",
+  "otherFilesTouched": false
+}
