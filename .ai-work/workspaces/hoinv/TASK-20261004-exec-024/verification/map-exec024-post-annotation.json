@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "historical_objects_preserved": 3,
+  "root_files_checked": 42,
+  "document_hashes": {
+    "docs/gat-design/source-code-map.json": "c1f03c0a61a243651e9b978f8a8b2038c4163e539aec93d651fea74a16c1a932",
+    "docs/gat-design/source-baseline.json": "afaf0fa12f888220f2e14f8a5ae8025ef5c40dfb492d520abffdcc2c103c388b",
+    "docs/gat-design/design-verification.json": "74e3060b7c8523d881ef9dc6c6aaf2abfc53567f70278e4e0c6b2026c11f22be"
+  },
+  "host_checks": "Previously executed and independently accepted before temporary qualification Host directories became unavailable; no fresh pin/runtime recheck claimed"
+}

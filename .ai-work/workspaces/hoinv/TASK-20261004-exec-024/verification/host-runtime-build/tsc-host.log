@@ -1,0 +1,551 @@
+packages/api/job-controller/src/client/index.ts(11,21): error TS2307: Cannot find module '@deepseek-ai/dsh-api-job-controller/remote' or its corresponding type declarations.
+packages/api/job-controller/src/client/index.ts(34,11): error TS2339: Property 'job' does not exist on type 'ClientRemote'.
+packages/api/session-controller/src/client/transport.ts(3,21): error TS2307: Cannot find module '@deepseek-ai/dsh-api-session-controller/remote' or its corresponding type declarations.
+packages/api/session-controller/src/client/transport.ts(41,42): error TS2339: Property 'session' does not exist on type 'ClientRemote'.
+packages/api/workspace-files/src/client/index.ts(24,34): error TS2345: Argument of type 'ClientRemote' is not assignable to parameter of type 'WorkspaceFilesRemote'.
+  Property 'workspaceFiles' is missing in type 'ClientRemote' but required in type 'WorkspaceFilesRemote'.
+packages/api/workspace-files/src/client/index.ts(25,47): error TS2345: Argument of type 'ClientRemote' is not assignable to parameter of type 'WorkspaceFilesRemote'.
+  Property 'workspaceFiles' is missing in type 'ClientRemote' but required in type 'WorkspaceFilesRemote'.
+packages/api/workspace-files/src/client/remote.ts(8,21): error TS2307: Cannot find module '@deepseek-ai/dsh-api-workspace-files/remote' or its corresponding type declarations.
+packages/api/workspace-files/src/client/remote.ts(38,57): error TS2339: Property 'workspaceFiles' does not exist on type 'ClientRemote'.
+packages/api/workspace-controller/src/client/index.ts(48,53): error TS2339: Property 'workspace' does not exist on type 'ClientRemote'.
+packages/api/workspace-controller/src/client/index.ts(84,28): error TS2339: Property 'workspace' does not exist on type 'ClientRemote'.
+packages/api/workspace-controller/src/client/model.ts(4,21): error TS2307: Cannot find module '@deepseek-ai/dsh-api-workspace-controller/remote' or its corresponding type declarations.
+packages/api/workspace-controller/src/client/model.ts(26,50): error TS2339: Property 'workspace' does not exist on type 'TypertClientRemote'.
+packages/api/terminal-controller/src/client/index.ts(105,69): error TS7006: Parameter 'shell' implicitly has an 'any' type.
+packages/api/terminal-controller/src/client/index.ts(195,32): error TS7006: Parameter 'info' implicitly has an 'any' type.
+packages/api/terminal-controller/src/client/index.ts(242,39): error TS2339: Property 'terminal' does not exist on type 'ClientRemote'.
+packages/api/terminal-controller/src/client/model.ts(7,21): error TS2307: Cannot find module '@deepseek-ai/dsh-api-terminal-controller/remote' or its corresponding type declarations.
+packages/api/terminal-controller/src/client/model.ts(15,43): error TS2339: Property 'terminal' does not exist on type 'ClientRemote'.
+packages/api/terminal-controller/src/client/model.ts(115,20): error TS2571: Object is of type 'unknown'.
+packages/api/terminal-controller/src/client/model.ts(115,44): error TS7006: Parameter 'item' implicitly has an 'any' type.
+packages/api/terminal-controller/src/client/model.ts(122,18): error TS18046: 'shells' is of type 'unknown'.
+packages/api/terminal-controller/src/client/model.ts(122,30): error TS7006: Parameter 'shell' implicitly has an 'any' type.
+packages/api/terminal-controller/src/client/model.ts(122,73): error TS18046: 'shells' is of type 'unknown'.
+packages/api/terminal-controller/src/client/model.ts(143,20): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'WebTerminalInfo'.
+../../home/hoinv/deepseek-harness/packages/core/session/src/index.ts(40,5): error TS2717: Subsequent property declarations must have the same type.  Property 'sessions' must be of type 'SessionStore', but here has type 'SessionStore'.
+../../home/hoinv/deepseek-harness/packages/core/session/src/index.ts(92,5): error TS2717: Subsequent property declarations must have the same type.  Property 'session' must be of type 'TypertLookup<Session, SessionId>', but here has type 'TypertLookup<Session, SessionId>'.
+../../home/hoinv/deepseek-harness/packages/core/session/src/index.ts(960,31): error TS2322: Type 'Session | undefined' is not assignable to type 'Session | Promise<Session | undefined> | undefined'.
+  Type 'Session' is not assignable to type 'Session | Promise<Session | undefined> | undefined'.
+    Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+      Types have separate declarations of a private property 'log'.
+apps/web/tests/goal-multi-turn-actions.e2e.ts(73,35): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+apps/web/tests/scaffold.ts(709,38): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+apps/web/tests/scaffold.ts(947,45): error TS2345: Argument of type '(session: Session, event: SessionEvent) => void' is not assignable to parameter of type '{ (this: Scoped<Session>, session: Session, event: SessionEvent): void; (this: Scoped<...>, session: Session, event: SessionEvent): void; }'.
+  Types of parameters 'session' and 'session' are incompatible.
+    Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+      Types have separate declarations of a private property 'log'.
+apps/web/tests/shipped-composition.e2e.ts(404,33): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+apps/web/tests/workflow-run.e2e.ts(39,48): error TS2345: Argument of type '(session: Session, event: SessionEvent) => void' is not assignable to parameter of type '{ (this: Scoped<Session>, session: Session, event: SessionEvent): void; (this: Scoped<...>, session: Session, event: SessionEvent): void; }'.
+  Types of parameters 'session' and 'session' are incompatible.
+    Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+      Types have separate declarations of a private property 'log'.
+packages/api/session-controller/tests/commands-upload-file.host.spec.ts(312,37): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/api/session-controller/tests/commands-upload-file.host.spec.ts(332,41): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/disposed", session: Session): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/api/session-controller/tests/transport.host.spec.ts(196,31): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/api/session-controller/tests/transport.host.spec.ts(197,31): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/api/session-controller/tests/transport.host.spec.ts(283,14): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/api/session-controller/tests/transport.host.spec.ts(284,14): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/api/session-controller/tests/transport.host.spec.ts(343,36): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/api/terminal-controller/tests/controller.spec.ts(313,75): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/client/ui-deliverables/tests/changes-open.host.spec.ts(66,57): error TS2345: Argument of type 'import("/home/hoinv/deepseek-harness/packages/client/connection/src/browser-auth").BrowserAuth' is not assignable to parameter of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/client/connection/lib/types/browser-auth").BrowserAuth'.
+  Types have separate declarations of a private property 'secret'.
+packages/client/ui-deliverables/tests/present-open.host.spec.ts(51,57): error TS2345: Argument of type 'import("/home/hoinv/deepseek-harness/packages/client/connection/src/browser-auth").BrowserAuth' is not assignable to parameter of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/client/connection/lib/types/browser-auth").BrowserAuth'.
+  Types have separate declarations of a private property 'secret'.
+packages/compaction/compaction/tests/invariant.spec.ts(236,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/compaction/compaction/tests/invariant.spec.ts(240,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/compaction/compaction/tests/invariant.spec.ts(243,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/agent-instructions/tests/agent-instructions.spec.ts(309,31): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/agent-instructions/tests/agent-instructions.spec.ts(333,31): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/agent-instructions/tests/agent-instructions.spec.ts(1446,35): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/agent-instructions/tests/agent-instructions.spec.ts(1501,35): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/agent-instructions/tests/agent-instructions.spec.ts(4231,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/agent-instructions/tests/agent-instructions.spec.ts(4233,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/agent-instructions/tests/agent-instructions.spec.ts(4276,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/file-reference-local/tests/service.spec.ts(109,31): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/file-reference-local/tests/service.spec.ts(111,31): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/file-reference-local/tests/service.spec.ts(114,31): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(93,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(99,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(108,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(117,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(120,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(138,35): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(157,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(179,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(227,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(234,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(242,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(245,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(247,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(254,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(276,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(310,48): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(333,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(341,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/context/time-context/tests/invariant.spec.ts(343,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/core/session/tests/invariant.spec.ts(137,14): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Scoped<Session>' is not assignable to parameter of type 'keyof Events'.
+  Overload 2 of 2, '(thisArg: NoInfer<object & { readonly [ScopedBrand]: Session; }>, name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'Scoped<Session>' is not assignable to parameter of type 'object & { readonly [ScopedBrand]: Session; }'.
+      Type 'Scoped<Session>' is not assignable to type '{ readonly [ScopedBrand]: Session; }'.
+        Types of property '[ScopedBrand]' are incompatible.
+          Type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+            Types have separate declarations of a private property 'log'.
+packages/core/session/tests/invariant.spec.ts(143,29): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Scoped<Session>' is not assignable to parameter of type 'keyof Events'.
+  Overload 2 of 2, '(thisArg: NoInfer<object & { readonly [ScopedBrand]: Session; }>, name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'Scoped<Session>' is not assignable to parameter of type 'object & { readonly [ScopedBrand]: Session; }'.
+      Type 'Scoped<Session>' is not assignable to type '{ readonly [ScopedBrand]: Session; }'.
+        Types of property '[ScopedBrand]' are incompatible.
+          Type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+            Types have separate declarations of a private property 'log'.
+packages/core/session/tests/scoped.spec.ts(94,58): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/core/session/tests/scoped.spec.ts(105,29): error TS2345: Argument of type '(session: Session) => Promise<void>' is not assignable to parameter of type '{ (this: Scoped<Session>, session: Session): void | Promise<void>; (this: Scoped<Session>, session: Session): void | Promise<...>; }'.
+  Types of parameters 'session' and 'session' are incompatible.
+    Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+      Types have separate declarations of a private property 'log'.
+packages/core/session/tests/scoped.spec.ts(109,35): error TS2345: Argument of type '(session: Session) => undefined' is not assignable to parameter of type '{ (this: Scoped<Session>, session: Session): void | Promise<void>; (this: Scoped<Session>, session: Session): void | Promise<...>; }'.
+  Types of parameters 'session' and 'session' are incompatible.
+    Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+      Types have separate declarations of a private property 'log'.
+packages/core/session/tests/scoped.spec.ts(133,57): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/core/session/tests/scoped.spec.ts(167,29): error TS2345: Argument of type '(session: Session) => undefined' is not assignable to parameter of type '{ (this: Scoped<Session>, session: Session): void | Promise<void>; (this: Scoped<Session>, session: Session): void | Promise<...>; }'.
+  Types of parameters 'session' and 'session' are incompatible.
+    Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+      Types have separate declarations of a private property 'log'.
+packages/core/session/tests/scoped.spec.ts(168,35): error TS2345: Argument of type '(session: Session) => undefined' is not assignable to parameter of type '{ (this: Scoped<Session>, session: Session): void | Promise<void>; (this: Scoped<Session>, session: Session): void | Promise<...>; }'.
+  Types of parameters 'session' and 'session' are incompatible.
+    Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+      Types have separate declarations of a private property 'log'.
+packages/core/session/tests/scoped.spec.ts(179,29): error TS2345: Argument of type '(session: Session) => undefined' is not assignable to parameter of type '{ (this: Scoped<Session>, session: Session): void | Promise<void>; (this: Scoped<Session>, session: Session): void | Promise<...>; }'.
+  Types of parameters 'session' and 'session' are incompatible.
+    Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+      Types have separate declarations of a private property 'log'.
+packages/core/session/tests/scoped.spec.ts(180,35): error TS2345: Argument of type '(session: Session) => undefined' is not assignable to parameter of type '{ (this: Scoped<Session>, session: Session): void | Promise<void>; (this: Scoped<Session>, session: Session): void | Promise<...>; }'.
+  Types of parameters 'session' and 'session' are incompatible.
+    Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+      Types have separate declarations of a private property 'log'.
+packages/core/session/tests/session.spec.ts(1265,60): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/core/session/tests/session.spec.ts(1266,67): error TS2322: Type 'Session | Session' is not assignable to type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/core/session/tests/session.spec.ts(1317,60): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/core/session/tests/session.spec.ts(1362,31): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/core/session/tests/session.spec.ts(1528,61): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/core/session/tests/session.spec.ts(1689,23): error TS2349: This expression is not callable.
+  Each member of the union type '(<T extends SessionEventType>(type: T, data: SessionEventMap[T], ...opts: T extends SurfaceEventType ? [opts: SurfaceIntent<T>] : []) => SessionEvent<...>) | (<T extends SessionEventType>(type: T, data: SessionEventMap[T], ...opts: T extends SurfaceEventType ? [opts: ...] : []) => SessionEvent<...>)' has signatures, but none of those signatures are compatible with each other.
+packages/core/session/tests/session.spec.ts(1790,58): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/core/session/tests/session.spec.ts(1811,58): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/deliverables/workspace-changes/tests/plugin.spec.ts(109,34): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/disposed", session: Session): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/deliverables/workspace-changes/tests/plugin.spec.ts(159,34): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/disposed", session: Session): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/deliverables/workspace-changes/tests/plugin.spec.ts(426,34): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/disposed", session: Session): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/deliverables/workspace-changes/tests/plugin.spec.ts(436,34): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/disposed", session: Session): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/experimental/agent-team/tests/durable-request-binding.spec.ts(253,69): error TS2367: This comparison appears to be unintentional because the types '"turn/start" | "turn/end" | "step/start" | "step/end" | "user/message" | "developer/message" | "system/message" | "assistant/message" | "assistant/attempt" | "tool/call" | "tool/result" | "request/header" | "request/context" | "session/end-seed"' and '"agent/inbox/spliced"' have no overlap.
+packages/experimental/agent-team/tests/durable-request-binding.spec.ts(282,68): error TS2367: This comparison appears to be unintentional because the types '"turn/start" | "turn/end" | "step/start" | "step/end" | "user/message" | "developer/message" | "system/message" | "assistant/message" | "assistant/attempt" | "tool/call" | "tool/result" | "request/header" | "request/context" | "session/end-seed"' and '"agent/inbox/spliced"' have no overlap.
+packages/experimental/agent-team/tests/logged-durable-context.spec.ts(264,20): error TS2345: Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+  Types have separate declarations of a private property 'log'.
+packages/experimental/agent-team/tests/logged-durable-context.spec.ts(304,20): error TS2345: Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+  Types have separate declarations of a private property 'log'.
+packages/experimental/agent-team/tests/logged-durable-context.spec.ts(330,20): error TS2345: Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+  Types have separate declarations of a private property 'log'.
+packages/feedback/message-feedback/tests/message-feedback.spec.ts(602,27): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/hooks/hook-protocol/tests/invariant.spec.ts(64,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/hooks/hook-protocol/tests/invariant.spec.ts(68,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/hooks/hook-protocol/tests/invariant.spec.ts(71,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/interaction/permission-presets/tests/invariant.spec.ts(31,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/interaction/permission-presets/tests/invariant.spec.ts(32,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/interaction/permission-presets/tests/invariant.spec.ts(40,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/interaction/user-approval/tests/invariant.spec.ts(55,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/interaction/user-approval/tests/invariant.spec.ts(59,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/interaction/user-approval/tests/invariant.spec.ts(60,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/llm/token-meter/tests/token-meter.spec.ts(616,73): error TS2345: Argument of type 'Session | Session' is not assignable to parameter of type 'Session'.
+  Type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session' is not assignable to type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session'.
+    Types have separate declarations of a private property 'log'.
+packages/plan/plan-mode/tests/invariant.spec.ts(20,29): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/plan/plan-mode/tests/invariant.spec.ts(31,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/plan/plan-mode/tests/invariant.spec.ts(32,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/plan/plan-mode/tests/invariant.spec.ts(33,31): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/plan/plan-mode/tests/invariant.spec.ts(42,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/plan/plan-mode/tests/invariant.spec.ts(57,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/plan/plan-mode/tests/plan-mode.spec.ts(125,31): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/sandbox/sandbox-policy/tests/invariant.spec.ts(24,48): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/sandbox/sandbox-policy/tests/invariant.spec.ts(30,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/sandbox/sandbox-policy/tests/invariant.spec.ts(38,46): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/session-query/session-log-export/tests/archive.host.spec.ts(174,57): error TS2345: Argument of type 'import("/home/hoinv/deepseek-harness/packages/client/connection/src/browser-auth").BrowserAuth' is not assignable to parameter of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/client/connection/lib/types/browser-auth").BrowserAuth'.
+  Types have separate declarations of a private property 'secret'.
+packages/session-query/session-log-export/tests/route.host.spec.ts(55,57): error TS2345: Argument of type 'import("/home/hoinv/deepseek-harness/packages/client/connection/src/browser-auth").BrowserAuth' is not assignable to parameter of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/client/connection/lib/types/browser-auth").BrowserAuth'.
+  Types have separate declarations of a private property 'secret'.
+packages/session/session-telemetry-otel/tests/otel.spec.ts(416,31): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/session/session-telemetry-otel/tests/otel.spec.ts(549,33): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/event", session: Session, event: SessionEvent): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/session/session-telemetry-otel/tests/otel.spec.ts(551,35): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/created", session: Session): void', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): void', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/session/session-telemetry/tests/telemetry.spec.ts(375,41): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/flush", session: Session): Promise<void>', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): Promise<...>', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/session/session-telemetry/tests/telemetry.spec.ts(661,41): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/flush", session: Session): Promise<void>', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): Promise<...>', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/session/session-telemetry/tests/telemetry.spec.ts(669,41): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(name: "session/flush", session: Session): Promise<void>', gave the following error.
+    Argument of type 'import("/tmp/gat-exec024-host-c1157f7e/packages/core/session/lib/types/index").Session' is not assignable to parameter of type 'import("/home/hoinv/deepseek-harness/packages/core/session/src/index").Session'.
+      Types have separate declarations of a private property 'log'.
+  Overload 2 of 2, '(thisArg: unknown, name: keyof Events, ...args: [] | [session: Session] | [fiber: Fiber] | [fiber: Fiber, oldValue: FiberState] | [config: any, next: () => any] | [name: string, value: any] | [config: any, noSave: boolean, next: () => void] | ... 85 more ... | [value: ...]): Promise<...>', gave the following error.
+    Argument of type 'Session' is not assignable to parameter of type 'keyof Events'.
+packages/subagent/subagent-in-process-driver/tests/subagent-in-process-driver.spec.ts(163,15): error TS2349: This expression is not callable.
+  Each member of the union type '(<T extends SessionEventType>(type: T, data: SessionEventMap[T], ...opts: T extends SurfaceEventType ? [opts: SurfaceIntent<T>] : []) => SessionEvent<...>) | (<T extends SessionEventType>(type: T, data: SessionEventMap[T], ...opts: T extends SurfaceEventType ? [opts: ...] : []) => SessionEvent<...>)' has signatures, but none of those signatures are compatible with each other.

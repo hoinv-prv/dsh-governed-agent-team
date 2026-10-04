@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Asia/Tokyo",
+  "planning_only": true,
+  "checks": {
+    "planning_input_files": 31,
+    "missing_inputs": [],
+    "hash_drift": [],
+    "new_markdown_whitespace_findings": []
+  },
+  "aiws_lint": {
+    "command": [
+      "python3",
+      ".ai-work/tooling/lint_all.py",
+      "--strict",
+      "--format",
+      "json"
+    ],
+    "exit_code": 1,
+    "counts": {
+      "error": 0,
+      "warning": 37,
+      "info": 3005,
+      "accepted": 1
+    },
+    "scope": "whole-tree AIWS; does not validate technical conclusions or execute the plan",
+    "warning_location": "Existing .ai-work files; new planning files are outside lint targets"
+  },
+  "runtime_tests": "Not run: proposal inspection and planning only",
+  "independent_review": "Not performed; Q2 and R1 are planned gates",
+  "executable_wbs": "Deferred until qualification and cross-repository command/path grants are resolved"
+}

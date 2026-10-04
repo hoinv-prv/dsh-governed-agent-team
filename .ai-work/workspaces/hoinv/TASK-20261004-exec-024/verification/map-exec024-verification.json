@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "checked_on": "2026-10-04",
+  "historical_preservation": {
+    "source_code_map_rows": 18,
+    "map_iteration": "AIP-EXEC-022",
+    "baseline_files": 142,
+    "baseline_iteration": "AIP-EXEC-022",
+    "design_verification_aip": "AIP-EXEC-022",
+    "old_fields_byte_semantically_unchanged": true
+  },
+  "execution_composition": {
+    "mapped_source_files": 25,
+    "mapped_scenario_files": 17,
+    "mapped_total": 42,
+    "baseline_hashes_and_sizes_match": true,
+    "map_hashes_match": true,
+    "symbol_anchors_checked": 22,
+    "test_paths_exist": 6,
+    "current_host": "c1157f7ed448b40c463c1a43fa595b12294fd50d",
+    "direct_host": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+    "wk": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+    "evidence_receipts_present": 9,
+    "wiki_ids_invented": false
+  },
+  "files": {
+    "docs/gat-design/source-code-map.json": "c1f03c0a61a243651e9b978f8a8b2038c4163e539aec93d651fea74a16c1a932",
+    "docs/gat-design/source-baseline.json": "afaf0fa12f888220f2e14f8a5ae8025ef5c40dfb492d520abffdcc2c103c388b",
+    "docs/gat-design/design-verification.json": "74e3060b7c8523d881ef9dc6c6aaf2abfc53567f70278e4e0c6b2026c11f22be"
+  },
+  "archived_originals": {
+    ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/map-before-exec024/source-baseline.json": "a173f1e404537152fa362867601b4b72b434b8a6b5e6e8d85673b9c8d37804c1",
+    ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/map-before-exec024/design-verification.json": "c67d1bfbe6349b06ee829ce086d49e07726b0fe455ea61712baf66c1c7750729",
+    ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/map-before-exec024/source-code-map.json": "a0c49b2eb7c06368479848c7e77c3a79b6ad41f8f8080d7e4c03c3e5838fe797"
+  },
+  "independent_review": "PASS: final STEP-06 in source-review.md; acceptance annotations only",
+  "script": {
+    "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/verify-execution-composition-mappings.py",
+    "sha256": "7ec758811c3983250920ac5fbc5c4514b6371652a0d3928d3112e71221494fcb"
+  },
+  "log": {
+    "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/map-exec024-verification.log",
+    "sha256": "d8e8ae341a8bce592250056407c76597983670048757a310aeb8befa39895970"
+  },
+  "command": "python3 .ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/verify-execution-composition-mappings.py",
+  "post_annotation_recheck": {
+    "root_hash_and_history_validation": "PASS recorded separately",
+    "live_disposable_hosts_available": false,
+    "diagnostic_log": "map-exec024-post-review-host-unavailable.log",
+    "original_log_restoration": "Exact deterministic prior stdout restored with independently recorded SHA256 d8e8ae341a8bce592250056407c76597983670048757a310aeb8befa39895970; no new Host-pin execution claimed"
+  }
+}

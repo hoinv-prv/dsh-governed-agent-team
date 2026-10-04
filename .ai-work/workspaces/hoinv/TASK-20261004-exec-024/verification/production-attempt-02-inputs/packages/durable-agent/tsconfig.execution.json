@@ -1,0 +1,16 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": { "rootDir": "src", "outDir": "lib/types" },
+  "include": ["src/execution-*.ts", "src/tools.ts", "src/ownership.ts"],
+  "references": [
+    { "path": "../gat-core" },
+    { "path": "../agent-team" },
+    { "path": "../../core/agent" },
+    { "path": "../../core/tools" },
+    { "path": "../../../vendor/cordis" },
+    { "path": "../../../vendor/schemastery" },
+    { "path": "../../llm/llm" },
+    { "path": "../../core/session" },
+    { "path": "../../subagent/subagent" }
+  ]
+}

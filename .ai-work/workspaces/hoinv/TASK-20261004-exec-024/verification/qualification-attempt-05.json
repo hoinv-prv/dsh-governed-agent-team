@@ -1,0 +1,13 @@
+{
+  "command": [
+    "node",
+    "/home/hoinv/deepseek-harness/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "vitest.exec024.config.ts",
+    "packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts"
+  ],
+  "cwd": "/tmp/gat-exec024-host-c1157f7e",
+  "exit_code": 1,
+  "test_sha256": "ad3fea2d1199f27e333a9c554fdebac52989b3740442031534a988fea2c6d641"
+}

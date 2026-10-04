@@ -1,0 +1,22 @@
+{
+  "reviewer": "/root/qualification_review",
+  "started_at": "2026-10-04T10:11:50.074425+00:00",
+  "command": [
+    "node",
+    "/home/hoinv/deepseek-harness/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "vitest.exec024.extra.config.ts"
+  ],
+  "cwd": "/tmp/gat-exec024-host-c1157f7e",
+  "exit_code": 0,
+  "source_hashes": {
+    "vitest.exec024.extra.config.ts": "8ef3debeddf36ce3fc714f948a0367f6db3daaa98c5d4e882874be7f8c0a33e4",
+    "vitest.exec024.config.ts": "441a32f63e20153636a556c4dc233ad14713b19d5525787a940768231091f451",
+    "packages/experimental/gat-core/tests/task-memory-lifecycle-extra.spec.ts": "15a88af19e18f16aac34db253bb2751c6645fa8dfbd14b5e81ef748bea8c4ea8",
+    "packages/experimental/gat-core/tests/task-memory-prototype.ts": "f1ab1e7c01297300d528044d6dcf9a1a5b04f4fa0608c37b3386acfe8b8a7f7a",
+    "packages/experimental/gat-core/tests/task-memory-harness.ts": "e447e722078f762b494e1dba0d90fb86906550622ded08e49bf323a4f740e65f"
+  },
+  "source_unchanged_during_run": true,
+  "log_sha256": "990fce31e9572a6d6268f3e1da726e7204f4fda66b59e38de1baa6874c107e19"
+}

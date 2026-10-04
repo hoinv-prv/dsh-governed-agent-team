@@ -1,0 +1,15 @@
+ℹ tsdown v0.22.2 powered by rolldown v1.1.1
+ℹ config file: /tmp/gat-exec024-direct-5c02ce9f/packages/experimental/gat-core/tsdown.config.ts 
+ℹ entry: lib/types/index.js
+ℹ target: es2024
+ℹ tsconfig: tsconfig.json
+ℹ entry: lib/types/invariant.js
+ℹ target: es2024
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ lib/invariant.js  35.28 kB │ gzip: 9.27 kB
+ℹ 1 files, total: 35.28 kB
+✔ Build complete in 49ms
+ℹ lib/index.js  226.67 kB │ gzip: 50.52 kB
+ℹ 1 files, total: 226.67 kB
+✔ Build complete in 55ms

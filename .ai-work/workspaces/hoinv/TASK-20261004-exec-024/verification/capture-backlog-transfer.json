@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "captures": 14,
+  "deferred": 14,
+  "remaining_captured": 0,
+  "backlog": ".ai-work/capture_backlog/hoinv.jsonl",
+  "backlog_ids": [
+    "BL-024-CAP-024-01",
+    "BL-024-CAP-024-02",
+    "BL-024-CAP-024-03",
+    "BL-024-CAP-024-04",
+    "BL-024-CAP-024-05",
+    "BL-024-CAP-024-06",
+    "BL-024-CAP-024-07",
+    "BL-024-CAP-024-08",
+    "BL-024-CAP-024-09",
+    "BL-024-CAP-024-10",
+    "BL-024-CAP-024-11",
+    "BL-024-CAP-024-12",
+    "BL-024-CAP-024-13",
+    "BL-024-CAP-024-14"
+  ],
+  "content_and_source_refs_preserved": true,
+  "promotion_performed": false,
+  "human_authorization": "please move captures to backlog so that I will check it later"
+}

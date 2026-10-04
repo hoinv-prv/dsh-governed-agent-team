@@ -1,0 +1,85 @@
+{
+  "checkpoint": "task/intent qualification; reviewer input contract and independent review pending",
+  "aip": "AIP-EXEC-024",
+  "step": "STEP-02",
+  "active_policy": "plugin-only; task-selected memory tool results; no system memory",
+  "production_implementation_complete": false,
+  "independent_review_complete": false,
+  "original_detail_design_prefix_matches_planning_baseline": true,
+  "host_production_source_unchanged": [
+    {
+      "path": "packages/core/agent-loop/src/agent.ts",
+      "matches_selected_head": true
+    },
+    {
+      "path": "packages/core/system-prompt/src/index.ts",
+      "matches_selected_head": true
+    },
+    {
+      "path": "packages/experimental/gat-core/src/index.ts",
+      "matches_selected_head": true
+    },
+    {
+      "path": "packages/experimental/agent-team/src/execution.ts",
+      "matches_selected_head": true
+    }
+  ],
+  "source_files": [
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/docs/gat-design/DETAIL_DESIGN.md",
+      "sha256": "0b35793dba66d72ae3df303f51755efb5dc3bc468c49d62a0f6fb1753f016c1c"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-024-implement-durable-binding-reuse.md",
+      "sha256": "365cc1cd0a80a1bbb744232e03412496f3cc0cf37736c272efd3d8f1f83aaba1"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/qualification-environment.json",
+      "sha256": "8b3a6e3d4d01f88492ec46da7e90370b09be05fd3b2c05760b5da4f5b574bd6f"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/qualification-matrix.md",
+      "sha256": "ae54317fece11781f4782b3ea5c35c9e24bdd1a8ddc1c12292541c3f2366d1e4"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/source-design-consistency.md",
+      "sha256": "b560f6b93b7c00338d544cc395745e179f89cfcc19d5d0b2597ef2839c74c01e"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/review-input-contract-proposal.md",
+      "sha256": "bf1966dfe0bbd2dccf53c4e5fe11e5550095a9dd826b271057ca1486c9310fac"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/vitest.exec024.config.ts",
+      "sha256": "88686be5ee1513f4b7ee7d754a88bab67d3e4397df011a14cc6f531b22f7a8a5"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-core/tests/task-memory-prototype.ts",
+      "sha256": "2a7f48db29301e972ac3a60cd35769265652e7c3ff2682014dabdd1dbf3a1aac"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-core/tests/task-memory-qualification.spec.ts",
+      "sha256": "2cd792478670f0487f4fbb3f764af62618b295949c2ae264a2fcf3d2df7949a0"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-core/tests/qualification-shared/tools.ts",
+      "sha256": "5a986d23476809e3a5b8c70a00f33134339d4fef5fe4f0e116175da685fc1d61"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-core/tests/qualification-shared/ownership.ts",
+      "sha256": "2d0d7bf992c8211bf2309a9cb80c4b5a850e886790b15eb25bd03e508e9a6d20"
+    }
+  ],
+  "task_memory": {
+    "tests_passed": 18,
+    "exit_code": 0,
+    "receipt": "task-memory-attempt-09.json",
+    "receipt_sha256": "5fc788cf9999541e2b909b4a5952c730fd6528ce6e585f01268213935f2760d8"
+  },
+  "historical_prompt_checkpoint": "checkpoint-manifest.json; superseded by HUMAN task/intent policy",
+  "open_dependencies": [
+    "authenticated reviewer input/ACL seam",
+    "independent reviewer selection and verdict",
+    "production implementation/package/type/snapshot verification"
+  ]
+}

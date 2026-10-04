@@ -1,0 +1,18 @@
+{
+  "command": [
+    "python3",
+    ".ai-work/tooling/lint_all.py",
+    "--scope",
+    "task",
+    "--workspace",
+    ".ai-work/workspaces/hoinv/TASK-20261004-exec-024",
+    "--aip",
+    ".ai-work/aip/hoinv/exec/AIP-EXEC-024-implement-durable-binding-reuse.md",
+    "--strict"
+  ],
+  "exit_code": 0,
+  "log": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/post-close-task-lint.log",
+  "log_sha256": "94e7c69519e5339546b3bb52eeec3d2252a96bf7bc0bd380a6a5db1e6faa5c22",
+  "errors": 0,
+  "warnings": 0
+}

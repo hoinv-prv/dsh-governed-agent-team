@@ -1,0 +1,3109 @@
+{
+  "host": "/tmp/gat-exec024-host-c1157f7e",
+  "host_head": "c1157f7ed448b40c463c1a43fa595b12294fd50d",
+  "wk_head": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+  "wk_package": "/tmp/gat-exec024-host-c1157f7e/vendor/gat-qualification-wk",
+  "wk_public_entry": "vendor/gat-qualification-wk/lib/src/index.js",
+  "dependency_links": [
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/node_modules",
+      "target": "/home/hoinv/deepseek-harness/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/website/node_modules",
+      "target": "/home/hoinv/deepseek-harness/website/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/apps/web/node_modules",
+      "target": "/home/hoinv/deepseek-harness/apps/web/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/apps/desktop/node_modules",
+      "target": "/home/hoinv/deepseek-harness/apps/desktop/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/apps/desktop-host/node_modules",
+      "target": "/home/hoinv/deepseek-harness/apps/desktop-host/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/apps/cli/node_modules",
+      "target": "/home/hoinv/deepseek-harness/apps/cli/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/benchmarks/node_modules",
+      "target": "/home/hoinv/deepseek-harness/benchmarks/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/python/sdk-runtime/node_modules",
+      "target": "/home/hoinv/deepseek-harness/python/sdk-runtime/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/native/system/node_modules",
+      "target": "/home/hoinv/deepseek-harness/native/system/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/native/system/packages/entry/node_modules",
+      "target": "/home/hoinv/deepseek-harness/native/system/packages/entry/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/website/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/website/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/apps/web/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/apps/web/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/apps/desktop/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/apps/desktop/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/apps/desktop-host/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/apps/desktop-host/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/apps/cli/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/apps/cli/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/benchmarks/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/benchmarks/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/python/sdk-runtime/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/python/sdk-runtime/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/native/system/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/native/system/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/native/system/packages/entry/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/native/system/packages/entry/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/vendor/schemastery/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/vendor/schemastery/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/vendor/group/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/vendor/group/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/vendor/timer/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/vendor/timer/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/vendor/logger-console/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/vendor/logger-console/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/vendor/hmr/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/vendor/hmr/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/vendor/cordis/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/vendor/cordis/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/vendor/include/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/vendor/include/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/vendor/loader/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/vendor/loader/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/web/web/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/web/web/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/web/web-search-deepseek/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/web/web-search-deepseek/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/web/web-search-perplexity/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/web/web-search-perplexity/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/web/tool-web/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/web/tool-web/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/web/web-search-exa/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/web/web-search-exa/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/web/web-fetch-http/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/web/web-fetch-http/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/code-runtime/code-runtime/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/code-runtime/code-runtime/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/code-runtime/code-runtime-worker-thread/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/code-runtime/code-runtime-worker-thread/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/shell/pwsh-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/shell/pwsh-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/shell/shell/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/shell/shell/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/shell/pwsh-sandbox/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/shell/pwsh-sandbox/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/shell/tool-pwsh-persistent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/shell/tool-pwsh-persistent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/shell/bash-sandbox/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/shell/bash-sandbox/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/shell/tool-pwsh/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/shell/tool-pwsh/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/shell/shell-env/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/shell/shell-env/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/shell/bash-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/shell/bash-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/shell/tool-bash/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/shell/tool-bash/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/shell/tool-bash-persistent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/shell/tool-bash-persistent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/attachment/attachment/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/attachment/attachment/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/attachment/attachment-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/attachment/attachment-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/identity/anonymous-user-id/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/identity/anonymous-user-id/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/core/system-prompt/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/core/system-prompt/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/core/agent-default-model/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/core/agent-default-model/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/core/agent-loop/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/core/agent-loop/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/core/tools/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/core/tools/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/core/scope/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/core/scope/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/core/agent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/core/agent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/core/agent-tool-presentation/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/core/agent-tool-presentation/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/core/session/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/core/session/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/acp/acp/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/acp/acp/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/guard/repeat-tool-reminder/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/guard/repeat-tool-reminder/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/guard/timeout-policy/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/guard/timeout-policy/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/bundle/sdk-app/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/bundle/sdk-app/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/bundle/web-app/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/bundle/web-app/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/bundle/headless/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/bundle/headless/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/bundle/sdk-minimal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/bundle/sdk-minimal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/bundle/base/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/bundle/base/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/bundle/acp-app/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/bundle/acp-app/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/workflow/tool-workflow/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/workflow/tool-workflow/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/workflow/workflow/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/workflow/workflow/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/workflow/tool-ralph/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/workflow/tool-ralph/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/workflow/workflow-worker-thread/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/workflow/workflow-worker-thread/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/llm/deepseek-llm-api-extensions/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/llm/deepseek-llm-api-extensions/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/llm/llm/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/llm/llm/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/llm/llm-deepseek/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/llm/llm-deepseek/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/llm/plugin-package-inventory-deepseek/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/llm/plugin-package-inventory-deepseek/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/llm/llm-retry/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/llm/llm-retry/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/llm/token-meter/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/llm/token-meter/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/llm/llm-pi-ai/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/llm/llm-pi-ai/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/sdk/server/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/sdk/server/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/sdk/protocol/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/sdk/protocol/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/sdk/client/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/sdk/client/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/experimental/client-ui-agent-team/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/experimental/client-ui-agent-team/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/experimental/tool-agent-team/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/experimental/tool-agent-team/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/experimental/agent-team/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/experimental/agent-team/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/experimental/agent-team-profile/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/experimental/agent-team-profile/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/experimental/code-runtime-python/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/experimental/code-runtime-python/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/experimental/inspector/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/experimental/inspector/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/experimental/webworker-packer/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/experimental/webworker-packer/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/experimental/webworker-runtime/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/experimental/webworker-runtime/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/experimental/agent-team-web-profile/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/experimental/agent-team-web-profile/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/boot/app-boot/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/boot/app-boot/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/boot/cmdline/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/boot/cmdline/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/mcp/mcp-client/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/mcp/mcp-client/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/interaction/commands/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/interaction/commands/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/interaction/tool-ask-user/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/interaction/tool-ask-user/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/interaction/user-questions/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/interaction/user-questions/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/interaction/permission-presets/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/interaction/permission-presets/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/interaction/user-approval/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/interaction/user-approval/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subprocess/subprocess/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subprocess/subprocess/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subprocess/subprocess-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subprocess/subprocess-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subprocess/win32-process/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subprocess/win32-process/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/feedback/message-feedback/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/feedback/message-feedback/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/feedback/command-feedback/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/feedback/command-feedback/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/typert/registry/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/typert/registry/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/typert/protocol/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/typert/protocol/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/typert/loader/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/typert/loader/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/typert/generator/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/typert/generator/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/lsp/tool-lsp/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/lsp/tool-lsp/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/lsp/lsp/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/lsp/lsp/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/lsp/lsp-stdio/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/lsp/lsp-stdio/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/credentials/credentials/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/credentials/credentials/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/credentials/credentials-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/credentials/credentials-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/credentials/authorization/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/credentials/authorization/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/spill/spill-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/spill/spill-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/spill/spill/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/spill/spill/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/spill/spill-policy/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/spill/spill-policy/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/runtime-diagnostics/invariants/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/runtime-diagnostics/invariants/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/extensions/ui-cordis/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/extensions/ui-cordis/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/extensions/cordis-client-runner/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/extensions/cordis-client-runner/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/extensions/cordis-host-runner/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/extensions/cordis-host-runner/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/extensions/tool-cordis/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/extensions/tool-cordis/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/host/directory-picker-auto/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/host/directory-picker-auto/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/host/directory-picker/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/host/directory-picker/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/host/plugin-inventory/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/host/plugin-inventory/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/host/directory-picker-native/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/host/directory-picker-native/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/host/webserver/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/host/webserver/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/host/directory-picker-browse/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/host/directory-picker-browse/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/host/open-in-app/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/host/open-in-app/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/host/frontend-static/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/host/frontend-static/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/native-command/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/native-command/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/workspace-path/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/workspace-path/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/http-proxy/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/http-proxy/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/launch-environment/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/launch-environment/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/atomic-write/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/atomic-write/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/brand/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/brand/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/values/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/values/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/package-manifest/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/package-manifest/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/time/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/time/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/home-paths/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/home-paths/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/deque/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/deque/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/crypto/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/crypto/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/output-retention/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/output-retention/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/timeout/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/timeout/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/util/chunked-list/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/util/chunked-list/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/sandbox/sandbox-policy/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/sandbox/sandbox-policy/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/sandbox/sandbox/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/sandbox/sandbox/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/sandbox/sandbox-windows-acl/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/sandbox/sandbox-windows-acl/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/sandbox/sandbox-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/sandbox/sandbox-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/schedule/schedule/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/schedule/schedule/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/plan/plan-mode/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/plan/plan-mode/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/preset/agent-presets/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/preset/agent-presets/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/preset/persona/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/preset/persona/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/webhook/webhook-github/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/webhook/webhook-github/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/webhook/webhook/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/webhook/webhook/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/context/agent-instructions/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/context/agent-instructions/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/context/session-reference/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/context/session-reference/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/context/time-context/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/context/time-context/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/context/file-reference-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/context/file-reference-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/context/tmux-context/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/context/tmux-context/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/context/file-reference/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/context/file-reference/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-persistence-jsonl/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-persistence-jsonl/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-title-all-prompts-llm/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-title-all-prompts-llm/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-telemetry/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-telemetry/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-title-llm/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-title-llm/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-projection-cache/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-projection-cache/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-telemetry-otel/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-telemetry-otel/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-format-v1-to-v2/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-format-v1-to-v2/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-format-v2-to-v3/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-format-v2-to-v3/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-checkpoint-policy/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-checkpoint-policy/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-persistence/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-persistence/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-format-catalog/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-format-catalog/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-title-first-prompt-llm/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-title-first-prompt-llm/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-format/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-format/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-projection/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-projection/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-stats/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-stats/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-turn-outline/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-turn-outline/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-log-deepseek/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-log-deepseek/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-format-v0-to-v1/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-format-v0-to-v1/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session/session-title/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session/session-title/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-dockkit/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-dockkit/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/web/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/web/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-deliverables/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-deliverables/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-commands/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-commands/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-user-questions/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-user-questions/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-reference/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-reference/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-tool/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-tool/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-session/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-session/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-sidebar-files/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-sidebar-files/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-settings-models/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-settings-models/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-directory-picker-browse/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-directory-picker-browse/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-skill/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-skill/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/store/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/store/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-sidebar/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-sidebar/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-subagent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-subagent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-theme/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-theme/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-chat/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-chat/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-approval/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-approval/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-goal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-goal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-message-feedback/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-message-feedback/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-permission-presets/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-permission-presets/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-primitives/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-primitives/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-sidebar-documentpreview/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-sidebar-documentpreview/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-conversation/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-conversation/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-attachment/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-attachment/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-input-trigger/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-input-trigger/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/locale/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/locale/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-brand-official/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-brand-official/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-workflow-run/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-workflow-run/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/modules/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/modules/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-slots/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-slots/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-layout/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-layout/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-settings-general/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-settings-general/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/hmr/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/hmr/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-settings/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-settings/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-workspace/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-workspace/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-sidebar-right/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-sidebar-right/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-settings-plugins/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-settings-plugins/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-jobs/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-jobs/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/file-upload/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/file-upload/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-model-selection/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-model-selection/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-schedule/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-schedule/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/resources/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/resources/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-trajectory/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-trajectory/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-renderer/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-renderer/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/connection/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/connection/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-directory-picker-native/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-directory-picker-native/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-open-in-app/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-open-in-app/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-settings-plugin-inventory/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-settings-plugin-inventory/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-plan/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-plan/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/client/ui-agent-preset/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/client/ui-agent-preset/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/goal/command-goal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/goal/command-goal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/goal/tool-goal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/goal/tool-goal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/goal/goal-round-driver/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/goal/goal-round-driver/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/goal/goal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/goal/goal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/test-support/client-runtime/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/test-support/client-runtime/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/test-support/agent-loop-testkit/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/test-support/agent-loop-testkit/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/test-support/loader-smoke/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/test-support/loader-smoke/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/test-support/llm-mock-server/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/test-support/llm-mock-server/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/test-support/remote-mock/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/test-support/remote-mock/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/test-support/llm-replay/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/test-support/llm-replay/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/test-support/session-snapshot/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/test-support/session-snapshot/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/jobs/tool-jobs/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/jobs/tool-jobs/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/jobs/jobs/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/jobs/jobs/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/jobs/jobs-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/jobs/jobs-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/workspace/workspace/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/workspace/workspace/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/storage/storage-domain/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/storage/storage-domain/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/storage/storage/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/storage/storage/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/storage/storage-json/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/storage/storage-json/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/storage/storage-sqlite/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/storage/storage-sqlite/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/skill/skill-filesystem/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/skill/skill-filesystem/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/skill/skill-badge/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/skill/skill-badge/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/skill/tool-skill/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/skill/tool-skill/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/skill/skill/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/skill/skill/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/compaction/compaction-tool-result-pruner/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/compaction/compaction-tool-result-pruner/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/compaction/compaction-basic/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/compaction/compaction-basic/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/compaction/compaction/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/compaction/compaction/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/compaction/command-compact/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/compaction/command-compact/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session-query/session-query-sqlite/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session-query/session-query-sqlite/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session-query/session-log-export/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session-query/session-log-export/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session-query/session-query/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session-query/session-query/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/session-query/tool-session-query/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/session-query/tool-session-query/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/hooks/hook-protocol/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/hooks/hook-protocol/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/hooks/hooks-codex/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/hooks/hooks-codex/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/hooks/hooks-claude-code/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/hooks/hooks-claude-code/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/settings/settings-file/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/settings/settings-file/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/settings/settings/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/settings/settings/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/fs/fs-sandbox/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/fs/fs-sandbox/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/fs/tool-fs/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/fs/tool-fs/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/fs/fs-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/fs/fs-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/fs/tool-present/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/fs/tool-present/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/fs/fs-observation-policy/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/fs/fs-observation-policy/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/fs/tool-str-replace-editor/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/fs/tool-str-replace-editor/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/fs/fs/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/fs/fs/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/fs/tool-fs-search/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/fs/tool-fs-search/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/e2b/fs-e2b/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/e2b/fs-e2b/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/e2b/subprocess-e2b/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/e2b/subprocess-e2b/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/e2b/e2b/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/e2b/e2b/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/terminal/tool-terminal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/terminal/tool-terminal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/terminal/terminal-bash/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/terminal/terminal-bash/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/terminal/terminal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/terminal/terminal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/api/settings-controller/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/api/settings-controller/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/api/remotes/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/api/remotes/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/api/session-controller/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/api/session-controller/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/api/workspace-controller/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/api/workspace-controller/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/api/workspace-files/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/api/workspace-files/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/api/gateway/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/api/gateway/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/todo/tool-todo/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/todo/tool-todo/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subagent/subagent-acp/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subagent/subagent-acp/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subagent/subagent-in-process-driver/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subagent/subagent-in-process-driver/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subagent/subagent-dsh-sdk/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subagent/subagent-dsh-sdk/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subagent/subagent-fork-in-process/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subagent/subagent-fork-in-process/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subagent/subagent-codex/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subagent/subagent-codex/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subagent/tool-subagent-control/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subagent/tool-subagent-control/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subagent/subagent-claude-code/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subagent/subagent-claude-code/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subagent/tool-subagent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subagent/tool-subagent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subagent/subagent-spawn-in-process/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subagent/subagent-spawn-in-process/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/.worktrees/governed-agent-team-v1/packages/subagent/subagent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/.worktrees/governed-agent-team-v1/packages/subagent/subagent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/vendor/schemastery/node_modules",
+      "target": "/home/hoinv/deepseek-harness/vendor/schemastery/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/vendor/group/node_modules",
+      "target": "/home/hoinv/deepseek-harness/vendor/group/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/vendor/timer/node_modules",
+      "target": "/home/hoinv/deepseek-harness/vendor/timer/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/vendor/logger-console/node_modules",
+      "target": "/home/hoinv/deepseek-harness/vendor/logger-console/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/vendor/hmr/node_modules",
+      "target": "/home/hoinv/deepseek-harness/vendor/hmr/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/vendor/cordis/node_modules",
+      "target": "/home/hoinv/deepseek-harness/vendor/cordis/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/vendor/include/node_modules",
+      "target": "/home/hoinv/deepseek-harness/vendor/include/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/vendor/loader/node_modules",
+      "target": "/home/hoinv/deepseek-harness/vendor/loader/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/browser-use/browser-use/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/browser-use/browser-use/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/web/web/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/web/web/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/web/web-search-deepseek/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/web/web-search-deepseek/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/web/web-search-perplexity/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/web/web-search-perplexity/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/web/tool-web/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/web/tool-web/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/web/web-search-exa/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/web/web-search-exa/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/web/web-fetch-http/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/web/web-fetch-http/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/code-runtime/code-runtime/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/code-runtime/code-runtime/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/code-runtime/code-runtime-worker-thread/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/code-runtime/code-runtime-worker-thread/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/shell/pwsh-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/shell/pwsh-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/shell/shell/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/shell/shell/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/shell/pwsh-sandbox/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/shell/pwsh-sandbox/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/shell/tool-pwsh-persistent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/shell/tool-pwsh-persistent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/shell/bash-sandbox/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/shell/bash-sandbox/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/shell/tool-pwsh/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/shell/tool-pwsh/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/shell/shell-env/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/shell/shell-env/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/shell/bash-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/shell/bash-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/shell/tool-bash/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/shell/tool-bash/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/shell/tool-bash-persistent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/shell/tool-bash-persistent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/attachment/attachment/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/attachment/attachment/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/attachment/attachment-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/attachment/attachment-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/identity/anonymous-user-id/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/identity/anonymous-user-id/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/core/system-prompt/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/core/system-prompt/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/core/agent-default-model/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/core/agent-default-model/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/core/agent-loop/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/core/agent-loop/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/core/tools/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/core/tools/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/core/scope/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/core/scope/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/core/agent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/core/agent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/core/agent-tool-presentation/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/core/agent-tool-presentation/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/core/session/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/core/session/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/acp/acp/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/acp/acp/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/guard/repeat-tool-reminder/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/guard/repeat-tool-reminder/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/guard/timeout-policy/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/guard/timeout-policy/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/ptc-runtime/ptc-runtime/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/ptc-runtime/ptc-runtime/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/ptc-runtime/ptc-runtime-node/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/ptc-runtime/ptc-runtime-node/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/bundle/sdk-app/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/bundle/sdk-app/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/bundle/web-app/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/bundle/web-app/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/bundle/headless/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/bundle/headless/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/bundle/sdk-minimal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/bundle/sdk-minimal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/bundle/base/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/bundle/base/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/bundle/acp-app/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/bundle/acp-app/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/workflow/tool-workflow/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/workflow/tool-workflow/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/workflow/workflow/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/workflow/workflow/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/workflow/tool-ralph/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/workflow/tool-ralph/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/workflow/workflow-ptc/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/workflow/workflow-ptc/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/workflow/workflow-worker-thread/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/workflow/workflow-worker-thread/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/llm/llm-deepseek-api-key/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/llm/llm-deepseek-api-key/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/llm/deepseek-llm-api-extensions/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/llm/deepseek-llm-api-extensions/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/llm/llm/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/llm/llm/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/llm/llm-deepseek/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/llm/llm-deepseek/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/llm/llm-deepseek-account/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/llm/llm-deepseek-account/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/llm/plugin-package-inventory-deepseek/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/llm/plugin-package-inventory-deepseek/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/llm/llm-retry/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/llm/llm-retry/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/llm/token-meter/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/llm/token-meter/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/llm/llm-pi-ai/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/llm/llm-pi-ai/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/sdk/server/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/sdk/server/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/sdk/protocol/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/sdk/protocol/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/sdk/client/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/sdk/client/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/ssh/ssh/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/ssh/ssh/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/ssh/subprocess-ssh/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/ssh/subprocess-ssh/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/ssh/fs-ssh/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/ssh/fs-ssh/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/ssh/sandbox-ssh/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/ssh/sandbox-ssh/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/durable-agent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/durable-agent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/client-ui-wbs/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/client-ui-wbs/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/browser-use-playwright-mcp/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/browser-use-playwright-mcp/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/client-ui-agent-team/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/client-ui-agent-team/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/agent-team-durable-agent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/agent-team-durable-agent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/computer-use-cua-driver-mcp/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/computer-use-cua-driver-mcp/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/browser-use-chrome-devtools-mcp/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/browser-use-chrome-devtools-mcp/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/voice-input-bundle/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/voice-input-bundle/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/computer-use-cua-driver-native/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/computer-use-cua-driver-native/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/speech-to-text/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/speech-to-text/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/tool-agent-team/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/tool-agent-team/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-tools/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/gat-tools/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/agent-team/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/agent-team/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/ptc-runtime-python/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/ptc-runtime-python/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/browser-use-runtime/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/browser-use-runtime/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-web-profile/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/gat-web-profile/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/agent-team-profile/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/agent-team-profile/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/wbs/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/wbs/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/api-speech-to-text/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/api-speech-to-text/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/code-runtime-python/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/code-runtime-python/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/auto-review/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/auto-review/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/inspector/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/inspector/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-web/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/gat-web/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/browser-use-stagehand-native/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/browser-use-stagehand-native/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/speech-to-text-sensevoice/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/speech-to-text-sensevoice/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/webworker-packer/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/webworker-packer/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/wbs-agent-team/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/wbs-agent-team/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/webworker-runtime/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/webworker-runtime/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/wbs-web-profile/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/wbs-web-profile/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/agent-team-web-profile/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/agent-team-web-profile/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/client-ui-voice-input/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/client-ui-voice-input/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-core/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/gat-core/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-profile/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/experimental/gat-profile/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/boot/config-editor/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/boot/config-editor/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/boot/plugin-manager/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/boot/plugin-manager/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/boot/app-boot/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/boot/app-boot/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/boot/hmr/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/boot/hmr/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/boot/cmdline/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/boot/cmdline/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/mcp/mcp-client/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/mcp/mcp-client/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/mcp/mcp-resources/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/mcp/mcp-resources/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/interaction/commands/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/interaction/commands/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/interaction/tool-ask-user/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/interaction/tool-ask-user/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/interaction/user-questions/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/interaction/user-questions/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/interaction/permission-presets/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/interaction/permission-presets/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/interaction/user-approval/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/interaction/user-approval/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subprocess/subprocess/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subprocess/subprocess/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subprocess/subprocess-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subprocess/subprocess-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subprocess/win32-process/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subprocess/win32-process/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/feedback/message-feedback/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/feedback/message-feedback/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/feedback/command-feedback/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/feedback/command-feedback/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/computer-use/computer-use/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/computer-use/computer-use/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/typert/registry/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/typert/registry/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/typert/protocol/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/typert/protocol/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/typert/loader/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/typert/loader/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/typert/generator/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/typert/generator/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/lsp/tool-lsp/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/lsp/tool-lsp/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/lsp/lsp/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/lsp/lsp/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/lsp/lsp-stdio/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/lsp/lsp-stdio/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/credentials/deepseek-account/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/credentials/deepseek-account/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/credentials/credentials/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/credentials/credentials/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/credentials/credentials-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/credentials/credentials-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/credentials/authorization/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/credentials/authorization/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/credentials/deepseek-account-platform/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/credentials/deepseek-account-platform/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/spill/spill-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/spill/spill-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/spill/spill/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/spill/spill/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/spill/spill-policy/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/spill/spill-policy/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/runtime-diagnostics/invariants/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/runtime-diagnostics/invariants/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/extensions/ui-cordis/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/extensions/ui-cordis/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/extensions/cordis-client-runner/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/extensions/cordis-client-runner/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/extensions/cordis-host-runner/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/extensions/cordis-host-runner/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/extensions/tool-cordis/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/extensions/tool-cordis/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/host/directory-picker-auto/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/host/directory-picker-auto/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/host/directory-picker/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/host/directory-picker/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/host/product-telemetry-otel/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/host/product-telemetry-otel/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/host/plugin-inventory/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/host/plugin-inventory/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/host/directory-picker-native/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/host/directory-picker-native/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/host/webserver/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/host/webserver/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/host/directory-picker-browse/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/host/directory-picker-browse/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/host/open-in-app/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/host/open-in-app/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/host/frontend-static/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/host/frontend-static/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/native-command/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/native-command/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/lazy-require/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/lazy-require/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/workspace-path/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/workspace-path/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/http-proxy/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/http-proxy/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/launch-environment/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/launch-environment/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/atomic-write/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/atomic-write/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/brand/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/brand/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/values/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/values/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/package-manifest/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/package-manifest/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/time/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/time/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/home-paths/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/home-paths/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/deque/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/deque/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/code-language/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/code-language/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/crypto/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/crypto/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/output-retention/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/output-retention/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/timeout/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/timeout/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/util/chunked-list/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/util/chunked-list/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/sandbox/sandbox-policy/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/sandbox/sandbox-policy/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/sandbox/sandbox/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/sandbox/sandbox/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/sandbox/sandbox-windows-acl/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/sandbox/sandbox-windows-acl/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/sandbox/sandbox-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/sandbox/sandbox-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/schedule/schedule/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/schedule/schedule/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/plan/plan-mode/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/plan/plan-mode/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/deliverables/workspace-changes/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/deliverables/workspace-changes/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/deliverables/tool-present/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/deliverables/tool-present/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/document/office-to-pdf/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/document/office-to-pdf/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/preset/agent-preset/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/preset/agent-preset/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/preset/agent-presets/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/preset/agent-presets/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/preset/persona/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/preset/persona/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/preset/agent-preset-registry/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/preset/agent-preset-registry/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/webhook/webhook-github/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/webhook/webhook-github/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/webhook/webhook/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/webhook/webhook/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/context/agent-instructions/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/context/agent-instructions/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/context/session-reference/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/context/session-reference/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/context/time-context/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/context/time-context/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/context/file-reference-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/context/file-reference-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/context/tmux-context/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/context/tmux-context/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/context/file-reference/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/context/file-reference/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-format-v3-to-v4/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-format-v3-to-v4/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-persistence-jsonl/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-persistence-jsonl/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-title-all-prompts-llm/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-title-all-prompts-llm/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-telemetry/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-telemetry/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-title-llm/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-title-llm/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-projection-cache/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-projection-cache/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-telemetry-otel/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-telemetry-otel/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-format-v1-to-v2/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-format-v1-to-v2/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-format-v2-to-v3/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-format-v2-to-v3/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-checkpoint-policy/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-checkpoint-policy/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-persistence/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-persistence/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-format-catalog/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-format-catalog/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-title-first-prompt-llm/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-title-first-prompt-llm/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-format/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-format/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-projection/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-projection/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-stats/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-stats/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-turn-outline/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-turn-outline/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-log-deepseek/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-log-deepseek/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-format-v0-to-v1/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-format-v0-to-v1/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session/session-title/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session/session-title/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-dockkit/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-dockkit/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/web/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/web/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-deliverables/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-deliverables/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-commands/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-commands/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-user-questions/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-user-questions/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-reference/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-reference/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-tool/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-tool/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-session/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-session/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-sidebar-files/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-sidebar-files/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-settings-models/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-settings-models/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-directory-picker-browse/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-directory-picker-browse/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-skill/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-skill/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/store/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/store/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-sidebar/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-sidebar/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-subagent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-subagent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-theme/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-theme/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-chat/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-chat/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-approval/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-approval/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-goal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-goal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-message-feedback/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-message-feedback/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-permission-presets/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-permission-presets/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-settings-agent-loop/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-settings-agent-loop/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-primitives/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-primitives/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-sidebar-documentpreview/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-sidebar-documentpreview/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-settings-account/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-settings-account/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-conversation/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-conversation/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-plugin-manager/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-plugin-manager/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-attachment/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-attachment/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-input-trigger/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-input-trigger/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/locale/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/locale/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-sidebar-terminal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-sidebar-terminal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-brand-official/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-brand-official/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-workflow-run/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-workflow-run/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/modules/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/modules/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-slots/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-slots/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-layout/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-layout/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-settings-general/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-settings-general/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-settings-web-search/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-settings-web-search/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-settings-shell/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-settings-shell/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/hmr/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/hmr/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-settings/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-settings/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-workspace/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-workspace/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-sidebar-browser/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-sidebar-browser/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-sidebar-right/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-sidebar-right/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-settings-plugins/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-settings-plugins/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/shortcuts/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/shortcuts/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-jobs/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-jobs/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/file-upload/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/file-upload/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-model-selection/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-model-selection/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-schedule/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-schedule/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/resources/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/resources/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-trajectory/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-trajectory/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-renderer/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-renderer/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/connection/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/connection/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-directory-picker-native/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-directory-picker-native/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-open-in-app/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-open-in-app/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-settings-plugin-inventory/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-settings-plugin-inventory/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-settings-subagent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-settings-subagent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-plan/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-plan/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-agent-preset/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-agent-preset/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/client/ui-shortcuts/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/client/ui-shortcuts/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/goal/command-goal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/goal/command-goal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/goal/tool-goal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/goal/tool-goal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/goal/goal-round-driver/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/goal/goal-round-driver/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/goal/goal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/goal/goal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/test-support/client-runtime/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/test-support/client-runtime/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/test-support/agent-loop-testkit/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/test-support/agent-loop-testkit/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/test-support/loader-smoke/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/test-support/loader-smoke/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/test-support/llm-mock-server/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/test-support/llm-mock-server/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/test-support/remote-mock/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/test-support/remote-mock/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/test-support/llm-replay/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/test-support/llm-replay/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/test-support/session-snapshot/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/test-support/session-snapshot/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/jobs/tool-jobs/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/jobs/tool-jobs/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/jobs/jobs/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/jobs/jobs/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/jobs/jobs-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/jobs/jobs-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/workspace/workspace-agent-authority/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/workspace/workspace-agent-authority/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/workspace/workspace/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/workspace/workspace/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/storage/storage-domain/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/storage/storage-domain/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/storage/storage/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/storage/storage/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/storage/storage-json/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/storage/storage-json/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/storage/storage-sqlite/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/storage/storage-sqlite/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/skill/skill-filesystem/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/skill/skill-filesystem/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/skill/skill-badge/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/skill/skill-badge/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/skill/tool-skill/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/skill/tool-skill/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/skill/tool-workspace-dependencies/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/skill/tool-workspace-dependencies/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/skill/skill-office/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/skill/skill-office/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/skill/skill/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/skill/skill/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/compaction/compaction-tool-result-pruner/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/compaction/compaction-tool-result-pruner/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/compaction/compaction-basic/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/compaction/compaction-basic/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/compaction/compaction/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/compaction/compaction/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/compaction/command-compact/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/compaction/command-compact/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/compaction/compaction-image-offload/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/compaction/compaction-image-offload/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session-query/session-query-sqlite/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session-query/session-query-sqlite/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session-query/session-log-export/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session-query/session-log-export/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session-query/session-query/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session-query/session-query/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/session-query/tool-session-query/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/session-query/tool-session-query/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/hooks/hook-protocol/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/hooks/hook-protocol/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/hooks/hooks-codex/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/hooks/hooks-codex/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/hooks/hooks-claude-code/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/hooks/hooks-claude-code/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/settings/settings/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/settings/settings/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/fs/fs-sandbox/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/fs/fs-sandbox/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/fs/tool-fs/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/fs/tool-fs/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/fs/fs-local/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/fs/fs-local/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/fs/tool-present/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/fs/tool-present/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/fs/fs-observation-policy/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/fs/fs-observation-policy/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/fs/tool-str-replace-editor/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/fs/tool-str-replace-editor/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/fs/fs/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/fs/fs/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/fs/tool-fs-search/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/fs/tool-fs-search/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/knowledge/knowledge-wiki-index/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/knowledge/knowledge-wiki-index/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/knowledge/knowledge/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/knowledge/knowledge/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/knowledge/tool-knowledge/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/knowledge/tool-knowledge/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/knowledge/skill-knowledge/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/knowledge/skill-knowledge/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/e2b/fs-e2b/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/e2b/fs-e2b/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/e2b/subprocess-e2b/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/e2b/subprocess-e2b/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/e2b/e2b/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/e2b/e2b/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/terminal/tool-terminal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/terminal/tool-terminal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/terminal/terminal-bash/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/terminal/terminal-bash/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/terminal/terminal/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/terminal/terminal/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/api/settings-controller/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/api/settings-controller/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/api/terminal-controller/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/api/terminal-controller/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/api/remotes/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/api/remotes/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/api/session-controller/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/api/session-controller/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/api/workspace-controller/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/api/workspace-controller/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/api/job-controller/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/api/job-controller/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/api/workspace-files/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/api/workspace-files/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/api/account-controller/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/api/account-controller/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/api/gateway/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/api/gateway/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/todo/tool-todo/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/todo/tool-todo/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent-acp/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subagent/subagent-acp/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent-in-process-driver/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subagent/subagent-in-process-driver/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent-dsh-sdk/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subagent/subagent-dsh-sdk/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent-fork-in-process/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subagent/subagent-fork-in-process/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent-codex/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subagent/subagent-codex/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subagent/tool-subagent-control/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subagent/tool-subagent-control/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent-claude-code/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subagent/subagent-claude-code/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subagent/tool-subagent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subagent/tool-subagent/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent-spawn-in-process/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subagent/subagent-spawn-in-process/node_modules"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent/node_modules",
+      "target": "/home/hoinv/deepseek-harness/packages/subagent/subagent/node_modules"
+    }
+  ],
+  "commands": [
+    [
+      "node",
+      "/home/hoinv/deepseek-harness/node_modules/vitest/vitest.mjs",
+      "run",
+      "--config",
+      "vitest.exec024.config.ts",
+      "packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts"
+    ],
+    [
+      "node",
+      "/home/hoinv/deepseek-harness/node_modules/vitest/vitest.mjs",
+      "run",
+      "--config",
+      "vitest.exec024.config.ts",
+      "packages/core/agent-loop/tests/system-prompt-admission.spec.ts"
+    ]
+  ],
+  "write_scope": [
+    "isolated git worktree and registration",
+    "isolated experimental test/config/WK artifact copy",
+    "isolated .qualification-cache",
+    "runtime workspace verification",
+    "mkdtemp Session/provider storage with fixture teardown"
+  ],
+  "production_source_changed": false,
+  "public_bytes": [
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/client.d.ts",
+      "sha256": "19422a3d0a492416949dda8f2e7dccf3d75834f7265cc75d52e896164c4f19f3"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/client.d.ts.map",
+      "sha256": "31d4327a2806fafb84e8bd709e6b78fc057e6d2b09e2cc9b19c5522c557b683d"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/client.js",
+      "sha256": "af51d59fc1f90d0cca7ee3388a6a1632e41498408523ba34f5c218ddb6f607d4"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/client.js.map",
+      "sha256": "3bd9daa4fe77948a3f9107207784f475b187c95f010064fb59de33e19a12ded8"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/config.d.ts",
+      "sha256": "50b268e6052e859a0fb523aa49dfbd2a6140bd3253395e9940c03fbbfcc0b5a0"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/config.d.ts.map",
+      "sha256": "1f2c62535d681698189b86acd60aa8e76e092e834387a80128b1068cb654ad69"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/config.js",
+      "sha256": "6eb086ea72ede0ccbb9ef390e2e1e459d003ce4a44b2e01b97b73d461235ebbc"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/config.js.map",
+      "sha256": "b48e0ea735aaa43e9ae6cb1032d6eb4a36e6b870c281ad4d482c96a725539806"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/consumer.d.ts",
+      "sha256": "ed2585197e970b5a1281ce69a871426a8b3050b99ca7392aa8bd93bfcea6277a"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/consumer.d.ts.map",
+      "sha256": "7930f12c37d9448f7e2b33175900130790a437cd987f8f2ca4a442e118571d4f"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/consumer.js",
+      "sha256": "f817d50a694e4e6c25385999bb6eeceda51658d6adac644929bb031b131cf0af"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/consumer.js.map",
+      "sha256": "ded41f294c23016a3edaaa5a3d6adb60499db26a1b66394769cf4d1287a18640"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/authority.d.ts",
+      "sha256": "70d43792fe3daf1d2db858174ca548d4eba340c710827a1a4579c2221ba39553"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/authority.d.ts.map",
+      "sha256": "113e8ad541c5a1658344a2ed8b006ecc9c879659cd76a003a659aa9ca0a32f99"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/authority.js",
+      "sha256": "23905c5c209d8b78499fc7ff822392b8b9c10c06b1cc27abf228b59c59393568"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/authority.js.map",
+      "sha256": "34360a313791196c32986e4b7ad97f59c17a9079bc916a23719eb44a9d1df1d0"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/context.d.ts",
+      "sha256": "24d6a8580cae1328ab1b3c56aa8d181ee45e39c62abab8b1cf2ef8416f2f67d9"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/context.d.ts.map",
+      "sha256": "9beee61ab9b4f8a3ae4155b8419e40a78940aa5caadffeae55cb6c60e144a6ce"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/context.js",
+      "sha256": "52fcb21999bc88e7e5260eacaaee4e94c0454ecea76d39ccd3b139bdbe8ec84d"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/context.js.map",
+      "sha256": "c0949201d2a85b5585e2f42485965c4eb18c428a708a28ffaad3b8cdee1060f8"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/evidence.d.ts",
+      "sha256": "a0a8fe2b8ea27114d8bf0aec4d386970bcaaa623648b9b8fa6a5ca0464feb18e"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/evidence.d.ts.map",
+      "sha256": "52cbd922ae17ab7b6c32fe0470c596c77c3ebf2dc83123857f811c9ed591dae8"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/evidence.js",
+      "sha256": "a5bd56eca70b764bef4b685e6d8e576b15d0b5e745e7df5393556a039b5882e2"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/evidence.js.map",
+      "sha256": "90acf8abada56ba186f392804ee294864be73364f4ef69a182ba77739d0592e1"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/index.d.ts",
+      "sha256": "68561188af210aa3b17c7e82bdf59becaabe7d4285eb18b52de9c6961d5dfeb6"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/index.d.ts.map",
+      "sha256": "11a94b73227fbbe1419ee3a3deb069cb73ca54f3e80845a002f862fad8817d23"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/index.js",
+      "sha256": "f3c3469f1e755bc9da3f26a051d9e03dbd9845372d7c19ed652b90748a905f9d"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/index.js.map",
+      "sha256": "e046b4f605b3d5f2c31ddf4c27624b9b3fbb2cf1d8be076dedb8e0d2a8e050d0"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/mission.d.ts",
+      "sha256": "61a4cecece019f5a6d10af3c0fea5b93fba370405936661263ece41df72054e0"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/mission.d.ts.map",
+      "sha256": "25e125f792cee9e8a5a8fd83b73b94c5e4d112c55eab43513b9de2e30c020891"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/mission.js",
+      "sha256": "3c81f0ac7073d1ef9d165ec35db03399342bba851463697eaec7232f728df849"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/mission.js.map",
+      "sha256": "3c39a419d4d5f8b1115e35520f37648608ce6193f7430538c5770acac2bb5c78"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/planning.d.ts",
+      "sha256": "b87b81138e956d71137d6b4fdbc2b2cd7633d2b47d2b509e6e1cad7908ab74b0"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/planning.d.ts.map",
+      "sha256": "13bd8bf6b91f521320c8dbcc64494ee732bf62435e23a2dd0794a9abd93be6e4"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/planning.js",
+      "sha256": "aa677479348e339fc1f983997266fbeb33a39e3880ea7cb901dcf9c527fb6d21"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/planning.js.map",
+      "sha256": "4deec31527ad516fdbcb15be025aa2ad139fa0823ecf6626dd947334dba96f1a"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/runtime.d.ts",
+      "sha256": "fedeedd6e5020eb0b77c6f7962d7d8eee521b7d2d3290e199c412a1f4f2db897"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/runtime.d.ts.map",
+      "sha256": "9f41a07e78ca340fcc513b1c215d27003b93d8aae43c928a79da0f37bec28db1"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/runtime.js",
+      "sha256": "b28281a92c6bcf8962fe16e67a47bca1d6ad37cf4d05228452267b332754b54f"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/domain/runtime.js.map",
+      "sha256": "cf05dce855887481aa80c69c1d2d2caf416dc79d180eb82d4acb5010adab14ba"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/errors.d.ts",
+      "sha256": "eeccc372ccd8bb4724185fd25058f072f5f50cf21160e9c2ec39a7cdac05b85c"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/errors.d.ts.map",
+      "sha256": "feb3b756d846fbb9b65e7e8576a159a3ccaa9f133532844844ad3bd3f46e5118"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/errors.js",
+      "sha256": "c6e18a5de86160d3783c0eefbee8c456c4a0997ddd74a6656762690199115c8b"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/errors.js.map",
+      "sha256": "15d3638d3495b0f5c8399f26a7fe77427b866f9cb30e6d76dadb8793b570e024"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/identity.d.ts",
+      "sha256": "3c8fc3434203ea69a16412a60939f3802de478eccfebc8d942d3c27e805e8ffd"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/identity.d.ts.map",
+      "sha256": "fa7ad05c863114ac472b7f9b1a71fbae98b52a48e6225d071dc5865bc26da72d"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/identity.js",
+      "sha256": "d7bcdddafa3cacf55800d768c6490bba2a53441fa97625c2cb4c5444f5b2b482"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/identity.js.map",
+      "sha256": "ab04d96f9c19c3cbd6a367e2ee05cb655ccba2dbd4162cef5ef15dba38000bb3"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/index.d.ts",
+      "sha256": "db743ef25bfbee3b4e1d7e5c9e2be84655192715e715bb5992d98de6288b9e3b"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/index.d.ts.map",
+      "sha256": "e64b73be6c3de575d503cdbcec51b81e0893376646f36c65bd79f0d088f00daa"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/index.js",
+      "sha256": "2b7a2e8eb4ce098a93bc3b27946908403511ea57e431ea1371a21c9ac00dbb27"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/index.js.map",
+      "sha256": "e7a6f3dfab829489eb441c5ba5f1682e3d8282172a54edcef6b029891db04a71"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/local-provider.d.ts",
+      "sha256": "af7ad9ac1279dacc3bd553ed04fafc78c3f6f4c6ab00be3599486383aea08112"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/local-provider.d.ts.map",
+      "sha256": "17288a1e0cb162d2568b6f3f1103fd21caac71f47ca1feb016bd94a75b636fda"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/local-provider.js",
+      "sha256": "be1aada8c6a0f21f85f927d78e7ae253eb89db9ddfa9f3912d4a0f90dfc7055e"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/local-provider.js.map",
+      "sha256": "37fb091a96167d078d9a3dbbacd2772399c2f94c323af2c464232e18bb4c3c26"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/members.d.ts",
+      "sha256": "124705590c1de26618aacdb6355715faa84084462ec72f0d6b48f92035ee4494"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/members.d.ts.map",
+      "sha256": "63888f64ed97e00651d49be9a8ba35f48d100fd9e00fb31b3fa6f22a86bfdae0"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/members.js",
+      "sha256": "3ec492bcfbd4bec2f811fd7dcbefb5044d048b95a64e574b099faf598844c11b"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/members.js.map",
+      "sha256": "720874297cf857d4863c22008edb7580e2a7a3a0d8545a72d2d6e2ffe794cc43"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/mvp/execution.d.ts",
+      "sha256": "b316c85f150c5db10507c9a0fada4a4ce356ff92c7c76db404c2bf75da7c4f2c"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/mvp/execution.d.ts.map",
+      "sha256": "a335ba9b165542be2159e7a4e48b5d4e0a9006e9f3ec79649f5f6793573cc8cb"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/mvp/execution.js",
+      "sha256": "2d12dfd38c7333b17695d7d3d741ba37e81fecef39ee1053d5e7720d5400d649"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/mvp/execution.js.map",
+      "sha256": "7c6da8ab68fb862d7f2acb670778d6c896d4362d954dc7539545fa61b0b345a4"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/mvp/store.d.ts",
+      "sha256": "50442854e58b0e926b8d23abd2036e120fdc39f62635838a0d6f180beea5f0c2"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/mvp/store.d.ts.map",
+      "sha256": "3a3bb0ddf7508f7c38626462f0f67c30ca0ae6bc3485d1dc2d54a3202e1aa279"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/mvp/store.js",
+      "sha256": "0a6bd95c199347f21d4baa3cf060b66a1940d8f0f5d2f26907954d61bd07f9af"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/mvp/store.js.map",
+      "sha256": "a1db95546dd6021d3df4c1429741050e342037c8627892a42702511fee0850e2"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/mvp/types.d.ts",
+      "sha256": "946332cfa266b877e0f2522e2bf10fbba91b0d6357e36625058ad3761498a4e0"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/mvp/types.d.ts.map",
+      "sha256": "2f797a17076b540a9de9ad7241b65245f73d3e11d29e2b8dfe6c50f17bababcd"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/mvp/types.js",
+      "sha256": "9df941fd09527bb71cd235f743d44fd0d95791c26a710e93f5612715d0637264"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/mvp/types.js.map",
+      "sha256": "319c27ff17d5376d32b2ae94cbaabdc0b1b879b73148c78d82b3ca8577ae0652"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/review-host.d.ts",
+      "sha256": "affa73c369639cbb7cf6609e0f005c902cb509a04bff3b776898c2c67ac6cfb8"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/review-host.d.ts.map",
+      "sha256": "afcc69f624236ee47ff6b13e198577fe9188086abaae6da38870ca396ef1dd6d"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/review-host.js",
+      "sha256": "e5c95e106a4b07b46f9fd51990e3034b8b6646ac90f275416ebdb501921db6e1"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/review-host.js.map",
+      "sha256": "08b3d5f3fa17f58b8e73c1eb56d94b141e6067282d01957120a429fd73d8cf63"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/review-packet.d.ts",
+      "sha256": "c3de222af34c2c907ac02783c4010ae48965a5c6b5619065f63531a7e8f5ba1f"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/review-packet.d.ts.map",
+      "sha256": "4a52cd2af6f33f448b7791bc0ef163d1254c8b6ae6a70fe5bf773ce4707e6fd7"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/review-packet.js",
+      "sha256": "51e5d1e27ffbb366203d1b4b4eb369293d8fe120ef8fec9d1f4e08a8d3d4b335"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/review-packet.js.map",
+      "sha256": "3dbee09b1b7aaf1a585e09be3e37ac843af103253621a1ed0638c50ec9d9bf52"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/service.d.ts",
+      "sha256": "4d556f48b5a1e487a1b8afa5c74e9fcea271456249ac77facb3bea28dfa11afc"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/service.d.ts.map",
+      "sha256": "fa5b054f3e6f6e66ec2c3ce4bf096c341163ad2f250a51a57e843af86c0a8e6e"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/service.js",
+      "sha256": "1af474f9027e9a06d4e7bb12a1b77e34df5a24f2205355433334920ff97db249"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/service.js.map",
+      "sha256": "034b471545bbaf55191efcad73c4355c54ea2398d7995d904043f37bf2bc4ffd"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/standalone-adapter.d.ts",
+      "sha256": "efc4f3bb03f589d82f889eac9960a1fc2e29a50688b02f03da6db5586eaa6d55"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/standalone-adapter.d.ts.map",
+      "sha256": "7d1f984e0551d732e0dfed927220fef5d8ee548704fc4dd70557289c84ed504f"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/standalone-adapter.js",
+      "sha256": "0d3d8e6b026774ced09dd375a411bdf93e7211d2cf50951fff7af32d79f4a387"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/standalone-adapter.js.map",
+      "sha256": "92e44776f3095677436e258c0711a017c3fbaacf8f297cbe28488846be9255e0"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/task-contract.d.ts",
+      "sha256": "c4a006037f9760aa8d7c967c5d4eb972910afb676ee4337949a1b89f9bc295c1"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/task-contract.d.ts.map",
+      "sha256": "4e825f2f077ab4d580bcf16a3e4b26c058ede170d03b44e91044d135013d4b85"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/task-contract.js",
+      "sha256": "e69d5392472c8cb062c4919ade02fc833f329e185669aef8e00e44b26e473a0e"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/lib/src/task-contract.js.map",
+      "sha256": "173fd9501f21370b92545b82567707a56e481ccfef1d8db75fa7e8626a8205a3"
+    },
+    {
+      "path": "vendor/gat-qualification-wk/package.json",
+      "sha256": "cd439c180340d69ec2bd05b2c8f1a60672a0808fb31888c1426c5ffb80b4c18a"
+    }
+  ],
+  "launcher_note": "pnpm exec attempted auto-install and aborted before tests. Direct installed Vitest CLI avoids dependency reconciliation.",
+  "yaml_dependency": {
+    "path": "/home/hoinv/work/dsh-durable-agent/durable-agent-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml",
+    "version": "2.9.1"
+  },
+  "cordis_peer": {
+    "wk_declared": "4.0.2",
+    "host_selected": "4.0.4",
+    "resolution": "one Host Cordis source instance via exact test-only alias",
+    "production_compatibility_qualified": false
+  },
+  "wk_source_archive_sha256": [
+    {
+      "path": "src/client.ts",
+      "sha256": "2318befba503e5d817475ec96abe575394bc4f0cc371ff78521a40ec00584e9f"
+    },
+    {
+      "path": "src/config.ts",
+      "sha256": "a2d54206d8866faaf9081690c70401f7595f926000bba0bc39ff67213b56a69a"
+    },
+    {
+      "path": "src/consumer.ts",
+      "sha256": "77c1507140a86b90d9766c61f9e1cab1c59248f4d56142ade512e36f4bc2edd6"
+    },
+    {
+      "path": "src/domain/authority.ts",
+      "sha256": "1730267f43644fc9e50a0d63d8179f5ba70eeff477c961a5c280fe599af765f2"
+    },
+    {
+      "path": "src/domain/context.ts",
+      "sha256": "eae3804274783d88dac1da021702daee0f240b4d56b407ea3d69a82bcd2ab87d"
+    },
+    {
+      "path": "src/domain/evidence.ts",
+      "sha256": "80758ab289d84914d1a6df4194e83c8bf34369b898e4bd76489955319e12c98b"
+    },
+    {
+      "path": "src/domain/index.ts",
+      "sha256": "368fe5c80f913416167ca89daf7644211f27fe78a497f98e5ff4f3522dfa5298"
+    },
+    {
+      "path": "src/domain/mission.ts",
+      "sha256": "6935463338f4b3761f0e4957eadeca2bd63e479cc9159b6e0c713fbd9f6954a9"
+    },
+    {
+      "path": "src/domain/planning.ts",
+      "sha256": "a5b770db3303150e62e0975f5ca888846e1792b9956751ac8f29c28dd83ba5ef"
+    },
+    {
+      "path": "src/domain/runtime.ts",
+      "sha256": "81679d71ad231b1eaae8291d1135fa3f849352bb7b6c79ef665366766ebb2955"
+    },
+    {
+      "path": "src/errors.ts",
+      "sha256": "10f1dbe70be6c762894ecb8947debdfa0246207effe01366e4e998fc9601c43f"
+    },
+    {
+      "path": "src/identity.ts",
+      "sha256": "f8b55aa37bf616307d3147699be7cde5686b30be0139588f38dfd3c56d59fc3a"
+    },
+    {
+      "path": "src/index.ts",
+      "sha256": "c38d5fe41d55248eeed60cfc0c8efc286aadd718fa3dbd3e86f1ca6a91a8d8ed"
+    },
+    {
+      "path": "src/local-provider.ts",
+      "sha256": "75e63d7d634d5afe7b162dd4e3758103a733ac7eff1f9481b1115fd72c6ca58a"
+    },
+    {
+      "path": "src/members.ts",
+      "sha256": "6d5f39891f1436d53b9e34dd3a57757d20798bcde0143317a1b453f142383f5d"
+    },
+    {
+      "path": "src/mvp/execution.ts",
+      "sha256": "7761d4f8da8777c632215fc0fac66141b9273114ff022c4c562cf0250a66f41e"
+    },
+    {
+      "path": "src/mvp/store.ts",
+      "sha256": "e2459fe00a178fd427d9954cbbab2295cb92241359f33d44ea6562cfdc4464e9"
+    },
+    {
+      "path": "src/mvp/types.ts",
+      "sha256": "acfb9c59ce55a0d50bf3dfcb98d28ae2f7481058293388762c231b9b7bca9dca"
+    },
+    {
+      "path": "src/review-host.ts",
+      "sha256": "a35459cccec6e980d5223e72a69ed599d1d245d7ae7294dcb30602000f495b13"
+    },
+    {
+      "path": "src/review-packet.ts",
+      "sha256": "9e23ae1117e2271525180282bdc3a38aca9903f97a2d2dff7c9bfae75d74239b"
+    },
+    {
+      "path": "src/service.ts",
+      "sha256": "f54e4954ad7a4b085fdb8c6dcc600c28832ce16cb5174c1985ab35085c9ed833"
+    },
+    {
+      "path": "src/standalone-adapter.ts",
+      "sha256": "6181154388782419e258a491d6d256ff1850cd973733728351c5d3dc73de2788"
+    },
+    {
+      "path": "src/task-contract.ts",
+      "sha256": "f706164e0451c5ec3209594e19416ab2c8c438124746255b53a1649390cb04d9"
+    }
+  ],
+  "active_policy": "HUMAN task/intent memory via tools; no memory system prompt",
+  "active_command": [
+    "node",
+    "/home/hoinv/deepseek-harness/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "vitest.exec024.config.ts",
+    "packages/experimental/gat-core/tests/task-memory-qualification.spec.ts"
+  ],
+  "prototype_paths": [
+    "packages/experimental/gat-core/tests/task-memory-prototype.ts",
+    "packages/experimental/gat-core/tests/task-memory-qualification.spec.ts"
+  ],
+  "shared_helper_mirrors": [
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/packages/durable-agent/src/ownership.ts",
+      "destination": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-core/tests/qualification-shared/ownership.ts",
+      "sha256": "2d0d7bf992c8211bf2309a9cb80c4b5a850e886790b15eb25bd03e508e9a6d20",
+      "purpose": "unchanged GAT-owned shared helper mirror; avoid invalid root installed-layout tsconfig"
+    },
+    {
+      "source": "/home/hoinv/work/dsh-governed-agent-team/packages/durable-agent/src/tools.ts",
+      "destination": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-core/tests/qualification-shared/tools.ts",
+      "sha256": "5a986d23476809e3a5b8c70a00f33134339d4fef5fe4f0e116175da685fc1d61",
+      "purpose": "unchanged GAT-owned shared helper mirror; avoid invalid root installed-layout tsconfig"
+    }
+  ]
+}

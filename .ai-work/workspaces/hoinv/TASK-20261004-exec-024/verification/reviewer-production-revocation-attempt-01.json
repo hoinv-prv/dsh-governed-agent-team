@@ -1,0 +1,31 @@
+{
+  "kind": "production-reviewer-revocation-isolated-host-qualification",
+  "design": "docs/gat-design/DETAIL_DESIGN.md#10-optional-trusted-review-input-port",
+  "host": "/tmp/gat-exec024-host-c1157f7e",
+  "cwd": "/tmp/gat-exec024-host-c1157f7e",
+  "command": "timeout 120s node /home/hoinv/deepseek-harness/node_modules/vitest/vitest.mjs run --config vitest.exec024.production.config.ts packages/experimental/gat-durable-agent/tests/execution-review.spec.ts > /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/reviewer-production-revocation-attempt-01.log 2>&1",
+  "exitCode": 0,
+  "testFilesPassed": 1,
+  "testsPassed": 37,
+  "testsFailed": 0,
+  "log": {
+    "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/reviewer-production-revocation-attempt-01.log",
+    "sha256": "04f97e38c25f9c5cdf693c684cfa41fc892b82cf8091273f075c8d7896754f70"
+  },
+  "sources": [
+    {
+      "projectPath": "packages/durable-agent/src/execution-review.ts",
+      "hostPath": "packages/experimental/gat-durable-agent/src/execution-review.ts",
+      "archivePath": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/reviewer-production-revocation-attempt-01-source/execution-review.ts",
+      "sha256": "f66955a3548899f4407dc524a167dfb6f0338204b74653429cc18b3b8f9f28e7"
+    },
+    {
+      "projectPath": "packages/durable-agent/tests/execution-review.spec.ts",
+      "hostPath": "packages/experimental/gat-durable-agent/tests/execution-review.spec.ts",
+      "archivePath": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/reviewer-production-revocation-attempt-01-source/execution-review.spec.ts",
+      "sha256": "124c3b3a86e0928b266100b5553f06ea27c3d97ac5444b517912512342779b47"
+    }
+  ],
+  "scope": "Real Loader/GAT/WK reviewer input, synchronous host revocation and Cordis service replacement, actual prepareCall/retry gates, deferred callback/disposer joining, cleanup quarantine, and JSONL reviewer checkpoint recovery for current/missing/stale trusted input. Model transport mocked.",
+  "limits": "Isolated Host qualification; no live operator provenance, deployment authorization, or operating-system crash-lock recovery claim."
+}

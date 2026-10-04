@@ -1,0 +1,32 @@
+{
+  "cwd": "/tmp/gat-exec024-host-c1157f7e",
+  "host_head": "c1157f7ed448b40c463c1a43fa595b12294fd50d",
+  "command": "./node_modules/.bin/tsdown --env.DSH_BUILD_FACE host --filter @deepseek-ai/cordis --filter @deepseek-ai/cosmokit --filter @deepseek-ai/schemastery --filter @deepseek-ai/cordis-plugin-group --filter @deepseek-ai/cordis-plugin-hmr --filter @deepseek-ai/cordis-plugin-include --filter @deepseek-ai/cordis-plugin-loader --filter @deepseek-ai/cordis-plugin-logger-console --filter @deepseek-ai/cordis-plugin-timer",
+  "exit_code": 0,
+  "scope": "vendored public Host runtime package entrypoints required by CLI profile bundles",
+  "completed_configs": [
+    "@deepseek-ai/cordis",
+    "@deepseek-ai/cordis-plugin-group",
+    "@deepseek-ai/cordis-plugin-hmr",
+    "@deepseek-ai/cordis-plugin-include",
+    "@deepseek-ai/cordis-plugin-loader",
+    "@deepseek-ai/cordis-plugin-logger-console",
+    "@deepseek-ai/cordis-plugin-timer",
+    "@deepseek-ai/cosmokit",
+    "@deepseek-ai/schemastery"
+  ],
+  "log": {
+    "path": "tsdown-vendor-deps.log",
+    "sha256": "9605e6c5ec025482b2ec6c03e86090565d06a2b36c1e252b286925f015282917"
+  },
+  "key_artifacts": {
+    "vendor/cordis/lib/index.js": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e",
+    "vendor/cosmokit/lib/index.js": "ba44c0871656e4c7cac2c3c8a2ff644e0d2eb9d6bda7f6355866d686d513268e",
+    "vendor/loader/lib/index.js": "b57c5075e881b4ceb3a15382f506ce549bcbdcd2a0f5bae292f67e6a83a45b1f",
+    "vendor/include/lib/index.js": "ad5eaf3b80a8fd9945466486493a0d1a8e9590895bcde01e5673f3d07b4fd306",
+    "vendor/group/lib/index.js": "68f178f2836fafb52b3959aa71ae90aecd321c3f9a189d9f686233fcb000e419",
+    "vendor/hmr/lib/index.js": "4a83a1f224a123c9314d6f904df547e4c211f0aeaa7bfd4271f3e069245dcca2",
+    "vendor/logger-console/lib/index.js": "70db00c657f94f0366b3259d2e348e539e658d1a673fd208b39a31a74e62dc10",
+    "vendor/timer/lib/index.js": "aab5832ebcefccd223b16ff3e8f09ca611841f53352c8439ea3acf7cc11ad002"
+  }
+}

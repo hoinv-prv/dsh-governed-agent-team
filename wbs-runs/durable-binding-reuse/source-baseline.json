@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Asia/Tokyo",
+  "purpose": "Planning-input identity; hashes grant no execution or acceptance authority",
+  "repositories": [
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team",
+      "head": "6f74ab239cbe795f0742d18831a433323f238460"
+    },
+    {
+      "path": "/home/hoinv/deepseek-harness",
+      "head": "c1157f7ed448b40c463c1a43fa595b12294fd50d"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent",
+      "head": "a8e215433ae050e36e0ba27205701be1a5f114a1"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "/home/hoinv/deepseek-harness/wbs-runs/mission-board-regression-execution-02/durable-binding-reuse-proposal.md",
+      "sha256": "10f64db49b8562272986cb8f8ef304cfe32c83dc493d5996c0d97a107d8f4903"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/AGENTS.md",
+      "sha256": "75b02c87b573bfd10eed43b00e3bc0544b483fde0e2e06ad86e57ad7cac5f184"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/AIWS.local.md",
+      "sha256": "af4ab3d9e2335141eb3c8b6e74d8d1f7f769b22dc5663b4c82d16ea9c277864e"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/docs/GAT_MEMBER_BINDING_CONTRACT_FREEZE.md",
+      "sha256": "c6b98a4dd2e6db8115de023e32bdbb05b2e5e2d7490533fa63d0657be8bcd6cd"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/docs/gat-design/BASIC_DESIGN.md",
+      "sha256": "662bbd827bb3841d7755d06a3a2056b8832914e0dcd3cd55948887ffa574b731"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/docs/gat-design/DETAIL_DESIGN.md",
+      "sha256": "7a1968ee4c5bdd2b8ba44ab88f550cfece64c8bdf4d5a3b32abd09b54121bb98"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/docs/gat-design/DURABLE_AGENT_INTEGRATION.md",
+      "sha256": "e76877de4101ad70182732a61887f3ba3e1031731fb3dc82e409bf90be4ce57d"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/docs/gat-design/MISSION_DESIGN_DELTAS.md",
+      "sha256": "5cab24936b5aa2bdb125f744679b73ce38ff6ff8526869785988c4db3a5de35c"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_DESIGN_INDEX.md",
+      "sha256": "2055b27886f1af885e1783fdd9f57b85e589acd76aff2a23e639076aa29fbab1"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_ARCHITECTURE_DESIGN.md",
+      "sha256": "de499cd6498fae05fc9a95433eac2f39a13bc2973f44e9cefd028654a8b991c0"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_BASIC_DESIGN.md",
+      "sha256": "6ba7652bcdbe9995e8f5c0e52503051a32ae6dec343b7dadfe4d16771ac01fd5"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_DETAIL_DESIGN.md",
+      "sha256": "7f0a5c6b7097b829f0eae6b9353cc50d9595f4819fd97bc9c354c4afb41c4eb6"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_DETAIL_SOURCE_MAP.md",
+      "sha256": "11f461f1609081b80220f19edde1fcb193925930c696ba0f963c8fed772134bc"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_DESIGN_CONFLICTS.md",
+      "sha256": "20ea8db162818ba48661230c33ae7d5fb62af740f08bcd6b9ce8f57ea66c9275"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_DESIGN_MISSION_DELTAS.md",
+      "sha256": "b25cf3f8c43c7a2f9d69b705305106e14c4f3841e9717d791bc332bfd1daf4f7"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/durable-agent-plugin/src/service.ts",
+      "sha256": "f54e4954ad7a4b085fdb8c6dcc600c28832ce16cb5174c1985ab35085c9ed833"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/durable-agent-plugin/src/consumer.ts",
+      "sha256": "77c1507140a86b90d9766c61f9e1cab1c59248f4d56142ade512e36f4bc2edd6"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/durable-agent-plugin/src/review-packet.ts",
+      "sha256": "9e23ae1117e2271525180282bdc3a38aca9903f97a2d2dff7c9bfae75d74239b"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/durable-agent-plugin/src/local-provider.ts",
+      "sha256": "75e63d7d634d5afe7b162dd4e3758103a733ac7eff1f9481b1115fd72c6ca58a"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/durable-agent-plugin/src/index.ts",
+      "sha256": "c38d5fe41d55248eeed60cfc0c8efc286aadd718fa3dbd3e86f1ca6a91a8d8ed"
+    },
+    {
+      "path": "/home/hoinv/deepseek-harness/packages/experimental/gat-core/src/index.ts",
+      "sha256": "238118c992d56554e7cce065e7de3dc369d0f740e868c3c19d3d828291a686bb"
+    },
+    {
+      "path": "/home/hoinv/deepseek-harness/packages/experimental/agent-team/src/execution.ts",
+      "sha256": "8adeeb2dcaaaeb7d629aae28a600476d7fdcda56b968d14488d1bc9316c6b8d0"
+    },
+    {
+      "path": "/home/hoinv/deepseek-harness/packages/experimental/agent-team/src/execution-types.ts",
+      "sha256": "28c2aa9f2dfcdaca2908aa9a0ddbfe92a176097ccd82d2b333e4da10d3c95b4e"
+    },
+    {
+      "path": "/home/hoinv/deepseek-harness/packages/experimental/agent-team-durable-agent/src/index.ts",
+      "sha256": "054c12d2548c4f124e5bd4c6e174a53e3152ec22eff7496309ed1045f7b81bf9"
+    },
+    {
+      "path": "/home/hoinv/deepseek-harness/packages/core/agent-loop/src/agent.ts",
+      "sha256": "6163adcf3633e31483ceee9992c7871e7761ffc30268efe8775abbfeb1a8632a"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/packages/durable-agent/package.json",
+      "sha256": "5a0d600c95e8682a9e10f9d355b17bec5911791c5d314f2aff986e870b4a1a15"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/packages/durable-agent/src/binder.ts",
+      "sha256": "e96321ae263a2a8be4171ca744207e7e6c9190b17337d12ec1ec9efbef652e33"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/packages/durable-agent/src/ownership.ts",
+      "sha256": "2d0d7bf992c8211bf2309a9cb80c4b5a850e886790b15eb25bd03e508e9a6d20"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/packages/durable-agent/src/composition.ts",
+      "sha256": "7c2b1305f92d80021151a383936872a084f29a3cb4777beaaf9f0fbb22e594ec"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/packages/durable-agent/tsconfig.json",
+      "sha256": "fbdc634dcb4a3ac833e6761f6907f8a0182bbcbb215f6b7c1ef6f493991fce8a"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/packages/durable-agent/tsdown.config.ts",
+      "sha256": "795a9f84758ff27604de4b8f046a7991f232bb83ae5d1532a86b956dfe152720"
+    }
+  ]
+}

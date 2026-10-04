@@ -1,0 +1,37 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /tmp/gat-exec024-host-c1157f7e
+
+ ❯ packages/experimental/gat-core/tests/task-memory-limits.spec.ts (10 tests | 5 failed) 3656ms
+     × rejects malformed configuration (unknown-key) before provisioning or execution 273ms
+     × rejects malformed configuration (missing-limit) before provisioning or execution 327ms
+     × rejects malformed configuration (excess-limit) before provisioning or execution 279ms
+     × rejects malformed configuration (duplicate-name) before provisioning or execution 270ms
+     × rejects malformed configuration (unsupported-mode) before provisioning or execution 271ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/experimental/gat-core/tests/task-memory-limits.spec.ts > task memory closed bounds > rejects malformed configuration (unknown-key) before provisioning or execution
+ FAIL  packages/experimental/gat-core/tests/task-memory-limits.spec.ts > task memory closed bounds > rejects malformed configuration (missing-limit) before provisioning or execution
+ FAIL  packages/experimental/gat-core/tests/task-memory-limits.spec.ts > task memory closed bounds > rejects malformed configuration (excess-limit) before provisioning or execution
+ FAIL  packages/experimental/gat-core/tests/task-memory-limits.spec.ts > task memory closed bounds > rejects malformed configuration (duplicate-name) before provisioning or execution
+ FAIL  packages/experimental/gat-core/tests/task-memory-limits.spec.ts > task memory closed bounds > rejects malformed configuration (unsupported-mode) before provisioning or execution
+PrettyFormatPluginError: cannot get property "$$typeof" without inject
+ ❯ Object.test ../../home/hoinv/deepseek-harness/node_modules/.pnpm/@vitest+pretty-format@4.1.8/node_modules/@vitest/pretty-format/dist/index.js:722:34
+ ❯ findPlugin ../../home/hoinv/deepseek-harness/node_modules/.pnpm/@vitest+pretty-format@4.1.8/node_modules/@vitest/pretty-format/dist/index.js:914:15
+ ❯ printer ../../home/hoinv/deepseek-harness/node_modules/.pnpm/@vitest+pretty-format@4.1.8/node_modules/@vitest/pretty-format/dist/index.js:925:17
+ ❯ printObjectProperties ../../home/hoinv/deepseek-harness/node_modules/.pnpm/@vitest+pretty-format@4.1.8/node_modules/@vitest/pretty-format/dist/index.js:138:18
+ ❯ printComplexValue ../../home/hoinv/deepseek-harness/node_modules/.pnpm/@vitest+pretty-format@4.1.8/node_modules/@vitest/pretty-format/dist/index.js:868:195
+ ❯ printer ../../home/hoinv/deepseek-harness/node_modules/.pnpm/@vitest+pretty-format@4.1.8/node_modules/@vitest/pretty-format/dist/index.js:933:13
+ ❯ printListItems ../../home/hoinv/deepseek-harness/node_modules/.pnpm/@vitest+pretty-format@4.1.8/node_modules/@vitest/pretty-format/dist/index.js:112:15
+ ❯ printComplexValue ../../home/hoinv/deepseek-harness/node_modules/.pnpm/@vitest+pretty-format@4.1.8/node_modules/@vitest/pretty-format/dist/index.js:858:169
+ ❯ printer ../../home/hoinv/deepseek-harness/node_modules/.pnpm/@vitest+pretty-format@4.1.8/node_modules/@vitest/pretty-format/dist/index.js:933:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  5 failed | 31 passed (36)
+   Start at  19:08:20
+   Duration  8.22s (transform 2.64s, setup 0ms, import 3.74s, tests 13.99s, environment 0ms)
+

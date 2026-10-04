@@ -135,3 +135,10 @@ HUMAN authorized isolated host prerequisite implementation on 2026-10-04. Intend
 ## Production binding delivery — AIP-EXEC-022
 
 Intended BD-12–14 delivery connects complete roster preparation, required binder registration, reserved child admission, exact authority and persisted attachment recovery to the qualified host. An opt-in WK profile selects one strict Durable initializer and a dedicated provider while ordinary GAT retains its default initializer. Detail Design §8 defines readiness, failure, cleanup, Loader and changed-host package verification; implementation presence alone is not acceptance.
+
+## 13. Prospective isolated execution adapter — AIP-EXEC-024
+
+BD-09/12/13 gain a separate opt-in `execution-composition` entry for current fresh task execution Sessions. Bind explicit workspace/fresh declarations before first request; the assignment selects exact memory IDs by task/intent and the model reads them only through bounded tool results. This entry contributes no memory body/catalog/guidance to system prompt. An explicitly configured reviewer uses host-authorized DA packet/evidence/rationale input and the existing GAT provisional submission; it receives no memory or ambient tool access. Detail Design §§9–10 specify qualification, structural Host ports, lifetime/current authority and artifact checks before implementation. The direct-continuable entry and its accepted Host remain unchanged. Live activation is separate from implementation qualification.
+
+
+The additive adapter is delivered with final source/artifact evidence in [Detail §11](DETAIL_DESIGN.md#11-delivered-execution-entry-evidence--aip-exec-024) and the [source map](SOURCE_CODE_MAP.md#additive-execution-entry--aip-exec-024). Ordinary selected memory remains tool-result-only. Source fixtures, packed entries and existing headless replay qualify the bounded implementation on the exact current Host; the direct entry is qualified separately on its compatible Host. Operator topology/storage and a concrete reviewer authorization workflow remain activation requirements.

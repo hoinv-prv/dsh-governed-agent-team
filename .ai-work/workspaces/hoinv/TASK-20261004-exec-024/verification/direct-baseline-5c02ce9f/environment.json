@@ -1,0 +1,553 @@
+{
+  "purpose": "Disposable AIP-EXEC-022 direct-entry regression baseline, pinned to GAT source HEAD before EXEC-024 source edits",
+  "created_at": "2026-10-04T10:21:59.019713+00:00",
+  "host_path": "/tmp/gat-exec024-direct-5c02ce9f",
+  "host_head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+  "expected_host_head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+  "gat_source_head_at_copy": "6f74ab239cbe795f0742d18831a433323f238460",
+  "gat_source_head_at_receipt": "6f74ab239cbe795f0742d18831a433323f238460",
+  "gat_copies": [
+    {
+      "label": "GAT core old direct source/tests/metadata",
+      "source_repo_head": "6f74ab239cbe795f0742d18831a433323f238460",
+      "source_package": "packages/core",
+      "host_package": "packages/experimental/gat-core",
+      "file_count": 43,
+      "all_match": true,
+      "files": [
+        {
+          "path": "package.json",
+          "selected_head_sha256": "382e0e117aa628fc4c652e168d0b5af46cb3e3b7bd38e32b1756353bd4ad91bd",
+          "host_sha256": "382e0e117aa628fc4c652e168d0b5af46cb3e3b7bd38e32b1756353bd4ad91bd",
+          "match": true
+        },
+        {
+          "path": "src/activity.ts",
+          "selected_head_sha256": "a35a8d322aea033ef7f2e1d8539026f6a49251b3c0252ee695d361066cbd4f08",
+          "host_sha256": "a35a8d322aea033ef7f2e1d8539026f6a49251b3c0252ee695d361066cbd4f08",
+          "match": true
+        },
+        {
+          "path": "src/approved-plan-import.ts",
+          "selected_head_sha256": "3efdd14de8baaa4ae76a5d41ffb82216a28959b129f66f4abccdae6356d10fb9",
+          "host_sha256": "3efdd14de8baaa4ae76a5d41ffb82216a28959b129f66f4abccdae6356d10fb9",
+          "match": true
+        },
+        {
+          "path": "src/attachments.ts",
+          "selected_head_sha256": "cc6c3c678acb13ac71950db8519c343ae42256e28035b005cbad089925e87fd2",
+          "host_sha256": "cc6c3c678acb13ac71950db8519c343ae42256e28035b005cbad089925e87fd2",
+          "match": true
+        },
+        {
+          "path": "src/authority.ts",
+          "selected_head_sha256": "7d0c9297333759c1d5ce7a0a90705a671cf93130d8f9315fe83862ec499ac16d",
+          "host_sha256": "7d0c9297333759c1d5ce7a0a90705a671cf93130d8f9315fe83862ec499ac16d",
+          "match": true
+        },
+        {
+          "path": "src/binding-deadline.ts",
+          "selected_head_sha256": "c3b0520c4f4558c92e49d3791878614f0c7f8fecaa1c20c16af205683f206fde",
+          "host_sha256": "c3b0520c4f4558c92e49d3791878614f0c7f8fecaa1c20c16af205683f206fde",
+          "match": true
+        },
+        {
+          "path": "src/client.ts",
+          "selected_head_sha256": "e698321df957a563b624d7e27a356f69c8ed1fb7a2d28cfa14209a1ce8ea03e2",
+          "host_sha256": "e698321df957a563b624d7e27a356f69c8ed1fb7a2d28cfa14209a1ce8ea03e2",
+          "match": true
+        },
+        {
+          "path": "src/error.ts",
+          "selected_head_sha256": "b9d14250f819c6cfd364c42cf2b4045674a1f7c88321f99e9a4a29b68419bea4",
+          "host_sha256": "b9d14250f819c6cfd364c42cf2b4045674a1f7c88321f99e9a4a29b68419bea4",
+          "match": true
+        },
+        {
+          "path": "src/index.ts",
+          "selected_head_sha256": "5a173592fd7919a3361d5e0e7d3adbc30440fa40bde61c5cd8d504ec25f53420",
+          "host_sha256": "5a173592fd7919a3361d5e0e7d3adbc30440fa40bde61c5cd8d504ec25f53420",
+          "match": true
+        },
+        {
+          "path": "src/invariant.ts",
+          "selected_head_sha256": "95667f2092b28b5e62a4bfcdd910a0e712ff1b71ce97bd20b79b1bab3be12753",
+          "host_sha256": "95667f2092b28b5e62a4bfcdd910a0e712ff1b71ce97bd20b79b1bab3be12753",
+          "match": true
+        },
+        {
+          "path": "src/journal.ts",
+          "selected_head_sha256": "2b046d6ff7d759ccd96c996b63dfc9b43aef974e69aedc132c3272ee18911b00",
+          "host_sha256": "2b046d6ff7d759ccd96c996b63dfc9b43aef974e69aedc132c3272ee18911b00",
+          "match": true
+        },
+        {
+          "path": "src/lifecycle.ts",
+          "selected_head_sha256": "763a3afe65dd3fc762b1a6b9aad0909b30751c7b3908c453c92f0d708674f8ac",
+          "host_sha256": "763a3afe65dd3fc762b1a6b9aad0909b30751c7b3908c453c92f0d708674f8ac",
+          "match": true
+        },
+        {
+          "path": "src/mailbox.ts",
+          "selected_head_sha256": "4be4d71ec88924c3ce38ac2a29e165f263c4572ebe3a62afda1b162b49a50a4e",
+          "host_sha256": "4be4d71ec88924c3ce38ac2a29e165f263c4572ebe3a62afda1b162b49a50a4e",
+          "match": true
+        },
+        {
+          "path": "src/member-binders.ts",
+          "selected_head_sha256": "e5b7967d0a9abb7be97efec68e0487c843bb8f7280c4f25cf83e61c9716113b1",
+          "host_sha256": "e5b7967d0a9abb7be97efec68e0487c843bb8f7280c4f25cf83e61c9716113b1",
+          "match": true
+        },
+        {
+          "path": "src/member-binding.ts",
+          "selected_head_sha256": "c0d191454c0608f19bbfd91c3b8b69376f2af234eb51ca6fd181088d65d12fb2",
+          "host_sha256": "c0d191454c0608f19bbfd91c3b8b69376f2af234eb51ca6fd181088d65d12fb2",
+          "match": true
+        },
+        {
+          "path": "src/member-host.ts",
+          "selected_head_sha256": "7ad1914df53454ae42d2657991ebe423daa8177b4b8ba6a5dacc921f1e97c56d",
+          "host_sha256": "7ad1914df53454ae42d2657991ebe423daa8177b4b8ba6a5dacc921f1e97c56d",
+          "match": true
+        },
+        {
+          "path": "src/mission-board.ts",
+          "selected_head_sha256": "5edc76c4b4cfca7185c646b62fc2f789003a03050062deec76751ab7c8323033",
+          "host_sha256": "5edc76c4b4cfca7185c646b62fc2f789003a03050062deec76751ab7c8323033",
+          "match": true
+        },
+        {
+          "path": "src/mission-plan.ts",
+          "selected_head_sha256": "625bcb7a9b2e5113291adb73f81dc70a6294637ed2531f06d0588d4531b4d029",
+          "host_sha256": "625bcb7a9b2e5113291adb73f81dc70a6294637ed2531f06d0588d4531b4d029",
+          "match": true
+        },
+        {
+          "path": "src/persisted.ts",
+          "selected_head_sha256": "382fe7cab52e47100a798307300d649c506536d6bbe0ac89025e6c41abe4ec87",
+          "host_sha256": "382fe7cab52e47100a798307300d649c506536d6bbe0ac89025e6c41abe4ec87",
+          "match": true
+        },
+        {
+          "path": "src/projection.ts",
+          "selected_head_sha256": "1255829d060fae3c0d8f82af11e8ea7fd852048ac5996732c6809fcbb5e425ec",
+          "host_sha256": "1255829d060fae3c0d8f82af11e8ea7fd852048ac5996732c6809fcbb5e425ec",
+          "match": true
+        },
+        {
+          "path": "src/roster.ts",
+          "selected_head_sha256": "f4518a259a325d9db4692516b58495cf209fad184364fcf930fe802dbd4231c5",
+          "host_sha256": "f4518a259a325d9db4692516b58495cf209fad184364fcf930fe802dbd4231c5",
+          "match": true
+        },
+        {
+          "path": "src/session-message.ts",
+          "selected_head_sha256": "c74ef1d18667d0f221bafd726d8332e682778f06cf43b1ce13d174e5a843cf10",
+          "host_sha256": "c74ef1d18667d0f221bafd726d8332e682778f06cf43b1ce13d174e5a843cf10",
+          "match": true
+        },
+        {
+          "path": "src/task-board.ts",
+          "selected_head_sha256": "6a2c74c7a360ee0747a666226c708b1b45c4ee599f9a10a0f7d816c9c72e094f",
+          "host_sha256": "6a2c74c7a360ee0747a666226c708b1b45c4ee599f9a10a0f7d816c9c72e094f",
+          "match": true
+        },
+        {
+          "path": "src/task-graph.ts",
+          "selected_head_sha256": "a726081289a2f7a848f69109a750db3ead0d95b88ab0adfdae0477f749b8f490",
+          "host_sha256": "a726081289a2f7a848f69109a750db3ead0d95b88ab0adfdae0477f749b8f490",
+          "match": true
+        },
+        {
+          "path": "src/types.ts",
+          "selected_head_sha256": "0076d8ef6204c7f95a79ed284c7dd730ef3ab296cfc474a5222d03a0dd77e490",
+          "host_sha256": "0076d8ef6204c7f95a79ed284c7dd730ef3ab296cfc474a5222d03a0dd77e490",
+          "match": true
+        },
+        {
+          "path": "src/validation.ts",
+          "selected_head_sha256": "eb0668e8096ce9ca294b7d787f974d27e896329bb0b4c547cb4d6bd7e42ee44b",
+          "host_sha256": "eb0668e8096ce9ca294b7d787f974d27e896329bb0b4c547cb4d6bd7e42ee44b",
+          "match": true
+        },
+        {
+          "path": "src/work-state.ts",
+          "selected_head_sha256": "1e5d26383684f5fd41633ea15ecad161b0bb7ba694834fe72a29b3821c0bbcdb",
+          "host_sha256": "1e5d26383684f5fd41633ea15ecad161b0bb7ba694834fe72a29b3821c0bbcdb",
+          "match": true
+        },
+        {
+          "path": "tests/authority.spec.ts",
+          "selected_head_sha256": "41921fe762c2335d2f8b881258e9acc00e8fb567bc57360d32067c7b5b7d9d29",
+          "host_sha256": "41921fe762c2335d2f8b881258e9acc00e8fb567bc57360d32067c7b5b7d9d29",
+          "match": true
+        },
+        {
+          "path": "tests/authorized-team-fixture.ts",
+          "selected_head_sha256": "fa3283c946b0e9b1dc77dfbb37c3a99e3104ef1a9624489659684fba7357a9a9",
+          "host_sha256": "fa3283c946b0e9b1dc77dfbb37c3a99e3104ef1a9624489659684fba7357a9a9",
+          "match": true
+        },
+        {
+          "path": "tests/binding-enable.spec.ts",
+          "selected_head_sha256": "b77a8b728a3287cb6fcf4dacc47478fe8ce025678e12e02dd260d2befbb796a1",
+          "host_sha256": "b77a8b728a3287cb6fcf4dacc47478fe8ce025678e12e02dd260d2befbb796a1",
+          "match": true
+        },
+        {
+          "path": "tests/built-lib.e2e.ts",
+          "selected_head_sha256": "fe1adea7668523269407fb80273dfd63593a04485e37546e3e30594dbc1de8b4",
+          "host_sha256": "fe1adea7668523269407fb80273dfd63593a04485e37546e3e30594dbc1de8b4",
+          "match": true
+        },
+        {
+          "path": "tests/human-control-fixture.ts",
+          "selected_head_sha256": "ee730732e42a8ae2c7649f698a2a29b1ebb72f162de573e0ad5adedf337592f3",
+          "host_sha256": "ee730732e42a8ae2c7649f698a2a29b1ebb72f162de573e0ad5adedf337592f3",
+          "match": true
+        },
+        {
+          "path": "tests/invariant.spec.ts",
+          "selected_head_sha256": "15905991fba1d95ef01e29459542d3f4eb13278978c78be126d0c48fd89291e2",
+          "host_sha256": "15905991fba1d95ef01e29459542d3f4eb13278978c78be126d0c48fd89291e2",
+          "match": true
+        },
+        {
+          "path": "tests/member-attachments.spec.ts",
+          "selected_head_sha256": "167a74df96a82e6104ec46dfd8718d3bcad5076f7975259ec5dad1ae5f2a2c45",
+          "host_sha256": "167a74df96a82e6104ec46dfd8718d3bcad5076f7975259ec5dad1ae5f2a2c45",
+          "match": true
+        },
+        {
+          "path": "tests/member-binding.spec.ts",
+          "selected_head_sha256": "d013dcf1b86ad31b163d7a4131db95399b229f1956f915af34d9eecff998401e",
+          "host_sha256": "d013dcf1b86ad31b163d7a4131db95399b229f1956f915af34d9eecff998401e",
+          "match": true
+        },
+        {
+          "path": "tests/member-replay.spec.ts",
+          "selected_head_sha256": "2f424f8067a9e673fae7ff64ff2f956930e621a19378f9c45e0e892c09197a29",
+          "host_sha256": "2f424f8067a9e673fae7ff64ff2f956930e621a19378f9c45e0e892c09197a29",
+          "match": true
+        },
+        {
+          "path": "tests/persistence.spec.ts",
+          "selected_head_sha256": "2a29cff185af0650172d82e8f08ab3ba657b9d5753111be28347f041bcc07be7",
+          "host_sha256": "2a29cff185af0650172d82e8f08ab3ba657b9d5753111be28347f041bcc07be7",
+          "match": true
+        },
+        {
+          "path": "tests/production-binding.spec.ts",
+          "selected_head_sha256": "5c688b941130b5b20df67b530b5d461edd4d4c75e2111da079472fbe67c70d80",
+          "host_sha256": "5c688b941130b5b20df67b530b5d461edd4d4c75e2111da079472fbe67c70d80",
+          "match": true
+        },
+        {
+          "path": "tests/projection-events.spec.ts",
+          "selected_head_sha256": "336aa4ebecdeab1a98747670f45502a1fb6321bb672a871e5c5d941e9cbe8210",
+          "host_sha256": "336aa4ebecdeab1a98747670f45502a1fb6321bb672a871e5c5d941e9cbe8210",
+          "match": true
+        },
+        {
+          "path": "tests/team.spec.ts",
+          "selected_head_sha256": "38a1f629a7ca340905d45b4773390e69a8f57cb643879572030f201ba53c03fc",
+          "host_sha256": "38a1f629a7ca340905d45b4773390e69a8f57cb643879572030f201ba53c03fc",
+          "match": true
+        },
+        {
+          "path": "tests/test-session-query.ts",
+          "selected_head_sha256": "7ea5a954b40909339e2f0d2e8106aae4df5a6220035c465ec7c1ce7f407dc757",
+          "host_sha256": "7ea5a954b40909339e2f0d2e8106aae4df5a6220035c465ec7c1ce7f407dc757",
+          "match": true
+        },
+        {
+          "path": "tsconfig.json",
+          "selected_head_sha256": "14c48262c8978c1f070d38446b975a4c3f1637dc587d30be8843661596903302",
+          "host_sha256": "14c48262c8978c1f070d38446b975a4c3f1637dc587d30be8843661596903302",
+          "match": true
+        },
+        {
+          "path": "tsdown.config.ts",
+          "selected_head_sha256": "38329836c05c3470c93e7c03491bf385504118e5c3245a9eba8e1e43df5c1255",
+          "host_sha256": "38329836c05c3470c93e7c03491bf385504118e5c3245a9eba8e1e43df5c1255",
+          "match": true
+        }
+      ]
+    },
+    {
+      "label": "GAT durable-agent old direct source/tests/metadata",
+      "source_repo_head": "6f74ab239cbe795f0742d18831a433323f238460",
+      "source_package": "packages/durable-agent",
+      "host_package": "packages/experimental/gat-durable-agent",
+      "file_count": 15,
+      "all_match": true,
+      "files": [
+        {
+          "path": "package.json",
+          "selected_head_sha256": "5a0d600c95e8682a9e10f9d355b17bec5911791c5d314f2aff986e870b4a1a15",
+          "host_sha256": "5a0d600c95e8682a9e10f9d355b17bec5911791c5d314f2aff986e870b4a1a15",
+          "match": true
+        },
+        {
+          "path": "src/binder.ts",
+          "selected_head_sha256": "e96321ae263a2a8be4171ca744207e7e6c9190b17337d12ec1ec9efbef652e33",
+          "host_sha256": "e96321ae263a2a8be4171ca744207e7e6c9190b17337d12ec1ec9efbef652e33",
+          "match": true
+        },
+        {
+          "path": "src/composition.ts",
+          "selected_head_sha256": "7c2b1305f92d80021151a383936872a084f29a3cb4777beaaf9f0fbb22e594ec",
+          "host_sha256": "7c2b1305f92d80021151a383936872a084f29a3cb4777beaaf9f0fbb22e594ec",
+          "match": true
+        },
+        {
+          "path": "src/index.ts",
+          "selected_head_sha256": "e345b8a9e7f766f1453146a9cbaf8b1f43b94baac2d902ba8b1dbb3488c36c8c",
+          "host_sha256": "e345b8a9e7f766f1453146a9cbaf8b1f43b94baac2d902ba8b1dbb3488c36c8c",
+          "match": true
+        },
+        {
+          "path": "src/initializer.ts",
+          "selected_head_sha256": "2c2f7f4bde7e3157cef8dc6cd2bdad0df0733a2dfc854b09a5eeedc36a571b30",
+          "host_sha256": "2c2f7f4bde7e3157cef8dc6cd2bdad0df0733a2dfc854b09a5eeedc36a571b30",
+          "match": true
+        },
+        {
+          "path": "src/ownership.ts",
+          "selected_head_sha256": "2d0d7bf992c8211bf2309a9cb80c4b5a850e886790b15eb25bd03e508e9a6d20",
+          "host_sha256": "2d0d7bf992c8211bf2309a9cb80c4b5a850e886790b15eb25bd03e508e9a6d20",
+          "match": true
+        },
+        {
+          "path": "src/provider.ts",
+          "selected_head_sha256": "e1a3208196390f417f4ee61ad1f7327013a42b1aca7aa92c4ecb4a7b43162d18",
+          "host_sha256": "e1a3208196390f417f4ee61ad1f7327013a42b1aca7aa92c4ecb4a7b43162d18",
+          "match": true
+        },
+        {
+          "path": "src/tools.ts",
+          "selected_head_sha256": "5a986d23476809e3a5b8c70a00f33134339d4fef5fe4f0e116175da685fc1d61",
+          "host_sha256": "5a986d23476809e3a5b8c70a00f33134339d4fef5fe4f0e116175da685fc1d61",
+          "match": true
+        },
+        {
+          "path": "tests/binder.spec.ts",
+          "selected_head_sha256": "137333231d08eec33746873cf0aac1ee0e547b58a6da99d196071194cd059822",
+          "host_sha256": "137333231d08eec33746873cf0aac1ee0e547b58a6da99d196071194cd059822",
+          "match": true
+        },
+        {
+          "path": "tests/composition.spec.ts",
+          "selected_head_sha256": "b68d656bfb39d699db27b809499697e7f4a3fa6a9ed3c608038e5b9a848ff685",
+          "host_sha256": "b68d656bfb39d699db27b809499697e7f4a3fa6a9ed3c608038e5b9a848ff685",
+          "match": true
+        },
+        {
+          "path": "tests/initializer.spec.ts",
+          "selected_head_sha256": "25baee71f315ea0d30c369fe29decea4aeeaf6736ebaefb20d3ebdc6df22a553",
+          "host_sha256": "25baee71f315ea0d30c369fe29decea4aeeaf6736ebaefb20d3ebdc6df22a553",
+          "match": true
+        },
+        {
+          "path": "tests/public-provider.spec.ts",
+          "selected_head_sha256": "c1f7f0b08af4c6543fbc4efa519301b150ccdd8cd359bab71e95575d8a58f721",
+          "host_sha256": "c1f7f0b08af4c6543fbc4efa519301b150ccdd8cd359bab71e95575d8a58f721",
+          "match": true
+        },
+        {
+          "path": "tests/tools.spec.ts",
+          "selected_head_sha256": "bd8ca8e12c643fab74a31dbd2f5d79ccfbc798fa21921422eba049a075e9a775",
+          "host_sha256": "bd8ca8e12c643fab74a31dbd2f5d79ccfbc798fa21921422eba049a075e9a775",
+          "match": true
+        },
+        {
+          "path": "tsconfig.json",
+          "selected_head_sha256": "fbdc634dcb4a3ac833e6761f6907f8a0182bbcbb215f6b7c1ef6f493991fce8a",
+          "host_sha256": "fbdc634dcb4a3ac833e6761f6907f8a0182bbcbb215f6b7c1ef6f493991fce8a",
+          "match": true
+        },
+        {
+          "path": "tsdown.config.ts",
+          "selected_head_sha256": "795a9f84758ff27604de4b8f046a7991f232bb83ae5d1532a86b956dfe152720",
+          "host_sha256": "795a9f84758ff27604de4b8f046a7991f232bb83ae5d1532a86b956dfe152720",
+          "match": true
+        }
+      ]
+    }
+  ],
+  "all_copies_match_selected_gat_head": true,
+  "current_root_source_drift_after_copy": [
+    " M packages/durable-agent/package.json",
+    " M packages/durable-agent/src/tools.ts",
+    " M packages/durable-agent/tsconfig.json",
+    " M packages/durable-agent/tsdown.config.ts",
+    "?? packages/durable-agent/src/execution-binding.ts",
+    "?? packages/durable-agent/src/execution-composition.ts",
+    "?? packages/durable-agent/src/execution-host.ts",
+    "?? packages/durable-agent/src/execution-review.ts",
+    "?? packages/durable-agent/tests/execution-composition.spec.ts",
+    "?? packages/durable-agent/tests/execution-harness.ts",
+    "?? packages/durable-agent/tests/execution-lifecycle.spec.ts",
+    "?? packages/durable-agent/tests/execution-limits.spec.ts",
+    "?? packages/durable-agent/tests/execution-races.spec.ts",
+    "?? packages/durable-agent/tests/execution-review.spec.ts",
+    "?? packages/durable-agent/tsconfig.execution.json"
+  ],
+  "wk_public_package": "/home/hoinv/work/dsh-binding-distribution-accepted/vendor/gat-durable-provider",
+  "wk_version": "0.1.0",
+  "wk_reference": "exact accepted vendor for AIP-EXEC-022; external DA HEAD a8e215433ae050e36e0ba27205701be1a5f114a1",
+  "wk_public_file_hashes": {
+    "package.json": "cd439c180340d69ec2bd05b2c8f1a60672a0808fb31888c1426c5ffb80b4c18a",
+    "lib/src/index.js": "2b7a2e8eb4ce098a93bc3b27946908403511ea57e431ea1371a21c9ac00dbb27",
+    "lib/src/service.js": "1af474f9027e9a06d4e7bb12a1b77e34df5a24f2205355433334920ff97db249",
+    "lib/src/consumer.js": "f817d50a694e4e6c25385999bb6eeceda51658d6adac644929bb031b131cf0af"
+  },
+  "dependency_links": {
+    "root_node_modules": "composed only from existing accepted Host dependency links; no install or purge",
+    "package_level_links": [
+      "packages/experimental/gat-core/node_modules",
+      "packages/experimental/gat-durable-agent/node_modules",
+      "packages/api/gateway/node_modules",
+      "packages/boot/app-boot/node_modules",
+      "packages/core/agent-loop/node_modules"
+    ],
+    "accepted_wk_profile_symlink": "/home/hoinv/work/dsh-binding-distribution-accepted/packages/experimental/gat-durable-profile"
+  },
+  "vitest_config": "/tmp/gat-exec024-direct-5c02ce9f/vitest.exec024-direct.config.ts",
+  "vitest_config_sha256": "b91dc8d026b96a6c5986476c0ff9ea0565f0228f076cbc4092103588460a1e54",
+  "baseline_receipt": {
+    "command": [
+      "node",
+      "/home/hoinv/work/dsh-binding-distribution-accepted/node_modules/vitest/vitest.mjs",
+      "run",
+      "--reporter",
+      "verbose",
+      "--config",
+      "vitest.exec024-direct.config.ts",
+      "packages/experimental/gat-durable-agent/tests"
+    ],
+    "cwd": "/tmp/gat-exec024-direct-5c02ce9f",
+    "started_at": "2026-10-04T10:19:48.079391+00:00",
+    "exit_code": 1,
+    "log": "attempt-07.log",
+    "log_sha256": "37e9a25126dd03b40d434ce042b30bec12a06aa844e2a9fd06528b725ccd0e6e",
+    "host_head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+    "test_scope": "packages/experimental/gat-durable-agent/tests/**/*.spec.ts",
+    "vitest_config_sha256": "b91dc8d026b96a6c5986476c0ff9ea0565f0228f076cbc4092103588460a1e54",
+    "dependency_node_modules_realpath": "/tmp/gat-exec024-direct-5c02ce9f/node_modules",
+    "wk_vendor": "/home/hoinv/work/dsh-binding-distribution-accepted/vendor/gat-durable-provider",
+    "host_package_dependency_links": [
+      "packages/api/gateway/node_modules",
+      "packages/boot/app-boot/node_modules",
+      "packages/core/agent-loop/node_modules"
+    ],
+    "accepted_profile_link": "/home/hoinv/work/dsh-binding-distribution-accepted/packages/experimental/gat-durable-profile"
+  },
+  "accepted_vendor_and_profile_preexisting_untracked_status": "?? packages/experimental/gat-durable-profile/\n?? vendor/gat-durable-provider/",
+  "scope_note": "Only root packages/core and packages/durable-agent HEAD src/tests plus package.json/tsconfig.json/tsdown.config.ts were copied. At copy time root HEAD was 6f74ab2. The exact accepted durable-profile and existing package dependencies are symlinked. Subsequent uncommitted EXEC-024 durable-agent edits in the shared root were not copied to this pinned baseline. No DSH source or accepted target file was edited.",
+  "gat_tools_copy": {
+    "source_repo_head": "6f74ab239cbe795f0742d18831a433323f238460",
+    "source_package": "packages/tools",
+    "host_package": "packages/experimental/gat-tools",
+    "file_count": 9,
+    "all_match": true,
+    "files": [
+      {
+        "path": "package.json",
+        "selected_head_sha256": "ab001f645b76e035fe420a401f30eb1793cfde6684c7d31c219d39f1471b23df",
+        "host_sha256": "ab001f645b76e035fe420a401f30eb1793cfde6684c7d31c219d39f1471b23df",
+        "match": true
+      },
+      {
+        "path": "src/index.ts",
+        "selected_head_sha256": "9631577a21416819ba724bb88e7155782eeb46532abaa488b0c53c670330ec2e",
+        "host_sha256": "9631577a21416819ba724bb88e7155782eeb46532abaa488b0c53c670330ec2e",
+        "match": true
+      },
+      {
+        "path": "src/team-config.ts",
+        "selected_head_sha256": "544234653dbd6abd8b9e2fcea30fc82600c9707254368b3d9cadcc641378d413",
+        "host_sha256": "544234653dbd6abd8b9e2fcea30fc82600c9707254368b3d9cadcc641378d413",
+        "match": true
+      },
+      {
+        "path": "tests/authorization-matrix.spec.ts",
+        "selected_head_sha256": "f3668acef9eff719c3ad7f7f75797b44022a621e0994fc0bc67ca450d4b10c18",
+        "host_sha256": "f3668acef9eff719c3ad7f7f75797b44022a621e0994fc0bc67ca450d4b10c18",
+        "match": true
+      },
+      {
+        "path": "tests/binding-views.spec.ts",
+        "selected_head_sha256": "995d128705740915e0961a7a9ad421527462c1082913096d1a198c83a7b48179",
+        "host_sha256": "995d128705740915e0961a7a9ad421527462c1082913096d1a198c83a7b48179",
+        "match": true
+      },
+      {
+        "path": "tests/prerequisite-composition.spec.ts",
+        "selected_head_sha256": "229a474c587e7dae89c9809b9d09a5a29a6c634651602d08e264e91ce16f3118",
+        "host_sha256": "229a474c587e7dae89c9809b9d09a5a29a6c634651602d08e264e91ce16f3118",
+        "match": true
+      },
+      {
+        "path": "tests/team-config.spec.ts",
+        "selected_head_sha256": "a2b2b38caa88344528ca59a5cf4d68d59697d1d3e6b4069d20d19f60a8bccdf6",
+        "host_sha256": "a2b2b38caa88344528ca59a5cf4d68d59697d1d3e6b4069d20d19f60a8bccdf6",
+        "match": true
+      },
+      {
+        "path": "tests/tool-team.spec.ts",
+        "selected_head_sha256": "2ea65a30248306c38f6330eee9557019c20d37d2d82fa5173dba0c886640a634",
+        "host_sha256": "2ea65a30248306c38f6330eee9557019c20d37d2d82fa5173dba0c886640a634",
+        "match": true
+      },
+      {
+        "path": "tsconfig.json",
+        "selected_head_sha256": "07641b119f47f4e802bf9ddbfbdd12ccd7c6d22663e1d1f64a964fce07f19c7e",
+        "host_sha256": "07641b119f47f4e802bf9ddbfbdd12ccd7c6d22663e1d1f64a964fce07f19c7e",
+        "match": true
+      }
+    ],
+    "reason": "old Host committed gat-tools/index.ts and prerequisite-composition.spec.ts differed from exact root accepted GAT package; tests exercise initializer-selection behavior"
+  },
+  "profile_config": {
+    "source": "packages/durable-profile/cordis.patch.yml",
+    "selected_head_sha256": "af6d2c6b2417973bc85a79a81e09d30953490c4e5df589f3f552d25844a886b7",
+    "working_tree_sha256": "af6d2c6b2417973bc85a79a81e09d30953490c4e5df589f3f552d25844a886b7",
+    "accepted_payload_sha256": "af6d2c6b2417973bc85a79a81e09d30953490c4e5df589f3f552d25844a886b7",
+    "disposable_target_sha256": "af6d2c6b2417973bc85a79a81e09d30953490c4e5df589f3f552d25844a886b7",
+    "all_match": true,
+    "target_kind": "symlink to exact accepted payload; no copy required"
+  },
+  "final_attempt_08": {
+    "command": [
+      "node",
+      "/home/hoinv/work/dsh-binding-distribution-accepted/node_modules/vitest/vitest.mjs",
+      "run",
+      "--reporter",
+      "verbose",
+      "--config",
+      "vitest.exec024-direct.config.ts",
+      "packages/experimental/gat-durable-agent/tests"
+    ],
+    "cwd": "/tmp/gat-exec024-direct-5c02ce9f",
+    "started_at": "2026-10-04T10:23:38.271473+00:00",
+    "exit_code": 0,
+    "log": "attempt-08.log",
+    "log_sha256": "dece6ca2171eda38fb44b91cbc07755ae98d33e3a299f03e594d1ad5dcdacd37",
+    "host_head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+    "test_scope": "packages/experimental/gat-durable-agent/tests/**/*.spec.ts",
+    "vitest_config_sha256": "b91dc8d026b96a6c5986476c0ff9ea0565f0228f076cbc4092103588460a1e54",
+    "gat_core_source_commit": "6f74ab239cbe795f0742d18831a433323f238460",
+    "gat_tools_source_commit": "6f74ab239cbe795f0742d18831a433323f238460",
+    "gat_tools_package_json_sha256": "ab001f645b76e035fe420a401f30eb1793cfde6684c7d31c219d39f1471b23df",
+    "gat_tools_tsconfig_sha256": "07641b119f47f4e802bf9ddbfbdd12ccd7c6d22663e1d1f64a964fce07f19c7e",
+    "gat_tools_index_sha256": "9631577a21416819ba724bb88e7155782eeb46532abaa488b0c53c670330ec2e",
+    "gat_tools_prerequisite_test_sha256": "229a474c587e7dae89c9809b9d09a5a29a6c634651602d08e264e91ce16f3118",
+    "profile_config_sha256": "af6d2c6b2417973bc85a79a81e09d30953490c4e5df589f3f552d25844a886b7",
+    "profile_config_realpath": "/home/hoinv/work/dsh-binding-distribution-accepted/packages/experimental/gat-durable-profile/cordis.patch.yml",
+    "wk_vendor": "/home/hoinv/work/dsh-binding-distribution-accepted/vendor/gat-durable-provider"
+  },
+  "copy_scope_note": "Only root HEAD packages/core and packages/durable-agent source/tests/metadata, plus packages/tools source/tests/metadata were copied to the disposable Host package slots. Root durable-profile executable patch matched the accepted payload byte-for-byte, so the disposable target continues to symlink to that accepted artifact. Existing package dependencies are symlinked. No production fix or expectation change was made.",
+  "all_gat_copies_match_selected_head": true
+}

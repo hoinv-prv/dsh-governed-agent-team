@@ -1,0 +1,1 @@
+{"graph":"direct","provider":["apply","inject","name"],"service":"LocalDurableAgentProvider","sameConsumer":true,"sameServiceConstructor":true,"root":["DurableOwnershipCoordinator","createDurableAgentBinder","createDurableTools","loadDurableTeamMembers"],"composition":["Config","apply","inject","name"]}

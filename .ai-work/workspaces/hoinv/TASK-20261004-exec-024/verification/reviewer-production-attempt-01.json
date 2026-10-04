@@ -1,0 +1,35 @@
+{
+  "kind": "production-reviewer-port-isolated-host-qualification",
+  "design": [
+    "docs/gat-design/DETAIL_DESIGN.md#9-prospective-isolated-execution-qualification--aip-exec-024",
+    "docs/gat-design/DETAIL_DESIGN.md#10-prospective-production-execution-review-input-port--aip-exec-024",
+    "docs/gat-design/BASIC_DESIGN.md#13-prospective-production-execution-review-port--aip-exec-024"
+  ],
+  "host": "/tmp/gat-exec024-host-c1157f7e",
+  "cwd": "/tmp/gat-exec024-host-c1157f7e",
+  "command": "timeout 120s node /home/hoinv/deepseek-harness/node_modules/vitest/vitest.mjs run --config vitest.exec024.production.config.ts packages/experimental/gat-durable-agent/tests/execution-review.spec.ts > /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/reviewer-production-attempt-01.log 2>&1",
+  "exitCode": 0,
+  "testFilesPassed": 1,
+  "testsPassed": 24,
+  "testsFailed": 0,
+  "log": {
+    "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/reviewer-production-attempt-01.log",
+    "sha256": "fa167d19838bb348f93210ed7e4cfe3d014cd27a987661c1543cbe25fb756cb5"
+  },
+  "sources": [
+    {
+      "projectPath": "packages/durable-agent/src/execution-review.ts",
+      "hostPath": "packages/experimental/gat-durable-agent/src/execution-review.ts",
+      "archivePath": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/reviewer-production-attempt-01-source/execution-review.ts",
+      "sha256": "914a72684faece04e9dd7ae33475f68737bc5a1a6df5f07f402bb169bb554650"
+    },
+    {
+      "projectPath": "packages/durable-agent/tests/execution-review.spec.ts",
+      "hostPath": "packages/experimental/gat-durable-agent/tests/execution-review.spec.ts",
+      "archivePath": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/reviewer-production-attempt-01-source/execution-review.spec.ts",
+      "sha256": "cce2e7af19c65f8f2fca3cd7a73c0d6210105c76caa1047ce5985b43900a815f"
+    }
+  ],
+  "scope": "Named production apply through real Loader with optional trusted input service. Real GAT/WK candidate and result, distinct reviewer, fixture-owned approved DA records, ACL bytes, independent subprocess receipt, and mocked model transport.",
+  "limits": "This isolated Host qualification does not establish live operator provenance or production activation. Combined suite, package build, lint, and independent final source review are parent-owned gates."
+}

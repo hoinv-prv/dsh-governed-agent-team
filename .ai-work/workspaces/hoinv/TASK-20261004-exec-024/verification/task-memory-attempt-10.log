@@ -1,0 +1,228 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /tmp/gat-exec024-host-c1157f7e
+
+ ❯ packages/experimental/gat-core/tests/task-memory-publication-races.spec.ts (8 tests | 2 failed) 3324ms
+     × checks the final boundary after an awaited post-execute policy 360ms
+     × cuts off withdrawal while real LLM preparation is pending 321ms
+ ❯ packages/experimental/gat-core/tests/task-memory-qualification.spec.ts (18 tests | 2 failed) 66232ms
+     × no task selection or reviewer mode grants no memory tool, reviewer=true 30028ms
+     × checks active checkpoint recovery before memory/model use: changed-profile 30016ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/experimental/gat-core/tests/task-memory-publication-races.spec.ts > 'corrected candidate' publication/preparation boundaries > checks the final boundary after an awaited post-execute policy
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ packages/experimental/gat-core/tests/task-memory-publication-races.spec.ts:25:53
+     23|       await entered.promise; await h.disposeBinding(); gate.resolve()
+     24|       const result = await reading
+     25|       expect(JSON.stringify(result).includes(body)).toBe(leaks)
+       |                                                     ^
+     26|       if (!leaks) expect(result.isError).toBe(true)
+     27|     } finally { gate.resolve(); await reading }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  packages/experimental/gat-core/tests/task-memory-publication-races.spec.ts > 'corrected candidate' publication/preparation boundaries > cuts off withdrawal while real LLM preparation is pending
+SubagentError: terminal child cleanup failed: continuable subagent teardown failed for 1 selected activation(s): Cannot read properties of null (reading 'kind')
+ ❯ ContinuableActivationRegistry.closeChildren packages/subagent/subagent/src/continuation-activation.ts:623:13
+    621|         error instanceof SubagentError && error.code === 'UNAUTHORIZED…
+    622|       if (unauthorized !== undefined) throw unauthorized
+    623|       throw new SubagentError(`terminal child cleanup failed: ${failur…
+       |             ^
+    624|         'ACTIVATION_TEARDOWN_FAILED', { cause: new AggregateError(fail…
+    625|     }
+ ❯ SubagentContinuationManager.closeChildren packages/subagent/subagent/src/continuation.ts:422:5
+ ❯ Proxy.closeContinuableChildren packages/subagent/subagent/src/index.ts:385:5
+ ❯ TeamExecutionManager.finalizeAdmitted packages/experimental/agent-team/src/execution.ts:450:7
+
+{
+  stack: 'AggregateError: \n' +
+    '    at ContinuableActivationRegistry.closeChildren (/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent/src/continuation-activation.ts:624:48)\n' +
+    '    at SubagentContinuationManager.closeChildren (/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent/src/continuation.ts:422:5)\n' +
+    '    at Proxy.closeContinuableChildren (/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent/src/index.ts:385:5)\n' +
+    '    at TeamExecutionManager.finalizeAdmitted (/tmp/gat-exec024-host-c1157f7e/packages/experimental/agent-team/src/execution.ts:450:7)',
+  errors: [
+    {
+      stack: "SubagentError: continuable subagent teardown failed for 1 selected activation(s): Cannot read properties of null (reading 'kind')\n" +
+        '    at ContinuableActivationRegistry.disposeRoots (/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent/src/continuation-activation.ts:748:13)',
+      message: "continuable subagent teardown failed for 1 selected activation(s): Cannot read properties of null (reading 'kind')",
+      code: 'ACTIVATION_TEARDOWN_FAILED',
+      name: 'SubagentError',
+      constructor: 'Function<SubagentError>',
+      toString: 'Function<toString>'
+    }
+  ],
+  constructor: 'Function<AggregateError>',
+  name: 'Caused by: AggregateError',
+  message: '',
+  toString: 'Function<toString>',
+  stacks: [
+    {
+      method: 'ContinuableActivationRegistry.closeChildren',
+      file: '/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent/src/continuation-activation.ts',
+      line: 624,
+      column: 48
+    },
+    {
+      method: 'SubagentContinuationManager.closeChildren',
+      file: '/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent/src/continuation.ts',
+      line: 422,
+      column: 5
+    },
+    {
+      method: 'Proxy.closeContinuableChildren',
+      file: '/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent/src/index.ts',
+      line: 385,
+      column: 5
+    },
+    {
+      method: 'TeamExecutionManager.finalizeAdmitted',
+      file: '/tmp/gat-exec024-host-c1157f7e/packages/experimental/agent-team/src/execution.ts',
+      line: 450,
+      column: 7
+    }
+  ]
+}
+ ❯ ContinuableActivationRegistry.closeChildren packages/subagent/subagent/src/continuation-activation.ts:624:48
+ ❯ SubagentContinuationManager.closeChildren packages/subagent/subagent/src/continuation.ts:422:5
+ ❯ Proxy.closeContinuableChildren packages/subagent/subagent/src/index.ts:385:5
+ ❯ TeamExecutionManager.finalizeAdmitted packages/experimental/agent-team/src/execution.ts:450:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errors: [ { stack: 'SubagentError: continuable subagent teardown failed for 1 selected activation(s): Cannot read properties of null (reading \'kind\')\n    at ContinuableActivationRegistry.disposeRoots (/tmp/gat-exec024-host-c1157f7e/packages/subagent/subagent/src/continuation-activation.ts:748:13)', message: 'continuable subagent teardown failed for 1 selected activation(s): Cannot read properties of null (reading \'kind\')', code: 'ACTIVATION_TEARDOWN_FAILED', name: 'SubagentError', constructor: 'Function<SubagentError>', toString: 'Function<toString>' } ] }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  packages/experimental/gat-core/tests/task-memory-qualification.spec.ts > task/intent memory without system prompt memory > no task selection or reviewer mode grants no memory tool, reviewer=true
+Error: Test timed out in 15000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/experimental/gat-core/tests/task-memory-qualification.spec.ts:36:24
+     34|   })
+     35|
+     36|   it.each([false, true])('no task selection or reviewer mode grants no…
+       |                        ^
+     37|     const h = await boot({ mode: 'hang', reviewer })
+     38|     if (reviewer) {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  packages/experimental/gat-core/tests/task-memory-qualification.spec.ts > task/intent memory without system prompt memory > no task selection or reviewer mode grants no memory tool, reviewer=true
+ FAIL  packages/experimental/gat-core/tests/task-memory-qualification.spec.ts > task/intent memory without system prompt memory > checks active checkpoint recovery before memory/model use: changed-profile
+Error: Hook timed out in 15000ms.
+If this is a long-running hook, pass a timeout value as the last argument or configure it globally with "hookTimeout".
+ ❯ packages/experimental/gat-core/tests/task-memory-harness.ts:27:1
+     25|
+     26| const fixtures: { ctx: Context; root: string; tolerateCleanupFailure: …
+     27| afterEach(async () => {
+       | ^
+     28|   for (const fixture of fixtures.splice(0).reverse()) {
+     29|     try { await fixture.ctx.fiber.dispose() } catch (error) { if (!fix…
+ ❯ packages/experimental/gat-core/tests/task-memory-qualification.spec.ts:6:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  packages/experimental/gat-core/tests/task-memory-qualification.spec.ts > task/intent memory without system prompt memory > checks active checkpoint recovery before memory/model use: changed-profile
+Error: Test timed out in 15000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/experimental/gat-core/tests/task-memory-qualification.spec.ts:181:61
+    179|   })
+    180|
+    181|   it.each(['matching', 'missing-mapping', 'changed-profile'])('checks …
+       |                                                             ^
+    182|     const first = await boot({ mode: 'hang' }); const execution = awai…
+    183|     await first.ctx.sessions.flush(first.lead.session); await first.ct…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 3 unhandled errors during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+TypeError: Cannot read properties of null (reading 'kind')
+ ❯ Object.apply packages/subagent/subagent/src/projection.ts:100:46
+     98|         ...rest,
+     99|         settledMs: state.settledMs + Math.max(0, event.time - active.s…
+    100|         lastTurnCompleted: event.data.reason.kind === 'completed',
+       |                                              ^
+    101|       }
+    102|     }
+ ❯ Object.apply packages/session/session-projection/src/index.ts:264:43
+ ❯ Proxy.advanceCell packages/session/session-projection/src/index.ts:646:24
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Proxy.cellFor packages/session/session-projection/src/index.ts:627:12
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Proxy.materializeCells packages/session/session-projection/src/index.ts:599:66
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Proxy.stateOf packages/session/session-projection/src/index.ts:325:10
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+
+This error originated in "packages/experimental/gat-core/tests/task-memory-publication-races.spec.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "checks the final boundary after an awaited post-execute policy". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+TypeError: Cannot read properties of null (reading 'kind')
+ ❯ Object.apply packages/subagent/subagent/src/projection.ts:100:46
+     98|         ...rest,
+     99|         settledMs: state.settledMs + Math.max(0, event.time - active.s…
+    100|         lastTurnCompleted: event.data.reason.kind === 'completed',
+       |                                              ^
+    101|       }
+    102|     }
+ ❯ Object.apply packages/session/session-projection/src/index.ts:264:43
+ ❯ Proxy.advanceCell packages/session/session-projection/src/index.ts:646:24
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Proxy.cellFor packages/session/session-projection/src/index.ts:627:12
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Proxy.materializeCells packages/session/session-projection/src/index.ts:599:66
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Proxy.stateOf packages/session/session-projection/src/index.ts:325:10
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+
+This error originated in "packages/experimental/gat-core/tests/task-memory-publication-races.spec.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "cuts off withdrawal while real LLM preparation is pending". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+TypeError: Cannot read properties of null (reading 'kind')
+ ❯ Object.apply packages/subagent/subagent/src/projection.ts:100:46
+     98|         ...rest,
+     99|         settledMs: state.settledMs + Math.max(0, event.time - active.s…
+    100|         lastTurnCompleted: event.data.reason.kind === 'completed',
+       |                                              ^
+    101|       }
+    102|     }
+ ❯ Object.apply packages/session/session-projection/src/index.ts:264:43
+ ❯ Proxy.advanceCell packages/session/session-projection/src/index.ts:646:24
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Proxy.cellFor packages/session/session-projection/src/index.ts:627:12
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Proxy.materializeCells packages/session/session-projection/src/index.ts:599:66
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Proxy.stateOf packages/session/session-projection/src/index.ts:325:10
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+
+This error originated in "packages/experimental/gat-core/tests/task-memory-qualification.spec.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "checks binding authority on each retry and stops dispatch after plugin withdrawal". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  2 failed (2)
+      Tests  4 failed | 22 passed (26)
+     Errors  3 errors
+   Start at  19:01:58
+   Duration  67.54s (transform 1.90s, setup 0ms, import 2.45s, tests 69.56s, environment 0ms)
+

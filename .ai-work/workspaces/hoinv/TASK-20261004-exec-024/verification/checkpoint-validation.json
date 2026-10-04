@@ -1,0 +1,37 @@
+{
+  "strict_scoped_lint": {
+    "exit_code": 0,
+    "counts": {
+      "error": 0,
+      "warning": 0,
+      "info": 0,
+      "accepted": 0
+    },
+    "command": [
+      "python3",
+      ".ai-work/tooling/lint_all.py",
+      "--scope",
+      "task",
+      "--workspace",
+      ".ai-work/workspaces/hoinv/TASK-20261004-exec-024",
+      "--aip",
+      "AIP-EXEC-024",
+      "--strict",
+      "--format",
+      "json"
+    ]
+  },
+  "whitespace": {
+    "exit_code": 0,
+    "output": ""
+  },
+  "capture_sweep": {
+    "captured": 5,
+    "relations_pending": 0,
+    "human_triage_complete": false
+  },
+  "aip_status": "active",
+  "step": "STEP-02",
+  "implementation_complete": false,
+  "pending_scope_decision": "OP-024-03"
+}

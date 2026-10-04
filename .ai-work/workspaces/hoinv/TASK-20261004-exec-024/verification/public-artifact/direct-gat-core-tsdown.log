@@ -1,0 +1,16 @@
+ℹ tsdown v0.22.2 powered by rolldown v1.1.1
+
+ ERROR  Error: Failed to load the config file. Try setting the --config-loader CLI flag to `tsx` or `unrun`.
+
+Cannot find module '/tmp/gat-exec024-direct-5c02ce9f/packages/typert/generator/lib/types/tsdown-plugin.js' imported from /tmp/gat-exec024-direct-5c02ce9f/tsdown.config.ts
+    at file:///home/hoinv/deepseek-harness/node_modules/.pnpm/tsdown@0.22.2_oxc-resolver@11.20.0_publint@0.3.21_tsx@4.22.4_typescript@6.0.3/node_modules/tsdown/dist/options-DWGUHu4D.mjs:683:63
+    at async nativeImport (file:///home/hoinv/deepseek-harness/node_modules/.pnpm/tsdown@0.22.2_oxc-resolver@11.20.0_publint@0.3.21_tsx@4.22.4_typescript@6.0.3/node_modules/tsdown/dist/options-DWGUHu4D.mjs:682:14)
+    at async iterateAsync (file:///home/hoinv/deepseek-harness/node_modules/.pnpm/quansync@1.0.0/node_modules/quansync/dist/src-C2Pm6gXo.js:58:28)
+    at async iterateAsync (file:///home/hoinv/deepseek-harness/node_modules/.pnpm/quansync@1.0.0/node_modules/quansync/dist/src-C2Pm6gXo.js:58:28)
+    at async iterateAsync (file:///home/hoinv/deepseek-harness/node_modules/.pnpm/quansync@1.0.0/node_modules/quansync/dist/src-C2Pm6gXo.js:58:28)
+    at async loadConfigFile (file:///home/hoinv/deepseek-harness/node_modules/.pnpm/tsdown@0.22.2_oxc-resolver@11.20.0_publint@0.3.21_tsx@4.22.4_typescript@6.0.3/node_modules/tsdown/dist/options-DWGUHu4D.mjs:604:19)
+    at async resolveConfig (file:///home/hoinv/deepseek-harness/node_modules/.pnpm/tsdown@0.22.2_oxc-resolver@11.20.0_publint@0.3.21_tsx@4.22.4_typescript@6.0.3/node_modules/tsdown/dist/build-BxT2lm9L.mjs:93:51)
+    at async build$1 (file:///home/hoinv/deepseek-harness/node_modules/.pnpm/tsdown@0.22.2_oxc-resolver@11.20.0_publint@0.3.21_tsx@4.22.4_typescript@6.0.3/node_modules/tsdown/dist/build-BxT2lm9L.mjs:718:40)
+    at async CAC.<anonymous> (file:///home/hoinv/deepseek-harness/node_modules/.pnpm/tsdown@0.22.2_oxc-resolver@11.20.0_publint@0.3.21_tsx@4.22.4_typescript@6.0.3/node_modules/tsdown/dist/run.mjs:21:2)
+    at async runCLI (file:///home/hoinv/deepseek-harness/node_modules/.pnpm/tsdown@0.22.2_oxc-resolver@11.20.0_publint@0.3.21_tsx@4.22.4_typescript@6.0.3/node_modules/tsdown/dist/run.mjs:45:3)
+

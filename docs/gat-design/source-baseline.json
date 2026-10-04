@@ -1219,5 +1219,396 @@
     "aip_id": "AIP-EXEC-022",
     "evidence": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-qualification-receipt.json",
     "provenance": "Working-tree bytes after design-before-code production integration; qualified prerequisite commit remains separately pinned. Symbol anchors are TypeScript AST declaration locations, or exact event string locations."
+  },
+  "execution_composition": {
+    "authority": "Supplemental exact-byte inventory for the additive execution entry. The original AIP-EXEC-022 repository pins/files/iteration remain unchanged.",
+    "pins": {
+      "gat_base": {
+        "repository": "gat-aip-024",
+        "root": "/home/hoinv/work/dsh-governed-agent-team",
+        "head": "6f74ab239cbe795f0742d18831a433323f238460",
+        "source_receipt": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/production-attempt-03.json"
+      },
+      "execution_host": {
+        "root": "/tmp/gat-exec024-host-c1157f7e",
+        "head": "c1157f7ed448b40c463c1a43fa595b12294fd50d",
+        "role": "current Host for the additive execution graph"
+      },
+      "direct_host": {
+        "root": "/tmp/gat-exec024-direct-5c02ce9f",
+        "head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+        "role": "compatible Host for the unchanged direct graph"
+      },
+      "wk": {
+        "repository": "durable-agent",
+        "root": "/home/hoinv/work/dsh-durable-agent",
+        "head": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+        "package": "@deepseek-ai/dsh-durable-agent",
+        "version": "0.1.0",
+        "dependency_kind": "normal runtime dependency; not a DSH-version peer"
+      },
+      "selected_main_dsh_inputs": [
+        {
+          "path": "/home/hoinv/deepseek-harness/packages/experimental/gat-core/src/index.ts",
+          "unchanged_from_planning": true
+        },
+        {
+          "path": "/home/hoinv/deepseek-harness/packages/experimental/agent-team/src/execution.ts",
+          "unchanged_from_planning": true
+        },
+        {
+          "path": "/home/hoinv/deepseek-harness/packages/experimental/agent-team/src/execution-types.ts",
+          "unchanged_from_planning": true
+        },
+        {
+          "path": "/home/hoinv/deepseek-harness/packages/experimental/agent-team-durable-agent/src/index.ts",
+          "unchanged_from_planning": true
+        },
+        {
+          "path": "/home/hoinv/deepseek-harness/packages/core/agent-loop/src/agent.ts",
+          "unchanged_from_planning": true
+        }
+      ],
+      "selected_wk_inputs_unchanged": true
+    },
+    "files": [
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/src/provider.ts",
+        "sha256": "e1a3208196390f417f4ee61ad1f7327013a42b1aca7aa92c4ecb4a7b43162d18",
+        "bytes": 697
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/src/execution-review.ts",
+        "sha256": "f66955a3548899f4407dc524a167dfb6f0338204b74653429cc18b3b8f9f28e7",
+        "bytes": 23327
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/src/ownership.ts",
+        "sha256": "2d0d7bf992c8211bf2309a9cb80c4b5a850e886790b15eb25bd03e508e9a6d20",
+        "bytes": 1567
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/src/initializer.ts",
+        "sha256": "2c2f7f4bde7e3157cef8dc6cd2bdad0df0733a2dfc854b09a5eeedc36a571b30",
+        "bytes": 9181
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/src/binder.ts",
+        "sha256": "e96321ae263a2a8be4171ca744207e7e6c9190b17337d12ec1ec9efbef652e33",
+        "bytes": 12143
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/src/execution-composition.ts",
+        "sha256": "5a3bee17b9b0821bb982566063c5bd1b412ecb026f098e0b2171bf36a9ea0a94",
+        "bytes": 2366
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/src/execution-binding.ts",
+        "sha256": "eadf7b04a6e2221191d9e216708c31b23d08567c7bfa5e2f109038aa35ef630d",
+        "bytes": 17039
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/src/tools.ts",
+        "sha256": "7141a7803c6cd79c2774474515322e8fbb81147bb8ecc0e0e9db59822d717705",
+        "bytes": 9371
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/src/execution-host.ts",
+        "sha256": "43d7a188440f2e645f67cbb14478e681003f7abff7c5aced26c5b1afe772658f",
+        "bytes": 2874
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/src/index.ts",
+        "sha256": "e345b8a9e7f766f1453146a9cbaf8b1f43b94baac2d902ba8b1dbb3488c36c8c",
+        "bytes": 419
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/src/composition.ts",
+        "sha256": "7c2b1305f92d80021151a383936872a084f29a3cb4777beaaf9f0fbb22e594ec",
+        "bytes": 5242
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/tests/execution-host-types.ts",
+        "sha256": "d44e2ca728e5a8ff0f0d41c241b22dd5fb4bfb8f4873013d97abda5c7218c44b",
+        "bytes": 315
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/tests/execution-harness.ts",
+        "sha256": "b214476c0bfafbc5e36ffea03e9747cf043fc07409e11f54c6b9b2b2c1188e90",
+        "bytes": 11314
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/tests/execution-review.spec.ts",
+        "sha256": "124c3b3a86e0928b266100b5553f06ea27c3d97ac5444b517912512342779b47",
+        "bytes": 34659
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/tests/execution-limits.spec.ts",
+        "sha256": "103f38bc8e2d175543d4eea4e5f1d2fe58cca5616fd8008cfd25c4964c620970",
+        "bytes": 6651
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/tests/execution-lifecycle.spec.ts",
+        "sha256": "dd9c47fdef90adc5c5321d2c58f3a5f41cf4cfba92304a1d1a5eda70ee9526b1",
+        "bytes": 9983
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/tests/execution-races.spec.ts",
+        "sha256": "344fe8dc2ac03c9783bf29331f256af47b51e575f4d6d9aaf905d653d6c86841",
+        "bytes": 3815
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/tests/execution-composition.spec.ts",
+        "sha256": "a7c0b5bae15ddfba2dd5f82bbc643c7bd7bdb1f70c4d060f44f5537e89a0d563",
+        "bytes": 14784
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/package.json",
+        "sha256": "83e202efbecdf1f12b4d934dd27e6686584eaffa4d3aecd1cc45ec3fe1313411",
+        "bytes": 1914
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/tsdown.config.ts",
+        "sha256": "1d28ab7487b6c9dd3af0d365c264c122b52b29021751bb0309e274f12cd36d48",
+        "bytes": 407
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/tsconfig.execution.json",
+        "sha256": "ab30bd5329f0568d63004147448c95e71176921eb025b4aef4ca9daa823d3d43",
+        "bytes": 547
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/tsconfig.execution-conformance.json",
+        "sha256": "1abb11eebbd352420273de06f1dfc4479d2d82d1db476609ee99d09e10e2796a",
+        "bytes": 277
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/tsconfig.json",
+        "sha256": "ba3c9939c3d5298d28d7239d1b4c6170d3b6793123cac7b6a785f2d4a77b2f18",
+        "bytes": 552
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "packages/durable-agent/README.md",
+        "sha256": "4e77225de494f61226026fb75d41c6537c269e18e1735a740402b05d63ca14e8",
+        "bytes": 8318
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "scripts/assemble-durable-agent.mjs",
+        "sha256": "557be61b5eb84cf2156f6102558d75734b1f02bd2405d164f0257f3aec00553c",
+        "bytes": 6461
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/cordis.snapshot.yml",
+        "sha256": "2114bbda458359c49b7a25b9fea58e600412af8c03ba898bf1757848376e546c",
+        "bytes": 3366
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/cordis.yml",
+        "sha256": "872a298bc542f5c2469b351eebb769d62f78fb40eb6ab6adba14f50589f4f1cd",
+        "bytes": 1705
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/fixture-host.ts",
+        "sha256": "3c54154aef0a3d0fc2ad590e942551bb77fc70624f4a2db7b2b81fbc0ed483a8",
+        "bytes": 2363
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/model-timing.ts",
+        "sha256": "ebb949e8361a219fc2a2eeb59c8a03cace3839f784e095464191aa29ac895c12",
+        "bytes": 3679
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/session.1.v4.jsonl",
+        "sha256": "b8e4aa34b5469fd99afa13256f52a81bbce42883c8db40cc0f62d05a27afcdbd",
+        "bytes": 4607
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/session.2.v4.jsonl",
+        "sha256": "aa8889cdd25952ad513b4b8b6825e1722249dffad72358326f751c67be2fd13d",
+        "bytes": 12412
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/session.v4.jsonl",
+        "sha256": "e2e476053f4af0612996e0ab24975793a22f360b3e9299f24788d8880e44f332",
+        "bytes": 26437
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/snapshot.yml",
+        "sha256": "efe19484c2130b2907535a4263834168a0462dff51259fb7d16dbd5085951953",
+        "bytes": 251
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/system-prompt.1.expected.md",
+        "sha256": "24974faa54dfe9830ce497bc794558facb2890e67cc7d3fe0b3f9921fabc80fa",
+        "bytes": 4992
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/system-prompt.2.expected.md",
+        "sha256": "24974faa54dfe9830ce497bc794558facb2890e67cc7d3fe0b3f9921fabc80fa",
+        "bytes": 4992
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/system-prompt.expected.md",
+        "sha256": "c80b9869807c341da697d24716e4c2201565c48fa2d4d7681dbd6baf96b138d2",
+        "bytes": 4986
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/tool-schemas.1.expected.json",
+        "sha256": "329446ee917910e1674d9b0c6695da099c29b3b9865dffb81cd56ec7b21eb7f1",
+        "bytes": 34609
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/tool-schemas.2.expected.json",
+        "sha256": "dae4f5e4755e840da5f34fc4649613e0029bc930d748faba60fb872a18c89d5d",
+        "bytes": 35082
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/tool-schemas.expected.json",
+        "sha256": "329446ee917910e1674d9b0c6695da099c29b3b9865dffb81cd56ec7b21eb7f1",
+        "bytes": 34609
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/verify.ts",
+        "sha256": "93ce0a3ca283fa8823862f31b64b3fddac7eee4ce7681467666a119b46e324b8",
+        "bytes": 5683
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/workspace/.dsh/gat-durable-execution-workspace/.empty",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/scenario/workspace/team_members.yaml",
+        "sha256": "461d030920020f46e3aae11b2cc8822f09e0423debd91f05cd24f5e4280afd4b",
+        "bytes": 249
+      }
+    ],
+    "distribution_artifacts": {
+      "assembly_receipt": {
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/assembly-final-01/assembly-receipt.json",
+        "sha256": "f7f54e6445e210be5fa50d0e93756d41a6498d9aaf090319c978c763f5fb15a7",
+        "output_count": 56,
+        "exit_code": 0
+      },
+      "packed_receipt": {
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/receipt.json",
+        "sha256": "2948c0a7e96c13542f8d07a9059b0b0b7d835efe15ee16be63121090e3678ac9",
+        "tarball_sha256": "7f7848ce2eff8f07f01ea3bd778571083441d7db23783e3ddb54e2f80c695065",
+        "packed_file_count": 52
+      },
+      "compatibility_manifest": {
+        "path": "compatibility/execution-c1157f7e/manifest.json",
+        "sha256": "751fc7894ee5d1628d85b4e347dd05b29f0a18ac54c0f64b39391045c89d93ef"
+      }
+    },
+    "evidence": [
+      {
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/production-attempt-03.json",
+        "sha256": "7922d2abd73e4102b37338012abbfa5d03a56b3b26df5e4378760492a7202f98"
+      },
+      {
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/direct-baseline-5c02ce9f/attempt-09.json",
+        "sha256": "a2c8838106ec93e11c04948c63eb703138f40ea21ff1ba830a787b3815ad4fc4"
+      },
+      {
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/assembly-final-01/assembly-receipt.json",
+        "sha256": "f7f54e6445e210be5fa50d0e93756d41a6498d9aaf090319c978c763f5fb15a7"
+      },
+      {
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/receipt.json",
+        "sha256": "2948c0a7e96c13542f8d07a9059b0b0b7d835efe15ee16be63121090e3678ac9"
+      },
+      {
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/execution-snapshot/attempt-13-final-source.json",
+        "sha256": "30586a75e28cb14efc63f4b32df458babac2d345c218e5342e8b5c9b70827671"
+      },
+      {
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/execution-snapshot/attempt-14-final-built.json",
+        "sha256": "1fe22f7ef8e082a1a9d0b891d40ea1d1f024420b0dde77e2fd659206656331d0"
+      },
+      {
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/execution-snapshot/candidate-copy-manifest.json",
+        "sha256": "9adcec459972cc0c588dd3018fdf9629b29125036e5739430bb597154ee5c39c"
+      },
+      {
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/final-consistency.json",
+        "sha256": "8c891c381aed5bf9135fabb66bd6e47734a72d683fce48eb1da63c37fa758851"
+      },
+      {
+        "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/host-runtime-build/tsc-host.json",
+        "sha256": "84b7bef774dd82adb8e4960f4734d9f3d6bf843be27dec1d1472dc19d748b799"
+      }
+    ],
+    "mapped_source_file_count": 25,
+    "mapped_scenario_file_count": 17,
+    "mapped_file_count": 42,
+    "evidence_artifacts": [
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/headless.patch",
+        "sha256": "4ed548f9e845c597f07b7df1ae70eb9b03c7ddf34ae25e378a4ef7913a108850",
+        "bytes": 1243
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/candidate-copy-manifest.json",
+        "sha256": "9adcec459972cc0c588dd3018fdf9629b29125036e5739430bb597154ee5c39c",
+        "bytes": 4715
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "verification/execution-snapshot/qualification-report.md",
+        "sha256": "d5d42b926310dbdab69755e39322b5702938f8f7618ea4c626127e6317447954",
+        "bytes": 4368
+      },
+      {
+        "repository": "gat-aip-024",
+        "path": "compatibility/execution-c1157f7e/manifest.json",
+        "sha256": "751fc7894ee5d1628d85b4e347dd05b29f0a18ac54c0f64b39391045c89d93ef",
+        "bytes": 13862
+      }
+    ]
   }
 }

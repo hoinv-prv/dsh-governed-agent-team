@@ -1,0 +1,31 @@
+{
+  "dependency": "0.1.0",
+  "entries": {
+    ".": {
+      "default": "lib/index.js",
+      "types": "lib/types/index.d.ts"
+    },
+    "./composition": {
+      "default": "lib/composition.js",
+      "types": "lib/types/composition.d.ts"
+    },
+    "./execution-composition": {
+      "default": "lib/execution-composition.js",
+      "types": "lib/types/execution-composition.d.ts"
+    },
+    "./provider": {
+      "default": "lib/provider.js",
+      "types": "lib/types/provider.d.ts"
+    }
+  },
+  "noDefaultExecutionExportInDeclaration": true,
+  "packIncludesTsbuildinfo": [
+    "package/lib/tsconfig.execution-conformance.tsbuildinfo",
+    "package/lib/tsconfig.execution.tsbuildinfo"
+  ],
+  "sharedInitializerChunk": "initializer-WrA1zjHL.js",
+  "sharedOwnershipChunk": "tools-BVkFAKbd.js",
+  "tarballSha256": "dca33048eef155f1c98229a86ae34691e122b2cde95fedec229bfe9136b53e07",
+  "unshippedSrcExportPattern": "./src/*",
+  "wkExternalized": true
+}

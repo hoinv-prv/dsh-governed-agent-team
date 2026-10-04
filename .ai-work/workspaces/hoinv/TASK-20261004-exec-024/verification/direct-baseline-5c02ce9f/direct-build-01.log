@@ -1,0 +1,7 @@
+vendor/schemastery/src/index.ts(2,39): error TS2307: Cannot find module '@standard-schema/spec' or its corresponding type declarations.
+vendor/cordis/src/fiber.ts(7,39): error TS2307: Cannot find module '@standard-schema/spec' or its corresponding type declarations.
+vendor/cordis/src/registry.ts(3,39): error TS2307: Cannot find module '@standard-schema/spec' or its corresponding type declarations.
+packages/host/webserver/src/index.ts(15,35): error TS2307: Cannot find module 'compression' or its corresponding type declarations.
+packages/host/webserver/src/index.ts(16,24): error TS2307: Cannot find module 'negotiator' or its corresponding type declarations.
+packages/host/webserver/src/index.ts(94,12): error TS7006: Parameter 'request' implicitly has an 'any' type.
+packages/host/webserver/src/index.ts(94,21): error TS7006: Parameter 'response' implicitly has an 'any' type.

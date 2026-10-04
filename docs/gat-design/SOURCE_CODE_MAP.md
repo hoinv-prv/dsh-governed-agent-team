@@ -9,9 +9,9 @@ Authority: **Source code is the source of truth for implemented behavior.**
 
 This map connects [Detail Design](DETAIL_DESIGN.md) to actual implementation symbols and existing tests. Read [Architecture](ARCHITECTURE_DESIGN.md) and [Basic Design](BASIC_DESIGN.md) for responsibilities/features. Lines are navigation hints at the inspected bytes, not stable identifiers; symbols and file SHA-256 values in [baseline](source-baseline.json) determine provenance.
 
-The current source baseline binds working-tree bytes after the approved AIP-EXEC-022 production integration. The isolated DSH worktree is based on committed prerequisite revision `5c02ce9f3e44dfce3f87498f65cf684194ad4572`, descended from compatibility revision `c291e7961a515f6d7af9304e7fd1d257929aef26`; its current production delta is captured by the separate selected compatibility artifact. External WK rows refer to clean revision `a8e215433ae050e36e0ba27205701be1a5f114a1` in the sibling `dsh-durable-agent` repository. Standalone rows refer to `packages/gat` rather than the live DSH Team runtime.
+The retained AIP-EXEC-022 source baseline binds working-tree bytes after that approved production integration. The isolated DSH worktree is based on committed prerequisite revision `5c02ce9f3e44dfce3f87498f65cf684194ad4572`, descended from compatibility revision `c291e7961a515f6d7af9304e7fd1d257929aef26`; its current production delta is captured by the separate selected compatibility artifact. External WK rows refer to clean revision `a8e215433ae050e36e0ba27205701be1a5f114a1` in the sibling `dsh-durable-agent` repository. Standalone rows refer to `packages/gat` rather than the live DSH Team runtime.
 
-Mapping locators do not prove verification. Current executed evidence belongs to [AIP-EXEC-022 qualification](../../.ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-qualification-receipt.json); the [AIP-EXEC-023 prerequisite receipt](../../.ai-work/workspaces/hoinv/TASK-20261004-exec-023/qualification-receipt.json) remains historical and separately qualified. Publication, merge and live deployment remain separate.
+Mapping locators do not prove verification. The retained direct-entry executed evidence belongs to [AIP-EXEC-022 qualification](../../.ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-qualification-receipt.json); the [AIP-EXEC-023 prerequisite receipt](../../.ai-work/workspaces/hoinv/TASK-20261004-exec-023/qualification-receipt.json) remains historical and separately qualified. Publication, merge and live deployment remain separate.
 
 ## Implementation and test traceability
 
@@ -37,6 +37,23 @@ Mapping locators do not prove verification. Current executed evidence belongs to
 | [DD-18](DETAIL_DESIGN.md#dd-18) → BD-15 | Target / future |  | Future scope; no implementation PASS claimed. |
 
 ## Coverage and known gaps
+
+### Additive execution entry — AIP-EXEC-024
+
+The intended mapping was declared before source implementation; the following locators now identify delivered code. Existing DD rows retain their direct-entry Host and historical evidence. Detail §§9–10 and Basic §13 govern the additive entry; [Detail §11](DETAIL_DESIGN.md#11-delivered-execution-entry-evidence--aip-exec-024) records its separate qualification.
+
+| Design contract | Delivered source | Verification |
+| --- | --- | --- |
+| DD-09/15/16: named opt-in entry, exact structural Host receiver and identity | [execution-composition.ts](../../packages/durable-agent/src/execution-composition.ts), [execution-host.ts](../../packages/durable-agent/src/execution-host.ts) | Public Config/apply, actual service conformance, Loader and foreign/stale identity fixtures |
+| DD-09/15/16: detached configuration, task/intent selective memory, publication guards, lifecycle/recovery | [execution-binding.ts](../../packages/durable-agent/src/execution-binding.ts) | [execution-composition.spec.ts](../../packages/durable-agent/tests/execution-composition.spec.ts), [execution-races.spec.ts](../../packages/durable-agent/tests/execution-races.spec.ts), [execution-limits.spec.ts](../../packages/durable-agent/tests/execution-limits.spec.ts), [execution-lifecycle.spec.ts](../../packages/durable-agent/tests/execution-lifecycle.spec.ts) |
+| DD-09/15: trusted reviewer packet, authenticated evidence/rationale, synchronous withdrawal and native provisional submission | [execution-review.ts](../../packages/durable-agent/src/execution-review.ts) | [execution-review.spec.ts](../../packages/durable-agent/tests/execution-review.spec.ts): 37 cases, no memory/ambient tools |
+| DD-11/15/16: shared ownership and bounded public tool helpers | [ownership.ts](../../packages/durable-agent/src/ownership.ts), [tools.ts](../../packages/durable-agent/src/tools.ts) | Unchanged coordinator; shared callback typing; original direct suite 48 cases on its compatible Host |
+| DD-11: separate type graphs, single joint bundle, exact normal WK dependency | [package.json](../../packages/durable-agent/package.json), [tsdown.config.ts](../../packages/durable-agent/tsdown.config.ts), [assembly tool](../../scripts/assemble-durable-agent.mjs) | Forced compile of both graphs, all four public runtime/declaration entries, plain Node, packed Loader and shipped type consumers |
+| DD-09/11/15: existing recorded headless CLI snapshot owner | [scenario distribution](../../verification/execution-snapshot/scenario/), [bounded owner hook](../../verification/execution-snapshot/headless.patch) | Final source and built replay each 1 owning case PASS; unrelated 139 skipped; original replay inputs/sidecars unchanged |
+
+Exact qualification pins: repository `6f74ab239cbe795f0742d18831a433323f238460` plus selected working-tree source; current execution Host `c1157f7ed448b40c463c1a43fa595b12294fd50d`; compatible direct Host `5c02ce9f3e44dfce3f87498f65cf684194ad4572`; WK `a8e215433ae050e36e0ba27205701be1a5f114a1`, package `0.1.0`. New files have no invented wiki IDs; reviewed metadata refresh is captured as CAP-024-13.
+
+[Production receipt](../../.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/production-attempt-03.json) seals 81 cases across five files and current service type conformance. [Artifact receipt](../../.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/receipt.json) and [snapshot copy manifest](../../.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/execution-snapshot/candidate-copy-manifest.json) identify final packed bytes and replay evidence. The isolated artifact does not authorize activation. Whole Host generated types remain separately NG; source fixtures use Host Cordis aliases, while the built public checks qualify actual Host Cordis 4.0.4 and WK Cordis 4.0.2.
 
 - DD-01..DD-11 map the current GAT runtime, browser and default/opt-in distribution, including the separate exact-host compatibility artifact and actual public built-path verifier.
 - DD-12..DD-14 map inactive standalone governance/reference-memory/conformance code.

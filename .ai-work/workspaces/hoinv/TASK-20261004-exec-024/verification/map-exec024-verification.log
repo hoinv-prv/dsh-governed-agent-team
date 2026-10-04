@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "historical_map_rows": 18,
+  "historical_map_iteration": "AIP-EXEC-022",
+  "historical_baseline_files": 142,
+  "historical_baseline_iteration": "AIP-EXEC-022",
+  "historical_verification_aip": "AIP-EXEC-022",
+  "execution_composition": {
+    "mapped_source_files": 25,
+    "mapped_scenario_files": 17,
+    "mapped_total": 42,
+    "hashes_sizes_and_anchors_checked": 64,
+    "test_paths_exist": 6,
+    "wiki_source_ids": 0
+  }
+}

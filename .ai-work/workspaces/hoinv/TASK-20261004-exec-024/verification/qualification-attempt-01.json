@@ -1,0 +1,15 @@
+{
+  "command": [
+    "pnpm",
+    "exec",
+    "vitest",
+    "run",
+    "--config",
+    "vitest.exec024.config.ts",
+    "packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts"
+  ],
+  "cwd": "/tmp/gat-exec024-host-c1157f7e",
+  "exit_code": 1,
+  "log": "verification/qualification-attempt-01.log",
+  "test_sha256": "7e450f0b5bae9345ead22c6f02951470291d2f50f4586981ded840278b50613e"
+}

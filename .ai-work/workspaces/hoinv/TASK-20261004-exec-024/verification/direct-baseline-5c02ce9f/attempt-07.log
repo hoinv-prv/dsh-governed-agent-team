@@ -1,0 +1,178 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /tmp/gat-exec024-direct-5c02ce9f
+
+ ✓ packages/experimental/gat-durable-agent/tests/tools.spec.ts > Durable Agent model tools > exposes only the read and unconfirmed-candidate tools 3ms
+ ✓ packages/experimental/gat-durable-agent/tests/tools.spec.ts > Durable Agent model tools > rejects malformed read and candidate arguments without calling the Consumer 4ms
+ ✓ packages/experimental/gat-durable-agent/tests/tools.spec.ts > Durable Agent model tools > checks live authority before and after an asynchronous read 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/tools.spec.ts > Durable Agent model tools > authorizes before effects and returns only an explicitly unconfirmed candidate 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/tools.spec.ts > Durable Agent model tools > does not call the Consumer when pre-authorization is stale 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/tools.spec.ts > Durable Agent model tools > withholds a read result that exceeds the public response bound 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > returns detached normalized members with a required v1 attachment 10ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > fails closed when the explicit Durable config is missing 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > rejects malformed YAML without defaulting to an unbound roster 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > rejects duplicate member names 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > rejects unknown document, member, and durable fields 4ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > rejects global scope and fork context for this adapter 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > rejects the reserved Lead identity and aliases 4ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > sanitizes route preflight failures 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > bounds reads and rejects symlinked config files 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for unknown payload field before provisioning 7ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for wrong schema before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for different service key before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for different workspace before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for different member before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for different route before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for fork context before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for global storage before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for different initial task before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > requires supported service API and feature version before preparing 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > requires supported service API and feature read before preparing 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > requires supported service API and feature candidate before preparing 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > shares workspace/name ownership across Teams and releases a prepared reservation on abort 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > installs two executable closed tools and one coherent prompt without exposing a ref or eagerly reading bodies 4ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > refreshes the owner prompt for every authorized request and fails the request on refresh error 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > revokes stale tool admission immediately when generation is lost 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > revokes stale tool admission immediately when service is lost 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > revokes stale tool admission immediately when authorization is lost 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > withholds a paused read result after scope revocation without self-drain deadlock 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > recovers the exact persisted declaration without reading workspace YAML or preparing again 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > retains cross-Team ownership until physical release settles and memoizes all cleanup callers 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > quarantines identity ownership after provider release fails and never reuses the failed cleanup ref 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > removes installed authority immediately on bind-signal cancellation and waits for physical provider cleanup 3ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > rejects a mismatched bind workspace before provisioning or installing a child contribution 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > rejects aborted bind admission before persistent provisioning starts 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > rejects stale bind admission before persistent provisioning starts 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/public-provider.spec.ts > WK public provider in temporary storage > retains independently committed memory across release/recovery and submits only unconfirmed candidates 128ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > uses the real public provider for host-approved memory, request refresh, unconfirmed candidates and persisted recovery 119ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > releases a recovered ownership reservation when cancellation arrives between validation and bind admission 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > reports recovery cleanup rejection and keeps the identity quarantined 1ms
+ × packages/experimental/gat-durable-agent/tests/composition.spec.ts > registered Durable profile composition > binds real storage before first admission, refreshes each request and keeps candidate submission unconfirmed 42ms
+   → failed to apply loader entry a2dc703f (cordis:include): failed to apply loader entry gat-durable-agent (@vuhoi/gat-durable-agent/composition): an Agent Team initializer is already registered
+ × packages/experimental/gat-durable-agent/tests/composition.spec.ts > registered Durable profile composition > recovers persisted attachments after restart without rereading changed YAML or readmitting initial work 15ms
+   → failed to apply loader entry eb12863f (cordis:include): failed to apply loader entry gat-durable-agent (@vuhoi/gat-durable-agent/composition): an Agent Team initializer is already registered
+ × packages/experimental/gat-durable-agent/tests/composition.spec.ts > registered Durable profile composition > withdraws required readiness after a revoked asynchronous read and denies same-generation admission 15ms
+   → failed to apply loader entry 6fd3844c (cordis:include): failed to apply loader entry gat-durable-agent (@vuhoi/gat-durable-agent/composition): an Agent Team initializer is already registered
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/experimental/gat-durable-agent/tests/composition.spec.ts > registered Durable profile composition > binds real storage before first admission, refreshes each request and keeps candidate submission unconfirmed
+Error: failed to apply loader entry a2dc703f (cordis:include): failed to apply loader entry gat-durable-agent (@vuhoi/gat-durable-agent/composition): an Agent Team initializer is already registered
+ ❯ updateError vendor/loader/src/config/entry.ts:26:10
+     24| function updateError(stage: 'import' | 'dispose' | 'apply' | 'rollback…
+     25|   const detail = cause instanceof Error ? cause.message : String(cause)
+     26|   return new Error(`failed to ${stage} loader entry ${options.id} (${o…
+       |          ^
+     27| }
+     28|
+ ❯ Entry._init vendor/loader/src/config/entry.ts:287:13
+ ❯ Entry.init vendor/loader/src/config/entry.ts:261:7
+ ❯ Entry.update vendor/loader/src/config/entry.ts:172:41
+ ❯ EntryGroup.create vendor/loader/src/config/group.ts:30:7
+ ❯ Proxy.create vendor/loader/src/config/tree.ts:99:16
+ ❯ boot packages/experimental/gat-durable-agent/tests/composition.spec.ts:81:3
+ ❯ fixture packages/experimental/gat-durable-agent/tests/composition.spec.ts:109:13
+ ❯ packages/experimental/gat-durable-agent/tests/composition.spec.ts:142:15
+
+Caused by: Error: failed to apply loader entry gat-durable-agent (@vuhoi/gat-durable-agent/composition): an Agent Team initializer is already registered
+ ❯ updateError vendor/loader/src/config/entry.ts:26:10
+ ❯ Entry._await vendor/loader/src/config/entry.ts:273:13
+ ❯ Entry.init vendor/loader/src/config/entry.ts:266:5
+ ❯ Entry.update vendor/loader/src/config/entry.ts:172:41
+ ❯ EntryGroup.create vendor/loader/src/config/group.ts:30:7
+ ❯ EntryGroup.update vendor/loader/src/config/group.ts:71:24
+ ❯ Include._apply vendor/include/src/index.ts:317:5
+
+Caused by: Error: an Agent Team initializer is already registered
+ ❯ Proxy.registerInitializer packages/experimental/gat-core/src/index.ts:621:43
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Fiber.<anonymous> packages/experimental/gat-durable-agent/src/composition.ts:88:35
+ ❯ vendor/cordis/src/fiber.ts:366:45
+ ❯ new apply packages/experimental/gat-durable-agent/src/composition.ts:88:7
+ ❯ Fiber.execute vendor/cordis/src/fiber.ts:253:30
+ ❯ vendor/cordis/src/fiber.ts:366:45
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  packages/experimental/gat-durable-agent/tests/composition.spec.ts > registered Durable profile composition > recovers persisted attachments after restart without rereading changed YAML or readmitting initial work
+Error: failed to apply loader entry eb12863f (cordis:include): failed to apply loader entry gat-durable-agent (@vuhoi/gat-durable-agent/composition): an Agent Team initializer is already registered
+ ❯ updateError vendor/loader/src/config/entry.ts:26:10
+     24| function updateError(stage: 'import' | 'dispose' | 'apply' | 'rollback…
+     25|   const detail = cause instanceof Error ? cause.message : String(cause)
+     26|   return new Error(`failed to ${stage} loader entry ${options.id} (${o…
+       |          ^
+     27| }
+     28|
+ ❯ Entry._init vendor/loader/src/config/entry.ts:287:13
+ ❯ Entry.init vendor/loader/src/config/entry.ts:261:7
+ ❯ Entry.update vendor/loader/src/config/entry.ts:172:41
+ ❯ EntryGroup.create vendor/loader/src/config/group.ts:30:7
+ ❯ Proxy.create vendor/loader/src/config/tree.ts:99:16
+ ❯ boot packages/experimental/gat-durable-agent/tests/composition.spec.ts:81:3
+ ❯ fixture packages/experimental/gat-durable-agent/tests/composition.spec.ts:109:13
+ ❯ packages/experimental/gat-durable-agent/tests/composition.spec.ts:180:15
+
+Caused by: Error: failed to apply loader entry gat-durable-agent (@vuhoi/gat-durable-agent/composition): an Agent Team initializer is already registered
+ ❯ updateError vendor/loader/src/config/entry.ts:26:10
+ ❯ Entry._await vendor/loader/src/config/entry.ts:273:13
+ ❯ Entry.init vendor/loader/src/config/entry.ts:266:5
+ ❯ Entry.update vendor/loader/src/config/entry.ts:172:41
+ ❯ EntryGroup.create vendor/loader/src/config/group.ts:30:7
+ ❯ EntryGroup.update vendor/loader/src/config/group.ts:71:24
+ ❯ Include._apply vendor/include/src/index.ts:317:5
+
+Caused by: Error: an Agent Team initializer is already registered
+ ❯ Proxy.registerInitializer packages/experimental/gat-core/src/index.ts:621:43
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Fiber.<anonymous> packages/experimental/gat-durable-agent/src/composition.ts:88:35
+ ❯ vendor/cordis/src/fiber.ts:366:45
+ ❯ new apply packages/experimental/gat-durable-agent/src/composition.ts:88:7
+ ❯ Fiber.execute vendor/cordis/src/fiber.ts:253:30
+ ❯ vendor/cordis/src/fiber.ts:366:45
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  packages/experimental/gat-durable-agent/tests/composition.spec.ts > registered Durable profile composition > withdraws required readiness after a revoked asynchronous read and denies same-generation admission
+Error: failed to apply loader entry 6fd3844c (cordis:include): failed to apply loader entry gat-durable-agent (@vuhoi/gat-durable-agent/composition): an Agent Team initializer is already registered
+ ❯ updateError vendor/loader/src/config/entry.ts:26:10
+     24| function updateError(stage: 'import' | 'dispose' | 'apply' | 'rollback…
+     25|   const detail = cause instanceof Error ? cause.message : String(cause)
+     26|   return new Error(`failed to ${stage} loader entry ${options.id} (${o…
+       |          ^
+     27| }
+     28|
+ ❯ Entry._init vendor/loader/src/config/entry.ts:287:13
+ ❯ Entry.init vendor/loader/src/config/entry.ts:261:7
+ ❯ Entry.update vendor/loader/src/config/entry.ts:172:41
+ ❯ EntryGroup.create vendor/loader/src/config/group.ts:30:7
+ ❯ Proxy.create vendor/loader/src/config/tree.ts:99:16
+ ❯ boot packages/experimental/gat-durable-agent/tests/composition.spec.ts:81:3
+ ❯ fixture packages/experimental/gat-durable-agent/tests/composition.spec.ts:109:13
+ ❯ packages/experimental/gat-durable-agent/tests/composition.spec.ts:212:15
+
+Caused by: Error: failed to apply loader entry gat-durable-agent (@vuhoi/gat-durable-agent/composition): an Agent Team initializer is already registered
+ ❯ updateError vendor/loader/src/config/entry.ts:26:10
+ ❯ Entry._await vendor/loader/src/config/entry.ts:273:13
+ ❯ Entry.init vendor/loader/src/config/entry.ts:266:5
+ ❯ Entry.update vendor/loader/src/config/entry.ts:172:41
+ ❯ EntryGroup.create vendor/loader/src/config/group.ts:30:7
+ ❯ EntryGroup.update vendor/loader/src/config/group.ts:71:24
+ ❯ Include._apply vendor/include/src/index.ts:317:5
+
+Caused by: Error: an Agent Team initializer is already registered
+ ❯ Proxy.registerInitializer packages/experimental/gat-core/src/index.ts:621:43
+ ❯ Object.apply vendor/cordis/src/utils.ts:160:40
+ ❯ Fiber.<anonymous> packages/experimental/gat-durable-agent/src/composition.ts:88:35
+ ❯ vendor/cordis/src/fiber.ts:366:45
+ ❯ new apply packages/experimental/gat-durable-agent/src/composition.ts:88:7
+ ❯ Fiber.execute vendor/cordis/src/fiber.ts:253:30
+ ❯ vendor/cordis/src/fiber.ts:366:45
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  3 failed | 45 passed (48)
+   Start at  19:19:48
+   Duration  1.44s (transform 3.61s, setup 0ms, import 5.25s, tests 402ms, environment 0ms)
+

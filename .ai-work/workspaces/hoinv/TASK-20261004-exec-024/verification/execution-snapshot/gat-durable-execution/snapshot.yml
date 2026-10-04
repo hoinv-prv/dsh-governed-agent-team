@@ -1,0 +1,11 @@
+version: 1
+scenario: gat-durable-execution
+profile: headless
+composition: gat-durable-execution
+recording: authored
+permission: workspace-write
+header:
+  class: gat-durable-execution
+  pin: true
+  childSystemPrompts: [1, 2]
+  childToolSchemas: [1, 2]

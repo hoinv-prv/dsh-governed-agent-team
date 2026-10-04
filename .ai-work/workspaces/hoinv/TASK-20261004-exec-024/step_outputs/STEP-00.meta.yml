@@ -1,0 +1,10 @@
+output_id: OUT-024-00-01
+result_type: output
+working_aip_ref: AIP-EXEC-024
+step_id: STEP-00
+output_locator: task-understanding.md
+created_at: 2026-10-04T06:52:05.767634+00:00
+review_status: approved_for_next_step
+verification_level: source-and-runtime-observed
+source_refs: ["task-understanding.md"]
+notes: "HUMAN bounded run authorization recovered; producer record, not independent review."

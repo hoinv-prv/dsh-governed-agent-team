@@ -1,0 +1,22 @@
+diff --git a/snapshots/session/headless.snapshot.ts b/snapshots/session/headless.snapshot.ts
+index e09fe81038..0447d07df6 100644
+--- a/snapshots/session/headless.snapshot.ts
++++ b/snapshots/session/headless.snapshot.ts
+@@ -1,6 +1,7 @@
+ /** Recorded-session replay through the shipped headless `dsh` profile. */
+ 
+ import { verifyTaskIsolation } from './agent-team-task-isolation/verify.ts'
++import { verifyDurableExecution } from './gat-durable-execution/verify.ts'
+ import { startHttpMcpFixture } from '../../packages/mcp/mcp-client/tests/http-fixture.ts'
+ import { cp, copyFile, mkdir, mkdtemp, readFile, readdir, rm, symlink, utimes, writeFile } from 'node:fs/promises'
+ import { existsSync } from 'node:fs'
+@@ -1213,6 +1214,9 @@ describe('headless recorded-session snapshots', () => {
+             if (scenario.name === 'agent-team-task-isolation') {
+               verifyTaskIsolation(actualLogs.map(log => log.content))
+             }
++            if (scenario.name === 'gat-durable-execution') {
++              verifyDurableExecution(actualLogs.map(log => log.content))
++            }
+             if (retainedToolInput !== undefined) {
+               verifyToolResultWriterParity(primaryFixture, actualLogs[0]!.content)
+             }

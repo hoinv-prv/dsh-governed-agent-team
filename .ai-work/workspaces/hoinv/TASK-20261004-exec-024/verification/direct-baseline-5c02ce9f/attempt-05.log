@@ -1,0 +1,73 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /tmp/gat-exec024-direct-5c02ce9f
+
+ ✓ packages/experimental/gat-durable-agent/tests/tools.spec.ts > Durable Agent model tools > exposes only the read and unconfirmed-candidate tools 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/tools.spec.ts > Durable Agent model tools > rejects malformed read and candidate arguments without calling the Consumer 3ms
+ ✓ packages/experimental/gat-durable-agent/tests/tools.spec.ts > Durable Agent model tools > checks live authority before and after an asynchronous read 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/tools.spec.ts > Durable Agent model tools > authorizes before effects and returns only an explicitly unconfirmed candidate 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/tools.spec.ts > Durable Agent model tools > does not call the Consumer when pre-authorization is stale 0ms
+ ✓ packages/experimental/gat-durable-agent/tests/tools.spec.ts > Durable Agent model tools > withholds a read result that exceeds the public response bound 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > returns detached normalized members with a required v1 attachment 10ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > fails closed when the explicit Durable config is missing 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > rejects malformed YAML without defaulting to an unbound roster 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > rejects duplicate member names 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > rejects unknown document, member, and durable fields 8ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > rejects global scope and fork context for this adapter 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > rejects the reserved Lead identity and aliases 3ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > sanitizes route preflight failures 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/initializer.spec.ts > Durable Team initializer > bounds reads and rejects symlinked config files 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for unknown payload field before provisioning 5ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for wrong schema before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for different service key before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for different workspace before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for different member before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for different route before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for fork context before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for global storage before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > fails closed during prepare for different initial task before provisioning 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > requires supported service API and feature version before preparing 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > requires supported service API and feature read before preparing 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > requires supported service API and feature candidate before preparing 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > shares workspace/name ownership across Teams and releases a prepared reservation on abort 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > installs two executable closed tools and one coherent prompt without exposing a ref or eagerly reading bodies 6ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > refreshes the owner prompt for every authorized request and fails the request on refresh error 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > revokes stale tool admission immediately when generation is lost 2ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > revokes stale tool admission immediately when service is lost 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > revokes stale tool admission immediately when authorization is lost 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > withholds a paused read result after scope revocation without self-drain deadlock 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > recovers the exact persisted declaration without reading workspace YAML or preparing again 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > retains cross-Team ownership until physical release settles and memoizes all cleanup callers 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > quarantines identity ownership after provider release fails and never reuses the failed cleanup ref 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > removes installed authority immediately on bind-signal cancellation and waits for physical provider cleanup 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > rejects a mismatched bind workspace before provisioning or installing a child contribution 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > rejects aborted bind admission before persistent provisioning starts 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > rejects stale bind admission before persistent provisioning starts 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/public-provider.spec.ts > WK public provider in temporary storage > retains independently committed memory across release/recovery and submits only unconfirmed candidates 134ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > uses the real public provider for host-approved memory, request refresh, unconfirmed candidates and persisted recovery 122ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > releases a recovered ownership reservation when cancellation arrives between validation and bind admission 1ms
+ ✓ packages/experimental/gat-durable-agent/tests/binder.spec.ts > WK Durable binder and identity ownership over public service ports > reports recovery cleanup rejection and keeps the identity quarantined 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/experimental/gat-durable-agent/tests/composition.spec.ts [ packages/experimental/gat-durable-agent/tests/composition.spec.ts ]
+Error: Cannot find package 'ws' imported from /tmp/gat-exec024-direct-5c02ce9f/packages/api/gateway/src/stream-server.ts
+ ❯ packages/api/gateway/src/stream-server.ts:5:1
+      3| import type { IncomingMessage } from 'node:http'
+      4| import type { Duplex } from 'node:stream'
+      5| import WebSocket, { WebSocketServer, type RawData } from 'ws'
+       | ^
+      6| import {
+      7|   parseRemoteStreamClientMessage,
+ ❯ packages/api/gateway/src/index.ts:37:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'ERR_MODULE_NOT_FOUND' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  45 passed (45)
+   Start at  19:18:36
+   Duration  1.29s (transform 3.82s, setup 0ms, import 4.02s, tests 341ms, environment 0ms)
+

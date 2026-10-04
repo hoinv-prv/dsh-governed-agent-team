@@ -1,0 +1,1 @@
+{"version":3,"file":"ownership.d.ts","sourceRoot":"","sources":["../../src/ownership.ts"],"names":[],"mappings":"AAEA,gGAAgG;AAChG,qBAAa,2BAA2B;IACtC,OAAO,CAAC,QAAQ,CAAC,MAAM,CAA4B;IACnD;;;;;OAKG;IACH,OAAO,CAAC,iBAAiB,EAAE,MAAM,EAAE,IAAI,EAAE,MAAM,GAAG,MAAM,IAAI;CAY7D;AAGD;;;;GAIG;AACH,wBAAgB,cAAc,CAAC,OAAO,EAAE,MAAM,GAAG,2BAA2B,CAI3E"}

@@ -1,0 +1,10 @@
+output_id: OUT-024-01-01
+result_type: output
+working_aip_ref: AIP-EXEC-024
+step_id: STEP-01
+output_locator: qualification-design.md
+created_at: 2026-10-04T06:52:05.767634+00:00
+review_status: approved_for_next_step
+verification_level: source-and-runtime-observed
+source_refs: ["qualification-design.md", "qualification-environment.json"]
+notes: "Official prospective design precedes experimental source; environment and public artifacts identified; production compatibility not accepted."

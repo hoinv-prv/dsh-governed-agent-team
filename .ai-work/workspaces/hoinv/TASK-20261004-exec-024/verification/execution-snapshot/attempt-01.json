@@ -1,0 +1,28 @@
+{
+  "agent": "qualification_review",
+  "kind": "source-route authored refresh diagnostic",
+  "command": [
+    "node",
+    "/home/hoinv/deepseek-harness/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "vitest.snapshot.config.ts",
+    "snapshots/session/headless.snapshot.ts",
+    "-t",
+    "gat-durable-execution"
+  ],
+  "environment": {
+    "DSH_SNAPSHOT": "refresh",
+    "DSH_EXAMPLE_MODE": "src"
+  },
+  "cwd": "/tmp/gat-exec024-host-c1157f7e",
+  "exitCode": 1,
+  "outcome": "failed",
+  "elapsedTestMs": 30063,
+  "beforeHashes": "not captured for initial diagnostic; no exact candidate qualification claimed",
+  "findings": [
+    "Authored V4 tool calls must settle before step/end; corrected and parse-checked afterward.",
+    "Loader cannot import @vuhoi/gat-core, @vuhoi/gat-tools, @vuhoi/gat-durable-agent/provider, @vuhoi/gat-durable-agent/execution-composition; fixture setup waits for their services."
+  ],
+  "outputEvidence": "Initial tool output in agent transcript; subsequent attempts will capture exact command output and before/after source hashes."
+}

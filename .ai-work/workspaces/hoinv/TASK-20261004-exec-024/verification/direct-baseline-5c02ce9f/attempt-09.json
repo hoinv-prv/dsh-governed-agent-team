@@ -1,0 +1,35 @@
+{
+  "command": [
+    "node",
+    "/home/hoinv/work/dsh-binding-distribution-accepted/node_modules/vitest/vitest.mjs",
+    "run",
+    "--reporter",
+    "verbose",
+    "--config",
+    "vitest.exec024-direct.config.ts",
+    "packages/experimental/gat-durable-agent/tests/initializer.spec.ts",
+    "packages/experimental/gat-durable-agent/tests/binder.spec.ts",
+    "packages/experimental/gat-durable-agent/tests/public-provider.spec.ts",
+    "packages/experimental/gat-durable-agent/tests/tools.spec.ts",
+    "packages/experimental/gat-durable-agent/tests/composition.spec.ts"
+  ],
+  "cwd": "/tmp/gat-exec024-direct-5c02ce9f",
+  "started_at": "2026-10-04T10:27:41.322614+00:00",
+  "exit_code": 0,
+  "log": "attempt-09.log",
+  "log_sha256": "afa98b038c8072a8bc6447c98059aa1aae6e7bba691485c8da18c6ab579bce98",
+  "host_head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+  "root_gat_head": "6f74ab239cbe795f0742d18831a433323f238460",
+  "test_scope": [
+    "initializer.spec.ts",
+    "binder.spec.ts",
+    "public-provider.spec.ts",
+    "tools.spec.ts",
+    "composition.spec.ts"
+  ],
+  "tools_ts_sha256": "7141a7803c6cd79c2774474515322e8fbb81147bb8ecc0e0e9db59822d717705",
+  "package_json_sha256": "5a0d600c95e8682a9e10f9d355b17bec5911791c5d314f2aff986e870b4a1a15",
+  "tsconfig_sha256": "ba3c9939c3d5298d28d7239d1b4c6170d3b6793123cac7b6a785f2d4a77b2f18",
+  "execution_files_present": false,
+  "baseline_attempt_08_log_sha256": "dece6ca2171eda38fb44b91cbc07755ae98d33e3a299f03e594d1ad5dcdacd37"
+}

@@ -1,0 +1,26 @@
+# Add to the approved current Host profile only after activation approval.
+# Existing current GAT core/tools/roster initialization must already be present.
+- id: gat-durable-provider
+  name: '@vuhoi/gat-durable-agent/provider'
+- id: gat-durable-execution
+  name: '@vuhoi/gat-durable-agent/execution-composition'
+  config:
+    workspace: /home/hoinv/work/dsh-governed-agent-team
+    dedicatedProvider: true
+    singleHostWorkspace: true
+    members:
+      - mode: task
+        declaration:
+          name: worker
+          scope: workspace
+          context: fresh
+          provider: deepseek-official
+          model: deepseek-v4-flash
+          description: Task memory worker
+          prompt: Role instructions only
+    limits:
+      maxBodyBytes: 4096
+      maxResultBytes: 8192
+      maxSelectedItems: 8
+      maxReadCalls: 8
+      maxReadResultBytes: 32768

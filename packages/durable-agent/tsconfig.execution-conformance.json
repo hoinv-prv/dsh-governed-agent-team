@@ -1,0 +1,12 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "tests",
+    "outDir": "lib/conformance"
+  },
+  "include": ["tests/execution-host-types.ts"],
+  "references": [
+    { "path": "./tsconfig.execution.json" },
+    { "path": "../gat-core" }
+  ]
+}

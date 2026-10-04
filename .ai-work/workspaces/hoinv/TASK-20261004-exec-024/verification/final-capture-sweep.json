@@ -1,0 +1,14 @@
+{
+  "performed": true,
+  "scope": [
+    "all AIP step findings and final source/design/artifact/distribution diffs",
+    "all independent reviewer correction and final evidence receipts",
+    "proposed config and finalize lint/guidance corrections"
+  ],
+  "total": 14,
+  "captured": 14,
+  "relation_candidates": [],
+  "new_candidates_at_sweep": 0,
+  "promotion_performed": false,
+  "disposition": "HUMAN required before governed close"
+}

@@ -1,0 +1,1223 @@
+{
+  "format": "gat-design-source-baseline/1",
+  "inspected_on": "2026-10-04",
+  "authority": "Current source code is truth for implemented behavior; hashes bind working-tree bytes",
+  "repositories": [
+    {
+      "id": "gat",
+      "root": "/home/hoinv/work/dsh-governed-agent-team",
+      "head": "912cc24c95d2867dca683c75df9041f26c700dbc",
+      "working_tree_status_at_inspection": [
+        " M .ai-work/aip/hoinv/exec/AIP-EXEC-022-implement-durable-agent-binding.md",
+        " M .ai-work/capture_backlog/_promotion_log.jsonl",
+        " M .ai-work/capture_backlog/hoinv.jsonl",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/.current_step.json",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/00b_active_aip.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/00c_active_step_context.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/02_runtime_queue.jsonl",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/04_findings.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/05_open_questions.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/07_output_draft.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/08_capture_inbox.jsonl",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/11_output_final.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/acceptance-matrix.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/approved-decisions.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/dependency-qualification.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/design-source-test-matrix.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/implementation-handoff.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/independent-review.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/source-design-consistency.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step-status.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-00.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-01.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-02.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-03.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-04.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-05.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-06.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-07.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_contexts/STEP-08.md",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-04.meta.yml",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-06.meta.yml",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-07.meta.yml",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/STEP-08.meta.yml",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/step_outputs/index.jsonl",
+        " M .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/README.md",
+        " M README.md",
+        " M SOURCE_SNAPSHOT.json",
+        " M compatibility/dsh-0.1.5-rc.2/manifest.json",
+        " M docs/gat-design/ARCHITECTURE_DESIGN.md",
+        " M docs/gat-design/BASIC_DESIGN.md",
+        " M docs/gat-design/DETAIL_DESIGN.md",
+        " M docs/gat-design/DURABLE_AGENT_INTEGRATION.md",
+        " M docs/gat-design/SOURCE_CODE_MAP.md",
+        " M docs/gat-design/design-verification.json",
+        " M docs/gat-design/source-baseline.json",
+        " M docs/gat-design/source-code-map.json",
+        " M installer/index.mjs",
+        " M installer/verify.mjs",
+        " M packages/core/README.md",
+        " M packages/core/README.zh.md",
+        " M packages/core/package.json",
+        " M packages/core/src/binding-deadline.ts",
+        " M packages/core/src/index.ts",
+        " M packages/core/src/mailbox.ts",
+        " M packages/core/src/member-binders.ts",
+        " M packages/core/src/member-binding.ts",
+        " M packages/core/src/roster.ts",
+        " M packages/core/tests/authority.spec.ts",
+        " M packages/core/tests/built-lib.e2e.ts",
+        " M packages/core/tests/human-control-fixture.ts",
+        " M packages/core/tests/member-attachments.spec.ts",
+        " M packages/core/tests/member-binding.spec.ts",
+        " M packages/core/tests/member-replay.spec.ts",
+        " M packages/core/tsconfig.json",
+        " M packages/durable-agent/README.md",
+        " M packages/durable-agent/package.json",
+        " M packages/durable-agent/src/binder.ts",
+        " M packages/durable-agent/src/initializer.ts",
+        " M packages/durable-agent/src/ownership.ts",
+        " M packages/durable-agent/src/tools.ts",
+        " M packages/durable-agent/tests/binder.spec.ts",
+        " M packages/durable-agent/tests/initializer.spec.ts",
+        " M packages/durable-agent/tests/public-provider.spec.ts",
+        " M packages/durable-agent/tests/tools.spec.ts",
+        " M packages/durable-agent/tsconfig.json",
+        " M packages/tools/README.md",
+        " M packages/tools/README.zh.md",
+        " M packages/tools/src/index.ts",
+        " M packages/tools/tests/prerequisite-composition.spec.ts",
+        " M verification/web/gat-agent-team-panel.e2e.ts",
+        " M verification/web/task.expected.md",
+        "?? .ai-work/tests/__pycache__/",
+        "?? .ai-work/tooling/__pycache__/build_typescript_wiki_metas.cpython-312.pyc",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/08_capture_inbox.jsonl.bak",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/adapter-fixture-lint-interim.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/adapter-production-tests.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/before-production-README.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/before-production-acceptance-matrix.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/before-production-implementation-handoff.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/before-production-independent-review.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/before-production-source-design-consistency.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-accepted-artifact-proof.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-accepted-build-cache.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-accepted-client-bundle-first-failure.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-accepted-client-bundle.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-accepted-client-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-accepted-frozen-lock.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-accepted-host-bundle.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-accepted-host-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-accepted-installed-status.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-accepted-native-build.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-accepted-web-build.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-built-packed-exports-accepted.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-built-packed-exports-accepted.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-built-packed-exports-closed-final.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-built-packed-exports-closed-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-built-packed-exports-initial.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-built-packed-exports-initial.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-built-packed-exports-qualified.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-built-packed-exports-qualified.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-built-packed-exports-review-final.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-built-packed-exports-review-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-closed-final-artifact-proof.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-closed-final-build-cache.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-closed-final-doc-sync.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-closed-final-frozen-lock.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-closed-final-installed-status.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-closed-final-native-probe.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-distribution-accepted.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-distribution-accepted.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-distribution-closed-final.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-distribution-closed-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-distribution-final.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-distribution-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-distribution-initial.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-distribution-initial.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-distribution-qualified.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-distribution-qualified.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-distribution-review-final.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-distribution-review-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-final-client-bundle.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-final-client-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-final-frozen-lock.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-final-host-bundle.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-final-host-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-frozen-lock-validation.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-gateway-peer-doc-sync.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-gateway-peer-graphs.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-gateway-peer-lock.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-generated-pnpm-lock.yaml",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-installer-tests-closed-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-installer-tests-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-installer-tests.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-link-isolation-initial.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-lock-generation.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-notices-check.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-qualified-artifact-proof.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-qualified-client-bundle.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-qualified-client-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-qualified-frozen-lock.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-qualified-host-bundle.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-qualified-host-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-qualified-installed-status.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-qualified-native-build.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-qualified-web-build.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-review-final-artifact-proof.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-review-final-build-cache.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-review-final-client-bundle.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-review-final-client-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-review-final-frozen-lock.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-review-final-host-bundle.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-review-final-host-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-review-final-installed-status.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-review-final-native-build.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-review-final-native-probe.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-review-final-web-build.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-scoped-types-initial.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/binding-shared-context-negative.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-before-followup/",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-build-cache.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-closed-final-history/",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-docs-only-trial/",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-host-doc-restoration.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-installed-pairing.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-installer-tests.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-lifecycle.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-lifecycle.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-manifest-delta.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-notices-check.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-notices-generation.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-notices-lint.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-distribution-notices-tests.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-host-hook-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-host-hook-initial-failure.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-host-index-before-first-hook.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-host-index-before-hooks.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-host-receipt.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-host-staged-lint.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-host-translation-pairing-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/commit-host-translation-pairing.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-ack-transaction-core-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-ack-transaction-focused-tests.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-ack-transaction-full-tests.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-ack-transaction-host-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-ack-transaction-type-aware-lint.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-affected-tests.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-all-tests.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-before-built-fixture-receipt.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-final-all-tests.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-final-focused.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-final-host-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-final-jsdoc.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-final-type-aware-lint.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-final-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-handoff-before-ack-transaction.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-handoff-before-recovery-ordering.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-handoff.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-physical-observer-tests.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-receipt-before-ack-transaction.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-receipt-before-recovery-ordering.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-receipt.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-type-aware-lint.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/core-production-types.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/design-verification-before-production-close.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/distribution-final-handoff.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/distribution-final-qualification.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/distribution-protected-hashes.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/distribution-review-final-handoff.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/distribution-review-final-qualification.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/luna-closure-fields.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/luna-commit-inventory.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/luna-final-mapping-inventory.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-all-gat-tests-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-asc-all-steps.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-asc-final-refresh.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-asc-gateway-repair.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-browser-accepted.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-browser-before-assets-settled.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-browser-closed-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-browser-corrected-host.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-browser-enable-diagnostic-02.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-browser-enable-diagnostic.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-browser-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-browser-fixture-lint.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-browser-review-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-browser-sealed-assets.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-core-accepted.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-core-closed-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-core-review-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-fixture-lint-corrected.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-fixture-lint.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-runtime-accepted.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-runtime-accepted.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-runtime-before-esm-resolver.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-runtime-before-native.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-runtime-closed-final.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-runtime-closed-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-runtime-negative-accepted.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-runtime-negative-corrected.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-runtime-review-final.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-runtime-review-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-runtime.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-built-runtime.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-catalog-generation.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-doc-sync-02.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-doc-sync-corrected-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-doc-sync-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-doc-sync-initial.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-governed-close.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-host-boundaries-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-independent-review-review-final-history.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-independent-review.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-installer-status-post-close.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-installer-tests-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-installer-tests-repair-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-mapping-validation.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-post-close-status.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-preclose-status.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-python-accepted-sdk-minimal-in-history.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-python-accepted-sdk-request-refresh.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-python-accepted-sdk-restart.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-python-accepted-sdk-snapshot.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-python-closed-final-sdk-minimal-in-history.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-python-closed-final-sdk-request-refresh.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-python-closed-final-sdk-restart.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-python-closed-final-sdk-snapshot.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-python-review-final-sdk-minimal-in-history.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-python-review-final-sdk-request-refresh.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-python-review-final-sdk-restart.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-python-review-final-sdk-snapshot.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-qualification-receipt.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-qualification-review-final-history.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-sdk-corpus-accepted.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-sdk-corpus-closed-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-sdk-corpus-review-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-sdk-python-before-native.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-sdk-python-refresh.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-sdk-ts-accepted.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-sdk-ts-before-native.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-sdk-ts-closed-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-sdk-ts-qualified-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-sdk-ts-refresh-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-sdk-ts-replay.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-sdk-ts-review-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-source-check-receipt.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-task-lint-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-task-lint-interim.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-task-lint-post-close.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-task-lint-preclose.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-task-lint-repair-preclose.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-translation-final-corrected.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-translation-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-type-aware-interim.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-type-aware-lint-complete-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-type-aware-lint-final.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-whole-tree-lint-final.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-whole-tree-lint-post-close.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-whole-tree-lint-repair-final.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-whole-tree-lint.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/provider-rebuild-comparison.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/provider-rebuild.log",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/refresh-production-mapping.mjs",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/remaining-source-review.md",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/remaining-work-baseline.json",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/step-contexts-before-final/",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/step-metadata-before-final/",
+        "?? .ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/target-spec-attribution.md",
+        "?? compatibility/dsh-0.1.5-rc.2-binding-5c02ce9/",
+        "?? installer/tests/binding-compatibility.test.mjs",
+        "?? installer/verify-binding-exports.mjs",
+        "?? installer/verify-binding-runtime.mjs",
+        "?? installer/verify-binding.mjs",
+        "?? packages/core/src/member-host.ts",
+        "?? packages/core/tests/production-binding.spec.ts",
+        "?? packages/durable-agent/README.i18n.yaml",
+        "?? packages/durable-agent/README.zh.md",
+        "?? packages/durable-agent/src/composition.ts",
+        "?? packages/durable-agent/src/provider.ts",
+        "?? packages/durable-agent/tests/composition.spec.ts",
+        "?? packages/durable-agent/tsdown.config.ts",
+        "?? packages/durable-profile/",
+        "?? scripts/generate-binding-compatibility.mjs"
+      ]
+    },
+    {
+      "id": "durable-agent",
+      "root": "/home/hoinv/work/dsh-durable-agent",
+      "head": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+      "working_tree_status_at_inspection": []
+    },
+    {
+      "id": "dsh-prerequisites",
+      "root": "/home/hoinv/work/dsh-binding-prerequisites",
+      "head": "f7f560ac937ec1e41d47fe8f48135fc1e4ac8554",
+      "working_tree_status_at_inspection": [
+        "?? .gat/",
+        "?? native/system/packages/linux-x64/bin",
+        "?? website/.vitepress/.temp/"
+      ],
+      "qualified_patch_sha256": "d532cc1e8d110c9db891219c89f20b4fd94d0836aa1e8c7d6d3494dddfb8cbf0",
+      "commit_status": "Uncommitted qualification patch on approved compatibility baseline"
+    }
+  ],
+  "files": [
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/api/gateway/package.json",
+      "sha256": "43eb05c8fe70a8f6ba0f3ea2231ae45a6ad80fb933c87b2b2e9d1f7b3bb9aeb6",
+      "bytes": 1974
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/api/gateway/README.i18n.yaml",
+      "sha256": "9643f2d774f4982a70397a5f534d0313976f71143fc6d938c5c2af39d3a97e33",
+      "bytes": 430
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/api/gateway/README.md",
+      "sha256": "ca5ddd55aa8e965152537dd1d545224db360a98bfe9802435e99412b7ea3b12f",
+      "bytes": 13606
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/api/gateway/README.zh.md",
+      "sha256": "6b8413c4857abd74fab2f052a232a3db74364a1cbd4cb882b8e4aa9460ece7d1",
+      "bytes": 12642
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/client/connection/src/control-admission.ts",
+      "sha256": "05ac55f7db7e75e3bf1737408c8fb8301daf788b0068c6fdb2ed660e76246d0d",
+      "bytes": 225
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/client/connection/src/rpc-host.ts",
+      "sha256": "4f2c3e055a4c7de7703e7ed2f5b1a40f47ca6b9ad2f7755529f4efe9eef51d83",
+      "bytes": 14746
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/client/connection/tests/api-request-trust.host.spec.ts",
+      "sha256": "3f83467bf814c83bf45e8bfaa53d5602b2a907a3d9008561c7ab971cfe6e9668",
+      "bytes": 7180
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/client/connection/tests/fetch-routes.host.spec.ts",
+      "sha256": "db3d9f8597b6427cf66ca132a216d3c0ce5d5ce5ae466b9df9d85a0c0f935b20",
+      "bytes": 3323
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/client/connection/tests/http-bridge.host.spec.ts",
+      "sha256": "4b2951638ac1434f682e5c29fe3586bae82b1541003c112f34d9be7d7d091f4f",
+      "bytes": 5938
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/agent-loop/src/agent.ts",
+      "sha256": "d8d46efb267c9b983266b2424d24d4658b1217f093ab268b6ec1e60e29376c97",
+      "bytes": 26585
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/agent-loop/src/runtime-context.ts",
+      "sha256": "5813738fff54d6282b31647f12623214692cd08d4d8559706487a47a578b1fe2",
+      "bytes": 7148
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/agent-loop/tests/loop.spec.ts",
+      "sha256": "fdc47ca40343b006c766de9ed586943fa53732cdf73a4f1b4f1445a8e0d44ef8",
+      "bytes": 79523
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/agent-loop/tests/prepare-prompt.spec.ts",
+      "sha256": "a7faaf33e58ec5bb47dd1a3b90769fa4c79a9619579c7067a7e4eed849349189",
+      "bytes": 11289
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/agent-loop/tests/request-reconstruction.spec.ts",
+      "sha256": "d7d290c121bae7340b682448bd74bc9150536c3373eda8ba2382f9e4a4b29894",
+      "bytes": 44280
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/agent-loop/tests/system-prompt-admission.spec.ts",
+      "sha256": "b8d07321c99fe4421c8637c96bb9f4c269166e7b15bb6cc3825836e6c06b1095",
+      "bytes": 16489
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/system-prompt/src/index.ts",
+      "sha256": "2cd5cc40c006e70b8fb5f50ad459213623f9f7f86e12ad3fc402cefca0ece577",
+      "bytes": 25933
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/tools/src/index.ts",
+      "sha256": "de773858f9674e21acf881f28267358013032738fcb62018fd3a9dec3dc48b5c",
+      "bytes": 97345
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/tools/src/schema.ts",
+      "sha256": "6434b819d35ec77fe6928f33b0e6a5f4a12485b5592ff0750862e8a8168c05d3",
+      "bytes": 25756
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/tools/tests/capabilities.spec.ts",
+      "sha256": "38d807128432ae008562eb12fa54bc503daf59ff55acb41e8e6a40a617b17e8f",
+      "bytes": 12990
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/tools/tests/ptc.spec.ts",
+      "sha256": "43a04a9a86397e6ac75009e5c6b8cc1b8732882aca53a4b0240519bfb22a618e",
+      "bytes": 86794
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/core/tools/tests/tools.spec.ts",
+      "sha256": "081f701dba2f57b138488ae84cd0e01e9f55ebf19d6db33d5b62e6947f996e27",
+      "bytes": 108979
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/subagent/subagent/src/continuation.ts",
+      "sha256": "1975cc34b307d81e0878a34ba06814fbb7511c36f7e33062d815f9d2ec2cae79",
+      "bytes": 28652
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/subagent/subagent/src/index.ts",
+      "sha256": "93ac02c618f1cca9c18a04fbe606dae0b8f95b5f22fef61e3547a256d5a9a477",
+      "bytes": 30721
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/subagent/subagent/src/reserved.ts",
+      "sha256": "e23d9488888c9df5b8cbf3705663782687989862538bb9d1e69996bc7075e595",
+      "bytes": 13163
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/subagent/subagent/tests/continuation.spec.ts",
+      "sha256": "4eba565931245d445ff19db5d155d10cc4db4ae927b0b0160b7a2025ff917487",
+      "bytes": 164473
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "packages/subagent/subagent/tests/reserved.spec.ts",
+      "sha256": "0568b8082b1550d17ccb42ac9c3e53ad804545026bc36887fa3585a7dc2ef47d",
+      "bytes": 16577
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "pnpm-lock.yaml",
+      "sha256": "b5a45bcd6ef055e027ab00698a9f76edec2408efc2231525a9c6492a1233b6df",
+      "bytes": 894253
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "scripts/gen-third-party-notices.spec.ts",
+      "sha256": "c7101e7fea0906f30685b75d6afa88c5f09967ddb5d653f7d5033a860d5003db",
+      "bytes": 19831
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "scripts/gen-third-party-notices.ts",
+      "sha256": "8f457079a6aaa611504746192b1c6d2418d17db3ac2f4d80f4634be9d4b0d0b9",
+      "bytes": 40146
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "48494ebe2f532a36c81313986e209bee963ade7d1ebfdcde7b9fd2d93f027a7c",
+      "bytes": 19210
+    },
+    {
+      "repository": "dsh-prerequisites",
+      "path": "vendor/README.md",
+      "sha256": "32bd77d64c4e1b49907995e7a65e4f335f40a4bf90d25559e32e0083dfedd831",
+      "bytes": 19194
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/src/consumer.ts",
+      "sha256": "77c1507140a86b90d9766c61f9e1cab1c59248f4d56142ade512e36f4bc2edd6",
+      "bytes": 4573
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/src/local-provider.ts",
+      "sha256": "75e63d7d634d5afe7b162dd4e3758103a733ac7eff1f9481b1115fd72c6ca58a",
+      "bytes": 47567
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/src/service.ts",
+      "sha256": "f54e4954ad7a4b085fdb8c6dcc600c28832ce16cb5174c1985ab35085c9ed833",
+      "bytes": 7235
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/tests/composition.spec.ts",
+      "sha256": "8d8d0e8af8ea6a05378a3027e92c3938196691a7b9c1c88f19d03ec49219e6b6",
+      "bytes": 1598
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/tests/consumer.spec.ts",
+      "sha256": "af213b432ce6dd33c84dfca4acbba8c124b4917e7ace8aab9a7dc31f6bbc85b9",
+      "bytes": 4613
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/tests/local-provider.spec.ts",
+      "sha256": "c2a5a0da091b80c1e52f2479d06f07f13a5a0ba410ea5f88f71928ad1172d3e4",
+      "bytes": 19114
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/tests/memory-lifecycle.spec.ts",
+      "sha256": "4a65b5f5940c7081c21499719931950d9392bb0874d71355ce90b11d591cd72a",
+      "bytes": 31934
+    },
+    {
+      "repository": "durable-agent",
+      "path": "durable-agent-plugin/tests/service-contracts.spec.ts",
+      "sha256": "1107ad16ec00e1fecc31b9261c5a9982644fff7f2d8437f91b46fc353fdb2ebd",
+      "bytes": 11496
+    },
+    {
+      "repository": "gat",
+      "path": "installer/compatibility.mjs",
+      "sha256": "f9fcbdaf6a266f4370812539e96cfe4aec3071d4410fe7cf87b0a484af168371",
+      "bytes": 4090
+    },
+    {
+      "repository": "gat",
+      "path": "installer/index.mjs",
+      "sha256": "a560c9b63cb722fb1d605a21b82168844ba0eb58a039fb0ef272c42a6393558f",
+      "bytes": 24450
+    },
+    {
+      "repository": "gat",
+      "path": "installer/tests/binding-compatibility.test.mjs",
+      "sha256": "a40bcee39b51a2b8f085e563a0d46ac4d3761358d0a958b69c0600d465c9df1f",
+      "bytes": 10016
+    },
+    {
+      "repository": "gat",
+      "path": "installer/tests/cli.test.mjs",
+      "sha256": "f55e86732397bccb7df349555aa2604df13959e3e0c693a708182a48f452a106",
+      "bytes": 4605
+    },
+    {
+      "repository": "gat",
+      "path": "installer/tests/compatibility.test.mjs",
+      "sha256": "cf3c624d8bac43be3bf408a5af0be3a4d841f5e0cfd0e6bd894d6426634b5c44",
+      "bytes": 1675
+    },
+    {
+      "repository": "gat",
+      "path": "installer/tests/verify-profile.test.mjs",
+      "sha256": "5c5ff881669999fe860c8ed4c149844676312045edf2e6b642c9b3fce53b3b48",
+      "bytes": 2306
+    },
+    {
+      "repository": "gat",
+      "path": "installer/verify-binding-exports.mjs",
+      "sha256": "677883f6b7942befba86170c22e070429f41ca0854c48a3bbffedb6c3dc1a815",
+      "bytes": 9353
+    },
+    {
+      "repository": "gat",
+      "path": "installer/verify-binding-runtime.mjs",
+      "sha256": "c0ae3cec5cce63ee342facc158bae2b93dc170dd0098e87cee0276f34267485d",
+      "bytes": 18319
+    },
+    {
+      "repository": "gat",
+      "path": "installer/verify-binding.mjs",
+      "sha256": "65ae04b66fbeea063671e950922c02b8fde71c1cd189ab55198585e22730dda7",
+      "bytes": 8765
+    },
+    {
+      "repository": "gat",
+      "path": "installer/verify.mjs",
+      "sha256": "10b630428ec104fc13086802665d322f583478f451a35e20665f1497a7c72400",
+      "bytes": 10764
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/activity.ts",
+      "sha256": "a35a8d322aea033ef7f2e1d8539026f6a49251b3c0252ee695d361066cbd4f08",
+      "bytes": 3247
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/approved-plan-import.ts",
+      "sha256": "3efdd14de8baaa4ae76a5d41ffb82216a28959b129f66f4abccdae6356d10fb9",
+      "bytes": 5392
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/attachments.ts",
+      "sha256": "cc6c3c678acb13ac71950db8519c343ae42256e28035b005cbad089925e87fd2",
+      "bytes": 8021
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/authority.ts",
+      "sha256": "7d0c9297333759c1d5ce7a0a90705a671cf93130d8f9315fe83862ec499ac16d",
+      "bytes": 9347
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/binding-deadline.ts",
+      "sha256": "c3b0520c4f4558c92e49d3791878614f0c7f8fecaa1c20c16af205683f206fde",
+      "bytes": 4364
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/index.ts",
+      "sha256": "5a173592fd7919a3361d5e0e7d3adbc30440fa40bde61c5cd8d504ec25f53420",
+      "bytes": 54254
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/journal.ts",
+      "sha256": "2b046d6ff7d759ccd96c996b63dfc9b43aef974e69aedc132c3272ee18911b00",
+      "bytes": 5272
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/lifecycle.ts",
+      "sha256": "763a3afe65dd3fc762b1a6b9aad0909b30751c7b3908c453c92f0d708674f8ac",
+      "bytes": 5180
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/mailbox.ts",
+      "sha256": "4be4d71ec88924c3ce38ac2a29e165f263c4572ebe3a62afda1b162b49a50a4e",
+      "bytes": 16419
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/member-binders.ts",
+      "sha256": "e5b7967d0a9abb7be97efec68e0487c843bb8f7280c4f25cf83e61c9716113b1",
+      "bytes": 15995
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/member-binding.ts",
+      "sha256": "c0d191454c0608f19bbfd91c3b8b69376f2af234eb51ca6fd181088d65d12fb2",
+      "bytes": 19908
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/member-host.ts",
+      "sha256": "7ad1914df53454ae42d2657991ebe423daa8177b4b8ba6a5dacc921f1e97c56d",
+      "bytes": 11730
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/mission-board.ts",
+      "sha256": "5edc76c4b4cfca7185c646b62fc2f789003a03050062deec76751ab7c8323033",
+      "bytes": 6438
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/mission-plan.ts",
+      "sha256": "625bcb7a9b2e5113291adb73f81dc70a6294637ed2531f06d0588d4531b4d029",
+      "bytes": 3694
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/persisted.ts",
+      "sha256": "382fe7cab52e47100a798307300d649c506536d6bbe0ac89025e6c41abe4ec87",
+      "bytes": 1357
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/projection.ts",
+      "sha256": "1255829d060fae3c0d8f82af11e8ea7fd852048ac5996732c6809fcbb5e425ec",
+      "bytes": 23536
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/roster.ts",
+      "sha256": "f4518a259a325d9db4692516b58495cf209fad184364fcf930fe802dbd4231c5",
+      "bytes": 41445
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/session-message.ts",
+      "sha256": "c74ef1d18667d0f221bafd726d8332e682778f06cf43b1ce13d174e5a843cf10",
+      "bytes": 1340
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/task-board.ts",
+      "sha256": "6a2c74c7a360ee0747a666226c708b1b45c4ee599f9a10a0f7d816c9c72e094f",
+      "bytes": 18371
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/task-graph.ts",
+      "sha256": "a726081289a2f7a848f69109a750db3ead0d95b88ab0adfdae0477f749b8f490",
+      "bytes": 2560
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/types.ts",
+      "sha256": "0076d8ef6204c7f95a79ed284c7dd730ef3ab296cfc474a5222d03a0dd77e490",
+      "bytes": 16054
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/src/work-state.ts",
+      "sha256": "1e5d26383684f5fd41633ea15ecad161b0bb7ba694834fe72a29b3821c0bbcdb",
+      "bytes": 4167
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/authority.spec.ts",
+      "sha256": "41921fe762c2335d2f8b881258e9acc00e8fb567bc57360d32067c7b5b7d9d29",
+      "bytes": 24891
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/binding-enable.spec.ts",
+      "sha256": "b77a8b728a3287cb6fcf4dacc47478fe8ce025678e12e02dd260d2befbb796a1",
+      "bytes": 3142
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/built-lib.e2e.ts",
+      "sha256": "fe1adea7668523269407fb80273dfd63593a04485e37546e3e30594dbc1de8b4",
+      "bytes": 2839
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/human-control-fixture.ts",
+      "sha256": "ee730732e42a8ae2c7649f698a2a29b1ebb72f162de573e0ad5adedf337592f3",
+      "bytes": 2522
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/member-attachments.spec.ts",
+      "sha256": "167a74df96a82e6104ec46dfd8718d3bcad5076f7975259ec5dad1ae5f2a2c45",
+      "bytes": 14015
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/member-binding.spec.ts",
+      "sha256": "d013dcf1b86ad31b163d7a4131db95399b229f1956f915af34d9eecff998401e",
+      "bytes": 30686
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/member-replay.spec.ts",
+      "sha256": "2f424f8067a9e673fae7ff64ff2f956930e621a19378f9c45e0e892c09197a29",
+      "bytes": 7258
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/persistence.spec.ts",
+      "sha256": "2a29cff185af0650172d82e8f08ab3ba657b9d5753111be28347f041bcc07be7",
+      "bytes": 23828
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/production-binding.spec.ts",
+      "sha256": "5c688b941130b5b20df67b530b5d461edd4d4c75e2111da079472fbe67c70d80",
+      "bytes": 23574
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/projection-events.spec.ts",
+      "sha256": "336aa4ebecdeab1a98747670f45502a1fb6321bb672a871e5c5d941e9cbe8210",
+      "bytes": 24398
+    },
+    {
+      "repository": "gat",
+      "path": "packages/core/tests/team.spec.ts",
+      "sha256": "38a1f629a7ca340905d45b4773390e69a8f57cb643879572030f201ba53c03fc",
+      "bytes": 112962
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/package.json",
+      "sha256": "5a0d600c95e8682a9e10f9d355b17bec5911791c5d314f2aff986e870b4a1a15",
+      "bytes": 1479
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/README.i18n.yaml",
+      "sha256": "3107d4e98c6fcf5cb2a0b66c78e238e0812708daaad315bc5ecf9b045202670b",
+      "bytes": 449
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/README.md",
+      "sha256": "b62b785244781e69e7d8dc0674234134350efc334979f71487686c6c148ea7fe",
+      "bytes": 3500
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/README.zh.md",
+      "sha256": "e90159ca4e6b84b83e49a14aeda8d1e8c01c52726c2ac9b96b2abf3a1e82b016",
+      "bytes": 3298
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/src/binder.ts",
+      "sha256": "e96321ae263a2a8be4171ca744207e7e6c9190b17337d12ec1ec9efbef652e33",
+      "bytes": 12143
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/src/composition.ts",
+      "sha256": "7c2b1305f92d80021151a383936872a084f29a3cb4777beaaf9f0fbb22e594ec",
+      "bytes": 5242
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/src/index.ts",
+      "sha256": "e345b8a9e7f766f1453146a9cbaf8b1f43b94baac2d902ba8b1dbb3488c36c8c",
+      "bytes": 419
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/src/initializer.ts",
+      "sha256": "2c2f7f4bde7e3157cef8dc6cd2bdad0df0733a2dfc854b09a5eeedc36a571b30",
+      "bytes": 9181
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/src/ownership.ts",
+      "sha256": "2d0d7bf992c8211bf2309a9cb80c4b5a850e886790b15eb25bd03e508e9a6d20",
+      "bytes": 1567
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/src/provider.ts",
+      "sha256": "e1a3208196390f417f4ee61ad1f7327013a42b1aca7aa92c4ecb4a7b43162d18",
+      "bytes": 697
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/src/tools.ts",
+      "sha256": "5a986d23476809e3a5b8c70a00f33134339d4fef5fe4f0e116175da685fc1d61",
+      "bytes": 9192
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/tests/binder.spec.ts",
+      "sha256": "137333231d08eec33746873cf0aac1ee0e547b58a6da99d196071194cd059822",
+      "bytes": 23748
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/tests/composition.spec.ts",
+      "sha256": "b68d656bfb39d699db27b809499697e7f4a3fa6a9ed3c608038e5b9a848ff685",
+      "bytes": 15014
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/tests/initializer.spec.ts",
+      "sha256": "25baee71f315ea0d30c369fe29decea4aeeaf6736ebaefb20d3ebdc6df22a553",
+      "bytes": 6052
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/tests/public-provider.spec.ts",
+      "sha256": "c1f7f0b08af4c6543fbc4efa519301b150ccdd8cd359bab71e95575d8a58f721",
+      "bytes": 4780
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/tests/tools.spec.ts",
+      "sha256": "bd8ca8e12c643fab74a31dbd2f5d79ccfbc798fa21921422eba049a075e9a775",
+      "bytes": 5722
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-agent/tsdown.config.ts",
+      "sha256": "795a9f84758ff27604de4b8f046a7991f232bb83ae5d1532a86b956dfe152720",
+      "bytes": 376
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-profile/cordis.patch.yml",
+      "sha256": "af6d2c6b2417973bc85a79a81e09d30953490c4e5df589f3f552d25844a886b7",
+      "bytes": 782
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-profile/package.json",
+      "sha256": "c534c6cc38f88cc614693d7fc965ee5af11127c451a6b0cb6ad081865b874aad",
+      "bytes": 1216
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-profile/README.i18n.yaml",
+      "sha256": "5b789e2e5d10115e6fe5fe1c5cb0ceb36ed53029a2009f69e385f01a4ad02c3b",
+      "bytes": 451
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-profile/README.md",
+      "sha256": "6dfbdfd3c6aff9887dba9f64b78e1d1b2f9d9e50aecd6054f07cbf77668b4b00",
+      "bytes": 3157
+    },
+    {
+      "repository": "gat",
+      "path": "packages/durable-profile/README.zh.md",
+      "sha256": "a9e65ce24965260c0e6e0d313f0486285ff902839833ce7e4279e814a6207015",
+      "bytes": 2883
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/adapter/index.mjs",
+      "sha256": "86c877d97594dbc359a8692d32f8a02d01d521510ac51fe40b195f72647ea460",
+      "bytes": 5831
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/conformance/cli.mjs",
+      "sha256": "b9326aff5acc13a34f82665694be9833e0ec3c830d58f774095d9adbf0c9ae04",
+      "bytes": 1643
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/conformance/index.mjs",
+      "sha256": "fb95fd98aa7c1107a4af4be0f256c58b110e83839cc20d516d9c01068d7240b1",
+      "bytes": 8662
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/conformance/runtime.mjs",
+      "sha256": "89688915c4e82b4a7890c6bc72db744a5f566dcbd651c87d4130fbb4c3d35213",
+      "bytes": 4180
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/conformance/scenario.mjs",
+      "sha256": "df0abae186411e200590f4c50326d24bdfeb5ec9d7cf0640b621295a17a4d3c2",
+      "bytes": 11380
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/governance/index.mjs",
+      "sha256": "86ba33128b2b221d1f924a04024fa6239ee99cef605808603f9707bf8785c864",
+      "bytes": 8231
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/index.mjs",
+      "sha256": "b23642ad1d0fc40c79fa4b98fc3b489a7208f89bdb8c8ce9a882030dfacd17cd",
+      "bytes": 271
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/memory/index.mjs",
+      "sha256": "6531e5fc8644372ac0f8ab43124076cc39cd50dd1e49a2c5142b00ff2c337bf0",
+      "bytes": 35827
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/src/policy/index.mjs",
+      "sha256": "06137e382a2c4125d466c7c7fd707aad84fd329b7d584b8bc747188910f7bc98",
+      "bytes": 15517
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/built-package.test.mjs",
+      "sha256": "cd577d072d9206e338c2449cf81d4da514196f2bc5c66ddd77317e346175702c",
+      "bytes": 1553
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/conformance-contract-matrix.test.mjs",
+      "sha256": "e4156e00f9b8ca5a86386d998cb753edf7bddb9f17cb21c7c3c1776220db4af9",
+      "bytes": 8367
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/conformance-runner.test.mjs",
+      "sha256": "213105e8047b70cffecd7f4fa632de803090733fd3787b61a73786c7dde75fb8",
+      "bytes": 11114
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/governance.test.mjs",
+      "sha256": "d81ebd63111d11a2dd8c6ef87060d6209174e82edeb81528b49d33cdfdf6a7d3",
+      "bytes": 6013
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/lifecycle-privacy.test.mjs",
+      "sha256": "513f0b3bf68bdc1ded40653c144627b804724d6df1070a884b2c6b1ca03852eb",
+      "bytes": 8601
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/partition-store.test.mjs",
+      "sha256": "dd9d5a377e92b40ff29be9f9fe7ae1197a1f90b066a0d5d4fd58d75a92a55ca9",
+      "bytes": 6469
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/policy-selector.test.mjs",
+      "sha256": "723c7c738ed0020df3b0e16152708995ea4753b8976e979b73675fd1c01fe78b",
+      "bytes": 10030
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/transaction-audit.test.mjs",
+      "sha256": "7682f23500b77dc89b70d2065812e5acc9113ed30f5378f420431c75c3e1582d",
+      "bytes": 9570
+    },
+    {
+      "repository": "gat",
+      "path": "packages/gat/tests/wrapper-admission.test.mjs",
+      "sha256": "14730bc5fb418f91b63c64088a23ae112f81eeb3ff0dd31ac34da4db951658fb",
+      "bytes": 7615
+    },
+    {
+      "repository": "gat",
+      "path": "packages/profile/cordis.patch.yml",
+      "sha256": "d3238c2a7b54173f78918b23023b2a2d2344113d247b82f5ee7c5176c874f2aa",
+      "bytes": 1163
+    },
+    {
+      "repository": "gat",
+      "path": "packages/profile/tests/profile.spec.ts",
+      "sha256": "8c6ae453b436eca23882b0d45ad2bc8b216502a6f62681d2359c77a236c9fd3e",
+      "bytes": 16033
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/src/index.ts",
+      "sha256": "9631577a21416819ba724bb88e7155782eeb46532abaa488b0c53c670330ec2e",
+      "bytes": 39794
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/src/team-config.ts",
+      "sha256": "544234653dbd6abd8b9e2fcea30fc82600c9707254368b3d9cadcc641378d413",
+      "bytes": 6807
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/tests/authorization-matrix.spec.ts",
+      "sha256": "f3668acef9eff719c3ad7f7f75797b44022a621e0994fc0bc67ca450d4b10c18",
+      "bytes": 9250
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/tests/binding-views.spec.ts",
+      "sha256": "995d128705740915e0961a7a9ad421527462c1082913096d1a198c83a7b48179",
+      "bytes": 5027
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/tests/prerequisite-composition.spec.ts",
+      "sha256": "229a474c587e7dae89c9809b9d09a5a29a6c634651602d08e264e91ce16f3118",
+      "bytes": 11335
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/tests/team-config.spec.ts",
+      "sha256": "a2b2b38caa88344528ca59a5cf4d68d59697d1d3e6b4069d20d19f60a8bccdf6",
+      "bytes": 3289
+    },
+    {
+      "repository": "gat",
+      "path": "packages/tools/tests/tool-team.spec.ts",
+      "sha256": "2ea65a30248306c38f6330eee9557019c20d37d2d82fa5173dba0c886640a634",
+      "bytes": 59366
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web-profile/cordis.patch.yml",
+      "sha256": "3b477314736c4c20d15d72c6ce2b771fa28f3edd19971fe950c2227c6f800bf4",
+      "bytes": 307
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web-profile/tests/profile.spec.ts",
+      "sha256": "50889d3d5df9fa9477a3d5f5ffb7a509d13ddada62c5ec9a17458c7d0fe7e7f1",
+      "bytes": 1539
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web/src/client/index.ts",
+      "sha256": "c62df96466421c75347c35a1bbdf935583be21a9b75c241597e268cfd6a4a9a4",
+      "bytes": 753
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web/src/client/mount.ts",
+      "sha256": "bd970c155e2546cca7af2ea855f57bfc6e83192ba7b766df12a64da59df0f03f",
+      "bytes": 6982
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web/src/client/TeamAction.tsx",
+      "sha256": "d2285b5a428a4ae84993ed300a0da349a4215dd3f04898b0472bdd8b398a80d7",
+      "bytes": 13502
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web/tests/browser-plugin.client.spec.ts",
+      "sha256": "ac96ce8f4ac507691c749da446fa9f7a7690c7ab096e550e02a8e21b03350689",
+      "bytes": 14381
+    },
+    {
+      "repository": "gat",
+      "path": "packages/web/tests/team-action.client.spec.tsx",
+      "sha256": "dbc95423f603a45b5361fbcb9a7e7ce5efdd90c5149c619a8cbfb82bc989148b",
+      "bytes": 13673
+    },
+    {
+      "repository": "gat",
+      "path": "README.md",
+      "sha256": "d16315944a3b3bbb053bbf702cd29be82e8c859c4020692dc9bdcdbde255163f",
+      "bytes": 9124
+    },
+    {
+      "repository": "gat",
+      "path": "scripts/generate-binding-compatibility.mjs",
+      "sha256": "c1a9fcbfb4be62200c0b84093c1fd5ae3a2c4fc234e084dcd25f4c06ba7bad37",
+      "bytes": 12797
+    },
+    {
+      "repository": "gat",
+      "path": "verification/web/gat-agent-team-panel.e2e.ts",
+      "sha256": "6c1e2a631e970a39afc8c0bc7f6247f8f862a245bfee2349ef6d4fa28da05743",
+      "bytes": 5177
+    },
+    {
+      "repository": "gat",
+      "path": "verification/web/task.expected.md",
+      "sha256": "1ad96db08eea2907cfa0c4447430f2a1563b14b9da5ad6f02c597f8179bd9460",
+      "bytes": 801
+    }
+  ],
+  "iteration": {
+    "aip_id": "AIP-EXEC-022",
+    "evidence": ".ai-work/workspaces/hoinv/TASK-20261004-exec-022/verification/production-qualification-receipt.json",
+    "provenance": "Working-tree bytes after design-before-code production integration; qualified prerequisite commit remains separately pinned. Symbol anchors are TypeScript AST declaration locations, or exact event string locations."
+  }
+}

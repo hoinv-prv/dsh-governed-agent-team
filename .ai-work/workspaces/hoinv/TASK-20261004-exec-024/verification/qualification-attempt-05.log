@@ -1,0 +1,42 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /tmp/gat-exec024-host-c1157f7e
+
+ ❯ packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts (2 tests | 2 failed) 618ms
+     × characterizes first-request binding, changed WK revision, logged prompt and current retry reuse 326ms
+     × requires the new public WK contribution in the actual retry (contract gate) 290ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts > AIP-EXEC-024 real GAT / WK retry qualification > characterizes first-request binding, changed WK revision, logged prompt and current retry reuse
+Error: execution Agent unavailable
+ ❯ witness packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts:146:35
+    144|   await vi.waitFor(() => expect(adapter.requests.filter(request => req…
+    145|   const worker = ctx.agents.get(execution.sessionId)
+    146|   if (worker === undefined) throw new Error('execution Agent unavailab…
+       |                                   ^
+    147|   await worker.whenIdle()
+    148|   const binding = bindings.get(worker.id)
+ ❯ packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts:168:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts > AIP-EXEC-024 real GAT / WK retry qualification > requires the new public WK contribution in the actual retry (contract gate)
+Error: execution Agent unavailable
+ ❯ witness packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts:146:35
+    144|   await vi.waitFor(() => expect(adapter.requests.filter(request => req…
+    145|   const worker = ctx.agents.get(execution.sessionId)
+    146|   if (worker === undefined) throw new Error('execution Agent unavailab…
+       |                                   ^
+    147|   await worker.whenIdle()
+    148|   const binding = bindings.get(worker.id)
+ ❯ packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts:184:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  15:46:30
+   Duration  1.81s (transform 891ms, setup 0ms, import 1.11s, tests 618ms, environment 0ms)
+

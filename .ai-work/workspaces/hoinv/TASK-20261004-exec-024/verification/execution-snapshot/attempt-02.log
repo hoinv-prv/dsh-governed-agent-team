@@ -1,0 +1,44 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /tmp/gat-exec024-host-c1157f7e
+
+ ❯ snapshots/session/headless.snapshot.ts (139 tests | 1 failed | 138 skipped) 30088ms
+     × refreshs gat-durable-execution through dsh --profile headless 30085ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  snapshots/session/headless.snapshot.ts > headless recorded-session snapshots > refreshs gat-durable-execution through dsh --profile headless
+Error: gat-durable-execution headless snapshot did not exit within 30s. stdout:
+
+stderr:
+dsh: disabling profile plugin row "gat-durable-provider": Plugin @vuhoi/gat-durable-agent@0.1.0 is incompatible with dsh 0.1.7-rc.2: peerDependencies {"@deepseek-ai/dsh-durable-agent":"0.1.0"}. Running it may cause crashes or data loss. Update the plugin or install a plugin version compatible with this dsh runtime. To accept this risk explicitly, grant the exact-version exemption for @vuhoi/gat-durable-agent@0.1.0 on dsh 0.1.7-rc.2 with `dsh plugin allow-version` or the plugin manager, then retry the installation or restart dsh. Exact-version exemption: not active.
+dsh: disabling profile plugin row "gat-durable-execution": Plugin @vuhoi/gat-durable-agent@0.1.0 is incompatible with dsh 0.1.7-rc.2: peerDependencies {"@deepseek-ai/dsh-durable-agent":"0.1.0"}. Running it may cause crashes or data loss. Update the plugin or install a plugin version compatible with this dsh runtime. To accept this risk explicitly, grant the exact-version exemption for @vuhoi/gat-durable-agent@0.1.0 on dsh 0.1.7-rc.2 with `dsh plugin allow-version` or the plugin manager, then retry the installation or restart dsh. Exact-version exemption: not active.
+dsh: warning: 2 entries did not activate
+typert-loader (@deepseek-ai/dsh-typert-loader): AggregateError: typert-loader: 1 typert contributor(s) failed to register:
+  - typert-loader: @vuhoi/gat-core exports "./typert" but importing /tmp/dsh-log-snap-8nZB5H/.dsh/profiles/headless/node_modules/@vuhoi/gat-core/lib/typert.host.js failed: Error: Cannot find module '/tmp/dsh-log-snap-8nZB5H/.dsh/profiles/headless/node_modules/@vuhoi/gat-core/lib/typert.host.js' imported from /tmp/gat-exec024-host-c1157f7e/packages/typert/loader/src/index.ts
+    at Object.apply (/tmp/gat-exec024-host-c1157f7e/packages/typert/loader/src/index.ts:459:11)
+    at async Fiber._reload (/tmp/gat-exec024-host-c1157f7e/vendor/cordis/src/fiber.ts:656:9)
+Error: typert-loader: @vuhoi/gat-core exports "./typert" but importing /tmp/dsh-log-snap-8nZB5H/.dsh/profiles/headless/node_modules/@vuhoi/gat-core/lib/typert.host.js failed: Error: Cannot find module '/tmp/dsh-log-snap-8nZB5H/.dsh/profiles/headless/node_modules/@vuhoi/gat-core/lib/typert.host.js' imported from /tmp/gat-exec024-host-c1157f7e/packages/typert/loader/src/index.ts
+    at <anonymous> (/tmp/gat-exec024-host-c1157f7e/packages/typert/loader/src/index.ts:376:17)
+gat-durable-fixture-host (file:///tmp/gat-exec024-host-c1157f7e/snapshots/session/gat-durable-execution/fixture-host.ts): pending (waiting for service: durableAgent)
+
+ ❯ Object.apply packages/typert/loader/src/index.ts:459:11
+ ❯ Fiber._reload vendor/cordis/src/fiber.ts:656:9
+    654|       if (this._runner.epoch === oldEpoch) {
+    655|         this.config = this._resolveConfig(this._config)
+    656|         await this._execute(this._runner)
+       |         ^
+    657|         this._error = undefined
+    658|       }
+ ❯ <anonymous> packages/typert/loader/src/index.ts:376:17
+ ❯ runLoaderSmoke packages/test-support/loader-smoke/src/index.ts:248:13
+ ❯ snapshots/session/headless.snapshot.ts:1153:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 138 skipped (139)
+   Start at  19:32:03
+   Duration  31.44s (transform 727ms, setup 174ms, import 1.08s, tests 30.09s, environment 0ms)
+

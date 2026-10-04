@@ -1,0 +1,30 @@
+{
+  "kind": "test-only-reviewer-qualification",
+  "supersedes": "reviewer-attempt-01.json",
+  "design": "docs/gat-design/DETAIL_DESIGN.md#9-prospective-isolated-execution-qualification--aip-exec-024",
+  "host": "/tmp/gat-exec024-host-c1157f7e",
+  "cwd": "/tmp/gat-exec024-host-c1157f7e",
+  "command": "timeout 90s node /home/hoinv/deepseek-harness/node_modules/vitest/vitest.mjs run --config vitest.exec024.config.ts packages/experimental/gat-core/tests/task-review-qualification.spec.ts",
+  "exitCode": 0,
+  "testFilesPassed": 1,
+  "testsPassed": 22,
+  "testsFailed": 0,
+  "log": {
+    "path": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/reviewer-attempt-02.log",
+    "sha256": "a825fa1b31679cb09ef098a856d21bdf762a317fe5f1b89149f9100aa704ee9d"
+  },
+  "sources": [
+    {
+      "hostPath": "packages/experimental/gat-core/tests/task-review-prototype.ts",
+      "archivePath": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/reviewer-attempt-02-source/task-review-prototype.ts",
+      "sha256": "28ebaaa2f976d246d6cb29045904a3ffa6a54421ae58fd396080d44ddc3fc48f"
+    },
+    {
+      "hostPath": "packages/experimental/gat-core/tests/task-review-qualification.spec.ts",
+      "archivePath": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/reviewer-attempt-02-source/task-review-qualification.spec.ts",
+      "sha256": "8ee86cb66e46ff2b655465c82d76414cba909cc5fbada64f9fe321efa4f1abff"
+    }
+  ],
+  "scope": "Isolated Host test-only code. Real Loader/GAT/WK; model transport mocked. Fixture-owned approved DA records, GAT persisted worker result, ACL bytes, executable subprocess receipt, and distinct reviewer member.",
+  "limits": "Does not qualify a live operator provenance workflow or production activation. Package project typecheck is blocked by unbuilt TypeScript project references; this test source is outside that tsconfig."
+}

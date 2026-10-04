@@ -1,0 +1,10 @@
+output_id: OUT-024-05-01
+result_type: output
+working_aip_ref: AIP-EXEC-024
+step_id: STEP-05
+output_locator: test-matrix.md
+created_at: 2026-10-04T20:00:38
+review_status: approved_for_next_step
+verification_level: source-and-receipt-verified
+source_refs: ["source-review.md", "verification/public-artifact/final-attempt-01/receipt.json", "verification/execution-snapshot/attempt-13-final-source.json", "verification/execution-snapshot/attempt-14-final-built.json"]
+notes: ""

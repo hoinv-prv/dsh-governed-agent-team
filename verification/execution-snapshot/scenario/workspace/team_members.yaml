@@ -1,0 +1,8 @@
+version: 1
+members:
+  - name: worker
+    description: Explicit task memory worker
+    prompt: 'ROLE_ONLY: declare readiness without reading memory or executing a task.'
+    context: fresh
+    provider: deepseek-official
+    model: deepseek-v4-flash

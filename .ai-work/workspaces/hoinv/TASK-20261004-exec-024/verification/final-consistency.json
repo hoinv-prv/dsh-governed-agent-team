@@ -1,0 +1,131 @@
+{
+  "root_production_hashes_checked": 23,
+  "original_detail_before_section9_exact": true,
+  "member_binding_freeze_unchanged": true,
+  "main_dsh_selected_inputs": [
+    {
+      "path": "/home/hoinv/deepseek-harness/packages/experimental/gat-core/src/index.ts",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/deepseek-harness/packages/experimental/agent-team/src/execution.ts",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/deepseek-harness/packages/experimental/agent-team/src/execution-types.ts",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/deepseek-harness/packages/experimental/agent-team-durable-agent/src/index.ts",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/deepseek-harness/packages/core/agent-loop/src/agent.ts",
+      "unchanged_from_planning": true
+    }
+  ],
+  "wk_selected_inputs": [
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_DESIGN_INDEX.md",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_ARCHITECTURE_DESIGN.md",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_BASIC_DESIGN.md",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_DETAIL_DESIGN.md",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_DETAIL_SOURCE_MAP.md",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_DESIGN_CONFLICTS.md",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/docs/DURABLE_AGENT_DESIGN_MISSION_DELTAS.md",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/durable-agent-plugin/src/service.ts",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/durable-agent-plugin/src/consumer.ts",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/durable-agent-plugin/src/review-packet.ts",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/durable-agent-plugin/src/local-provider.ts",
+      "unchanged_from_planning": true
+    },
+    {
+      "path": "/home/hoinv/work/dsh-durable-agent/durable-agent-plugin/src/index.ts",
+      "unchanged_from_planning": true
+    }
+  ],
+  "legacy_direct_sources_and_tests": [
+    {
+      "path": "packages/durable-agent/src/binder.ts",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "packages/durable-agent/src/composition.ts",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "packages/durable-agent/src/index.ts",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "packages/durable-agent/src/initializer.ts",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "packages/durable-agent/src/ownership.ts",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "packages/durable-agent/src/provider.ts",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "packages/durable-agent/tests/initializer.spec.ts",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "packages/durable-agent/tests/binder.spec.ts",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "packages/durable-agent/tests/public-provider.spec.ts",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "packages/durable-agent/tests/tools.spec.ts",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "packages/durable-agent/tests/composition.spec.ts",
+      "unchanged_from_base": true
+    }
+  ],
+  "distribution_source_hashes_checked": 42,
+  "new_delivery_source_sha256": {
+    "scripts/assemble-durable-agent.mjs": "557be61b5eb84cf2156f6102558d75734b1f02bd2405d164f0257f3aec00553c",
+    "compatibility/execution-c1157f7e/manifest.json": "83be0c53506953924486d07e96f39d9027d40d5eb5d9037092f7f98aa85185eb"
+  },
+  "status": "PASS",
+  "errors": [],
+  "independent_review": "PASS: final STEP-06 in source-review.md"
+}

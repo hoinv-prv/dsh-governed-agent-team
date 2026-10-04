@@ -1,0 +1,35 @@
+{
+  "command": [
+    "node",
+    "node_modules/typescript/bin/tsc",
+    "-b",
+    "--pretty",
+    "false",
+    "packages/experimental/gat-core/tsconfig.json",
+    "packages/experimental/gat-durable-agent/tsconfig.json"
+  ],
+  "cwd": "/tmp/gat-exec024-direct-5c02ce9f",
+  "exit_code": 0,
+  "scope": "old direct Host and GAT core/durable-agent TypeScript project-reference graph; no bundling",
+  "host_head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+  "gat_source_head": "6f74ab239cbe795f0742d18831a433323f238460",
+  "log": "direct-build-02.log",
+  "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "dependency_links": {
+    "vendor/schemastery/node_modules": "/home/hoinv/deepseek-harness/vendor/schemastery/node_modules",
+    "vendor/cordis/node_modules": "/home/hoinv/deepseek-harness/vendor/cordis/node_modules",
+    "packages/host/webserver/node_modules": "/home/hoinv/deepseek-harness/packages/host/webserver/node_modules"
+  },
+  "outputs": {
+    "gat-core": {
+      "index.d.ts": "579a39491f958fe0a8e675de41090c71f7a68f7a7a47e9c6369387c1207104c2"
+    },
+    "gat-durable-agent": {
+      "index.d.ts": "fa5f8c2de583e121e212bcd1069d47c21169ab7e31d14a45c6867239129bd09d",
+      "composition.d.ts": "fb67d77ef303d94ca89aa878ac3a491b548f310d8511c523ededfa711aea7af9",
+      "provider.d.ts": "1ca4f2b1f6df6662185d763d9af033493cc9ecfb77962d1977d36364ef67838a",
+      "tools.d.ts": "a935fe0f74a9f9e09ce051c79c00a7843301b88b5c29946d009ba9cafaa0f9da"
+    }
+  },
+  "execution_composition_types_emitted": false
+}

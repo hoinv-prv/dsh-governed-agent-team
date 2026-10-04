@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "tarball_sha256": "7f7848ce2eff8f07f01ea3bd778571083441d7db23783e3ddb54e2f80c695065",
+  "packed_files": 52,
+  "assembly_byte_equality": true,
+  "ephemeral_hosts_available": false,
+  "note": "Qualification and independent review were completed before /tmp Host directories became unavailable on resumed turn. Durable root tar/receipts/scenario/source intact; no new runtime execution claimed."
+}

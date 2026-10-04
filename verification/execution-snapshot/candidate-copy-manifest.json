@@ -1,0 +1,73 @@
+{
+  "status": "owning snapshot final source and built replay PASS; AIP acceptance remains parent-owned",
+  "agent": "qualification_review",
+  "sealedAt": "2026-10-04T10:58:58.453146+00:00",
+  "source": "/tmp/gat-exec024-host-c1157f7e/snapshots/session/gat-durable-execution",
+  "caseFiles": {
+    "cordis.snapshot.yml": "2114bbda458359c49b7a25b9fea58e600412af8c03ba898bf1757848376e546c",
+    "cordis.yml": "872a298bc542f5c2469b351eebb769d62f78fb40eb6ab6adba14f50589f4f1cd",
+    "fixture-host.ts": "3c54154aef0a3d0fc2ad590e942551bb77fc70624f4a2db7b2b81fbc0ed483a8",
+    "model-timing.ts": "ebb949e8361a219fc2a2eeb59c8a03cace3839f784e095464191aa29ac895c12",
+    "session.1.v4.jsonl": "b8e4aa34b5469fd99afa13256f52a81bbce42883c8db40cc0f62d05a27afcdbd",
+    "session.2.v4.jsonl": "aa8889cdd25952ad513b4b8b6825e1722249dffad72358326f751c67be2fd13d",
+    "session.v4.jsonl": "e2e476053f4af0612996e0ab24975793a22f360b3e9299f24788d8880e44f332",
+    "snapshot.yml": "efe19484c2130b2907535a4263834168a0462dff51259fb7d16dbd5085951953",
+    "system-prompt.1.expected.md": "24974faa54dfe9830ce497bc794558facb2890e67cc7d3fe0b3f9921fabc80fa",
+    "system-prompt.2.expected.md": "24974faa54dfe9830ce497bc794558facb2890e67cc7d3fe0b3f9921fabc80fa",
+    "system-prompt.expected.md": "c80b9869807c341da697d24716e4c2201565c48fa2d4d7681dbd6baf96b138d2",
+    "tool-schemas.1.expected.json": "329446ee917910e1674d9b0c6695da099c29b3b9865dffb81cd56ec7b21eb7f1",
+    "tool-schemas.2.expected.json": "dae4f5e4755e840da5f34fc4649613e0029bc930d748faba60fb872a18c89d5d",
+    "tool-schemas.expected.json": "329446ee917910e1674d9b0c6695da099c29b3b9865dffb81cd56ec7b21eb7f1",
+    "verify.ts": "93ce0a3ca283fa8823862f31b64b3fddac7eee4ce7681467666a119b46e324b8",
+    "workspace/.dsh/gat-durable-execution-workspace/.empty": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace/team_members.yaml": "461d030920020f46e3aae11b2cc8822f09e0423debd91f05cd24f5e4280afd4b"
+  },
+  "headlessHookSha256": "f326b7bdcba1ae22037bc9a27b7aaf73a6fa2399243c8d65f60498a7dde7a83a",
+  "headlessHookPatchSha256": "4ed548f9e845c597f07b7df1ae70eb9b03c7ddf34ae25e378a4ef7913a108850",
+  "sourceRefreshReceipt": "attempt-08.json",
+  "finalSourceReplayReceipt": "attempt-13-final-source.json",
+  "finalBuiltReplayReceipt": "attempt-14-final-built.json",
+  "receiptHashes": {
+    "attempt-13-final-source.json": "30586a75e28cb14efc63f4b32df458babac2d345c218e5342e8b5c9b70827671",
+    "attempt-14-final-built.json": "1fe22f7ef8e082a1a9d0b891d40ea1d1f024420b0dde77e2fd659206656331d0"
+  },
+  "assemblyReceipt": "/tmp/gat-exec024-host-c1157f7e/artifacts/gat-durable-agent-final-01/assembly-receipt.json",
+  "assemblyReceiptSha256": "f7f54e6445e210be5fa50d0e93756d41a6498d9aaf090319c978c763f5fb15a7",
+  "assemblyOutputMatch": true,
+  "adapterEntrySha256": "185d3410deb134dbd410cdde762726c5c0f55952ea9008e9177cb4064c799c09",
+  "adapterSourceSha256": "eadf7b04a6e2221191d9e216708c31b23d08567c7bfa5e2f109038aa35ef630d",
+  "dependencyGraph": {
+    "hostCordis": {
+      "realpath": "/tmp/gat-exec024-host-c1157f7e/vendor/cordis",
+      "version": "4.0.4",
+      "packageSha256": "bd5b142ae927e4f954ceaee7cdc0e43fe921dde311edc8ec4f797f85f1981f83",
+      "runtimeSha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    "wkCordis": {
+      "realpath": "/home/hoinv/work/dsh-durable-agent/durable-agent-plugin/node_modules/.pnpm/@deepseek-ai+cordis@4.0.2/node_modules/@deepseek-ai/cordis",
+      "version": "4.0.2",
+      "packageSha256": "1cb01e8234e0131450504f80e3ecb869b0f6b643cc1ab9e778ca91fed4378ebc",
+      "runtimeSha256": "1729cdbf8ee40b17c8839e06bf96491490548559e11ef7e411271e0754e751c5"
+    },
+    "fixtureCordis": {
+      "realpath": "/tmp/gat-exec024-host-c1157f7e/vendor/cordis",
+      "version": "4.0.4",
+      "packageSha256": "bd5b142ae927e4f954ceaee7cdc0e43fe921dde311edc8ec4f797f85f1981f83",
+      "runtimeSha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    "fixtureWk": {
+      "realpath": "/tmp/gat-exec024-host-c1157f7e/vendor/gat-qualification-wk",
+      "version": "0.1.0",
+      "packageSha256": "cd439c180340d69ec2bd05b2c8f1a60672a0808fb31888c1426c5ffb80b4c18a",
+      "runtimeSha256": "2b7a2e8eb4ce098a93bc3b27946908403511ea57e431ea1371a21c9ac00dbb27"
+    }
+  },
+  "sourceAndDependencyDrift": [],
+  "replayInputsUnchanged": true,
+  "sidecarsUnchanged": true,
+  "diagnosticReceipts": [
+    "attempt-11-built-plumbing.json",
+    "attempt-12-wk402-built-diagnostic.json"
+  ],
+  "note": "Final pair uses the frozen gat-durable-agent-final-01 public assembly. Earlier built attempts are superseded diagnostic runs; no live-model/ACL/crash claims or compatibility exemptions."
+}

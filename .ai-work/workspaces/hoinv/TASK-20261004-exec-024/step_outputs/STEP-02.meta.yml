@@ -1,0 +1,10 @@
+output_id: OUT-024-02-01
+result_type: output
+working_aip_ref: AIP-EXEC-024
+step_id: STEP-02
+output_locator: qualification-matrix.md
+created_at: 2026-10-04T06:52:05.767634+00:00
+review_status: approved_for_next_step
+verification_level: source-and-runtime-observed
+source_refs: ["qualification-matrix.md", "verification/qualification-attempt-08.json", "verification/qualification-observation.json", "verification/host-admission-baseline.json"]
+notes: "Checkpoint: real retry contract NG; awaiting scope decision. Remaining matrix and independent review incomplete."

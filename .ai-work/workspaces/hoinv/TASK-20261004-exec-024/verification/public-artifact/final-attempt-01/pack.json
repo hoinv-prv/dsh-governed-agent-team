@@ -1,0 +1,276 @@
+[
+  {
+    "id": "@vuhoi/gat-durable-agent@0.1.0",
+    "name": "@vuhoi/gat-durable-agent",
+    "version": "0.1.0",
+    "size": 53514,
+    "unpackedSize": 267767,
+    "shasum": "2181131874d6d500a19216615fb3267cd61781fe",
+    "integrity": "sha512-XjAWR2mJvCHgkrklYOs7lfcYzY8SxFYIYTy19q5x00PcoLnMPPk5bHMJOoy7eJdEXIbwjLOx9HB5bi7llbG3Sg==",
+    "filename": "vuhoi-gat-durable-agent-0.1.0.tgz",
+    "files": [
+      {
+        "path": "README.md",
+        "size": 8318,
+        "mode": 420
+      },
+      {
+        "path": "lib/composition.js",
+        "size": 4543,
+        "mode": 420
+      },
+      {
+        "path": "lib/execution-composition.js",
+        "size": 36275,
+        "mode": 420
+      },
+      {
+        "path": "lib/index.js",
+        "size": 311,
+        "mode": 420
+      },
+      {
+        "path": "lib/initializer-WrA1zjHL.js",
+        "size": 17001,
+        "mode": 420
+      },
+      {
+        "path": "lib/provider.js",
+        "size": 591,
+        "mode": 420
+      },
+      {
+        "path": "lib/tools-BVkFAKbd.js",
+        "size": 8920,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/binder.d.ts",
+        "size": 2295,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/binder.d.ts.map",
+        "size": 1723,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/binder.js",
+        "size": 12037,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/binder.js.map",
+        "size": 11982,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/composition.d.ts",
+        "size": 1068,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/composition.d.ts.map",
+        "size": 719,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/composition.js",
+        "size": 5060,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/composition.js.map",
+        "size": 4499,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-binding.d.ts",
+        "size": 2154,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-binding.d.ts.map",
+        "size": 1558,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-binding.js",
+        "size": 17504,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-binding.js.map",
+        "size": 17249,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-composition.d.ts",
+        "size": 6067,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-composition.d.ts.map",
+        "size": 771,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-composition.js",
+        "size": 2004,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-composition.js.map",
+        "size": 2367,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-host.d.ts",
+        "size": 1521,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-host.d.ts.map",
+        "size": 909,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-host.js",
+        "size": 2091,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-host.js.map",
+        "size": 1856,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-review.d.ts",
+        "size": 3301,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-review.d.ts.map",
+        "size": 2873,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-review.js",
+        "size": 22724,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/execution-review.js.map",
+        "size": 21648,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/index.d.ts",
+        "size": 460,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/index.d.ts.map",
+        "size": 405,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/index.js",
+        "size": 259,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/index.js.map",
+        "size": 279,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/initializer.d.ts",
+        "size": 1602,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/initializer.d.ts.map",
+        "size": 933,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/initializer.js",
+        "size": 8201,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/initializer.js.map",
+        "size": 7511,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/ownership.d.ts",
+        "size": 895,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/ownership.d.ts.map",
+        "size": 338,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/ownership.js",
+        "size": 1616,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/ownership.js.map",
+        "size": 1096,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/provider.d.ts",
+        "size": 535,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/provider.d.ts.map",
+        "size": 338,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/provider.js",
+        "size": 591,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/provider.js.map",
+        "size": 449,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/tools.d.ts",
+        "size": 1227,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/tools.d.ts.map",
+        "size": 731,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/tools.js",
+        "size": 8446,
+        "mode": 420
+      },
+      {
+        "path": "lib/types/tools.js.map",
+        "size": 8002,
+        "mode": 420
+      },
+      {
+        "path": "package.json",
+        "size": 1914,
+        "mode": 420
+      }
+    ],
+    "entryCount": 52,
+    "bundled": []
+  }
+]

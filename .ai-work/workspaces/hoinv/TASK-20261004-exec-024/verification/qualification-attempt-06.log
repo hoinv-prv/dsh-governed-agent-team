@@ -1,0 +1,51 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /tmp/gat-exec024-host-c1157f7e
+
+ ❯ packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts (2 tests | 1 failed) 685ms
+     × requires the new public WK contribution in the actual retry (contract gate) 317ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts > AIP-EXEC-024 real GAT / WK retry qualification > requires the new public WK contribution in the actual retry (contract gate)
+AssertionError: OP-024-03: stale retry is an adapter feasibility failure: expected 'You are an AI agent powered by DeepSe…' to contain 'catalog-version-two'
+
+- Expected
++ Received
+
+- catalog-version-two
++ You are an AI agent powered by DeepSeek Harness.
++
++ <<<WK>>>{"version":1,"member":{"name":"worker","description":"qualification worker"},"guidance":"# SOUL.md\n\n## Working principles\n\n- Think before coding. State assumptions, surface ambiguity, and ask when requirements are unclear.\n- Prefer the simplest solution that fully satisfies the task. Avoid speculative abstractions and features.\n- Make surgical changes. Preserve existing style and do not refactor unrelated code.\n- Work toward explicit, verifiable outcomes. Test the behavior you changed and report concrete evidence.\n","catalog":[{"id":"selected","title":"catalog-version-one","retrievalCondition":"explicit assignment selection"}],"provenance":{"scope":"workspace","provider":"local-filesystem","generation":"b20aa815-2b38-4924-9aab-955d0c9c411c"},"revision":1}<<<END>>>
++ Team task assignment task-1 for worker
++ Execution: 0edeaa75-a19c-4bef-89a5-ab33f0858835
++ Team: qualification-lead
++ Member: worker
++ Task: task-1
++ Revision: 2
++ Generation: 1
++ Session: 35e84bf1-c40a-4046-bb72-3c38d5225781
++
++ {"objective":"qualify request freshness","deliverables":["observed request"],"acceptanceCriteria":["fresh context"],"allowedPaths":[],"excludedWork":[],"context":"","inputs":[{"reference":"durable-memory:selected"}],"checks":[],"stopConditions":[],"returnFormat":"summary"}
++
++ Complete only this assignment. Ask the Lead or report a blocker when inputs are missing; do not consult earlier task Sessions. Submit a self-contained final result using team_execution_submit. Submission is provisional and does not accept the task.
++ Current runtime context. This snapshot supersedes earlier runtime-context snapshots.
++
++ You are a delegated subagent: your permission scope was fixed when you were started and cannot be widened from inside this session — operations that require approval are rejected automatically. When the task needs access beyond that scope, do not retry the denied operation; state the limitation in your reply so the delegating agent can handle it.
+
+ ❯ packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts:199:90
+    197|   it('requires the new public WK contribution in the actual retry (con…
+    198|     const seen = await witness()
+    199|     expect(seen.retryPrompt, 'OP-024-03: stale retry is an adapter fea…
+       |                                                                                          ^
+    200|   })
+    201| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  15:47:14
+   Duration  1.87s (transform 879ms, setup 0ms, import 1.11s, tests 685ms, environment 0ms)
+

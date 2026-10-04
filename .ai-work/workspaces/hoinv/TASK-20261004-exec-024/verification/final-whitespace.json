@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checks": {
+    "untracked_source_trailing_whitespace": [],
+    "git_diff_check": {
+      "exit_code": 0,
+      "output": ""
+    }
+  }
+}

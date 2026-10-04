@@ -1,0 +1,32 @@
+[
+  {
+    "command": [
+      "/home/hoinv/.hermes/node/bin/node",
+      "/home/hoinv/deepseek-harness/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/bin/tsc",
+      "-b",
+      "/tmp/gat-exec024-direct-5c02ce9f/packages/experimental/gat-durable-agent/tsconfig.json",
+      "--force",
+      "--pretty",
+      "false"
+    ],
+    "cwd": "/tmp/gat-exec024-direct-5c02ce9f",
+    "exit_code": 0,
+    "log": "assembly-compile-direct.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "/home/hoinv/.hermes/node/bin/node",
+      "/home/hoinv/deepseek-harness/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/bin/tsc",
+      "-b",
+      "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-durable-agent/tsconfig.execution-conformance.json",
+      "--force",
+      "--pretty",
+      "false"
+    ],
+    "cwd": "/tmp/gat-exec024-host-c1157f7e",
+    "exit_code": 0,
+    "log": "assembly-compile-execution.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "checkpoint": "qualification blocked pending HUMAN scope decision",
+  "aip": "AIP-EXEC-024",
+  "step": "STEP-02",
+  "production_implementation_complete": false,
+  "independent_review_complete": false,
+  "original_detail_design_prefix_matches_planning_baseline": true,
+  "source_files": [
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/docs/gat-design/DETAIL_DESIGN.md",
+      "sha256": "91970608745ed5a23102bd473756aeb249d6f00e11a956af4b44032b9e96ebbb"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-024-implement-durable-binding-reuse.md",
+      "sha256": "b18a15cceeb5b93353efec6ef05b37c145f25bf150828045546f75aea154d948"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/core/agent-loop/src/agent.ts",
+      "sha256": "6163adcf3633e31483ceee9992c7871e7761ffc30268efe8775abbfeb1a8632a"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/core/system-prompt/src/index.ts",
+      "sha256": "9e31442544109b3ff9be13458e826e0dcacbe31d9f59ddd96a6498ab20b1574e"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-core/src/index.ts",
+      "sha256": "238118c992d56554e7cce065e7de3dc369d0f740e868c3c19d3d828291a686bb"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/agent-team/src/execution.ts",
+      "sha256": "8adeeb2dcaaaeb7d629aae28a600476d7fdcda56b968d14488d1bc9316c6b8d0"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/core/agent-loop/tests/system-prompt-admission.spec.ts",
+      "sha256": "0af4349a2006b43d3ce05c7f95e946f0aeaf3ba32232da816e1809dfc15cebde"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts",
+      "sha256": "345fa7a826663428cb0df2f2fad73c5bc2165b78e29d189b1e95f0bb7cd26d70"
+    },
+    {
+      "path": "/tmp/gat-exec024-host-c1157f7e/vitest.exec024.config.ts",
+      "sha256": "8c40d8ee0d42444d6044eefc8404ffaedddde9e3fd4a27125b63d0bd1b96987f"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/qualification-environment.json",
+      "sha256": "b65e908a7c21f34cdbaf62833a443b34e0f742740f2f3852d77a26061a19d3aa"
+    },
+    {
+      "path": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/qualification-observation.json",
+      "sha256": "0221df4eaa575270070b50de52233eafe103960b0d64d208fac281962cc6922b"
+    }
+  ],
+  "host_head": "c1157f7ed448b40c463c1a43fa595b12294fd50d",
+  "qualification_contract": {
+    "characterization": "PASS",
+    "fresh_retry": "NG",
+    "exit_code": 1,
+    "execution_requests": 2,
+    "assemblies": 1,
+    "initial_context_revision": 1,
+    "latest_context_revision": 3
+  },
+  "host_admission_baseline": {
+    "exit_code": 0,
+    "tests_passed": 27
+  },
+  "host_production_source_unchanged": [
+    {
+      "path": "packages/core/agent-loop/src/agent.ts",
+      "matches_selected_head": true
+    },
+    {
+      "path": "packages/core/system-prompt/src/index.ts",
+      "matches_selected_head": true
+    },
+    {
+      "path": "packages/experimental/gat-core/src/index.ts",
+      "matches_selected_head": true
+    },
+    {
+      "path": "packages/experimental/agent-team/src/execution.ts",
+      "matches_selected_head": true
+    }
+  ],
+  "prefix_note": "Exclude the one blank separator inserted before new section 9; original accepted document bytes equal the recorded planning baseline."
+}

@@ -1,0 +1,2 @@
+current: package=/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/consumer/current/package; WK=/tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-durable-agent/node_modules/@deepseek-ai/dsh-durable-agent
+direct: package=/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/consumer/direct/package; WK=/tmp/gat-exec024-direct-5c02ce9f/node_modules/@deepseek-ai/dsh-durable-agent

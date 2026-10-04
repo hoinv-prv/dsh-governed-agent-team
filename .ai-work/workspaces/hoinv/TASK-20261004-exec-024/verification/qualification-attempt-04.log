@@ -1,0 +1,36 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /tmp/gat-exec024-host-c1157f7e
+
+ ❯ packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts (2 tests | 2 failed) 2503ms
+     × characterizes first-request binding, changed WK revision, logged prompt and current retry reuse 1264ms
+     × requires the new public WK contribution in the actual retry (contract gate) 1238ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts > AIP-EXEC-024 real GAT / WK retry qualification > characterizes first-request binding, changed WK revision, logged prompt and current retry reuse
+ FAIL  packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts > AIP-EXEC-024 real GAT / WK retry qualification > requires the new public WK contribution in the actual retry (contract gate)
+AssertionError: expected [ { provider: 'mock', …(5) }, …(3) ] to have a length of 3 but got 4
+
+- Expected
++ Received
+
+- 3
++ 4
+
+ ❯ packages/experimental/gat-core/tests/durable-binding-qualification.spec.ts:140:51
+    138|     expectedRevision: task.revision, brief, signal,
+    139|   })
+    140|   await vi.waitFor(() => expect(adapter.requests).toHaveLength(3))
+       |                                                   ^
+    141|   const worker = ctx.agents.get(execution.sessionId)
+    142|   if (worker === undefined) throw new Error('execution Agent unavailab…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  15:46:00
+   Duration  3.72s (transform 906ms, setup 0ms, import 1.13s, tests 2.50s, environment 0ms)
+

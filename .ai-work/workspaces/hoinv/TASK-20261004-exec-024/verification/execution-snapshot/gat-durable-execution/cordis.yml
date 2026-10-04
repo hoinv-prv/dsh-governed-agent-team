@@ -1,0 +1,52 @@
+# This authored case uses the shipped headless profile and existing Team initializer.
+- id: tool-subagent-control
+  disabled: true
+- id: tool-subagent-list-agents
+  disabled: true
+- id: tool-subagent-report
+  disabled: true
+- id: tool-subagent
+  disabled: true
+- id: tool-subagent-fork
+  disabled: true
+- insert:
+    - id: agent-team
+      name: '@vuhoi/gat-core'
+    - id: tool-agent-team
+      name: '@vuhoi/gat-tools'
+      config:
+        freshProvider: spawn
+        forkProvider: fork
+        minExecutionMembers: 1
+        maxExecutionMembers: 1
+        simpleMode: true
+        teamMembersMaxBytes: 65536
+        externalRestrictedTools: [glob, grep, read, read_image]
+    - id: gat-durable-provider
+      name: '@vuhoi/gat-durable-agent/provider'
+    - id: gat-durable-execution
+      name: '@vuhoi/gat-durable-agent/execution-composition'
+      config:
+        workspace: !!js dshHomePath('gat-durable-execution-workspace')
+        dedicatedProvider: true
+        singleHostWorkspace: true
+        members:
+          - mode: task
+            declaration:
+              name: worker
+              description: Explicit task memory worker
+              prompt: 'ROLE_ONLY: declare readiness without reading memory or executing a task.'
+              context: fresh
+              scope: workspace
+              provider: deepseek-official
+              model: deepseek-v4-flash
+        limits:
+          maxBodyBytes: 4096
+          maxResultBytes: 8192
+          maxSelectedItems: 8
+          maxReadCalls: 8
+          maxReadResultBytes: 32768
+    - id: gat-durable-fixture-host
+      name: './fixture-host.ts'
+      config:
+        workspace: !!js dshHomePath('gat-durable-execution-workspace')

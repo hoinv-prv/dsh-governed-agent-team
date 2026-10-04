@@ -1,0 +1,13 @@
+{
+  "command": [
+    "rg",
+    "-n",
+    "AIP-EXEC-024",
+    ".ai-work/wiki",
+    ".ai-work/truth"
+  ],
+  "exit_code": 1,
+  "hits": [],
+  "errors": "",
+  "result": "No target canonical/wiki attribution"
+}

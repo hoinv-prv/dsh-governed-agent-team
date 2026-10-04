@@ -1,0 +1,28 @@
+{
+  "cwd": "/tmp/gat-exec024-host-c1157f7e",
+  "host_head": "c1157f7ed448b40c463c1a43fa595b12294fd50d",
+  "command": "node --max-old-space-size=4096 ./node_modules/typescript/bin/tsc -b tsconfig.host.json --pretty false",
+  "exit_code": 2,
+  "scope": "prescribed Host aggregate TypeScript build; no GAT source edits",
+  "error_count": 130,
+  "first_errors": [
+    "packages/api/job-controller/src/client/index.ts(11,21): error TS2307: Cannot find module '@deepseek-ai/dsh-api-job-controller/remote' or its corresponding type declarations.",
+    "packages/api/job-controller/src/client/index.ts(34,11): error TS2339: Property 'job' does not exist on type 'ClientRemote'.",
+    "packages/api/session-controller/src/client/transport.ts(3,21): error TS2307: Cannot find module '@deepseek-ai/dsh-api-session-controller/remote' or its corresponding type declarations.",
+    "packages/api/session-controller/src/client/transport.ts(41,42): error TS2339: Property 'session' does not exist on type 'ClientRemote'.",
+    "packages/api/workspace-files/src/client/index.ts(24,34): error TS2345: Argument of type 'ClientRemote' is not assignable to parameter of type 'WorkspaceFilesRemote'.",
+    "packages/api/workspace-files/src/client/index.ts(25,47): error TS2345: Argument of type 'ClientRemote' is not assignable to parameter of type 'WorkspaceFilesRemote'.",
+    "packages/api/workspace-files/src/client/remote.ts(8,21): error TS2307: Cannot find module '@deepseek-ai/dsh-api-workspace-files/remote' or its corresponding type declarations.",
+    "packages/api/workspace-files/src/client/remote.ts(38,57): error TS2339: Property 'workspaceFiles' does not exist on type 'ClientRemote'.",
+    "packages/api/workspace-controller/src/client/index.ts(48,53): error TS2339: Property 'workspace' does not exist on type 'ClientRemote'.",
+    "packages/api/workspace-controller/src/client/index.ts(84,28): error TS2339: Property 'workspace' does not exist on type 'ClientRemote'.",
+    "packages/api/workspace-controller/src/client/model.ts(4,21): error TS2307: Cannot find module '@deepseek-ai/dsh-api-workspace-controller/remote' or its corresponding type declarations.",
+    "packages/api/workspace-controller/src/client/model.ts(26,50): error TS2339: Property 'workspace' does not exist on type 'TypertClientRemote'."
+  ],
+  "log": {
+    "path": "tsc-host.log",
+    "sha256": "9a9aefddf5256fecdf5827c7d7784ebd91c52f8cdce92ff8015032eaf3df8889"
+  },
+  "dry_graph_observation": "packages/experimental/gat-core was up to date; Host aggregate traversed existing package graph.",
+  "note": "Red on missing generated Typert remote declarations and downstream errors in job/session/workspace/terminal API client seams."
+}

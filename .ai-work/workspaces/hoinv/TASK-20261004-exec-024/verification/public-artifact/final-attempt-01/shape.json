@@ -1,0 +1,32 @@
+{
+  "dependency": "0.1.0",
+  "entries": {
+    ".": {
+      "default": "lib/index.js",
+      "types": "lib/types/index.d.ts"
+    },
+    "./composition": {
+      "default": "lib/composition.js",
+      "types": "lib/types/composition.d.ts"
+    },
+    "./execution-composition": {
+      "default": "lib/execution-composition.js",
+      "types": "lib/types/execution-composition.d.ts"
+    },
+    "./provider": {
+      "default": "lib/provider.js",
+      "types": "lib/types/provider.d.ts"
+    }
+  },
+  "hostCordisVersion": "4.0.4",
+  "noDefaultExecutionExportInDeclaration": true,
+  "packIncludesTsbuildinfo": [],
+  "separateCordisInstances": true,
+  "sharedInitializerChunk": "initializer-WrA1zjHL.js",
+  "sharedOwnershipChunk": "tools-BVkFAKbd.js",
+  "tarballSha256": "7f7848ce2eff8f07f01ea3bd778571083441d7db23783e3ddb54e2f80c695065",
+  "unshippedSrcExportPattern": "./src/*",
+  "wkDeclaredCordis": "4.0.2",
+  "wkExternalized": true,
+  "wkResolvedCordisVersion": "4.0.2"
+}

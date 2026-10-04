@@ -1,0 +1,17 @@
+{
+  "command": [
+    "node",
+    "/home/hoinv/deepseek-harness/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "vitest.exec024.config.ts",
+    "packages/experimental/gat-core/tests/task-memory-qualification.spec.ts"
+  ],
+  "cwd": "/tmp/gat-exec024-host-c1157f7e",
+  "exit_code": 1,
+  "source_hashes": {
+    "vitest.exec024.config.ts": "88686be5ee1513f4b7ee7d754a88bab67d3e4397df011a14cc6f531b22f7a8a5",
+    "packages/experimental/gat-core/tests/task-memory-prototype.ts": "2a7f48db29301e972ac3a60cd35769265652e7c3ff2682014dabdd1dbf3a1aac",
+    "packages/experimental/gat-core/tests/task-memory-qualification.spec.ts": "e51ceb661cb0a1b4d21c7fda700027d01cc9997ddb95efffae644653fa1d30f7"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "command": [
+    "node",
+    "/home/hoinv/work/dsh-binding-distribution-accepted/node_modules/vitest/vitest.mjs",
+    "run",
+    "--reporter",
+    "verbose",
+    "--config",
+    "vitest.exec024-direct.config.ts",
+    "packages/experimental/gat-durable-agent/tests"
+  ],
+  "cwd": "/tmp/gat-exec024-direct-5c02ce9f",
+  "started_at": "2026-10-04T10:19:09.067578+00:00",
+  "exit_code": 1,
+  "log": "attempt-06.log",
+  "log_sha256": "fad9183fba011fff839442b9cc4fcc9dbb2dde54e1f3cdd0ef749d7d8ed863fb",
+  "host_head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+  "test_scope": "packages/experimental/gat-durable-agent/tests/**/*.spec.ts",
+  "vitest_config_sha256": "b91dc8d026b96a6c5986476c0ff9ea0565f0228f076cbc4092103588460a1e54",
+  "dependency_node_modules_realpath": "/tmp/gat-exec024-direct-5c02ce9f/node_modules",
+  "wk_vendor": "/home/hoinv/work/dsh-binding-distribution-accepted/vendor/gat-durable-provider",
+  "host_package_dependency_links": [
+    "packages/api/gateway/node_modules",
+    "packages/boot/app-boot/node_modules",
+    "packages/core/agent-loop/node_modules"
+  ]
+}

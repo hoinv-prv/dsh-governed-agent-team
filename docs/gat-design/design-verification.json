@@ -362,5 +362,151 @@
       "warnings": 0,
       "log": "commit-task-lint-final.log"
     }
+  },
+  "execution_composition": {
+    "aip": "AIP-EXEC-024",
+    "design_sections": [
+      "DETAIL_DESIGN.md#9-prospective-isolated-execution-qualification--aip-exec-024",
+      "DETAIL_DESIGN.md#10-prospective-additive-execution-composition--aip-exec-024",
+      "DETAIL_DESIGN.md#11-delivered-execution-entry-evidence--aip-exec-024",
+      "BASIC_DESIGN.md#13-prospective-isolated-execution-adapter--aip-exec-024"
+    ],
+    "status": "Implementation qualification evidence recorded; activation not authorized by this mapping.",
+    "pins": {
+      "gat_base": {
+        "repository": "gat-aip-024",
+        "root": "/home/hoinv/work/dsh-governed-agent-team",
+        "head": "6f74ab239cbe795f0742d18831a433323f238460",
+        "source_receipt": ".ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/production-attempt-03.json"
+      },
+      "execution_host": {
+        "root": "/tmp/gat-exec024-host-c1157f7e",
+        "head": "c1157f7ed448b40c463c1a43fa595b12294fd50d",
+        "role": "current Host for the additive execution graph"
+      },
+      "direct_host": {
+        "root": "/tmp/gat-exec024-direct-5c02ce9f",
+        "head": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+        "role": "compatible Host for the unchanged direct graph"
+      },
+      "wk": {
+        "repository": "durable-agent",
+        "root": "/home/hoinv/work/dsh-durable-agent",
+        "head": "a8e215433ae050e36e0ba27205701be1a5f114a1",
+        "package": "@deepseek-ai/dsh-durable-agent",
+        "version": "0.1.0",
+        "dependency_kind": "normal runtime dependency; not a DSH-version peer"
+      },
+      "selected_main_dsh_inputs": [
+        {
+          "path": "/home/hoinv/deepseek-harness/packages/experimental/gat-core/src/index.ts",
+          "unchanged_from_planning": true
+        },
+        {
+          "path": "/home/hoinv/deepseek-harness/packages/experimental/agent-team/src/execution.ts",
+          "unchanged_from_planning": true
+        },
+        {
+          "path": "/home/hoinv/deepseek-harness/packages/experimental/agent-team/src/execution-types.ts",
+          "unchanged_from_planning": true
+        },
+        {
+          "path": "/home/hoinv/deepseek-harness/packages/experimental/agent-team-durable-agent/src/index.ts",
+          "unchanged_from_planning": true
+        },
+        {
+          "path": "/home/hoinv/deepseek-harness/packages/core/agent-loop/src/agent.ts",
+          "unchanged_from_planning": true
+        }
+      ],
+      "selected_wk_inputs_unchanged": true
+    },
+    "production_graph": {
+      "status": "PASS",
+      "files": 5,
+      "tests": 81,
+      "receipt": "production-attempt-03.json",
+      "test_log_sha256": "95a4224b650b0a631c5434b292326f1f50ad405e44c91750c4dd75bc7d4e11c5",
+      "current_service_type_conformance": "PASS",
+      "conformance_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "direct_compatibility": {
+      "status": "PASS",
+      "files": 5,
+      "tests": 48,
+      "host": "5c02ce9f3e44dfce3f87498f65cf684194ad4572",
+      "receipt": "direct-baseline-5c02ce9f/attempt-09.json",
+      "log_sha256": "afa98b038c8072a8bc6447c98059aa1aae6e7bba691485c8da18c6ab579bce98",
+      "execution_files_present": false
+    },
+    "assembly": {
+      "status": "PASS",
+      "both_graph_compiles_exit_zero": true,
+      "four_public_runtime_and_declaration_targets": true,
+      "output_count": 56,
+      "one_shared_ownership_module": true,
+      "receipt": "assembly-final-01/assembly-receipt.json",
+      "receipt_sha256": "f7f54e6445e210be5fa50d0e93756d41a6498d9aaf090319c978c763f5fb15a7"
+    },
+    "public_artifact": {
+      "status": "PASS",
+      "packed_files": 52,
+      "all_checks_exit_zero": true,
+      "entries": [
+        ".",
+        "./composition",
+        "./provider",
+        "./execution-composition"
+      ],
+      "same_wk_provider_consumer_constructor": true,
+      "reviewer_behavior_claimed": false,
+      "receipt": "public-artifact/final-attempt-01/receipt.json",
+      "receipt_sha256": "2948c0a7e96c13542f8d07a9059b0b0b7d835efe15ee16be63121090e3678ac9",
+      "limits": "Old root/composition were imported on the compatible direct Host graph only; the current Host graph was used for provider/execution composition. Direct declaration consumption passes with the compatible Host's skipLibCheck setting; a full-lib-check run is retained as a duplicate-Schemastery diagnostic. The legacy ./src/* wildcard remains advertised without packed source files. No live operator provenance or deployment approval is implied."
+    },
+    "snapshot": {
+      "status": "PASS",
+      "owner": "existing headless snapshot case through shipped dsh profile",
+      "source": {
+        "exit_code": 0,
+        "passed": 1,
+        "skipped": 139,
+        "receipt": "execution-snapshot/attempt-13-final-source.json",
+        "log_sha256": "d7e1f9a197a5b55351dc72d74067e59310b5c90ad1560249087380615b4f9439"
+      },
+      "built": {
+        "exit_code": 0,
+        "passed": 1,
+        "skipped": 139,
+        "receipt": "execution-snapshot/attempt-14-final-built.json",
+        "log_sha256": "ccb6cb173152961b9cabac107d59bc8ffebe3bb0c5a6c994b41cf844e0183612"
+      },
+      "source_drift": [],
+      "replay_inputs_unchanged": true,
+      "sidecars_unchanged": true
+    },
+    "host_aggregate_typecheck": {
+      "status": "NG unrelated generated remote/client diagnostics",
+      "diagnostics": 130,
+      "receipt": "host-runtime-build/tsc-host.json"
+    },
+    "source_and_distribution_consistency": {
+      "status": "PASS",
+      "root_production_hashes_checked": 23,
+      "distribution_source_hashes_checked": 42,
+      "historical_detail_before_section9_unchanged": true,
+      "member_binding_freeze_unchanged": true,
+      "selected_main_dsh_inputs_unchanged": true,
+      "selected_wk_inputs_unchanged": true,
+      "receipt": "final-consistency.json"
+    },
+    "known_limits": [
+      "The full Host aggregate tsc graph remains NG on 130 generated remote/client diagnostics; focused current and direct package graph builds passed.",
+      "Packed direct declarations pass under its compatible Host skipLibCheck setting; strict full-lib-check diagnostic remains red on duplicate Schemastery declarations.",
+      "The packed legacy ./src/* wildcard advertises source paths absent from the tarball.",
+      "Reviewer behavior is source-qualified in 37 source cases only; packed checks do not claim reviewer behavior.",
+      "Keyless authored replay and fixture callbacks do not establish a live model, operator/ACL workflow, OS-crash recovery, or live deployment."
+    ],
+    "final_mapping_review": "PASS: independent /root/review_contract_design final STEP-06 acceptance in .ai-work/workspaces/hoinv/TASK-20261004-exec-024/source-review.md; status-only annotation after actual verdict; no activation approval."
   }
 }

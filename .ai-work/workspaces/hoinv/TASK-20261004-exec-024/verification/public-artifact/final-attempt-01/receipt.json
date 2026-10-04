@@ -1,0 +1,123 @@
+{
+  "kind": "frozen-joint-public-artifact-qualification",
+  "design": "docs/gat-design/DETAIL_DESIGN.md#10-prospective-additive-execution-composition--aip-exec-024",
+  "assembly": {
+    "cwd": "/tmp/gat-exec024-host-c1157f7e/artifacts/gat-durable-agent-final-01",
+    "receipt": "/tmp/gat-exec024-host-c1157f7e/artifacts/gat-durable-agent-final-01/assembly-receipt.json",
+    "receiptSha256": "f7f54e6445e210be5fa50d0e93756d41a6498d9aaf090319c978c763f5fb15a7",
+    "packedFileCount": 52,
+    "allPackedBytesMatchAssembly": true
+  },
+  "pack": {
+    "cwd": "/tmp/gat-exec024-host-c1157f7e/artifacts/gat-durable-agent-final-01",
+    "command": "npm pack --ignore-scripts --pack-destination /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/packed --json > /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/pack.json",
+    "exitCode": 0,
+    "tarball": "packed/vuhoi-gat-durable-agent-0.1.0.tgz",
+    "tarballSha256": "7f7848ce2eff8f07f01ea3bd778571083441d7db23783e3ddb54e2f80c695065",
+    "metadataLog": "pack.json",
+    "metadataLogSha256": "1ffb3270d3b5c34287b0d59d956f0f021e2fb5e85b86bf19a93fb5f526c39ab9"
+  },
+  "consumerPreparation": {
+    "extractCurrentCommand": "tar -xzf final-attempt-01/packed/vuhoi-gat-durable-agent-0.1.0.tgz -C final-attempt-01/consumer/current",
+    "extractDirectCommand": "tar -xzf final-attempt-01/packed/vuhoi-gat-durable-agent-0.1.0.tgz -C final-attempt-01/consumer/direct",
+    "extractCwd": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact",
+    "extractExitCodes": [0, 0],
+    "linkCommand": "GAT_ARTIFACT_CONSUMER_BASE=/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/consumer node prepare-consumers.mjs > final-attempt-01/prepare-consumers.log 2>&1",
+    "linkCwd": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact",
+    "linkExitCode": 0,
+    "linkLogSha256": "7f7fc7ea8675d95ce8bcadda235bc148f7b461ada84475eb120b221a74f4924c"
+  },
+  "checks": [
+    {
+      "command": "python3 verify-assembly-pack.py > final-attempt-01/assembly-pack.json",
+      "cwd": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact",
+      "exitCode": 0,
+      "log": "assembly-pack.json",
+      "sha256": "69ef9355472989c082b55047521fb34781031fd21a7a7a48b4032097ccf3cf9a"
+    },
+    {
+      "command": "GAT_ARTIFACT_BASE=/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01 python3 inspect-packed.py > final-attempt-01/shape.json",
+      "cwd": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact",
+      "exitCode": 0,
+      "log": "shape.json",
+      "sha256": "5d31c51a62141dede648e16ce69f5dcbd2266cc532b4fd4230b59b05385eb483"
+    },
+    {
+      "command": "node consumer-probe.mjs current > /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/node-current.log 2>&1",
+      "cwd": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/consumer/current/package",
+      "exitCode": 0,
+      "log": "node-current.log",
+      "sha256": "c00684a64ec4247e0be28b31310b03f1b874e736df5fea785748686258a0936f"
+    },
+    {
+      "command": "node consumer-probe.mjs direct > /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/node-direct.log 2>&1",
+      "cwd": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/consumer/direct/package",
+      "exitCode": 0,
+      "log": "node-direct.log",
+      "sha256": "afefb10b96ffe17891f16f73d6b7a6e65e1cc30dbe155a0c51a8e3f16f664ba0"
+    },
+    {
+      "command": "node /home/hoinv/deepseek-harness/node_modules/typescript/bin/tsc --noEmit --module nodenext --moduleResolution nodenext --target es2024 --strict --skipLibCheck false --types node --allowImportingTsExtensions probe-types.ts > /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/types-current.log 2>&1",
+      "cwd": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/consumer/current/package",
+      "exitCode": 0,
+      "log": "types-current.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "node /home/hoinv/deepseek-harness/node_modules/typescript/bin/tsc --noEmit --module nodenext --moduleResolution nodenext --target es2024 --strict --skipLibCheck true --types node --allowImportingTsExtensions probe-types.ts > /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/types-direct.log 2>&1",
+      "cwd": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/consumer/direct/package",
+      "exitCode": 0,
+      "log": "types-direct.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "timeout 90s node /home/hoinv/deepseek-harness/node_modules/vitest/vitest.mjs run --config vitest.exec024.packed.config.ts > /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/packed-loader.log 2>&1",
+      "cwd": "/tmp/gat-exec024-host-c1157f7e",
+      "exitCode": 0,
+      "testFilesPassed": 1,
+      "testsPassed": 1,
+      "log": "packed-loader.log",
+      "sha256": "7aa11d1a845957c9ce16d87a75290e1d6d4dbd32dd2f3eff6e801b5434e6d630"
+    }
+  ],
+  "fixtureSources": {
+    "consumer-probe.mjs": "c945a4f2704c43ba7c1fe14dc16af4a2d40fda94f01786a26492e34fc337a8bd",
+    "execution-packed-artifact.spec.ts": "ef90afa0f0cd7e8c7c4675890ece59db5d44cf8958410dbdd8a5af30402a0fc4",
+    "inspect-packed.py": "8830d39a7971e95bdcd066732b62d34f7e8fdc6deea9dd83ce01ff2a064fede2",
+    "prepare-consumers.mjs": "6220e7a403e11fe85b94da09325fdf1aa697e65da3f0dd4575792dc72e50bac8",
+    "types-current.ts": "c53049510ed6ccb120cb943398a7b8bcf98d5f6b48c6c752922dd366ae3fe785",
+    "types-direct.ts": "2ca84cd85703c1e3aa010ad29fe5de051e29174b551da2ce4c1bfee5bab04a89",
+    "verify-assembly-pack.py": "dd4092fe1e1fe8b302ae3b3ebae1a5e25c79cc3e397a9bf7585e6a08a97cc442",
+    "vitest.exec024.packed.config.ts": "7e4b045c6556987614ca1a57a9f40aa65be17eab4f8e4fbaabbeb10ff097b110"
+  },
+  "observed": {
+    "publishedEntries": [".", "./composition", "./provider", "./execution-composition"],
+    "allFourJavaScriptAndDeclarationTargetsPresent": true,
+    "packedCurrentDeclarationsCompileWithFullLibCheck": true,
+    "packedDirectPublicTypesCompileWithHostSkipLibCheck": true,
+    "noDefaultExecutionExport": true,
+    "oneSharedOwnershipChunk": "tools-BVkFAKbd.js",
+    "wkNormalDependency": "@deepseek-ai/dsh-durable-agent@0.1.0",
+    "hostCordis": "4.0.4",
+    "wkDeclaredAndResolvedCordis": "4.0.2",
+    "sameWkConsumerAndProviderServiceConstructor": true,
+    "packedLoaderSelectedReadWithoutEagerOrSystemMemory": true
+  },
+  "drift": {
+    "supersededDiagnosticTarballSha256": "dca33048eef155f1c98229a86ae34691e122b2cde95fedec229bfe9136b53e07",
+    "diagnosticPackedTsbuildinfoFiles": 2,
+    "finalPackedTsbuildinfoFiles": 0,
+    "finalPackedConformanceFixtureFiles": 0,
+    "directFullLibCheckDiagnostic": {
+      "command": "node /home/hoinv/deepseek-harness/node_modules/typescript/bin/tsc --noEmit --module nodenext --moduleResolution nodenext --target es2024 --strict --skipLibCheck false --types node --allowImportingTsExtensions probe-types.ts > /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/types-direct.log 2>&1",
+      "archiveCommand": "mv types-direct.log types-direct-strict-diagnostic.log",
+      "cwd": "/home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024/verification/public-artifact/final-attempt-01/consumer/direct/package",
+      "exitCode": 2,
+      "log": "types-direct-strict-diagnostic.log",
+      "sha256": "9312a0f2fec43cd7e310a4883db43c27990308a474edf0b4d8d328bc51c64196",
+      "reason": "The disposable direct GAT core leaf resolves Schemastery from the original harness while the accepted direct Host resolves a separate Schemastery declaration tree; TypeScript reports TS6200 duplicate globals. The compatible Host tsconfig uses skipLibCheck true."
+    },
+    "legacySrcWildcardAdvertisedButUnshipped": true
+  },
+  "limits": "Old root/composition were imported on the compatible direct Host graph only; the current Host graph was used for provider/execution composition. Direct declaration consumption passes with the compatible Host's skipLibCheck setting; a full-lib-check run is retained as a duplicate-Schemastery diagnostic. The legacy ./src/* wildcard remains advertised without packed source files. No live operator provenance or deployment approval is implied."
+}

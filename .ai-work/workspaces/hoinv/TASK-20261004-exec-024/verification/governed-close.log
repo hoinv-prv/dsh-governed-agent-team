@@ -1,0 +1,22 @@
+AIP:       AIP-EXEC-024  (/home/hoinv/work/dsh-governed-agent-team/.ai-work/aip/hoinv/exec/AIP-EXEC-024-implement-durable-binding-reuse.md)
+Workspace: /home/hoinv/work/dsh-governed-agent-team/.ai-work/workspaces/hoinv/TASK-20261004-exec-024 (exists)
+Status:    active
+
+Final Capture Sweep — anything noticed this session that is reusable and non-obvious
+belongs in the inbox BEFORE it is dispositioned, not after.
+
+  deferred CAP-024-01 -> BL-024-CAP-024-01
+  deferred CAP-024-02 -> BL-024-CAP-024-02
+  deferred CAP-024-03 -> BL-024-CAP-024-03
+  deferred CAP-024-04 -> BL-024-CAP-024-04
+  deferred CAP-024-05 -> BL-024-CAP-024-05
+  deferred CAP-024-06 -> BL-024-CAP-024-06
+  deferred CAP-024-07 -> BL-024-CAP-024-07
+  deferred CAP-024-08 -> BL-024-CAP-024-08
+  deferred CAP-024-09 -> BL-024-CAP-024-09
+  deferred CAP-024-10 -> BL-024-CAP-024-10
+  deferred CAP-024-11 -> BL-024-CAP-024-11
+  deferred CAP-024-12 -> BL-024-CAP-024-12
+  deferred CAP-024-13 -> BL-024-CAP-024-13
+  deferred CAP-024-14 -> BL-024-CAP-024-14
+status: active -> done (CR-AIWS-2026-08-125)

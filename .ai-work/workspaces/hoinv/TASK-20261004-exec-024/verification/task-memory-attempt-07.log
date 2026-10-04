@@ -1,0 +1,26 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.8 /tmp/gat-exec024-host-c1157f7e
+
+ ❯ packages/experimental/gat-core/tests/task-memory-qualification.spec.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/experimental/gat-core/tests/task-memory-qualification.spec.ts [ packages/experimental/gat-core/tests/task-memory-qualification.spec.ts ]
+Error: Cannot find package '@deepseek-ai/dsh-message' imported from /tmp/gat-exec024-host-c1157f7e/packages/experimental/gat-core/tests/task-memory-qualification.spec.ts
+ ❯ packages/experimental/gat-core/tests/task-memory-qualification.spec.ts:10:1
+      8| import { mountAgentLoopTestDependencies } from '@deepseek-ai/dsh-agent…
+      9| import { SessionId } from '@deepseek-ai/dsh-session'
+     10| import { createUserMessage } from '@deepseek-ai/dsh-message'
+       | ^
+     11| import JsonlSessionPersistence from '@deepseek-ai/dsh-session-persiste…
+     12| import Subagents from '@deepseek-ai/dsh-subagent'
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  18:00:16
+   Duration  663ms (transform 470ms, setup 0ms, import 0ms, tests 0ms, environment 0ms)
+

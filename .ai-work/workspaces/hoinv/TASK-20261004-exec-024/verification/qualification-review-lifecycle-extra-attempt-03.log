@@ -1,0 +1,10 @@
+
+ RUN  v4.1.8 /tmp/gat-exec024-host-c1157f7e
+
+
+ Test Files  1 passed (1)
+      Tests  9 passed (9)
+   Start at  19:12:58
+   Duration  4.50s (transform 959ms, setup 0ms, import 1.21s, tests 3.21s, environment 0ms)
+
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.

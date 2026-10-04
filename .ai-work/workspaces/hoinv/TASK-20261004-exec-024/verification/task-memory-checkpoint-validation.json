@@ -1,0 +1,16 @@
+{
+  "lint_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0,
+    "accepted": 0
+  },
+  "lint_receipt": "lint-task-memory-checkpoint.json",
+  "git_diff_check_exit": 0,
+  "git_diff_check_output": "",
+  "original_detail_design_prefix_matches_planning_baseline": true,
+  "host_production_source_all_unchanged": true,
+  "production_durable_agent_changed": "",
+  "capture_total": 7,
+  "status": "active qualification checkpoint, not completion"
+}

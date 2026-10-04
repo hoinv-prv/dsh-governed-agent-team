@@ -1,0 +1,15 @@
+{
+  "aip_status": "done",
+  "pointer_step": "STEP-07",
+  "pointer_status": "done",
+  "asc_staleness": "fresh",
+  "asc_read": true,
+  "asc_projection_status": "active (builder template; AIP and pointer lifecycle are done)",
+  "asc_sha256": "fa03c56a96e764355e6d92aab9a3bbded2dbd407661146da231d22331d42fe2c",
+  "captures_deferred": 14,
+  "untriaged_captures": 0,
+  "queue_open": 0,
+  "independent_review": "PASS source-review.md",
+  "task_lint": "PASS 0errors/0warnings; post-close-task-lint.json",
+  "deployment": "not activated"
+}

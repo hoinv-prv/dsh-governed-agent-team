@@ -1,0 +1,1 @@
+{"graph":"current","provider":["apply","inject","name"],"service":"LocalDurableAgentProvider","sameConsumer":true,"sameServiceConstructor":true,"execution":["Config","apply","inject","name"],"noDefaultExecutionExport":true}
