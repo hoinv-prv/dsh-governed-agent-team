@@ -372,6 +372,8 @@ function callingAgent(agent: Agent | undefined, toolName: string): Agent {
 /** Register the complete Team tool set in one exact Agent scope. */
 function install(agent: Agent, ctx: Context, config: Required<Config>): () => void {
   const scoped = agent.ctx
+  // Presentation identity stays fixed; live authority remains in guards and operations.
+  const { role, name: memberName, id: teamId } = ctx.agentTeams.membership(agent)
   const disposers: Array<() => unknown> = []
   const register = (disposer: () => unknown): void => { disposers.push(disposer) }
   const externalRestrictedTools = new Set(config.externalRestrictedTools)
@@ -414,10 +416,7 @@ function install(agent: Agent, ctx: Context, config: Required<Config>): () => vo
     register(scoped.systemPrompt.section({
       name: 'team:policy',
       order: scoped.systemPrompt.getSectionOrder('TEAM_POLICY'),
-      text: () => {
-        const membership = ctx.agentTeams.membership(agent)
-        return `${POLICY}\n\nExecution requires ${executionRequirement(config)}, and the durable teammate cap is ${config.maxExecutionMembers}.\n\nYour Team role is ${membership.role}; your Team name is ${membership.name}; Team id is ${membership.id}.`
-      },
+      text: `${POLICY}\n\nExecution requires ${executionRequirement(config)}, and the durable teammate cap is ${config.maxExecutionMembers}.\n\nYour Team role is ${role}; your Team name is ${memberName}; Team id is ${teamId}.`,
     }))
 
     register(scoped.tools.register(defineTool({

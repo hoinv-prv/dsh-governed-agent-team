@@ -847,6 +847,34 @@ members:
     await vi.waitFor(() => { expect(ctx.agents.get(childId)).toBeUndefined() }, { timeout: 5_000 })
   })
 
+  it('renders scoped policy after membership revocation while denying stale task creation', async () => {
+    const { ctx, lead } = await setup(['hang'])
+    await approveCurrentPlan(ctx, lead)
+    const spawned = await execute(ctx, lead, 'spawn_teammate', {
+      name: 'revoked-worker', description: 'exercise revoked identity', prompt: 'stay available',
+    })
+    const childId = spawnedChildId(spawned)
+    const child = await waitRunning(ctx, childId)
+    const taskCount = ctx.agentTeams.listTasks(lead).length
+    const getAgent = ctx.agents.get.bind(ctx.agents)
+    // Keep the installed Agent scope alive while its exact registry identity is revoked.
+    const registry = vi.spyOn(ctx.agents, 'get').mockImplementation(id => id === childId ? undefined : getAgent(id))
+    try {
+      expect(ctx.agentTeams.tryMembership(child)).toBeUndefined()
+      expect(renderPrompt(await assembly(ctx, child)))
+        .toContain(`Your Team role is teammate; your Team name is revoked-worker; Team id is ${lead.id}.`)
+      const denied = await execute(ctx, child, 'team_task_create', {
+        subject: 'unauthorized task', description: 'must not be created',
+      })
+      expect(denied.isError).toBe(true)
+      expect(ctx.agentTeams.listTasks(lead)).toHaveLength(taskCount)
+    } finally {
+      registry.mockRestore()
+      ctx.agentTeams.interrupt(lead, 'revoked-worker')
+      await vi.waitFor(() => { expect(ctx.agents.get(childId)).toBeUndefined() }, { timeout: 5_000 })
+    }
+  })
+
   it('returns actionable no-progress output and renders structured wait cancellation', async () => {
     const inactiveSetup = await setup([textResponse('worker done')])
     await approveCurrentPlan(inactiveSetup.ctx, inactiveSetup.lead)
